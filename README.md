@@ -5,11 +5,12 @@
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
 [![Target](https://img.shields.io/badge/Google%20AntiGravity-2.0%2B-orange.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
 [![MCP Server](https://img.shields.io/badge/MCP-Auto--Updater%20Ready-10b981.svg)](index.js)
+[![Donate Tribute](https://img.shields.io/badge/❤️_Donate_/_Поддержать-Tribute-ff4b4b.svg)](https://web.tribute.tg/d/SGR)
 
 > **🇷🇺 Полный русификатор Google AntiGravity 2.0 (100% перевод интерфейса, настроек, плагинов, навыков и меню `/`)**, авто-патчер `app.asar`, сохранение позиции окна на 2-м мониторе, исправление клика по иконке в системном трее и **MCP-сервер с автоматическим обновлением через GitHub**.  
 > **🇬🇧 Complete Russian Localization & Quality-of-Life Enhancement Suite for Google AntiGravity 2.0 IDE** — featuring non-invasive CDP live injection, native `app.asar` auto-patching, multi-monitor window state persistence, system tray fixes, and a self-updating MCP server.
 
-🌐 **Язык документации / Documentation Language:** [**🇷🇺 Русский**](#-русская-документация-ru) | [**🇬🇧 English**](#-english-documentation-en)
+🌐 **Язык документации / Documentation Language:** [**🇷🇺 Русский**](#-русская-документация-ru) | [**🇬🇧 English**](#-english-documentation-en) | [**💖 Поддержать / Donate**](#-поддержать-проект--support--donate)
 
 ---
 
@@ -96,6 +97,23 @@ git clone https://github.com/WiseYaroslav28/antigravity-features-v2.git
 cd antigravity-features-v2
 install_on_new_pc.bat
 ```
+
+---
+
+## 💖 Поддержать проект / Support & Donate
+
+Если проект оказался вам полезен, вы можете поддержать его развитие из любой точки мира (РФ, СНГ и любые зарубежные страны):  
+If you find this project helpful, you can support its continued development:
+
+[![Donate via Tribute Web](https://img.shields.io/badge/💳_Карты_РФ_и_Мира_/_Cards-Tribute_Web-ff4b4b?style=for-the-badge)](https://web.tribute.tg/d/SGR)
+[![Donate via Telegram](https://img.shields.io/badge/✈️_Telegram_Tribute-Mini_App-2CA5E0?style=for-the-badge)](https://t.me/tribute/app?startapp=dSGR)
+
+* **💳 Банковские карты (РФ, СНГ и весь мир) в браузере / Bank Cards (Web)**: [https://web.tribute.tg/d/SGR](https://web.tribute.tg/d/SGR)
+* **✈️ Донат через Telegram (Карты и Telegram Stars)**: [https://t.me/tribute/app?startapp=dSGR](https://t.me/tribute/app?startapp=dSGR)
+* **💎 Криптовалюта / Crypto (Ethereum `ETH` и любые токены `ERC-20`: `USDT`, `USDC` в сети Ethereum)**:
+  ```text
+  0x729D819802EF2B8Eaab8eE7F0431fE1d288E6688
+  ```
 
 ---
 
