@@ -1,11 +1,32 @@
 {
   "name": "antigravity-features-v2",
   "version": "2.1.0",
-  "description": "Non-Invasive CDP Localization, Auto-Patcher & GitHub Auto-Updater for Google AntiGravity 2.0",
+  "description": "Google AntiGravity 2.0 Russian Localization (100% RU Русификатор), Non-Invasive CDP Injector, Electron Auto-Patcher, Multi-Monitor Geometry Saver & GitHub Auto-Update MCP Server",
+  "keywords": [
+    "google-antigravity",
+    "antigravity-ide",
+    "antigravity-2",
+    "antigravity-localization",
+    "antigravity-russian",
+    "rusifikator",
+    "русификатор-antigravity",
+    "локализация-antigravity",
+    "mcp-server",
+    "model-context-protocol",
+    "chrome-devtools-protocol",
+    "electron-patcher",
+    "ai-ide"
+  ],
+  "homepage": "https://github.com/WiseYaroslav28/antigravity-features-v2#readme",
+  "bugs": {
+    "url": "https://github.com/WiseYaroslav28/antigravity-features-v2/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/WiseYaroslav28/antigravity-features-v2.git"
   },
+  "license": "MIT",
+  "author": "WiseYaroslav28",
   "type": "module",
   "main": "index.js",
   "scripts": {
