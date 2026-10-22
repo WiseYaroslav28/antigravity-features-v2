@@ -1,0 +1,21 @@
+{
+  "name": "antigravity-features-v2",
+  "version": "2.1.0",
+  "description": "Non-Invasive CDP Localization, Auto-Patcher & GitHub Auto-Updater for Google AntiGravity 2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WiseYaroslav28/antigravity-features-v2.git"
+  },
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "patch": "node auto_patcher.cjs"
+  },
+  "dependencies": {
+    "@electron/asar": "^4.3.0",
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "chrome-remote-interface": "^0.34.0",
+    "zod": "^3.22.4"
+  }
+}

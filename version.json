@@ -1,0 +1,15 @@
+{
+  "version": "2.1.0",
+  "releasedAt": "2026-10-22",
+  "requiresRestart": false,
+  "changelog": "Полная локализация меню команд (/), карточек навыков (Skills), настроек уведомлений и встроенная система автообновления с GitHub.",
+  "files": [
+    "localization_injected.js",
+    "auto_patcher.cjs",
+    "index.js",
+    "backup_manager.js",
+    "exit_patcher.cjs",
+    "apply_patch_and_restart.bat",
+    "install_on_new_pc.bat"
+  ]
+}

@@ -1,0 +1,19 @@
+# Binaries & Local Patch Outputs
+app.asar.patched
+app.asar.bak
+temp_patcher_asar/
+
+# Node & Logs
+node_modules/
+*.log
+*.tmp
+
+# Local Backups & User Geometry State
+backups/
+
+# Local Development Scratch Files
+dev_tools/
+main.js
+tray.js
+utils.js
+scan_untranslated.js
