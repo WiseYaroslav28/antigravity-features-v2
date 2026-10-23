@@ -1,8 +1,8 @@
 {
-  "version": "2.1.0",
-  "releasedAt": "2026-10-22",
+  "version": "2.1.1",
+  "releasedAt": "2026-10-24",
   "requiresRestart": false,
-  "changelog": "Полная локализация меню команд (/), карточек навыков (Skills), настроек уведомлений и встроенная система автообновления с GitHub.",
+  "changelog": "Локализация режима Auto (Preview), поля поиска инструментов MCP, кнопки Give Feedback, составных статусов Running и нативное включение порта 9222.",
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",

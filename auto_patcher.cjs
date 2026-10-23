@@ -133,6 +133,7 @@ if (!window.__antigravity_translation_initialized) {
             mainContent = mainContent.replace(/label:\s*['"]No agents running['"],/g, "label: 'Нет запущенных агентов',");
             mainContent = mainContent.replace(/label:\s*`Open \${electron_1\.app\.getName\(\)}`,/g, "label: `Открыть ${electron_1.app.getName()}`,");
             mainContent = mainContent.replace(/label:\s*['"]Quit['"],/g, "label: 'Выход',");
+            mainContent = mainContent.replace(/appendSwitch\(['"]remote-debugging-port['"],\s*['"]0['"]\)/g, "appendSwitch('remote-debugging-port', '9222')");
             fs.writeFileSync(mainExtracted, mainContent, 'utf8');
             console.log('[AutoPatcher-v2] Patched dist/main.js for second-instance shortcut re-launch & menu!');
         }

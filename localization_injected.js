@@ -1499,7 +1499,15 @@ const translationDictionary = {
     "task log": "Лог задачи",
     "task logs": "Логи задачи",
     "checked task": "Проверена задача",
-    "killed task": "Завершена задача"
+    "killed task": "Завершена задача",
+    "auto (preview)": "Авто (Предпросмотр)",
+    "automatically decide if commands run.": "Автоматически решать, запускать ли команды.",
+    "automatically decide if commands run": "Автоматически решать, запускать ли команды",
+    "enter tool name or server...": "Введите название инструмента или сервера...",
+    "enter tool name or server…": "Введите название инструмента или сервера…",
+    "enter tool name or server": "Введите название инструмента или сервера",
+    "give feedback": "Оставить отзыв",
+    "give feedback...": "Оставить отзыв..."
 };
 
 function localizeActionTarget(target) {
@@ -1554,8 +1562,12 @@ function localizeActionTarget(target) {
     if (/^(.+?)\s+release\s+package$/i.test(t)) return 'пакета релиза ' + t.match(/^(.+?)\s+release\s+package$/i)[1];
     if (/^release\s+package$/i.test(t)) return 'пакета релиза';
     if (/^proposal\s+watcher$/i.test(t)) return 'наблюдателя предложений';
-    if (/^(.+?)\s+in\s+([a-zA-Z0-9_.\-\/\\]+\.[a-zA-Z0-9_]+)$/i.test(t)) {
-        const m = t.match(/^(.+?)\s+in\s+([a-zA-Z0-9_.\-\/\\]+\.[a-zA-Z0-9_]+)$/i);
+    if (/^(.+?)\s+strings$/i.test(t)) {
+        const inner = t.match(/^(.+?)\s+strings$/i)[1].replace(/\s+and\s+/gi, ' и ');
+        return `строк ${inner}`;
+    }
+    if (/^(.+?)\s+(?:in|в)\s+([a-zA-Z0-9_.\-\/\\]+\.[a-zA-Z0-9_]+)$/i.test(t)) {
+        const m = t.match(/^(.+?)\s+(?:in|в)\s+([a-zA-Z0-9_.\-\/\\]+\.[a-zA-Z0-9_]+)$/i);
         const sub = localizeActionTarget(m[1]);
         return `${sub} в ${m[2]}`;
     }
@@ -2055,6 +2067,26 @@ const regexTranslations = [
         replace: (match) => "Настройки проекта" + (match[1] ? (" " + match[1].trim()) : "")
     },
     {
+        // "Auto (Preview)"
+        pattern: /^Auto\s*\(Preview\)$/i,
+        replace: () => "Авто (Предпросмотр)"
+    },
+    {
+        // "Automatically decide if commands run."
+        pattern: /^Automatically\s+decide\s+if\s+commands\s+run(\.?)$/i,
+        replace: (match) => "Автоматически решать, запускать ли команды" + (match[1] || "")
+    },
+    {
+        // "Enter tool name or server..."
+        pattern: /^Enter\s+tool\s+name\s+or\s+server(\.{3}|…)?$/i,
+        replace: (match) => "Введите название инструмента или сервера" + (match[1] || "")
+    },
+    {
+        // "Give Feedback"
+        pattern: /^Give\s+Feedback(\.{3}|…)?$/i,
+        replace: (match) => "Оставить отзыв" + (match[1] || "")
+    },
+    {
         // "Run <target> —" / "Run <target>" / "Running <target>"
         pattern: /^(?:Running|Run)\s+(.+?)(\s*([—–-]|finished|завершено).*|\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]))?$/i,
         replace: (match) => {
@@ -2075,10 +2107,18 @@ const regexTranslations = [
             if (/^tests?$/i.test(cmd)) {
                 return `Выполнение тестов${trailing}`;
             }
+            if (/^(?:Check|Checking|Проверка)\s+(.+)$/i.test(cmd)) {
+                const sub = cmd.match(/^(?:Check|Checking|Проверка)\s+(.+)$/i)[1];
+                return `Выполняется: Проверка ${localizeActionTarget(sub)}${trailing}`;
+            }
             if (/^[а-яё]/i.test(cmd)) {
                 return `Выполняется: ${cmd}${trailing}`;
             }
-            return `Запуск ${cmd}${trailing}`;
+            const locCmd = localizeActionTarget(cmd);
+            if (locCmd !== cmd && /^[а-яё]/i.test(locCmd)) {
+                return `Выполняется: ${locCmd}${trailing}`;
+            }
+            return `Запуск ${locCmd}${trailing}`;
         }
     },
     {
@@ -4304,6 +4344,7 @@ function shouldIgnore(node) {
     const ariaVal = (node.getAttribute && node.getAttribute('aria-label') || '').trim().toLowerCase();
     const titleVal = (node.getAttribute && node.getAttribute('title') || '').trim().toLowerCase();
     const tooltipVal = (node.getAttribute && node.getAttribute('data-tooltip') || '').trim().toLowerCase();
+    const placeholderVal = (node.getAttribute && node.getAttribute('placeholder') || '').trim().toLowerCase();
 
     const parentText = (node.parentElement ? (node.parentElement.textContent || '') : '').toLowerCase();
     const grandParentText = (node.parentElement && node.parentElement.parentElement ? (node.parentElement.parentElement.textContent || '') : '').toLowerCase();
@@ -4320,6 +4361,15 @@ function shouldIgnore(node) {
         if (!val) return false;
         return (
             val === 'see plans' ||
+            val === 'running' ||
+            val === 'run' ||
+            val === 'ran' ||
+            val === 'auto (preview)' ||
+            val.startsWith('automatically decide') ||
+            val.startsWith('enter tool name') ||
+            val === 'give feedback' ||
+            val.startsWith('give feedback') ||
+            val.startsWith('проверка ') ||
             val === 'sound' ||
             val === 'volume' ||
             val.startsWith('enable notifications for agent') ||
@@ -4605,7 +4655,7 @@ function shouldIgnore(node) {
         );
     };
 
-    const isSpecialUiText = isMatchSpecial(textVal) || isMatchSpecial(ariaVal) || isMatchSpecial(titleVal) || isMatchSpecial(tooltipVal);
+    const isSpecialUiText = isMatchSpecial(textVal) || isMatchSpecial(ariaVal) || isMatchSpecial(titleVal) || isMatchSpecial(tooltipVal) || isMatchSpecial(placeholderVal);
     
     let parent = node.parentElement;
     while (parent) {
@@ -4729,6 +4779,15 @@ function isFileName(text, parent) {
     
     if (
         lowerTrimmed === 'troubleshooting_guide' || 
+        lowerTrimmed === 'running' ||
+        lowerTrimmed === 'run' ||
+        lowerTrimmed === 'ran' ||
+        lowerTrimmed === 'auto (preview)' ||
+        lowerTrimmed.startsWith('automatically decide') ||
+        lowerTrimmed.startsWith('enter tool name') ||
+        lowerTrimmed === 'give feedback' ||
+        lowerTrimmed.startsWith('give feedback') ||
+        lowerTrimmed.startsWith('проверка ') ||
         lowerTrimmed === 'sound' ||
         lowerTrimmed === 'volume' ||
         lowerTrimmed.startsWith('enable notifications for agent') ||
@@ -4966,7 +5025,7 @@ function isFileName(text, parent) {
     
     // Исключения: фразы с пробелами, содержащие email или известные глаголы интерфейса — не имена файлов!
     if (trimmed.includes(' ')) {
-        if (/@/.test(trimmed) || /^(?:enable\s+(?:notifications|sounds)\s+for\s+agent|manage\s+your\s+notification|show\s+system\s+notifications|play\s+a\s+sound|set\s+the\s+volume)\b/i.test(trimmed) || /for\s+commands/i.test(trimmed) || /conversations\s+with/i.test(trimmed) || /\(.*?menu\)/i.test(trimmed) || /^created\s+/i.test(trimmed) || /^creating\s+/i.test(trimmed) || /^(?:canceled|cancelled)\s+/i.test(trimmed) || /^plan\s+carefully/i.test(trimmed) || /^invoke\s+the\s+boost/i.test(trimmed) || /^uses\s+chrome\s+devtools/i.test(trimmed) || /^interactive\s+guide/i.test(trimmed) || /^guides\s+debugging/i.test(trimmed) || /^diagnoses\s+and\s+resolves/i.test(trimmed) || /^(?:search|поиск)\s+tool\s+for\s+modern/i.test(trimmed) || /^(?:build|сборка)\s+and\s+publish/i.test(trimmed) || /^comprehensive\s+guide/i.test(trimmed) || /^provides\s+a\s+comprehensive/i.test(trimmed) || /^how\s+to\s+render\s+rich/i.test(trimmed) || /^design,\s*implement/i.test(trimmed) || /^automatically\s+migrate/i.test(trimmed) || /^guidelines\s+for\s+interacting/i.test(trimmed) || /^how\s+to\s+manage\s+and\s+create/i.test(trimmed) || /^how\s+to\s+write\s+and\s+run/i.test(trimmed) || /^discover\s+ui\s+plugin/i.test(trimmed) || /^inspecting\s+/i.test(trimmed) || /^extracting\s+/i.test(trimmed) || /^listing\s+/i.test(trimmed) || /^reading\s+/i.test(trimmed) || /^testing\s+/i.test(trimmed) || /^searching\s+/i.test(trimmed) || /^checking\s+/i.test(trimmed) || /^updating\s+/i.test(trimmed) || /^updated\s+/i.test(trimmed) || /^update\s+/i.test(trimmed) || /^upgrading\s+/i.test(trimmed) || /^viewing\s+/i.test(trimmed) || /^message\s+from\s+/i.test(trimmed) || /^compacting/i.test(trimmed) || /^mark\s+all\s+as\s+read/i.test(trimmed) || /^this\s+page\s+is\s+going/i.test(trimmed) || /^toggle\s+maximize/i.test(trimmed) || /^toggle\s+overview/i.test(trimmed) || /^sincpro\s+/i.test(trimmed) || /^reverting\s+/i.test(trimmed) || /^downloading\s+/i.test(trimmed) || /^github\s+actions/i.test(trimmed) || /^untracked\s+/i.test(trimmed) || /^consilium\s+/i.test(trimmed) || /^schema\s+/i.test(trimmed) || /^contract\s+/i.test(trimmed) || /^validator\s+/i.test(trimmed) || /^dispatch_cli\s+/i.test(trimmed) || /^git\s+pickaxe/i.test(trimmed) || /\s+stat$/i.test(trimmed) || /\s+help$/i.test(trimmed) || /\s+body$/i.test(trimmed) || /\s+toolchain$/i.test(trimmed) || /^edited\s+/i.test(trimmed) || /^editing\s+/i.test(trimmed) || /^build\s+/i.test(trimmed) || /^building\s+/i.test(trimmed) || /^clear\s+/i.test(trimmed) || /^clearing\s+/i.test(trimmed) || /^push\s+/i.test(trimmed) || /^pushing\s+/i.test(trimmed) || /^killed\s+task/i.test(trimmed) || /^cancel\s+task/i.test(trimmed) || /^stop\s+recording/i.test(trimmed) || /^approve\s+/i.test(trimmed) || /^approved\s+/i.test(trimmed) || /^execute\s+/i.test(trimmed) || /^executed\s+/i.test(trimmed) || /^see\s+plans/i.test(trimmed) || /^enable\s+overages/i.test(trimmed) || /^explored\s+/i.test(trimmed) || /^ran\s+/i.test(trimmed) || /^run\s+/i.test(trimmed) || /^running\s+/i.test(trimmed) || /^view\s+/i.test(trimmed) || /^test\s+/i.test(trimmed) || /^commands/i.test(trimmed) || /^close\s+tab/i.test(trimmed) || /^split\s+/i.test(trimmed) || /^open\s+/i.test(trimmed) || /^collapse\s+/i.test(trimmed) || /^expand\s+/i.test(trimmed) || /^unpin\s+/i.test(trimmed) || /^pin\s+/i.test(trimmed) || /^rename\s+/i.test(trimmed) || /^archive\s+/i.test(trimmed) || /^download\s+/i.test(trimmed) || /^toggle\s+/i.test(trimmed) || /^next\s+aux/i.test(trimmed) || /^previous\s+aux/i.test(trimmed) || /^send\s+feedback/i.test(trimmed) || /^this\s+conversation/i.test(trimmed) || /^visit\s+/i.test(trimmed) || /^the\s+canva/i.test(trimmed) || /^our\s+servers/i.test(trimmed) || /^error\s+/i.test(trimmed) || /^model\s+unavailable/i.test(trimmed) || /^agent\s+execution/i.test(trimmed) || /^working/i.test(trimmed) || /^worked\s+for/i.test(trimmed) || /^copy/i.test(trimmed) || /^select\s+all/i.test(trimmed) || /files?\s+changed/i.test(trimmed) || /^(good|bad)\s+response/i.test(trimmed) || / finished$/i.test(trimmed) || /^the\s+subagent/i.test(trimmed) || /^failed_precondition/i.test(trimmed) || /architect\s+session/i.test(trimmed) || /^thought\s+for/i.test(trimmed) || /^thinking\s+for/i.test(trimmed) || /^exploring\s+/i.test(trimmed) || /^analyzed\s+/i.test(trimmed) || /^automations/i.test(trimmed) || /marketplace/i.test(trimmed) || /pane$/i.test(trimmed) || /^\+\s*create/i.test(trimmed) || /baseline quota/i.test(trimmed) || /ai credit overages/i.test(trimmed) || /all automations run/i.test(trimmed) || /google workspace/i.test(trimmed) || /custom agents/i.test(trimmed) || /skills & rules/i.test(trimmed) || /mcp servers/i.test(trimmed) || /^search\s+/i.test(trimmed) || /^inspect\s+/i.test(trimmed) || /^compare\s+/i.test(trimmed) || /^restore\s+/i.test(trimmed) || /^check\s+/i.test(trimmed) || /^checked\s+task/i.test(trimmed) || /^select\s+project/i.test(trimmed) || /^leaving\s+soon/i.test(trimmed) || /^notice/i.test(trimmed) || /^verify\s+/i.test(trimmed) || /^start\s+using/i.test(trimmed)) {
+        if (/@/.test(trimmed) || /^(?:auto\s*\(preview\)|automatically\s+decide|enter\s+tool\s+name|give\s+feedback|проверка\s+|enable\s+(?:notifications|sounds)\s+for\s+agent|manage\s+your\s+notification|show\s+system\s+notifications|play\s+a\s+sound|set\s+the\s+volume)\b/i.test(trimmed) || /for\s+commands/i.test(trimmed) || /conversations\s+with/i.test(trimmed) || /\(.*?menu\)/i.test(trimmed) || /^created\s+/i.test(trimmed) || /^creating\s+/i.test(trimmed) || /^(?:canceled|cancelled)\s+/i.test(trimmed) || /^plan\s+carefully/i.test(trimmed) || /^invoke\s+the\s+boost/i.test(trimmed) || /^uses\s+chrome\s+devtools/i.test(trimmed) || /^interactive\s+guide/i.test(trimmed) || /^guides\s+debugging/i.test(trimmed) || /^diagnoses\s+and\s+resolves/i.test(trimmed) || /^(?:search|поиск)\s+tool\s+for\s+modern/i.test(trimmed) || /^(?:build|сборка)\s+and\s+publish/i.test(trimmed) || /^comprehensive\s+guide/i.test(trimmed) || /^provides\s+a\s+comprehensive/i.test(trimmed) || /^how\s+to\s+render\s+rich/i.test(trimmed) || /^design,\s*implement/i.test(trimmed) || /^automatically\s+migrate/i.test(trimmed) || /^guidelines\s+for\s+interacting/i.test(trimmed) || /^how\s+to\s+manage\s+and\s+create/i.test(trimmed) || /^how\s+to\s+write\s+and\s+run/i.test(trimmed) || /^discover\s+ui\s+plugin/i.test(trimmed) || /^inspecting\s+/i.test(trimmed) || /^extracting\s+/i.test(trimmed) || /^listing\s+/i.test(trimmed) || /^reading\s+/i.test(trimmed) || /^testing\s+/i.test(trimmed) || /^searching\s+/i.test(trimmed) || /^checking\s+/i.test(trimmed) || /^updating\s+/i.test(trimmed) || /^updated\s+/i.test(trimmed) || /^update\s+/i.test(trimmed) || /^upgrading\s+/i.test(trimmed) || /^viewing\s+/i.test(trimmed) || /^message\s+from\s+/i.test(trimmed) || /^compacting/i.test(trimmed) || /^mark\s+all\s+as\s+read/i.test(trimmed) || /^this\s+page\s+is\s+going/i.test(trimmed) || /^toggle\s+maximize/i.test(trimmed) || /^toggle\s+overview/i.test(trimmed) || /^sincpro\s+/i.test(trimmed) || /^reverting\s+/i.test(trimmed) || /^downloading\s+/i.test(trimmed) || /^github\s+actions/i.test(trimmed) || /^untracked\s+/i.test(trimmed) || /^consilium\s+/i.test(trimmed) || /^schema\s+/i.test(trimmed) || /^contract\s+/i.test(trimmed) || /^validator\s+/i.test(trimmed) || /^dispatch_cli\s+/i.test(trimmed) || /^git\s+pickaxe/i.test(trimmed) || /\s+stat$/i.test(trimmed) || /\s+help$/i.test(trimmed) || /\s+body$/i.test(trimmed) || /\s+toolchain$/i.test(trimmed) || /^edited\s+/i.test(trimmed) || /^editing\s+/i.test(trimmed) || /^build\s+/i.test(trimmed) || /^building\s+/i.test(trimmed) || /^clear\s+/i.test(trimmed) || /^clearing\s+/i.test(trimmed) || /^push\s+/i.test(trimmed) || /^pushing\s+/i.test(trimmed) || /^killed\s+task/i.test(trimmed) || /^cancel\s+task/i.test(trimmed) || /^stop\s+recording/i.test(trimmed) || /^approve\s+/i.test(trimmed) || /^approved\s+/i.test(trimmed) || /^execute\s+/i.test(trimmed) || /^executed\s+/i.test(trimmed) || /^see\s+plans/i.test(trimmed) || /^enable\s+overages/i.test(trimmed) || /^explored\s+/i.test(trimmed) || /^ran\s+/i.test(trimmed) || /^run\s+/i.test(trimmed) || /^running\s+/i.test(trimmed) || /^view\s+/i.test(trimmed) || /^test\s+/i.test(trimmed) || /^commands/i.test(trimmed) || /^close\s+tab/i.test(trimmed) || /^split\s+/i.test(trimmed) || /^open\s+/i.test(trimmed) || /^collapse\s+/i.test(trimmed) || /^expand\s+/i.test(trimmed) || /^unpin\s+/i.test(trimmed) || /^pin\s+/i.test(trimmed) || /^rename\s+/i.test(trimmed) || /^archive\s+/i.test(trimmed) || /^download\s+/i.test(trimmed) || /^toggle\s+/i.test(trimmed) || /^next\s+aux/i.test(trimmed) || /^previous\s+aux/i.test(trimmed) || /^send\s+feedback/i.test(trimmed) || /^this\s+conversation/i.test(trimmed) || /^visit\s+/i.test(trimmed) || /^the\s+canva/i.test(trimmed) || /^our\s+servers/i.test(trimmed) || /^error\s+/i.test(trimmed) || /^model\s+unavailable/i.test(trimmed) || /^agent\s+execution/i.test(trimmed) || /^working/i.test(trimmed) || /^worked\s+for/i.test(trimmed) || /^copy/i.test(trimmed) || /^select\s+all/i.test(trimmed) || /files?\s+changed/i.test(trimmed) || /^(good|bad)\s+response/i.test(trimmed) || / finished$/i.test(trimmed) || /^the\s+subagent/i.test(trimmed) || /^failed_precondition/i.test(trimmed) || /architect\s+session/i.test(trimmed) || /^thought\s+for/i.test(trimmed) || /^thinking\s+for/i.test(trimmed) || /^exploring\s+/i.test(trimmed) || /^analyzed\s+/i.test(trimmed) || /^automations/i.test(trimmed) || /marketplace/i.test(trimmed) || /pane$/i.test(trimmed) || /^\+\s*create/i.test(trimmed) || /baseline quota/i.test(trimmed) || /ai credit overages/i.test(trimmed) || /all automations run/i.test(trimmed) || /google workspace/i.test(trimmed) || /custom agents/i.test(trimmed) || /skills & rules/i.test(trimmed) || /mcp servers/i.test(trimmed) || /^search\s+/i.test(trimmed) || /^inspect\s+/i.test(trimmed) || /^compare\s+/i.test(trimmed) || /^restore\s+/i.test(trimmed) || /^check\s+/i.test(trimmed) || /^checked\s+task/i.test(trimmed) || /^select\s+project/i.test(trimmed) || /^leaving\s+soon/i.test(trimmed) || /^notice/i.test(trimmed) || /^verify\s+/i.test(trimmed) || /^start\s+using/i.test(trimmed)) {
             return false;
         }
     }
@@ -5099,6 +5158,14 @@ function translateTextNode(node) {
                 translated = 'Изменено';
             } else if (lowerText === 'editing') {
                 translated = 'Изменение';
+            } else if (lowerText === 'running') {
+                const pText = node.parentElement ? normalizeText(node.parentElement.textContent) : '';
+                const gpText = (node.parentElement && node.parentElement.parentElement) ? normalizeText(node.parentElement.parentElement.textContent) : '';
+                if ((pText.length > 8 && /^running\b/i.test(pText)) || (gpText.length > 8 && /^running\b/i.test(gpText))) {
+                    translated = 'Выполняется:';
+                } else {
+                    translated = 'Выполняется';
+                }
             }
         }
 
@@ -5478,7 +5545,7 @@ function initLanguageSwitcher() {
     wrapper.innerHTML = `
         <div id="antigravity-lang-switcher" class="lang-switcher">
             <div class="lang-btn" id="lang-btn-en" title="Switch interface to English">EN</div>
-            <div class="lang-btn" id="lang-btn-ru" title="Русская локализация v2.1.0">
+            <div class="lang-btn" id="lang-btn-ru" title="Русская локализация v2.1.1">
                 <span class="ru-text" id="ru-btn-label">RU</span>
                 <span class="ru-warn-icon" id="ru-warn-icon" style="display: none;">⚠️</span>
             </div>
@@ -5711,7 +5778,7 @@ function initLanguageSwitcher() {
             const resp = await fetch('http://127.0.0.1:39228/status');
             if (resp.ok) {
                 const data = await resp.json();
-                const currentVer = data.version || '2.1.0';
+                const currentVer = data.version || '2.1.1';
                 btnRu.title = 'Русская локализация v' + currentVer + (data.latestRemoteVersion ? ' (GitHub: v' + data.latestRemoteVersion + ')' : '');
 
                 isUpdatePending = !!data.updatePending;
