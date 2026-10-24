@@ -1507,7 +1507,34 @@ const translationDictionary = {
     "enter tool name or server…": "Введите название инструмента или сервера…",
     "enter tool name or server": "Введите название инструмента или сервера",
     "give feedback": "Оставить отзыв",
-    "give feedback...": "Оставить отзыв..."
+    "give feedback...": "Оставить отзыв...",
+    "extensions": "Расширения",
+    "no extensions available": "Нет доступных расширений",
+    "no extensions available.": "Нет доступных расширений.",
+    "customize sections": "Настроить разделы",
+    "goals": "Цели",
+    "goal": "Цель",
+    "documents": "Документы",
+    "document": "Документ",
+    "links": "Ссылки",
+    "link": "Ссылка",
+    "modified files": "Изменённые файлы",
+    "search tabs, files, extensions, subagents, artifacts, tasks ...": "Поиск вкладок, файлов, расширений, субагентов, артефактов, задач ...",
+    "search tabs, files, extensions, subagents, artifacts, tasks...": "Поиск вкладок, файлов, расширений, субагентов, артефактов, задач...",
+    "search tabs, files, extensions, subagents, artifacts, tasks": "Поиск вкладок, файлов, расширений, субагентов, артефактов, задач",
+    "поиск tabs, files, extensions, subagents, artifacts, tasks ...": "Поиск вкладок, файлов, расширений, субагентов, артефактов, задач ...",
+    "поиск tabs, files, extensions, subagents, artifacts, tasks...": "Поиск вкладок, файлов, расширений, субагентов, артефактов, задач...",
+    "поиск tabs, files, extensions, subagents, artifacts, tasks": "Поиск вкладок, файлов, расширений, субагентов, артефактов, задач",
+    "open file": "Открыть файл",
+    "open files": "Открыть файлы",
+    "open folder": "Открыть папку",
+    "open folders": "Открыть папки",
+    "select folder(s)": "Выбрать папки",
+    "select folder": "Выбрать папку",
+    "select folders": "Выбрать папки",
+    "select file(s)": "Выбрать файлы",
+    "select file": "Выбрать файл",
+    "select files": "Выбрать файлы"
 };
 
 function localizeActionTarget(target) {
@@ -2085,6 +2112,48 @@ const regexTranslations = [
         // "Give Feedback"
         pattern: /^Give\s+Feedback(\.{3}|…)?$/i,
         replace: (match) => "Оставить отзыв" + (match[1] || "")
+    },
+    {
+        // "Search tabs, files, extensions, subagents, artifacts, tasks ..."
+        pattern: /^(?:Search|Поиск)\s+tabs,\s*files,\s*extensions,\s*subagents,\s*artifacts,\s*tasks(\s*(?:\.{3}|…))?$/i,
+        replace: (match) => "Поиск вкладок, файлов, расширений, субагентов, артефактов, задач" + (match[1] || "")
+    },
+    {
+        // "No extensions available"
+        pattern: /^No\s+extensions\s+available(\.?)$/i,
+        replace: (match) => "Нет доступных расширений" + (match[1] || "")
+    },
+    {
+        // "Customize Sections"
+        pattern: /^Customize\s+Sections$/i,
+        replace: () => "Настроить разделы"
+    },
+    {
+        // "Modified Files"
+        pattern: /^Modified\s+Files$/i,
+        replace: () => "Изменённые файлы"
+    },
+    {
+        // "Open File" / "Open Files" / "Open Folder" / "Open Folders"
+        pattern: /^Open\s+(File|Files|Folder|Folders)$/i,
+        replace: (match) => {
+            const w = match[1].toLowerCase();
+            if (w === 'file') return "Открыть файл";
+            if (w === 'files') return "Открыть файлы";
+            if (w === 'folder') return "Открыть папку";
+            return "Открыть папки";
+        }
+    },
+    {
+        // "Select Folder(s)" / "Select File(s)"
+        pattern: /^Select\s+(Folder\(s\)|Folders|Folder|File\(s\)|Files|File)$/i,
+        replace: (match) => {
+            const w = match[1].toLowerCase();
+            if (w === 'folder') return "Выбрать папку";
+            if (w.startsWith('folder')) return "Выбрать папки";
+            if (w === 'file') return "Выбрать файл";
+            return "Выбрать файлы";
+        }
     },
     {
         // "Run <target> —" / "Run <target>" / "Running <target>"
@@ -4369,6 +4438,22 @@ function shouldIgnore(node) {
             val.startsWith('enter tool name') ||
             val === 'give feedback' ||
             val.startsWith('give feedback') ||
+            val === 'extensions' ||
+            val.startsWith('no extensions available') ||
+            val === 'customize sections' ||
+            val === 'goals' ||
+            val === 'documents' ||
+            val === 'links' ||
+            val === 'modified files' ||
+            val.includes('tabs, files, extensions') ||
+            val === 'open file' ||
+            val === 'open files' ||
+            val === 'open folder' ||
+            val === 'open folders' ||
+            val === 'select folder(s)' ||
+            val === 'select folder' ||
+            val === 'select folders' ||
+            val === 'select file(s)' ||
             val.startsWith('проверка ') ||
             val === 'sound' ||
             val === 'volume' ||
@@ -4787,6 +4872,22 @@ function isFileName(text, parent) {
         lowerTrimmed.startsWith('enter tool name') ||
         lowerTrimmed === 'give feedback' ||
         lowerTrimmed.startsWith('give feedback') ||
+        lowerTrimmed === 'extensions' ||
+        lowerTrimmed.startsWith('no extensions available') ||
+        lowerTrimmed === 'customize sections' ||
+        lowerTrimmed === 'goals' ||
+        lowerTrimmed === 'documents' ||
+        lowerTrimmed === 'links' ||
+        lowerTrimmed === 'modified files' ||
+        lowerTrimmed.includes('tabs, files, extensions') ||
+        lowerTrimmed === 'open file' ||
+        lowerTrimmed === 'open files' ||
+        lowerTrimmed === 'open folder' ||
+        lowerTrimmed === 'open folders' ||
+        lowerTrimmed === 'select folder(s)' ||
+        lowerTrimmed === 'select folder' ||
+        lowerTrimmed === 'select folders' ||
+        lowerTrimmed === 'select file(s)' ||
         lowerTrimmed.startsWith('проверка ') ||
         lowerTrimmed === 'sound' ||
         lowerTrimmed === 'volume' ||
@@ -5025,7 +5126,7 @@ function isFileName(text, parent) {
     
     // Исключения: фразы с пробелами, содержащие email или известные глаголы интерфейса — не имена файлов!
     if (trimmed.includes(' ')) {
-        if (/@/.test(trimmed) || /^(?:auto\s*\(preview\)|automatically\s+decide|enter\s+tool\s+name|give\s+feedback|проверка\s+|enable\s+(?:notifications|sounds)\s+for\s+agent|manage\s+your\s+notification|show\s+system\s+notifications|play\s+a\s+sound|set\s+the\s+volume)\b/i.test(trimmed) || /for\s+commands/i.test(trimmed) || /conversations\s+with/i.test(trimmed) || /\(.*?menu\)/i.test(trimmed) || /^created\s+/i.test(trimmed) || /^creating\s+/i.test(trimmed) || /^(?:canceled|cancelled)\s+/i.test(trimmed) || /^plan\s+carefully/i.test(trimmed) || /^invoke\s+the\s+boost/i.test(trimmed) || /^uses\s+chrome\s+devtools/i.test(trimmed) || /^interactive\s+guide/i.test(trimmed) || /^guides\s+debugging/i.test(trimmed) || /^diagnoses\s+and\s+resolves/i.test(trimmed) || /^(?:search|поиск)\s+tool\s+for\s+modern/i.test(trimmed) || /^(?:build|сборка)\s+and\s+publish/i.test(trimmed) || /^comprehensive\s+guide/i.test(trimmed) || /^provides\s+a\s+comprehensive/i.test(trimmed) || /^how\s+to\s+render\s+rich/i.test(trimmed) || /^design,\s*implement/i.test(trimmed) || /^automatically\s+migrate/i.test(trimmed) || /^guidelines\s+for\s+interacting/i.test(trimmed) || /^how\s+to\s+manage\s+and\s+create/i.test(trimmed) || /^how\s+to\s+write\s+and\s+run/i.test(trimmed) || /^discover\s+ui\s+plugin/i.test(trimmed) || /^inspecting\s+/i.test(trimmed) || /^extracting\s+/i.test(trimmed) || /^listing\s+/i.test(trimmed) || /^reading\s+/i.test(trimmed) || /^testing\s+/i.test(trimmed) || /^searching\s+/i.test(trimmed) || /^checking\s+/i.test(trimmed) || /^updating\s+/i.test(trimmed) || /^updated\s+/i.test(trimmed) || /^update\s+/i.test(trimmed) || /^upgrading\s+/i.test(trimmed) || /^viewing\s+/i.test(trimmed) || /^message\s+from\s+/i.test(trimmed) || /^compacting/i.test(trimmed) || /^mark\s+all\s+as\s+read/i.test(trimmed) || /^this\s+page\s+is\s+going/i.test(trimmed) || /^toggle\s+maximize/i.test(trimmed) || /^toggle\s+overview/i.test(trimmed) || /^sincpro\s+/i.test(trimmed) || /^reverting\s+/i.test(trimmed) || /^downloading\s+/i.test(trimmed) || /^github\s+actions/i.test(trimmed) || /^untracked\s+/i.test(trimmed) || /^consilium\s+/i.test(trimmed) || /^schema\s+/i.test(trimmed) || /^contract\s+/i.test(trimmed) || /^validator\s+/i.test(trimmed) || /^dispatch_cli\s+/i.test(trimmed) || /^git\s+pickaxe/i.test(trimmed) || /\s+stat$/i.test(trimmed) || /\s+help$/i.test(trimmed) || /\s+body$/i.test(trimmed) || /\s+toolchain$/i.test(trimmed) || /^edited\s+/i.test(trimmed) || /^editing\s+/i.test(trimmed) || /^build\s+/i.test(trimmed) || /^building\s+/i.test(trimmed) || /^clear\s+/i.test(trimmed) || /^clearing\s+/i.test(trimmed) || /^push\s+/i.test(trimmed) || /^pushing\s+/i.test(trimmed) || /^killed\s+task/i.test(trimmed) || /^cancel\s+task/i.test(trimmed) || /^stop\s+recording/i.test(trimmed) || /^approve\s+/i.test(trimmed) || /^approved\s+/i.test(trimmed) || /^execute\s+/i.test(trimmed) || /^executed\s+/i.test(trimmed) || /^see\s+plans/i.test(trimmed) || /^enable\s+overages/i.test(trimmed) || /^explored\s+/i.test(trimmed) || /^ran\s+/i.test(trimmed) || /^run\s+/i.test(trimmed) || /^running\s+/i.test(trimmed) || /^view\s+/i.test(trimmed) || /^test\s+/i.test(trimmed) || /^commands/i.test(trimmed) || /^close\s+tab/i.test(trimmed) || /^split\s+/i.test(trimmed) || /^open\s+/i.test(trimmed) || /^collapse\s+/i.test(trimmed) || /^expand\s+/i.test(trimmed) || /^unpin\s+/i.test(trimmed) || /^pin\s+/i.test(trimmed) || /^rename\s+/i.test(trimmed) || /^archive\s+/i.test(trimmed) || /^download\s+/i.test(trimmed) || /^toggle\s+/i.test(trimmed) || /^next\s+aux/i.test(trimmed) || /^previous\s+aux/i.test(trimmed) || /^send\s+feedback/i.test(trimmed) || /^this\s+conversation/i.test(trimmed) || /^visit\s+/i.test(trimmed) || /^the\s+canva/i.test(trimmed) || /^our\s+servers/i.test(trimmed) || /^error\s+/i.test(trimmed) || /^model\s+unavailable/i.test(trimmed) || /^agent\s+execution/i.test(trimmed) || /^working/i.test(trimmed) || /^worked\s+for/i.test(trimmed) || /^copy/i.test(trimmed) || /^select\s+all/i.test(trimmed) || /files?\s+changed/i.test(trimmed) || /^(good|bad)\s+response/i.test(trimmed) || / finished$/i.test(trimmed) || /^the\s+subagent/i.test(trimmed) || /^failed_precondition/i.test(trimmed) || /architect\s+session/i.test(trimmed) || /^thought\s+for/i.test(trimmed) || /^thinking\s+for/i.test(trimmed) || /^exploring\s+/i.test(trimmed) || /^analyzed\s+/i.test(trimmed) || /^automations/i.test(trimmed) || /marketplace/i.test(trimmed) || /pane$/i.test(trimmed) || /^\+\s*create/i.test(trimmed) || /baseline quota/i.test(trimmed) || /ai credit overages/i.test(trimmed) || /all automations run/i.test(trimmed) || /google workspace/i.test(trimmed) || /custom agents/i.test(trimmed) || /skills & rules/i.test(trimmed) || /mcp servers/i.test(trimmed) || /^search\s+/i.test(trimmed) || /^inspect\s+/i.test(trimmed) || /^compare\s+/i.test(trimmed) || /^restore\s+/i.test(trimmed) || /^check\s+/i.test(trimmed) || /^checked\s+task/i.test(trimmed) || /^select\s+project/i.test(trimmed) || /^leaving\s+soon/i.test(trimmed) || /^notice/i.test(trimmed) || /^verify\s+/i.test(trimmed) || /^start\s+using/i.test(trimmed)) {
+        if (/@/.test(trimmed) || /^(?:no\s+extensions\s+available|customize\s+sections|modified\s+files|open\s+file|select\s+folder|поиск\s+tabs|auto\s*\(preview\)|automatically\s+decide|enter\s+tool\s+name|give\s+feedback|проверка\s+|enable\s+(?:notifications|sounds)\s+for\s+agent|manage\s+your\s+notification|show\s+system\s+notifications|play\s+a\s+sound|set\s+the\s+volume)\b/i.test(trimmed) || /for\s+commands/i.test(trimmed) || /conversations\s+with/i.test(trimmed) || /\(.*?menu\)/i.test(trimmed) || /^created\s+/i.test(trimmed) || /^creating\s+/i.test(trimmed) || /^(?:canceled|cancelled)\s+/i.test(trimmed) || /^plan\s+carefully/i.test(trimmed) || /^invoke\s+the\s+boost/i.test(trimmed) || /^uses\s+chrome\s+devtools/i.test(trimmed) || /^interactive\s+guide/i.test(trimmed) || /^guides\s+debugging/i.test(trimmed) || /^diagnoses\s+and\s+resolves/i.test(trimmed) || /^(?:search|поиск)\s+tool\s+for\s+modern/i.test(trimmed) || /^(?:build|сборка)\s+and\s+publish/i.test(trimmed) || /^comprehensive\s+guide/i.test(trimmed) || /^provides\s+a\s+comprehensive/i.test(trimmed) || /^how\s+to\s+render\s+rich/i.test(trimmed) || /^design,\s*implement/i.test(trimmed) || /^automatically\s+migrate/i.test(trimmed) || /^guidelines\s+for\s+interacting/i.test(trimmed) || /^how\s+to\s+manage\s+and\s+create/i.test(trimmed) || /^how\s+to\s+write\s+and\s+run/i.test(trimmed) || /^discover\s+ui\s+plugin/i.test(trimmed) || /^inspecting\s+/i.test(trimmed) || /^extracting\s+/i.test(trimmed) || /^listing\s+/i.test(trimmed) || /^reading\s+/i.test(trimmed) || /^testing\s+/i.test(trimmed) || /^searching\s+/i.test(trimmed) || /^checking\s+/i.test(trimmed) || /^updating\s+/i.test(trimmed) || /^updated\s+/i.test(trimmed) || /^update\s+/i.test(trimmed) || /^upgrading\s+/i.test(trimmed) || /^viewing\s+/i.test(trimmed) || /^message\s+from\s+/i.test(trimmed) || /^compacting/i.test(trimmed) || /^mark\s+all\s+as\s+read/i.test(trimmed) || /^this\s+page\s+is\s+going/i.test(trimmed) || /^toggle\s+maximize/i.test(trimmed) || /^toggle\s+overview/i.test(trimmed) || /^sincpro\s+/i.test(trimmed) || /^reverting\s+/i.test(trimmed) || /^downloading\s+/i.test(trimmed) || /^github\s+actions/i.test(trimmed) || /^untracked\s+/i.test(trimmed) || /^consilium\s+/i.test(trimmed) || /^schema\s+/i.test(trimmed) || /^contract\s+/i.test(trimmed) || /^validator\s+/i.test(trimmed) || /^dispatch_cli\s+/i.test(trimmed) || /^git\s+pickaxe/i.test(trimmed) || /\s+stat$/i.test(trimmed) || /\s+help$/i.test(trimmed) || /\s+body$/i.test(trimmed) || /\s+toolchain$/i.test(trimmed) || /^edited\s+/i.test(trimmed) || /^editing\s+/i.test(trimmed) || /^build\s+/i.test(trimmed) || /^building\s+/i.test(trimmed) || /^clear\s+/i.test(trimmed) || /^clearing\s+/i.test(trimmed) || /^push\s+/i.test(trimmed) || /^pushing\s+/i.test(trimmed) || /^killed\s+task/i.test(trimmed) || /^cancel\s+task/i.test(trimmed) || /^stop\s+recording/i.test(trimmed) || /^approve\s+/i.test(trimmed) || /^approved\s+/i.test(trimmed) || /^execute\s+/i.test(trimmed) || /^executed\s+/i.test(trimmed) || /^see\s+plans/i.test(trimmed) || /^enable\s+overages/i.test(trimmed) || /^explored\s+/i.test(trimmed) || /^ran\s+/i.test(trimmed) || /^run\s+/i.test(trimmed) || /^running\s+/i.test(trimmed) || /^view\s+/i.test(trimmed) || /^test\s+/i.test(trimmed) || /^commands/i.test(trimmed) || /^close\s+tab/i.test(trimmed) || /^split\s+/i.test(trimmed) || /^open\s+/i.test(trimmed) || /^collapse\s+/i.test(trimmed) || /^expand\s+/i.test(trimmed) || /^unpin\s+/i.test(trimmed) || /^pin\s+/i.test(trimmed) || /^rename\s+/i.test(trimmed) || /^archive\s+/i.test(trimmed) || /^download\s+/i.test(trimmed) || /^toggle\s+/i.test(trimmed) || /^next\s+aux/i.test(trimmed) || /^previous\s+aux/i.test(trimmed) || /^send\s+feedback/i.test(trimmed) || /^this\s+conversation/i.test(trimmed) || /^visit\s+/i.test(trimmed) || /^the\s+canva/i.test(trimmed) || /^our\s+servers/i.test(trimmed) || /^error\s+/i.test(trimmed) || /^model\s+unavailable/i.test(trimmed) || /^agent\s+execution/i.test(trimmed) || /^working/i.test(trimmed) || /^worked\s+for/i.test(trimmed) || /^copy/i.test(trimmed) || /^select\s+all/i.test(trimmed) || /files?\s+changed/i.test(trimmed) || /^(good|bad)\s+response/i.test(trimmed) || / finished$/i.test(trimmed) || /^the\s+subagent/i.test(trimmed) || /^failed_precondition/i.test(trimmed) || /architect\s+session/i.test(trimmed) || /^thought\s+for/i.test(trimmed) || /^thinking\s+for/i.test(trimmed) || /^exploring\s+/i.test(trimmed) || /^analyzed\s+/i.test(trimmed) || /^automations/i.test(trimmed) || /marketplace/i.test(trimmed) || /pane$/i.test(trimmed) || /^\+\s*create/i.test(trimmed) || /baseline quota/i.test(trimmed) || /ai credit overages/i.test(trimmed) || /all automations run/i.test(trimmed) || /google workspace/i.test(trimmed) || /custom agents/i.test(trimmed) || /skills & rules/i.test(trimmed) || /mcp servers/i.test(trimmed) || /^search\s+/i.test(trimmed) || /^inspect\s+/i.test(trimmed) || /^compare\s+/i.test(trimmed) || /^restore\s+/i.test(trimmed) || /^check\s+/i.test(trimmed) || /^checked\s+task/i.test(trimmed) || /^select\s+project/i.test(trimmed) || /^leaving\s+soon/i.test(trimmed) || /^notice/i.test(trimmed) || /^verify\s+/i.test(trimmed) || /^start\s+using/i.test(trimmed)) {
             return false;
         }
     }
@@ -5545,7 +5646,7 @@ function initLanguageSwitcher() {
     wrapper.innerHTML = `
         <div id="antigravity-lang-switcher" class="lang-switcher">
             <div class="lang-btn" id="lang-btn-en" title="Switch interface to English">EN</div>
-            <div class="lang-btn" id="lang-btn-ru" title="Русская локализация v2.1.1">
+            <div class="lang-btn" id="lang-btn-ru" title="Русская локализация v2.1.2">
                 <span class="ru-text" id="ru-btn-label">RU</span>
                 <span class="ru-warn-icon" id="ru-warn-icon" style="display: none;">⚠️</span>
             </div>
@@ -5778,7 +5879,7 @@ function initLanguageSwitcher() {
             const resp = await fetch('http://127.0.0.1:39228/status');
             if (resp.ok) {
                 const data = await resp.json();
-                const currentVer = data.version || '2.1.1';
+                const currentVer = data.version || '2.1.2';
                 btnRu.title = 'Русская локализация v' + currentVer + (data.latestRemoteVersion ? ' (GitHub: v' + data.latestRemoteVersion + ')' : '');
 
                 isUpdatePending = !!data.updatePending;

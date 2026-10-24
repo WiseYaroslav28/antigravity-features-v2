@@ -1,8 +1,8 @@
 {
-  "version": "2.1.1",
+  "version": "2.1.2",
   "releasedAt": "2026-10-24",
   "requiresRestart": false,
-  "changelog": "Локализация режима Auto (Preview), поля поиска инструментов MCP, кнопки Give Feedback, составных статусов Running и нативное включение порта 9222.",
+  "changelog": "Локализация меню Customize Sections (Цели, Документы, Ссылки, Изменённые файлы), раздела Расширения, глобального поиска вкладок/файлов и кнопок Open File / Select Folder(s).",
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",
