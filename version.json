@@ -1,8 +1,8 @@
 {
-  "version": "2.1.3",
-  "releasedAt": "2026-10-24",
+  "version": "2.1.4",
+  "releasedAt": "2026-10-27",
   "requiresRestart": false,
-  "changelog": "Локализация кнопки + Create и подсказок Create a Plugin / Skill / Rule / Agent with the Agent.",
+  "changelog": "Локализация индикаторов квоты (5h limit, 100% left / <N>% left) и заголовка Workspace (Рабочая область).",
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",
