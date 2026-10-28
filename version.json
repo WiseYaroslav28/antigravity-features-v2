@@ -1,8 +1,8 @@
 {
-  "version": "2.1.5",
-  "releasedAt": "2026-10-28T20:06:14.629Z",
+  "version": "2.1.6",
+  "releasedAt": "2026-10-28T22:25:21.498Z",
   "requiresRestart": false,
-  "changelog": "Добавлен перевод настроек Встроенного браузера (Built-in Browser, Open Links In, External Browser), Профиля разрешений (Permission Preset), а также команд управления вкладками и диалогами (Reopen Closed Tab, Move Conversation Up/Down)",
+  "changelog": "Добавлен перевод описаний слэш-команды /compact и MCP-промптов GitHub (AssignCodingAgent, issue_to_fix_workflow)",
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",

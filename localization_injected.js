@@ -213,11 +213,28 @@ const translationDictionary = {
     "conversations with 🔍 in the top left": "Поиск диалогов с помощью 🔍 в левом верхнем углу",
     "conversations with": "диалогов с помощью",
     
-    // Слэш-команды (Slash Commands)
+    // Слэш-команды и MCP-промпты (Slash Commands & MCP Prompts)
     "plan carefully before executing a task.": "Тщательное планирование перед выполнением задачи.",
     "plan carefully before executing a task": "Тщательное планирование перед выполнением задачи",
     "invoke the boost multi-agent orchestrator for complex tasks.": "Запуск мультиагентного оркестратора Boost для сложных задач.",
     "invoke the boost multi-agent orchestrator for complex tasks": "Запуск мультиагентного оркестратора Boost для сложных задач",
+    "compact the conversation now (summarize history to free up the context window).": "Сжать диалог сейчас (суммировать историю, чтобы освободить контекстное окно).",
+    "compact the conversation now (summarize history to free up the context window)": "Сжать диалог сейчас (суммировать историю, чтобы освободить контекстное окно)",
+    "сжать контекст the conversation now (summarize history to free up the context window).": "Сжать диалог сейчас (суммировать историю, чтобы освободить контекстное окно).",
+    "сжать контекст the conversation now (summarize history to free up the context window)": "Сжать диалог сейчас (суммировать историю, чтобы освободить контекстное окно)",
+    "assign github coding agent to multiple tasks in a github repository.": "Назначить кодинг-агента GitHub (GitHub Coding Agent) на несколько задач в репозитории GitHub.",
+    "assign github coding agent to multiple tasks in a github repository": "Назначить кодинг-агента GitHub (GitHub Coding Agent) на несколько задач в репозитории GitHub",
+    "create an issue for a problem and then generate a pull request to fix it.": "Создать задачу (issue) по проблеме, а затем сформировать пул-реквест (pull request) для её исправления.",
+    "create an issue for a problem and then generate a pull request to fix it": "Создать задачу (issue) по проблеме, а затем сформировать пул-реквест (pull request) для её исправления",
+    "создать an issue for a problem and then generate a pull request to fix it": "Создать задачу (issue) по проблеме, а затем сформировать пул-реквест (pull request) для её исправления",
+    "создано an issue for a problem and then generate a pull request to fix it": "Создать задачу (issue) по проблеме, а затем сформировать пул-реквест (pull request) для её исправления",
+    "ask a quick question without interrupting the main conversation": "Задать быстрый вопрос, не прерывая основной диалог",
+    "run until the specified goal is completely finished": "Работать до полного достижения указанной цели",
+    "run an instruction on a recurring schedule or as a one-time timer": "Запуск инструкций по расписанию или через разовый таймер",
+    "invoke a browser agent for web tasks": "Вызов браузерного агента для задач в сети",
+    "interview me to align on a plan": "Интервью для детального согласования плана",
+    "invoke a team of agents to autonomously tackle large projects": "Вызов команды агентов для автономной работы над крупными проектами",
+    "reflect on recent successes or corrections to capture reusable skills or rules": "Анализ успехов и правок для сохранения полезных навыков и правил",
     
     // Раздел Общие (General / Execution) (Скриншот 2)
     "execution": "Выполнение",
@@ -2429,6 +2446,49 @@ const regexTranslations = [
         replace: () => "Запуск мультиагентного оркестратора Boost для сложных задач."
     },
     {
+        // "/compact" - "Compact the conversation now (summarize history to free up the context window)."
+        pattern: /^(?:Compact|Сжать(?:\s+контекст)?)\s+the\s+conversation\s+now\s*\(summarize\s+history\s+to\s+free\s+up\s+the\s+context\s+window\)\.?$/i,
+        replace: () => "Сжать диалог сейчас (суммировать историю, чтобы освободить контекстное окно)."
+    },
+    {
+        // "mcp:github-mcp-server:AssignCodingAgent"
+        pattern: /^Assign\s+GitHub\s+Coding\s+Agent\s+to\s+multiple\s+tasks\s+in\s+a\s+GitHub\s+repository\.?$/i,
+        replace: () => "Назначить кодинг-агента GitHub (GitHub Coding Agent) на несколько задач в репозитории GitHub."
+    },
+    {
+        // "mcp:github-mcp-server:issue_to_fix_workflow"
+        pattern: /^(?:Create|Создать|Создано)\s+an\s+issue\s+for\s+a\s+problem\s+and\s+then\s+generate\s+a\s+pull\s+request\s+to\s+fix\s+it\.?$/i,
+        replace: () => "Создать задачу (issue) по проблеме, а затем сформировать пул-реквест (pull request) для её исправления"
+    },
+    {
+        pattern: /^Ask\s+a\s+quick\s+question\s+without\s+interrupting\s+the\s+main\s+conversation\.?$/i,
+        replace: () => "Задать быстрый вопрос, не прерывая основной диалог."
+    },
+    {
+        pattern: /^(?:Run|Запуск)\s+until\s+the\s+specified\s+goal\s+is\s+completely\s+finished\.?$/i,
+        replace: () => "Работать до полного достижения указанной цели."
+    },
+    {
+        pattern: /^(?:Run|Запуск)\s+an\s+instruction\s+on\s+a\s+recurring\s+schedule\s+or\s+as\s+a\s+one-time\s+timer\.?$/i,
+        replace: () => "Запуск инструкций по расписанию или через разовый таймер."
+    },
+    {
+        pattern: /^Invoke\s+a\s+browser\s+agent\s+for\s+web\s+tasks\.?$/i,
+        replace: () => "Вызов браузерного агента для задач в сети."
+    },
+    {
+        pattern: /^Interview\s+me\s+to\s+align\s+on\s+a\s+plan\.?$/i,
+        replace: () => "Интервью для детального согласования плана."
+    },
+    {
+        pattern: /^Invoke\s+a\s+team\s+of\s+agents\s+to\s+autonomously\s+tackle\s+large\s+projects\.?$/i,
+        replace: () => "Вызов команды агентов для автономной работы над крупными проектами."
+    },
+    {
+        pattern: /^Reflect\s+on\s+recent\s+successes\s+or\s+corrections\s+to\s+capture\s+reusable\s+skills\s+or\s+rules\.?$/i,
+        replace: () => "Анализ успехов и правок для сохранения полезных навыков и правил."
+    },
+    {
         // "chrome-extensions" skill description (включая защиту от поломки "Build" -> "Сборка")
         pattern: /^(?:Build|Сборка)\s+and\s+publish\s+Chrome\s+Extensions\s+using\s+Manifest\s+V3\s+best\s+practices.*/i,
         replace: () => "Создание и публикация расширений Chrome с использованием лучших практик Manifest V3. Используйте этот навык всякий раз, когда пользователь просит создать, изменить, отладить или понять работу расширений браузера Chrome, плагинов или чего-либо, связанного с Chrome Extensions API. Срабатывает при упоминании: «Chrome extension», «браузерное расширение», «manifest.json», «content script», «service worker» (в контексте браузера), «popup», «side panel», «chrome.* API», «declarativeNetRequest», «omnibox», «context menu», «userScripts», «пользовательский скрипт» или при любых запросах на создание функций для браузера Chrome. Также используйте для публикации в Chrome Web Store: публикация расширения, подготовка к публикации, ответы на отклонения модерации, обоснование разрешений или составление политики конфиденциальности."
@@ -4580,6 +4640,19 @@ function shouldIgnore(node) {
             val === 'completed' ||
             val.startsWith('plan carefully') ||
             val.startsWith('invoke the boost') ||
+            val.startsWith('compact the conversation now') ||
+            val.startsWith('сжать контекст the conversation now') ||
+            val.startsWith('assign github coding agent') ||
+            val.startsWith('create an issue for a problem') ||
+            val.startsWith('создать an issue for a problem') ||
+            val.startsWith('создано an issue for a problem') ||
+            val.startsWith('ask a quick question') ||
+            val.startsWith('run until the specified') ||
+            val.startsWith('run an instruction') ||
+            val.startsWith('invoke a browser') ||
+            val.startsWith('interview me to align') ||
+            val.startsWith('invoke a team') ||
+            val.startsWith('reflect on recent') ||
             val.startsWith('uses chrome devtools') ||
             val.startsWith('interactive guide to design') ||
             val.startsWith('guides debugging') ||
@@ -5035,6 +5108,19 @@ function isFileName(text, parent) {
         lowerTrimmed === 'completed' ||
         lowerTrimmed.startsWith('plan carefully') ||
         lowerTrimmed.startsWith('invoke the boost') ||
+        lowerTrimmed.startsWith('compact the conversation now') ||
+        lowerTrimmed.startsWith('сжать контекст the conversation now') ||
+        lowerTrimmed.startsWith('assign github coding agent') ||
+        lowerTrimmed.startsWith('create an issue for a problem') ||
+        lowerTrimmed.startsWith('создать an issue for a problem') ||
+        lowerTrimmed.startsWith('создано an issue for a problem') ||
+        lowerTrimmed.startsWith('ask a quick question') ||
+        lowerTrimmed.startsWith('run until the specified') ||
+        lowerTrimmed.startsWith('run an instruction') ||
+        lowerTrimmed.startsWith('invoke a browser') ||
+        lowerTrimmed.startsWith('interview me to align') ||
+        lowerTrimmed.startsWith('invoke a team') ||
+        lowerTrimmed.startsWith('reflect on recent') ||
         lowerTrimmed.startsWith('uses chrome devtools') ||
         lowerTrimmed.startsWith('interactive guide to design') ||
         lowerTrimmed.startsWith('guides debugging') ||
@@ -5270,7 +5356,7 @@ function isFileName(text, parent) {
     
     // Исключения: фразы с пробелами, содержащие email или известные глаголы интерфейса — не имена файлов!
     if (trimmed.includes(' ')) {
-        if (/@/.test(trimmed) || /^(?:\d+\s*h\s+limit|\d+(?:[.,]\d+)?%\s+left|create\s+(?:a|an)\s+|no\s+extensions\s+available|customize\s+sections|modified\s+files|open\s+file|select\s+folder|поиск\s+tabs|auto\s*\(preview\)|automatically\s+decide|enter\s+tool\s+name|give\s+feedback|проверка\s+|enable\s+(?:notifications|sounds)\s+for\s+agent|manage\s+your\s+notification|show\s+system\s+notifications|play\s+a\s+sound|set\s+the\s+volume)\b/i.test(trimmed) || /for\s+commands/i.test(trimmed) || /conversations\s+with/i.test(trimmed) || /\(.*?menu\)/i.test(trimmed) || /^created\s+/i.test(trimmed) || /^creating\s+/i.test(trimmed) || /^(?:canceled|cancelled)\s+/i.test(trimmed) || /^plan\s+carefully/i.test(trimmed) || /^invoke\s+the\s+boost/i.test(trimmed) || /^uses\s+chrome\s+devtools/i.test(trimmed) || /^interactive\s+guide/i.test(trimmed) || /^guides\s+debugging/i.test(trimmed) || /^diagnoses\s+and\s+resolves/i.test(trimmed) || /^(?:search|поиск)\s+tool\s+for\s+modern/i.test(trimmed) || /^(?:build|сборка)\s+and\s+publish/i.test(trimmed) || /^comprehensive\s+guide/i.test(trimmed) || /^provides\s+a\s+comprehensive/i.test(trimmed) || /^how\s+to\s+render\s+rich/i.test(trimmed) || /^design,\s*implement/i.test(trimmed) || /^automatically\s+migrate/i.test(trimmed) || /^guidelines\s+for\s+interacting/i.test(trimmed) || /^how\s+to\s+manage\s+and\s+create/i.test(trimmed) || /^how\s+to\s+write\s+and\s+run/i.test(trimmed) || /^discover\s+ui\s+plugin/i.test(trimmed) || /^inspecting\s+/i.test(trimmed) || /^extracting\s+/i.test(trimmed) || /^listing\s+/i.test(trimmed) || /^reading\s+/i.test(trimmed) || /^testing\s+/i.test(trimmed) || /^searching\s+/i.test(trimmed) || /^checking\s+/i.test(trimmed) || /^updating\s+/i.test(trimmed) || /^updated\s+/i.test(trimmed) || /^update\s+/i.test(trimmed) || /^upgrading\s+/i.test(trimmed) || /^viewing\s+/i.test(trimmed) || /^message\s+from\s+/i.test(trimmed) || /^compacting/i.test(trimmed) || /^mark\s+all\s+as\s+read/i.test(trimmed) || /^this\s+page\s+is\s+going/i.test(trimmed) || /^toggle\s+maximize/i.test(trimmed) || /^toggle\s+overview/i.test(trimmed) || /^sincpro\s+/i.test(trimmed) || /^reverting\s+/i.test(trimmed) || /^downloading\s+/i.test(trimmed) || /^github\s+actions/i.test(trimmed) || /^untracked\s+/i.test(trimmed) || /^consilium\s+/i.test(trimmed) || /^schema\s+/i.test(trimmed) || /^contract\s+/i.test(trimmed) || /^validator\s+/i.test(trimmed) || /^dispatch_cli\s+/i.test(trimmed) || /^git\s+pickaxe/i.test(trimmed) || /\s+stat$/i.test(trimmed) || /\s+help$/i.test(trimmed) || /\s+body$/i.test(trimmed) || /\s+toolchain$/i.test(trimmed) || /^edited\s+/i.test(trimmed) || /^editing\s+/i.test(trimmed) || /^build\s+/i.test(trimmed) || /^building\s+/i.test(trimmed) || /^clear\s+/i.test(trimmed) || /^clearing\s+/i.test(trimmed) || /^push\s+/i.test(trimmed) || /^pushing\s+/i.test(trimmed) || /^killed\s+task/i.test(trimmed) || /^cancel\s+task/i.test(trimmed) || /^stop\s+recording/i.test(trimmed) || /^approve\s+/i.test(trimmed) || /^approved\s+/i.test(trimmed) || /^execute\s+/i.test(trimmed) || /^executed\s+/i.test(trimmed) || /^see\s+plans/i.test(trimmed) || /^enable\s+overages/i.test(trimmed) || /^explored\s+/i.test(trimmed) || /^ran\s+/i.test(trimmed) || /^run\s+/i.test(trimmed) || /^running\s+/i.test(trimmed) || /^view\s+/i.test(trimmed) || /^test\s+/i.test(trimmed) || /^commands/i.test(trimmed) || /^close\s+tab/i.test(trimmed) || /^split\s+/i.test(trimmed) || /^open\s+/i.test(trimmed) || /^collapse\s+/i.test(trimmed) || /^expand\s+/i.test(trimmed) || /^unpin\s+/i.test(trimmed) || /^pin\s+/i.test(trimmed) || /^rename\s+/i.test(trimmed) || /^archive\s+/i.test(trimmed) || /^download\s+/i.test(trimmed) || /^toggle\s+/i.test(trimmed) || /^next\s+aux/i.test(trimmed) || /^previous\s+aux/i.test(trimmed) || /^send\s+feedback/i.test(trimmed) || /^this\s+conversation/i.test(trimmed) || /^visit\s+/i.test(trimmed) || /^the\s+canva/i.test(trimmed) || /^our\s+servers/i.test(trimmed) || /^error\s+/i.test(trimmed) || /^model\s+unavailable/i.test(trimmed) || /^agent\s+execution/i.test(trimmed) || /^working/i.test(trimmed) || /^worked\s+for/i.test(trimmed) || /^copy/i.test(trimmed) || /^select\s+all/i.test(trimmed) || /files?\s+changed/i.test(trimmed) || /^(good|bad)\s+response/i.test(trimmed) || / finished$/i.test(trimmed) || /^the\s+subagent/i.test(trimmed) || /^failed_precondition/i.test(trimmed) || /architect\s+session/i.test(trimmed) || /^thought\s+for/i.test(trimmed) || /^thinking\s+for/i.test(trimmed) || /^exploring\s+/i.test(trimmed) || /^analyzed\s+/i.test(trimmed) || /^automations/i.test(trimmed) || /marketplace/i.test(trimmed) || /pane$/i.test(trimmed) || /^\+\s*create/i.test(trimmed) || /baseline quota/i.test(trimmed) || /ai credit overages/i.test(trimmed) || /all automations run/i.test(trimmed) || /google workspace/i.test(trimmed) || /custom agents/i.test(trimmed) || /skills & rules/i.test(trimmed) || /mcp servers/i.test(trimmed) || /^search\s+/i.test(trimmed) || /^inspect\s+/i.test(trimmed) || /^compare\s+/i.test(trimmed) || /^restore\s+/i.test(trimmed) || /^check\s+/i.test(trimmed) || /^checked\s+task/i.test(trimmed) || /^select\s+project/i.test(trimmed) || /^leaving\s+soon/i.test(trimmed) || /^notice/i.test(trimmed) || /^verify\s+/i.test(trimmed) || /^start\s+using/i.test(trimmed)) {
+        if (/@/.test(trimmed) || /^(?:\d+\s*h\s+limit|\d+(?:[.,]\d+)?%\s+left|create\s+(?:a|an)\s+|no\s+extensions\s+available|customize\s+sections|modified\s+files|open\s+file|select\s+folder|поиск\s+tabs|auto\s*\(preview\)|automatically\s+decide|enter\s+tool\s+name|give\s+feedback|проверка\s+|enable\s+(?:notifications|sounds)\s+for\s+agent|manage\s+your\s+notification|show\s+system\s+notifications|play\s+a\s+sound|set\s+the\s+volume)\b/i.test(trimmed) || /for\s+commands/i.test(trimmed) || /conversations\s+with/i.test(trimmed) || /\(.*?menu\)/i.test(trimmed) || /^created\s+/i.test(trimmed) || /^creating\s+/i.test(trimmed) || /^(?:canceled|cancelled)\s+/i.test(trimmed) || /^plan\s+carefully/i.test(trimmed) || /^invoke\s+the\s+boost/i.test(trimmed) || /^compact\s+the\s+conversation/i.test(trimmed) || /^assign\s+github\s+coding/i.test(trimmed) || /^create\s+an\s+issue/i.test(trimmed) || /^ask\s+a\s+quick\s+question/i.test(trimmed) || /^interview\s+me/i.test(trimmed) || /^invoke\s+a\s+(?:browser|team)/i.test(trimmed) || /^reflect\s+on\s+recent/i.test(trimmed) || /^uses\s+chrome\s+devtools/i.test(trimmed) || /^interactive\s+guide/i.test(trimmed) || /^guides\s+debugging/i.test(trimmed) || /^diagnoses\s+and\s+resolves/i.test(trimmed) || /^(?:search|поиск)\s+tool\s+for\s+modern/i.test(trimmed) || /^(?:build|сборка)\s+and\s+publish/i.test(trimmed) || /^comprehensive\s+guide/i.test(trimmed) || /^provides\s+a\s+comprehensive/i.test(trimmed) || /^how\s+to\s+render\s+rich/i.test(trimmed) || /^design,\s*implement/i.test(trimmed) || /^automatically\s+migrate/i.test(trimmed) || /^guidelines\s+for\s+interacting/i.test(trimmed) || /^how\s+to\s+manage\s+and\s+create/i.test(trimmed) || /^how\s+to\s+write\s+and\s+run/i.test(trimmed) || /^discover\s+ui\s+plugin/i.test(trimmed) || /^inspecting\s+/i.test(trimmed) || /^extracting\s+/i.test(trimmed) || /^listing\s+/i.test(trimmed) || /^reading\s+/i.test(trimmed) || /^testing\s+/i.test(trimmed) || /^searching\s+/i.test(trimmed) || /^checking\s+/i.test(trimmed) || /^updating\s+/i.test(trimmed) || /^updated\s+/i.test(trimmed) || /^update\s+/i.test(trimmed) || /^upgrading\s+/i.test(trimmed) || /^viewing\s+/i.test(trimmed) || /^message\s+from\s+/i.test(trimmed) || /^compacting/i.test(trimmed) || /^mark\s+all\s+as\s+read/i.test(trimmed) || /^this\s+page\s+is\s+going/i.test(trimmed) || /^toggle\s+maximize/i.test(trimmed) || /^toggle\s+overview/i.test(trimmed) || /^sincpro\s+/i.test(trimmed) || /^reverting\s+/i.test(trimmed) || /^downloading\s+/i.test(trimmed) || /^github\s+actions/i.test(trimmed) || /^untracked\s+/i.test(trimmed) || /^consilium\s+/i.test(trimmed) || /^schema\s+/i.test(trimmed) || /^contract\s+/i.test(trimmed) || /^validator\s+/i.test(trimmed) || /^dispatch_cli\s+/i.test(trimmed) || /^git\s+pickaxe/i.test(trimmed) || /\s+stat$/i.test(trimmed) || /\s+help$/i.test(trimmed) || /\s+body$/i.test(trimmed) || /\s+toolchain$/i.test(trimmed) || /^edited\s+/i.test(trimmed) || /^editing\s+/i.test(trimmed) || /^build\s+/i.test(trimmed) || /^building\s+/i.test(trimmed) || /^clear\s+/i.test(trimmed) || /^clearing\s+/i.test(trimmed) || /^push\s+/i.test(trimmed) || /^pushing\s+/i.test(trimmed) || /^killed\s+task/i.test(trimmed) || /^cancel\s+task/i.test(trimmed) || /^stop\s+recording/i.test(trimmed) || /^approve\s+/i.test(trimmed) || /^approved\s+/i.test(trimmed) || /^execute\s+/i.test(trimmed) || /^executed\s+/i.test(trimmed) || /^see\s+plans/i.test(trimmed) || /^enable\s+overages/i.test(trimmed) || /^explored\s+/i.test(trimmed) || /^ran\s+/i.test(trimmed) || /^run\s+/i.test(trimmed) || /^running\s+/i.test(trimmed) || /^view\s+/i.test(trimmed) || /^test\s+/i.test(trimmed) || /^commands/i.test(trimmed) || /^close\s+tab/i.test(trimmed) || /^split\s+/i.test(trimmed) || /^open\s+/i.test(trimmed) || /^collapse\s+/i.test(trimmed) || /^expand\s+/i.test(trimmed) || /^unpin\s+/i.test(trimmed) || /^pin\s+/i.test(trimmed) || /^rename\s+/i.test(trimmed) || /^archive\s+/i.test(trimmed) || /^download\s+/i.test(trimmed) || /^toggle\s+/i.test(trimmed) || /^next\s+aux/i.test(trimmed) || /^previous\s+aux/i.test(trimmed) || /^send\s+feedback/i.test(trimmed) || /^this\s+conversation/i.test(trimmed) || /^visit\s+/i.test(trimmed) || /^the\s+canva/i.test(trimmed) || /^our\s+servers/i.test(trimmed) || /^error\s+/i.test(trimmed) || /^model\s+unavailable/i.test(trimmed) || /^agent\s+execution/i.test(trimmed) || /^working/i.test(trimmed) || /^worked\s+for/i.test(trimmed) || /^copy/i.test(trimmed) || /^select\s+all/i.test(trimmed) || /files?\s+changed/i.test(trimmed) || /^(good|bad)\s+response/i.test(trimmed) || / finished$/i.test(trimmed) || /^the\s+subagent/i.test(trimmed) || /^failed_precondition/i.test(trimmed) || /architect\s+session/i.test(trimmed) || /^thought\s+for/i.test(trimmed) || /^thinking\s+for/i.test(trimmed) || /^exploring\s+/i.test(trimmed) || /^analyzed\s+/i.test(trimmed) || /^automations/i.test(trimmed) || /marketplace/i.test(trimmed) || /pane$/i.test(trimmed) || /^\+\s*create/i.test(trimmed) || /baseline quota/i.test(trimmed) || /ai credit overages/i.test(trimmed) || /all automations run/i.test(trimmed) || /google workspace/i.test(trimmed) || /custom agents/i.test(trimmed) || /skills & rules/i.test(trimmed) || /mcp servers/i.test(trimmed) || /^search\s+/i.test(trimmed) || /^inspect\s+/i.test(trimmed) || /^compare\s+/i.test(trimmed) || /^restore\s+/i.test(trimmed) || /^check\s+/i.test(trimmed) || /^checked\s+task/i.test(trimmed) || /^select\s+project/i.test(trimmed) || /^leaving\s+soon/i.test(trimmed) || /^notice/i.test(trimmed) || /^verify\s+/i.test(trimmed) || /^start\s+using/i.test(trimmed)) {
             return false;
         }
     }
@@ -6029,7 +6115,7 @@ function initLanguageSwitcher() {
             const resp = await fetch('http://127.0.0.1:39228/status');
             if (resp.ok) {
                 const data = await resp.json();
-                const currentVer = data.version || '2.1.5';
+                const currentVer = data.version || '2.1.6';
                 btnRu.title = 'Русская локализация v' + currentVer + (data.latestRemoteVersion ? ' (GitHub: v' + data.latestRemoteVersion + ')' : '');
 
                 isUpdatePending = !!data.updatePending;
