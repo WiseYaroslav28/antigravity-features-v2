@@ -1,8 +1,8 @@
 {
-  "version": "2.1.4",
-  "releasedAt": "2026-10-27",
+  "version": "2.1.5",
+  "releasedAt": "2026-10-28T20:06:14.629Z",
   "requiresRestart": false,
-  "changelog": "Локализация индикаторов квоты (5h limit, 100% left / <N>% left) и заголовка Workspace (Рабочая область).",
+  "changelog": "Добавлен перевод настроек Встроенного браузера (Built-in Browser, Open Links In, External Browser), Профиля разрешений (Permission Preset), а также команд управления вкладками и диалогами (Reopen Closed Tab, Move Conversation Up/Down)",
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",

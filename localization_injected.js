@@ -1383,6 +1383,20 @@ const translationDictionary = {
 
     // Меню и команды (Command Palette, Tabs, Conversation Menu, Context Menus)
     "close tab": "Закрыть вкладку",
+    "reopen closed tab": "Восстановить закрытую вкладку",
+    "restore_page reopen closed tab": "Восстановить закрытую вкладку",
+    "restore_page": "↺",
+    "move conversation up": "Переместить диалог вверх",
+    "move conversation down": "Переместить диалог вниз",
+    "permission preset": "Профиль разрешений",
+    "permission presets": "Профили разрешений",
+    "built-in browser": "Встроенный браузер",
+    "configure link opening and built-in browser preferences.": "Настройка открытия ссылок и параметров встроенного браузера.",
+    "configure link opening and built-in browser preferences": "Настройка открытия ссылок и параметров встроенного браузера",
+    "open links in": "Открывать ссылки в",
+    "choose where links open by default when clicked.": "Выберите, где по умолчанию открывать ссылки при нажатии.",
+    "choose where links open by default when clicked": "Выберите, где по умолчанию открывать ссылки при нажатии",
+    "external browser": "Внешний браузер",
     "split conversation horizontally": "Разделить диалог по горизонтали",
     "split conversation vertically": "Разделить диалог по вертикали",
     "open conversation history": "Открыть историю диалогов",
@@ -4434,6 +4448,42 @@ const regexTranslations = [
         // "To continue using this model now, enable AI Credit overages."
         pattern: /^To continue using this model now, enable AI Credit overages\.?$/i,
         replace: () => "Чтобы продолжить использование этой модели сейчас, включите оплату перерасхода (AI Credit overages)."
+    },
+    {
+        pattern: /^(?:restore_page\s+)?Reopen\s+Closed\s+Tab$/i,
+        replace: () => "Восстановить закрытую вкладку"
+    },
+    {
+        pattern: /^Move\s+Conversation\s+Up$/i,
+        replace: () => "Переместить диалог вверх"
+    },
+    {
+        pattern: /^Move\s+Conversation\s+Down$/i,
+        replace: () => "Переместить диалог вниз"
+    },
+    {
+        pattern: /^Permission\s+Presets?$/i,
+        replace: (m) => /s$/i.test(m[0]) ? "Профили разрешений" : "Профиль разрешений"
+    },
+    {
+        pattern: /^Built-in\s+Browser$/i,
+        replace: () => "Встроенный браузер"
+    },
+    {
+        pattern: /^External\s+Browser$/i,
+        replace: () => "Внешний браузер"
+    },
+    {
+        pattern: /^Open\s+Links\s+In$/i,
+        replace: () => "Открывать ссылки в"
+    },
+    {
+        pattern: /^Configure\s+link\s+opening\s+and\s+built-in\s+browser\s+preferences\.?$/i,
+        replace: () => "Настройка открытия ссылок и параметров встроенного браузера."
+    },
+    {
+        pattern: /^Choose\s+where\s+links\s+open\s+by\s+default\s+when\s+clicked\.?$/i,
+        replace: () => "Выберите, где по умолчанию открывать ссылки при нажатии."
     }
 ];
 
@@ -4758,6 +4808,18 @@ function shouldIgnore(node) {
             val === 'close pane' ||
             val === 'workspace' ||
             val === 'workspaces' ||
+            val === 'permission preset' ||
+            val === 'permission presets' ||
+            val === 'built-in browser' ||
+            val === 'external browser' ||
+            val === 'open links in' ||
+            val.startsWith('configure link opening') ||
+            val.startsWith('choose where links open') ||
+            val === 'reopen closed tab' ||
+            val === 'restore_page reopen closed tab' ||
+            val === 'restore_page' ||
+            val === 'move conversation up' ||
+            val === 'move conversation down' ||
             val === '5h limit' ||
             /^\d+\s*(?:h|hr|hour|hours)[\s-]*limit$/i.test(val) ||
             val.endsWith('% left') ||
@@ -5027,6 +5089,18 @@ function isFileName(text, parent) {
         lowerTrimmed === 'close pane' ||
         lowerTrimmed === 'workspace' ||
         lowerTrimmed === 'workspaces' ||
+        lowerTrimmed === 'permission preset' ||
+        lowerTrimmed === 'permission presets' ||
+        lowerTrimmed === 'built-in browser' ||
+        lowerTrimmed === 'external browser' ||
+        lowerTrimmed === 'open links in' ||
+        lowerTrimmed.startsWith('configure link opening') ||
+        lowerTrimmed.startsWith('choose where links open') ||
+        lowerTrimmed === 'reopen closed tab' ||
+        lowerTrimmed === 'restore_page reopen closed tab' ||
+        lowerTrimmed === 'restore_page' ||
+        lowerTrimmed === 'move conversation up' ||
+        lowerTrimmed === 'move conversation down' ||
         lowerTrimmed === '5h limit' ||
         /^\d+\s*(?:h|hr|hour|hours)[\s-]*limit$/i.test(lowerTrimmed) ||
         lowerTrimmed.endsWith('% left') ||
@@ -5955,7 +6029,7 @@ function initLanguageSwitcher() {
             const resp = await fetch('http://127.0.0.1:39228/status');
             if (resp.ok) {
                 const data = await resp.json();
-                const currentVer = data.version || '2.1.4';
+                const currentVer = data.version || '2.1.5';
                 btnRu.title = 'Русская локализация v' + currentVer + (data.latestRemoteVersion ? ' (GitHub: v' + data.latestRemoteVersion + ')' : '');
 
                 isUpdatePending = !!data.updatePending;

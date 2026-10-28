@@ -29,21 +29,22 @@ async function runPatch() {
             if (preloadContent.includes(beginMarker)) {
                 preloadContent = preloadContent.substring(0, preloadContent.indexOf(beginMarker)).trim();
             }
-            if (!preloadContent.includes('ANTIGRAVITY PRELOAD CONTEXT MENU TRANSLATE')) {
-                preloadContent = preloadContent.replace(
-                    /showContextMenu:\s*\(items\)\s*=>\s*electron_1\.ipcRenderer\.invoke\('window:show-context-menu',\s*items\),/,
-                    `showContextMenu: (items) => {
-        // ANTIGRAVITY PRELOAD CONTEXT MENU TRANSLATE
-        const ctxMap = {
+            const ctxMapCode = `const ctxMap = {
             'cut': 'Вырезать', 'copy': 'Копировать', 'paste': 'Вставить', 'paste as plain text': 'Вставить как обычный текст', 'select all': 'Выделить всё', 'undo': 'Отменить', 'redo': 'Повторить', 'delete': 'Удалить', 'copy link': 'Копировать ссылку', 'copy link address': 'Копировать адрес ссылки', 'open link': 'Открыть ссылку', 'inspect element': 'Исследовать элемент', 'inspect': 'Исследовать элемент',
-            'close tab': 'Закрыть вкладку', 'split conversation horizontally': 'Разделить диалог по горизонтали', 'split conversation vertically': 'Разделить диалог по вертикали', 'open conversation history': 'Открыть историю диалогов',
+            'close tab': 'Закрыть вкладку', 'reopen closed tab': 'Восстановить закрытую вкладку', 'restore_page reopen closed tab': 'Восстановить закрытую вкладку', 'move conversation up': 'Переместить диалог вверх', 'move conversation down': 'Переместить диалог вниз', 'split conversation horizontally': 'Разделить диалог по горизонтали', 'split conversation vertically': 'Разделить диалог по вертикали', 'open conversation history': 'Открыть историю диалогов',
             'unpin this conversation': 'Открепить этот диалог', 'unpin conversation': 'Открепить диалог', 'pin this conversation': 'Закрепить этот диалог', 'pin conversation': 'Закрепить диалог',
             'rename this conversation': 'Переименовать этот диалог', 'archive this conversation': 'Архивировать этот диалог', 'copy conversation markdown': 'Копировать Markdown диалога', 'find in conversation': 'Найти в диалоге',
             'new terminal tab': 'Новая вкладка терминала', 'split terminal': 'Разделить терминал', 'next aux pane tab': 'Следующая вкладка вспомогательной панели', 'previous aux pane tab': 'Предыдущая вкладка вспомогательной панели',
             'download diagnostics': 'Скачать диагностику', 'toggle between light/dark themes': 'Переключить светлую/тёмную тему', 'open command palette': 'Открыть палитру команд', 'open project picker': 'Открыть выбор проекта',
             'open keyboard shortcuts': 'Открыть сочетания клавиш', 'collapse all folders': 'Свернуть все папки', 'expand all folders': 'Развернуть все папки',
             'see plans': 'Посмотреть тарифы', 'enable overages': 'Включить перерасход', 'enable ai credit overages': 'Включить оплату перерасхода (AI Credit)'
-        };
+        };`;
+            if (!preloadContent.includes('ANTIGRAVITY PRELOAD CONTEXT MENU TRANSLATE')) {
+                preloadContent = preloadContent.replace(
+                    /showContextMenu:\s*\(items\)\s*=>\s*electron_1\.ipcRenderer\.invoke\('window:show-context-menu',\s*items\),/,
+                    `showContextMenu: (items) => {
+        // ANTIGRAVITY PRELOAD CONTEXT MENU TRANSLATE
+        ${ctxMapCode}
         const mapItems = (arr) => Array.isArray(arr) ? arr.map(i => {
             const c = Object.assign({}, i);
             if (c.label && typeof c.label === 'string') c.label = ctxMap[c.label.trim().toLowerCase()] || c.label;
@@ -53,6 +54,8 @@ async function runPatch() {
         return electron_1.ipcRenderer.invoke('window:show-context-menu', mapItems(items));
     },`
                 );
+            } else {
+                preloadContent = preloadContent.replace(/const ctxMap = \{[\s\S]*?\};/, ctxMapCode);
             }
             const localizationCode = fs.readFileSync(localizationFile, 'utf8');
             const injectionCode = `
@@ -231,11 +234,7 @@ if (!window.__antigravity_translation_initialized) {
         const ipcHandlersExtracted = path.join(tempDir, 'dist', 'ipcHandlers.js');
         if (fs.existsSync(ipcHandlersExtracted)) {
             let ipcContent = fs.readFileSync(ipcHandlersExtracted, 'utf8');
-            if (!ipcContent.includes('ANTIGRAVITY CONTEXT MENU LOCALIZATION PATCH')) {
-                ipcContent = ipcContent.replace(
-                    /function\s+buildContextMenuTemplate\s*\(\s*items\s*,\s*onSelect\s*\)\s*\{/,
-                    `// ANTIGRAVITY CONTEXT MENU LOCALIZATION PATCH
-const CONTEXT_MENU_RU_MAP = {
+            const ipcMapCode = `const CONTEXT_MENU_RU_MAP = {
     'cut': 'Вырезать',
     'copy': 'Копировать',
     'paste': 'Вставить',
@@ -253,6 +252,10 @@ const CONTEXT_MENU_RU_MAP = {
     'reload': 'Перезагрузить',
     'force reload': 'Перезагрузить принудительно',
     'close tab': 'Закрыть вкладку',
+    'reopen closed tab': 'Восстановить закрытую вкладку',
+    'restore_page reopen closed tab': 'Восстановить закрытую вкладку',
+    'move conversation up': 'Переместить диалог вверх',
+    'move conversation down': 'Переместить диалог вниз',
     'split conversation horizontally': 'Разделить диалог по горизонтали',
     'split conversation vertically': 'Разделить диалог по вертикали',
     'open conversation history': 'Открыть историю диалогов',
@@ -278,7 +281,12 @@ const CONTEXT_MENU_RU_MAP = {
     'see plans': 'Посмотреть тарифы',
     'enable overages': 'Включить перерасход',
     'enable ai credit overages': 'Включить оплату перерасхода (AI Credit)'
-};
+};`;
+            if (!ipcContent.includes('ANTIGRAVITY CONTEXT MENU LOCALIZATION PATCH')) {
+                ipcContent = ipcContent.replace(
+                    /function\s+buildContextMenuTemplate\s*\(\s*items\s*,\s*onSelect\s*\)\s*\{/,
+                    `// ANTIGRAVITY CONTEXT MENU LOCALIZATION PATCH
+${ipcMapCode}
 function translateContextMenuLabel(lbl) {
     if (!lbl || typeof lbl !== 'string') return lbl;
     return CONTEXT_MENU_RU_MAP[lbl.trim().toLowerCase()] || lbl;
@@ -289,9 +297,11 @@ function buildContextMenuTemplate(items, onSelect) {`
                     /label:\s*item\.label\s*\?\?\s*'',/g,
                     `label: translateContextMenuLabel(item.label) ?? '',`
                 );
-                fs.writeFileSync(ipcHandlersExtracted, ipcContent, 'utf8');
-                console.log('[AutoPatcher-v2] Patched dist/ipcHandlers.js for native context menu localization!');
+            } else {
+                ipcContent = ipcContent.replace(/const CONTEXT_MENU_RU_MAP = \{[\s\S]*?\};/, ipcMapCode);
             }
+            fs.writeFileSync(ipcHandlersExtracted, ipcContent, 'utf8');
+            console.log('[AutoPatcher-v2] Patched dist/ipcHandlers.js for native context menu localization!');
         }
 
         // 8. VALIDATE ALL PATCHED JS FILES WITH NATIVE V8 IN-MEMORY COMPILER (ZERO CHILD PROCESSES)
