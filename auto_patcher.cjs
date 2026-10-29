@@ -141,46 +141,121 @@ if (!window.__antigravity_translation_initialized) {
             console.log('[AutoPatcher-v2] Patched dist/main.js for second-instance shortcut re-launch & menu!');
         }
 
-        // 4. PATCH UTILS.JS (Fix Geometry & Maximized State Restoration on Monitor 2)
+        // 4. PATCH UTILS.JS (Fix Geometry, Multi-Monitor Position, Maximized State & Zoom Restoration)
         const utilsExtracted = path.join(tempDir, 'dist', 'utils.js');
         if (fs.existsSync(utilsExtracted)) {
             let utilsContent = fs.readFileSync(utilsExtracted, 'utf8');
-            if (!utilsContent.includes('ANTIGRAVITY WINDOW GEOMETRY PATCH')) {
+            if (!utilsContent.includes('ANTIGRAVITY WINDOW GEOMETRY PATCH V2')) {
+                // Clean up any legacy partial V1 geometry patch first
+                utilsContent = utilsContent.replace(
+                    /\/\/ ANTIGRAVITY WINDOW GEOMETRY PATCH[\s\S]*?try \{ if \(fsState\.existsSync\(stateFile\)\) windowState = JSON\.parse\(fsState\.readFileSync\(stateFile, 'utf8'\)\); \} catch\(e\)\{\}\s*/,
+                    ''
+                );
+                utilsContent = utilsContent.replace(
+                    /width:\s*windowState\.width \|\| 1400,\s*height:\s*windowState\.height \|\| 900,\s*x:\s*windowState\.x,\s*y:\s*windowState\.y,/,
+                    'width: 1400, height: 900,'
+                );
+                utilsContent = utilsContent.replace(
+                    /if \(windowState\.isMaximized\) win\.maximize\(\);[\s\S]*?void win\.loadURL\(url\);/,
+                    'void win.loadURL(url);'
+                );
+
                 utilsContent = utilsContent.replace(
                     /function\s+createWindow\s*\(([^)]*)\)\s*\{/,
                     `function createWindow($1) {
-    // ANTIGRAVITY WINDOW GEOMETRY PATCH
+    // ANTIGRAVITY WINDOW GEOMETRY PATCH V2
+    if (storageManager) {
+        global.__antigravity_storage_manager = storageManager;
+    } else if (global.__antigravity_storage_manager) {
+        storageManager = global.__antigravity_storage_manager;
+    }
     const fsState = require('fs');
     const pathState = require('path');
     const stateFile = pathState.join(require('electron').app.getPath('userData'), 'antigravity-window-state.json');
     let windowState = {};
-    try { if (fsState.existsSync(stateFile)) windowState = JSON.parse(fsState.readFileSync(stateFile, 'utf8')); } catch(e){}`
+    try {
+        if (fsState.existsSync(stateFile)) {
+            windowState = JSON.parse(fsState.readFileSync(stateFile, 'utf8')) || {};
+        }
+    } catch (e) {}
+    let initWidth = windowState.normalWidth || windowState.width || 1400;
+    let initHeight = windowState.normalHeight || windowState.height || 900;
+    let initX = typeof windowState.normalX === 'number' ? windowState.normalX : windowState.x;
+    let initY = typeof windowState.normalY === 'number' ? windowState.normalY : windowState.y;
+    try {
+        if (windowState.isMaximized && typeof windowState.x === 'number' && typeof windowState.y === 'number') {
+            const disp = electron_1.screen.getDisplayMatching({
+                x: windowState.x,
+                y: windowState.y,
+                width: windowState.width || 1400,
+                height: windowState.height || 900
+            });
+            if (disp && disp.workArea) {
+                if (typeof windowState.normalX !== 'number' || windowState.normalX < disp.workArea.x || windowState.normalX >= disp.workArea.x + disp.workArea.width) {
+                    initWidth = Math.min(1400, disp.workArea.width);
+                    initHeight = Math.min(900, disp.workArea.height);
+                    initX = disp.workArea.x + Math.round((disp.workArea.width - initWidth) / 2);
+                    initY = disp.workArea.y + Math.round((disp.workArea.height - initHeight) / 2);
+                }
+            }
+        }
+    } catch (e) {}`
                 );
 
                 utilsContent = utilsContent.replace(
                     /width:\s*1400,\s*height:\s*900,/,
-                    `width: windowState.width || 1400,
-        height: windowState.height || 900,
-        x: windowState.x,
-        y: windowState.y,`
+                    `width: initWidth,
+        height: initHeight,
+        x: initX,
+        y: initY,`
                 );
 
                 utilsContent = utilsContent.replace(
-                    /void\s+win\.loadURL\(url\);\s*return\s+win;/,
-                    `if (windowState.isMaximized) win.maximize();
-    win.on('close', () => {
-        if (!win.isDestroyed()) {
-            const bounds = win.getBounds();
+                    /void\s+win\.loadURL\(url\);/,
+                    `if (typeof initX === 'number' && typeof initY === 'number') {
+        try { win.setBounds({ x: initX, y: initY, width: initWidth, height: initHeight }); } catch (e) {}
+    }
+    if (windowState.isMaximized) {
+        win.maximize();
+    } else if (windowState.isFullScreen) {
+        win.setFullScreen(true);
+    }
+    const saveWindowState = () => {
+        try {
+            if (win.isDestroyed()) return;
             const isMaximized = win.isMaximized();
-            fsState.writeFileSync(stateFile, JSON.stringify(Object.assign({}, bounds, { isMaximized })));
-        }
-    });
-    void win.loadURL(url);
-    return win;`
+            const isFullScreen = win.isFullScreen();
+            const isMinimized = win.isMinimized();
+            const bounds = win.getBounds();
+            if (!isMaximized && !isFullScreen && !isMinimized) {
+                windowState.normalX = bounds.x;
+                windowState.normalY = bounds.y;
+                windowState.normalWidth = bounds.width;
+                windowState.normalHeight = bounds.height;
+            }
+            if (!isMinimized) {
+                windowState.x = bounds.x;
+                windowState.y = bounds.y;
+                windowState.width = bounds.width;
+                windowState.height = bounds.height;
+                windowState.isMaximized = isMaximized;
+                windowState.isFullScreen = isFullScreen;
+            }
+            fsState.writeFileSync(stateFile, JSON.stringify(windowState));
+        } catch (e) {}
+    };
+    win.on('resize', saveWindowState);
+    win.on('move', saveWindowState);
+    win.on('maximize', saveWindowState);
+    win.on('unmaximize', saveWindowState);
+    win.on('enter-full-screen', saveWindowState);
+    win.on('leave-full-screen', saveWindowState);
+    win.on('close', saveWindowState);
+    void win.loadURL(url);`
                 );
 
                 fs.writeFileSync(utilsExtracted, utilsContent, 'utf8');
-                console.log('[AutoPatcher-v2] Patched dist/utils.js for Monitor 2 geometry & maximized state!');
+                console.log('[AutoPatcher-v2] Patched dist/utils.js (V2) for Monitor 2 geometry, resize/move/close persistence & maximized state!');
             }
         }
 

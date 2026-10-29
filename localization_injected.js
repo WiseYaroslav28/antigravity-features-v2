@@ -1580,7 +1580,31 @@ const translationDictionary = {
     "100% left": "Осталось 100%",
     "0% left": "Осталось 0%",
     "workspace": "Рабочая область",
-    "workspaces": "Рабочие области"
+    "workspaces": "Рабочие области",
+    "local checkout": "Локальная рабочая копия",
+    "new worktree": "Новое рабочее дерево",
+    "worktree": "Рабочее дерево",
+    "worktrees": "Рабочие деревья",
+    "featured": "Рекомендуемое",
+    "details": "Подробнее",
+    "developer": "Разработчик",
+    "website": "Веб-сайт",
+    "repository": "Репозиторий",
+    "connect antigravity to your notion workspace with the notion mcp server, plus skills for research, documentation, meeting prep, specs, trackers, and...": "Подключите Antigravity к вашему рабочему пространству Notion с помощью MCP-сервера Notion, а также навыков для исследований, документации, подготовки к встречам, спецификаций, трекеров и...",
+    "connect antigravity to your notion workspace with the notion mcp server, plus skills for research, documentation, meeting prep, specs, trackers, and project updates.": "Подключите Antigravity к вашему рабочему пространству Notion с помощью MCP-сервера Notion, а также навыков для исследований, документации, подготовки к встречам, спецификаций, трекеров и обновлений проектов.",
+    "connect antigravity to your notion workspace with the notion mcp server, plus skills for research, documentation, meeting prep, specs, trackers, and project updates": "Подключите Antigravity к вашему рабочему пространству Notion с помощью MCP-сервера Notion, а также навыков для исследований, документации, подготовки к встречам, спецификаций, трекеров и обновлений проектов",
+    "the product development system for teams and agents. manage issues, projects, and documents across your linear workspace from antigravity.": "Система разработки продуктов для команд и агентов. Управляйте задачами, проектами и документами в вашем рабочем пространстве Linear прямо из Antigravity.",
+    "the product development system for teams and agents. manage issues, projects, and documents across your linear workspace from antigravity": "Система разработки продуктов для команд и агентов. Управляйте задачами, проектами и документами в вашем рабочем пространстве Linear прямо из Antigravity",
+    "the product development system for teams and agents.": "Система разработки продуктов для команд и агентов.",
+    "turn figma designs into production code, map components with code connect, and create or edit figma files in antigravity.": "Превращайте макеты Figma в готовый код, связывайте компоненты через Code Connect и создавайте или редактируйте файлы Figma в Antigravity.",
+    "create, edit, review, resize, and brand-check canva designs with the canva mcp server.": "Создавайте, редактируйте, проверяйте, меняйте размер и контролируйте соответствие бренду дизайнов Canva с помощью MCP-сервера Canva.",
+    "connect antigravity to dropbox to search, inspect, summarize, share, collect uploads, organize folders, and clean up files with confirmation for write actions.": "Подключите Antigravity к Dropbox для поиска, просмотра, суммаризации, обмена, сбора загрузок, организации папок и очистки файлов с подтверждением операций записи.",
+    "build and deploy on netlify: functions, edge functions, blobs, database, identity, forms, image cdn, caching, and ai gateway, plus the netlify mcp server.": "Собирайте и развертывайте на Netlify: функции, edge-функции, хранилища, базы данных, авторизацию, формы, CDN изображений, кэширование и AI Gateway вместе с MCP-сервером Netlify.",
+    "deploy, configure, monitor, and troubleshoot apps, databases, and infrastructure on railway from antigravity with railway's agent skill and hosted mcp server.": "Развертывайте, настраивайте, отслеживайте и отлаживайте приложения, базы данных и инфраструктуру в Railway из Antigravity с помощью навыка агента и MCP-сервера Railway.",
+    "build and deploy web apps and ai agents on vercel with skills for next.js, ai sdk, and cloud services, plus the official vercel mcp server.": "Создавайте и развертывайте веб-приложения и ИИ-агентов на Vercel с навыками для Next.js, AI SDK и облачных сервисов, а также официальным MCP-сервером Vercel.",
+    "add auth0 authentication to any app: login, mfa, sso, organizations, rbac, custom domains, and branding. debug auth errors and migrate from other providers.": "Добавляйте аутентификацию Auth0 в любое приложение: вход, MFA, SSO, организации, RBAC, кастомные домены и брендинг. Отлаживайте ошибки авторизации и мигрируйте от других провайдеров.",
+    "databricks skills for the cli, apps, lakebase, model serving, lakeflow jobs, spark declarative pipelines, declarative automation bundles (dabs), and classic-to-serverless migration.": "Навыки Databricks для CLI, приложений, Lakebase, обслуживания моделей, задач Lakeflow, декларативных пайплайнов Spark, пакетов автоматизации (DAB) и миграции на serverless.",
+    "give your agent a real browser: navigate, click, type, screenshot, and extract data from any site, locally or on browserbase cloud browsers.": "Дайте вашему агенту полноценный браузер: переходите по страницам, нажимайте, вводите текст, делайте скриншоты и извлекайте данные с любых сайтов локально или в облаке Browserbase."
 };
 
 function localizeActionTarget(target) {
@@ -4544,6 +4568,80 @@ const regexTranslations = [
     {
         pattern: /^Choose\s+where\s+links\s+open\s+by\s+default\s+when\s+clicked\.?$/i,
         replace: () => "Выберите, где по умолчанию открывать ссылки при нажатии."
+    },
+    {
+        pattern: /^Local\s+Checkout(?:\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40\u2303]|[^a-zA-Z0-9\s]+))?$/i,
+        replace: (match) => "Локальная рабочая копия" + (match[1] ? " " + match[1].trim() : "")
+    },
+    {
+        pattern: /^New\s+Worktree$/i,
+        replace: () => "Новое рабочее дерево"
+    },
+    {
+        pattern: /^Featured$/i,
+        replace: () => "Рекомендуемое"
+    },
+    {
+        pattern: /^Details$/i,
+        replace: () => "Подробнее"
+    },
+    {
+        pattern: /^Developer$/i,
+        replace: () => "Разработчик"
+    },
+    {
+        pattern: /^Website(?:\s*([↗⧉]|[^a-zA-Z0-9\s]+))?$/i,
+        replace: (match) => "Веб-сайт" + (match[1] ? " " + match[1].trim() : "")
+    },
+    {
+        pattern: /^Repository(?:\s*([↗⧉]|[^a-zA-Z0-9\s]+))?$/i,
+        replace: (match) => "Репозиторий" + (match[1] ? " " + match[1].trim() : "")
+    },
+    {
+        pattern: /^Connect\s+Antigravity\s+to\s+your\s+Notion\s+workspace\s+with\s+the\s+Notion\s+MCP\s+server.*$/i,
+        replace: (match) => /\.\.\.|…/.test(match[0])
+            ? "Подключите Antigravity к вашему рабочему пространству Notion с помощью MCP-сервера Notion, а также навыков для исследований, документации, подготовки к встречам, спецификаций, трекеров и..."
+            : "Подключите Antigravity к вашему рабочему пространству Notion с помощью MCP-сервера Notion, а также навыков для исследований, документации, подготовки к встречам, спецификаций, трекеров и обновлений проектов."
+    },
+    {
+        pattern: /^The\s+product\s+development\s+system\s+for\s+teams\s+and\s+agents.*$/i,
+        replace: () => "Система разработки продуктов для команд и агентов. Управляйте задачами, проектами и документами в вашем рабочем пространстве Linear прямо из Antigravity."
+    },
+    {
+        pattern: /^Turn\s+Figma\s+designs\s+into\s+production\s+code.*$/i,
+        replace: () => "Превращайте макеты Figma в готовый код, связывайте компоненты через Code Connect и создавайте или редактируйте файлы Figma в Antigravity."
+    },
+    {
+        pattern: /^(?:Create|Создать|Создано),\s*edit,\s*review,\s*resize,\s*and\s+brand-check\s+Canva\s+designs.*$/i,
+        replace: () => "Создавайте, редактируйте, проверяйте, меняйте размер и контролируйте соответствие бренду дизайнов Canva с помощью MCP-сервера Canva."
+    },
+    {
+        pattern: /^Connect\s+Antigravity\s+to\s+Dropbox\s+to\s+search.*$/i,
+        replace: () => "Подключите Antigravity к Dropbox для поиска, просмотра, суммаризации, обмена, сбора загрузок, организации папок и очистки файлов с подтверждением операций записи."
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+and\s+deploy\s+on\s+Netlify:.*$/i,
+        replace: () => "Собирайте и развертывайте на Netlify: функции, edge-функции, хранилища, базы данных, авторизацию, формы, CDN изображений, кэширование и AI Gateway вместе с MCP-сервером Netlify."
+    },
+    {
+        pattern: /^Deploy,\s*configure,\s*monitor,\s*and\s+troubleshoot\s+apps,\s*databases,\s*and\s+infrastructure\s+on\s+Railway.*$/i,
+        replace: () => "Развертывайте, настраивайте, отслеживайте и отлаживайте приложения, базы данных и инфраструктуру в Railway из Antigravity с помощью навыка агента и MCP-сервера Railway."
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+and\s+deploy\s+web\s+apps\s+and\s+AI\s+agents\s+on\s+Vercel.*$/i,
+        replace: () => "Создавайте и развертывайте веб-приложения и ИИ-агентов на Vercel с навыками для Next.js, AI SDK и облачных сервисов, а также официальным MCP-сервером Vercel."
+    },
+    {
+        pattern: /^Add\s+Auth0\s+authentication\s+to\s+any\s+app:.*$/i,
+        replace: () => "Добавляйте аутентификацию Auth0 в любое приложение: вход, MFA, SSO, организации, RBAC, кастомные домены и брендинг. Отлаживайте ошибки авторизации и мигрируйте от других провайдеров."
+    },
+    {
+        pattern: /^Databricks\s+skills\s+for\s+the\s+CLI,.*$/i,
+        replace: () => "Навыки Databricks для CLI, приложений, Lakebase, обслуживания моделей, задач Lakeflow, декларативных пайплайнов Spark, пакетов автоматизации (DAB) и миграции на serverless."
+    },
+    {
+        pattern: /^Give\s+your\s+agent\s+a\s+real\s+browser:.*$/i,
+        replace: () => "Дайте вашему агенту полноценный браузер: переходите по страницам, нажимайте, вводите текст, делайте скриншоты и извлекайте данные с любых сайтов локально или в облаке Browserbase."
     }
 ];
 
@@ -4881,6 +4979,27 @@ function shouldIgnore(node) {
             val === 'close pane' ||
             val === 'workspace' ||
             val === 'workspaces' ||
+            val === 'local checkout' ||
+            val.startsWith('local checkout') ||
+            val === 'new worktree' ||
+            val === 'worktree' ||
+            val === 'worktrees' ||
+            val === 'featured' ||
+            val === 'details' ||
+            val === 'developer' ||
+            val === 'website' ||
+            val === 'repository' ||
+            val.startsWith('connect antigravity to your notion') ||
+            val.startsWith('the product development system for teams') ||
+            val.startsWith('turn figma designs') ||
+            val.startsWith('create, edit, review, resize') ||
+            val.startsWith('connect antigravity to dropbox') ||
+            val.startsWith('build and deploy on netlify') ||
+            val.startsWith('deploy, configure, monitor') ||
+            val.startsWith('build and deploy web apps') ||
+            val.startsWith('add auth0 authentication') ||
+            val.startsWith('databricks skills for') ||
+            val.startsWith('give your agent a real browser') ||
             val === 'permission preset' ||
             val === 'permission presets' ||
             val === 'built-in browser' ||
@@ -5175,6 +5294,27 @@ function isFileName(text, parent) {
         lowerTrimmed === 'close pane' ||
         lowerTrimmed === 'workspace' ||
         lowerTrimmed === 'workspaces' ||
+        lowerTrimmed === 'local checkout' ||
+        lowerTrimmed.startsWith('local checkout') ||
+        lowerTrimmed === 'new worktree' ||
+        lowerTrimmed === 'worktree' ||
+        lowerTrimmed === 'worktrees' ||
+        lowerTrimmed === 'featured' ||
+        lowerTrimmed === 'details' ||
+        lowerTrimmed === 'developer' ||
+        lowerTrimmed === 'website' ||
+        lowerTrimmed === 'repository' ||
+        lowerTrimmed.startsWith('connect antigravity to your notion') ||
+        lowerTrimmed.startsWith('the product development system for teams') ||
+        lowerTrimmed.startsWith('turn figma designs') ||
+        lowerTrimmed.startsWith('create, edit, review, resize') ||
+        lowerTrimmed.startsWith('connect antigravity to dropbox') ||
+        lowerTrimmed.startsWith('build and deploy on netlify') ||
+        lowerTrimmed.startsWith('deploy, configure, monitor') ||
+        lowerTrimmed.startsWith('build and deploy web apps') ||
+        lowerTrimmed.startsWith('add auth0 authentication') ||
+        lowerTrimmed.startsWith('databricks skills for') ||
+        lowerTrimmed.startsWith('give your agent a real browser') ||
         lowerTrimmed === 'permission preset' ||
         lowerTrimmed === 'permission presets' ||
         lowerTrimmed === 'built-in browser' ||
@@ -6115,7 +6255,7 @@ function initLanguageSwitcher() {
             const resp = await fetch('http://127.0.0.1:39228/status');
             if (resp.ok) {
                 const data = await resp.json();
-                const currentVer = data.version || '2.1.6';
+                const currentVer = data.version || '2.1.7';
                 btnRu.title = 'Русская локализация v' + currentVer + (data.latestRemoteVersion ? ' (GitHub: v' + data.latestRemoteVersion + ')' : '');
 
                 isUpdatePending = !!data.updatePending;
