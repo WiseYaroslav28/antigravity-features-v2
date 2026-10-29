@@ -1722,11 +1722,18 @@ const translationDictionary = {
     ", on macos).": " на macOS).",
     "on macos).": "на macOS).",
     "2. click": "2. Нажмите",
+    "click": "Нажмите",
+    "install": "Установить",
+    "customizations → plugins": "Персонализация → Плагины",
+    "agent settings → customizations": "Настройки агента → Персонализация",
     "next to the plugin's linear mcp server.": "рядом с MCP-сервером Linear этого плагина.",
     "next to the plugin’s linear mcp server.": "рядом с MCP-сервером Linear этого плагина.",
     "3. sign in to linear in your browser and authorize your workspace.": "3. Войдите в Linear в браузере и авторизуйте рабочее пространство.",
+    "sign in to linear in your browser and authorize your workspace.": "Войдите в Linear в браузере и авторизуйте рабочее пространство.",
     "4. copy the authorization code shown after approval.": "4. Скопируйте код авторизации, отобразившийся после подтверждения.",
+    "copy the authorization code shown after approval.": "Скопируйте код авторизации, отобразившийся после подтверждения.",
     "5. return to antigravity, paste the code into the authentication field in settings, and click": "5. Вернитесь в Antigravity, вставьте код в поле аутентификации в настройках и нажмите",
+    "return to antigravity, paste the code into the authentication field in settings, and click": "Вернитесь в Antigravity, вставьте код в поле аутентификации в настройках и нажмите",
     "paste the code into settings, not agent chat. antigravity reconnects the server after authentication and refreshes expired access tokens automatically.": "Вставляйте код в настройки, а не в чат агента. Antigravity автоматически переподключает сервер после аутентификации и обновляет истёкшие токены доступа.",
     "3. try it out": "3. Попробуйте в деле",
     "ask antigravity:": "Спросите Antigravity:",
@@ -5286,11 +5293,11 @@ function shouldIgnore(node) {
         return false;
     }
 
-    const textVal = (node.nodeValue || node.textContent || '').trim().toLowerCase();
-    const ariaVal = (node.getAttribute && node.getAttribute('aria-label') || '').trim().toLowerCase();
-    const titleVal = (node.getAttribute && node.getAttribute('title') || '').trim().toLowerCase();
-    const tooltipVal = (node.getAttribute && node.getAttribute('data-tooltip') || '').trim().toLowerCase();
-    const placeholderVal = (node.getAttribute && node.getAttribute('placeholder') || '').trim().toLowerCase();
+    const textVal = normalizeText(node.nodeValue || node.textContent || '').toLowerCase();
+    const ariaVal = normalizeText(node.getAttribute && node.getAttribute('aria-label') || '').toLowerCase();
+    const titleVal = normalizeText(node.getAttribute && node.getAttribute('title') || '').toLowerCase();
+    const tooltipVal = normalizeText(node.getAttribute && node.getAttribute('data-tooltip') || '').toLowerCase();
+    const placeholderVal = normalizeText(node.getAttribute && node.getAttribute('placeholder') || '').toLowerCase();
 
     const parentText = (node.parentElement ? (node.parentElement.textContent || '') : '').toLowerCase();
     const grandParentText = (node.parentElement && node.parentElement.parentElement ? (node.parentElement.parentElement.textContent || '') : '').toLowerCase();
@@ -5667,6 +5674,16 @@ function shouldIgnore(node) {
             val.startsWith('installing the plugin is the first step') ||
             val.endsWith('on macos).') ||
             val === '2. click' ||
+            val === 'click' ||
+            val === 'install' ||
+            val === 'customizations → plugins' ||
+            val === 'agent settings → customizations' ||
+            val.startsWith('sign in to linear in your browser') ||
+            val.startsWith('copy the authorization code shown') ||
+            val.startsWith('return to antigravity, paste the code') ||
+            val.startsWith('install from the marketplace') ||
+            val.startsWith('connect your linear account') ||
+            val === 'try it out' ||
             val.includes('linear mcp server') ||
             val.startsWith('3. sign in to linear') ||
             val.startsWith('4. copy the authorization code') ||
@@ -6137,6 +6154,16 @@ function isFileName(text, parent) {
         lowerTrimmed.startsWith('installing the plugin is the first step') ||
         lowerTrimmed.endsWith('on macos).') ||
         lowerTrimmed === '2. click' ||
+        lowerTrimmed === 'click' ||
+        lowerTrimmed === 'install' ||
+        lowerTrimmed === 'customizations → plugins' ||
+        lowerTrimmed === 'agent settings → customizations' ||
+        lowerTrimmed.startsWith('sign in to linear in your browser') ||
+        lowerTrimmed.startsWith('copy the authorization code shown') ||
+        lowerTrimmed.startsWith('return to antigravity, paste the code') ||
+        lowerTrimmed.startsWith('install from the marketplace') ||
+        lowerTrimmed.startsWith('connect your linear account') ||
+        lowerTrimmed === 'try it out' ||
         lowerTrimmed.includes('linear mcp server') ||
         lowerTrimmed.startsWith('3. sign in to linear') ||
         lowerTrimmed.startsWith('4. copy the authorization code') ||
@@ -6949,7 +6976,7 @@ function initLanguageSwitcher() {
     wrapper.innerHTML = `
         <div id="antigravity-lang-switcher" class="lang-switcher">
             <div class="lang-btn" id="lang-btn-en" title="Switch interface to English">EN</div>
-            <div class="lang-btn" id="lang-btn-ru" title="Русская локализация v2.1.10">
+            <div class="lang-btn" id="lang-btn-ru" title="Русская локализация v2.1.11">
                 <span class="ru-text" id="ru-btn-label">RU</span>
                 <span class="ru-warn-icon" id="ru-warn-icon" style="display: none;">⚠️</span>
             </div>
@@ -7182,7 +7209,7 @@ function initLanguageSwitcher() {
             const resp = await fetch('http://127.0.0.1:39228/status');
             if (resp.ok) {
                 const data = await resp.json();
-                const currentVer = data.version || '2.1.10';
+                const currentVer = data.version || '2.1.11';
                 btnRu.title = 'Русская локализация v' + currentVer + (data.latestRemoteVersion ? ' (GitHub: v' + data.latestRemoteVersion + ')' : '');
 
                 isUpdatePending = !!data.updatePending;
