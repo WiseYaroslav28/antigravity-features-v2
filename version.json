@@ -1,8 +1,8 @@
 {
-  "version": "2.1.11",
-  "releasedAt": "2026-10-29T22:31:45.000Z",
+  "version": "2.1.12",
+  "releasedAt": "2026-10-29T22:42:00.000Z",
   "requiresRestart": false,
-  "changelog": "Улучшен перевод нумерованных списков (<ol><li>), жирных элементов навигации (Customizations → Plugins, Agent settings → Customizations) и многострочных текстовых узлов на страницах деталей плагинов (Linear, Dropbox, Atlassian Teamwork Graph CLI)",
+  "changelog": "Полная локализация страниц деталей плагинов monday.com, Notion, PandaDoc и Trello (описания, примеры запросов, разделы Обзор, таблицы и слэш-команды), защита правил List/Extract от частичной замены в длинных предложениях",
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",

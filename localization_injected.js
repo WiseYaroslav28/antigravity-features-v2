@@ -1754,7 +1754,91 @@ const translationDictionary = {
     "linear mcp documentation": "документации Linear MCP",
     "development": "Разработка",
     "for local installation, package details, and release validation, see": "Инструкции по локальной установке, сведения о пакете и проверке релизов см. в",
-    "fix quote escaping in localization_injected.js, validate, build and deploy app.asar": "Исправление экранирования кавычек в localization_injected.js, проверка, сборка и деплой app.asar"
+    "fix quote escaping in localization_injected.js, validate, build and deploy app.asar": "Исправление экранирования кавычек в localization_injected.js, проверка, сборка и деплой app.asar",
+    // v2.1.12 — monday.com, Notion, PandaDoc, Trello
+    "plan and track work in monday.com from antigravity: create, update and assign items, write docs, and build forms that turn requests into items.": "Планируйте и отслеживайте работу в monday.com из Antigravity: создавайте, обновляйте и назначайте элементы, пишите документацию и создавайте формы, превращающие заявки в задачи.",
+    "plan and track work in monday.com from antigravity: create, update and assign items, write docs, and build forms that turn requests into items": "Планируйте и отслеживайте работу в monday.com из Antigravity: создавайте, обновляйте и назначайте элементы, пишите документацию и создавайте формы, превращающие заявки в задачи",
+    "onboard me to monday.com": "Помоги мне начать работу с monday.com",
+    "onboard me to monday.com.": "Помоги мне начать работу с monday.com.",
+    "create a monday.com item for each todo in this file and assign them to me": "Создать элемент monday.com для каждого TODO в этом файле и назначить их мне",
+    "create a monday.com item for each todo in this file and assign them to me.": "Создать элемент monday.com для каждого TODO в этом файле и назначить их мне.",
+    "create a monday.com bug report form with summary, steps to reproduce and severity questions": "Создать форму отчёта об ошибке в monday.com с полями описания, шагов воспроизведения и серьёзности",
+    "create a monday.com bug report form with summary, steps to reproduce and severity questions.": "Создать форму отчёта об ошибке в monday.com с полями описания, шагов воспроизведения и серьёзности.",
+    "bring monday.com into antigravity. create, update and assign items, write docs and set up forms without leaving your editor.": "Подключите monday.com к Antigravity. Создавайте, обновляйте и назначайте элементы, пишите документы и настраивайте формы, не покидая редактор.",
+    "what you get": "Что вы получаете",
+    "monday.com mcp server": "MCP-сервер monday.com",
+    "- the official monday.com mcp server (": "— официальный MCP-сервер monday.com (",
+    "the official monday.com mcp server (": "— официальный MCP-сервер monday.com (",
+    "), with tools for boards, items, columns, docs, forms, dashboards, workspaces and more.": "), с инструментами для досок, элементов, столбцов, документов, форм, дашбордов, рабочих пространств и многого другого.",
+    "- first-run setup: builds a board tailored to your work, with starter items and an automation.": "— первичная настройка: создаёт доску под ваши задачи со стартовыми элементами и автоматизацией.",
+    "first-run setup: builds a board tailored to your work, with starter items and an automation.": "— первичная настройка: создаёт доску под ваши задачи со стартовыми элементами и автоматизацией.",
+    "- create, update, assign and move items, with correct column-value formats.": "— создание, обновление, назначение и перемещение элементов с правильными форматами значений столбцов.",
+    "create, update, assign and move items, with correct column-value formats.": "— создание, обновление, назначение и перемещение элементов с правильными форматами значений столбцов.",
+    "- create, read, edit and comment on monday docs, including live column embeds and mentions.": "— создание, чтение, редактирование и комментирование документов monday, включая встраивание столбцов и упоминания.",
+    "create, read, edit and comment on monday docs, including live column embeds and mentions.": "— создание, чтение, редактирование и комментирование документов monday, включая встраивание столбцов и упоминания.",
+    "- create, edit and publish monday workforms.": "— создание, редактирование и публикация форм monday WorkForms.",
+    "create, edit and publish monday workforms.": "— создание, редактирование и публикация форм monday WorkForms.",
+    "getting started": "Начало работы",
+    "1. install the plugin from": "1. Установите плагин через",
+    "install the plugin from": "Установите плагин через",
+    "in antigravity, or from the terminal:": "в Antigravity или из терминала:",
+    "2. on first use, sign in to monday.com in the browser window that opens and approve access.": "2. При первом использовании войдите в monday.com в открывшемся окне браузера и подтвердите доступ.",
+    "on first use, sign in to monday.com in the browser window that opens and approve access.": "При первом использовании войдите в monday.com в открывшемся окне браузера и подтвердите доступ.",
+    "3. try a starter prompt, or ask something like \"mark the 'login bug' item on my sprint board as done\"": "3. Попробуйте стартовый запрос или напишите, например: «Отметь задачу 'Login bug' на моей доске Спринт как выполненную»",
+    "try a starter prompt, or ask something like \"mark the 'login bug' item on my sprint board as done\"": "Попробуйте стартовый запрос или напишите, например: «Отметь задачу 'Login bug' на моей доске Спринт как выполненную»",
+    "try a starter prompt, or ask something like \"mark the 'login bug' item on my sprint board as done\".": "Попробуйте стартовый запрос или напишите, например: «Отметь задачу 'Login bug' на моей доске Спринт как выполненную».",
+    "you only get access to what your monday.com user can already see. account admins can manage ai connector access in": "Вы получаете доступ только к тому, что уже доступно вашему пользователю monday.com. Администраторы аккаунта могут управлять доступом ИИ-коннектора в разделе",
+    "administration → ai governance → ai permissions": "Администрирование → Управление ИИ → Разрешения ИИ",
+    "support": "Поддержка",
+    "help:": "Справка:",
+    "contact:": "Контакт:",
+    "set up notion so you can use my workspace as context": "Настроить Notion, чтобы использовать моё рабочее пространство как контекст",
+    "set up notion so you can use my workspace as context.": "Настроить Notion, чтобы использовать моё рабочее пространство как контекст.",
+    "turn this spec in notion into an implementation plan with tasks": "Превратить эту спецификацию в Notion в план реализации с задачами",
+    "turn this spec in notion into an implementation plan with tasks.": "Превратить эту спецификацию в Notion в план реализации с задачами.",
+    "write a weekly update for my project from what changed in notion": "Написать еженедельный отчёт по моему проекту на основе изменений в Notion",
+    "write a weekly update for my project from what changed in notion.": "Написать еженедельный отчёт по моему проекту на основе изменений в Notion.",
+    "notion plugin for antigravity": "Плагин Notion для Antigravity",
+    "connects": "Подключает",
+    "to the": "к",
+    "notion mcp server": "MCP-серверу Notion",
+    "and adds the": "и добавляет",
+    "mcp client skills": "навыки клиента MCP",
+    "the first notion tool call opens a browser window to authorize your workspace.": "При первом вызове инструмента Notion откроется окно браузера для авторизации вашего рабочего пространства.",
+    "purpose": "Назначение",
+    "antigravity manifest": "Манифест Antigravity",
+    "notion mcp server at": "MCP-сервер Notion по адресу",
+    "plugin icon": "Иконка плагина",
+    "generated from": "Сгенерировано из",
+    ". do not edit.": ". Не редактировать.",
+    "do not edit.": "Не редактировать.",
+    "maintain": "Обслуживание",
+    "edit skills in": "Редактируйте навыки в",
+    ", then run": ", затем запустите",
+    "from the repository root and commit the result. ci runs": "из корня репозитория и зафиксируйте результат. CI запускает",
+    "and fails when": "и завершается с ошибкой, если папка",
+    "is out of date.": "устарела.",
+    "check the plugin the way antigravity loads it:": "Проверьте плагин так, как его загружает Antigravity:",
+    "проверка the plugin the way antigravity loads it:": "Проверьте плагин так, как его загружает Antigravity:",
+    "create and send proposals, quotes, and contracts for e-signature. track signing progress and identify documents that need follow-up.": "Создавайте и отправляйте коммерческие предложения, сметы и договоры на электронную подпись. Отслеживайте статус подписания и находите документы, требующие напоминания.",
+    "create and send proposals, quotes, and contracts for e-signature. track signing progress and identify documents that need follow-up": "Создавайте и отправляйте коммерческие предложения, сметы и договоры на электронную подпись. Отслеживайте статус подписания и находите документы, требующие напоминания",
+    "list my 5 most recently modified pandadoc documents with their status.": "Показать 5 моих недавно изменённых документов PandaDoc с их статусами.",
+    "list my 5 most recently modified pandadoc documents with their status": "Показать 5 моих недавно изменённых документов PandaDoc с их статусами",
+    "список my 5 most recently modified pandadoc documents with their status .": "Показать 5 моих недавно изменённых документов PandaDoc с их статусами.",
+    "список my 5 most recently modified pandadoc documents with their status.": "Показать 5 моих недавно изменённых документов PandaDoc с их статусами.",
+    "список my 5 most recently modified pandadoc documents with their status": "Показать 5 моих недавно изменённых документов PandaDoc с их статусами",
+    "show my signing pipeline and identify documents that are stuck.": "Показать мою воронку подписания и выявить зависшие документы.",
+    "show my signing pipeline and identify documents that are stuck": "Показать мою воронку подписания и выявить зависшие документы",
+    "find unsigned documents and draft follow-up messages without sending them.": "Найти неподписанные документы и подготовить черновики напоминаний без отправки.",
+    "find unsigned documents and draft follow-up messages without sending them": "Найти неподписанные документы и подготовить черновики напоминаний без отправки",
+    "official trello plugin with the trello mcp server and a skill for boards, lists, cards, checklists, inbox, and planner.": "Официальный плагин Trello с MCP-сервером Trello и навыком для работы с досками, списками, карточками, чек-листами, Входящими и Планировщиком.",
+    "official trello plugin with the trello mcp server and a skill for boards, lists, cards, checklists, inbox, and planner": "Официальный плагин Trello с MCP-сервером Trello и навыком для работы с досками, списками, карточками, чек-листами, Входящими и Планировщиком",
+    "summarize the cards that are due this week across my trello boards.": "Сделать сводку карточек со сроком выполнения на этой неделе по всем моим доскам Trello.",
+    "summarize the cards that are due this week across my trello boards": "Сделать сводку карточек со сроком выполнения на этой неделе по всем моим доскам Trello",
+    "create a trello card on my board for each todo in this file.": "Создать карточку Trello на моей доске для каждого TODO в этом файле.",
+    "create a trello card on my board for each todo in this file": "Создать карточку Trello на моей доске для каждого TODO в этом файле",
+    "show what is in my trello inbox and suggest a board and list for each card.": "Показать содержимое моих Входящих в Trello и предложить доску и список для каждой карточки.",
+    "show what is in my trello inbox and suggest a board and list for each card": "Показать содержимое моих Входящих в Trello и предложить доску и список для каждой карточки"
 };
 
 function localizeActionTarget(target) {
@@ -2581,6 +2665,170 @@ const regexTranslations = [
         pattern: /^The\s+Linear\s+plugin\s+connects\s+Antigravity\s+to\s+your\s+Linear\s+workspace\..*$/i,
         replace: () => "Плагин Linear подключает Antigravity к вашему рабочему пространству Linear. Находите задачи, читайте обновления проектов, создавайте или обновляйте задачи и документы, не покидая процесс разработки."
     },
+    // --- v2.1.12: monday.com, Notion, PandaDoc, Trello ---
+    {
+        pattern: /^Plan\s+and\s+track\s+work\s+in\s+monday\.com\s+from\s+Antigravity:\s*create,\s*update\s+and\s+assign\s+items,\s*write\s+docs,\s*and\s+build\s+forms.*$/i,
+        replace: () => "Планируйте и отслеживайте работу в monday.com из Antigravity: создавайте, обновляйте и назначайте элементы, пишите документацию и создавайте формы, превращающие заявки в задачи."
+    },
+    {
+        pattern: /^Onboard\s+me\s+to\s+monday\.com\.?$/i,
+        replace: () => "Помоги мне начать работу с monday.com"
+    },
+    {
+        pattern: /^(?:Create|Создать|Создано)\s+a\s+monday\.com\s+item\s+for\s+each\s+TODO\s+in\s+this\s+file\s+and\s+assign\s+them\s+to\s+me\.?$/i,
+        replace: () => "Создать элемент monday.com для каждого TODO в этом файле и назначить их мне"
+    },
+    {
+        pattern: /^(?:Create|Создать|Создано)\s+a\s+monday\.com\s+bug\s+report\s+form\s+with\s+summary,\s*steps\s+to\s+reproduce\s+and\s+severity\s+questions\.?$/i,
+        replace: () => "Создать форму отчёта об ошибке в monday.com с полями описания, шагов воспроизведения и серьёзности"
+    },
+    {
+        pattern: /^Bring\s+monday\.com\s+into\s+Antigravity\.\s*Create,\s*update\s+and\s+assign\s+items,\s*write\s+docs\s+and\s+set\s+up\s+forms\s+without\s+leaving\s+your\s+editor\.?$/i,
+        replace: () => "Подключите monday.com к Antigravity. Создавайте, обновляйте и назначайте элементы, пишите документы и настраивайте формы, не покидая редактор."
+    },
+    {
+        pattern: /^(?:\d+\.\s*)?Try\s+a\s+starter\s+prompt,\s*or\s+ask\s+something\s+like\s+["“«]Mark\s+the\s+'Login\s+bug'\s+item\s+on\s+my\s+Sprint\s+board\s+as\s+Done["”»]\.?$/i,
+        replace: (m) => (/^\d+\./.test(m[0]) ? "3. " : "") + "Попробуйте стартовый запрос или напишите, например: «Отметь задачу 'Login bug' на моей доске Спринт как выполненную»"
+    },
+    {
+        pattern: /^Creates,\s*reads,\s*edits,\s*and\s+comments\s+on\s+monday\.com\s+docs\s*[—–-]\s*the\s+rich-content\s+surface\s+inside\s+monday.*$/i,
+        replace: () => "Создаёт, читает, редактирует и комментирует документы monday.com — рабочую среду с форматированным контентом..."
+    },
+    {
+        pattern: /^Creates\s+and\s+edits\s+monday\.com\s+WorkForms\s*[—–-]\s*public\s+intake\s+forms\s+that\s+capture\s+responses\s+as\s+new\s+items.*$/i,
+        replace: () => "Создаёт и редактирует формы monday.com WorkForms — публичные формы сбора заявок, сохраняющие ответы как новые элементы..."
+    },
+    {
+        pattern: /^First-run\s+onboarding\s+for\s+people\s+who\s+just\s+connected\s+monday\.com\s+and\s+have\s+not\s+set\s+anything\s+up\s+yet.*$/i,
+        replace: () => "Первичная настройка и знакомство для пользователей, которые только что подключили monday.com..."
+    },
+    {
+        pattern: /^Creates,\s*updates,\s*assigns,\s*and\s+manages\s+items\s+across\s+monday\.com\s+boards\.\s*monday\.com\s+is\s+a\s+customiza.*$/i,
+        replace: () => "Создаёт, обновляет, назначает и управляет элементами на досках monday.com..."
+    },
+    {
+        // Notion example prompts, overview & commands
+        pattern: /^(?:Set\s+up|Установите\s+для\s+переменной\s+окружения\s+up)\s+Notion\s+so\s+you\s+can\s+use\s+my\s+workspace\s+as\s+context\.?$/i,
+        replace: () => "Настроить Notion, чтобы использовать моё рабочее пространство как контекст"
+    },
+    {
+        pattern: /^Turn\s+this\s+spec\s+in\s+Notion\s+into\s+an\s+implementation\s+plan\s+with\s+tasks\.?$/i,
+        replace: () => "Превратить эту спецификацию в Notion в план реализации с задачами"
+    },
+    {
+        pattern: /^Write\s+a\s+weekly\s+update\s+for\s+my\s+project\s+from\s+what\s+changed\s+in\s+Notion\.?$/i,
+        replace: () => "Написать еженедельный отчёт по моему проекту на основе изменений в Notion"
+    },
+    {
+        pattern: /^(?:Check|Проверка)\s+the\s+plugin\s+the\s+way\s+Antigravity\s+loads\s+it\s*:$/i,
+        replace: () => "Проверьте плагин так, как его загружает Antigravity:"
+    },
+    {
+        pattern: /^Design,\s*create,\s*and\s+migrate\s+Notion\s+databases\.\s*Use\s+whenever\s+the\s+user\s+wants\s+to\s+set\s+up\s+a\s+new\s+tracker.*$/i,
+        replace: () => "Проектирование, создание и миграция баз данных Notion. Используйте, когда нужно настроить новый трекер или базу знаний..."
+    },
+    {
+        pattern: /^Capture\s+conversations,\s*notes,\s*decisions,\s*and\s+content\s+into\s+structured\s+Notion\s+pages\s+or\s+database\s+entries.*$/i,
+        replace: () => "Сохранение диалогов, заметок, решений и контента в структурированные страницы или записи баз данных Notion..."
+    },
+    {
+        pattern: /^Prepare\s+meeting\s+materials\s+and\s+process\s+meeting\s+outcomes\s+using\s+Notion\s+context\s+and\s+workspace\s+data.*$/i,
+        replace: () => "Подготовка материалов к встречам и обработка итогов встреч с использованием контекста и данных рабочего пространства Notion..."
+    },
+    {
+        pattern: /^Research\s+across\s+Notion\s+workspaces\s+and\s+synthesize\s+findings\s+into\s+structured,\s*citation-backed\s+documents.*$/i,
+        replace: () => "Исследование по рабочим пространствам Notion и обобщение результатов в структурированные документы с цитатами..."
+    },
+    {
+        pattern: /^Onboarding\s+wizard\s+for\s+the\s+Notion\s+plugin\.\s*Discovers\s+how\s+the\s+user(?:'s|’s)\s+Notion\s+workspace\s+is\s+organized.*$/i,
+        replace: () => "Мастер первичной настройки плагина Notion: изучает структуру вашего рабочего пространства Notion..."
+    },
+    {
+        pattern: /^Turn\s+technical\s+or\s+product\s+specifications\s+into\s+concrete\s+implementation\s+plans\s+and\s+tracked\s+tasks\s+in\s+Notion.*$/i,
+        replace: () => "Преобразование технических или продуктовых спецификаций в конкретные планы реализации и отслеживаемые задачи в Notion..."
+    },
+    {
+        pattern: /^Generate\s+weekly\s+status\s+updates,\s*project\s+digests,\s*and\s+stakeholder\s+summaries\s+from\s+Notion\s+activity.*$/i,
+        replace: () => "Генерация еженедельных отчётов о статусе, дайджестов проекта и сводок для стейкхолдеров по активности в Notion..."
+    },
+    {
+        // PandaDoc description, example prompts & commands
+        pattern: /^(?:Create|Создать|Создано)\s+and\s+send\s+proposals,\s*quotes,\s*and\s+contracts\s+for\s+e-signature\.\s*Track\s+signing\s+progress\s+and\s+identify\s+documents\s+that\s+need\s+follow-up\.?$/i,
+        replace: () => "Создавайте и отправляйте коммерческие предложения, сметы и договоры на электронную подпись. Отслеживайте статус подписания и находите документы, требующие напоминания."
+    },
+    {
+        pattern: /^(?:List|Список)\s+my\s+5\s+most\s+recently\s+modified\s+PandaDoc\s+documents\s+with\s+their\s+status\s*\.?$/i,
+        replace: () => "Показать 5 моих недавно изменённых документов PandaDoc с их статусами."
+    },
+    {
+        pattern: /^Show\s+my\s+signing\s+pipeline\s+and\s+identify\s+documents\s+that\s+are\s+stuck\.?$/i,
+        replace: () => "Показать мою воронку подписания и выявить зависшие документы."
+    },
+    {
+        pattern: /^Find\s+unsigned\s+documents\s+and\s+draft\s+follow-up\s+messages\s+without\s+sending\s+them\.?$/i,
+        replace: () => "Найти неподписанные документы и подготовить черновики напоминаний без отправки."
+    },
+    {
+        pattern: /^(?:Create|Создать|Создано)\s+a\s+PandaDoc\s+document\s+from\s+a\s+template,\s*verify\s+its\s+readiness\s+against\s+a\s+pre-send\s+checklist.*$/i,
+        replace: () => "Создать документ PandaDoc по шаблону, проверить его готовность по чек-листу перед отправкой..."
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+a\s+register\s+of\s+completed\s+and\s+active\s+PandaDoc\s+contracts\s+by\s+pulling\s+document\s+details.*$/i,
+        replace: () => "Сформировать реестр завершённых и активных договоров PandaDoc с извлечением реквизитов документов..."
+    },
+    {
+        pattern: /^Analyze\s+recipient\s+engagement\s+on\s+sent\s+PandaDoc\s+documents\s*[—–-]\s*distinguish\s+viewed-but-unsigned.*$/i,
+        replace: () => "Анализ вовлечённости получателей по отправленным документам PandaDoc — разделение просмотренных, но не подписанных..."
+    },
+    {
+        pattern: /^Identify\s+sent\s+or\s+viewed\s+PandaDoc\s+documents\s+that\s+have\s+not\s+been\s+completed\s+and\s+generate\s+a\s+prioritized.*$/i,
+        replace: () => "Выявление отправленных или просмотренных документов PandaDoc, которые ещё не подписаны, и создание приоритетного списка..."
+    },
+    {
+        pattern: /^Identify\s+recently\s+completed\s+PandaDoc\s+documents\s+and\s+extract\s+billing-ready\s+details.*$/i,
+        replace: () => "Выявление недавно подписанных документов PandaDoc и извлечение данных для выставления счетов..."
+    },
+    {
+        pattern: /^Quickly\s+create\s+and\s+optionally\s+send\s+an\s+NDA\s+from\s+an\s+approved\s+PandaDoc\s+template\s+with\s+minimal\s+inputs.*$/i,
+        replace: () => "Быстрое создание и отправка NDA по утверждённому шаблону PandaDoc с минимальным вводом данных..."
+    },
+    {
+        pattern: /^(?:Create|Создать|Создано)\s+a\s+personalized\s+employee\s+or\s+contractor\s+onboarding\s+agreement\s+in\s+PandaDoc\s+from\s+an\s+approved.*$/i,
+        replace: () => "Создание персонализированного договора о найме сотрудника или подрядчика в PandaDoc по утверждённому шаблону..."
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+a\s+priced\s+PandaDoc\s+quote\s+or\s+proposal\s+from\s+a\s+template\s+by\s+populating\s+pricing\s+tables.*$/i,
+        replace: () => "Создание коммерческого предложения или сметы PandaDoc по шаблону с заполнением таблиц цен..."
+    },
+    {
+        pattern: /^Scan\s+completed\s+PandaDoc\s+contracts\s+to\s+identify\s+agreements\s+approaching\s+renewal\s+or\s+expiration.*$/i,
+        replace: () => "Сканирование подписанных договоров PandaDoc для выявления соглашений с подходящим сроком продления или истечения..."
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+a\s+signing\s+pipeline\s+report\s+for\s+PandaDoc\s+documents\s*[—–-]\s*group\s+by\s+status.*$/i,
+        replace: () => "Формирование отчёта по воронке подписания документов PandaDoc — группировка по статусам и выявление узких мест..."
+    },
+    {
+        // Trello description, example prompts & commands
+        pattern: /^Official\s+Trello\s+plugin\s+with\s+the\s+Trello\s+MCP\s+server\s+and\s+a\s+skill\s+for\s+boards,\s*lists,\s*cards,\s*checklists,\s*Inbox,\s*and\s+Planner\.?$/i,
+        replace: () => "Официальный плагин Trello с MCP-сервером Trello и навыком для работы с досками, списками, карточками, чек-листами, Входящими и Планировщиком."
+    },
+    {
+        pattern: /^Summarize\s+the\s+cards\s+that\s+are\s+due\s+this\s+week\s+across\s+my\s+Trello\s+boards\.?$/i,
+        replace: () => "Сделать сводку карточек со сроком выполнения на этой неделе по всем моим доскам Trello."
+    },
+    {
+        pattern: /^(?:Create|Создать|Создано)\s+a\s+Trello\s+card\s+on\s+my\s+board\s+for\s+each\s+TODO\s+in\s+this\s+file\.?$/i,
+        replace: () => "Создать карточку Trello на моей доске для каждого TODO в этом файле."
+    },
+    {
+        pattern: /^Show\s+what\s+is\s+in\s+my\s+Trello\s+Inbox\s+and\s+suggest\s+a\s+board\s+and\s+list\s+for\s+each\s+card\.?$/i,
+        replace: () => "Показать содержимое моих Входящих в Trello и предложить доску и список для каждой карточки."
+    },
+    {
+        pattern: /^\*\*MANDATORY\s+prerequisite\*\*\s*[—–-]\s*load\s+this\s+BEFORE\s+calling\s+any\s+Trello\s+MCP\s+tool.*$/i,
+        replace: () => "**ОБЯЗАТЕЛЬНОЕ требование** — загрузите этот навык ПЕРЕД вызовом любого инструмента Trello MCP (`trelloRead*`, `trelloWrite*`, `trello...`)..."
+    },
     {
         // "Workspace" / "Workspaces"
         pattern: /^Workspaces?$/i,
@@ -3111,7 +3359,9 @@ const regexTranslations = [
         pattern: /^(?:Extract|Extracting)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
-            return `Извлечение ${localizeActionTarget(match[1])}${arrow}`;
+            const localized = localizeActionTarget(match[1]);
+            if (localized === match[1] && match[1].trim().split(/\s+/).length > 4 && !arrow) return match[0];
+            return `Извлечение ${localized}${arrow}`;
         }
     },
     {
@@ -3129,7 +3379,9 @@ const regexTranslations = [
         pattern: /^(?:List|Listing)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
-            return `Список ${localizeActionTarget(match[1])}${arrow}`;
+            const localized = localizeActionTarget(match[1]);
+            if (localized === match[1] && match[1].trim().split(/\s+/).length > 4 && !arrow) return match[0];
+            return `Список ${localized}${arrow}`;
         }
     },
     {
@@ -5706,6 +5958,93 @@ function shouldIgnore(node) {
             val === 'linear mcp documentation' ||
             val === 'development' ||
             val.startsWith('for local installation, package details') ||
+            val.startsWith('onboard me to monday') ||
+            val.startsWith('create a monday.com') ||
+            val.startsWith('bring monday.com into antigravity') ||
+            val === 'what you get' ||
+            val === 'monday.com mcp server' ||
+            val.startsWith('- the official monday.com') ||
+            val.startsWith('the official monday.com') ||
+            val.startsWith('), with tools for boards') ||
+            val.startsWith('- first-run setup:') ||
+            val.startsWith('first-run setup:') ||
+            val.startsWith('- create, update, assign') ||
+            val.startsWith('create, update, assign') ||
+            val.startsWith('- create, read, edit') ||
+            val.startsWith('create, read, edit') ||
+            val.startsWith('- create, edit and publish') ||
+            val.startsWith('create, edit and publish') ||
+            val === 'getting started' ||
+            val.startsWith('1. install the plugin') ||
+            val.startsWith('install the plugin from') ||
+            val === 'in antigravity, or from the terminal:' ||
+            val.startsWith('2. on first use, sign in to monday') ||
+            val.startsWith('on first use, sign in to monday') ||
+            val.startsWith('3. try a starter prompt') ||
+            val.startsWith('try a starter prompt') ||
+            val.startsWith('you only get access to what your monday') ||
+            val === 'administration → ai governance → ai permissions' ||
+            val === 'support' ||
+            val === 'help:' ||
+            val === 'contact:' ||
+            val.startsWith('creates, reads, edits, and comments on monday') ||
+            val.startsWith('creates and edits monday.com workforms') ||
+            val.startsWith('first-run onboarding for people') ||
+            val.startsWith('creates, updates, assigns, and manages items') ||
+            val.startsWith('set up notion so you can') ||
+            val.startsWith('turn this spec in notion') ||
+            val.startsWith('write a weekly update for my project') ||
+            val === 'notion plugin for antigravity' ||
+            val === 'connects' ||
+            val === 'to the' ||
+            val === 'notion mcp server' ||
+            val === 'and adds the' ||
+            val === 'mcp client skills' ||
+            val.startsWith('the first notion tool call') ||
+            val === 'purpose' ||
+            val === 'antigravity manifest' ||
+            val === 'notion mcp server at' ||
+            val === 'plugin icon' ||
+            val === 'generated from' ||
+            val === '. do not edit.' ||
+            val === 'do not edit.' ||
+            val === 'maintain' ||
+            val === 'edit skills in' ||
+            val === ', then run' ||
+            val.startsWith('from the repository root and commit') ||
+            val === 'and fails when' ||
+            val === 'is out of date.' ||
+            val.startsWith('check the plugin the way antigravity') ||
+            val.startsWith('проверка the plugin the way antigravity') ||
+            val.startsWith('design, create, and migrate notion') ||
+            val.startsWith('capture conversations, notes, decisions') ||
+            val.startsWith('prepare meeting materials and process') ||
+            val.startsWith('research across notion workspaces') ||
+            val.startsWith('onboarding wizard for the notion') ||
+            val.startsWith('turn technical or product specifications') ||
+            val.startsWith('generate weekly status updates') ||
+            val.startsWith('list my 5 most recently modified pandadoc') ||
+            val.startsWith('список my 5 most recently modified pandadoc') ||
+            val.startsWith('show my signing pipeline') ||
+            val.startsWith('find unsigned documents') ||
+            val.startsWith('create a pandadoc document') ||
+            val.startsWith('build a register of completed') ||
+            val.startsWith('сборка a register of completed') ||
+            val.startsWith('analyze recipient engagement') ||
+            val.startsWith('identify sent or viewed pandadoc') ||
+            val.startsWith('identify recently completed pandadoc') ||
+            val.startsWith('quickly create and optionally send') ||
+            val.startsWith('create a personalized employee') ||
+            val.startsWith('build a priced pandadoc') ||
+            val.startsWith('сборка a priced pandadoc') ||
+            val.startsWith('scan completed pandadoc') ||
+            val.startsWith('build a signing pipeline') ||
+            val.startsWith('сборка a signing pipeline') ||
+            val.startsWith('official trello plugin') ||
+            val.startsWith('summarize the cards that are due') ||
+            val.startsWith('create a trello card') ||
+            val.startsWith('show what is in my trello') ||
+            val.startsWith('**mandatory prerequisite**') ||
             val === 'developer' ||
             val === 'website' ||
             val === 'repository' ||
@@ -6222,6 +6561,93 @@ function isFileName(text, parent) {
         lowerTrimmed.startsWith('official supabase plugin') ||
         lowerTrimmed.startsWith('create and send proposals') ||
         lowerTrimmed.startsWith('plan and track work in monday') ||
+        lowerTrimmed.startsWith('onboard me to monday') ||
+        lowerTrimmed.startsWith('create a monday.com') ||
+        lowerTrimmed.startsWith('bring monday.com into antigravity') ||
+        lowerTrimmed === 'what you get' ||
+        lowerTrimmed === 'monday.com mcp server' ||
+        lowerTrimmed.startsWith('- the official monday.com') ||
+        lowerTrimmed.startsWith('the official monday.com') ||
+        lowerTrimmed.startsWith('), with tools for boards') ||
+        lowerTrimmed.startsWith('- first-run setup:') ||
+        lowerTrimmed.startsWith('first-run setup:') ||
+        lowerTrimmed.startsWith('- create, update, assign') ||
+        lowerTrimmed.startsWith('create, update, assign') ||
+        lowerTrimmed.startsWith('- create, read, edit') ||
+        lowerTrimmed.startsWith('create, read, edit') ||
+        lowerTrimmed.startsWith('- create, edit and publish') ||
+        lowerTrimmed.startsWith('create, edit and publish') ||
+        lowerTrimmed === 'getting started' ||
+        lowerTrimmed.startsWith('1. install the plugin') ||
+        lowerTrimmed.startsWith('install the plugin from') ||
+        lowerTrimmed === 'in antigravity, or from the terminal:' ||
+        lowerTrimmed.startsWith('2. on first use, sign in to monday') ||
+        lowerTrimmed.startsWith('on first use, sign in to monday') ||
+        lowerTrimmed.startsWith('3. try a starter prompt') ||
+        lowerTrimmed.startsWith('try a starter prompt') ||
+        lowerTrimmed.startsWith('you only get access to what your monday') ||
+        lowerTrimmed === 'administration → ai governance → ai permissions' ||
+        lowerTrimmed === 'support' ||
+        lowerTrimmed === 'help:' ||
+        lowerTrimmed === 'contact:' ||
+        lowerTrimmed.startsWith('creates, reads, edits, and comments on monday') ||
+        lowerTrimmed.startsWith('creates and edits monday.com workforms') ||
+        lowerTrimmed.startsWith('first-run onboarding for people') ||
+        lowerTrimmed.startsWith('creates, updates, assigns, and manages items') ||
+        lowerTrimmed.startsWith('set up notion so you can') ||
+        lowerTrimmed.startsWith('turn this spec in notion') ||
+        lowerTrimmed.startsWith('write a weekly update for my project') ||
+        lowerTrimmed === 'notion plugin for antigravity' ||
+        lowerTrimmed === 'connects' ||
+        lowerTrimmed === 'to the' ||
+        lowerTrimmed === 'notion mcp server' ||
+        lowerTrimmed === 'and adds the' ||
+        lowerTrimmed === 'mcp client skills' ||
+        lowerTrimmed.startsWith('the first notion tool call') ||
+        lowerTrimmed === 'purpose' ||
+        lowerTrimmed === 'antigravity manifest' ||
+        lowerTrimmed === 'notion mcp server at' ||
+        lowerTrimmed === 'plugin icon' ||
+        lowerTrimmed === 'generated from' ||
+        lowerTrimmed === '. do not edit.' ||
+        lowerTrimmed === 'do not edit.' ||
+        lowerTrimmed === 'maintain' ||
+        lowerTrimmed === 'edit skills in' ||
+        lowerTrimmed === ', then run' ||
+        lowerTrimmed.startsWith('from the repository root and commit') ||
+        lowerTrimmed === 'and fails when' ||
+        lowerTrimmed === 'is out of date.' ||
+        lowerTrimmed.startsWith('check the plugin the way antigravity') ||
+        lowerTrimmed.startsWith('проверка the plugin the way antigravity') ||
+        lowerTrimmed.startsWith('design, create, and migrate notion') ||
+        lowerTrimmed.startsWith('capture conversations, notes, decisions') ||
+        lowerTrimmed.startsWith('prepare meeting materials and process') ||
+        lowerTrimmed.startsWith('research across notion workspaces') ||
+        lowerTrimmed.startsWith('onboarding wizard for the notion') ||
+        lowerTrimmed.startsWith('turn technical or product specifications') ||
+        lowerTrimmed.startsWith('generate weekly status updates') ||
+        lowerTrimmed.startsWith('list my 5 most recently modified pandadoc') ||
+        lowerTrimmed.startsWith('список my 5 most recently modified pandadoc') ||
+        lowerTrimmed.startsWith('show my signing pipeline') ||
+        lowerTrimmed.startsWith('find unsigned documents') ||
+        lowerTrimmed.startsWith('create a pandadoc document') ||
+        lowerTrimmed.startsWith('build a register of completed') ||
+        lowerTrimmed.startsWith('сборка a register of completed') ||
+        lowerTrimmed.startsWith('analyze recipient engagement') ||
+        lowerTrimmed.startsWith('identify sent or viewed pandadoc') ||
+        lowerTrimmed.startsWith('identify recently completed pandadoc') ||
+        lowerTrimmed.startsWith('quickly create and optionally send') ||
+        lowerTrimmed.startsWith('create a personalized employee') ||
+        lowerTrimmed.startsWith('build a priced pandadoc') ||
+        lowerTrimmed.startsWith('сборка a priced pandadoc') ||
+        lowerTrimmed.startsWith('scan completed pandadoc') ||
+        lowerTrimmed.startsWith('build a signing pipeline') ||
+        lowerTrimmed.startsWith('сборка a signing pipeline') ||
+        lowerTrimmed.startsWith('official trello plugin') ||
+        lowerTrimmed.startsWith('summarize the cards that are due') ||
+        lowerTrimmed.startsWith('create a trello card') ||
+        lowerTrimmed.startsWith('show what is in my trello') ||
+        lowerTrimmed.startsWith('**mandatory prerequisite**') ||
         lowerTrimmed === "what's included" ||
         lowerTrimmed === 'whats included' ||
         lowerTrimmed === 'mcp server' ||
