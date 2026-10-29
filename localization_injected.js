@@ -1590,6 +1590,56 @@ const translationDictionary = {
     "developer": "Разработчик",
     "website": "Веб-сайт",
     "repository": "Репозиторий",
+    "what's included": "Что включено",
+    "whats included": "Что включено",
+    "mcp server": "MCP-сервер",
+    "prerequisites": "Предварительные требования",
+    "example prompts": "Примеры запросов",
+    "resources": "Ресурсы",
+    "api key": "API-ключ",
+    "api key:": "API-ключ:",
+    "sdk installation": "Установка SDK",
+    "sdk installation:": "Установка SDK:",
+    ": provides": ": Предоставляет",
+    "): provides": "): Предоставляет",
+    "provides": "Предоставляет",
+    "so your agent can search and read official gemini api documentation directly without manual url fetching.": "чтобы ваш агент мог искать и читать официальную документацию Gemini API напрямую без ручной загрузки URL.",
+    "so your agent can search and read official gemini api documentation directly without manual url fetching": "чтобы ваш агент мог искать и читать официальную документацию Gemini API напрямую без ручной загрузки URL",
+    ": set the": ": Установите для переменной окружения",
+    "set the": "Установите для переменной окружения",
+    "environment variable with a key from": "значение ключа из",
+    "equip your agent with current sdk patterns, model identifiers, and live documentation lookup for building applications with the": "Оснастите вашего агента актуальными шаблонами SDK, идентификаторами моделей и поиском по живой документации для создания приложений с",
+    "equip your agent with current sdk patterns, model identifiers, and live documentation lookup for building applications with the gemini api.": "Оснастите вашего агента актуальными шаблонами SDK, идентификаторами моделей и поиском по живой документации для создания приложений с Gemini API.",
+    "equip your agent with current sdk patterns, model identifiers, and live documentation lookup for building applications with the gemini api": "Оснастите вашего агента актуальными шаблонами SDK, идентификаторами моделей и поиском по живой документации для создания приложений с Gemini API",
+    "gemini api documentation in google ai studio": "Документация Gemini API в Google AI Studio",
+    "interactions api guide": "Руководство по Interactions API",
+    "github repository (": "Репозиторий GitHub (",
+    "github repository": "Репозиторий GitHub",
+    "build applications with the gemini interactions api and live api, including text, image, video, and speech generation, managed agents, and real-time multimodal streaming.": "Создавайте приложения с помощью Gemini Interactions API и Live API, включая генерацию текста, изображений, видео и речи, управляемых агентов и мультимодальный стриминг в реальном времени.",
+    "build applications with the gemini interactions api and live api, including text, image, video, and speech generation, managed agents, and real-time multimodal streaming .": "Создавайте приложения с помощью Gemini Interactions API и Live API, включая генерацию текста, изображений, видео и речи, управляемых агентов и мультимодальный стриминг в реальном времени.",
+    "build applications with the gemini interactions api and live api, including text, image, video, and speech generation, managed agents, and real-time multimodal streaming": "Создавайте приложения с помощью Gemini Interactions API и Live API, включая генерацию текста, изображений, видео и речи, управляемых агентов и мультимодальный стриминг в реальном времени",
+    "сборка applications with the gemini interactions api and live api, including text, image, video, and speech generation, managed agents, and real-time multimodal streaming .": "Создавайте приложения с помощью Gemini Interactions API и Live API, включая генерацию текста, изображений, видео и речи, управляемых агентов и мультимодальный стриминг в реальном времени.",
+    "сборка applications with the gemini interactions api and live api, including text, image, video, and speech generation, managed agents, and real-time multimodal streaming.": "Создавайте приложения с помощью Gemini Interactions API и Live API, включая генерацию текста, изображений, видео и речи, управляемых агентов и мультимодальный стриминг в реальном времени.",
+    "build a stateful multi-turn chat script using the interactions api and the latest models": "Создать скрипт многошагового чата с сохранением состояния с помощью Interactions API и новейших моделей",
+    "build a stateful multi-turn chat script using the interactions api and the latest models.": "Создать скрипт многошагового чата с сохранением состояния с помощью Interactions API и новейших моделей.",
+    '"build a stateful multi-turn chat script using the interactions api and the latest models."': "«Создать скрипт многошагового чата с сохранением состояния с помощью Interactions API и новейших моделей.»",
+    "сборка a stateful multi-turn chat script using the interactions api and the latest models": "Создать скрипт многошагового чата с сохранением состояния с помощью Interactions API и новейших моделей",
+    "create a real-time voice agent using the gemini live api and non-blocking function calling": "Создать голосового агента реального времени с использованием Gemini Live API и неблокирующего вызова функций",
+    "create a real-time voice agent using the gemini live api and non-blocking function calling.": "Создать голосового агента реального времени с использованием Gemini Live API и неблокирующего вызова функций.",
+    '"create a real-time voice agent using the gemini live api and non-blocking function calling."': "«Создать голосового агента реального времени с использованием Gemini Live API и неблокирующего вызова функций.»",
+    "migrate my project from client.models.generate_content to the interactions api": "Мигрировать мой проект с client.models.generate_content на Interactions API",
+    "migrate my project from client.models.generate_content to the interactions api.": "Мигрировать мой проект с client.models.generate_content на Interactions API.",
+    '"generate multi-speaker dialogue audio using the latest gemini tts models and': "«Сгенерировать аудио диалога с несколькими спикерами с помощью новейших моделей Gemini TTS и аннотаций",
+    "generate multi-speaker dialogue audio using the latest gemini tts models and": "Сгенерировать аудио диалога с несколькими спикерами с помощью новейших моделей Gemini TTS и аннотаций",
+    'annotations."': "».",
+    "annotations.": ".",
+    '"migrate': "«Мигрировать",
+    "migrate": "Мигрировать",
+    '."': "».",
+    "investigate production issues with real dynatrace data: problems and root causes, logs, metrics, traces, and vulnerabilities, via skills and the mcp server.": "Исследуйте проблемы в продакшене на реальных данных Dynatrace: сбои и первопричины, логи, метрики, трейсы и уязвимости с помощью навыков и MCP-сервера.",
+    "investigate production issues with real dynatrace data: problems and root causes, logs, metrics, traces, and vulnerabilities, via skills and the mcp server": "Исследуйте проблемы в продакшене на реальных данных Dynatrace: сбои и первопричины, логи, метрики, трейсы и уязвимости с помощью навыков и MCP-сервера",
+    "accept payments and grow your business. stripe's official mcp server enables ai agents to manage customers, products, prices, payment links, invoices,...": "Принимайте платежи и развивайте свой бизнес. Официальный MCP-сервер Stripe позволяет ИИ-агентам управлять клиентами, продуктами, ценами, платежными ссылками, счетами и...",
+    "accept payments and grow your business. stripe's official mcp server enables ai agents to manage customers, products, prices, payment links, invoices, subscriptions, and refunds, as well as search stripe documentation.": "Принимайте платежи и развивайте свой бизнес. Официальный MCP-сервер Stripe позволяет ИИ-агентам управлять клиентами, продуктами, ценами, платежными ссылками, счетами, подписками и возвратами, а также искать в документации Stripe.",
     "connect antigravity to your notion workspace with the notion mcp server, plus skills for research, documentation, meeting prep, specs, trackers, and...": "Подключите Antigravity к вашему рабочему пространству Notion с помощью MCP-сервера Notion, а также навыков для исследований, документации, подготовки к встречам, спецификаций, трекеров и...",
     "connect antigravity to your notion workspace with the notion mcp server, plus skills for research, documentation, meeting prep, specs, trackers, and project updates.": "Подключите Antigravity к вашему рабочему пространству Notion с помощью MCP-сервера Notion, а также навыков для исследований, документации, подготовки к встречам, спецификаций, трекеров и обновлений проектов.",
     "connect antigravity to your notion workspace with the notion mcp server, plus skills for research, documentation, meeting prep, specs, trackers, and project updates": "Подключите Antigravity к вашему рабочему пространству Notion с помощью MCP-сервера Notion, а также навыков для исследований, документации, подготовки к встречам, спецификаций, трекеров и обновлений проектов",
@@ -2777,6 +2827,116 @@ const regexTranslations = [
         }
     },
     {
+        // Gemini API Marketplace & Details description (must precede generic Build -> Сборка rule!)
+        pattern: /^(?:Build|Сборка)\s+applications\s+with\s+the\s+Gemini\s+Interactions\s+API\s+and\s+Live\s+API.*$/i,
+        replace: () => "Создавайте приложения с помощью Gemini Interactions API и Live API, включая генерацию текста, изображений, видео и речи, управляемых агентов и мультимодальный стриминг в реальном времени."
+    },
+    {
+        // Gemini API Example prompt 1 (must precede generic Build -> Сборка rule!)
+        pattern: /^"?(?:Build|Сборка)\s+a\s+stateful\s+multi-turn\s+chat\s+script\s+using\s+the\s+Interactions\s+API\s+and\s+the\s+latest\s+models\.?"?$/i,
+        replace: (m) => m[0].startsWith('"')
+            ? "«Создать скрипт многошагового чата с сохранением состояния с помощью Interactions API и новейших моделей.»"
+            : "Создать скрипт многошагового чата с сохранением состояния с помощью Interactions API и новейших моделей"
+    },
+    {
+        // Gemini API Example prompt 2
+        pattern: /^"?(?:Create|Создать|Создано)\s+a\s+real-time\s+voice\s+agent\s+using\s+the\s+Gemini\s+Live\s+API\s+and\s+non-blocking\s+function\s+calling\.?"?$/i,
+        replace: (m) => m[0].startsWith('"')
+            ? "«Создать голосового агента реального времени с использованием Gemini Live API и неблокирующего вызова функций.»"
+            : "Создать голосового агента реального времени с использованием Gemini Live API и неблокирующего вызова функций"
+    },
+    {
+        // Gemini API Example prompt 3
+        pattern: /^"?Migrate\s+my\s+project\s+from\s+client\.models\.generate_content\s+to\s+the\s+Interactions\s+API\.?"?$/i,
+        replace: (m) => m[0].startsWith('"')
+            ? "«Мигрировать мой проект с client.models.generate_content на Interactions API.»"
+            : "Мигрировать мой проект с client.models.generate_content на Interactions API"
+    },
+    {
+        // Gemini API Example prompt 4 (TTS)
+        pattern: /^"?Generate\s+multi-speaker\s+dialogue\s+audio\s+using\s+the\s+latest\s+Gemini\s+TTS\s+models\s+and\s*$/i,
+        replace: () => "«Сгенерировать аудио диалога с несколькими спикерами с помощью новейших моделей Gemini TTS и аннотаций "
+    },
+    {
+        // Gemini API subhead in Details
+        pattern: /^Equip\s+your\s+agent\s+with\s+current\s+SDK\s+patterns,\s*model\s+identifiers,\s*and\s+live\s+documentation\s+lookup\s+for\s+building\s+applications\s+with\s+the(?:\s+Gemini\s+API\.?|\s*)$/i,
+        replace: (m) => /gemini\s+api/i.test(m[0])
+            ? "Оснастите вашего агента актуальными шаблонами SDK, идентификаторами моделей и поиском по живой документации для создания приложений с Gemini API."
+            : "Оснастите вашего агента актуальными шаблонами SDK, идентификаторами моделей и поиском по живой документации для создания приложений с "
+    },
+    {
+        // Gemini API skills under Commands (/gemini-api-dev, /gemini-live-api-dev, /gemini-omni-flash-api)
+        pattern: /^Use\s+this\s+skill\s+when\s+writing\s+code\s+that\s+calls\s+the\s+Gemini\s+API\s+for\s+text\s+generation.*$/i,
+        replace: () => "Используйте этот навык при написании кода, вызывающего Gemini API для генерации текста, многошагового чата, мультимодального ввода..."
+    },
+    {
+        pattern: /^Use\s+this\s+skill\s+when\s+building\s+real-time,\s*bidirectional\s+streaming\s+applications\s+with\s+the\s+Gemini\s+Live\s+API.*$/i,
+        replace: () => "Используйте этот навык при создании приложений двунаправленного потокового вещания в реальном времени с помощью Gemini Live API..."
+    },
+    {
+        pattern: /^Use\s+this\s+skill\s+for\s+generative\s+video\s+editing,\s*text-to-video,\s*image-referenced\s+video\s+generation.*$/i,
+        replace: () => "Используйте этот навык для генеративного видеомонтажа, генерации видео по тексту и изображениям, генерации по первому кадру..."
+    },
+    {
+        // Dynatrace Featured / Marketplace card
+        pattern: /^Investigate\s+production\s+issues\s+with\s+real\s+Dynatrace\s+data:.*$/i,
+        replace: () => "Исследуйте проблемы в продакшене на реальных данных Dynatrace: сбои и первопричины, логи, метрики, трейсы и уязвимости с помощью навыков и MCP-сервера."
+    },
+    {
+        // Stripe Featured / Marketplace card
+        pattern: /^Accept\s+payments\s+and\s+grow\s+your\s+business\.\s*Stripe(?:'s|’s)\s+official\s+MCP\s+server.*$/i,
+        replace: (m) => /\.\.\.|…/.test(m[0])
+            ? "Принимайте платежи и развивайте свой бизнес. Официальный MCP-сервер Stripe позволяет ИИ-агентам управлять клиентами, продуктами, ценами, платежными ссылками, счетами,..."
+            : "Принимайте платежи и развивайте свой бизнес. Официальный MCP-сервер Stripe позволяет ИИ-агентам управлять клиентами, продуктами, ценами, платежными ссылками, счетами, подписками и возвратами, а также искать в документации Stripe."
+    },
+    {
+        // Base44 Marketplace card (must precede generic Build -> Сборка)
+        pattern: /^(?:Build|Сборка)\s+and\s+deploy\s+Base44\s+full-stack\s+apps:.*$/i,
+        replace: () => "Создавайте и развертывайте полнофункциональные приложения Base44: управление проектами через CLI, разработка на JavaScript/TypeScript SDK и навыки отладки в продакшене."
+    },
+    {
+        // Netlify & Vercel (also placed before generic Build -> Сборка)
+        pattern: /^(?:Build|Сборка)\s+and\s+deploy\s+on\s+Netlify:.*$/i,
+        replace: () => "Собирайте и развертывайте на Netlify: функции, edge-функции, хранилища, базы данных, авторизацию, формы, CDN изображений, кэширование и AI Gateway вместе с MCP-сервером Netlify."
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+and\s+deploy\s+web\s+apps\s+and\s+AI\s+agents\s+on\s+Vercel.*$/i,
+        replace: () => "Создавайте и развертывайте веб-приложения и ИИ-агентов на Vercel с навыками для Next.js, AI SDK и облачных сервисов, а также официальным MCP-сервером Vercel."
+    },
+    {
+        // Atlassian Teamwork Graph CLI, Bigin, MongoDB Atlas, SentinelOne, Endor Labs, Exabeam, CrowdStrike, Datadog
+        pattern: /^Teamwork\s+Graph\s+CLI\s+is\s+Atlassian(?:'s|’s)\s+agent-first\s+interface.*$/i,
+        replace: () => "Teamwork Graph CLI — это интерфейс Atlassian для ИИ-агентов ко всему вашему рабочему контексту: задачам Jira, страницам Confluence, пул-реквестам Bitbucket и подключенным источникам данных."
+    },
+    {
+        pattern: /^Manage\s+your\s+Bigin\s+CRM\s+from\s+Antigravity:.*$/i,
+        replace: () => "Управляйте вашей CRM Bigin из Antigravity: просматривайте воронки продаж, находите контакты и сделки, фиксируйте звонки, планируйте задачи и отправляйте письма клиентам."
+    },
+    {
+        pattern: /^Official\s+Antigravity\s+plugin\s+for\s+MongoDB\s+Atlas.*$/i,
+        replace: () => "Официальный плагин Antigravity для MongoDB Atlas (хостируемый MCP-сервер + навыки). Подключайтесь к серверу Atlas MCP, исследуйте данные, управляйте коллекциями и оптимизируйте запросы."
+    },
+    {
+        pattern: /^Query\s+your\s+SentinelOne\s+Singularity\s+Console\s+from\s+Antigravity.*$/i,
+        replace: () => "Выполняйте запросы к консоли SentinelOne Singularity из Antigravity через MCP-сервер Purple AI. Требуется активная консоль, URL консоли и API-токен."
+    },
+    {
+        pattern: /^Packaged\s+workflows\s+for\s+SCA\s+remediation,\s*AI\s+SAST\s+triage.*$/i,
+        replace: () => "Готовые рабочие процессы для устранения уязвимостей SCA, триажа AI SAST, проверки CI/CD, реагирования на вредоносный код и настройки Endor Labs."
+    },
+    {
+        pattern: /^Triage\s+Exabeam\s+New-Scale\s+alerts\s+and\s+cases\s+end\s+to\s+end:.*$/i,
+        replace: () => "Полный цикл триажа оповещений и инцидентов Exabeam New-Scale: сбор доказательств, сопоставление с MITRE, вынесение вердикта и запись с подтверждением."
+    },
+    {
+        pattern: /^Use\s+the\s+official\s+CrowdStrike-hosted\s+MCP\s+server\s+to\s+work\s+across\s+Falcon:.*$/i,
+        replace: () => "Используйте официальный MCP-сервер CrowdStrike для работы с платформой Falcon: обнаружениями, инцидентами, аналитикой угроз, SIEM, хостами и уязвимостями."
+    },
+    {
+        pattern: /^Use\s+Datadog\s+directly\s+in\s+Antigravity\s+through\s+a\s+preconfigured\s+Datadog\s+MCP\s+server.*$/i,
+        replace: () => "Используйте Datadog напрямую в Antigravity через преднастроенный MCP-сервер Datadog. Запрашивайте логи, метрики, трейсы и дашборды на естественном языке."
+    },
+    {
         // Marketplace description: "Search and retrieve official documentation across ..."
         // Must precede generic Search rule to prevent partial collision ("Поиск and retrieve...")
         pattern: /^(?:Search|Поиск)\s+and\s+retrieve\s+official\s+documentation.*/i,
@@ -3063,7 +3223,11 @@ const regexTranslations = [
         replace: (match) => {
             const arrow = match[3] ? (' ' + match[3].trim()) : '';
             const suffix = match[2] ? match[2] : '';
-            return `Сборка ${localizeActionTarget(match[1])}${suffix}${arrow}`;
+            const localized = localizeActionTarget(match[1]);
+            if (localized === match[1] && match[1].trim().split(/\s+/).length > 4 && !suffix && !arrow) {
+                return match[0];
+            }
+            return `Сборка ${localized}${suffix}${arrow}`;
         }
     },
     {
@@ -4989,6 +5153,42 @@ function shouldIgnore(node) {
             val === 'developer' ||
             val === 'website' ||
             val === 'repository' ||
+            val === "what's included" ||
+            val === 'whats included' ||
+            val === 'mcp server' ||
+            val === 'prerequisites' ||
+            val === 'example prompts' ||
+            val === 'resources' ||
+            val === 'api key' ||
+            val === 'api key:' ||
+            val === 'sdk installation' ||
+            val === 'sdk installation:' ||
+            val.startsWith('equip your agent with current sdk') ||
+            val.startsWith('so your agent can search and read') ||
+            val.startsWith('environment variable with a key') ||
+            val.startsWith('gemini api documentation') ||
+            val === 'interactions api guide' ||
+            val.startsWith('github repository') ||
+            val.startsWith('build applications with the gemini') ||
+            val.startsWith('сборка applications with the gemini') ||
+            val.includes('stateful multi-turn chat script') ||
+            val.includes('real-time voice agent using the gemini') ||
+            val.includes('migrate my project from') ||
+            val.includes('generate multi-speaker dialogue audio') ||
+            val.startsWith('use this skill when writing code') ||
+            val.startsWith('use this skill when building real-time') ||
+            val.startsWith('use this skill for generative video') ||
+            val.startsWith('investigate production issues with real dynatrace') ||
+            val.startsWith('accept payments and grow your business') ||
+            val.startsWith('build and deploy base44') ||
+            val.startsWith('teamwork graph cli is atlassian') ||
+            val.startsWith('manage your bigin crm') ||
+            val.startsWith('official antigravity plugin for mongodb') ||
+            val.startsWith('query your sentinelone') ||
+            val.startsWith('packaged workflows for sca') ||
+            val.startsWith('triage exabeam') ||
+            val.startsWith('use the official crowdstrike') ||
+            val.startsWith('use datadog directly') ||
             val.startsWith('connect antigravity to your notion') ||
             val.startsWith('the product development system for teams') ||
             val.startsWith('turn figma designs') ||
@@ -5304,6 +5504,42 @@ function isFileName(text, parent) {
         lowerTrimmed === 'developer' ||
         lowerTrimmed === 'website' ||
         lowerTrimmed === 'repository' ||
+        lowerTrimmed === "what's included" ||
+        lowerTrimmed === 'whats included' ||
+        lowerTrimmed === 'mcp server' ||
+        lowerTrimmed === 'prerequisites' ||
+        lowerTrimmed === 'example prompts' ||
+        lowerTrimmed === 'resources' ||
+        lowerTrimmed === 'api key' ||
+        lowerTrimmed === 'api key:' ||
+        lowerTrimmed === 'sdk installation' ||
+        lowerTrimmed === 'sdk installation:' ||
+        lowerTrimmed.startsWith('equip your agent with current sdk') ||
+        lowerTrimmed.startsWith('so your agent can search and read') ||
+        lowerTrimmed.startsWith('environment variable with a key') ||
+        lowerTrimmed.startsWith('gemini api documentation') ||
+        lowerTrimmed === 'interactions api guide' ||
+        lowerTrimmed.startsWith('github repository') ||
+        lowerTrimmed.startsWith('build applications with the gemini') ||
+        lowerTrimmed.startsWith('сборка applications with the gemini') ||
+        lowerTrimmed.includes('stateful multi-turn chat script') ||
+        lowerTrimmed.includes('real-time voice agent using the gemini') ||
+        lowerTrimmed.includes('migrate my project from') ||
+        lowerTrimmed.includes('generate multi-speaker dialogue audio') ||
+        lowerTrimmed.startsWith('use this skill when writing code') ||
+        lowerTrimmed.startsWith('use this skill when building real-time') ||
+        lowerTrimmed.startsWith('use this skill for generative video') ||
+        lowerTrimmed.startsWith('investigate production issues with real dynatrace') ||
+        lowerTrimmed.startsWith('accept payments and grow your business') ||
+        lowerTrimmed.startsWith('build and deploy base44') ||
+        lowerTrimmed.startsWith('teamwork graph cli is atlassian') ||
+        lowerTrimmed.startsWith('manage your bigin crm') ||
+        lowerTrimmed.startsWith('official antigravity plugin for mongodb') ||
+        lowerTrimmed.startsWith('query your sentinelone') ||
+        lowerTrimmed.startsWith('packaged workflows for sca') ||
+        lowerTrimmed.startsWith('triage exabeam') ||
+        lowerTrimmed.startsWith('use the official crowdstrike') ||
+        lowerTrimmed.startsWith('use datadog directly') ||
         lowerTrimmed.startsWith('connect antigravity to your notion') ||
         lowerTrimmed.startsWith('the product development system for teams') ||
         lowerTrimmed.startsWith('turn figma designs') ||
@@ -6255,7 +6491,7 @@ function initLanguageSwitcher() {
             const resp = await fetch('http://127.0.0.1:39228/status');
             if (resp.ok) {
                 const data = await resp.json();
-                const currentVer = data.version || '2.1.7';
+                const currentVer = data.version || '2.1.8';
                 btnRu.title = 'Русская локализация v' + currentVer + (data.latestRemoteVersion ? ' (GitHub: v' + data.latestRemoteVersion + ')' : '');
 
                 isUpdatePending = !!data.updatePending;

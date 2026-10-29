@@ -1,8 +1,8 @@
 {
-  "version": "2.1.7",
-  "releasedAt": "2026-10-29T22:10:55.725Z",
+  "version": "2.1.8",
+  "releasedAt": "2026-10-29T22:15:12.172Z",
   "requiresRestart": false,
-  "changelog": "Исправлено сохранение и восстановление положения, размера, монитора, полноэкранного/развернутого режима и масштаба (zoom) окна при закрытии (Geometry Patch V2); добавлен перевод карточек Marketplace (Featured, Details, Developer, Website, Repository, Notion, Linear) и меню веток (Local Checkout, New Worktree)",
+  "changelog": "Добавлен полный перевод страницы и примеров плагина Gemini API, карточек Dynatrace, Stripe и остальных плагинов Marketplace, а также устранена частичная подмена Build -> Сборка в длинных описаниях",
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",
