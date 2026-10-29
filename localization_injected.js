@@ -1671,7 +1671,83 @@ const translationDictionary = {
     "build and deploy web apps and ai agents on vercel with skills for next.js, ai sdk, and cloud services, plus the official vercel mcp server.": "Создавайте и развертывайте веб-приложения и ИИ-агентов на Vercel с навыками для Next.js, AI SDK и облачных сервисов, а также официальным MCP-сервером Vercel.",
     "add auth0 authentication to any app: login, mfa, sso, organizations, rbac, custom domains, and branding. debug auth errors and migrate from other providers.": "Добавляйте аутентификацию Auth0 в любое приложение: вход, MFA, SSO, организации, RBAC, кастомные домены и брендинг. Отлаживайте ошибки авторизации и мигрируйте от других провайдеров.",
     "databricks skills for the cli, apps, lakebase, model serving, lakeflow jobs, spark declarative pipelines, declarative automation bundles (dabs), and classic-to-serverless migration.": "Навыки Databricks для CLI, приложений, Lakebase, обслуживания моделей, задач Lakeflow, декларативных пайплайнов Spark, пакетов автоматизации (DAB) и миграции на serverless.",
-    "give your agent a real browser: navigate, click, type, screenshot, and extract data from any site, locally or on browserbase cloud browsers.": "Дайте вашему агенту полноценный браузер: переходите по страницам, нажимайте, вводите текст, делайте скриншоты и извлекайте данные с любых сайтов локально или в облаке Browserbase."
+    "give your agent a real browser: navigate, click, type, screenshot, and extract data from any site, locally or on browserbase cloud browsers.": "Дайте вашему агенту полноценный браузер: переходите по страницам, нажимайте, вводите текст, делайте скриншоты и извлекайте данные с любых сайтов локально или в облаке Browserbase.",
+    // v2.1.10 — Canva, Figma, Mobbin, Atlassian Teamwork Graph CLI, Dropbox, Linear
+    "resize this canva design for instagram and linkedin": "Изменить размер этого дизайна Canva для Instagram и LinkedIn",
+    "review this canva design and suggest improvements": "Проверить этот дизайн Canva и предложить улучшения",
+    "check this canva design against my brand kit": "Проверить этот дизайн Canva на соответствие моему бренд-киту",
+    "проверка this canva design against my brand kit": "Проверить этот дизайн Canva на соответствие моему бренд-киту",
+    "implement this figma frame as a react component: <link>": "Реализовать этот фрейм Figma как React-компонент: <ссылка>",
+    "connect my button component to its figma component with code connect": "Связать мой компонент Button с компонентом Figma через Code Connect",
+    "create a figma design for a login screen that matches my design system": "Создать дизайн экрана входа в Figma в соответствии с моей дизайн-системой",
+    "give your ai agent 600,000+ real app screens, and the skills to use them. includes the mobbin mcp and a skill that redesigns your screen from patterns real apps ship, in your own design system, with the references behind every change.": "Предоставьте вашему ИИ-агенту более 600 000 экранов реальных приложений и навыки работы с ними. Включает Mobbin MCP и навык редизайна экранов на основе проверенных паттернов реальных приложений в вашей дизайн-системе с референсами для каждого изменения.",
+    "find home screen examples from banking apps and save them to a collection": "Найти примеры главных экранов банковских приложений и сохранить их в коллекцию",
+    "compare how ai tools design their pricing sections": "Сравнить, как ИИ-сервисы оформляют разделы с тарифами",
+    "review my paywall screen against the ones i saved in collections": "Проверить мой экран пейволла в сравнении с сохранёнными в коллекциях",
+    'teamwork graph cli is atlassian\'s agent-first interface to your entire work context: jira issues, confluence pages, bitbucket prs, along with your connected third-party data sources. purpose-built for coding agents like antigravity (terminal or desktop), and powered by atlassian\'s context graph. try: "draft a jira issue from this pr and link it to the epic." run /twg-setup after install to connect atlassian teamwork graph cli to antigravity.': 'Teamwork Graph CLI — это интерфейс Atlassian для ИИ-агентов ко всему вашему рабочему контексту: задачам Jira, страницам Confluence, пул-реквестам Bitbucket и подключённым сторонним источникам данных. Создан специально для кодинг-агентов вроде Antigravity (в терминале или на десктопе) на базе графа контекста Atlassian. Попробуйте: «составь задачу в Jira из этого PR и привяжи её к эпику». Запустите /twg-setup после установки, чтобы подключить Atlassian Teamwork Graph CLI к Antigravity.',
+    "help me implement [jira-123]. retrieve the requirements, acceptance criteria, and linked design decisions. inspect this repository and propose an implementation plan before changing code.": "Помоги мне реализовать [JIRA-123]. Получи требования, критерии приёмки и связанные архитектурные решения. Изучи этот репозиторий и предложи план реализации перед изменением кода.",
+    "investigate [jira-123] in this repository. find related bugs, previous fixes, and relevant technical decisions. recommend a fix and the tests needed to verify it.": "Исследуй [JIRA-123] в этом репозитории. Найди связанные баги, предыдущие исправления и релевантные технические решения. Предложи исправление и тесты для его проверки.",
+    "review my current changes against [jira-123] and its linked specification. flag missed requirements, conflicting decisions, and missing tests.": "Проверь мои текущие изменения на соответствие [JIRA-123] и связанной спецификации. Отметь пропущенные требования, противоречивые решения и недостающие тесты.",
+    "find and summarize the q4 planning deck in dropbox": "Найти и сделать сводку презентации планирования на 4-й квартал в Dropbox",
+    "create a shared link for the launch folder": "Создать общую ссылку для папки Launch",
+    "review duplicate exports in this folder and ask before deleting anything": "Проверить дубликаты экспортов в этой папке и спросить перед удалением",
+    "dropbox for google antigravity": "Dropbox для Google Antigravity",
+    "find, summarize, share, collect uploads, and organize your dropbox files in antigravity. antigravity asks before making changes to your files.": "Находите, делайте сводки, делитесь, собирайте загрузки и упорядочивайте файлы Dropbox в Antigravity. Antigravity запрашивает подтверждение перед внесением изменений в ваши файлы.",
+    "show my assigned linear issues, grouped by priority.": "Покажи назначенные мне задачи в Linear, сгруппированные по приоритету.",
+    "show my assigned linear issues, grouped by priority": "Покажи назначенные мне задачи в Linear, сгруппированные по приоритету",
+    "summarize recent updates to my linear projects.": "Сделай сводку последних обновлений по моим проектам в Linear.",
+    "summarize recent updates to my linear projects": "Сделай сводку последних обновлений по моим проектам в Linear",
+    "find linear issues related to the code i am working on.": "Найди задачи в Linear, связанные с кодом, над которым я работаю.",
+    "find linear issues related to the code i am working on": "Найди задачи в Linear, связанные с кодом, над которым я работаю",
+    "create a linear issue for the bug we just found.": "Создай задачу в Linear для только что найденного бага.",
+    "create a linear issue for the bug we just found": "Создай задачу в Linear для только что найденного бага",
+    "add a progress update to the issue i am working on.": "Добавь обновление статуса в задачу, над которой я работаю.",
+    "add a progress update to the issue i am working on": "Добавь обновление статуса в задачу, над которой я работаю",
+    "linear for antigravity": "Linear для Antigravity",
+    "bring your linear workspace into antigravity": "Подключите рабочее пространство Linear к Antigravity",
+    "find issues, manage projects, and keep your work up to date. connect your code to the work happening in linear.": "Находите задачи, управляйте проектами и поддерживайте актуальность работы. Свяжите свой код с задачами в Linear.",
+    "find issues, manage projects, and keep your work up to date.": "Находите задачи, управляйте проектами и поддерживайте актуальность работы.",
+    "connect your code to the work happening in linear.": "Свяжите свой код с задачами в Linear.",
+    "the linear plugin connects antigravity to your linear workspace. find issues, read project updates, and create or update issues and documents without leaving your development workflow.": "Плагин Linear подключает Antigravity к вашему рабочему пространству Linear. Находите задачи, читайте обновления проектов, создавайте или обновляйте задачи и документы, не покидая процесс разработки.",
+    "the plugin uses": "Плагин использует",
+    "linear's hosted mcp server": "облачный MCP-сервер Linear",
+    "linear’s hosted mcp server": "облачный MCP-сервер Linear",
+    ". sign in with your linear account to get started. no api key or local server is required.": ". Войдите в аккаунт Linear, чтобы начать работу. API-ключ или локальный сервер не требуются.",
+    "sign in with your linear account to get started. no api key or local server is required.": "Войдите в аккаунт Linear, чтобы начать работу. API-ключ или локальный сервер не требуются.",
+    "1. install from the marketplace": "1. Установка из Маркетплейса",
+    "in antigravity, find": "в Antigravity, найдите",
+    "in the marketplace, and click": "в Маркетплейсе и нажмите",
+    "2. connect your linear account": "2. Подключение аккаунта Linear",
+    "installing the plugin is the first step. connect your account before using linear tools.": "Установка плагина — это первый шаг. Подключите свой аккаунт перед использованием инструментов Linear.",
+    ", on macos).": " на macOS).",
+    "on macos).": "на macOS).",
+    "2. click": "2. Нажмите",
+    "next to the plugin's linear mcp server.": "рядом с MCP-сервером Linear этого плагина.",
+    "next to the plugin’s linear mcp server.": "рядом с MCP-сервером Linear этого плагина.",
+    "3. sign in to linear in your browser and authorize your workspace.": "3. Войдите в Linear в браузере и авторизуйте рабочее пространство.",
+    "4. copy the authorization code shown after approval.": "4. Скопируйте код авторизации, отобразившийся после подтверждения.",
+    "5. return to antigravity, paste the code into the authentication field in settings, and click": "5. Вернитесь в Antigravity, вставьте код в поле аутентификации в настройках и нажмите",
+    "paste the code into settings, not agent chat. antigravity reconnects the server after authentication and refreshes expired access tokens automatically.": "Вставляйте код в настройки, а не в чат агента. Antigravity автоматически переподключает сервер после аутентификации и обновляет истёкшие токены доступа.",
+    "3. try it out": "3. Попробуйте в деле",
+    "ask antigravity:": "Спросите Antigravity:",
+    "once antigravity retrieves your issues from linear, you're connected. you can also try:": "Как только Antigravity получит ваши задачи из Linear, подключение готово. Вы также можете попробовать:",
+    "once antigravity retrieves your issues from linear, you’re connected. you can also try:": "Как только Antigravity получит ваши задачи из Linear, подключение готово. Вы также можете попробовать:",
+    "troubleshooting": "Устранение неполадок",
+    "installed, but linear tools are unavailable": "Плагин установлен, но инструменты Linear недоступны",
+    "check that the plugin is enabled, then open": "Убедитесь, что плагин включён, затем откройте",
+    "проверка that the plugin is enabled, then open": "Убедитесь, что плагин включён, затем откройте",
+    "and authenticate its linear mcp server. installation does not sign you in automatically.": "и авторизуйте его MCP-сервер Linear. Установка не выполняет вход автоматически.",
+    "browser sign-in finished, but antigravity is still waiting": "Вход в браузере завершён, но Antigravity всё ещё ожидает",
+    "copy the authorization code from the browser, return to the authentication field in antigravity settings, and click": "Скопируйте код авторизации из браузера, вернитесь к полю аутентификации в настройках Antigravity и нажмите",
+    "this manual handoff is part of": "Эта ручная передача кода является частью",
+    "antigravity's oauth flow": "процесса OAuth в Antigravity",
+    "antigravity’s oauth flow": "процесса OAuth в Antigravity",
+    "the connection stopped working": "Соединение перестало работать",
+    "refresh or reconnect the linear mcp server in antigravity. complete authentication again if prompted. for workspace access and authentication help, see the": "Обновите или переподключите MCP-сервер Linear в Antigravity. При появлении запроса повторите аутентификацию. Справку по доступу к рабочему пространству и аутентификации см. в",
+    "linear mcp documentation": "документации Linear MCP",
+    "development": "Разработка",
+    "for local installation, package details, and release validation, see": "Инструкции по локальной установке, сведения о пакете и проверке релизов см. в",
+    "fix quote escaping in localization_injected.js, validate, build and deploy app.asar": "Исправление экранирования кавычек в localization_injected.js, проверка, сборка и деплой app.asar"
 };
 
 function localizeActionTarget(target) {
@@ -1802,6 +1878,7 @@ function localizeActionTarget(target) {
     if (/^Russian\s+menu\s+translations\s+in\s+(.+)$/i.test(t)) {
         return `русских переводов меню в ${t.match(/^Russian\s+menu\s+translations\s+in\s+(.+)$/i)[1]}`;
     }
+    if (/^fix\s+quote\s+escaping\s+in\s+localization_injected\.js,\s*validate,\s*build\s+and\s+deploy\s+app\.asar$/i.test(t)) return 'Исправление экранирования кавычек в localization_injected.js, проверка, сборка и деплой app.asar';
     if (/^cli\s+versions$/i.test(t)) return 'версий CLI';
     if (/^openwrt\s+hosts$/i.test(t)) return 'openwrt hosts';
     if (/unit\s+tests?$/i.test(t)) return t.replace(/unit\s+tests?$/i, 'unit-тестов');
@@ -2282,6 +2359,221 @@ const regexTranslations = [
         pattern: /^(\d+(?:[.,]\d+)?)%\s+(?:left|remaining)$/i,
         replace: (match) => `Осталось ${match[1]}%`
     },
+    // --- v2.1.10: Chat Tool Steps & Marketplace Plugin Details (must precede generic verb rules) ---
+    {
+        // "Searched marketplace for "<query>"" / "Searching marketplace for "<query>""
+        pattern: /^(?:Searched|Searching|Поиск(?:\s+в)?)\s+marketplace(?:\s+for\s+(.+))?$/i,
+        replace: (match) => match[1] ? `Поиск в Маркетплейсе: ${match[1].trim()}` : "Поиск в Маркетплейсе"
+    },
+    {
+        // "<action> · Exited with code 1 >" or standalone "Exited with code 1 >"
+        pattern: /^(?:(.+?)\s*([·•・])\s*)?(?:Exited\s+with\s+code|Завершено\s+с\s+кодом)\s+(-?\d+)(\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+))?$/i,
+        replace: (match) => {
+            const code = match[3];
+            const arrow = match[4] ? (' ' + match[4].trim()) : '';
+            if (match[1]) {
+                const rawCmd = match[1].trim();
+                const lowerCmd = rawCmd.toLowerCase();
+                const locCmd = translationDictionary[lowerCmd] || localizeActionTarget(rawCmd) || rawCmd;
+                const bullet = match[2] || '·';
+                return `${locCmd} ${bullet} Завершено с кодом ${code}${arrow}`;
+            }
+            const leadingBullet = match[2] ? (match[2] + ' ') : '';
+            return `${leadingBullet}Завершено с кодом ${code}${arrow}`;
+        }
+    },
+    {
+        // Canva example prompts & commands
+        pattern: /^Resize\s+this\s+Canva\s+design\s+for\s+Instagram\s+and\s+LinkedIn\.?$/i,
+        replace: () => "Изменить размер этого дизайна Canva для Instagram и LinkedIn"
+    },
+    {
+        pattern: /^Review\s+this\s+Canva\s+design\s+and\s+suggest\s+improvements\.?$/i,
+        replace: () => "Проверить этот дизайн Canva и предложить улучшения"
+    },
+    {
+        pattern: /^(?:Check|Проверка)\s+this\s+Canva\s+design\s+against\s+my\s+brand\s+kit\.?$/i,
+        replace: () => "Проверить этот дизайн Canva на соответствие моему бренд-киту"
+    },
+    {
+        pattern: /^(?:Check|Проверка)\s+a\s+Canva\s+design\s+against\s+a\s+brand\s+kit\s+and\s+report\s+where\s+it\s+diverges.*$/i,
+        replace: () => "Проверить дизайн Canva на соответствие бренд-киту и сообщить о расхождениях — цветах вне палитры, несоответствующих шрифтах..."
+    },
+    {
+        pattern: /^Bulk-create\s+Canva\s+designs\s+from\s+tabular\s+data\s+using\s+a\s+brand\s+template.*$/i,
+        replace: () => "Массовое создание дизайнов Canva из табличных данных по брендовому шаблону с полями автозаполнения..."
+    },
+    {
+        pattern: /^(?:Review|Read|Чтение|Просмотр)\s+a\s+Canva\s+design\s+and\s+return\s+structured,\s*actionable\s+design\s+feedback.*$/i,
+        replace: () => "Проанализировать дизайн Canva и вернуть структурированные рекомендации по визуальной иерархии, тексту и композиции..."
+    },
+    {
+        pattern: /^Make\s+edits\s+to\s+an\s+existing\s+Canva\s+design\s*[—–-]\s*change\s+or\s+fix\s+text.*$/i,
+        replace: () => "Внести правки в существующий дизайн Canva — изменить или исправить текст, заменить/вставить/удалить изображения и видео..."
+    },
+    {
+        pattern: /^Implement\s+reviewer\s+feedback\s+on\s+a\s+Canva\s+design\.\s*Reads\s+all\s+comment\s+threads.*$/i,
+        replace: () => "Применить правки ревьюера к дизайну Canva: чтение всех веток комментариев и внесение изменений..."
+    },
+    {
+        pattern: /^Resize\s+a\s+Canva\s+design\s+into\s+multiple\s+social\s+media\s+formats.*$/i,
+        replace: () => "Изменить размер дизайна Canva под форматы соцсетей (пост и история Facebook, Instagram и др.)..."
+    },
+    {
+        // Figma example prompts
+        pattern: /^Implement\s+this\s+Figma\s+frame\s+as\s+a\s+React\s+component:\s*(?:<link>|<ссылка>)$/i,
+        replace: () => "Реализовать этот фрейм Figma как React-компонент: <ссылка>"
+    },
+    {
+        pattern: /^Connect\s+my\s+Button\s+component\s+to\s+its\s+Figma\s+component\s+with\s+Code\s+Connect\.?$/i,
+        replace: () => "Связать мой компонент Button с компонентом Figma через Code Connect"
+    },
+    {
+        pattern: /^(?:Create|Создать|Создано)\s+a\s+Figma\s+design\s+for\s+a\s+login\s+screen\s+that\s+matches\s+my\s+design\s+system\.?$/i,
+        replace: () => "Создать дизайн экрана входа в Figma в соответствии с моей дизайн-системой"
+    },
+    {
+        // Mobbin description, example prompts & commands
+        pattern: /^Give\s+your\s+AI\s+agent\s+600[,.]?000\+\s+real\s+app\s+screens,\s*and\s+the\s+skills\s+to\s+use\s+them\.\s*Includes\s+the\s+Mobbin\s+MCP.*$/i,
+        replace: () => "Предоставьте вашему ИИ-агенту более 600 000 экранов реальных приложений и навыки работы с ними. Включает Mobbin MCP и навык редизайна экранов на основе проверенных паттернов реальных приложений в вашей дизайн-системе с референсами для каждого изменения."
+    },
+    {
+        pattern: /^Find\s+home\s+screen\s+examples\s+from\s+banking\s+apps\s+and\s+save\s+them\s+to\s+a\s+collection\.?$/i,
+        replace: () => "Найти примеры главных экранов банковских приложений и сохранить их в коллекцию"
+    },
+    {
+        pattern: /^Compare\s+how\s+AI\s+tools\s+design\s+their\s+pricing\s+sections\.?$/i,
+        replace: () => "Сравнить, как ИИ-сервисы оформляют разделы с тарифами"
+    },
+    {
+        pattern: /^Review\s+my\s+paywall\s+screen\s+against\s+the\s+ones\s+I\s+saved\s+in\s+collections\.?$/i,
+        replace: () => "Проверить мой экран пейволла в сравнении с сохранёнными в коллекциях"
+    },
+    {
+        pattern: /^Tells\s+your\s+agent\s+what\s+Mobbin\s+can\s+and\s+can(?:'t|’t)\s+do\s+and\s+how\s+the\s+Mobbin\s+skills\s+work\s+together.*$/i,
+        replace: () => "Объясняет агенту возможности Mobbin и то, как навыки Mobbin работают вместе для выбора правильного подхода..."
+    },
+    {
+        pattern: /^Makes\s+every\s+report\s+a\s+Mobbin\s+skill\s+writes\s+read\s+like\s+a\s+person\s+wrote\s+it.*$/i,
+        replace: () => "Делает каждый отчёт навыка Mobbin живым и понятным, простым языком интерфейса..."
+    },
+    {
+        pattern: /^Redesign\s+any\s+screen\s+from\s+patterns\s+real\s+apps\s+ship\.\s*Share\s+a\s+screenshot.*$/i,
+        replace: () => "Редизайн любого экрана на основе паттернов реальных приложений по скриншоту, коду или макету..."
+    },
+    {
+        pattern: /^Gets\s+better\s+results\s+from\s+every\s+Mobbin\s+search,\s*so\s+the\s+references\s+match.*$/i,
+        replace: () => "Улучшает результаты каждого поиска в Mobbin, чтобы референсы точно соответствовали вашей задаче..."
+    },
+    {
+        // Atlassian Teamwork Graph CLI description, prompts & commands
+        pattern: /^Teamwork\s+Graph\s+CLI\s+is\s+Atlassian(?:'s|’s)\s+agent-first\s+interface\s+to\s+your\s+entire\s+work\s+context:[\s\S]*$/i,
+        replace: (m) => /Purpose-built/i.test(m[0])
+            ? "Teamwork Graph CLI — это интерфейс Atlassian для ИИ-агентов ко всему вашему рабочему контексту: задачам Jira, страницам Confluence, пул-реквестам Bitbucket и подключённым сторонним источникам данных. Создан специально для кодинг-агентов вроде Antigravity (в терминале или на десктопе) на базе графа контекста Atlassian. Попробуйте: «составь задачу в Jira из этого PR и привяжи её к эпику». Запустите /twg-setup после установки, чтобы подключить Atlassian Teamwork Graph CLI к Antigravity."
+            : "Teamwork Graph CLI — это интерфейс Atlassian для ИИ-агентов ко всему вашему рабочему контексту: задачам Jira, страницам Confluence, пул-реквестам Bitbucket и подключенным источникам данных."
+    },
+    {
+        pattern: /^Help\s+me\s+implement\s+\[JIRA-123\]\.\s*Retrieve\s+the\s+requirements.*$/i,
+        replace: () => "Помоги мне реализовать [JIRA-123]. Получи требования, критерии приёмки и связанные архитектурные решения. Изучи этот репозиторий и предложи план реализации перед изменением кода."
+    },
+    {
+        pattern: /^Investigate\s+\[JIRA-123\]\s+in\s+this\s+repository\.\s*Find\s+related\s+bugs.*$/i,
+        replace: () => "Исследуй [JIRA-123] в этом репозитории. Найди связанные баги, предыдущие исправления и релевантные технические решения. Предложи исправление и тесты для его проверки."
+    },
+    {
+        pattern: /^Review\s+my\s+current\s+changes\s+against\s+\[JIRA-123\]\s+and\s+its\s+linked\s+specification.*$/i,
+        replace: () => "Проверь мои текущие изменения на соответствие [JIRA-123] и связанной спецификации. Отметь пропущенные требования, противоречивые решения и недостающие тесты."
+    },
+    {
+        pattern: /^Install,\s*upgrade,\s*authenticate,\s*or\s+repair\s+`?twg`?\s+for\s+Antigravity.*$/i,
+        replace: () => "Установка, обновление, авторизация или восстановление `twg` для Antigravity, включая установку CLI, навыков и проверку авторизации..."
+    },
+    {
+        // Dropbox prompts, overview & commands
+        pattern: /^Find\s+and\s+summarize\s+the\s+Q4\s+planning\s+deck\s+in\s+Dropbox\.?$/i,
+        replace: () => "Найти и сделать сводку презентации планирования на 4-й квартал в Dropbox"
+    },
+    {
+        pattern: /^(?:Create|Создать|Создано)\s+a\s+shared\s+link\s+for\s+the\s+Launch\s+folder\.?$/i,
+        replace: () => "Создать общую ссылку для папки Launch"
+    },
+    {
+        pattern: /^Review\s+duplicate\s+exports\s+in\s+this\s+folder\s+and\s+ask\s+before\s+deleting\s+anything\.?$/i,
+        replace: () => "Проверить дубликаты экспортов в этой папке и спросить перед удалением"
+    },
+    {
+        pattern: /^Dropbox\s+for\s+Google\s+Antigravity$/i,
+        replace: () => "Dropbox для Google Antigravity"
+    },
+    {
+        pattern: /^Find,\s*summarize,\s*share,\s*collect\s+uploads,\s*and\s+organize\s+your\s+Dropbox\s+files\s+in\s+Antigravity.*$/i,
+        replace: () => "Находите, делайте сводки, делитесь, собирайте загрузки и упорядочивайте файлы Dropbox в Antigravity. Antigravity запрашивает подтверждение перед внесением изменений в ваши файлы."
+    },
+    {
+        pattern: /^Clean\s+up\s+Dropbox\s+content\s+by\s+identifying\s+obsolete,\s*duplicate,\s*temporary,\s*or\s+unwanted\s+files.*$/i,
+        replace: () => "Очистка содержимого Dropbox путём выявления устаревших, дублирующихся, временных или ненужных файлов..."
+    },
+    {
+        pattern: /^(?:Create|Создать|Создано),\s*inspect,\s*and\s+manage\s+Dropbox\s+file\s+requests\s+for\s+collecting\s+uploads.*$/i,
+        replace: () => "Создание, проверка и управление запросами файлов в Dropbox для сбора загрузок от других пользователей..."
+    },
+    {
+        pattern: /^Find\s+Dropbox\s+files\s+and\s+folders\s+relevant\s+to\s+a\s+user\s+request.*$/i,
+        replace: () => "Поиск файлов и папок в Dropbox по запросу пользователя..."
+    },
+    {
+        pattern: /^(?:Inspect|Проверка)\s+a\s+Dropbox\s+file\s+or\s+folder\s+by\s+checking\s+metadata,\s*shared\s+links.*$/i,
+        replace: () => "Проверка файла или папки в Dropbox: просмотр метаданных, общих ссылок и содержимого файла..."
+    },
+    {
+        pattern: /^Organize\s+Dropbox\s+files\s+and\s+folders\s+by\s+creating\s+folders,\s*copying\s+content.*$/i,
+        replace: () => "Организация файлов и папок в Dropbox: создание папок, копирование и перемещение содержимого..."
+    },
+    {
+        pattern: /^Share\s+Dropbox\s+files\s+or\s+folders\s+by\s+creating\s+shared\s+links,\s*inspecting\s+existing.*$/i,
+        replace: () => "Общий доступ к файлам и папкам Dropbox: создание и проверка общих ссылок..."
+    },
+    {
+        // Linear prompts & README sections
+        pattern: /^Show\s+my\s+assigned\s+Linear\s+issues,\s*grouped\s+by\s+priority\.?$/i,
+        replace: () => "Покажи назначенные мне задачи в Linear, сгруппированные по приоритету."
+    },
+    {
+        pattern: /^Summarize\s+recent\s+updates\s+to\s+my\s+Linear\s+projects\.?$/i,
+        replace: () => "Сделай сводку последних обновлений по моим проектам в Linear."
+    },
+    {
+        pattern: /^Find\s+Linear\s+issues\s+related\s+to\s+the\s+code\s+I\s+am\s+working\s+on\.?$/i,
+        replace: () => "Найди задачи в Linear, связанные с кодом, над которым я работаю."
+    },
+    {
+        pattern: /^(?:Create|Создать|Создано)\s+a\s+Linear\s+issue\s+for\s+the\s+bug\s+we\s+just\s+found\.?$/i,
+        replace: () => "Создай задачу в Linear для только что найденного бага."
+    },
+    {
+        pattern: /^Add\s+a\s+progress\s+update\s+to\s+the\s+issue\s+I\s+am\s+working\s+on\.?$/i,
+        replace: () => "Добавь обновление статуса в задачу, над которой я работаю."
+    },
+    {
+        pattern: /^(?:Check|Проверка)\s+that\s+the\s+plugin\s+is\s+enabled,\s*then\s+open$/i,
+        replace: () => "Убедитесь, что плагин включён, затем откройте"
+    },
+    {
+        pattern: /^Linear\s+for\s+Antigravity$/i,
+        replace: () => "Linear для Antigravity"
+    },
+    {
+        pattern: /^Bring\s+your\s+Linear\s+workspace\s+into\s+Antigravity$/i,
+        replace: () => "Подключите рабочее пространство Linear к Antigravity"
+    },
+    {
+        pattern: /^Find\s+issues,\s*manage\s+projects,\s*and\s+keep\s+your\s+work\s+up\s+to\s+date\.\s*Connect\s+your\s+code\s+to\s+the\s+work\s+happening\s+in\s+Linear\.?$/i,
+        replace: () => "Находите задачи, управляйте проектами и поддерживайте актуальность работы. Свяжите свой код с задачами в Linear."
+    },
+    {
+        pattern: /^The\s+Linear\s+plugin\s+connects\s+Antigravity\s+to\s+your\s+Linear\s+workspace\..*$/i,
+        replace: () => "Плагин Linear подключает Antigravity к вашему рабочему пространству Linear. Находите задачи, читайте обновления проектов, создавайте или обновляйте задачи и документы, не покидая процесс разработки."
+    },
     {
         // "Workspace" / "Workspaces"
         pattern: /^Workspaces?$/i,
@@ -2690,7 +2982,9 @@ const regexTranslations = [
         pattern: /^(?:Verify|Verifying)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
-            return `Проверка ${localizeActionTarget(match[1])}${arrow}`;
+            const localized = localizeActionTarget(match[1]);
+            if (localized === match[1] && match[1].trim().split(/\s+/).length > 4 && !arrow) return match[0];
+            return `Проверка ${localized}${arrow}`;
         }
     },
     {
@@ -2800,7 +3094,9 @@ const regexTranslations = [
         pattern: /^(?:Inspect|Inspecting)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
-            return `Проверка ${localizeActionTarget(match[1])}${arrow}`;
+            const localized = localizeActionTarget(match[1]);
+            if (localized === match[1] && match[1].trim().split(/\s+/).length > 4 && !arrow) return match[0];
+            return `Проверка ${localized}${arrow}`;
         }
     },
     {
@@ -2816,7 +3112,9 @@ const regexTranslations = [
         pattern: /^(?:Read|Reading)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
-            return `Чтение ${localizeActionTarget(match[1])}${arrow}`;
+            const localized = localizeActionTarget(match[1]);
+            if (localized === match[1] && match[1].trim().split(/\s+/).length > 4 && !arrow) return match[0];
+            return `Чтение ${localized}${arrow}`;
         }
     },
     {
@@ -3290,7 +3588,9 @@ const regexTranslations = [
         pattern: /^(?:Check|Checking)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
-            return `Проверка ${localizeActionTarget(match[1])}${arrow}`;
+            const localized = localizeActionTarget(match[1]);
+            if (localized === match[1] && match[1].trim().split(/\s+/).length > 4 && !arrow) return match[0];
+            return `Проверка ${localized}${arrow}`;
         }
     },
     {
@@ -5303,6 +5603,92 @@ function shouldIgnore(node) {
             val === 'worktrees' ||
             val === 'featured' ||
             val === 'details' ||
+            val.includes('exited with code') ||
+            val.includes('завершено с кодом') ||
+            val.startsWith('searched marketplace') ||
+            val.startsWith('searching marketplace') ||
+            val.startsWith('fix quote escaping') ||
+            val.startsWith('resize this canva') ||
+            val.startsWith('review this canva') ||
+            val.startsWith('check this canva') ||
+            val.startsWith('проверка this canva') ||
+            val.startsWith('check a canva') ||
+            val.startsWith('проверка a canva') ||
+            val.startsWith('bulk-create canva') ||
+            val.startsWith('review a canva') ||
+            val.startsWith('read a canva') ||
+            val.startsWith('чтение a canva') ||
+            val.startsWith('make edits to an existing canva') ||
+            val.startsWith('implement reviewer feedback') ||
+            val.startsWith('resize a canva') ||
+            val.startsWith('implement this figma') ||
+            val.startsWith('connect my button') ||
+            val.startsWith('create a figma') ||
+            val.startsWith('find home screen examples') ||
+            val.startsWith('compare how ai tools') ||
+            val.startsWith('review my paywall') ||
+            val.startsWith('tells your agent what mobbin') ||
+            val.startsWith('makes every report a mobbin') ||
+            val.startsWith('redesign any screen') ||
+            val.startsWith('gets better results from every mobbin') ||
+            val.startsWith('help me implement [jira-123]') ||
+            val.startsWith('investigate [jira-123]') ||
+            val.startsWith('review my current changes against [jira-123]') ||
+            val.startsWith('install, upgrade, authenticate, or repair') ||
+            val.startsWith('find and summarize the q4') ||
+            val.startsWith('create a shared link for the launch') ||
+            val.startsWith('review duplicate exports') ||
+            val === 'dropbox for google antigravity' ||
+            val.startsWith('find, summarize, share, collect uploads') ||
+            val.startsWith('clean up dropbox content') ||
+            val.startsWith('create, inspect, and manage dropbox') ||
+            val.startsWith('find dropbox files') ||
+            val.startsWith('inspect a dropbox') ||
+            val.startsWith('проверка a dropbox') ||
+            val.startsWith('organize dropbox files') ||
+            val.startsWith('share dropbox files') ||
+            val.startsWith('show my assigned linear') ||
+            val.startsWith('summarize recent updates to my linear') ||
+            val.startsWith('find linear issues') ||
+            val.startsWith('create a linear issue') ||
+            val.startsWith('add a progress update') ||
+            val === 'linear for antigravity' ||
+            val === 'bring your linear workspace into antigravity' ||
+            val.startsWith('find issues, manage projects') ||
+            val.startsWith('connect your code to the work') ||
+            val.startsWith('the linear plugin connects') ||
+            val === 'the plugin uses' ||
+            val.includes('hosted mcp server') ||
+            val.includes('sign in with your linear account') ||
+            val === '1. install from the marketplace' ||
+            val === 'in antigravity, find' ||
+            val === 'in the marketplace, and click' ||
+            val === '2. connect your linear account' ||
+            val.startsWith('installing the plugin is the first step') ||
+            val.endsWith('on macos).') ||
+            val === '2. click' ||
+            val.includes('linear mcp server') ||
+            val.startsWith('3. sign in to linear') ||
+            val.startsWith('4. copy the authorization code') ||
+            val.startsWith('5. return to antigravity') ||
+            val.startsWith('paste the code into settings') ||
+            val === '3. try it out' ||
+            val === 'ask antigravity:' ||
+            val.startsWith('once antigravity retrieves') ||
+            val === 'troubleshooting' ||
+            val === 'installed, but linear tools are unavailable' ||
+            val.startsWith('check that the plugin is enabled') ||
+            val.startsWith('проверка that the plugin is enabled') ||
+            val.startsWith('and authenticate its linear') ||
+            val.startsWith('browser sign-in finished') ||
+            val.startsWith('copy the authorization code from the browser') ||
+            val.startsWith('this manual handoff is part of') ||
+            val.includes('oauth flow') ||
+            val === 'the connection stopped working' ||
+            val.startsWith('refresh or reconnect the linear') ||
+            val === 'linear mcp documentation' ||
+            val === 'development' ||
+            val.startsWith('for local installation, package details') ||
             val === 'developer' ||
             val === 'website' ||
             val === 'repository' ||
@@ -5687,6 +6073,92 @@ function isFileName(text, parent) {
         lowerTrimmed === 'worktrees' ||
         lowerTrimmed === 'featured' ||
         lowerTrimmed === 'details' ||
+        lowerTrimmed.includes('exited with code') ||
+        lowerTrimmed.includes('завершено с кодом') ||
+        lowerTrimmed.startsWith('searched marketplace') ||
+        lowerTrimmed.startsWith('searching marketplace') ||
+        lowerTrimmed.startsWith('fix quote escaping') ||
+        lowerTrimmed.startsWith('resize this canva') ||
+        lowerTrimmed.startsWith('review this canva') ||
+        lowerTrimmed.startsWith('check this canva') ||
+        lowerTrimmed.startsWith('проверка this canva') ||
+        lowerTrimmed.startsWith('check a canva') ||
+        lowerTrimmed.startsWith('проверка a canva') ||
+        lowerTrimmed.startsWith('bulk-create canva') ||
+        lowerTrimmed.startsWith('review a canva') ||
+        lowerTrimmed.startsWith('read a canva') ||
+        lowerTrimmed.startsWith('чтение a canva') ||
+        lowerTrimmed.startsWith('make edits to an existing canva') ||
+        lowerTrimmed.startsWith('implement reviewer feedback') ||
+        lowerTrimmed.startsWith('resize a canva') ||
+        lowerTrimmed.startsWith('implement this figma') ||
+        lowerTrimmed.startsWith('connect my button') ||
+        lowerTrimmed.startsWith('create a figma') ||
+        lowerTrimmed.startsWith('find home screen examples') ||
+        lowerTrimmed.startsWith('compare how ai tools') ||
+        lowerTrimmed.startsWith('review my paywall') ||
+        lowerTrimmed.startsWith('tells your agent what mobbin') ||
+        lowerTrimmed.startsWith('makes every report a mobbin') ||
+        lowerTrimmed.startsWith('redesign any screen') ||
+        lowerTrimmed.startsWith('gets better results from every mobbin') ||
+        lowerTrimmed.startsWith('help me implement [jira-123]') ||
+        lowerTrimmed.startsWith('investigate [jira-123]') ||
+        lowerTrimmed.startsWith('review my current changes against [jira-123]') ||
+        lowerTrimmed.startsWith('install, upgrade, authenticate, or repair') ||
+        lowerTrimmed.startsWith('find and summarize the q4') ||
+        lowerTrimmed.startsWith('create a shared link for the launch') ||
+        lowerTrimmed.startsWith('review duplicate exports') ||
+        lowerTrimmed === 'dropbox for google antigravity' ||
+        lowerTrimmed.startsWith('find, summarize, share, collect uploads') ||
+        lowerTrimmed.startsWith('clean up dropbox content') ||
+        lowerTrimmed.startsWith('create, inspect, and manage dropbox') ||
+        lowerTrimmed.startsWith('find dropbox files') ||
+        lowerTrimmed.startsWith('inspect a dropbox') ||
+        lowerTrimmed.startsWith('проверка a dropbox') ||
+        lowerTrimmed.startsWith('organize dropbox files') ||
+        lowerTrimmed.startsWith('share dropbox files') ||
+        lowerTrimmed.startsWith('show my assigned linear') ||
+        lowerTrimmed.startsWith('summarize recent updates to my linear') ||
+        lowerTrimmed.startsWith('find linear issues') ||
+        lowerTrimmed.startsWith('create a linear issue') ||
+        lowerTrimmed.startsWith('add a progress update') ||
+        lowerTrimmed === 'linear for antigravity' ||
+        lowerTrimmed === 'bring your linear workspace into antigravity' ||
+        lowerTrimmed.startsWith('find issues, manage projects') ||
+        lowerTrimmed.startsWith('connect your code to the work') ||
+        lowerTrimmed.startsWith('the linear plugin connects') ||
+        lowerTrimmed === 'the plugin uses' ||
+        lowerTrimmed.includes('hosted mcp server') ||
+        lowerTrimmed.includes('sign in with your linear account') ||
+        lowerTrimmed === '1. install from the marketplace' ||
+        lowerTrimmed === 'in antigravity, find' ||
+        lowerTrimmed === 'in the marketplace, and click' ||
+        lowerTrimmed === '2. connect your linear account' ||
+        lowerTrimmed.startsWith('installing the plugin is the first step') ||
+        lowerTrimmed.endsWith('on macos).') ||
+        lowerTrimmed === '2. click' ||
+        lowerTrimmed.includes('linear mcp server') ||
+        lowerTrimmed.startsWith('3. sign in to linear') ||
+        lowerTrimmed.startsWith('4. copy the authorization code') ||
+        lowerTrimmed.startsWith('5. return to antigravity') ||
+        lowerTrimmed.startsWith('paste the code into settings') ||
+        lowerTrimmed === '3. try it out' ||
+        lowerTrimmed === 'ask antigravity:' ||
+        lowerTrimmed.startsWith('once antigravity retrieves') ||
+        lowerTrimmed === 'troubleshooting' ||
+        lowerTrimmed === 'installed, but linear tools are unavailable' ||
+        lowerTrimmed.startsWith('check that the plugin is enabled') ||
+        lowerTrimmed.startsWith('проверка that the plugin is enabled') ||
+        lowerTrimmed.startsWith('and authenticate its linear') ||
+        lowerTrimmed.startsWith('browser sign-in finished') ||
+        lowerTrimmed.startsWith('copy the authorization code from the browser') ||
+        lowerTrimmed.startsWith('this manual handoff is part of') ||
+        lowerTrimmed.includes('oauth flow') ||
+        lowerTrimmed === 'the connection stopped working' ||
+        lowerTrimmed.startsWith('refresh or reconnect the linear') ||
+        lowerTrimmed === 'linear mcp documentation' ||
+        lowerTrimmed === 'development' ||
+        lowerTrimmed.startsWith('for local installation, package details') ||
         lowerTrimmed === 'developer' ||
         lowerTrimmed === 'website' ||
         lowerTrimmed === 'repository' ||
@@ -6477,7 +6949,7 @@ function initLanguageSwitcher() {
     wrapper.innerHTML = `
         <div id="antigravity-lang-switcher" class="lang-switcher">
             <div class="lang-btn" id="lang-btn-en" title="Switch interface to English">EN</div>
-            <div class="lang-btn" id="lang-btn-ru" title="Русская локализация v2.1.4">
+            <div class="lang-btn" id="lang-btn-ru" title="Русская локализация v2.1.10">
                 <span class="ru-text" id="ru-btn-label">RU</span>
                 <span class="ru-warn-icon" id="ru-warn-icon" style="display: none;">⚠️</span>
             </div>
@@ -6710,7 +7182,7 @@ function initLanguageSwitcher() {
             const resp = await fetch('http://127.0.0.1:39228/status');
             if (resp.ok) {
                 const data = await resp.json();
-                const currentVer = data.version || '2.1.9';
+                const currentVer = data.version || '2.1.10';
                 btnRu.title = 'Русская локализация v' + currentVer + (data.latestRemoteVersion ? ' (GitHub: v' + data.latestRemoteVersion + ')' : '');
 
                 isUpdatePending = !!data.updatePending;
