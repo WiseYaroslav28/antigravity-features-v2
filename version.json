@@ -1,8 +1,8 @@
 {
-  "version": "2.1.12",
-  "releasedAt": "2026-10-29T22:42:00.000Z",
+  "version": "2.1.13",
+  "releasedAt": "2026-10-29T22:45:00.000Z",
   "requiresRestart": false,
-  "changelog": "Полная локализация страниц деталей плагинов monday.com, Notion, PandaDoc и Trello (описания, примеры запросов, разделы Обзор, таблицы и слэш-команды), защита правил List/Extract от частичной замены в длинных предложениях",
+  "changelog": "Точное совпадение всех 10 слэш-команд PandaDoc и 7 слэш-команд Notion (включая заменённые префиксы Сборка/Список/Проверка), полный перевод плагина Trello",
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",

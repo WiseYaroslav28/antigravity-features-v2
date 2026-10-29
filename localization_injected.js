@@ -1820,6 +1820,8 @@ const translationDictionary = {
     "is out of date.": "устарела.",
     "check the plugin the way antigravity loads it:": "Проверьте плагин так, как его загружает Antigravity:",
     "проверка the plugin the way antigravity loads it:": "Проверьте плагин так, как его загружает Antigravity:",
+    "проверка the plugin the way antigravity loads it :": "Проверьте плагин так, как его загружает Antigravity:",
+    "check the plugin the way antigravity loads it :": "Проверьте плагин так, как его загружает Antigravity:",
     "create and send proposals, quotes, and contracts for e-signature. track signing progress and identify documents that need follow-up.": "Создавайте и отправляйте коммерческие предложения, сметы и договоры на электронную подпись. Отслеживайте статус подписания и находите документы, требующие напоминания.",
     "create and send proposals, quotes, and contracts for e-signature. track signing progress and identify documents that need follow-up": "Создавайте и отправляйте коммерческие предложения, сметы и договоры на электронную подпись. Отслеживайте статус подписания и находите документы, требующие напоминания",
     "list my 5 most recently modified pandadoc documents with their status.": "Показать 5 моих недавно изменённых документов PandaDoc с их статусами.",
@@ -2724,35 +2726,36 @@ const regexTranslations = [
         replace: () => "Проверьте плагин так, как его загружает Antigravity:"
     },
     {
-        pattern: /^Design,\s*create,\s*and\s+migrate\s+Notion\s+databases\.\s*Use\s+whenever\s+the\s+user\s+wants\s+to\s+set\s+up\s+a\s+new\s+tracker.*$/i,
-        replace: () => "Проектирование, создание и миграция баз данных Notion. Используйте, когда нужно настроить новый трекер или базу знаний..."
+        // Notion 7 commands (/notion-database-designer .. /notion-weekly-project-digest)
+        pattern: /^Turns\s+scattered\s+notes\s+and\s+recurring\s+work\s+into\s+useful\s+Notion\s+trackers\s+for\s+requests.*$/i,
+        replace: () => "Превращает разрозненные заметки и регулярные задачи в удобные трекеры Notion для заявок, контент-планов..."
     },
     {
-        pattern: /^Capture\s+conversations,\s*notes,\s*decisions,\s*and\s+content\s+into\s+structured\s+Notion\s+pages\s+or\s+database\s+entries.*$/i,
-        replace: () => "Сохранение диалогов, заметок, решений и контента в структурированные страницы или записи баз данных Notion..."
+        pattern: /^Captures\s+conversations\s+and\s+supplied\s+notes\s+as\s+Notion\s+wiki\s+pages,\s*how-to\s+guides,\s*FAQs.*$/i,
+        replace: () => "Сохраняет диалоги и заметки в виде вики-страниц Notion, практических руководств, FAQ и решений..."
     },
     {
-        pattern: /^Prepare\s+meeting\s+materials\s+and\s+process\s+meeting\s+outcomes\s+using\s+Notion\s+context\s+and\s+workspace\s+data.*$/i,
-        replace: () => "Подготовка материалов к встречам и обработка итогов встреч с использованием контекста и данных рабочего пространства Notion..."
+        pattern: /^Prepares\s+meeting\s+agendas,\s*internal\s+pre-reads,\s*and\s+decision\s+briefs\s+using\s+Notion\s+context.*$/i,
+        replace: () => "Готовит повестки встреч, предварительные материалы и резюме решений с использованием контекста Notion..."
     },
     {
-        pattern: /^Research\s+across\s+Notion\s+workspaces\s+and\s+synthesize\s+findings\s+into\s+structured,\s*citation-backed\s+documents.*$/i,
-        replace: () => "Исследование по рабочим пространствам Notion и обобщение результатов в структурированные документы с цитатами..."
+        pattern: /^Researches\s+questions\s+across\s+Notion\s+sources\s+and\s+synthesizes\s+cited\s+briefs,\s*comparisons.*$/i,
+        replace: () => "Исследует вопросы по источникам Notion и формирует сводки с цитатами, сравнения и обзоры..."
     },
     {
-        pattern: /^Onboarding\s+wizard\s+for\s+the\s+Notion\s+plugin\.\s*Discovers\s+how\s+the\s+user(?:'s|’s)\s+Notion\s+workspace\s+is\s+organized.*$/i,
-        replace: () => "Мастер первичной настройки плагина Notion: изучает структуру вашего рабочего пространства Notion..."
+        pattern: /^A\s+guided\s+setup\s+flow\s+to\s+get\s+the\s+most\s+out\s+of\s+Notion\s+that\s+is\s+recommended\s+for\s+all\s+users.*$/i,
+        replace: () => "Пошаговый процесс настройки для эффективной работы с Notion, рекомендуемый всем пользователям плагина..."
     },
     {
-        pattern: /^Turn\s+technical\s+or\s+product\s+specifications\s+into\s+concrete\s+implementation\s+plans\s+and\s+tracked\s+tasks\s+in\s+Notion.*$/i,
-        replace: () => "Преобразование технических или продуктовых спецификаций в конкретные планы реализации и отслеживаемые задачи в Notion..."
+        pattern: /^Converts\s+Notion\s+product\s+or\s+technical\s+specs\s+into\s+implementation\s+plans,\s*linked\s+tasks.*$/i,
+        replace: () => "Преобразует продуктовые или технические спецификации Notion в планы реализации, связанные задачи и..."
     },
     {
-        pattern: /^Generate\s+weekly\s+status\s+updates,\s*project\s+digests,\s*and\s+stakeholder\s+summaries\s+from\s+Notion\s+activity.*$/i,
-        replace: () => "Генерация еженедельных отчётов о статусе, дайджестов проекта и сводок для стейкхолдеров по активности в Notion..."
+        pattern: /^Produces\s+evidence-based\s+weekly\s+project\s+or\s+team\s+updates\s+by\s+comparing\s+reporting\s+periods.*$/i,
+        replace: () => "Формирует еженедельные отчёты по проектам и командам на основе данных путём сравнения отчётных периодов..."
     },
     {
-        // PandaDoc description, example prompts & commands
+        // PandaDoc description, example prompts & 10 commands
         pattern: /^(?:Create|Создать|Создано)\s+and\s+send\s+proposals,\s*quotes,\s*and\s+contracts\s+for\s+e-signature\.\s*Track\s+signing\s+progress\s+and\s+identify\s+documents\s+that\s+need\s+follow-up\.?$/i,
         replace: () => "Создавайте и отправляйте коммерческие предложения, сметы и договоры на электронную подпись. Отслеживайте статус подписания и находите документы, требующие напоминания."
     },
@@ -2769,44 +2772,44 @@ const regexTranslations = [
         replace: () => "Найти неподписанные документы и подготовить черновики напоминаний без отправки."
     },
     {
-        pattern: /^(?:Create|Создать|Создано)\s+a\s+PandaDoc\s+document\s+from\s+a\s+template,\s*verify\s+its\s+readiness\s+against\s+a\s+pre-send\s+checklist.*$/i,
-        replace: () => "Создать документ PandaDoc по шаблону, проверить его готовность по чек-листу перед отправкой..."
+        pattern: /^(?:Create|Создать|Создано)\s+a\s+document\s+from\s+a\s+template\s+and\s+route\s+it\s+through\s+its\s+internal\s+approval\s+chain.*$/i,
+        replace: () => "Создать документ по шаблону и направить его по внутренней цепочке согласования — чтение правил и отправка..."
     },
     {
-        pattern: /^(?:Build|Сборка)\s+a\s+register\s+of\s+completed\s+and\s+active\s+PandaDoc\s+contracts\s+by\s+pulling\s+document\s+details.*$/i,
-        replace: () => "Сформировать реестр завершённых и активных договоров PandaDoc с извлечением реквизитов документов..."
+        pattern: /^(?:Build|Сборка)\s+a\s+register\s+of\s+(?:signed|completed\s+and\s+active\s+PandaDoc)\s+contracts.*$/i,
+        replace: () => "Сформировать реестр подписанных договоров с ключевыми условиями — контрагентом, датами, суммой и..."
     },
     {
-        pattern: /^Analyze\s+recipient\s+engagement\s+on\s+sent\s+PandaDoc\s+documents\s*[—–-]\s*distinguish\s+viewed-but-unsigned.*$/i,
-        replace: () => "Анализ вовлечённости получателей по отправленным документам PandaDoc — разделение просмотренных, но не подписанных..."
+        pattern: /^Track\s+per-recipient\s+signing\s+progress\s+across\s+documents\s+that\s+are\s+out.*$/i,
+        replace: () => "Отслеживать прогресс подписания по каждому получателю для отправленных документов — кто подписал, кто..."
     },
     {
-        pattern: /^Identify\s+sent\s+or\s+viewed\s+PandaDoc\s+documents\s+that\s+have\s+not\s+been\s+completed\s+and\s+generate\s+a\s+prioritized.*$/i,
-        replace: () => "Выявление отправленных или просмотренных документов PandaDoc, которые ещё не подписаны, и создание приоритетного списка..."
+        pattern: /^Sweep\s+documents\s+that\s+are\s+still\s+out\s+for\s+signature,\s*rank\s+them\s+by\s+how\s+long\s+they\s+have\s+been\s+waiting.*$/i,
+        replace: () => "Проверить документы, ожидающие подписи, отсортировать их по времени ожидания и подготовить список..."
     },
     {
-        pattern: /^Identify\s+recently\s+completed\s+PandaDoc\s+documents\s+and\s+extract\s+billing-ready\s+details.*$/i,
-        replace: () => "Выявление недавно подписанных документов PandaDoc и извлечение данных для выставления счетов..."
+        pattern: /^Turn\s+a\s+signed\s+quote\s+or\s+proposal\s+into\s+an\s+invoice\s*[—–-]\s*find\s+quotes\s+that\s+completed.*$/i,
+        replace: () => "Превратить подписанную смету или предложение в счёт — найти завершённые сметы без выставленного счёта..."
     },
     {
-        pattern: /^Quickly\s+create\s+and\s+optionally\s+send\s+an\s+NDA\s+from\s+an\s+approved\s+PandaDoc\s+template\s+with\s+minimal\s+inputs.*$/i,
-        replace: () => "Быстрое создание и отправка NDA по утверждённому шаблону PandaDoc с минимальным вводом данных..."
+        pattern: /^Send\s+a\s+standard\s+NDA\s+to\s+a\s+counterparty\s+in\s+one\s+motion\s*[—–-]\s*find\s+the\s+right\s+NDA\s+template.*$/i,
+        replace: () => "Отправить стандартное NDA контрагенту в одно действие — найти нужный шаблон NDA, предзаполнить..."
     },
     {
-        pattern: /^(?:Create|Создать|Создано)\s+a\s+personalized\s+employee\s+or\s+contractor\s+onboarding\s+agreement\s+in\s+PandaDoc\s+from\s+an\s+approved.*$/i,
-        replace: () => "Создание персонализированного договора о найме сотрудника или подрядчика в PandaDoc по утверждённому шаблону..."
+        pattern: /^Generate\s+an\s+onboarding\s+or\s+employment\s+document\s+from\s+a\s+template\s+with\s+the\s+new\s+join.*$/i,
+        replace: () => "Сформировать документ о приёме на работу или онбординге по шаблону с данными нового сотрудника..."
     },
     {
-        pattern: /^(?:Build|Сборка)\s+a\s+priced\s+PandaDoc\s+quote\s+or\s+proposal\s+from\s+a\s+template\s+by\s+populating\s+pricing\s+tables.*$/i,
-        replace: () => "Создание коммерческого предложения или сметы PandaDoc по шаблону с заполнением таблиц цен..."
+        pattern: /^(?:Build|Сборка)\s+a\s+priced\s+PandaDoc\s+quote\s+or\s+proposal\s+from\s+a\s+template.*$/i,
+        replace: () => "Создать коммерческое предложение или смету PandaDoc с расчётом стоимости по шаблону — заполнить таблицу цен..."
     },
     {
-        pattern: /^Scan\s+completed\s+PandaDoc\s+contracts\s+to\s+identify\s+agreements\s+approaching\s+renewal\s+or\s+expiration.*$/i,
-        replace: () => "Сканирование подписанных договоров PandaDoc для выявления соглашений с подходящим сроком продления или истечения..."
+        pattern: /^Digest\s+of\s+signed\s+contracts\s+approaching\s+renewal\s+or\s+expiry,\s*with\s+counterparty,\s*value.*$/i,
+        replace: () => "Сводка подписанных договоров с подходящим сроком продления или истечения: контрагент, сумма и остаток дней..."
     },
     {
-        pattern: /^(?:Build|Сборка)\s+a\s+signing\s+pipeline\s+report\s+for\s+PandaDoc\s+documents\s*[—–-]\s*group\s+by\s+status.*$/i,
-        replace: () => "Формирование отчёта по воронке подписания документов PandaDoc — группировка по статусам и выявление узких мест..."
+        pattern: /^(?:Build|Сборка)\s+a\s+signing\s+pipeline\s+report.*$/i,
+        replace: () => "Сформировать отчёт по воронке подписания — количество по статусам, среднее время подписания, сумма в работе..."
     },
     {
         // Trello description, example prompts & commands
@@ -6016,28 +6019,28 @@ function shouldIgnore(node) {
             val === 'is out of date.' ||
             val.startsWith('check the plugin the way antigravity') ||
             val.startsWith('проверка the plugin the way antigravity') ||
-            val.startsWith('design, create, and migrate notion') ||
-            val.startsWith('capture conversations, notes, decisions') ||
-            val.startsWith('prepare meeting materials and process') ||
-            val.startsWith('research across notion workspaces') ||
-            val.startsWith('onboarding wizard for the notion') ||
-            val.startsWith('turn technical or product specifications') ||
-            val.startsWith('generate weekly status updates') ||
+            val.startsWith('turns scattered notes and recurring work') ||
+            val.startsWith('captures conversations and supplied notes') ||
+            val.startsWith('prepares meeting agendas') ||
+            val.startsWith('researches questions across notion') ||
+            val.startsWith('a guided setup flow to get the most') ||
+            val.startsWith('converts notion product or technical') ||
+            val.startsWith('produces evidence-based weekly project') ||
             val.startsWith('list my 5 most recently modified pandadoc') ||
             val.startsWith('список my 5 most recently modified pandadoc') ||
             val.startsWith('show my signing pipeline') ||
             val.startsWith('find unsigned documents') ||
-            val.startsWith('create a pandadoc document') ||
-            val.startsWith('build a register of completed') ||
-            val.startsWith('сборка a register of completed') ||
-            val.startsWith('analyze recipient engagement') ||
-            val.startsWith('identify sent or viewed pandadoc') ||
-            val.startsWith('identify recently completed pandadoc') ||
-            val.startsWith('quickly create and optionally send') ||
-            val.startsWith('create a personalized employee') ||
+            val.startsWith('create a document from a template') ||
+            val.startsWith('build a register of signed') ||
+            val.startsWith('сборка a register of signed') ||
+            val.startsWith('track per-recipient signing progress') ||
+            val.startsWith('sweep documents that are still out') ||
+            val.startsWith('turn a signed quote or proposal') ||
+            val.startsWith('send a standard nda to a counterparty') ||
+            val.startsWith('generate an onboarding or employment') ||
             val.startsWith('build a priced pandadoc') ||
             val.startsWith('сборка a priced pandadoc') ||
-            val.startsWith('scan completed pandadoc') ||
+            val.startsWith('digest of signed contracts approaching') ||
             val.startsWith('build a signing pipeline') ||
             val.startsWith('сборка a signing pipeline') ||
             val.startsWith('official trello plugin') ||
@@ -6619,28 +6622,28 @@ function isFileName(text, parent) {
         lowerTrimmed === 'is out of date.' ||
         lowerTrimmed.startsWith('check the plugin the way antigravity') ||
         lowerTrimmed.startsWith('проверка the plugin the way antigravity') ||
-        lowerTrimmed.startsWith('design, create, and migrate notion') ||
-        lowerTrimmed.startsWith('capture conversations, notes, decisions') ||
-        lowerTrimmed.startsWith('prepare meeting materials and process') ||
-        lowerTrimmed.startsWith('research across notion workspaces') ||
-        lowerTrimmed.startsWith('onboarding wizard for the notion') ||
-        lowerTrimmed.startsWith('turn technical or product specifications') ||
-        lowerTrimmed.startsWith('generate weekly status updates') ||
+        lowerTrimmed.startsWith('turns scattered notes and recurring work') ||
+        lowerTrimmed.startsWith('captures conversations and supplied notes') ||
+        lowerTrimmed.startsWith('prepares meeting agendas') ||
+        lowerTrimmed.startsWith('researches questions across notion') ||
+        lowerTrimmed.startsWith('a guided setup flow to get the most') ||
+        lowerTrimmed.startsWith('converts notion product or technical') ||
+        lowerTrimmed.startsWith('produces evidence-based weekly project') ||
         lowerTrimmed.startsWith('list my 5 most recently modified pandadoc') ||
         lowerTrimmed.startsWith('список my 5 most recently modified pandadoc') ||
         lowerTrimmed.startsWith('show my signing pipeline') ||
         lowerTrimmed.startsWith('find unsigned documents') ||
-        lowerTrimmed.startsWith('create a pandadoc document') ||
-        lowerTrimmed.startsWith('build a register of completed') ||
-        lowerTrimmed.startsWith('сборка a register of completed') ||
-        lowerTrimmed.startsWith('analyze recipient engagement') ||
-        lowerTrimmed.startsWith('identify sent or viewed pandadoc') ||
-        lowerTrimmed.startsWith('identify recently completed pandadoc') ||
-        lowerTrimmed.startsWith('quickly create and optionally send') ||
-        lowerTrimmed.startsWith('create a personalized employee') ||
+        lowerTrimmed.startsWith('create a document from a template') ||
+        lowerTrimmed.startsWith('build a register of signed') ||
+        lowerTrimmed.startsWith('сборка a register of signed') ||
+        lowerTrimmed.startsWith('track per-recipient signing progress') ||
+        lowerTrimmed.startsWith('sweep documents that are still out') ||
+        lowerTrimmed.startsWith('turn a signed quote or proposal') ||
+        lowerTrimmed.startsWith('send a standard nda to a counterparty') ||
+        lowerTrimmed.startsWith('generate an onboarding or employment') ||
         lowerTrimmed.startsWith('build a priced pandadoc') ||
         lowerTrimmed.startsWith('сборка a priced pandadoc') ||
-        lowerTrimmed.startsWith('scan completed pandadoc') ||
+        lowerTrimmed.startsWith('digest of signed contracts approaching') ||
         lowerTrimmed.startsWith('build a signing pipeline') ||
         lowerTrimmed.startsWith('сборка a signing pipeline') ||
         lowerTrimmed.startsWith('official trello plugin') ||
