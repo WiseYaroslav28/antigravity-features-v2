@@ -1590,6 +1590,23 @@ const translationDictionary = {
     "developer": "Разработчик",
     "website": "Веб-сайт",
     "repository": "Репозиторий",
+    "design, creative & media": "Дизайн, креатив и медиа",
+    "design, creative, and media tools.": "Инструменты для дизайна, творчества и работы с медиа.",
+    "design, creative, and media tools": "Инструменты для дизайна, творчества и работы с медиа",
+    "productivity & project management": "Продуктивность и управление проектами",
+    "plan work, track issues, sign documents, and manage your notes and files.": "Планируйте работу, отслеживайте задачи, подписывайте документы и управляйте заметками и файлами.",
+    "plan work, track issues, sign documents, and manage your notes and files": "Планируйте работу, отслеживайте задачи, подписывайте документы и управляйте заметками и файлами",
+    "cloud hosting & deployment": "Облачный хостинг и развёртывание",
+    "deploy and host your apps, sites, and their backends.": "Развёртывайте и размещайте свои приложения, сайты и их бэкенды.",
+    "deploy and host your apps, sites, and their backends": "Развёртывайте и размещайте свои приложения, сайты и их бэкенды",
+    "developer tools": "Инструменты разработчика",
+    "apis, services, and tools to build, test, secure, and run your apps.": "API, сервисы и инструменты для сборки, тестирования, защиты и запуска ваших приложений.",
+    "apis, services, and tools to build, test, secure, and run your apps": "API, сервисы и инструменты для сборки, тестирования, защиты и запуска ваших приложений",
+    "business": "Бизнес",
+    "payments, crm, accounting, data, identity, customer support, marketing, and workflow automation.": "Платежи, CRM, бухгалтерия, данные, идентификация, поддержка клиентов, маркетинг и автоматизация процессов.",
+    "payments, crm, accounting, data, identity, customer support, marketing, and workflow automation": "Платежи, CRM, бухгалтерия, данные, идентификация, поддержка клиентов, маркетинг и автоматизация процессов",
+    "google does not control the availability or functionality of third party developer tools. your data from third party developer tools connected to your antigravity instance may be shared with google. google will protect any such data in accordance with the google privacy policy, found here:": "Google не контролирует доступность или функциональность сторонних инструментов для разработчиков. Ваши данные из сторонних инструментов, подключенных к вашему экземпляру Antigravity, могут передаваться в Google. Google защищает такие данные в соответствии с Политикой конфиденциальности Google, доступной по ссылке:",
+    "google does not control the availability or functionality of third party developer tools. your data from third party developer tools connected to your antigravity instance may be shared with google. google will protect any such data in accordance with the google privacy policy, found here": "Google не контролирует доступность или функциональность сторонних инструментов для разработчиков. Ваши данные из сторонних инструментов, подключенных к вашему экземпляру Antigravity, могут передаваться в Google. Google защищает такие данные в соответствии с Политикой конфиденциальности Google, доступной по ссылке",
     "what's included": "Что включено",
     "whats included": "Что включено",
     "mcp server": "MCP-сервер",
@@ -2883,11 +2900,143 @@ const regexTranslations = [
         replace: () => "Исследуйте проблемы в продакшене на реальных данных Dynatrace: сбои и первопричины, логи, метрики, трейсы и уязвимости с помощью навыков и MCP-сервера."
     },
     {
-        // Stripe Featured / Marketplace card
-        pattern: /^Accept\s+payments\s+and\s+grow\s+your\s+business\.\s*Stripe(?:'s|’s)\s+official\s+MCP\s+server.*$/i,
-        replace: (m) => /\.\.\.|…/.test(m[0])
-            ? "Принимайте платежи и развивайте свой бизнес. Официальный MCP-сервер Stripe позволяет ИИ-агентам управлять клиентами, продуктами, ценами, платежными ссылками, счетами,..."
-            : "Принимайте платежи и развивайте свой бизнес. Официальный MCP-сервер Stripe позволяет ИИ-агентам управлять клиентами, продуктами, ценами, платежными ссылками, счетами, подписками и возвратами, а также искать в документации Stripe."
+        // Marketplace shelves & headers
+        pattern: /^Design,\s*Creative\s*&\s*Media$/i,
+        replace: () => "Дизайн, креатив и медиа"
+    },
+    {
+        pattern: /^Design,\s*creative,\s*and\s+media\s+tools\.?$/i,
+        replace: () => "Инструменты для дизайна, творчества и работы с медиа."
+    },
+    {
+        pattern: /^Productivity\s*&\s*Project\s+Management$/i,
+        replace: () => "Продуктивность и управление проектами"
+    },
+    {
+        pattern: /^Plan\s+work,\s*track\s+issues,\s*sign\s+documents,\s*and\s+manage\s+your\s+notes\s+and\s+files\.?$/i,
+        replace: () => "Планируйте работу, отслеживайте задачи, подписывайте документы и управляйте заметками и файлами."
+    },
+    {
+        pattern: /^Cloud\s+Hosting\s*&\s*Deployment$/i,
+        replace: () => "Облачный хостинг и развёртывание"
+    },
+    {
+        pattern: /^Deploy\s+and\s+host\s+your\s+apps,\s*sites,\s*and\s+their\s+backends\.?$/i,
+        replace: () => "Развёртывайте и размещайте свои приложения, сайты и их бэкенды."
+    },
+    {
+        pattern: /^Developer\s+Tools$/i,
+        replace: () => "Инструменты разработчика"
+    },
+    {
+        pattern: /^APIs,\s*services,\s*and\s+tools\s+to\s+build,\s*test,\s*secure,\s*and\s+run\s+your\s+apps\.?$/i,
+        replace: () => "API, сервисы и инструменты для сборки, тестирования, защиты и запуска ваших приложений."
+    },
+    {
+        pattern: /^Business$/i,
+        replace: () => "Бизнес"
+    },
+    {
+        pattern: /^Payments,\s*CRM,\s*accounting,\s*data,\s*identity,\s*customer\s+support,\s*marketing,\s*and\s+workflow\s+automation\.?$/i,
+        replace: () => "Платежи, CRM, бухгалтерия, данные, идентификация, поддержка клиентов, маркетинг и автоматизация процессов."
+    },
+    {
+        pattern: /^Google\s+does\s+not\s+control\s+the\s+availability\s+or\s+functionality\s+of\s+third[\s-]party\s+developer\s+tools[\s\S]*?found\s+here:?\s*$/i,
+        replace: () => "Google не контролирует доступность или функциональность сторонних инструментов для разработчиков. Ваши данные из сторонних инструментов, подключенных к вашему экземпляру Antigravity, могут передаваться в Google. Google защищает такие данные в соответствии с Политикой конфиденциальности Google, доступной по ссылке:"
+    },
+    {
+        // Stripe Featured / Marketplace card (matches both 48-char grid truncation and full description)
+        pattern: /^Accept\s+payments\s+and\s+grow\s+your\s+business\..*$/i,
+        replace: (m) => m[0].length < 70
+            ? "Принимайте платежи и развивайте свой бизнес. MCP-сервер Stripe..."
+            : (/\.\.\.|…/.test(m[0])
+                ? "Принимайте платежи и развивайте свой бизнес. Официальный MCP-сервер Stripe позволяет ИИ-агентам управлять клиентами, продуктами, ценами, платежными ссылками, счетами,..."
+                : "Принимайте платежи и развивайте свой бизнес. Официальный MCP-сервер Stripe позволяет ИИ-агентам управлять клиентами, продуктами, ценами, платежными ссылками, счетами, подписками и возвратами, а также искать в документации Stripe.")
+    },
+    {
+        // Auth0, Browserbase, CodeRabbit, Context7, CrowdStrike, Bigin, Databricks, Intercom, Semrush, Wispr Flow, Mobbin, Postman, Qodo, Zoho Projects, Harness, Zapier, Leapwork, Keenable, Parallel, Supabase, PandaDoc, monday.com
+        pattern: /^Add\s+Auth0\s+authentication\s+to\s+any\s+app:.*$/i,
+        replace: () => "Добавляйте аутентификацию Auth0 в любое приложение: вход, MFA, SSO, организации, RBAC, кастомные домены и брендинг."
+    },
+    {
+        pattern: /^Give\s+your\s+agent\s+a\s+real\s+browser:.*$/i,
+        replace: () => "Дайте вашему агенту полноценный браузер: переходите по страницам, нажимайте, вводите текст, делайте скриншоты и извлекайте данные с любых сайтов."
+    },
+    {
+        pattern: /^AI-powered\s+code\s+review\s+and\s+review-comment.*$/i,
+        replace: () => "Ревью кода на базе ИИ и автоматическое исправление замечаний с помощью CodeRabbit."
+    },
+    {
+        pattern: /^Up-to-date\s+documentation\s+lookup\..*$/i,
+        replace: () => "Поиск актуальной документации. Загружайте документацию и примеры кода нужной версии напрямую из репозиториев в контекст LLM."
+    },
+    {
+        pattern: /^Use\s+the\s+official\s+CrowdStrike-hosted\s+MCP\s+server.*$/i,
+        replace: () => "Используйте официальный MCP-сервер CrowdStrike для работы с платформой Falcon: обнаружениями, инцидентами, аналитикой угроз, SIEM, хостами и уязвимостями."
+    },
+    {
+        pattern: /^Databricks\s+skills\s+for\s+the\s+CLI,.*$/i,
+        replace: () => "Навыки Databricks для CLI, приложений, Lakebase, обслуживания моделей, задач Lakeflow, декларативных пайплайнов Spark и пакетов автоматизации (DAB)."
+    },
+    {
+        pattern: /^(?:Search|Поиск)\s+Intercom\s+conversations,\s*contacts.*$/i,
+        replace: () => "Поиск диалогов, контактов и компаний в Intercom, анализ трендов поддержки и установка Intercom Messenger с проверкой подлинности."
+    },
+    {
+        pattern: /^SEO\s+workflows\s+on\s+live\s+Semrush\s+data:.*$/i,
+        replace: () => "SEO-процессы на живых данных Semrush: подбор ключевых слов, аудит сайтов, обратные ссылки, анализ конкурентов, трафика и рынка."
+    },
+    {
+        pattern: /^(?:Search|Поиск)\s+and\s+read\s+your\s+Wispr\s+Flow\s+meeting\s+notes.*$/i,
+        replace: () => "Поиск и чтение заметок со встреч, расшифровок, черновиков и событий календаря в Wispr Flow."
+    },
+    {
+        pattern: /^Give\s+your\s+AI\s+agent\s+600[,.]?000\+\s+real\s+app\s+screens.*$/i,
+        replace: () => "Предоставьте вашему ИИ-агенту более 600 000 экранов реальных приложений и навыки работы с ними через Mobbin MCP."
+    },
+    {
+        pattern: /^Equip\s+Antigravity\s+with\s+specialized\s+Postman\s+skills.*$/i,
+        replace: () => "Оснастите Antigravity специализированными навыками Postman для полного жизненного цикла API: проектирования, тестирования, документирования и мониторинга."
+    },
+    {
+        pattern: /^(?:Set\s+up|Установите\s+для\s+переменной\s+окружения\s+up)\s+Qodo,\s*explore\s+code.*$/i,
+        replace: () => "Настройте Qodo, исследуйте код и историю репозитория, проверяйте локальные изменения и устраняйте замечания в пул-реквестах прямо из Antigravity."
+    },
+    {
+        pattern: /^Connect\s+Zoho\s+Projects\s+to\s+Antigravity.*$/i,
+        replace: () => "Подключите Zoho Projects к Antigravity, чтобы превращать задачи и ошибки в рабочий код, исследовать баги и обновлять статусы задач."
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+and\s+debug\s+pipelines,\s*manage\s+deployments.*$/i,
+        replace: () => "Собирайте и отлаживайте пайплайны, управляйте развёртываниями, исследуйте уязвимости и работайте с Harness через подключенные инструменты и навыки."
+    },
+    {
+        pattern: /^Connect\s+9[,.]?000\+\s+apps\s+to\s+your\s+AI\s+workflow.*$/i,
+        replace: () => "Подключите более 9 000 приложений к вашему рабочему процессу ИИ. Находите, включайте и выполняйте действия Zapier напрямую из клиента."
+    },
+    {
+        pattern: /^(?:Create|Создать|Создано),\s*run\s+and\s+debug\s+Leapwork\s+Play\s+tests.*$/i,
+        replace: () => "Создавайте, запускайте и отлаживайте тесты Leapwork Play, собирайте агентов и передавайте задачи в ИИ-процессы Play прямо из Antigravity."
+    },
+    {
+        pattern: /^(?:Search|Поиск)\s+the\s+web\s+and\s+read\s+any\s+page\s+as\s+clean\s+markdown\s+with\s+Keenable.*$/i,
+        replace: () => "Ищите в интернете и читайте любые страницы в виде чистого Markdown с помощью поисковой системы Keenable для ИИ-агентов (без регистрации и API-ключа)."
+    },
+    {
+        pattern: /^(?:Search|Поиск)\s+the\s+live\s+web\s+and\s+fetch\s+page\s+content\s+with\s+Parallel.*$/i,
+        replace: () => "Ищите информацию в живом интернете и извлекайте содержимое страниц с помощью облачного MCP-сервера Parallel (бесплатно, без аккаунта и API-ключа)."
+    },
+    {
+        pattern: /^Official\s+Supabase\s+plugin\s+for\s+Antigravity.*$/i,
+        replace: () => "Официальный плагин Supabase для Antigravity с навыками и MCP-доступом для управления проектами, работы с БД, авторизацией, хранилищем и Postgres."
+    },
+    {
+        pattern: /^(?:Create|Создать|Создано)\s+and\s+send\s+proposals,\s*quotes,\s*and\s+contracts\s+for\s+e-signature.*$/i,
+        replace: () => "Создавайте и отправляйте коммерческие предложения, сметы и договоры на электронную подпись в PandaDoc. Отслеживайте статус подписания документов."
+    },
+    {
+        pattern: /^Plan\s+and\s+track\s+work\s+in\s+monday\.com\s+from\s+Antigravity.*$/i,
+        replace: () => "Планируйте и отслеживайте работу в monday.com из Antigravity: создавайте, обновляйте и назначайте задачи, пишите документацию и создавайте формы."
     },
     {
         // Base44 Marketplace card (must precede generic Build -> Сборка)
@@ -3050,7 +3199,11 @@ const regexTranslations = [
         pattern: /^(?:Search|Searching)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
-            return `Поиск ${localizeActionTarget(match[1])}${arrow}`;
+            const localized = localizeActionTarget(match[1]);
+            if (localized === match[1] && match[1].trim().split(/\s+/).length > 4) {
+                return match[0];
+            }
+            return `Поиск ${localized}${arrow}`;
         }
     },
     {
@@ -5153,6 +5306,39 @@ function shouldIgnore(node) {
             val === 'developer' ||
             val === 'website' ||
             val === 'repository' ||
+            val === 'design, creative & media' ||
+            val.startsWith('design, creative, and media') ||
+            val === 'productivity & project management' ||
+            val.startsWith('plan work, track issues') ||
+            val === 'cloud hosting & deployment' ||
+            val.startsWith('deploy and host your apps') ||
+            val === 'developer tools' ||
+            val.startsWith('apis, services, and tools') ||
+            val === 'business' ||
+            val.startsWith('payments, crm, accounting') ||
+            val.startsWith('google does not control the availability') ||
+            val.startsWith('ai-powered code review') ||
+            val.startsWith('up-to-date documentation lookup') ||
+            val.startsWith('search intercom conversations') ||
+            val.startsWith('поиск intercom conversations') ||
+            val.startsWith('seo workflows on live semrush') ||
+            val.startsWith('search and read your wispr flow') ||
+            val.startsWith('поиск and read your wispr flow') ||
+            val.startsWith('give your ai agent 600') ||
+            val.startsWith('equip antigravity with specialized postman') ||
+            val.startsWith('set up qodo') ||
+            val.startsWith('connect zoho projects') ||
+            val.startsWith('build and debug pipelines') ||
+            val.startsWith('сборка and debug pipelines') ||
+            val.startsWith('connect 9,000+ apps') ||
+            val.startsWith('create, run and debug leapwork') ||
+            val.startsWith('search the web and read any page') ||
+            val.startsWith('поиск the web and read any page') ||
+            val.startsWith('search the live web and fetch') ||
+            val.startsWith('поиск the live web and fetch') ||
+            val.startsWith('official supabase plugin') ||
+            val.startsWith('create and send proposals') ||
+            val.startsWith('plan and track work in monday') ||
             val === "what's included" ||
             val === 'whats included' ||
             val === 'mcp server' ||
@@ -5504,6 +5690,39 @@ function isFileName(text, parent) {
         lowerTrimmed === 'developer' ||
         lowerTrimmed === 'website' ||
         lowerTrimmed === 'repository' ||
+        lowerTrimmed === 'design, creative & media' ||
+        lowerTrimmed.startsWith('design, creative, and media') ||
+        lowerTrimmed === 'productivity & project management' ||
+        lowerTrimmed.startsWith('plan work, track issues') ||
+        lowerTrimmed === 'cloud hosting & deployment' ||
+        lowerTrimmed.startsWith('deploy and host your apps') ||
+        lowerTrimmed === 'developer tools' ||
+        lowerTrimmed.startsWith('apis, services, and tools') ||
+        lowerTrimmed === 'business' ||
+        lowerTrimmed.startsWith('payments, crm, accounting') ||
+        lowerTrimmed.startsWith('google does not control the availability') ||
+        lowerTrimmed.startsWith('ai-powered code review') ||
+        lowerTrimmed.startsWith('up-to-date documentation lookup') ||
+        lowerTrimmed.startsWith('search intercom conversations') ||
+        lowerTrimmed.startsWith('поиск intercom conversations') ||
+        lowerTrimmed.startsWith('seo workflows on live semrush') ||
+        lowerTrimmed.startsWith('search and read your wispr flow') ||
+        lowerTrimmed.startsWith('поиск and read your wispr flow') ||
+        lowerTrimmed.startsWith('give your ai agent 600') ||
+        lowerTrimmed.startsWith('equip antigravity with specialized postman') ||
+        lowerTrimmed.startsWith('set up qodo') ||
+        lowerTrimmed.startsWith('connect zoho projects') ||
+        lowerTrimmed.startsWith('build and debug pipelines') ||
+        lowerTrimmed.startsWith('сборка and debug pipelines') ||
+        lowerTrimmed.startsWith('connect 9,000+ apps') ||
+        lowerTrimmed.startsWith('create, run and debug leapwork') ||
+        lowerTrimmed.startsWith('search the web and read any page') ||
+        lowerTrimmed.startsWith('поиск the web and read any page') ||
+        lowerTrimmed.startsWith('search the live web and fetch') ||
+        lowerTrimmed.startsWith('поиск the live web and fetch') ||
+        lowerTrimmed.startsWith('official supabase plugin') ||
+        lowerTrimmed.startsWith('create and send proposals') ||
+        lowerTrimmed.startsWith('plan and track work in monday') ||
         lowerTrimmed === "what's included" ||
         lowerTrimmed === 'whats included' ||
         lowerTrimmed === 'mcp server' ||
@@ -6491,7 +6710,7 @@ function initLanguageSwitcher() {
             const resp = await fetch('http://127.0.0.1:39228/status');
             if (resp.ok) {
                 const data = await resp.json();
-                const currentVer = data.version || '2.1.8';
+                const currentVer = data.version || '2.1.9';
                 btnRu.title = 'Русская локализация v' + currentVer + (data.latestRemoteVersion ? ' (GitHub: v' + data.latestRemoteVersion + ')' : '');
 
                 isUpdatePending = !!data.updatePending;

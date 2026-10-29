@@ -1,8 +1,8 @@
 {
-  "version": "2.1.8",
-  "releasedAt": "2026-10-29T22:15:12.172Z",
+  "version": "2.1.9",
+  "releasedAt": "2026-10-29T22:19:17.685Z",
   "requiresRestart": false,
-  "changelog": "Добавлен полный перевод страницы и примеров плагина Gemini API, карточек Dynatrace, Stripe и остальных плагинов Marketplace, а также устранена частичная подмена Build -> Сборка в длинных описаниях",
+  "changelog": "Добавлен перевод всех категорий и подзаголовков Marketplace (Design, Creative & Media, Productivity & Project Management, Cloud Hosting & Deployment, Developer Tools, Business), нижнего дисклеймера Google Privacy Policy, а также сокращённых и полных описаний всех плагинов каталога (CodeRabbit, Context7, Intercom, Semrush, Wispr Flow, CrowdStrike, Stripe и др.)",
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",
