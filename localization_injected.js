@@ -2961,6 +2961,120 @@ const regexTranslations = [
         pattern: /^(?:Read|Чтение),\s*create,\s*edit,\s*and\s+manage\s+Google\s+Docs\.\s*Use\s+when\s+the\s+user\s+shares\s+a\s+docs\.google\.com\s+URL.*$/i,
         replace: () => "Чтение, создание, редактирование и управление документами Google Docs. Используется, когда пользователь делится ссылкой docs.google.com, просит сделать сводку..."
     },
+    // --- v2.1.15: Tool arguments / Tool Output & Google Workspace Plugins (Sheets, Slides, Drive, Calendar) ---
+    {
+        // "Tool arguments" / "Tool Arguments" / "Tool output" / "Tool Output" / "Tool input" / "Tool result"
+        pattern: /^Tool\s+(arguments?|outputs?|inputs?|results?|parameters?|calls?)$/i,
+        replace: (match) => {
+            const w = match[1].toLowerCase();
+            if (w.startsWith('argument')) return "Аргументы инструмента";
+            if (w.startsWith('output')) return "Вывод инструмента";
+            if (w.startsWith('input')) return "Входные данные инструмента";
+            if (w.startsWith('result')) return "Результат инструмента";
+            if (w.startsWith('parameter')) return "Параметры инструмента";
+            return "Вызов инструмента";
+        }
+    },
+    {
+        // Google Sheets: subtitle, example prompts, overview & /gsheets command/skill
+        pattern: /^(?:Read|Чтение),\s*write,\s*and\s+format\s+spreadsheets\.?$/i,
+        replace: () => "Чтение, запись и форматирование электронных таблиц."
+    },
+    {
+        pattern: /^Find\s+the\s+trends\s+and\s+outliers\s+in\s+this\s+sales\s+sheet\.?$/i,
+        replace: () => "Найти тренды и аномалии в этой таблице продаж"
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+a\s+monthly\s+budget\s+tracker\s+with\s+formulas\s+and\s+a\s+chart\.?$/i,
+        replace: () => "Создать трекер ежемесячного бюджета с формулами и диаграммой"
+    },
+    {
+        pattern: /^Import\s+this\s+CSV\s+and\s+turn\s+it\s+into\s+a\s+pivot\s+table\s+by\s+region\.?$/i,
+        replace: () => "Импортировать этот CSV и превратить его в сводную таблицу по регионам"
+    },
+    {
+        pattern: /^(?:Read|Чтение),\s*write,\s*and\s+format\s+your\s+Google\s+Sheets\.\s*Fill\s+in\s+formulas,\s*sort\s+and\s+clean\s+columns,\s*import\s+CSVs,\s*build\s+charts\s+and\s+pivot\s+tables,\s*and\s+export\s+the\s+result\s*\.?$/i,
+        replace: () => "Чтение, запись и форматирование ваших таблиц Google Sheets. Заполняйте формулы, сортируйте и очищайте столбцы, импортируйте CSV-файлы, стройте диаграммы и сводные таблицы, а также экспортируйте результат."
+    },
+    {
+        pattern: /^(?:Read|Чтение),\s*write,\s*format,\s*and\s+manage\s+Google\s+Sheets\.\s*Use\s+when\s+the\s+user\s+shares\s+a\s+sheets\.google\.com.*$/i,
+        replace: () => "Чтение, запись, форматирование и управление таблицами Google Sheets. Используется, когда пользователь делится ссылкой sheets.google.com или docs.google.com..."
+    },
+    {
+        // Google Slides: subtitle, example prompts, overview & /gslides command/skill
+        pattern: /^(?:Read|Чтение),\s*edit,\s*and\s+export\s+presentations\.?$/i,
+        replace: () => "Чтение, редактирование и экспорт презентаций."
+    },
+    {
+        pattern: /^Turn\s+my\s+project\s+notes\s+into\s+a\s+10-slide\s+pitch\s+deck\.?$/i,
+        replace: () => "Превратить мои заметки по проекту в презентацию из 10 слайдов"
+    },
+    {
+        pattern: /^Add\s+a\s+summary\s+slide\s+and\s+speaker\s+notes\s+to\s+my\s+review\s+deck\.?$/i,
+        replace: () => "Добавить итоговый слайд и заметки докладчика в мою презентацию"
+    },
+    {
+        pattern: /^Export\s+the\s+final\s+deck\s+as\s+a\s+PDF\.?$/i,
+        replace: () => "Экспортировать готовую презентацию в PDF"
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+and\s+polish\s+your\s+Google\s+Slides\.\s*Turn\s+notes\s+into\s+a\s+deck,\s*add\s+slides,\s*images,\s*and\s+speaker\s+notes,\s*and\s+export\s+the\s+result\s+to\s+PDF\s+or\s+PowerPoint\s*\.?$/i,
+        replace: () => "Создавайте и оформляйте презентации Google Slides. Превращайте заметки в презентацию, добавляйте слайды, изображения и заметки докладчика, а также экспортируйте результат в PDF или PowerPoint."
+    },
+    {
+        pattern: /^(?:Read|Чтение),\s*create,\s*and\s+edit\s+Google\s+Slides\s+presentations\.\s*Use\s+when\s+creating\s+presentations.*$/i,
+        replace: () => "Чтение, создание и редактирование презентаций Google Slides. Используется при создании презентаций, когда пользователь делится ссылкой slides.google.com..."
+    },
+    {
+        // Google Drive: subtitle, example prompts, overview & /gdrive command/skill
+        pattern: /^(?:Search|Поиск),\s*upload,\s*download,\s*and\s+share\s+files\.?$/i,
+        replace: () => "Поиск, загрузка, скачивание и совместный доступ к файлам."
+    },
+    {
+        pattern: /^Find\s+last\s+quarter(?:'s|’s)\s+budget\s+and\s+share\s+it\s+with\s+Alex\.?$/i,
+        replace: () => "Найти бюджет за прошлый квартал и поделиться им с Алексом"
+    },
+    {
+        pattern: /^Move\s+this\s+week(?:'s|’s)\s+design\s+exports\s+into\s+the\s+Launch\s+folder\.?$/i,
+        replace: () => "Переместить экспорты дизайна за эту неделю в папку Launch"
+    },
+    {
+        pattern: /^(?:Download|Скачивание)\s+the\s+Q3\s+report\s+as\s+a\s+PDF\.?$/i,
+        replace: () => "Скачать отчёт за 3-й квартал в формате PDF"
+    },
+    {
+        pattern: /^Find\s+and\s+organize\s+your\s+Google\s+Drive\.\s*Search\s+across\s+your\s+files,\s*tidy\s+up\s+folders,\s*share\s+them\s+with\s+the\s+right\s+people,\s*and\s+download\s+or\s+export\s+them\s+as\s+PDF,\s*CSV,\s*or\s+Markdown\s*\.?$/i,
+        replace: () => "Находите и упорядочивайте файлы на Google Диске. Ищите по всем файлам, наводите порядок в папках, делитесь ими с нужными людьми и скачивайте или экспортируйте их в PDF, CSV или Markdown."
+    },
+    {
+        pattern: /^Browse,\s*search,\s*and\s+manage\s+Google\s+Drive\s+files\s+and\s+folders\.\s*Use\s+when\s+the\s+user\s+shares\s+a\s+drive\.google\.com\s+URL.*$/i,
+        replace: () => "Просмотр, поиск и управление файлами и папками Google Диска. Используется, когда пользователь делится ссылкой drive.google.com, спрашивает о содержимом папки..."
+    },
+    {
+        // Google Calendar: subtitle, example prompts, overview & /gcalendar command/skill
+        pattern: /^(?:Check|Проверка)\s+availability,\s*schedule\s+events,\s*and\s+RSVP\.?$/i,
+        replace: () => "Проверка занятости, планирование встреч и ответы на приглашения."
+    },
+    {
+        pattern: /^Book\s+30\s+minutes\s+with\s+Priya\s+and\s+Sam\s+next\s+week\.?$/i,
+        replace: () => "Забронировать 30 минут с Прией и Сэмом на следующей неделе"
+    },
+    {
+        pattern: /^What(?:'s|’s)\s+on\s+my\s+calendar\s+today\?\s*Flag\s+any\s+conflicts\.?$/i,
+        replace: () => "Что в моём календаре на сегодня? Отметь любые пересечения"
+    },
+    {
+        pattern: /^Block\s+focus\s+time\s+before\s+Friday(?:'s|’s)\s+launch\s+review\.?$/i,
+        replace: () => "Выделить время для фокусировки перед пятничным обзором запуска"
+    },
+    {
+        pattern: /^(?:Run|Запуск)\s+your\s+Google\s+Calendar\.\s*Find\s+a\s+time\s+that\s+works\s+for\s+everyone,\s*send\s+invites,\s*block\s+focus\s+time,\s*and\s+get\s+briefed\s+on\s+your\s+day\s+with\s+any\s+conflicts\s+flagged\s*\.?$/i,
+        replace: () => "Управляйте своим Google Календарём. Находите удобное для всех время, отправляйте приглашения, выделяйте время для фокусировки и получайте сводку на день с отметкой пересечений."
+    },
+    {
+        pattern: /^(?:Read|Чтение),\s*create,\s*and\s+manage\s+Google\s+Calendar\s+events\.\s*Use\s+when\s+the\s+user\s+shares\s+a\s+calendar\.google\.com\s+URL.*$/i,
+        replace: () => "Чтение, создание и управление событиями Google Календаря. Используется, когда пользователь делится ссылкой calendar.google.com, спрашивает о своём расписании..."
+    },
     {
         // "Background Commands" / "Background Commands 50"
         pattern: /^Background\s+Commands?(?:\s+(\d+))?$/i,
@@ -6337,6 +6451,35 @@ function shouldIgnore(node) {
             val.startsWith('чтение and write your google docs') ||
             val.startsWith('read, create, edit, and manage google docs') ||
             val.startsWith('чтение, create, edit, and manage google docs') ||
+            /^tool\s+(arguments?|outputs?|inputs?|results?|parameters?|calls?)$/i.test(val) ||
+            val.startsWith('find the trends and outliers') ||
+            val.startsWith('build a monthly budget tracker') ||
+            val.startsWith('сборка a monthly budget tracker') ||
+            val.startsWith('import this csv and turn it') ||
+            val.startsWith('read, write, and format your google sheets') ||
+            val.startsWith('чтение, write, and format your google sheets') ||
+            val.startsWith('read, write, format, and manage google sheets') ||
+            val.startsWith('чтение, write, format, and manage google sheets') ||
+            val.startsWith('turn my project notes into a 10-slide') ||
+            val.startsWith('add a summary slide and speaker notes') ||
+            val.startsWith('export the final deck as a pdf') ||
+            val.startsWith('build and polish your google slides') ||
+            val.startsWith('сборка and polish your google slides') ||
+            val.startsWith('read, create, and edit google slides') ||
+            val.startsWith('чтение, create, and edit google slides') ||
+            val.startsWith("find last quarter's budget") ||
+            val.startsWith("move this week's design exports") ||
+            val.startsWith('download the q3 report') ||
+            val.startsWith('скачивание the q3 report') ||
+            val.startsWith('find and organize your google drive') ||
+            val.startsWith('browse, search, and manage google drive') ||
+            val.startsWith('book 30 minutes with priya') ||
+            val.startsWith("what's on my calendar today") ||
+            val.startsWith("block focus time before friday") ||
+            val.startsWith('run your google calendar') ||
+            val.startsWith('запуск your google calendar') ||
+            val.startsWith('read, create, and manage google calendar') ||
+            val.startsWith('чтение, create, and manage google calendar') ||
             /^\d+\s+turns?$/i.test(val) ||
             /^(?:\d{1,2}:\d{2}(?:\s*[ap]m)?\s+)?\d+\s+(?:(?:image|file|video|audio|media|code)\s+)?attachments?$/i.test(val) ||
             val === 'developer' ||
