@@ -119,11 +119,14 @@ const controlServer = http.createServer(async (req, res) => {
 
   if (req.url === '/status') {
     const localInfo = getLocalVersionInfo();
+    const effectiveRemoteVersion = (latestRemoteVersion && compareSemver(latestRemoteVersion, localInfo.version) >= 0)
+      ? latestRemoteVersion
+      : localInfo.version;
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({
       updatePending: pendingPatchToApply,
       version: localInfo.version,
-      latestRemoteVersion: latestRemoteVersion || localInfo.version,
+      latestRemoteVersion: effectiveRemoteVersion,
       lastUpdateCheckAt,
       versionTransition,
       hotUpdateNotice
@@ -243,16 +246,16 @@ async function checkAndApplyGithubUpdate({ force = false } = {}) {
     const remoteMeta = JSON.parse(rawVersionJson);
 
     lastUpdateCheckAt = new Date().toISOString();
-    latestRemoteVersion = remoteMeta.version || localVersion;
-
     const cmp = compareSemver(remoteMeta.version, localVersion);
+    latestRemoteVersion = cmp >= 0 ? (remoteMeta.version || localVersion) : localVersion;
+
     if (cmp <= 0 && !force) {
-      log(`[AutoUpdater] Local version v${localVersion} is up to date (GitHub: v${remoteMeta.version}).`);
+      log(`[AutoUpdater] Local version v${localVersion} is up to date (GitHub: v${latestRemoteVersion}).`);
       return {
         status: "up_to_date",
         localVersion,
-        remoteVersion: remoteMeta.version,
-        changelog: remoteMeta.changelog || ""
+        remoteVersion: latestRemoteVersion,
+        changelog: cmp >= 0 ? (remoteMeta.changelog || "") : (localInfo.changelog || "")
       };
     }
 

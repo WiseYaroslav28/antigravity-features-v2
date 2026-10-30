@@ -7955,15 +7955,17 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.19';
+    const FALLBACK_VERSION = '2.1.20';
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
     }
     let currentLocalVersion = window.__antigravity_local_version;
-    let latestGithubVersion = (window.__antigravity_remote_version && compareSemverClient(window.__antigravity_remote_version, currentLocalVersion) > 0)
-        ? window.__antigravity_remote_version
-        : currentLocalVersion;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Локализация v2.1.19: минималистичная иконка «i» без рамки рядом с EN | RU (спокойный серый цвет в штатном режиме без визуального шума, жёлто-оранжевое свечение только при наличии обновлений).';
+    if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0) {
+        window.__antigravity_remote_version = currentLocalVersion;
+        window.__antigravity_remote_changelog = 'Локализация v2.1.20: синхронизация версий GitHub без задержки CDN-кеша и минималистичная иконка «i» без рамки рядом с EN | RU.';
+    }
+    let latestGithubVersion = window.__antigravity_remote_version;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Локализация v2.1.20: синхронизация версий GitHub без задержки CDN-кеша и минималистичная иконка «i» без рамки рядом с EN | RU.';
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -8442,11 +8444,17 @@ function initLanguageSwitcher() {
             if (ghResp.ok) {
                 const ghMeta = await ghResp.json();
                 if (ghMeta && ghMeta.version) {
-                    latestGithubVersion = ghMeta.version;
-                    window.__antigravity_remote_version = latestGithubVersion;
-                    if (ghMeta.changelog) {
-                        latestGithubChangelog = ghMeta.changelog;
-                        window.__antigravity_remote_changelog = latestGithubChangelog;
+                    if (compareSemverClient(ghMeta.version, currentLocalVersion) >= 0) {
+                        latestGithubVersion = ghMeta.version;
+                        window.__antigravity_remote_version = latestGithubVersion;
+                        if (ghMeta.changelog) {
+                            latestGithubChangelog = ghMeta.changelog;
+                            window.__antigravity_remote_changelog = latestGithubChangelog;
+                        }
+                    } else {
+                        // Prevent Fastly CDN 1-3 min cache lag from downgrading displayed GitHub version below installed version
+                        latestGithubVersion = currentLocalVersion;
+                        window.__antigravity_remote_version = latestGithubVersion;
                     }
                     const now = new Date();
                     lastCheckedTimeStr = now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
@@ -8485,8 +8493,9 @@ function initLanguageSwitcher() {
                         currentLocalVersion = resData.to || remoteVer;
                         window.__antigravity_local_version = currentLocalVersion;
                         isHotUpdated = true;
-                    } else if (resData.remoteVersion) {
+                    } else if (resData.remoteVersion && compareSemverClient(resData.remoteVersion, currentLocalVersion) >= 0) {
                         latestGithubVersion = resData.remoteVersion;
+                        window.__antigravity_remote_version = latestGithubVersion;
                     }
                 }
             } catch (errServer) {}
