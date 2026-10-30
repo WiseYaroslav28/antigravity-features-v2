@@ -1840,7 +1840,63 @@ const translationDictionary = {
     "create a trello card on my board for each todo in this file.": "Создать карточку Trello на моей доске для каждого TODO в этом файле.",
     "create a trello card on my board for each todo in this file": "Создать карточку Trello на моей доске для каждого TODO в этом файле",
     "show what is in my trello inbox and suggest a board and list for each card.": "Показать содержимое моих Входящих в Trello и предложить доску и список для каждой карточки.",
-    "show what is in my trello inbox and suggest a board and list for each card": "Показать содержимое моих Входящих в Trello и предложить доску и список для каждой карточки"
+    "show what is in my trello inbox and suggest a board and list for each card": "Показать содержимое моих Входящих в Trello и предложить доску и список для каждой карточки",
+    // v2.1.14 — Background Commands & timers, Diff Viewer & Git panel, Timeline turns & image attachments
+    "background commands": "Фоновые команды",
+    "background command": "Фоновая команда",
+    "view split diff": "Раздельный режим сравнения",
+    "просмотр split diff": "Раздельный режим сравнения",
+    "split diff": "Раздельный режим сравнения",
+    "view inline diff": "Встроенный режим сравнения",
+    "просмотр inline diff": "Встроенный режим сравнения",
+    "inline diff": "Встроенный режим сравнения",
+    "view unified diff": "Встроенный режим сравнения",
+    "просмотр unified diff": "Встроенный режим сравнения",
+    "hide whitespace changes": "Скрыть изменения пробелов",
+    "show whitespace changes": "Показать изменения пробелов",
+    "staged changes": "Подготовленные изменения",
+    "unstaged changes": "Неподготовленные изменения",
+    "merge changes": "Изменения слияния",
+    "untracked files": "Неотслеживаемые файлы",
+    "untracked changes": "Неотслеживаемые изменения",
+    "no file changes": "Нет изменений в файлах",
+    "no file changes.": "Нет изменений в файлах.",
+    "no staged changes": "Нет подготовленных изменений",
+    "no staged changes.": "Нет подготовленных изменений.",
+    "no changes": "Нет изменений",
+    "no changes.": "Нет изменений.",
+    "changes": "Изменения",
+    "commit": "Зафиксировать",
+    "commit...": "Зафиксировать...",
+    "amend": "Дополнить коммит (Amend)",
+    "commit amend": "Дополнить коммит (Amend)",
+    "push": "Отправить (Push)",
+    "pull": "Получить (Pull)",
+    "fetch": "Загрузить (Fetch)",
+    "sync": "Синхронизировать",
+    "sync changes": "Синхронизировать изменения",
+    "commit & push": "Зафиксировать и отправить",
+    "commit and push": "Зафиксировать и отправить",
+    "commit & sync": "Зафиксировать и синхронизировать",
+    "search": "Поиск",
+    "1 turn": "1 шаг",
+    "cancel (ctrl+d)": "Отмена (Ctrl+D)",
+    "sends after agent finishes working": "Отправится после завершения работы агента",
+    "send after agent finishes working": "Отправится после завершения работы агента",
+    "queue message enter": "Поставить сообщение в очередь Enter",
+    "queue message": "Поставить сообщение в очередь",
+    "send immediately": "Отправить немедленно",
+    "send immediately alt+enter": "Отправить немедленно Alt+Enter",
+    "send now": "Отправить сейчас",
+    "summarize this design doc and list the open questions": "Сделать сводку этого дизайн-документа и выписать открытые вопросы",
+    "summarize this design doc and list the open questions.": "Сделать сводку этого дизайн-документа и выписать открытые вопросы.",
+    "draft a launch announcement in a new doc from my notes": "Составить черновик анонса запуска в новом документе на основе моих заметок",
+    "draft a launch announcement in a new doc from my notes.": "Составить черновик анонса запуска в новом документе на основе моих заметок.",
+    "reply to the open comments on my doc and resolve them": "Ответить на открытые комментарии в моём документе и закрыть их",
+    "reply to the open comments on my doc and resolve them.": "Ответить на открытые комментарии в моём документе и закрыть их.",
+    "read and write your google docs. summarize any doc from its link, draft proposals and announcements in a new doc, and reply to and resolve open comments.": "Чтение и редактирование ваших документов Google Docs. Делайте сводки любого документа по ссылке, составляйте черновики предложений и анонсов в новом документе, а также отвечайте на открытые комментарии и закрывайте их.",
+    "чтение and write your google docs. summarize any doc from its link, draft proposals and announcements in a new doc, and reply to and resolve open comments .": "Чтение и редактирование ваших документов Google Docs. Делайте сводки любого документа по ссылке, составляйте черновики предложений и анонсов в новом документе, а также отвечайте на открытые комментарии и закрывайте их.",
+    "чтение and write your google docs. summarize any doc from its link, draft proposals and announcements in a new doc, and reply to and resolve open comments.": "Чтение и редактирование ваших документов Google Docs. Делайте сводки любого документа по ссылке, составляйте черновики предложений и анонсов в новом документе, а также отвечайте на открытые комментарии и закрывайте их."
 };
 
 function localizeActionTarget(target) {
@@ -1871,6 +1927,17 @@ function localizeActionTarget(target) {
     if (/^validator\s+and\s+config\s+getter$/i.test(t)) return 'валидатора и геттера конфигурации';
     if (/^config\s+getter$/i.test(t)) return 'геттера конфигурации';
     if (/^validator$/i.test(t)) return 'валидатора';
+    if (/^split\s+diff$/i.test(t)) return 'в раздельном режиме';
+    if (/^(?:inline|unified)\s+diff$/i.test(t)) return 'во встроенном режиме';
+    if (/^for\s+any\s+newer\s+screenshots$/i.test(t)) return 'наличия новых скриншотов';
+    if (/^for\s+any\s+more\s+uploaded\s+screenshots$/i.test(t)) return 'наличия новых загруженных скриншотов';
+    if (/^for\s+any\s+additional\s+screenshots\s+in\s+queue$/i.test(t)) return 'дополнительных скриншотов в очереди';
+    if (/^for\s+any\s+new\s+screenshots\s+in\s+queue$/i.test(t)) return 'новых скриншотов в очереди';
+    if (/^for\s+any\s+new\s+uploaded\s+screenshots$/i.test(t)) return 'новых загруженных скриншотов';
+    if (/^if\s+any\s+new\s+screenshots\s+arrived$/i.test(t)) return 'появления новых скриншотов';
+    if (/^if\s+more\s+screenshots\s+were\s+uploaded$/i.test(t)) return 'загрузки новых скриншотов';
+    if (/^no\s+new\s+screenshots\s+in\s+queue$/i.test(t)) return 'отсутствия новых скриншотов в очереди';
+    if (/^latest\s+uploaded\s+screenshots$/i.test(t)) return 'последних загруженных скриншотов';
     
     if (/^server\s+log\s+for\s+order$/i.test(t)) return 'лога сервера для заказа';
     if (/^server\s+log$/i.test(t)) return 'лога сервера';
@@ -2189,7 +2256,7 @@ const regexTranslations = [
     },
     {
         // "Thought for 4s >" / "Thought for 4s ˅" / "Thought for 4s"
-        pattern: /^Thought\s+for\s+(\d+(?:\.\d+)?)\s*([smhd]|sec|min|hr|day|days)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Thought\s+for\s+(\d+(?:\.\d+)?)\s*([smhd]|sec|min|hr|day|days)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const count = match[1];
             const unit = match[2].toLowerCase();
@@ -2200,7 +2267,7 @@ const regexTranslations = [
     },
     {
         // General "Thought for <duration>"
-        pattern: /^Thought\s+for\s+(.*?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Thought\s+for\s+(.*?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const time = (typeof translateRelativeTime === 'function' ? translateRelativeTime(match[1]) : '') || (typeof translateDuration === 'function' ? translateDuration(match[1]) : '') || match[1];
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
@@ -2209,7 +2276,7 @@ const regexTranslations = [
     },
     {
         // "Thinking for 11s ˅" / "Thinking for 2s ˅" / "Thinking for 2s"
-        pattern: /^Thinking\s+for\s+(\d+(?:\.\d+)?)\s*([a-zA-Z]+)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Thinking\s+for\s+(\d+(?:\.\d+)?)\s*([a-zA-Z]+)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const count = match[1];
             const unit = match[2].toLowerCase();
@@ -2220,7 +2287,7 @@ const regexTranslations = [
     },
     {
         // "for 16s ˅" / "for 2s" (when Thinking is rendered in a separate span from duration)
-        pattern: /^for\s+(\d+(?:\.\d+)?)\s*([a-zA-Z]+)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^for\s+(\d+(?:\.\d+)?)\s*([a-zA-Z]+)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const count = match[1];
             const unit = match[2].toLowerCase();
@@ -2231,7 +2298,7 @@ const regexTranslations = [
     },
     {
         // General "Thinking for <duration>"
-        pattern: /^Thinking\s+for\s+(.*?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Thinking\s+for\s+(.*?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const time = (typeof translateRelativeTime === 'function' ? translateRelativeTime(match[1]) : '') || (typeof translateDuration === 'function' ? translateDuration(match[1]) : '') || match[1];
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
@@ -2319,22 +2386,22 @@ const regexTranslations = [
     },
     {
         // Standalone action targets when verb is stripped: "lines 4100-4170 >"
-        pattern: /^lines\s+(\d+)\s*[-–—]\s*(\d+)(\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^lines\s+(\d+)\s*[-–—]\s*(\d+)(\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => `Строки ${match[1]}–${match[2]}${match[3] ? (' ' + match[3].trim()) : ''}`
     },
     {
         // Standalone action targets: "whitelist in shouldIgnore >"
-        pattern: /^whitelist\s+in\s+(\S+)(\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^whitelist\s+in\s+(\S+)(\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => `Белый список в ${match[1]}${match[2] ? (' ' + match[2].trim()) : ''}`
     },
     {
         // Standalone action targets: "regexTranslations for terminal tab >"
-        pattern: /^regexTranslations\s+for\s+terminal\s+tab(\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^regexTranslations\s+for\s+terminal\s+tab(\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => `regexTranslations для вкладки терминала${match[1] ? (' ' + match[1].trim()) : ''}`
     },
     {
         // Standalone action targets: "Line 774 with Node >"
-        pattern: /^Line\s+(\d+)\s+with\s+(.+?)(\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Line\s+(\d+)\s+with\s+(.+?)(\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => `Строка ${match[1]} с помощью ${match[2]}${match[3] ? (' ' + match[3].trim()) : ''}`
     },
     {
@@ -2460,7 +2527,7 @@ const regexTranslations = [
     },
     {
         // "<action> · Exited with code 1 >" or standalone "Exited with code 1 >"
-        pattern: /^(?:(.+?)\s*([·•・])\s*)?(?:Exited\s+with\s+code|Завершено\s+с\s+кодом)\s+(-?\d+)(\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+))?$/i,
+        pattern: /^(?:(.+?)\s*([·•・])\s*)?(?:Exited\s+with\s+code|Завершено\s+с\s+кодом)\s+(-?\d+)(\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]))?$/i,
         replace: (match) => {
             const code = match[3];
             const arrow = match[4] ? (' ' + match[4].trim()) : '';
@@ -2832,6 +2899,179 @@ const regexTranslations = [
         pattern: /^\*\*MANDATORY\s+prerequisite\*\*\s*[—–-]\s*load\s+this\s+BEFORE\s+calling\s+any\s+Trello\s+MCP\s+tool.*$/i,
         replace: () => "**ОБЯЗАТЕЛЬНОЕ требование** — загрузите этот навык ПЕРЕД вызовом любого инструмента Trello MCP (`trelloRead*`, `trelloWrite*`, `trello...`)..."
     },
+    // --- v2.1.14: Background Commands, Timers, Diff Viewer, Git Panel & Timeline ---
+    {
+        // "Cancel (Ctrl+D)" / general "<Label> (<Shortcut>)"
+        pattern: /^(Cancel|Search|Copy|Paste|Cut|Undo|Redo|Save|Close|Open|Refresh|Reload|Submit|Send|Stop)\s*\(((?:Ctrl|Alt|Shift|Cmd|⌘|⌥|⇧|Enter|Esc)[^)]*)\)$/i,
+        replace: (match) => {
+            const word = match[1].toLowerCase();
+            const map = {
+                cancel: 'Отмена',
+                search: 'Поиск',
+                copy: 'Копировать',
+                paste: 'Вставить',
+                cut: 'Вырезать',
+                undo: 'Отменить',
+                redo: 'Повторить',
+                save: 'Сохранить',
+                close: 'Закрыть',
+                open: 'Открыть',
+                refresh: 'Обновить',
+                reload: 'Перезагрузить',
+                submit: 'Отправить',
+                send: 'Отправить',
+                stop: 'Остановить'
+            };
+            return `${map[word] || match[1]} (${match[2]})`;
+        }
+    },
+    {
+        // "Sends after agent finishes working"
+        pattern: /^Sends?\s+after\s+agent\s+finishes\s+working\.?$/i,
+        replace: () => "Отправится после завершения работы агента"
+    },
+    {
+        // "Queue Message Enter" / "Queue Message"
+        pattern: /^Queue\s+Message(?:\s+(Enter|Ctrl\+Enter|Shift\+Enter|Alt\+Enter|⌘\+Enter))?$/i,
+        replace: (match) => "Поставить сообщение в очередь" + (match[1] ? (" " + match[1]) : "")
+    },
+    {
+        // "Send Immediately Alt+Enter" / "Send Now Alt+Enter"
+        pattern: /^Send\s+(Immediately|Now)(?:\s+(Enter|Ctrl\+Enter|Shift\+Enter|Alt\+Enter|⌘\+Enter))?$/i,
+        replace: (match) => (/^immediately$/i.test(match[1]) ? "Отправить немедленно" : "Отправить сейчас") + (match[2] ? (" " + match[2]) : "")
+    },
+    {
+        // Google Docs example prompts, overview & /gdocs command
+        pattern: /^Summarize\s+this\s+design\s+doc\s+and\s+list\s+the\s+open\s+questions\.?$/i,
+        replace: () => "Сделать сводку этого дизайн-документа и выписать открытые вопросы"
+    },
+    {
+        pattern: /^Draft\s+a\s+launch\s+announcement\s+in\s+a\s+new\s+doc\s+from\s+my\s+notes\.?$/i,
+        replace: () => "Составить черновик анонса запуска в новом документе на основе моих заметок"
+    },
+    {
+        pattern: /^Reply\s+to\s+the\s+open\s+comments\s+on\s+my\s+doc\s+and\s+resolve\s+them\.?$/i,
+        replace: () => "Ответить на открытые комментарии в моём документе и закрыть их"
+    },
+    {
+        pattern: /^(?:Read|Чтение)\s+and\s+write\s+your\s+Google\s+Docs\.\s*Summarize\s+any\s+doc\s+from\s+its\s+link,\s*draft\s+proposals\s+and\s+announcements\s+in\s+a\s+new\s+doc,\s*and\s+reply\s+to\s+and\s+resolve\s+open\s+comments\s*\.?$/i,
+        replace: () => "Чтение и редактирование ваших документов Google Docs. Делайте сводки любого документа по ссылке, составляйте черновики предложений и анонсов в новом документе, а также отвечайте на открытые комментарии и закрывайте их."
+    },
+    {
+        pattern: /^(?:Read|Чтение),\s*create,\s*edit,\s*and\s+manage\s+Google\s+Docs\.\s*Use\s+when\s+the\s+user\s+shares\s+a\s+docs\.google\.com\s+URL.*$/i,
+        replace: () => "Чтение, создание, редактирование и управление документами Google Docs. Используется, когда пользователь делится ссылкой docs.google.com, просит сделать сводку..."
+    },
+    {
+        // "Background Commands" / "Background Commands 50"
+        pattern: /^Background\s+Commands?(?:\s+(\d+))?$/i,
+        replace: (match) => (/commands/i.test(match[0]) ? "Фоновые команды" : "Фоновая команда") + (match[1] ? (" " + match[1]) : "")
+    },
+    {
+        // "30s timer" / "45s timer" / "1m timer" / "1m 30s timer"
+        pattern: /^((?:\d+(?:\.\d+)?\s*(?:s|sec|secs|second|seconds|m|min|mins|minute|minutes|h|hr|hrs|hour|hours|d|day|days)\s*)+)timer(\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]))?$/i,
+        replace: (match) => {
+            const rawDur = match[1].trim().replace(/(\d+(?:\.\d+)?)\s*(s|sec|secs|second|seconds|m|min|mins|minute|minutes|h|hr|hrs|hour|hours|d|day|days)/gi, (m, c, u) => {
+                const first = u.toLowerCase()[0];
+                const map = { s: 'сек', m: 'мин', h: 'ч', d: 'дн' };
+                return `${c} ${map[first] || u}`;
+            });
+            const arrow = match[2] ? (' ' + match[2].trim()) : '';
+            return `Таймер на ${rawDur}${arrow}`;
+        }
+    },
+    {
+        // "View Split Diff" / "Просмотр Split Diff" / "View Inline Diff" / "Просмотр Inline Diff"
+        pattern: /^(?:(?:View|Просмотр)\s+)?(Split|Inline|Unified)\s+Diff$/i,
+        replace: (match) => /^split$/i.test(match[1]) ? "Раздельный режим сравнения" : "Встроенный режим сравнения"
+    },
+    {
+        // "Hide Whitespace Changes" / "Show Whitespace Changes"
+        pattern: /^(Hide|Show)\s+Whitespace\s+Changes$/i,
+        replace: (match) => /^hide$/i.test(match[1]) ? "Скрыть изменения пробелов" : "Показать изменения пробелов"
+    },
+    {
+        // "+3 more lines" / "+1 more line" / "3 more lines"
+        pattern: /^(\+\s*)?(\d+)\s+more\s+lines?(\.{3}|…)?$/i,
+        replace: (match) => {
+            const plus = match[1] ? '+ ' : '';
+            const count = parseInt(match[2], 10);
+            const dots = match[3] || '';
+            const n = Math.abs(count) % 100;
+            const n1 = n % 10;
+            let word = 'строк';
+            if (n > 10 && n < 20) word = 'строк';
+            else if (n1 > 1 && n1 < 5) word = 'строки';
+            else if (n1 === 1) word = 'строка';
+            return `${plus}ещё ${count} ${word}${dots}`;
+        }
+    },
+    {
+        // "Staged Changes" / "Unstaged Changes" / "Merge Changes" / "Changes" (with optional count)
+        pattern: /^(?:(Staged|Unstaged|Merge)\s+)?Changes(?:\s*\(?(\d+)\)?)?$/i,
+        replace: (match) => {
+            const kind = (match[1] || '').toLowerCase();
+            const count = match[2] ? (` (${match[2]})`) : '';
+            if (kind === 'staged') return `Подготовленные изменения${count}`;
+            if (kind === 'unstaged') return `Неподготовленные изменения${count}`;
+            if (kind === 'merge') return `Изменения слияния${count}`;
+            return `Изменения${count}`;
+        }
+    },
+    {
+        // "No file changes" / "No staged changes" / "No changes"
+        pattern: /^No\s+(?:(file|staged)\s+)?changes(\.?)$/i,
+        replace: (match) => {
+            const kind = (match[1] || '').toLowerCase();
+            const dot = match[2] || '';
+            if (kind === 'file') return `Нет изменений в файлах${dot}`;
+            if (kind === 'staged') return `Нет подготовленных изменений${dot}`;
+            return `Нет изменений${dot}`;
+        }
+    },
+    {
+        // "1 turn" / "7 turns"
+        pattern: /^(\d+)\s+turns?$/i,
+        replace: (match) => {
+            const count = parseInt(match[1], 10);
+            const n = Math.abs(count) % 100;
+            const n1 = n % 10;
+            let word = 'шагов';
+            if (n > 10 && n < 20) word = 'шагов';
+            else if (n1 > 1 && n1 < 5) word = 'шага';
+            else if (n1 === 1) word = 'шаг';
+            return `${count} ${word}`;
+        }
+    },
+    {
+        // "2 image attachments" / "1 image attachment" / "17:07 2 image attachments" / "1 file attachment"
+        pattern: /^(?:(\d{1,2}:\d{2}(?:\s*[AP]M)?)\s+)?(\d+)\s+(?:(image|file|video|audio|media|code)\s+)?attachments?$/i,
+        replace: (match) => {
+            const timePrefix = match[1] ? (match[1] + ' ') : '';
+            const count = parseInt(match[2], 10);
+            const kind = (match[3] || '').toLowerCase();
+            const n = Math.abs(count) % 100;
+            const n1 = n % 10;
+            if (kind === 'image') {
+                let phrase = 'прикреплённых изображений';
+                if (n > 10 && n < 20) phrase = 'прикреплённых изображений';
+                else if (n1 > 1 && n1 < 5) phrase = 'прикреплённых изображения';
+                else if (n1 === 1) phrase = 'прикреплённое изображение';
+                return `${timePrefix}${count} ${phrase}`;
+            }
+            if (kind === 'file') {
+                let phrase = 'прикреплённых файлов';
+                if (n > 10 && n < 20) phrase = 'прикреплённых файлов';
+                else if (n1 > 1 && n1 < 5) phrase = 'прикреплённых файла';
+                else if (n1 === 1) phrase = 'прикреплённый файл';
+                return `${timePrefix}${count} ${phrase}`;
+            }
+            let phrase = 'вложений';
+            if (n > 10 && n < 20) phrase = 'вложений';
+            else if (n1 > 1 && n1 < 5) phrase = 'вложения';
+            else if (n1 === 1) phrase = 'вложение';
+            return `${timePrefix}${count} ${phrase}`;
+        }
+    },
     {
         // "Workspace" / "Workspaces"
         pattern: /^Workspaces?$/i,
@@ -2916,7 +3156,7 @@ const regexTranslations = [
     },
     {
         // "Compacting · 59s" / "Compacting · 1m" / "Compacting"
-        pattern: /^Compacting(?:\s*([·•・])\s*(.*?))?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Compacting(?:\s*([·•・])\s*(.*?))?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[3] ? (' ' + match[3].trim()) : '';
             if (!match[2]) return 'Сжатие контекста' + arrow;
@@ -3022,7 +3262,7 @@ const regexTranslations = [
     },
     {
         // "View / Viewing <target> >" / "View / Viewing <target>"
-        pattern: /^(?:View|Viewing)\s+(.+?)(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(?:View|Viewing)\s+(.+?)(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const suffix = match[2] ? match[2] : '';
             const arrow = match[3] ? (' ' + match[3].trim()) : '';
@@ -3031,7 +3271,7 @@ const regexTranslations = [
     },
     {
         // "Просмотр <target> >" (if target is still in English)
-        pattern: /^Просмотр\s+(.+?)(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Просмотр\s+(.+?)(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const suffix = match[2] ? match[2] : '';
             const arrow = match[3] ? (' ' + match[3].trim()) : '';
@@ -3221,7 +3461,7 @@ const regexTranslations = [
     },
     {
         // "Test Thinking for 10s >" / "Test <target> >"
-        pattern: /^Test\s+(.+?)(\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+))?$/i,
+        pattern: /^Test\s+(.+?)(\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]))?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             let target = match[1].trim();
@@ -3237,7 +3477,7 @@ const regexTranslations = [
     },
     {
         // "Verify <target> >"
-        pattern: /^(?:Verify|Verifying)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(?:Verify|Verifying)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             const localized = localizeActionTarget(match[1]);
@@ -3247,7 +3487,7 @@ const regexTranslations = [
     },
     {
         // "Approve <target> >" / "Approve <target>"
-        pattern: /^(?:Approve|Approving)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(?:Approve|Approving)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             return `Утверждение ${localizeActionTarget(match[1])}${arrow}`;
@@ -3255,7 +3495,7 @@ const regexTranslations = [
     },
     {
         // "Approved <target> >" / "Approved <target>"
-        pattern: /^Approved\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Approved\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             return `Утверждено ${localizeActionTarget(match[1])}${arrow}`;
@@ -3263,7 +3503,7 @@ const regexTranslations = [
     },
     {
         // "Execute <target> >" / "Execute <target>"
-        pattern: /^(?:Execute|Executing)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(?:Execute|Executing)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             return `Выполнение ${localizeActionTarget(match[1])}${arrow}`;
@@ -3271,7 +3511,7 @@ const regexTranslations = [
     },
     {
         // "Executed <target> >" / "Executed <target>"
-        pattern: /^Executed\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Executed\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             return `Выполнено ${localizeActionTarget(match[1])}${arrow}`;
@@ -3299,7 +3539,7 @@ const regexTranslations = [
     },
     {
         // "Search <query> in transcript >" / "Search <query> in transcript"
-        pattern: /^Search\s+(.+?)\s+in\s+transcript(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Search\s+(.+?)\s+in\s+transcript(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             return `Поиск ${match[1]} в стенограмме${arrow}`;
@@ -3319,7 +3559,7 @@ const regexTranslations = [
     },
     {
         // "Push / Pushing <target> >"
-        pattern: /^(?:Push|Pushing)\s+(.+?)(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(?:Push|Pushing)\s+(.+?)(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[3] ? (' ' + match[3].trim()) : '';
             const suffix = match[2] ? match[2] : '';
@@ -3333,7 +3573,7 @@ const regexTranslations = [
     },
     {
         // "Message from <agent> >" or "Message from <agent> ˅"
-        pattern: /^Message\s+from\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Message\s+from\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             return `Сообщение от ${match[1].trim()}${arrow}`;
@@ -3341,7 +3581,7 @@ const regexTranslations = [
     },
     {
         // "Inspect <target> with parameters >"
-        pattern: /^Inspect\s+(.+?)\s+with\s+parameters(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Inspect\s+(.+?)\s+with\s+parameters(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             return `Проверка ${localizeActionTarget(match[1])} с параметрами${arrow}`;
@@ -3349,7 +3589,7 @@ const regexTranslations = [
     },
     {
         // "Inspect / Inspecting <target> >"
-        pattern: /^(?:Inspect|Inspecting)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(?:Inspect|Inspecting)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             const localized = localizeActionTarget(match[1]);
@@ -3359,7 +3599,7 @@ const regexTranslations = [
     },
     {
         // "Extract / Extracting <target> >"
-        pattern: /^(?:Extract|Extracting)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(?:Extract|Extracting)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             const localized = localizeActionTarget(match[1]);
@@ -3369,7 +3609,7 @@ const regexTranslations = [
     },
     {
         // "Read / Reading <target> >"
-        pattern: /^(?:Read|Reading)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(?:Read|Reading)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             const localized = localizeActionTarget(match[1]);
@@ -3379,7 +3619,7 @@ const regexTranslations = [
     },
     {
         // "List / Listing <target> >"
-        pattern: /^(?:List|Listing)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(?:List|Listing)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             const localized = localizeActionTarget(match[1]);
@@ -3389,7 +3629,7 @@ const regexTranslations = [
     },
     {
         // "Test / Testing <target> >"
-        pattern: /^(?:Test|Testing)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(?:Test|Testing)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             let target = match[1].trim();
@@ -3756,7 +3996,7 @@ const regexTranslations = [
     },
     {
         // "Search / Searching <target> >"
-        pattern: /^(?:Search|Searching)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(?:Search|Searching)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             const localized = localizeActionTarget(match[1]);
@@ -3768,7 +4008,7 @@ const regexTranslations = [
     },
     {
         // "Update / Updating / Upgrade / Upgrading <target> >"
-        pattern: /^(?:Update|Updating|Upgrade|Upgrading)\s+(.+?)(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(?:Update|Updating|Upgrade|Upgrading)\s+(.+?)(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const suffix = match[2] ? match[2] : '';
             const arrow = match[3] ? (' ' + match[3].trim()) : '';
@@ -3777,7 +4017,7 @@ const regexTranslations = [
     },
     {
         // "Updated <target> >"
-        pattern: /^Updated(?:\s+(.+?))?(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Updated(?:\s+(.+?))?(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const target = match[1] ? ` ${localizeActionTarget(match[1])}` : '';
             const suffix = match[2] ? match[2] : '';
@@ -3787,7 +4027,7 @@ const regexTranslations = [
     },
     {
         // "Обновление <target> >" (if target is still in English)
-        pattern: /^Обновление\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Обновление\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             const localized = localizeActionTarget(match[1]);
@@ -3799,7 +4039,7 @@ const regexTranslations = [
     },
     {
         // "Revert / Reverting <target> >"
-        pattern: /^(?:Revert|Reverting)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(?:Revert|Reverting)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             return `Откат ${localizeActionTarget(match[1])}${arrow}`;
@@ -3807,7 +4047,7 @@ const regexTranslations = [
     },
     {
         // "Download / Downloading <target> >"
-        pattern: /^(?:Download|Downloading)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(?:Download|Downloading)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             return `Загрузка ${localizeActionTarget(match[1])}${arrow}`;
@@ -3815,7 +4055,7 @@ const regexTranslations = [
     },
     {
         // "Compare against / with <target> >"
-        pattern: /^Compare\s+(?:against|with)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Compare\s+(?:against|with)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             return `Сравнение с ${match[1]}${arrow}`;
@@ -3823,7 +4063,7 @@ const regexTranslations = [
     },
     {
         // "Restore <target> from <source> >"
-        pattern: /^Restore\s+(.+?)\s+from\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Restore\s+(.+?)\s+from\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[3] ? (' ' + match[3].trim()) : '';
             return `Восстановление ${match[1]} из ${match[2]}${arrow}`;
@@ -3831,7 +4071,7 @@ const regexTranslations = [
     },
     {
         // "Restore <target> >"
-        pattern: /^Restore\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Restore\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             return `Восстановление ${match[1]}${arrow}`;
@@ -3839,7 +4079,7 @@ const regexTranslations = [
     },
     {
         // "Check diff <target> >"
-        pattern: /^Check\s+diff\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Check\s+diff\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             return `Проверка diff ${match[1]}${arrow}`;
@@ -3847,7 +4087,7 @@ const regexTranslations = [
     },
     {
         // "Check / Checking <target> >"
-        pattern: /^(?:Check|Checking)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(?:Check|Checking)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             const localized = localizeActionTarget(match[1]);
@@ -3857,7 +4097,7 @@ const regexTranslations = [
     },
     {
         // "Проверка <target> >" (if target is still in English)
-        pattern: /^Проверка\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Проверка\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             const localized = localizeActionTarget(match[1]);
@@ -3869,7 +4109,7 @@ const regexTranslations = [
     },
     {
         // "GitHub Actions run <id> status >"
-        pattern: /^GitHub\s+Actions\s+(?:workflow\s+)?run\s+(\S+)\s+status(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^GitHub\s+Actions\s+(?:workflow\s+)?run\s+(\S+)\s+status(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             return `Статус запуска GitHub Actions ${match[1]}${arrow}`;
@@ -3877,7 +4117,7 @@ const regexTranslations = [
     },
     {
         // "GitHub Actions run status >"
-        pattern: /^GitHub\s+Actions\s+(?:workflow\s+)?run\s+status(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^GitHub\s+Actions\s+(?:workflow\s+)?run\s+status(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[1] ? (' ' + match[1].trim()) : '';
             return `Статус запуска GitHub Actions${arrow}`;
@@ -3885,7 +4125,7 @@ const regexTranslations = [
     },
     {
         // "Чтение <target> >" (if target is still in English)
-        pattern: /^Чтение\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Чтение\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             const localized = localizeActionTarget(match[1]);
@@ -3897,7 +4137,7 @@ const regexTranslations = [
     },
     {
         // Compound actions with "and" (e.g. "Build Tailwind CSS and check .tauri-keys — завершено >", "Clear 143MB log and generate test vector >")
-        pattern: /^(Build|Building|Clear|Clearing|Inspect|Inspecting|Check|Checking|Read|Reading|Run|Running|Test|Testing|Update|Updating|Upgrade|Upgrading)\s+(.+?)\s+and\s+(check|generate|test|verify|build|clear|inspect|read|run|update|upgrade)\s+(.+?)(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(Build|Building|Clear|Clearing|Inspect|Inspecting|Check|Checking|Read|Reading|Run|Running|Test|Testing|Update|Updating|Upgrade|Upgrading)\s+(.+?)\s+and\s+(check|generate|test|verify|build|clear|inspect|read|run|update|upgrade)\s+(.+?)(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const verb1Map = {
                 build: 'Сборка', building: 'Сборка',
@@ -3934,7 +4174,7 @@ const regexTranslations = [
     },
     {
         // "Build / Building <target> >"
-        pattern: /^(?:Build|Building)\s+(.+?)(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(?:Build|Building)\s+(.+?)(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[3] ? (' ' + match[3].trim()) : '';
             const suffix = match[2] ? match[2] : '';
@@ -3947,7 +4187,7 @@ const regexTranslations = [
     },
     {
         // "Сборка <target>" (if target is still in English)
-        pattern: /^Сборка\s+(.+?)(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^Сборка\s+(.+?)(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[3] ? (' ' + match[3].trim()) : '';
             const suffix = match[2] ? match[2] : '';
@@ -3960,7 +4200,7 @@ const regexTranslations = [
     },
     {
         // "Clear / Clearing <target> >"
-        pattern: /^(?:Clear|Clearing)\s+(.+?)(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(?:Clear|Clearing)\s+(.+?)(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[3] ? (' ' + match[3].trim()) : '';
             const suffix = match[2] ? match[2] : '';
@@ -3969,7 +4209,7 @@ const regexTranslations = [
     },
     {
         // "<cmd> help >" / "<cmd> config help >"
-        pattern: /^(.+?)\s+help(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(.+?)\s+help(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             let cmd = match[1].trim();
@@ -3981,7 +4221,7 @@ const regexTranslations = [
     },
     {
         // "<target> stat >" (e.g. "Commit stat >", "Staged diff stat >")
-        pattern: /^(.+?)\s+stat(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(.+?)\s+stat(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             const t = match[1].trim();
@@ -3992,7 +4232,7 @@ const regexTranslations = [
     },
     {
         // "<target> search >" (e.g. "Git pickaxe search >")
-        pattern: /^(.+?)\s+search(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(.+?)\s+search(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             if (/^parallel$/i.test(match[1].trim())) return "Parallel Search";
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
@@ -4001,7 +4241,7 @@ const regexTranslations = [
     },
     {
         // "<target> body >" (e.g. "upsert_toolchain_model body >")
-        pattern: /^(.+?)\s+body(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(.+?)\s+body(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             return `Тело ${match[1].trim()}${arrow}`;
@@ -4009,7 +4249,7 @@ const regexTranslations = [
     },
     {
         // "<target> toolchain >" (e.g. "Universal invoker toolchain >")
-        pattern: /^(.+?)\s+toolchain(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(.+?)\s+toolchain(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             return `Тулчейн ${match[1].trim()}${arrow}`;
@@ -4017,7 +4257,7 @@ const regexTranslations = [
     },
     {
         // Specific step titles
-        pattern: /^(Untracked module files|Consilium config audit path|Schema migration pattern|Contract approval step \(a\)|Validator and config getter)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+)?)?$/i,
+        pattern: /^(Untracked module files|Consilium config audit path|Schema migration pattern|Contract approval step \(a\)|Validator and config getter)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             const map = {
@@ -5375,7 +5615,7 @@ const regexTranslations = [
     },
     {
         // "Commands ˅" / "Commands >" / "Commands"
-        pattern: /^Commands(?:\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]|[^a-zA-Z0-9\s]+))?$/i,
+        pattern: /^Commands(?:\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]))?$/i,
         replace: (match) => "Команды" + (match[1] ? (" " + match[1].trim()) : "")
     },
     {
@@ -6048,6 +6288,57 @@ function shouldIgnore(node) {
             val.startsWith('create a trello card') ||
             val.startsWith('show what is in my trello') ||
             val.startsWith('**mandatory prerequisite**') ||
+            val === 'background commands' ||
+            val === 'background command' ||
+            /^background\s+commands?(?:\s+\d+)?$/i.test(val) ||
+            /^(?:\d+(?:\.\d+)?\s*(?:s|sec|secs|m|min|mins|h|hr|hrs|d|day|days)\s*)+timer$/i.test(val) ||
+            val === 'view split diff' ||
+            val === 'просмотр split diff' ||
+            val === 'split diff' ||
+            val === 'view inline diff' ||
+            val === 'просмотр inline diff' ||
+            val === 'inline diff' ||
+            val === 'view unified diff' ||
+            val === 'просмотр unified diff' ||
+            val === 'hide whitespace changes' ||
+            val === 'show whitespace changes' ||
+            /^\+?\s*\d+\s+more\s+lines?(?:\.{3}|…)?$/i.test(val) ||
+            val === 'staged changes' ||
+            val === 'unstaged changes' ||
+            val === 'merge changes' ||
+            val === 'untracked files' ||
+            val === 'untracked changes' ||
+            val === 'no file changes' ||
+            val === 'no file changes.' ||
+            val === 'no staged changes' ||
+            val === 'no changes' ||
+            val === 'changes' ||
+            val === 'commit' ||
+            val === 'commit...' ||
+            val === 'amend' ||
+            val === 'push' ||
+            val === 'pull' ||
+            val === 'fetch' ||
+            val === 'sync' ||
+            val === 'sync changes' ||
+            val === 'commit & push' ||
+            val === 'commit & sync' ||
+            val === 'search' ||
+            /^cancel\s*\(/i.test(val) ||
+            val.startsWith('sends after agent finishes') ||
+            val.startsWith('send after agent finishes') ||
+            val.startsWith('queue message') ||
+            val.startsWith('send immediately') ||
+            val.startsWith('send now') ||
+            val.startsWith('summarize this design doc') ||
+            val.startsWith('draft a launch announcement') ||
+            val.startsWith('reply to the open comments') ||
+            val.startsWith('read and write your google docs') ||
+            val.startsWith('чтение and write your google docs') ||
+            val.startsWith('read, create, edit, and manage google docs') ||
+            val.startsWith('чтение, create, edit, and manage google docs') ||
+            /^\d+\s+turns?$/i.test(val) ||
+            /^(?:\d{1,2}:\d{2}(?:\s*[ap]m)?\s+)?\d+\s+(?:(?:image|file|video|audio|media|code)\s+)?attachments?$/i.test(val) ||
             val === 'developer' ||
             val === 'website' ||
             val === 'repository' ||
@@ -6187,6 +6478,12 @@ function shouldIgnore(node) {
     };
 
     const isSpecialUiText = isMatchSpecial(textVal) || isMatchSpecial(ariaVal) || isMatchSpecial(titleVal) || isMatchSpecial(tooltipVal) || isMatchSpecial(placeholderVal);
+
+    if (node.parentElement && typeof node.parentElement.closest === 'function') {
+        if (node.parentElement.closest('script, style, [contenteditable="true"], .view-lines, .view-line, .margin-view-overlays, .minimap, .xterm, .terminal-container')) {
+            return true;
+        }
+    }
     
     let parent = node.parentElement;
     while (parent) {
@@ -6201,13 +6498,16 @@ function shouldIgnore(node) {
             tagName === 'STYLE' || 
             parent.contentEditable === 'true' ||
             (isStringClass && (
-                lowerClass.includes('monaco-editor') || 
                 lowerClass.includes('view-lines') || 
-                lowerClass.includes('margin') || 
+                lowerClass.includes('view-line') || 
                 lowerClass.includes('minimap') || 
                 lowerClass.includes('terminal-container') || 
                 lowerClass.includes('xterm') ||
-                lowerClass.includes('terminal')
+                (!isSpecialUiText && (
+                    lowerClass.includes('monaco-editor') || 
+                    lowerClass.includes('margin') || 
+                    lowerClass.includes('terminal')
+                ))
             ))
         ) {
             return true;
@@ -6651,6 +6951,57 @@ function isFileName(text, parent) {
         lowerTrimmed.startsWith('create a trello card') ||
         lowerTrimmed.startsWith('show what is in my trello') ||
         lowerTrimmed.startsWith('**mandatory prerequisite**') ||
+        lowerTrimmed === 'background commands' ||
+        lowerTrimmed === 'background command' ||
+            /^background\s+commands?(?:\s+\d+)?$/i.test(lowerTrimmed) ||
+            /^(?:\d+(?:\.\d+)?\s*(?:s|sec|secs|m|min|mins|h|hr|hrs|d|day|days)\s*)+timer$/i.test(lowerTrimmed) ||
+        lowerTrimmed === 'view split diff' ||
+        lowerTrimmed === 'просмотр split diff' ||
+        lowerTrimmed === 'split diff' ||
+        lowerTrimmed === 'view inline diff' ||
+        lowerTrimmed === 'просмотр inline diff' ||
+        lowerTrimmed === 'inline diff' ||
+        lowerTrimmed === 'view unified diff' ||
+        lowerTrimmed === 'просмотр unified diff' ||
+        lowerTrimmed === 'hide whitespace changes' ||
+        lowerTrimmed === 'show whitespace changes' ||
+            /^\+?\s*\d+\s+more\s+lines?(?:\.{3}|…)?$/i.test(lowerTrimmed) ||
+        lowerTrimmed === 'staged changes' ||
+        lowerTrimmed === 'unstaged changes' ||
+        lowerTrimmed === 'merge changes' ||
+        lowerTrimmed === 'untracked files' ||
+        lowerTrimmed === 'untracked changes' ||
+        lowerTrimmed === 'no file changes' ||
+        lowerTrimmed === 'no file changes.' ||
+        lowerTrimmed === 'no staged changes' ||
+        lowerTrimmed === 'no changes' ||
+        lowerTrimmed === 'changes' ||
+        lowerTrimmed === 'commit' ||
+        lowerTrimmed === 'commit...' ||
+        lowerTrimmed === 'amend' ||
+        lowerTrimmed === 'push' ||
+        lowerTrimmed === 'pull' ||
+        lowerTrimmed === 'fetch' ||
+        lowerTrimmed === 'sync' ||
+        lowerTrimmed === 'sync changes' ||
+        lowerTrimmed === 'commit & push' ||
+        lowerTrimmed === 'commit & sync' ||
+        lowerTrimmed === 'search' ||
+            /^cancel\s*\(/i.test(lowerTrimmed) ||
+        lowerTrimmed.startsWith('sends after agent finishes') ||
+        lowerTrimmed.startsWith('send after agent finishes') ||
+        lowerTrimmed.startsWith('queue message') ||
+        lowerTrimmed.startsWith('send immediately') ||
+        lowerTrimmed.startsWith('send now') ||
+        lowerTrimmed.startsWith('summarize this design doc') ||
+        lowerTrimmed.startsWith('draft a launch announcement') ||
+        lowerTrimmed.startsWith('reply to the open comments') ||
+        lowerTrimmed.startsWith('read and write your google docs') ||
+        lowerTrimmed.startsWith('чтение and write your google docs') ||
+        lowerTrimmed.startsWith('read, create, edit, and manage google docs') ||
+        lowerTrimmed.startsWith('чтение, create, edit, and manage google docs') ||
+            /^\d+\s+turns?$/i.test(lowerTrimmed) ||
+            /^(?:\d{1,2}:\d{2}(?:\s*[ap]m)?\s+)?\d+\s+(?:(?:image|file|video|audio|media|code)\s+)?attachments?$/i.test(lowerTrimmed) ||
         lowerTrimmed === "what's included" ||
         lowerTrimmed === 'whats included' ||
         lowerTrimmed === 'mcp server' ||
