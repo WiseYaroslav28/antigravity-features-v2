@@ -7955,7 +7955,7 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.17';
+    const FALLBACK_VERSION = '2.1.18';
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
     }
@@ -7963,7 +7963,7 @@ function initLanguageSwitcher() {
     let latestGithubVersion = (window.__antigravity_remote_version && compareSemverClient(window.__antigravity_remote_version, currentLocalVersion) > 0)
         ? window.__antigravity_remote_version
         : currentLocalVersion;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Локализация v2.1.17: компактный индикатор статуса и обновлений «A•» рядом с переключателем EN | RU (зелёный — версия актуальна, жёлто-оранжевый — доступно обновление). Вся детальная информация о версиях вынесена во всплывающее меню.';
+    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Локализация v2.1.18: компактный информационный индикатор «i» рядом с переключателем EN | RU (зелёный — версия актуальна, жёлто-оранжевый — доступно обновление). Вся детальная информация о версиях вынесена во всплывающее меню.';
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -7981,8 +7981,10 @@ function initLanguageSwitcher() {
             </div>
         </div>
         <div id="antigravity-version-btn" class="version-status-btn state-ok" title="Локализация актуальна (v${currentLocalVersion}). Нажмите для проверки обновлений">
-            <span class="agy-icon-a">A</span>
-            <span class="agy-icon-dot" id="version-btn-dot"></span>
+            <span class="agy-info-glyph" aria-hidden="true">
+                <span class="agy-info-dot" id="version-btn-dot"></span>
+                <span class="agy-info-stem"></span>
+            </span>
         </div>
         <div class="update-popup" id="update-popup-card">
             <div class="update-popup-header">
@@ -8054,13 +8056,13 @@ function initLanguageSwitcher() {
             background: rgba(0, 0, 0, 0.06);
         }
 
-        /* Compact "A•" Status Icon Button */
+        /* Compact "i" (with dot) Info & Update Status Icon Button */
         .version-status-btn {
             position: relative;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 22px;
+            width: 20px;
             height: 20px;
             background: #202124;
             border: 1px solid #3c4043;
@@ -8074,23 +8076,25 @@ function initLanguageSwitcher() {
             background: #f1f3f4;
             border: 1px solid #dadce0;
         }
-        .agy-icon-a {
-            font-size: 11px;
-            font-weight: 800;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1;
-            letter-spacing: -0.5px;
-            transform: translateX(-1px);
-            transition: color 0.2s ease, text-shadow 0.2s ease;
+        .agy-info-glyph {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            pointer-events: none;
         }
-        .agy-icon-dot {
-            position: absolute;
-            top: 3px;
-            right: 3px;
-            width: 4.5px;
-            height: 4.5px;
+        .agy-info-dot {
+            width: 3.5px;
+            height: 3.5px;
             border-radius: 50%;
             transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+        }
+        .agy-info-stem {
+            width: 2.5px;
+            height: 7px;
+            border-radius: 1.5px;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         /* STATE 1: Green (Everything OK, latest version installed) */
@@ -8098,18 +8102,20 @@ function initLanguageSwitcher() {
             border-color: rgba(16, 185, 129, 0.45);
             background: rgba(16, 185, 129, 0.10);
         }
-        .version-status-btn.state-ok .agy-icon-a {
-            color: #34d399;
+        .version-status-btn.state-ok .agy-info-dot {
+            background-color: #34d399;
+            box-shadow: 0 0 5px rgba(52, 211, 153, 0.85);
         }
-        [data-theme="light"] .version-status-btn.state-ok .agy-icon-a {
-            color: #059669;
-        }
-        .version-status-btn.state-ok .agy-icon-dot {
+        .version-status-btn.state-ok .agy-info-stem {
             background-color: #10b981;
-            box-shadow: 0 0 5px rgba(16, 185, 129, 0.8);
+            box-shadow: 0 0 4px rgba(16, 185, 129, 0.45);
+        }
+        [data-theme="light"] .version-status-btn.state-ok .agy-info-dot,
+        [data-theme="light"] .version-status-btn.state-ok .agy-info-stem {
+            background-color: #059669;
         }
         .version-status-btn.state-ok:hover {
-            background: rgba(16, 185, 129, 0.20);
+            background: rgba(16, 185, 129, 0.22);
             border-color: #10b981;
         }
 
@@ -8119,16 +8125,17 @@ function initLanguageSwitcher() {
             background: rgba(245, 158, 11, 0.16);
             animation: agy-amber-pulse 2s infinite;
         }
-        .version-status-btn.state-attention .agy-icon-a {
-            color: #fbbf24;
-            text-shadow: 0 0 6px rgba(245, 158, 11, 0.4);
-        }
-        [data-theme="light"] .version-status-btn.state-attention .agy-icon-a {
-            color: #d97706;
-        }
-        .version-status-btn.state-attention .agy-icon-dot {
-            background-color: #f59e0b;
+        .version-status-btn.state-attention .agy-info-dot {
+            background-color: #fbbf24;
             box-shadow: 0 0 6px #fbbf24;
+        }
+        .version-status-btn.state-attention .agy-info-stem {
+            background-color: #f59e0b;
+            box-shadow: 0 0 5px rgba(245, 158, 11, 0.6);
+        }
+        [data-theme="light"] .version-status-btn.state-attention .agy-info-dot,
+        [data-theme="light"] .version-status-btn.state-attention .agy-info-stem {
+            background-color: #d97706;
         }
         .version-status-btn.state-attention:hover {
             background: rgba(245, 158, 11, 0.28);
@@ -8145,13 +8152,13 @@ function initLanguageSwitcher() {
             border-color: #3b82f6;
             background: rgba(59, 130, 246, 0.18);
         }
-        .version-status-btn.state-checking .agy-icon-a {
-            color: #60a5fa;
-        }
-        .version-status-btn.state-checking .agy-icon-dot {
-            background-color: #3b82f6;
+        .version-status-btn.state-checking .agy-info-dot {
+            background-color: #60a5fa;
             box-shadow: 0 0 6px #60a5fa;
             animation: agy-dot-blink 0.6s infinite alternate;
+        }
+        .version-status-btn.state-checking .agy-info-stem {
+            background-color: #3b82f6;
         }
         @keyframes agy-dot-blink {
             0% { transform: scale(0.7); opacity: 0.5; }
@@ -8368,7 +8375,7 @@ function initLanguageSwitcher() {
 
             popupTitle.innerText = '🟠 Доступно обновление на GitHub!';
             popupVersionBadge.innerText = 'Обновление: v' + currentLocalVersion + ' → v' + latestGithubVersion;
-            popupDesc.innerText = (latestGithubChangelog ? latestGithubChangelog + '\n' : '') + 'Нажмите на иконку «A•» или кнопку ниже, чтобы скачать и установить обновление.';
+            popupDesc.innerText = (latestGithubChangelog ? latestGithubChangelog + '\n' : '') + 'Нажмите на иконку «i» или кнопку ниже, чтобы скачать и установить обновление.';
             checkInstallBtn.innerText = '⬇️ Скачать и установить v' + latestGithubVersion;
             restartBtn.innerText = '⚡ Перезапустить AntiGravity';
         } else if (isUpdatePending) {
