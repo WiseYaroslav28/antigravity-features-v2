@@ -138,8 +138,9 @@ const controlServer = http.createServer(async (req, res) => {
     return;
   }
 
-  if (req.url === '/check-update') {
-    const result = await checkAndApplyGithubUpdate({ force: false });
+  if (req.url && req.url.startsWith('/check-update')) {
+    const isForce = req.url.includes('force=1') || req.url.includes('force=true');
+    const result = await checkAndApplyGithubUpdate({ force: isForce });
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(result));
     return;

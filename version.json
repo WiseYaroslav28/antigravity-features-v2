@@ -1,12 +1,12 @@
 {
-  "version": "2.1.15",
-  "releaseDate": "2026-10-31T01:30:00Z",
-  "changelog": "Локализация v2.1.15: переведены заголовки деталей вызова инструментов (Tool arguments -> Аргументы инструмента, Tool Output -> Вывод инструмента), а также все карточки, стартовые промпты, обзоры, команды и навыки плагинов Google Workspace (Google Sheets /gsheets, Google Slides /gslides, Google Drive /gdrive, Google Calendar /gcalendar и Google Docs /gdocs).",
+  "version": "2.1.16",
+  "releaseDate": "2026-10-31T02:30:00Z",
+  "changelog": "Локализация v2.1.16: рядом с переключателем языка EN | RU добавлена отдельная кнопка версии и обновлений (🔄 v2.1.16), показывающая наличие новой версии на GitHub (⬆️) и позволяющая в 1 клик проверить, скачать и установить обновление.",
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",
-    "patch_asar.cjs",
-    "inject_cdp.cjs",
-    "index.js"
+    "index.js",
+    "backup_manager.js",
+    "exit_patcher.cjs"
   ]
 }
