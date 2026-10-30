@@ -1894,6 +1894,23 @@ const translationDictionary = {
     "draft a launch announcement in a new doc from my notes.": "Составить черновик анонса запуска в новом документе на основе моих заметок.",
     "reply to the open comments on my doc and resolve them": "Ответить на открытые комментарии в моём документе и закрыть их",
     "reply to the open comments on my doc and resolve them.": "Ответить на открытые комментарии в моём документе и закрыть их.",
+    "tool arguments": "Аргументы инструмента",
+    "tool output": "Вывод инструмента",
+    "tool input": "Входные данные инструмента",
+    "tool result": "Результат инструмента",
+    "find the trends and outliers in this sales sheet": "Найти тренды и аномалии в этой таблице продаж",
+    "build a monthly budget tracker with formulas and a chart": "Создать трекер ежемесячного бюджета с формулами и диаграммой",
+    "import this csv and turn it into a pivot table by region": "Импортировать этот CSV и превратить его в сводную таблицу по регионам",
+    "read, write, and format your google sheets. fill in formulas, sort and clean columns, import csvs, build charts and pivot tables, and export the result.": "Чтение, запись и форматирование ваших таблиц Google Sheets. Заполняйте формулы, сортируйте и очищайте столбцы, импортируйте CSV-файлы, стройте диаграммы и сводные таблицы, а также экспортируйте результат.",
+    "turn my project notes into a 10-slide pitch deck": "Превратить мои заметки по проекту в презентацию из 10 слайдов",
+    "add a summary slide and speaker notes to my review deck": "Добавить итоговый слайд и заметки докладчика в мою презентацию",
+    "export the final deck as a pdf": "Экспортировать готовую презентацию в PDF",
+    "find last quarter's budget and share it with alex": "Найти бюджет за прошлый квартал и поделиться им с Алексом",
+    "move this week's design exports into the launch folder": "Переместить экспорты дизайна за эту неделю в папку Launch",
+    "download the q3 report as a pdf": "Скачать отчёт за 3-й квартал в формате PDF",
+    "book 30 minutes with priya and sam next week": "Забронировать 30 минут с Прией и Сэмом на следующей неделе",
+    "what's on my calendar today? flag any conflicts": "Что в моём календаре на сегодня? Отметь любые пересечения",
+    "block focus time before friday's launch review": "Выделить время для фокусировки перед пятничным обзором запуска",
     "read and write your google docs. summarize any doc from its link, draft proposals and announcements in a new doc, and reply to and resolve open comments.": "Чтение и редактирование ваших документов Google Docs. Делайте сводки любого документа по ссылке, составляйте черновики предложений и анонсов в новом документе, а также отвечайте на открытые комментарии и закрывайте их.",
     "чтение and write your google docs. summarize any doc from its link, draft proposals and announcements in a new doc, and reply to and resolve open comments .": "Чтение и редактирование ваших документов Google Docs. Делайте сводки любого документа по ссылке, составляйте черновики предложений и анонсов в новом документе, а также отвечайте на открытые комментарии и закрывайте их.",
     "чтение and write your google docs. summarize any doc from its link, draft proposals and announcements in a new doc, and reply to and resolve open comments.": "Чтение и редактирование ваших документов Google Docs. Делайте сводки любого документа по ссылке, составляйте черновики предложений и анонсов в новом документе, а также отвечайте на открытые комментарии и закрывайте их."
@@ -7143,6 +7160,35 @@ function isFileName(text, parent) {
         lowerTrimmed.startsWith('чтение and write your google docs') ||
         lowerTrimmed.startsWith('read, create, edit, and manage google docs') ||
         lowerTrimmed.startsWith('чтение, create, edit, and manage google docs') ||
+        /^tool\s+(arguments?|outputs?|inputs?|results?|parameters?|calls?)$/i.test(lowerTrimmed) ||
+        lowerTrimmed.startsWith('find the trends and outliers') ||
+        lowerTrimmed.startsWith('build a monthly budget tracker') ||
+        lowerTrimmed.startsWith('сборка a monthly budget tracker') ||
+        lowerTrimmed.startsWith('import this csv and turn it') ||
+        lowerTrimmed.startsWith('read, write, and format your google sheets') ||
+        lowerTrimmed.startsWith('чтение, write, and format your google sheets') ||
+        lowerTrimmed.startsWith('read, write, format, and manage google sheets') ||
+        lowerTrimmed.startsWith('чтение, write, format, and manage google sheets') ||
+        lowerTrimmed.startsWith('turn my project notes into a 10-slide') ||
+        lowerTrimmed.startsWith('add a summary slide and speaker notes') ||
+        lowerTrimmed.startsWith('export the final deck as a pdf') ||
+        lowerTrimmed.startsWith('build and polish your google slides') ||
+        lowerTrimmed.startsWith('сборка and polish your google slides') ||
+        lowerTrimmed.startsWith('read, create, and edit google slides') ||
+        lowerTrimmed.startsWith('чтение, create, and edit google slides') ||
+        lowerTrimmed.startsWith("find last quarter's budget") ||
+        lowerTrimmed.startsWith("move this week's design exports") ||
+        lowerTrimmed.startsWith('download the q3 report') ||
+        lowerTrimmed.startsWith('скачивание the q3 report') ||
+        lowerTrimmed.startsWith('find and organize your google drive') ||
+        lowerTrimmed.startsWith('browse, search, and manage google drive') ||
+        lowerTrimmed.startsWith('book 30 minutes with priya') ||
+        lowerTrimmed.startsWith("what's on my calendar today") ||
+        lowerTrimmed.startsWith("block focus time before friday") ||
+        lowerTrimmed.startsWith('run your google calendar') ||
+        lowerTrimmed.startsWith('запуск your google calendar') ||
+        lowerTrimmed.startsWith('read, create, and manage google calendar') ||
+        lowerTrimmed.startsWith('чтение, create, and manage google calendar') ||
             /^\d+\s+turns?$/i.test(lowerTrimmed) ||
             /^(?:\d{1,2}:\d{2}(?:\s*[ap]m)?\s+)?\d+\s+(?:(?:image|file|video|audio|media|code)\s+)?attachments?$/i.test(lowerTrimmed) ||
         lowerTrimmed === "what's included" ||
