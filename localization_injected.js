@@ -7955,7 +7955,7 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.18';
+    const FALLBACK_VERSION = '2.1.19';
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
     }
@@ -7963,7 +7963,7 @@ function initLanguageSwitcher() {
     let latestGithubVersion = (window.__antigravity_remote_version && compareSemverClient(window.__antigravity_remote_version, currentLocalVersion) > 0)
         ? window.__antigravity_remote_version
         : currentLocalVersion;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Локализация v2.1.18: компактный информационный индикатор «i» рядом с переключателем EN | RU (зелёный — версия актуальна, жёлто-оранжевый — доступно обновление). Вся детальная информация о версиях вынесена во всплывающее меню.';
+    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Локализация v2.1.19: минималистичная иконка «i» без рамки рядом с EN | RU (спокойный серый цвет в штатном режиме без визуального шума, жёлто-оранжевое свечение только при наличии обновлений).';
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -8010,7 +8010,7 @@ function initLanguageSwitcher() {
             z-index: 999999;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 3px;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             -webkit-app-region: no-drag;
             user-select: none;
@@ -8056,25 +8056,29 @@ function initLanguageSwitcher() {
             background: rgba(0, 0, 0, 0.06);
         }
 
-        /* Compact "i" (with dot) Info & Update Status Icon Button */
+        /* Frameless Minimalist "i" Status Icon next to EN | RU */
         .version-status-btn {
             position: relative;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 20px;
+            width: 15px;
             height: 20px;
-            background: #202124;
-            border: 1px solid #3c4043;
+            background: transparent;
+            border: none;
             border-radius: 4px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.18s ease;
             padding: 0;
             box-sizing: border-box;
+            opacity: 0.72;
         }
-        [data-theme="light"] .version-status-btn {
-            background: #f1f3f4;
-            border: 1px solid #dadce0;
+        .version-status-btn:hover {
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.06);
+        }
+        [data-theme="light"] .version-status-btn:hover {
+            background: rgba(0, 0, 0, 0.05);
         }
         .agy-info-glyph {
             display: inline-flex;
@@ -8085,77 +8089,66 @@ function initLanguageSwitcher() {
             pointer-events: none;
         }
         .agy-info-dot {
-            width: 3.5px;
-            height: 3.5px;
+            width: 2.5px;
+            height: 2.5px;
             border-radius: 50%;
             transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
         }
         .agy-info-stem {
-            width: 2.5px;
-            height: 7px;
-            border-radius: 1.5px;
+            width: 2px;
+            height: 6px;
+            border-radius: 1px;
             transition: background-color 0.2s ease, box-shadow 0.2s ease;
         }
 
-        /* STATE 1: Green (Everything OK, latest version installed) */
-        .version-status-btn.state-ok {
-            border-color: rgba(16, 185, 129, 0.45);
-            background: rgba(16, 185, 129, 0.10);
-        }
-        .version-status-btn.state-ok .agy-info-dot {
-            background-color: #34d399;
-            box-shadow: 0 0 5px rgba(52, 211, 153, 0.85);
-        }
+        /* STATE 1: Calm Gray by default (Zero visual noise when everything is OK) */
+        .version-status-btn.state-ok .agy-info-dot,
         .version-status-btn.state-ok .agy-info-stem {
-            background-color: #10b981;
-            box-shadow: 0 0 4px rgba(16, 185, 129, 0.45);
+            background-color: #80868b;
+            box-shadow: none;
         }
         [data-theme="light"] .version-status-btn.state-ok .agy-info-dot,
         [data-theme="light"] .version-status-btn.state-ok .agy-info-stem {
-            background-color: #059669;
+            background-color: #5f6368;
         }
-        .version-status-btn.state-ok:hover {
-            background: rgba(16, 185, 129, 0.22);
-            border-color: #10b981;
+        /* Subtle green dot feedback only when hovering over the "i" icon */
+        .version-status-btn.state-ok:hover .agy-info-dot {
+            background-color: #34d399;
+            box-shadow: 0 0 4px rgba(52, 211, 153, 0.7);
+        }
+        .version-status-btn.state-ok:hover .agy-info-stem {
+            background-color: #e8eaed;
+        }
+        [data-theme="light"] .version-status-btn.state-ok:hover .agy-info-stem {
+            background-color: #202124;
         }
 
-        /* STATE 2: Yellow/Orange (Update available on GitHub OR pending patch restart) */
+        /* STATE 2: Yellow/Orange (Attracts attention ONLY when an update is available or restart is needed) */
         .version-status-btn.state-attention {
-            border-color: #f59e0b;
-            background: rgba(245, 158, 11, 0.16);
-            animation: agy-amber-pulse 2s infinite;
+            opacity: 1;
         }
         .version-status-btn.state-attention .agy-info-dot {
             background-color: #fbbf24;
-            box-shadow: 0 0 6px #fbbf24;
+            box-shadow: 0 0 6px rgba(251, 191, 36, 0.95);
+            animation: agy-dot-blink 1.2s infinite alternate;
         }
         .version-status-btn.state-attention .agy-info-stem {
             background-color: #f59e0b;
-            box-shadow: 0 0 5px rgba(245, 158, 11, 0.6);
+            box-shadow: 0 0 5px rgba(245, 158, 11, 0.55);
         }
         [data-theme="light"] .version-status-btn.state-attention .agy-info-dot,
         [data-theme="light"] .version-status-btn.state-attention .agy-info-stem {
             background-color: #d97706;
         }
-        .version-status-btn.state-attention:hover {
-            background: rgba(245, 158, 11, 0.28);
-            border-color: #fbbf24;
-        }
-        @keyframes agy-amber-pulse {
-            0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.65); }
-            70% { box-shadow: 0 0 0 6px rgba(245, 158, 11, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
-        }
 
         /* STATE 3: Checking / Downloading (Blue pulse) */
         .version-status-btn.state-checking {
-            border-color: #3b82f6;
-            background: rgba(59, 130, 246, 0.18);
+            opacity: 1;
         }
         .version-status-btn.state-checking .agy-info-dot {
             background-color: #60a5fa;
             box-shadow: 0 0 6px #60a5fa;
-            animation: agy-dot-blink 0.6s infinite alternate;
+            animation: agy-dot-blink 0.5s infinite alternate;
         }
         .version-status-btn.state-checking .agy-info-stem {
             background-color: #3b82f6;
@@ -8172,7 +8165,7 @@ function initLanguageSwitcher() {
             right: 0;
             width: 300px;
             background: #1e1f22;
-            border: 1px solid rgba(16, 185, 129, 0.45);
+            border: 1px solid #3c4043;
             border-radius: 8px;
             padding: 12px;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
