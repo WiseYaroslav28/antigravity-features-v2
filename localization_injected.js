@@ -1898,6 +1898,117 @@ const translationDictionary = {
     "tool output": "Вывод инструмента",
     "tool input": "Входные данные инструмента",
     "tool result": "Результат инструмента",
+    "installer,": "Установщик,",
+    "skill discovery & rest fallback": "Обнаружение навыков и резервный REST API",
+    "what you can do": "Что вы можете делать",
+    "what's included": "Что включено",
+    "requirements": "Требования",
+    "wix account": "Wix",
+    "about wix skills": "О навыках Wix (About Wix Skills)",
+    "wix mcp": "Wix MCP",
+    "source and issues": "Исходный код и задачи (GitHub)",
+    "build wix app extensions:": "Создание расширений приложений Wix:",
+    "сборка wix app extensions:": "Создание расширений приложений Wix:",
+    "build headless sites:": "Создание headless-сайтов:",
+    "сборка headless sites:": "Создание headless-сайтов:",
+    "manage your wix business:": "Управление вашим бизнесом на Wix:",
+    "look things up:": "Поиск в документации и справочниках:",
+    "wix mcp server": "MCP-сервер Wix",
+    "getting started": "Начало работы",
+    "starter prompts": "Стартовые промпты",
+    "bundled skills": "Встроенные навыки",
+    "support & resources": "Поддержка и ресурсы",
+    "site creation & provisioning": "Создание и развёртывание сайтов",
+    "content authoring & block editing": "Написание контента и редактирование блоков",
+    "in-place section editing": "Точечное редактирование секций на месте",
+    "site design & theme context": "Дизайн сайта и контекст темы",
+    "traffic & site administration": "Трафик и администрирование сайта",
+    "domains, dns & plans": "Домены, DNS и тарифные планы",
+    "1. enable mcp access on wordpress.com": "1. Включите доступ MCP на WordPress.com",
+    "enable mcp access on wordpress.com": "Включите доступ MCP на WordPress.com",
+    "wordpress.com account settings": "настройках аккаунта WordPress.com",
+    "2. install & authorize": "2. Установите и авторизуйтесь",
+    "install & authorize": "Установите и авторизуйтесь",
+    "3. start building": "3. Начните создание",
+    "start building": "Начните создание",
+    "edit wordpress block content": "Редактирование блочного контента WordPress",
+    "publish wordpress content": "Публикация контента WordPress",
+    "manage wordpress.com sites": "Управление сайтами WordPress.com",
+    "website": "Веб-сайт",
+    "support": "Поддержка",
+    "privacy policy": "Политика конфиденциальности",
+    "terms of service": "Условия использования",
+    "virustotal for antigravity": "VirusTotal для Antigravity",
+    "install from the official repository": "Установка из официального репозитория",
+    "connect and verify": "Подключение и проверка",
+    "files, sharing and costs": "Файлы, обмен данными и квоты",
+    "update, disable or remove": "Обновление, отключение или удаление",
+    "documentation and support": "Документация и поддержка",
+    "google client connections": "Подключения клиентов Google",
+    "privacy notice": "Уведомление о конфиденциальности",
+    "report a vulnerability privately": "Сообщить об уязвимости конфиденциально",
+    "your connections": "Ваши подключения",
+    "validation status": "статус проверки",
+    "file workflow": "рабочий процесс для файлов",
+    "quota and recovery details": "Подробности о квотах и восстановлении",
+    "plugin guide": "руководство по плагинам",
+    "mcp authentication guide": "руководство по аутентификации MCP",
+    "implement this figma frame as a component using our design tokens": "Реализуй этот фрейм Figma как компонент с использованием наших дизайн-токенов",
+    "map the components in src/components to figma with code connect": "Свяжи компоненты в src/components с Figma с помощью Code Connect",
+    "generate a user flow diagram in figjam for our checkout process": "Сгенерируй диаграмму пользовательского сценария в FigJam для нашего процесса оформления заказа",
+    "deploy this project to netlify": "Разверни (задеплой) этот проект на Netlify",
+    "add a netlify function that serves a json api endpoint": "Добавь функцию Netlify Function, которая обслуживает JSON API-эндпоинт",
+    "store and query this app's data with netlify database": "Сохраняй и запрашивай данные этого приложения с помощью Netlify Database",
+    "deploy this app to railway": "Разверни это приложение на Railway",
+    "check the railway status for this project": "Проверь статус Railway для этого проекта",
+    "debug my latest failed railway deployment": "Отладь мой последний неудачный деплой на Railway",
+    "help me deploy this app to vercel": "Помоги мне развернуть это приложение на Vercel",
+    "investigate my latest failed vercel deployment": "Исследуй причины сбоя моего последнего деплоя на Vercel",
+    "build an ai agent with the vercel ai sdk": "Создай ИИ-агента с помощью Vercel AI SDK",
+    "build a headless online store on wix and release it to wix hosting": "Создай headless интернет-магазин на Wix и опубликуй его на хостинге Wix",
+    "add a dashboard page with wix design system ui to my wix app": "Добавь страницу панели управления с интерфейсом Wix Design System в моё приложение Wix",
+    "list my wix sites and add three products to my store": "Выведи список моих сайтов Wix и добавь три товара в мой магазин",
+    "review my site’s traffic and suggest what i should publish next.": "Проанализируй трафик моего сайта и предложи, что стоит опубликовать следующим.",
+    "review my site's traffic and suggest what i should publish next.": "Проанализируй трафик моего сайта и предложи, что стоит опубликовать следующим.",
+    "update the “learn more” button on my page to “book a consultation” and link it to my contact page.": "Обнови кнопку «Learn more» на моей странице на «Book a consultation» и поставь ссылку на страницу контактов.",
+    "update the \"learn more\" button on my page to \"book a consultation\" and link it to my contact page.": "Обнови кнопку «Learn more» на моей странице на «Book a consultation» и поставь ссылку на страницу контактов.",
+    "draft a blog post announcing 20% off all products this weekend.": "Напиши черновик поста в блог с анонсом скидки 20% на все товары в эти выходные.",
+    "add auth0 login to my app": "Добавь вход через Auth0 в моё приложение",
+    "debug why my auth0 login is failing": "Отладь причину сбоя входа через Auth0",
+    "audit my auth0 tenant's health and security": "Проведи аудит состояния и безопасности моего тенанта Auth0",
+    "create a new base44 app with a task entity and deploy it": "Создай новое приложение Base44 с сущностью Task и разверни его",
+    "add a backend function to my base44 app that sends a welcome email": "Добавь бэкенд-функцию в моё приложение Base44, которая отправляет приветственное письмо",
+    "check my base44 function logs and find why requests are failing": "Проверь логи функций Base44 и найди причину сбоя запросов",
+    "retrieve the existing virustotal report for example.com. do not submit it for analysis.": "Получи существующий отчёт VirusTotal для example.com. Не отправляй его на новый анализ.",
+    "look up the existing virustotal report for file hash 44d88612fea8a8f36de82e1278abb02f.": "Найди существующий отчёт VirusTotal для хеша файла 44d88612fea8a8f36de82e1278abb02f.",
+    "retrieve the existing virustotal report for ip address 8.8.8.8. do not request a new analysis.": "Получи существующий отчёт VirusTotal для IP-адреса 8.8.8.8. Не запрашивай новый анализ.",
+    "resize this canva design for instagram and linkedin": "Измени размер этого дизайна Canva для Instagram и LinkedIn",
+    "review this canva design and suggest improvements": "Проверь этот дизайн Canva и предложи улучшения",
+    "check this canva design against my brand kit": "Проверь этот дизайн Canva на соответствие моему бренд-киту",
+    "how do i set up a proxy in the latest next.js?": "Как настроить прокси в последней версии Next.js?",
+    "show me how to define relations in prisma": "Покажи, как определить связи (relations) в Prisma",
+    "what are the supabase auth methods?": "Какие методы аутентификации есть в Supabase?",
+    "find and summarize the q4 planning deck in dropbox": "Найди и сделай сводку презентации планирования на 4-й квартал в Dropbox",
+    "create a shared link for the launch folder": "Создай общую ссылку для папки Launch",
+    "review duplicate exports in this folder and ask before deleting anything": "Проверь дубликаты экспортов в этой папке и спроси подтверждение перед удалением",
+    "show my assigned linear issues, grouped by priority.": "Покажи назначенные мне задачи в Linear, сгруппированные по приоритету.",
+    "summarize recent updates to my linear projects.": "Сделай сводку последних обновлений по моим проектам в Linear.",
+    "find linear issues related to the code i am working on.": "Найди задачи в Linear, связанные с кодом, над которым я сейчас работаю.",
+    "find home screen examples from banking apps and save them to a collection": "Найди примеры главных экранов банковских приложений и сохрани их в коллекцию",
+    "compare how ai tools design their pricing sections": "Сравни, как ИИ-сервисы оформляют свои разделы с тарифами",
+    "review my paywall screen against the ones i saved in collections": "Сравни мой экран пейволла с примерами, сохранёнными в моих коллекциях",
+    "onboard me to monday.com": "Помоги мне освоиться и начать работу в monday.com",
+    "create a monday.com item for each todo in this file and assign them to me": "Создай элемент в monday.com для каждого TODO в этом файле и назначь их мне",
+    "create a monday.com bug report form with summary, steps to reproduce and severity questions": "Создай форму баг-репорта в monday.com с полями сводки, шагов воспроизведения и серьёзности",
+    "set up notion so you can use my workspace as context": "Настрой Notion, чтобы использовать моё рабочее пространство как контекст",
+    "turn this spec in notion into an implementation plan with tasks": "Преврати эту спецификацию в Notion в план реализации с задачами",
+    "write a weekly update for my project from what changed in notion": "Напиши еженедельный отчёт по моему проекту на основе изменений в Notion",
+    "list my 5 most recently modified pandadoc documents with their status.": "Выведи список из 5 моих последних изменённых документов PandaDoc с их статусами.",
+    "show my signing pipeline and identify documents that are stuck.": "Покажи воронку подписания документов и выяви застрявшие документы.",
+    "find unsigned documents and draft follow-up messages without sending them.": "Найди неподписанные документы и подготовь черновики напоминаний без отправки.",
+    "summarize the cards that are due this week across my trello boards.": "Сделай сводку по карточкам со сроком на этой неделе по всем моим доскам Trello.",
+    "create a trello card on my board for each todo in this file.": "Создай карточку Trello на моей доске для каждого TODO в этом файле.",
+    "show what is in my trello inbox and suggest a board and list for each card.": "Покажи содержимое моего Входящего списка (Inbox) в Trello и предложи доску и список для каждой карточки.",
     "agents": "Агенты",
     "context usage": "Использование контекста",
     "science plugin": "Плагин Science",
@@ -2665,7 +2776,7 @@ const regexTranslations = [
         replace: () => "Сайдкар для управления виртуальными устройствами Android (список, запуск, остановка, создание, удаление) через CLI эмулятора Android, а также для трансляции экрана и управления эмуляторами и физическими устройствами, подключёнными к adb."
     },
     {
-        // === v2.1.22: Official Plugins (Firebase, Science, Google Developer Knowledge, Modern Web Guidance, Maps, Flutter, Data Agent Kit, Google Cloud Developer) ===
+        // === v2.1.23: Official Plugins (Firebase, Science, Google Developer Knowledge, Modern Web Guidance, Maps, Flutter, Data Agent Kit, Google Cloud Developer) ===
         // Emoji section headers (Android CLI & Modern Web Guidance)
         pattern: /^(?:🚀\s*)?Key\s+Capabilities$/i,
         replace: (m) => (/^🚀/.test(m[0]) ? "🚀 " : "") + "Ключевые возможности"
@@ -3991,6 +4102,735 @@ const regexTranslations = [
     {
         pattern: /^Guides\s+a\s+developer['’]s\s+first\s+steps\s+on\s+Google\s+Cloud,\s*covering\s+account\s+creation,\s*billing\s+setup.*$/i,
         replace: () => "Пошаговое руководство для первых шагов разработчика в Google Cloud: создание аккаунта, настройка биллинга, управление проектом и развёртывание первого ресурса."
+    },
+    {
+        // === Google Cloud Developer (Remaining Bottom Half) ===
+        pattern: /^The\s+core\s+bundled\s+skills\s*\(\s*$/i,
+        replace: () => "Основные встроенные навыки ("
+    },
+    {
+        pattern: /^\s*\)\s+and\s+the\s*$/i,
+        replace: () => ") и MCP-сервер "
+    },
+    {
+        pattern: /^\s*MCP\s+server\s+only\s+require\s*$/i,
+        replace: () => " требуют только "
+    },
+    {
+        pattern: /^\s*and\s+HTTPS\s+access\s+to\s*$/i,
+        replace: () => " и HTTPS-доступ к "
+    },
+    {
+        pattern: /^\.\s*Access\s+to\s+GitHub\s+domains\s*\(\s*$/i,
+        replace: () => ". Доступ к доменам GitHub ("
+    },
+    {
+        pattern: /^\s*is\s+only\s+required\s+at\s+runtime\s+for\s+dynamic\s+skill\s+discovery\s*\(\s*$/i,
+        replace: () => " требуется во время выполнения только для динамического обнаружения навыков ("
+    },
+    {
+        pattern: /^\s*\)\s+and\s+the\s+REST\s+API\s+fallback\s+in\s*$/i,
+        replace: () => ") и резервного REST API в "
+    },
+    {
+        pattern: /^\.\s*Dynamically\s+fetched\s+skills\s+may\s+require\s+additional\s+product-specific\s+CLI\s+tools\s+or\s+API\s+endpoints\.$/i,
+        replace: () => ". Динамически загружаемые навыки могут требовать дополнительных специализированных CLI-инструментов или API-эндпоинтов."
+    },
+    {
+        pattern: /^Fetches\s+the\s*$/i,
+        replace: () => "Загружает каталог "
+    },
+    {
+        pattern: /^\s*catalog\s+and\s+on-demand\s*$/i,
+        replace: () => " и файлы "
+    },
+    {
+        pattern: /^\s*\/\s*reference\s+files\s+from\s*$/i,
+        replace: () => " / справочные материалы по требованию из "
+    },
+    {
+        pattern: /^Installs\s+the\s+plugin\s+and\s+queries\s+the\s+GitHub\s+Trees\s+API\s+fallback\s*\(\s*$/i,
+        replace: () => "Устанавливает плагин и обращается к резервному GitHub Trees API ("
+    },
+    {
+        pattern: /^Connects\s+to\s+the\s+remote\s+MCP\s+server\s*\(\s*$/i,
+        replace: () => "Подключается к удалённому MCP-серверу ("
+    },
+    {
+        pattern: /^\s*\)\s+and\s+REST\s+API\s+v1\s+fallback\s*\(\s*$/i,
+        replace: () => ") и резервному REST API v1 ("
+    },
+    {
+        pattern: /^Authenticates\s+and\s+executes\s*$/i,
+        replace: () => "Выполняет аутентификацию и запускает команды "
+    },
+    {
+        pattern: /^\s*CLI\s+commands\s+against\s+Google\s+Cloud\s+APIs\.$/i,
+        replace: () => " CLI к API Google Cloud."
+    },
+    {
+        pattern: /^(?:Reads|Чтение)\s+official\s+Google\s+Cloud\s+documentation\s*\(\s*$/i,
+        replace: () => "Читает официальную документацию Google Cloud ("
+    },
+    {
+        pattern: /^,\s*and\s+optionally\s*$/i,
+        replace: () => ", а также опционально "
+    },
+    {
+        pattern: /^\s*\(only\s+if\s+installing\s+discovered\s+skills\s+locally\)\.$/i,
+        replace: () => " (только при локальной установке обнаруженных навыков)."
+    },
+    {
+        pattern: /^Read-only\s*$/i,
+        replace: () => "Только для чтения — проверки "
+    },
+    {
+        pattern: /^Interactive\s+or\s+state-changing\s*$/i,
+        replace: () => "Интерактивные или изменяющие состояние команды "
+    },
+    {
+        pattern: /^\s*Do\s+not\s+auto-allow\s+these\s+commands;\s+keep\s+them\s+gated\s+behind\s+confirmation\s*\(\s*$/i,
+        replace: () => " Не разрешайте эти команды автоматически; оставьте для них запрос подтверждения ("
+    },
+    {
+        pattern: /^\s*\)\s+or\s+run\s+them\s+manually\s+beforehand\.$/i,
+        replace: () => ") или выполняйте их вручную заранее."
+    },
+
+    // === Figma Plugin ===
+    {
+        pattern: /^Turn\s+Figma\s+designs\s+into\s+production\s+code,\s*map\s+components\s+with\s+Code\s+Connect,\s*and\s+create\s+or\s+edit\s+Figma\s+files\s+in\s+Antigravity\.?$/i,
+        replace: () => "Превращайте дизайны Figma в продакшен-код, связывайте компоненты через Code Connect, а также создавайте и редактируйте файлы Figma в Antigravity."
+    },
+    {
+        pattern: /^Connects\s+Figma\s+design\s+components\s+to\s+code\s+components\s+using\s+Figma\s+Code\s+Connect.*$/i,
+        replace: () => "Связывает дизайн-компоненты Figma с компонентами кода через Figma Code Connect, чтобы в Figma Dev Mode отображались реальные сниппеты кода из вашего репозитория."
+    },
+    {
+        pattern: /^Orchestrates\s+design-to-code\s+and\s+code-to-design\s+workflows\s+across\s+Figma\s+Design\s+and\s+Figma\s+Make.*$/i,
+        replace: () => "Координирует рабочие процессы «из дизайна в код» и «из кода в дизайн» между Figma Design и Figma Make, включая синхронизацию дизайн-токенов и прототипов."
+    },
+    {
+        pattern: /^Creates\s+a\s+new,\s*blank\s+Figma\s+Design\s+or\s+FigJam\s+file\s+in\s+the\s+user['’]s\s+Figma\s+account.*$/i,
+        replace: () => "Создаёт новый пустой файл Figma Design или доску FigJam в аккаунте пользователя и возвращает URL для его открытия."
+    },
+    {
+        pattern: /^Translates\s+Figma\s+designs\s+into\s+production-ready\s+code\s+with\s+1:1\s+visual\s+fidelity.*$/i,
+        replace: () => "Переводит дизайны Figma в готовый к продакшену код с визуальной точностью 1:1. Используется при вёрстке UI и компонентов по ссылкам и фреймам Figma."
+    },
+    {
+        pattern: /^Captures\s+a\s+live,\s*running\s+web\s+app\s+or\s+site\s+from\s+a\s+browser\s+and\s+converts\s+it\s+into\s+editable\s+Figma\s+frames.*$/i,
+        replace: () => "Захватывает работающее веб-приложение или сайт из браузера и конвертирует его в редактируемые фреймы Figma, а также создаёт экраны в Figma с нуля."
+    },
+    {
+        pattern: /^Generates\s+diagrams\s+in\s+FigJam\s+from\s+natural\s+language\s+descriptions\s+or\s+Mermaid\s+syntax.*$/i,
+        replace: () => "Генерирует диаграммы в FigJam из текстовых описаний или синтаксиса Mermaid: блок-схемы, диаграммы последовательности, состояний, архитектуры, пользовательские сценарии и диаграммы Ганта."
+    },
+    {
+        pattern: /^(?:Builds|Сборка)\s+a\s+complete,\s*production-grade\s+design\s+system\s+in\s+Figma\s+from\s+scratch\s+or\s+from\s+codebase\s+tokens.*$/i,
+        replace: () => "Создаёт полноценную дизайн-систему промышленного уровня в Figma с нуля или на основе токенов из кодовой базы (переменные, темы, текстовые стили, сетки и компоненты с вариантами)."
+    },
+    {
+        pattern: /^Procedural\s+patterns\s+for\s+generating\s+parametric\s+geometry,\s*organic\s+shapes,\s*algorithmic\s+layouts.*$/i,
+        replace: () => "Процедурные паттерны для генерации параметрической геометрии, органических форм, алгоритмических сеток и генеративных иллюстраций на холсте Figma через use_figma."
+    },
+    {
+        pattern: /^Translates\s+motion,\s*animations,\s*transitions,\s*and\s+interactive\s+states\s+from\s+Figma\s+prototypes.*$/i,
+        replace: () => "Переводит анимации, переходы и интерактивные состояния из прототипов Figma Design или файлов Figma Make в продакшен-код (CSS, Web Animations API, Framer Motion, GSAP)."
+    },
+    {
+        pattern: /^Writes\s+GLSL\s+fragment\s+shaders\s+and\s+applies\s+them\s+as\s+image\s+fills\s+to\s+nodes\s+in\s+Figma\s+Design.*$/i,
+        replace: () => "Пишет фрагментные шейдеры GLSL и применяет их в качестве заливок изображений к узлам в Figma Design, FigJam и Figma Slides (градиенты, шум Перлина, жидкий хром, стекло, дизеринг)."
+    },
+    {
+        pattern: /^Generates\s+a\s+structured\s+product\s+specification\s+or\s+design\s+handoff\s+document\s+from\s+a\s+Figma\s+design.*$/i,
+        replace: () => "Генерирует структурированную продуктовую спецификацию или документ передачи дизайна в разработку (design handoff) на основе файла Figma."
+    },
+    {
+        pattern: /^Translates\s+Figma\s+designs\s+into\s+idiomatic\s+SwiftUI\s+code\s+for\s+iOS,\s*macOS,\s*watchOS,\s*tvOS,\s*and\s+visionOS.*$/i,
+        replace: () => "Переводит дизайны Figma в идиоматический код SwiftUI для iOS, macOS, watchOS, tvOS и visionOS с сопоставлением Auto Layout, переменных и компонентов."
+    },
+    {
+        pattern: /^Foundational\s+rules,\s*node\s+API\s+patterns,\s*color\/unit\s+conventions,\s*layout\s+discipline.*$/i,
+        replace: () => "Базовые правила, паттерны API узлов, соглашения о цветах и единицах измерения, дисциплина вёрстки и пошаговый рабочий процесс для чтения и изменения файлов Figma через use_figma."
+    },
+    {
+        pattern: /^Specialized\s+rules\s+and\s+patterns\s+for\s+working\s+with\s+FigJam\s+boards\s+via\s+use_figma.*$/i,
+        replace: () => "Специализированные правила и паттерны для работы с досками FigJam через use_figma: стикеры, коннекторы, фигуры с текстом, секции, таблицы и блоки кода."
+    },
+    {
+        pattern: /^Adds\s+prototyping\s+interactions,\s*transitions,\s*animations,\s*and\s+interactive\s+states\s+directly\s+inside\s+Figma.*$/i,
+        replace: () => "Добавляет интерактивные переходы, анимации и состояния прототипирования непосредственно внутри файлов Figma Design через use_figma (Smart Animate, реакции, переходы между экранами)."
+    },
+    {
+        pattern: /^Specialized\s+rules\s+and\s+patterns\s+for\s+creating\s+and\s+editing\s+Figma\s+Slides\s+presentations\s+via\s+use_figma.*$/i,
+        replace: () => "Специализированные правила и паттерны для создания и редактирования презентаций Figma Slides через use_figma (сетка слайдов, переходы, заметки докладчика и макеты)."
+    },
+
+    // === Netlify Plugin ===
+    {
+        pattern: /^(?:Build|Сборка)\s+and\s+deploy\s+on\s+Netlify:\s*functions,\s*edge\s+functions,\s*blobs,\s*database,\s*identity,\s*forms,\s*image\s+CDN,\s*caching,\s*and\s+AI\s+Gateway,\s*plus\s+the\s+Netlify\s+MCP\s+server\.?$/i,
+        replace: () => "Сборка и деплой на Netlify: функции, edge-функции, хранилище объектов (blobs), базы данных, аутентификация, формы, CDN для изображений, кэширование и AI Gateway, а также MCP-сервер Netlify."
+    },
+    {
+        pattern: /^Guidance\s+for\s+controlling\s+public\s+access\s+to\s+sites\s+on\s+Netlify,\s*including\s+traffic\s+security.*$/i,
+        replace: () => "Руководство по управлению публичным доступом к сайтам на Netlify: безопасность трафика, Web Application Firewall (WAF), ограничение частоты запросов, гео-/IP-блокировки и защита паролем или SSO."
+    },
+    {
+        pattern: /^(?:Run|Запуск)\s+AI\s+agent\s+tasks\s+remotely\s+on\s+Netlify\s+sites\s+using\s+Agent\s+Runners.*$/i,
+        replace: () => "Удалённый запуск задач ИИ-агентов на сайтах Netlify с помощью Agent Runners (запуск Claude, Gemini или Codex в изолированной песочнице, создание PR и проверка кода)."
+    },
+    {
+        pattern: /^Guidance\s+for\s+using\s+the\s+Netlify\s+AI\s+Gateway\s+to\s+call\s+OpenAI,\s*Anthropic,\s*and\s+Google\s+Gemini\s+APIs.*$/i,
+        replace: () => "Руководство по использованию Netlify AI Gateway для вызова API OpenAI, Anthropic и Google Gemini из функций Netlify без ручного управления API-ключами."
+    },
+    {
+        pattern: /^Guidance\s+for\s+using\s+Netlify\s+Blobs\s+\(@netlify\/blobs\)\s+as\s+an\s+unstructured\s+object\s+and\s+key-value\s+store.*$/i,
+        replace: () => "Руководство по использованию Netlify Blobs (@netlify/blobs) в качестве неструктурированного объектного и ключ-значение хранилища на Netlify."
+    },
+    {
+        pattern: /^Guidance\s+for\s+configuring\s+HTTP\s+and\s+CDN\s+caching\s+on\s+Netlify,\s*including\s+Cache-Control\s+headers.*$/i,
+        replace: () => "Руководство по настройке HTTP- и CDN-кэширования на Netlify: заголовки Cache-Control, Netlify-CDN-Cache-Control, инвалидация по тегам кэша (Cache-Tag) и stale-while-revalidate."
+    },
+    {
+        pattern: /^Guidance\s+for\s+configuring\s+Netlify\s+sites\s+using\s+netlify\.toml,\s*_redirects,\s*and\s+_headers.*$/i,
+        replace: () => "Руководство по настройке сайтов Netlify с помощью файлов netlify.toml, _redirects и _headers (настройки сборки, редиректы, прокси-правила, заголовки и переменные окружения)."
+    },
+    {
+        pattern: /^Guidance\s+for\s+using\s+Netlify\s+Database\s+\(powered\s+by\s+Neon\s+serverless\s+Postgres\)\s+via\s+@netlify\/neon.*$/i,
+        replace: () => "Руководство по использованию Netlify Database (на базе бессерверной СУБД Neon Postgres) через @netlify/neon: автоматическое создание БД, SQL-запросы, миграции и интеграция с Drizzle/Prisma."
+    },
+    {
+        pattern: /^Deploy\s+sites\s+and\s+applications\s+to\s+Netlify\s+using\s+the\s+Netlify\s+CLI\s+or\s+MCP\s+server.*$/i,
+        replace: () => "Развёртывание сайтов и приложений на Netlify с помощью Netlify CLI или MCP-сервера: создание и привязка сайтов, превью- и продакшен-деплои, проверка логов и отладка сборки."
+    },
+    {
+        pattern: /^Guidance\s+for\s+writing\s+and\s+configuring\s+Netlify\s+Edge\s+Functions\s+running\s+on\s+Deno\s+at\s+the\s+network\s+edge.*$/i,
+        replace: () => "Руководство по написанию и настройке Netlify Edge Functions на базе Deno на границе сети (модификация запросов/ответов, геолокация, A/B-тестирование, переписывание URL и стриминг)."
+    },
+    {
+        pattern: /^Guidance\s+for\s+implementing\s+Netlify\s+Forms\s+in\s+static\s+HTML\s+and\s+JavaScript\s+frameworks.*$/i,
+        replace: () => "Руководство по реализации форм Netlify Forms в статическом HTML и JS-фреймворках (React, Next.js, Astro, SvelteKit, Nuxt): защита от спама, AJAX-отправка, загрузка файлов и вебхуки."
+    },
+    {
+        pattern: /^Framework-specific\s+configuration\s+and\s+deployment\s+guidance\s+for\s+Netlify.*$/i,
+        replace: () => "Специфичное для фреймворков руководство по настройке и деплою на Netlify (Next.js, Astro, Remix / React Router, SvelteKit, Nuxt, Angular, SolidStart, TanStack Start, Gatsby, Hugo, Vite)."
+    },
+    {
+        pattern: /^Guidance\s+for\s+writing\s+and\s+configuring\s+Netlify\s+Functions\s+\(serverless,\s*background,\s*and\s+scheduled\s+functions\).*$/i,
+        replace: () => "Руководство по написанию и настройке функций Netlify Functions (бессерверных, фоновых до 15 минут и планируемых по расписанию cron)."
+    },
+    {
+        pattern: /^Guidance\s+for\s+adding\s+authentication\s+and\s+user\s+management\s+to\s+Netlify\s+sites.*$/i,
+        replace: () => "Руководство по добавлению аутентификации и управления пользователями на сайты Netlify (Auth0, Clerk, Supabase Auth, Better Auth и поддержка устаревшего Netlify Identity)."
+    },
+    {
+        pattern: /^Guidance\s+for\s+optimizing\s+and\s+transforming\s+images\s+on\s+Netlify\s+using\s+the\s+Netlify\s+Image\s+CDN.*$/i,
+        replace: () => "Руководство по оптимизации и трансформации изображений на Netlify с помощью Netlify Image CDN (изменение размера, кроп, конвертация в WebP/AVIF и интеграция с фреймворками)."
+    },
+    {
+        pattern: /^Guidance\s+for\s+building\s+and\s+deploying\s+remote\s+Model\s+Context\s+Protocol\s+\(MCP\)\s+servers\s+on\s+Netlify.*$/i,
+        replace: () => "Руководство по созданию и развёртыванию удалённых MCP-серверов (Model Context Protocol) на базе бессерверных функций Netlify Functions."
+    },
+
+    // === Railway Plugin ===
+    {
+        pattern: /^Deploy,\s*configure,\s*monitor,\s*and\s+troubleshoot\s+apps,\s*databases,\s*and\s+infrastructure\s+on\s+Railway\s+from\s+Antigravity.*$/i,
+        replace: () => "Развёртывайте, настраивайте, отслеживайте и отлаживайте приложения, базы данных и инфраструктуру на Railway из Antigravity с помощью навыка агента и облачного MCP-сервера Railway."
+    },
+    {
+        pattern: /^Operate\s+Railway\s+infrastructure:\s*sign\s+up\s+for\s+or\s+sign\s+in\s+to\s+a\s+Railway\s+account.*$/i,
+        replace: () => "Управление инфраструктурой Railway: регистрация и вход в аккаунт, создание проектов, развёртывание сервисов, БД и бакетов, деплой кода, настройка окружений и переменных, домены, трассировка OpenTelemetry и диагностика сбоев."
+    },
+
+    // === Vercel Plugin ===
+    {
+        pattern: /^(?:Build|Сборка)\s+and\s+deploy\s+web\s+apps\s+and\s+AI\s+agents\s+on\s+Vercel\s+with\s+skills\s+for\s+Next\.js,\s*AI\s+SDK,\s*and\s+cloud\s+services,\s*plus\s+the\s+official\s+Vercel\s+MCP\s+server\.?$/i,
+        replace: () => "Создавайте и развёртывайте веб-приложения и ИИ-агентов на Vercel с навыками для Next.js, AI SDK и облачных сервисов, а также официальным MCP-сервером Vercel."
+    },
+    {
+        pattern: /^Access\s+and\s+test\s+Vercel\s+deployments\s+protected\s+by\s+Vercel\s+Authentication,\s*SSO,\s*or\s+Deployment\s+Protection.*$/i,
+        replace: () => "Доступ и тестирование развёртываний Vercel, защищённых Vercel Authentication, SSO или Deployment Protection (через vercel curl или заголовок x-vercel-trusted-oidc-idp-token)."
+    },
+    {
+        pattern: /^Vercel\s+AI\s+Gateway\s+guidance\s+for\s+setup,\s*model\s+discovery,\s*authentication,\s*routing,\s*fallbacks.*$/i,
+        replace: () => "Руководство по Vercel AI Gateway: настройка, поиск моделей, аутентификация, маршрутизация, фолбэки, виртуальные модели, BYOK, бюджеты, отчётность по расходам и наблюдаемость."
+    },
+    {
+        pattern: /^Vercel\s+AI\s+SDK\s+expert\s+guidance\.\s*Use\s+when\s+building\s+AI-powered\s+features.*$/i,
+        replace: () => "Экспертное руководство по Vercel AI SDK: чат-интерфейсы, генерация текста, структурированный вывод, вызов инструментов, агенты, интеграция MCP, стриминг, эмбеддинги и генерация изображений."
+    },
+    {
+        pattern: /^Authentication\s+integration\s+guidance\s*[—–-]\s*Clerk\s+\(native\s+Vercel\s+Marketplace\),\s*Better\s+Auth,\s*Descope,\s*and\s+Auth0.*$/i,
+        replace: () => "Руководство по интеграции аутентификации: настройка Clerk, Better Auth, Descope и Auth0 для приложений Next.js, а также Sign in with Vercel, Vercel Passport и Vercel KMS."
+    },
+    {
+        pattern: /^Project\s+bootstrapping\s+orchestrator\s+for\s+repos\s+that\s+depend\s+on\s+Vercel-linked\s+resources.*$/i,
+        replace: () => "Оркестратор начальной настройки проекта для репозиториев, зависящих от привязанных ресурсов Vercel (БД, аутентификация и управляемые интеграции) в безопасном порядке."
+    },
+    {
+        pattern: /^Default\s+guidance\s+for\s+building\s+AI\s+agents\.\s*Use\s+for\s+generic\s+requests\s+to\s+build,\s*create,\s*scaffold.*$/i,
+        replace: () => "Базовое руководство по созданию ИИ-агентов: проектирование и реализация агентных приложений, агентов с вызовом инструментов, устойчивых (durable) агентов, мультиагентных систем и агентов по расписанию."
+    },
+    {
+        pattern: /^Debug\s+Vercel\s+CDN\s+caching\s*[—–-]\s*cache\s+hit\s+rate,\s*stale\s+content,\s*revalidation\s+behavior.*$/i,
+        replace: () => "Отладка CDN-кэширования Vercel: процент попаданий в кэш (cache hit rate), устаревший контент, ревалидация, ISR + PPR, причины кэширования каждого запроса (cacheReason) и расходы."
+    },
+    {
+        pattern: /^Vercel\s+Chat\s+SDK\s+expert\s+guidance\.\s*Use\s+when\s+building\s+multi-platform\s+chat\s+bots.*$/i,
+        replace: () => "Экспертное руководство по Vercel Chat SDK для создания кроссплатформенных чат-ботов (Slack, Telegram, Microsoft Teams, Discord, Google Chat, GitHub, Linear) с единой кодовой базой."
+    },
+    {
+        pattern: /^Backend\s+architecture\s+guidance\.\s*Use\s+when\s+planning,\s*building,\s*or\s+migrating\s+an\s+API\s+or\s+backend.*$/i,
+        replace: () => "Руководство по архитектуре бэкенда на Vercel: выбор между Functions, Services, контейнерами, Daemons, Workflow, Queues и базами данных из Marketplace."
+    },
+    {
+        pattern: /^Emit\s+and\s+query\s+Vercel\s+Custom\s+Metrics\.\s*Use\s+when\s+instrumenting\s+application\s+or\s+business\s+measurements.*$/i,
+        replace: () => "Отправка и запрос пользовательских метрик Vercel Custom Metrics: инструментирование прикладных и бизнес-метрик в Vercel Functions через metric() из @vercel/functions и запрос через vc metrics."
+    },
+    {
+        pattern: /^Vercel\s+Daemons\s+guidance\s*[—–-]\s*long-running\s+background\s+workers\s+built\s+from\s+a\s+Dockerfile.*$/i,
+        replace: () => "Руководство по Vercel Daemons: долгоживущие фоновые воркеры из Dockerfile (ключ daemons в vercel.json) для обработчиков очередей, Celery/Sidekiq/BullMQ и фоновых заданий."
+    },
+    {
+        pattern: /^Vercel\s+deployment\s+and\s+CI\/CD\s+expert\s+guidance\.\s*Use\s+when\s+deploying,\s*promoting,\s*rolling\s+back.*$/i,
+        replace: () => "Экспертное руководство по деплою и CI/CD на Vercel: развёртывание, продвижение в продакшен (promote), откат (rollback), инспекция деплоев, сборка с --prebuilt и настройка CI-пайплайнов."
+    },
+    {
+        pattern: /^(?:Search|Поиск),\s*register,\s*connect,\s*transfer,\s*and\s+renew\s+domain\s+names\s+on\s+Vercel\s+using\s+the\s+CLI\s+or\s+Domains\s+Registrar\s+API.*$/i,
+        replace: () => "Поиск, регистрация, подключение, трансфер и продление доменных имён на Vercel через CLI или Domains Registrar API (проверка доступности и цен, DNS-записи, NS-серверы)."
+    },
+    {
+        pattern: /^Vercel\s+environment\s+variable\s+expert\s+guidance\.\s*Use\s+when\s+working\s+with\s+\.env\s+files.*$/i,
+        replace: () => "Экспертное руководство по переменным окружения Vercel: работа с файлами .env, командами vercel env, секретными и конфигурационными переменными, OIDC-токенами и настройками сред."
+    },
+    {
+        pattern: /^eve\s+framework\s+guidance\s+for\s+durable\s+AI\s+agents\s+and\s+agent-powered\s+applications.*$/i,
+        replace: () => "Руководство по фреймворку eve для создания устойчивых (durable) ИИ-агентов и агентных приложений: сессии, инструменты, навыки, подключения, каналы, песочницы, субагенты, расписания и наблюдаемость Agent Runs."
+    },
+    {
+        pattern: /^Implement\s+feature\s+flags\s+in\s+Next\.js\s+or\s+SvelteKit\s+code\s+with\s+the\s+Flags\s+SDK.*$/i,
+        replace: () => "Реализация фича-флагов в коде Next.js или SvelteKit с помощью Flags SDK (пакет flags): объявление флагов через flag(), подключение адаптеров провайдеров, предварительное вычисление (precompute) и Flags Explorer."
+    },
+    {
+        pattern: /^Score\s+how\s+ready\s+a\s+website,\s*domain,\s*or\s+public\s+MCP\s+endpoint\s+is\s+for\s+AI\s+agents\s+using\s+Is\s+Agentic.*$/i,
+        replace: () => "Оценка готовности веб-сайта, домена или публичного MCP-эндпоинта для ИИ-агентов с помощью Is Agentic, получение JSON-отчёта и устранение проблем, снижающих оценку."
+    },
+    {
+        pattern: /^Corrects\s+outdated\s+LLM\s+knowledge\s+about\s+the\s+Vercel\s+platform\s+and\s+introduces\s+new\s+products.*$/i,
+        replace: () => "Корректирует устаревшие знания языковой модели о платформе Vercel и знакомит с актуальными продуктами и возможностями. Внедряется при старте сессии."
+    },
+    {
+        pattern: /^Vercel\s+Marketplace\s+expert\s+guidance\s*[—–-]\s*discovering,\s*installing,\s*and\s+managing\s+third-party\s+integrations.*$/i,
+        replace: () => "Экспертное руководство по Vercel Marketplace: поиск, установка и управление сторонними интеграциями через CLI vercel integration (электронная коммерция, платежи, мониторинг, почта, поиск, CMS)."
+    },
+    {
+        pattern: /^Guide\s+for\s+building,\s*configuring,\s*and\s+deploying\s+microfrontends\s+on\s+Vercel.*$/i,
+        replace: () => "Руководство по созданию, настройке и развёртыванию микрофронтендов на Vercel: мульти-зоны, разделение приложения между командами, microfrontends.json, @vercel/microfrontends и маршрутизация по путям."
+    },
+    {
+        pattern: /^Offload\s+heavy\s+builds,\s*full\s+test\s+suites\s+and\s+parallel\s+experiments\s+from\s+the\s+local\s+machine\s+to\s+Vercel\s+Sandboxes.*$/i,
+        replace: () => "Выгрузка ресурсоёмких сборок, полных наборов тестов и параллельных экспериментов с локальной машины в облачные песочницы Vercel Sandboxes через CLI vercel sandbox."
+    },
+    {
+        pattern: /^Vercel\s+Queues\s+guidance\s*[—–-]\s*durable\s+topics\s+with\s+at-least-once\s+delivery,\s*independent\s+consumer\s+groups.*$/i,
+        replace: () => "Руководство по Vercel Queues: надёжные топики с гарантией доставки at-least-once, независимыми группами консьюмеров, повторами, задержками и ключами идемпотентности через @vercel/queue и vercel-queue."
+    },
+    {
+        pattern: /^Vercel['’]s\s+React\s+and\s+Next\.js\s+performance\s+rules\s+\(70\s+rules\s+in\s+8\s+categories\s+ordered\s+by\s+impact.*$/i,
+        replace: () => "Правила производительности React и Next.js от Vercel (70 правил в 8 категориях по степени влияния: устранение каскадных запросов, размер бандла, SSR, клиентская загрузка данных, ре-рендеры)."
+    },
+    {
+        pattern: /^Vercel\s+Routing\s+Middleware\s+guidance\s*[—–-]\s*request\s+interception\s+before\s+cache,\s*rewrites,\s*redirects,\s*personalization.*$/i,
+        replace: () => "Руководство по Vercel Routing Middleware: перехват запросов до кэша, переписывание URL (rewrites), редиректы и персонализация для любых фреймворков (Edge, Node.js и Bun)."
+    },
+    {
+        pattern: /^Vercel\s+Runtime\s+Cache\s+API\s+guidance\s*[—–-]\s*ephemeral\s+per-region\s+key-value\s+cache\s+with\s+tag-based\s+invalidation.*$/i,
+        replace: () => "Руководство по Vercel Runtime Cache API: эфемерный региональный ключ-значение кэш с инвалидацией по тегам, общий для Functions, Routing Middleware и сборок."
+    },
+    {
+        pattern: /^Vercel\s+Agent\s+guidance\s*[—–-]\s*dashboard\s+and\s+Slack\s+chat,\s*code\s+review,\s*production\s+investigation.*$/i,
+        replace: () => "Руководство по Vercel Agent: чат в панели управления и Slack, ревью кода, расследование инцидентов в продакшене, подтверждаемые действия и установка продуктов."
+    },
+    {
+        pattern: /^Vercel\s+CLI\s+expert\s+guidance\.\s*Use\s+when\s+deploying,\s*managing\s+environment\s+variables,\s*linking\s+projects.*$/i,
+        replace: () => "Экспертное руководство по Vercel CLI: деплой, управление переменными окружения, привязка проектов, просмотр логов и метрик, отладка ошибок 5xx и таймаутов, управление доменами и флагами."
+    },
+    {
+        pattern: /^Vercel\s+Connect\s+expert\s+guidance\s+for\s+securely\s+obtaining\s+scoped\s+credentials\s+for\s+third-party\s+services.*$/i,
+        replace: () => "Экспертное руководство по Vercel Connect для безопасного получения учётных данных и токенов сторонних сервисов (OAuth, API-ключи, MCP-серверы, коннекторы eve и токены Passport)."
+    },
+    {
+        pattern: /^Vercel\s+Firewall\s+expert\s+guidance\s*[—–-]\s*automatic\s+DDoS\s+mitigation,\s*the\s+Vercel\s+WAF.*$/i,
+        replace: () => "Экспертное руководство по Vercel Firewall: автоматическая защита от DDoS, Vercel WAF (пользовательские правила, блокировка IP, управляемые наборы правил, rate limiting), Attack Mode и защита от ботов."
+    },
+    {
+        pattern: /^Feature\s+flags,\s*A\/B\s+tests,\s*and\s+gradual\s+rollouts\s+with\s+Vercel\s+Flags,\s*in\s+any\s+app\s+or\s+framework.*$/i,
+        replace: () => "Фича-флаги, A/B-тесты и постепенные раскатки с помощью Vercel Flags в любом приложении или фреймворке (выбор интеграции, панель управления, CLI vercel flags, правила таргетинга и сегменты)."
+    },
+    {
+        pattern: /^Vercel\s+Functions\s+expert\s+guidance\s*[—–-]\s*Node\.js\/Bun\/Python\s+runtimes,\s*Fluid\s+Compute,\s*long-duration.*$/i,
+        replace: () => "Экспертное руководство по Vercel Functions: среды выполнения Node.js/Bun/Python, Fluid Compute, длительные функции (до 30 мин), большие бандлы (до 5 ГБ), Docker/OCI-контейнеры, стриминг, WebSockets и Cron Jobs."
+    },
+    {
+        pattern: /^Vercel\s+Sandbox\s+guidance\s*[—–-]\s*ephemeral\s+Firecracker\s+microVMs\s+for\s+running\s+untrusted\s+code\s+safely.*$/i,
+        replace: () => "Руководство по Vercel Sandbox: эфемерные микро-ВМ Firecracker для безопасного выполнения недоверенного или сгенерированного ИИ кода в изоляции."
+    },
+    {
+        pattern: /^Configure\s+and\s+troubleshoot\s+Vercel\s+Services\s+for\s+multiple\s+frontends\s+and\s+backends\s+in\s+one\s+project.*$/i,
+        replace: () => "Настройка и диагностика Vercel Services для объединения нескольких фронтендов и бэкендов в одном проекте Vercel (ключ services, межсервисная маршрутизация, привязки и запуск через vercel dev)."
+    },
+    {
+        pattern: /^Vercel\s+storage\s+expert\s+guidance\s*[—–-]\s*Blob,\s*Global\s+Config\s+\(formerly\s+Edge\s+Config\),\s*and\s+Marketplace\s+storage.*$/i,
+        replace: () => "Экспертное руководство по хранилищам Vercel: Vercel Blob, Global Config (ранее Edge Config) и хранилища из Marketplace (Neon Postgres, Upstash Redis)."
+    },
+    {
+        pattern: /^Set\s+up\s+OpenTelemetry\s+instrumentation\s+for\s+Vercel\s+Tracing\s+and\s+query\s+the\s+resulting\s+spans.*$/i,
+        replace: () => "Настройка инструментирования OpenTelemetry для Vercel Tracing (@vercel/otel) и поиск спанов трассировки через vercel traces для отладки медленных или сбойных серверных запросов."
+    },
+    {
+        pattern: /^Full-story\s+verification\s*[—–-]\s*infers\s+what\s+the\s+user\s+is\s+building,\s*then\s+verifies\s+the\s+complete\s+flow\s+end-to-end.*$/i,
+        replace: () => "Сквозная проверка пользовательского сценария (end-to-end): определяет, что именно создаёт пользователь, и проверяет всю цепочку целиком (браузер → API → данные → ответ)."
+    },
+    {
+        pattern: /^Vercel\s+Workflow\s+SDK\s+expert\s+guidance\.\s*Use\s+when\s+building\s+durable\s+workflows,\s*long-running\s+tasks.*$/i,
+        replace: () => "Экспертное руководство по Vercel Workflow SDK: создание устойчивых (durable) рабочих процессов, долгих задач, API-маршрутов и агентов с паузой/возобновлением, повторами и защитой от сбоев."
+    },
+    {
+        pattern: /^Specializes\s+in\s+architecting\s+AI-powered\s+applications\s+on\s+Vercel\s*[—–-]\s*choosing\s+between\s+AI\s+SDK\s+patterns.*$/i,
+        replace: () => "Специализируется на архитектуре ИИ-приложений на Vercel: выбор паттернов AI SDK, настройка провайдеров, создание агентов, устойчивых рабочих процессов и интеграция MCP-серверов."
+    },
+    {
+        pattern: /^Specializes\s+in\s+Vercel\s+deployment\s+strategies,\s*CI\/CD\s+pipelines,\s*preview\s+URLs,\s*production\s+promotions.*$/i,
+        replace: () => "Специализируется на стратегиях развёртывания Vercel, пайплайнах CI/CD, превью-ссылках, продвижении в продакшен, откатах, переменных окружения и настройке доменов."
+    },
+    {
+        pattern: /^Specializes\s+in\s+optimizing\s+Vercel\s+application\s+performance\s*[—–-]\s*Core\s+Web\s+Vitals,\s*rendering\s+strategies.*$/i,
+        replace: () => "Специализируется на оптимизации производительности приложений на Vercel: Core Web Vitals, стратегии рендеринга, кэширование, оптимизация изображений и шрифтов, Edge-вычисления и размер бандла."
+    },
+
+    // === Wix Plugin ===
+    {
+        pattern: /^(?:Build|Сборка)\s+Wix\s+apps\s+and\s+headless\s+sites,\s*and\s+manage\s+Wix\s+stores,\s*bookings,\s*CMS\s+and\s+more,\s*with\s+Wix\s+CLI\s+skills\s+and\s+the\s+official\s+Wix\s+MCP\s+server\.?$/i,
+        replace: () => "Создавайте приложения и headless-сайты Wix, управляйте магазинами, бронированиями, CMS и многим другим с помощью навыков Wix CLI и официального MCP-сервера Wix."
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+Wix\s+apps\s+and\s+headless\s+websites,\s*and\s+manage\s+your\s+Wix\s+business,\s*from\s+Antigravity\.\s*The\s+plugin\s+connects\s+the\s+agent\s+to\s+your\s+Wix\s+account\s+through\s+the\s+official\s+Wix\s+MCP\s+server\s+and\s+adds\s+skills\s+for\s+the\s+Wix\s+CLI,\s*Wix\s+Headless,\s*and\s+the\s+Wix\s+business\s+APIs\.$/i,
+        replace: () => "Создавайте приложения и headless-сайты Wix, а также управляйте своим бизнесом на Wix прямо из Antigravity. Плагин подключает агента к вашему аккаунту Wix через официальный MCP-сервер Wix и добавляет навыки для Wix CLI, Wix Headless и бизнес-API Wix."
+    },
+    {
+        pattern: /^\s*dashboard\s+pages\s+and\s+modals,\s*site\s+widgets\s+and\s+plugins,\s*backend\s+APIs\s+and\s+events,\s*service\s+plugins\s+\(shipping,\s*tax,\s*discounts\),\s*embedded\s+scripts,\s*and\s+data\s+collections\.$/i,
+        replace: () => " страницы и модальные окна панели управления, виджеты и плагины сайта, бэкенд-API и события, сервисные плагины (доставка, налоги, скидки), встраиваемые скрипты и коллекции данных."
+    },
+    {
+        pattern: /^\s*a\s+store,\s*bookings,\s*blog,\s*events,\s*restaurant,\s*portfolio,\s*members\s+area,\s*and\s+more,\s*on\s+shipped,\s*verified\s+Wix\s+code,\s*released\s+to\s+Wix\s+hosting\s+or\s+wired\s+into\s+a\s+front\s+end\s+you\s+already\s+have\.$/i,
+        replace: () => " магазин, бронирования, блог, мероприятия, ресторан, портфолио, личный кабинет и многое другое на базе готового проверенного кода Wix с публикацией на хостинге Wix или подключением к вашему фронтенду."
+    },
+    {
+        pattern: /^\s*set\s+up\s+products,\s*services,\s*CMS\s+collections,\s*pricing\s+plans\s+and\s+more\s+on\s+your\s+sites,\s*through\s+the\s+Wix\s+REST\s+APIs\.$/i,
+        replace: () => " настраивайте товары, услуги, коллекции CMS, тарифные планы и многое другое на ваших сайтах через Wix REST API."
+    },
+    {
+        pattern: /^\s*Wix\s+API\s+and\s+SDK\s+docs,\s*and\s+Wix\s+Design\s+System\s+components\s+and\s+props\.$/i,
+        replace: () => " документация по API и SDK Wix, а также компоненты и свойства (props) Wix Design System."
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+and\s+review\s+Wix\s+CLI\s+app\s+extensions\s*[—–-]\s*dashboard\s+pages,\s*modals,\s*plugins,\s*menu\s+plugins.*$/i,
+        replace: () => "Создание и проверка расширений приложений Wix CLI: страницы и модальные окна дашборда, плагины, виджеты, React-компоненты редактора, встраиваемые скрипты, бэкенд-API, события, сервисные плагины, коллекции данных и подготовка к публикации в Wix App Market."
+    },
+    {
+        pattern: /^Wix\s+Design\s+System\s+component\s+reference\.\s*Use\s+when\s+building\s+UI\s+with\s+@wix\/design-system.*$/i,
+        replace: () => "Справочник компонентов Wix Design System (@wix/design-system): выбор компонентов, проверка свойств (props) и примеров, а также написание тестов с использованием драйверов и testkit."
+    },
+    {
+        pattern: /^Look\s+up\s+the\s+Wix\s+API\/SDK\s+documentation\s+to\s+confirm\s+an\s+exact\s+endpoint,\s*HTTP\s+method,\s*request\/response\s+shape.*$/i,
+        replace: () => "Поиск в документации API и SDK Wix для проверки точного эндпоинта, HTTP-метода, структуры запроса/ответа, полей, перечислений и ошибок перед написанием кода Wix."
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+a\s+Wix\s+Headless\s+site\s+fast\s+by\s+wiring\s+SHIPPED,\s*verified\s+@wix\/sdk\s+code\s+instead\s+of\s+authoring.*$/i,
+        replace: () => "Быстрое создание сайта Wix Headless на базе готового проверенного кода @wix/sdk (React + Astro SSR с настроенным SEO и скриптами начального заполнения для магазинов, бронирований, аренды, блога, CMS, форм, событий, ресторанов и др.)."
+    },
+    {
+        pattern: /^REST\s+recipes\s+to\s+configure\s+and\s+manage\s+a\s+Wix\s+site['’]s\s+business\s+solutions\s*[—–-]\s*stores,\s*bookings,\s*donations.*$/i,
+        replace: () => "Готовые REST-рецепты для настройки и управления бизнес-решениями сайта Wix: магазины, бронирования, пожертвования, платежи, CMS, контакты, формы, медиа, тарифные планы, рестораны, блог, календарь, домены, события, аналитика и SEO."
+    },
+    {
+        pattern: /^What\s+the\s+Wix\s+plugin\s+holds\s+and\s+how\s+to\s+work\s+with\s+Wix\s+through\s+it:\s*the\s+flow\s+the\s+Wix\s+MCP\s+README\s+returns.*$/i,
+        replace: () => "Обзор содержимого плагина Wix и правил работы с ним: рабочий процесс Wix MCP, указатель всех навыков плагина и инструментов Wix MCP с описанием назначения каждого из них."
+    },
+
+    // === WordPress Plugin ===
+    {
+        pattern: /^(?:Build|Сборка),\s*publish,\s*and\s+manage\s+WordPress\.com\s+and\s+Jetpack-connected\s+sites\.\s*Draft\s+posts,\s*edit\s+blocks,\s*check\s+traffic\s+stats,\s*moderate\s+comments,\s*and\s+manage\s+plugins\.?$/i,
+        replace: () => "Создавайте, публикуйте и управляйте сайтами на WordPress.com и подключёнными через Jetpack сайтами. Пишите черновики постов, редактируйте блоки, проверяйте статистику трафика, модерируйте комментарии и управляйте плагинами."
+    },
+    {
+        pattern: /^(?:Update|Обновление)\s+the\s+[“"']Learn\s+more[”"']\s+button\s+on\s+my\s+page\s+to\s+[“"']Book\s+a\s+consultation[”"']\s+and\s+link\s+it\s+to\s+my\s+Contact\s+page\.?$/i,
+        replace: () => "Обнови кнопку «Learn more» на моей странице на «Book a consultation» и поставь ссылку на страницу контактов."
+    },
+    {
+        pattern: /^Describe\s+what\s+you\s+need\s+and\s+WordPress\s+builds\s+it:\s*a\s+portfolio,\s*a\s+restaurant\s+menu,\s*a\s+blog,\s*or\s+an\s+online\s+store\.\s*Already\s+have\s+a\s+WordPress\.com\s+or\s+Jetpack\s+site\?\s*Connect\s+it\s+to\s+draft\s+and\s+schedule\s+posts,\s*edit\s+block\s+layouts\s+in\s+place,\s*review\s+traffic\s+statistics,\s*moderate\s+comments,\s*manage\s+plugins,\s*and\s+configure\s+domains[—–-]all\s+through\s+natural\s+conversation\.$/i,
+        replace: () => "Опишите, что вам нужно, и WordPress создаст это: портфолио, меню ресторана, блог или интернет-магазин. Уже есть сайт на WordPress.com или с Jetpack? Подключите его, чтобы писать и планировать посты, редактировать блочную вёрстку на месте, анализировать статистику трафика, модерировать комментарии, управлять плагинами и настраивать домены — в формате обычного диалога."
+    },
+    {
+        pattern: /^\s*[—–-]\s*Plan\s+and\s+provision\s+new\s+WordPress\.com\s+sites,\s*check\s+subdomain\s+availability,\s*and\s+configure\s+site\s+titles\s+and\s+taglines\.$/i,
+        replace: () => " — планируйте и создавайте новые сайты на WordPress.com, проверяйте доступность поддоменов и настраивайте заголовки и описания сайтов."
+    },
+    {
+        pattern: /^\s*[—–-]\s*Draft,\s*edit,\s*and\s+schedule\s+posts,\s*pages,\s*and\s+custom\s+post\s+types\s+\(including\s+WooCommerce\s+products\s+and\s+portfolio\s+projects\)\s+using\s+theme-aware\s+WordPress\s+blocks\.$/i,
+        replace: () => " — создавайте черновики, редактируйте и планируйте публикацию записей, страниц и пользовательских типов записей (включая товары WooCommerce и проекты портфолио) с помощью блоков WordPress с учётом стилей темы."
+    },
+    {
+        pattern: /^\s*[—–-]\s*Update\s+individual\s+top-level\s+block\s+sections\s+on\s+existing\s+pages\s+and\s+posts\s+without\s+rewriting\s+the\s+entire\s+document\.$/i,
+        replace: () => " — обновляйте отдельные секции блоков верхнего уровня на существующих страницах и в записях без перезаписи всего документа целиком."
+    },
+    {
+        pattern: /^\s*[—–-]\s*Inspect\s+active\s+theme\s+presets\s+\(color\s+palettes,\s*typography,\s*spacing\s+tokens\),\s*allowed\s+blocks,\s*templates,\s*template\s+parts,\s*and\s+navigation\s+menus\.$/i,
+        replace: () => " — просматривайте пресеты активной темы (цветовые палитры, типографику, токены отступов), разрешённые блоки, шаблоны, части шаблонов и меню навигации."
+    },
+    {
+        pattern: /^\s*[—–-]\s*Compare\s+monthly\s+views\s+and\s+visitors,\s*review\s+activity\s+logs,\s*update\s+site\s+settings,\s*manage\s+collaborator\s+roles\s+and\s+invitations,\s*and\s+install\s+or\s+update\s+plugins\.$/i,
+        replace: () => " — сравнивайте ежемесячные просмотры и посетителей, просматривайте журнал активности, обновляйте настройки сайта, управляйте ролями участников и приглашениями, а также устанавливайте и обновляйте плагины."
+    },
+    {
+        pattern: /^\s*[—–-]\s*Check\s+domain\s+availability,\s*configure\s+DNS\s+records\s+or\s+external\s+mail\s+providers\s+\(Google\s+Workspace,\s*iCloud\s+Mail,\s*Office\s+365,\s*Zoho\s+Mail\),\s*and\s+generate\s+WordPress\.com\s+checkout\s+links\.$/i,
+        replace: () => " — проверяйте доступность доменов, настраивайте записи DNS или внешние почтовые сервисы (Google Workspace, iCloud Mail, Office 365, Zoho Mail) и генерируйте ссылки на оплату тарифов WordPress.com."
+    },
+    {
+        pattern: /^(?:Create|Создать)\s+and\s+edit\s+serialized\s+WordPress\s+block\s+markup\s+using\s+theme\s+presets\s+and\s+registered\s+blocks\.$/i,
+        replace: () => "Создание и редактирование сериализованной разметки блоков WordPress с использованием пресетов темы и зарегистрированных блоков."
+    },
+    {
+        pattern: /^Draft,\s*update,\s*and\s+manage\s+posts,\s*pages,\s*media,\s*comments,\s*taxonomies,\s*templates,\s*and\s+navigation\s+menus\.$/i,
+        replace: () => "Создание черновиков, обновление и управление записями, страницами, медиафайлами, комментариями, таксономиями, шаблонами и меню навигации."
+    },
+    {
+        pattern: /^Discover\s+sites,\s*provision\s+new\s+sites,\s*analyze\s+traffic\s+stats,\s*and\s+manage\s+plugins,\s*users,\s*domains,\s*and\s+settings\.$/i,
+        replace: () => "Обзор существующих сайтов, развёртывание новых сайтов, анализ статистики трафика и управление плагинами, пользователями, доменами и настройками."
+    },
+    {
+        pattern: /^(?:Create|Создать)\s+and\s+edit\s+serialized\s+WordPress\s+block\s+content\s+for\s+posts,\s*pages,\s*patterns,\s*templates,\s*and\s+template\s+parts.*$/i,
+        replace: () => "Создание и редактирование сериализованного блочного контента WordPress для записей, страниц, паттернов, шаблонов и частей шаблонов."
+    },
+    {
+        pattern: /^Discover,\s*provision,\s*and\s+administer\s+WordPress\.com\s+and\s+Jetpack-connected\s+sites.*$/i,
+        replace: () => "Обнаружение, создание и администрирование сайтов на WordPress.com и подключённых через Jetpack сайтов (список сайтов, трафик, настройки, плагины, пользователи, домены и DNS)."
+    },
+    {
+        pattern: /^Draft,\s*edit,\s*schedule,\s*and\s+manage\s+posts,\s*pages,\s*custom\s+post\s+types,\s*media,\s*comments,\s*taxonomies,\s*templates,\s*and\s+navigation\s+on\s+WordPress\.com\s+sites.*$/i,
+        replace: () => "Создание черновиков, редактирование, планирование и управление записями, страницами, пользовательскими типами записей, медиафайлами, комментариями, таксономиями, шаблонами и навигацией на сайтах WordPress.com."
+    },
+
+    // === Auth0 Plugin ===
+    {
+        pattern: /^(?:Add|Добавить)\s+Auth0\s+authentication\s+to\s+any\s+app:\s*login,\s*MFA,\s*SSO,\s*Organizations,\s*RBAC,\s*custom\s+domains,\s*and\s+branding\.\s*Debug\s+auth\s+errors\s+and\s+migrate\s+from\s+other\s+providers\.?$/i,
+        replace: () => "Добавьте аутентификацию Auth0 в любое приложение: вход, MFA, SSO, организации (Organizations), RBAC, кастомные домены и брендинг. Отлаживайте ошибки авторизации и мигрируйте с других провайдеров."
+    },
+    {
+        pattern: /^Use\s+when\s+adding,\s*fixing,\s*or\s+improving\s+how\s+an\s+app\s+authenticates\s+users\s+or\s+protects\s+an\s+API,\s*or\s+when\s+using\s+or\s+configuring\s+any\s+Auth0\s+feature.*$/i,
+        replace: () => "Используйте при добавлении, исправлении или улучшении аутентификации пользователей и защиты API, а также при настройке любых возможностей Auth0 (вход/выход, сессии и токены, защита маршрутов, MFA, Passkeys/WebAuthn, SSO, Organizations, RBAC, кастомные домены, аудит безопасности тенанта и миграция)."
+    },
+
+    // === Base44 Plugin ===
+    {
+        pattern: /^(?:Build|Сборка)\s+and\s+deploy\s+Base44\s+full-stack\s+apps:\s*CLI\s+project\s+management,\s*JavaScript\/TypeScript\s+SDK\s+development,\s*and\s+production\s+troubleshooting\s+skills\.?$/i,
+        replace: () => "Создавайте и развёртывайте full-stack приложения Base44: управление проектами через CLI, разработка с помощью JavaScript/TypeScript SDK и навыки диагностики проблем в продакшене."
+    },
+    {
+        pattern: /^The\s+base44\s+CLI\s+is\s+used\s+for\s+EVERYTHING\s+related\s+to\s+base44\s+projects:\s*resource\s+configuration.*$/i,
+        replace: () => "CLI base44 используется для ВСЕХ задач в проектах Base44: настройка ресурсов (сущности, бэкенд-функции, realtime-акторы, ИИ-агенты), инициализация, создание ресурсов, деплой и управление приложением через публичный API Base44."
+    },
+    {
+        pattern: /^The\s+base44\s+SDK\s+is\s+the\s+library\s+to\s+communicate\s+with\s+base44\s+services\.\s*In\s+projects,\s*you\s+use\s+it\s+to\s+communicate\s+with\s+remote\s+resources.*$/i,
+        replace: () => "SDK base44 — библиотека для взаимодействия с сервисами Base44: работа с удалёнными ресурсами (сущности, бэкенд-функции, realtime-акторы, ИИ-агенты и AI Gateway), а также написание собственных бэкенд-функций и акторов."
+    },
+    {
+        pattern: /^Troubleshoot\s+production\s+issues\s+using\s+backend\s+function\s+logs\s+and\s+workflow\s+run\s+history.*$/i,
+        replace: () => "Диагностика и устранение проблем в продакшене с помощью логов бэкенд-функций и истории запусков рабочих процессов в приложениях Base44."
+    },
+
+    // === VirusTotal Plugin ===
+    {
+        pattern: /^Investigate\s+files,\s*URLs,\s*domains\s+and\s+IP\s+addresses\s+with\s+VirusTotal\s+threat\s+intelligence,\s*analysis\s+and\s+submission\s+recovery\.?$/i,
+        replace: () => "Исследуйте файлы, URL-адреса, домены и IP-адреса с помощью аналитики угроз (Threat Intelligence) VirusTotal, анализа и восстановления отправленных проверок."
+    },
+    {
+        pattern: /^Investigates\s+file\s+hashes,\s*URLs,\s*domains\s+and\s+IP\s+addresses\s+with\s+VirusTotal\s+reports.*$/i,
+        replace: () => "Исследует хеши файлов, URL-адреса, домены и IP-адреса с помощью отчётов VirusTotal. Помогает выполнять авторизованные запросы на анализ, принимать решения об отправке данных и восстанавливать результаты проверок."
+    },
+
+    // === Other Partner Plugins (Atlassian TWG, Canva, Context7, Dropbox, Linear, Mobbin, Monday, Notion, PandaDoc, Trello) ===
+    {
+        pattern: /^Help\s+me\s+implement\s+\[JIRA-123\]\.\s*Retrieve\s+the\s+requirements,\s*acceptance\s+criteria,\s*and\s+linked\s+design\s+decisions\.\s*Inspect\s+this\s+repository\s+and\s+propose\s+an\s+implementation\s+plan\s+before\s+changing\s+code\.$/i,
+        replace: () => "Помоги мне реализовать [JIRA-123]. Получи требования, критерии приёмки и связанные проектные решения. Изучи этот репозиторий и предложи план реализации перед изменением кода."
+    },
+    {
+        pattern: /^Investigate\s+\[JIRA-123\]\s+in\s+this\s+repository\.\s*Find\s+related\s+bugs,\s*previous\s+fixes,\s*and\s+relevant\s+technical\s+decisions\.\s*Recommend\s+a\s+fix\s+and\s+the\s+tests\s+needed\s+to\s+verify\s+it\.$/i,
+        replace: () => "Исследуй [JIRA-123] в этом репозитории. Найди связанные баги, предыдущие исправления и релевантные технические решения. Порекомендуй исправление и тесты для его проверки."
+    },
+    {
+        pattern: /^(?:Review|Проверить)\s+my\s+current\s+changes\s+against\s+\[JIRA-123\]\s+and\s+its\s+linked\s+specification\.\s*Flag\s+missed\s+requirements,\s*conflicting\s+decisions,\s*and\s+missing\s+tests\.$/i,
+        replace: () => "Проверь мои текущие изменения на соответствие задаче [JIRA-123] и связанной с ней спецификации. Отметь пропущенные требования, противоречивые решения и недостающие тесты."
+    },
+    {
+        pattern: /^Install,\s*upgrade,\s*authenticate,\s*or\s+repair\s+`?twg`?\s+for\s+your\s+coding\s+agent.*$/i,
+        replace: () => "Установка, обновление, аутентификация и восстановление CLI twg (Atlassian Teamwork Graph) для вашего кодинг-агента: доступ к контексту задач Jira, страниц Confluence, PR в Bitbucket и связанных источников данных."
+    },
+    {
+        pattern: /^(?:Check|Проверка)\s+a\s+Canva\s+design\s+against\s+a\s+brand\s+kit\s+and\s+report\s+where\s+it\s+diverges.*$/i,
+        replace: () => "Проверка дизайна Canva на соответствие бренд-киту (цвета вне палитры, нефирменные шрифты, некорректное использование логотипа и стиля текста) в режиме только для чтения."
+    },
+    {
+        pattern: /^Bulk-create\s+Canva\s+designs\s+from\s+tabular\s+data\s+using\s+a\s+brand\s+template\s+with\s+autofill\s+fields.*$/i,
+        replace: () => "Массовое создание дизайнов Canva из табличных данных (CSV, таблицы, JSON) на основе брендового шаблона с полями автозаполнения (по одному дизайну на каждую строку)."
+    },
+    {
+        pattern: /^Make\s+edits\s+to\s+an\s+existing\s+Canva\s+design\s*[—–-]\s*change\s+or\s+fix\s+text,\s*replace\/insert\/delete\s+images\s+and\s+videos.*$/i,
+        replace: () => "Внесение правок в существующий дизайн Canva: изменение и исправление текста, замена/вставка/удаление изображений и видео, форматирование текста, перемещение элементов и обновление заголовка."
+    },
+    {
+        pattern: /^(?:Read|Чтение)\s+a\s+Canva\s+design\s+and\s+return\s+structured,\s*actionable\s+design\s+feedback.*$/i,
+        replace: () => "Анализ дизайна Canva и предоставление структурированной обратной связи: визуальная иерархия, текст и посыл, вёрстка и отступы, консистентность, читаемость и доступность."
+    },
+    {
+        pattern: /^Implement\s+reviewer\s+feedback\s+on\s+a\s+Canva\s+design\.\s*Reads\s+all\s+comment\s+threads.*$/i,
+        replace: () => "Внедрение правок ревьюеров в дизайн Canva: чтение всех веток комментариев, обобщение пожеланий, автоматическое внесение однозначных правок и выделение вопросов, требующих решения человека."
+    },
+    {
+        pattern: /^Resize\s+a\s+Canva\s+design\s+into\s+multiple\s+social\s+media\s+formats.*$/i,
+        replace: () => "Изменение размера дизайна Canva сразу под несколько форматов социальных сетей (пост и сторис Facebook, пост и сторис Instagram, пост LinkedIn) за одну операцию."
+    },
+    {
+        pattern: /^This\s+skill\s+should\s+be\s+used\s+when\s+the\s+user\s+asks\s+about\s+libraries,\s*frameworks,\s*API\s+references,\s*or\s+needs\s+code\s+examples.*$/i,
+        replace: () => "Используется, когда пользователь спрашивает о библиотеках, фреймворках, справочниках API или нуждается в актуальных примерах кода (React, Vue, Next.js, Prisma, Supabase и др.)."
+    },
+    {
+        pattern: /^Clean\s+up\s+Dropbox\s+content\s+by\s+identifying\s+obsolete,\s*duplicate,\s*temporary,\s*or\s+unwanted\s+files.*$/i,
+        replace: () => "Очистка содержимого Dropbox путём выявления устаревших, дублирующихся, временных или ненужных файлов с удалением только после явного подтверждения."
+    },
+    {
+        pattern: /^(?:Create|Создать),\s*inspect,\s*and\s+manage\s+Dropbox\s+file\s+requests\s+for\s+collecting\s+uploads\s+from\s+other\s+people.*$/i,
+        replace: () => "Создание, проверка и управление запросами файлов (file requests) в Dropbox для сбора загружаемых файлов от других пользователей."
+    },
+    {
+        pattern: /^Find\s+Dropbox\s+files\s+and\s+folders\s+relevant\s+to\s+a\s+user\s+request.*$/i,
+        replace: () => "Поиск файлов и папок в Dropbox по запросу пользователя: поиск документов, недавних файлов и навигация по структуре папок перед чтением, отправкой или организацией."
+    },
+    {
+        pattern: /^(?:Inspect|Инспекция)\s+a\s+Dropbox\s+file\s+or\s+folder\s+by\s+checking\s+metadata,\s*shared\s+links,\s*and\s+file\s+content.*$/i,
+        replace: () => "Инспекция файла или папки в Dropbox: проверка метаданных, общих ссылок и содержимого файла при необходимости."
+    },
+    {
+        pattern: /^Organize\s+Dropbox\s+files\s+and\s+folders\s+by\s+creating\s+folders,\s*copying\s+content,\s*or\s+moving\s+content.*$/i,
+        replace: () => "Организация файлов и папок в Dropbox: создание папок, копирование и перемещение содержимого в более чистую и упорядоченную структуру."
+    },
+    {
+        pattern: /^Share\s+Dropbox\s+files\s+or\s+folders\s+by\s+creating\s+shared\s+links,\s*inspecting\s+existing\s+shared\s+links.*$/i,
+        replace: () => "Предоставление доступа к файлам и папкам в Dropbox: создание новых общих ссылок, проверка существующих ссылок и параметров доступа."
+    },
+    {
+        pattern: /^Tells\s+your\s+agent\s+what\s+Mobbin\s+can\s+and\s+can['’]t\s+do\s+and\s+how\s+the\s+Mobbin\s+skills\s+work\s+together.*$/i,
+        replace: () => "Объясняет агенту возможности и ограничения Mobbin, а также то, как навыки Mobbin работают вместе, чтобы выбрать подходящий инструмент для дизайн-задачи."
+    },
+    {
+        pattern: /^Makes\s+every\s+report\s+a\s+Mobbin\s+skill\s+writes\s+read\s+like\s+a\s+person\s+wrote\s+it,\s*in\s+plain\s+interface\s+terms.*$/i,
+        replace: () => "Делает каждый отчёт навыков Mobbin живым и естественным, используя понятную интерфейсную терминологию без шаблонных ИИ-оборотов и лишней воды."
+    },
+    {
+        pattern: /^Redesign\s+any\s+screen\s+from\s+patterns\s+real\s+apps\s+ship\.\s*Share\s+a\s+screenshot,\s*your\s+code\s+or\s+a\s+design\s+file.*$/i,
+        replace: () => "Редизайн любого экрана на основе паттернов из реальных приложений на Mobbin с сохранением вашей собственной дизайн-системы, сравнением «до/после» и ссылками на референсы."
+    },
+    {
+        pattern: /^Gets\s+better\s+results\s+from\s+every\s+Mobbin\s+search,\s*so\s+the\s+references\s+match\s+what\s+you['’]re\s+working\s+on.*$/i,
+        replace: () => "Повышает точность каждого поискового запроса в Mobbin (search_screens, search_flows, search_sections), чтобы найденные референсы идеально подходили под вашу задачу."
+    },
+    {
+        pattern: /^Creates,\s*reads,\s*edits,\s*and\s+comments\s+on\s+monday\.com\s+docs\s*[—–-]\s*the\s+rich-content\s+surface\s+inside\s+monday.*$/i,
+        replace: () => "Создаёт, читает, редактирует и комментирует документы monday.com (заметки встреч, RFC, ранбуки, еженедельные отчёты) со встраиванием живых данных из колонок досок и упоминаниями."
+    },
+    {
+        pattern: /^Creates\s+and\s+edits\s+monday\.com\s+WorkForms\s*[—–-]\s*public\s+intake\s+forms\s+that\s+capture\s+responses\s+as\s+new\s+items.*$/i,
+        replace: () => "Создаёт и редактирует формы monday.com WorkForms — публичные формы сбора заявок, баг-репортов и анкет, автоматически превращающие ответы в элементы на доске."
+    },
+    {
+        pattern: /^First-run\s+onboarding\s+for\s+people\s+who\s+just\s+connected\s+monday\.com\s+and\s+have\s+not\s+set\s+anything\s+up\s+yet.*$/i,
+        replace: () => "Быстрый стартовый онбординг для пользователей, которые только что подключили monday.com: за пару минут создаёт готовую к работе доску, адаптированную под ваши задачи."
+    },
+    {
+        pattern: /^Creates,\s*updates,\s*assigns,\s*and\s+manages\s+items\s+across\s+monday\.com\s+boards.*$/i,
+        replace: () => "Создаёт, обновляет, назначает и управляет задачами (элементами) на досках monday.com с корректным форматированием значений для всех типов колонок."
+    },
+    {
+        pattern: /^Turns\s+scattered\s+notes\s+and\s+recurring\s+work\s+into\s+useful\s+Notion\s+trackers\s+for\s+requests,\s*content\s+plans,\s*or\s+team\s+work.*$/i,
+        replace: () => "Превращает разрозненные заметки и регулярные задачи в удобные трекеры и базы данных Notion для заявок, контент-планов и командной работы."
+    },
+    {
+        pattern: /^Captures\s+conversations\s+and\s+supplied\s+notes\s+as\s+Notion\s+wiki\s+pages,\s*how-to\s+guides,\s*FAQs,\s*decision\s+records,\s*or\s+retrospectives.*$/i,
+        replace: () => "Сохраняет обсуждения и заметки в виде вики-страниц Notion, практических руководств (how-to), FAQ, записей о принятых решениях (ADR) или ретроспектив."
+    },
+    {
+        pattern: /^Prepares\s+meeting\s+agendas,\s*internal\s+pre-reads,\s*and\s+decision\s+briefs\s+using\s+Notion\s+context\s+and\s+relevant\s+research.*$/i,
+        replace: () => "Готовит повестки встреч, предварительные материалы (pre-reads) и резюме решений с использованием контекста вашего рабочего пространства Notion."
+    },
+    {
+        pattern: /^Researches\s+questions\s+across\s+Notion\s+sources\s+and\s+synthesizes\s+cited\s+briefs,\s*comparisons,\s*or\s+reports.*$/i,
+        replace: () => "Исследует вопросы по источникам в Notion и формирует сводки, сравнения или отчёты со ссылками на первоисточники."
+    },
+    {
+        pattern: /^A\s+guided\s+setup\s+flow\s+to\s+get\s+the\s+most\s+out\s+of\s+Notion\s+that\s+is\s+recommended\s+for\s+all\s+users\s+who\s+install\s+the\s+Notion\s+MCP\.?$/i,
+        replace: () => "Пошаговый мастер первоначальной настройки для максимально эффективной работы с Notion (рекомендуется всем пользователям после установки Notion MCP)."
+    },
+    {
+        pattern: /^Converts\s+Notion\s+product\s+or\s+technical\s+specs\s+into\s+implementation\s+plans,\s*linked\s+tasks,\s*and\s+evidence-based\s+progress\s+updates.*$/i,
+        replace: () => "Преобразует продуктовые и технические спецификации из Notion в планы реализации, связанные задачи и отчёты о прогрессе."
+    },
+    {
+        pattern: /^Produces\s+evidence-based\s+weekly\s+project\s+or\s+team\s+updates\s+by\s+comparing\s+reporting\s+periods,\s*tasks,\s*decisions,\s*and\s+blockers\s+in\s+Notion.*$/i,
+        replace: () => "Формирует аргументированные еженедельные дайджесты по проекту или команде путём сравнения отчётных периодов, задач, решений и блокеров в Notion."
+    },
+    {
+        pattern: /^(?:Create|Создать)\s+a\s+document\s+from\s+a\s+template\s+and\s+route\s+it\s+through\s+its\s+internal\s+approval\s+chain.*$/i,
+        replace: () => "Создание документа PandaDoc из шаблона и проведение его по внутренней цепочке согласования перед отправкой контрагенту."
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+a\s+register\s+of\s+signed\s+contracts\s+with\s+their\s+key\s+terms\s*[—–-]\s*counterparty,\s*dates,\s*value\s+and\s+negotiated\s+provisions.*$/i,
+        replace: () => "Формирование реестра подписанных договоров с их ключевыми условиями (контрагент, даты, сумма и согласованные положения) на основе метаданных PandaDoc."
+    },
+    {
+        pattern: /^Track\s+per-recipient\s+signing\s+progress\s+across\s+documents\s+that\s+are\s+out\s*[—–-]\s*who\s+has\s+signed,\s*who\s+has\s+not.*$/i,
+        replace: () => "Отслеживание прогресса подписания по каждому получателю для отправленных документов PandaDoc: кто уже подписал, кто ещё нет, в каком порядке и какие документы застряли."
+    },
+    {
+        pattern: /^Sweep\s+documents\s+that\s+are\s+still\s+out\s+for\s+signature,\s*rank\s+them\s+by\s+how\s+long\s+they\s+have\s+been\s+waiting.*$/i,
+        replace: () => "Анализ документов PandaDoc, ожидающих подписи, их ранжирование по времени ожидания и сумме сделки, а также подготовка черновиков писем-напоминаний."
+    },
+    {
+        pattern: /^Turn\s+a\s+signed\s+quote\s+or\s+proposal\s+into\s+an\s+invoice\s*[—–-]\s*find\s+quotes\s+that\s+completed\s+and\s+have\s+not\s+been\s+invoiced\s+yet.*$/i,
+        replace: () => "Превращение подписанного коммерческого предложения в счёт на оплату (инвойс) на основе шаблона PandaDoc с сохранением всех позиций и цен."
+    },
+    {
+        pattern: /^Send\s+a\s+standard\s+NDA\s+to\s+a\s+counterparty\s+in\s+one\s+motion\s*[—–-]\s*find\s+the\s+right\s+NDA\s+template.*$/i,
+        replace: () => "Быстрая отправка стандартного соглашения о неразглашении (NDA) контрагенту в один шаг: подбор шаблона, предзаполнение реквизитов, проверка полей подписи и отправка."
+    },
+    {
+        pattern: /^Generate\s+an\s+onboarding\s+or\s+employment\s+document\s+from\s+a\s+template\s+with\s+the\s+new\s+joiner['’]s\s+details\s+prefilled.*$/i,
+        replace: () => "Генерация кадрового или онбординг-документа PandaDoc из шаблона с предзаполнением данных нового сотрудника и отправкой на подпись."
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+a\s+priced\s+PandaDoc\s+quote\s+or\s+proposal\s+from\s+a\s+template\s*[—–-]\s*fill\s+the\s+pricing\s+table\s+and\s+variables.*$/i,
+        replace: () => "Создание коммерческого предложения (квоты) в PandaDoc из шаблона: заполнение таблицы цен и переменных, проверка итоговой суммы и скидок, подтверждение и отправка на подпись."
+    },
+    {
+        pattern: /^Digest\s+of\s+signed\s+contracts\s+approaching\s+renewal\s+or\s+expiry,\s*with\s+counterparty,\s*value\s+and\s+days\s+remaining.*$/i,
+        replace: () => "Дайджест подписанных договоров PandaDoc, срок продления или окончания которых приближается (контрагент, сумма, оставшиеся дни и крайний срок уведомления)."
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+a\s+signing\s+pipeline\s+report\s*[—–-]\s*status\s+counts,\s*average\s+time\s+to\s+sign,\s*value\s+in\s+flight,\s*and\s+documents\s+that\s+are\s+stuck.*$/i,
+        replace: () => "Формирование отчёта по воронке подписания PandaDoc: количество документов по статусам, среднее время подписания, общая сумма сделок в работе и застрявшие документы."
+    },
+    {
+        pattern: /^\*\*MANDATORY\s+prerequisite\*\*\s*[—–-]\s*load\s+this\s+BEFORE\s+calling\s+any\s+Trello\s+MCP\s+tool.*$/i,
+        replace: () => "**ОБЯЗАТЕЛЬНОЕ требование** — загружайте этот навык ПЕРЕД вызовом любого инструмента Trello MCP (формат идентификаторов ARI, работа с датами UTC, Inbox, доски, пагинация и полные записи)."
     },
     {
         // "Editing <target>" or "Editing"
@@ -9433,6 +10273,65 @@ function translateTextNode(node) {
                 if (pText.includes('service account') || pText.includes('имперсонацию') || pText.includes('principal access') || pText.includes('политики границ')) {
                     translated = 'Используйте';
                 }
+            } else if (lowerText === 'checks') {
+                const pText = node.parentElement ? normalizeText(node.parentElement.textContent).toLowerCase() : '';
+                if (pText.includes('gcloud')) {
+                    translated = '';
+                }
+            } else if (lowerText === 'these skills target the new') {
+                translated = 'Эти навыки предназначены для нового ';
+            } else if (lowerText === ". they don't generate legacy velo or corvid code.") {
+                translated = '. Они не генерируют устаревший код Velo или Corvid.';
+            } else if (lowerText === '): lists your sites, calls wix apis on them, and searches the wix docs. the first time a wix tool is used, you sign in to your wix account in the browser; the server shows in') {
+                translated = '): выводит список ваших сайтов, вызывает для них API Wix и выполняет поиск по документации Wix. При первом вызове инструмента Wix вы входите в свой аккаунт Wix в браузере; сервер отображается в ';
+            } else if (lowerText === 'as') {
+                const pText = node.parentElement ? normalizeText(node.parentElement.textContent).toLowerCase() : '';
+                if (pText.includes('wix_mcp')) {
+                    translated = 'как';
+                }
+            } else if (lowerText === ': build and review wix cli app extensions, and prepare an app for the wix app market.') {
+                translated = ': создание и проверка расширений приложений Wix CLI, а также подготовка приложения для публикации в Wix App Market.';
+            } else if (lowerText === ': wix design system component reference.') {
+                translated = ': справочник компонентов Wix Design System.';
+            } else if (lowerText === ': rest recipes for configuring wix business solutions: stores, bookings, payments, cms, and more.') {
+                translated = ': REST-рецепты для настройки бизнес-решений Wix: магазинов, бронирований, платежей, CMS и многого другого.';
+            } else if (lowerText === ': build and release a headless site fast on shipped, per-solution code. the kit fetches that code (') {
+                translated = ': быстрое создание и публикация headless-сайтов на основе готового проверенного кода для каждого решения. Набор загружает этот код (';
+            } else if (lowerText === ') the first time it builds a site.') {
+                translated = ') при первой сборке сайта.';
+            } else if (lowerText === ': look up an exact wix endpoint, field or schema before writing code.') {
+                translated = ': поиск точного эндпоинта, поля или схемы Wix перед написанием кода.';
+            } else if (lowerText === ': the index of the plugin: its skills and the wix mcp tools, with what each does.') {
+                translated = ': указатель плагина: список его навыков и инструментов Wix MCP с описанием их возможностей.';
+            } else if (lowerText === 'a') {
+                const pText = node.parentElement ? normalizeText(node.parentElement.textContent).toLowerCase() : '';
+                if (pText.includes('wix')) {
+                    translated = 'Аккаунт ';
+                }
+            } else if (lowerText === ", for the wix cli and the skills' helper scripts.") {
+                translated = ' — для работы Wix CLI и вспомогательных скриптов навыков.';
+            } else if (lowerText === 'build, publish, and manage your' || lowerText === 'сборка, publish, and manage your') {
+                translated = 'Создавайте, публикуйте и управляйте вашими сайтами ';
+            } else if (lowerText === 'sites and') {
+                const pText = node.parentElement ? normalizeText(node.parentElement.textContent).toLowerCase() : '';
+                if (pText.includes('wordpress') || pText.includes('jetpack')) {
+                    translated = ' и подключёнными через ';
+                }
+            } else if (lowerText === 'self-hosted wordpress sites directly from google antigravity.') {
+                translated = ' автономными (self-hosted) сайтами WordPress напрямую из Google Antigravity.';
+            } else if (lowerText === 'ensure mcp access is enabled in your') {
+                translated = 'Убедитесь, что доступ MCP включён в ваших ';
+            } else if (lowerText === 'for the sites you want to manage. self-hosted wordpress sites can also connect via') {
+                translated = ' для сайтов, которыми вы хотите управлять. Автономные сайты WordPress также можно подключить через ';
+            } else if (lowerText === 'install the') {
+                const pText = node.parentElement ? normalizeText(node.parentElement.textContent).toLowerCase() : '';
+                if (pText.includes('wordpress') || pText.includes('antigravity')) {
+                    translated = 'Установите плагин ';
+                }
+            } else if (lowerText === 'plugin in antigravity. when prompted, sign in with your wordpress.com account via oauth to authorize access.') {
+                translated = ' в Antigravity. При появлении запроса войдите в свой аккаунт WordPress.com через OAuth для авторизации доступа.';
+            } else if (lowerText === 'invoke a starter prompt or use the bundled skills (') {
+                translated = 'Запустите стартовый промпт или используйте встроенные навыки (';
             } else if (lowerText === 'if the') {
                 const pText = node.parentElement ? normalizeText(node.parentElement.textContent).toLowerCase() : '';
                 if (pText.includes('android') && (pText.includes('path') || pText.includes('installer') || pText.includes('установщик'))) {
@@ -9833,17 +10732,17 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.22';
+    const FALLBACK_VERSION = '2.1.23';
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
     }
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = 'Локализация v2.1.22: полный перевод официальных плагинов Firebase, Science, Google Developer Knowledge, Modern Web Guidance, Google Maps Platform, Dart & Flutter, Data Agent Kit и Google Cloud Developer.';
+        window.__antigravity_remote_changelog = 'Локализация v2.1.23: полный перевод официальных плагинов Firebase, Science, Google Developer Knowledge, Modern Web Guidance, Google Maps Platform, Dart & Flutter, Data Agent Kit и Google Cloud Developer.';
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Локализация v2.1.22: полный перевод официальных плагинов Firebase, Science, Google Developer Knowledge, Modern Web Guidance, Google Maps Platform, Dart & Flutter, Data Agent Kit и Google Cloud Developer.';
+    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Локализация v2.1.23: полный перевод официальных плагинов Firebase, Science, Google Developer Knowledge, Modern Web Guidance, Google Maps Platform, Dart & Flutter, Data Agent Kit и Google Cloud Developer.';
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;

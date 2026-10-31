@@ -1,7 +1,7 @@
 {
-  "version": "2.1.22",
-  "releaseDate": "2026-10-31T00:43:00.273Z",
-  "changelog": "Локализация v2.1.22: полный перевод официальных плагинов Firebase, Science, Google Developer Knowledge, Modern Web Guidance, Google Maps Platform, Dart & Flutter, Data Agent Kit и Google Cloud Developer.",
+  "version": "2.1.23",
+  "releaseDate": "2026-10-31T00:57:15.507Z",
+  "changelog": "Локализация v2.1.23: полный перевод таблицы разрешений Google Cloud Developer и партнёрских плагинов (Figma, Netlify, Railway, Vercel, Wix, WordPress, Auth0, Base44, VirusTotal, Atlassian TWG, Canva, Context7, Dropbox, Linear, Mobbin, monday.com, Notion, PandaDoc, Trello).",
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",
