@@ -1,7 +1,7 @@
 {
-  "version": "2.1.23",
-  "releaseDate": "2026-10-31T00:57:15.507Z",
-  "changelog": "Локализация v2.1.23: полный перевод таблицы разрешений Google Cloud Developer и партнёрских плагинов (Figma, Netlify, Railway, Vercel, Wix, WordPress, Auth0, Base44, VirusTotal, Atlassian TWG, Canva, Context7, Dropbox, Linear, Mobbin, monday.com, Notion, PandaDoc, Trello).",
+  "version": "2.1.24",
+  "releaseDate": "2026-10-31T13:32:30.000Z",
+  "changelog": "Локализация v2.1.24: полный перевод всех 67 плагинов Маркетплейса (17 официальных и 50 партнёрских), шагов чата, таймеров (Timed 5m, 5m timer: Timer has expired), расписаний cron и статусов субагентов/задач (3 subagents/tasks running, Found N subagents, Started N subagents, Stop).",
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",
