@@ -3279,7 +3279,50 @@ const translationDictionary = {
     "goal verification": "Проверка достижения цели",
     "idle guard warning": "Предупреждение о простое",
     "fork environment notice": "Уведомление о клонировании окружения",
-    "system message": "Системное сообщение"
+    "system message": "Системное сообщение",
+    "remote debugging required": "Требуется удалённая отладка",
+    "browser configuration required": "Требуется настройка браузера",
+    "browser control is gated in remote sessions.": "Управление браузером ограничено в удалённых сессиях.",
+    "to use browser tools, you need to enable remote debugging:": "Чтобы использовать браузерные инструменты, необходимо включить удалённую отладку:",
+    "chrome on the machine you are controlling is not accepting remote debugging. complete these steps on that machine, not in this tab:": "Chrome на управляемом компьютере не принимает соединения удалённой отладки. Выполните эти шаги на том компьютере, а не в этой вкладке:",
+    "open google chrome on the machine running antigravity.": "Откройте Google Chrome на компьютере, где запущен Antigravity.",
+    "if that machine is a cloudtop, reach it via": "Если это облачная рабочая станция (cloudtop), подключитесь к ней через",
+    "go to": "Перейдите на",
+    ", open chrome": ", откройте Chrome",
+    "on your cloudtop server": "на вашем сервере cloudtop",
+    "that runs jetski web.": ", где запущен Jetski Web.",
+    "navigate to": "Перейдите по адресу",
+    "enable": "Включите",
+    "\"allow remote debugging for this browser instance\"": "«Allow remote debugging for this browser instance» (Разрешить удалённую отладку для этого экземпляра браузера)",
+    "allow remote debugging for this browser instance": "Allow remote debugging for this browser instance (Разрешить удалённую отладку для этого экземпляра браузера)",
+    "devtools port is still closed. please make sure chrome is running with remote debugging enabled.": "Порт DevTools по-прежнему закрыт. Убедитесь, что браузер Chrome запущен с включённой удалённой отладкой.",
+    "proceed anyway": "Продолжить всё равно",
+    "check again": "Проверить снова",
+    "проверка again": "Проверить снова",
+    "checking...": "Проверка...",
+    "click to copy url": "Нажмите, чтобы скопировать URL",
+    "tip: complex tasks get better results with multiple responses.": "Совет: сложные задачи решаются качественнее при генерации нескольких вариантов ответа.",
+    "enable best-of-2": "Включить выбор лучшего из 2",
+    "(optional) tell us more or type your reason...": "(Необязательно) Расскажите подробнее или укажите причину...",
+    "reason for opting out": "Причина отказа",
+    "don't show this for 2 days": "Не показывать в течение 2 дней",
+    "search tabs, files, extensions, subagents, artifacts, commands...": "Поиск вкладок, файлов, расширений, субагентов, артефактов, команд...",
+    "search tabs, files, extensions, subagents, artifacts, commands ...": "Поиск вкладок, файлов, расширений, субагентов, артефактов, команд...",
+    "search tabs, files, extensions, artifacts, commands...": "Поиск вкладок, файлов, расширений, артефактов, команд...",
+    "search tabs, files, extensions, artifacts, commands ...": "Поиск вкладок, файлов, расширений, артефактов, команд...",
+    "search tabs, files, extensions, subagents, artifacts, tasks...": "Поиск вкладок, файлов, расширений, субагентов, артефактов, задач...",
+    "search tabs, files, extensions, subagents, artifacts, tasks ...": "Поиск вкладок, файлов, расширений, субагентов, артефактов, задач...",
+    "search tabs, files, extensions, artifacts, tasks...": "Поиск вкладок, файлов, расширений, артефактов, задач...",
+    "search tabs, files, extensions, artifacts, tasks ...": "Поиск вкладок, файлов, расширений, артефактов, задач...",
+    "search for content to open": "Поиск содержимого для открытия",
+    "search results": "Результаты поиска",
+    "no results": "Нет результатов",
+    "full view": "Полный вид",
+    "subagent conversation": "Диалог субагента",
+    "subagent ended": "Субагент завершил работу",
+    "loading subagent...": "Загрузка субагента...",
+    "loading subagent": "Загрузка субагента",
+    "background task output": "Вывод фоновой задачи"
 };
 
 function localizeActionTarget(target) {
@@ -3706,6 +3749,16 @@ const regexTranslations = [
         // "Waiting for command completion (up to 10 seconds)"
         pattern: /^Waiting\s+for\s+command\s+completion\s*\(up\s+to\s+(\d+)\s*seconds?\)$/i,
         replace: (match) => `Ожидание завершения команды (до ${match[1]} сек)`
+    },
+    {
+        // "Check again" / "Проверка again"
+        pattern: /^(?:Check|Проверка)\s+again$/i,
+        replace: () => "Проверить снова"
+    },
+    {
+        // '"Allow remote debugging for this browser instance"'
+        pattern: /^["“«]?Allow\s+remote\s+debugging\s+for\s+this\s+browser\s+instance["”»]?\.?$/i,
+        replace: (m) => `«Allow remote debugging for this browser instance» (Разрешить удалённую отладку для этого экземпляра браузера)${m[0].endsWith('.') ? '.' : ''}`
     },
     {
         pattern: /^Add\s+(.+)$/i,
@@ -7332,9 +7385,19 @@ const regexTranslations = [
         replace: (match) => /^workspaces$/i.test(match[0]) ? "Рабочие области" : "Рабочая область"
     },
     {
-        // "Search tabs, files, extensions, subagents, artifacts, tasks ..."
-        pattern: /^(?:Search|Поиск)\s+tabs,\s*files,\s*extensions,\s*subagents,\s*artifacts,\s*tasks(\s*(?:\.{3}|…))?$/i,
-        replace: (match) => "Поиск вкладок, файлов, расширений, субагентов, артефактов, задач" + (match[1] || "")
+        // "Search tabs, files, extensions, subagents, artifacts, commands..." / "... tasks..."
+        pattern: /^(?:Search|Поиск)\s+tabs,\s*files,\s*extensions,\s*(?:subagents,\s*)?artifacts,\s*(tasks|commands)(\s*(?:\.{3}|…))?$/i,
+        replace: (match) => {
+            const hasSubagents = /subagents/i.test(match[0]);
+            const lastWord = /^commands$/i.test(match[1]) ? "команд" : "задач";
+            const dots = match[2] || "";
+            return `Поиск вкладок, файлов, расширений, ${hasSubagents ? "субагентов, " : ""}артефактов, ${lastWord}${dots}`;
+        }
+    },
+    {
+        // "Full View"
+        pattern: /^Full\s+View$/i,
+        replace: () => "Полный вид"
     },
     {
         // "No extensions available"
@@ -10216,6 +10279,32 @@ function shouldIgnore(node) {
             val === 'idle guard warning' ||
             val === 'fork environment notice' ||
             val === 'system message' ||
+            val === 'remote debugging required' ||
+            val === 'browser configuration required' ||
+            val.startsWith('to use browser tools') ||
+            val.startsWith('chrome on the machine') ||
+            val.startsWith('open google chrome') ||
+            val === 'navigate to' ||
+            val === 'enable' ||
+            val.includes('allow remote debugging for this browser instance') ||
+            val.startsWith('devtools port is still closed') ||
+            val === 'proceed anyway' ||
+            val === 'check again' ||
+            val === 'проверка again' ||
+            val === 'checking...' ||
+            val === 'click to copy url' ||
+            val === 'go to' ||
+            val === 'enable best-of-2' ||
+            val === 'full view' ||
+            val === 'subagent conversation' ||
+            val === 'subagent ended' ||
+            val === 'loading subagent...' ||
+            val === 'loading subagent' ||
+            val === 'background task output' ||
+            val === 'search for content to open' ||
+            val === 'search results' ||
+            val === 'no results' ||
+            val.includes('tabs, files, extensions') ||
             /^(?:\d+(?:\.\d+)?\s*(?:s|sec|secs|second|seconds|m|min|mins|minute|minutes|h|hr|hrs|hour|hours|d|day|days)\s*)+timer\b/i.test(val) ||
             /^(?:(?:found|listing|killing|killed|started|starting|asking|asked|найдено|найден|найдена)\s+)?\d+\s+(?:subagents?|субагент(?:а|ов)?|tasks?|задач[аи]?|results?|результат(?:а|ов)?|questions?|вопрос(?:а|ов)?)(?:\s*[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?$/i.test(val) ||
             /^(?:(?:defined|defining|killing|killed)\s+)?[a-z0-9_\-]+\s+subagent(?:\s*[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?$/i.test(val) ||
@@ -11638,6 +11727,31 @@ function isFileName(text, parent) {
         lowerTrimmed === 'idle guard warning' ||
         lowerTrimmed === 'fork environment notice' ||
         lowerTrimmed === 'system message' ||
+        lowerTrimmed === 'remote debugging required' ||
+        lowerTrimmed === 'browser configuration required' ||
+        lowerTrimmed.startsWith('to use browser tools') ||
+        lowerTrimmed.startsWith('chrome on the machine') ||
+        lowerTrimmed.startsWith('open google chrome') ||
+        lowerTrimmed === 'navigate to' ||
+        lowerTrimmed === 'enable' ||
+        lowerTrimmed.includes('allow remote debugging for this browser instance') ||
+        lowerTrimmed.startsWith('devtools port is still closed') ||
+        lowerTrimmed === 'proceed anyway' ||
+        lowerTrimmed === 'check again' ||
+        lowerTrimmed === 'проверка again' ||
+        lowerTrimmed === 'checking...' ||
+        lowerTrimmed === 'click to copy url' ||
+        lowerTrimmed === 'go to' ||
+        lowerTrimmed === 'enable best-of-2' ||
+        lowerTrimmed === 'full view' ||
+        lowerTrimmed === 'subagent conversation' ||
+        lowerTrimmed === 'subagent ended' ||
+        lowerTrimmed === 'loading subagent...' ||
+        lowerTrimmed === 'loading subagent' ||
+        lowerTrimmed === 'background task output' ||
+        lowerTrimmed === 'search for content to open' ||
+        lowerTrimmed === 'search results' ||
+        lowerTrimmed === 'no results' ||
         /^(?:\d+(?:\.\d+)?\s*(?:s|sec|secs|second|seconds|m|min|mins|minute|minutes|h|hr|hrs|hour|hours|d|day|days)\s*)+timer\b/i.test(lowerTrimmed) ||
         /^(?:(?:found|listing|killing|killed|started|starting|asking|asked|найдено|найден|найдена)\s+)?\d+\s+(?:subagents?|субагент(?:а|ов)?|tasks?|задач[аи]?|results?|результат(?:а|ов)?|questions?|вопрос(?:а|ов)?)(?:\s*[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?$/i.test(lowerTrimmed) ||
         /^(?:(?:defined|defining|killing|killed)\s+)?[a-z0-9_\-]+\s+subagent(?:\s*[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?$/i.test(lowerTrimmed) ||
@@ -11856,7 +11970,9 @@ function translateTextNode(node) {
         if (!translated) {
             if (translationDictionary[lowerText]) {
                 translated = translationDictionary[lowerText];
-                if (lowerText === 'found' || lowerText === 'killed' || lowerText === 'started' || lowerText === 'asked') {
+                if ((lowerText === 'open' || lowerText === 'открыть') && parentText.includes('google chrome')) {
+                    translated = 'Откройте';
+                } else if (lowerText === 'found' || lowerText === 'killed' || lowerText === 'started' || lowerText === 'asked') {
                     const mCtx = fullContext.match(/(?:^|\s)(\d+)\s*(subagents?|субагент(?:а|ов)?|tasks?|задач[аи]?|results?|результат(?:а|ов)?|questions?|вопрос(?:а|ов)?)\b/i);
                     if (mCtx) {
                         const c = parseInt(mCtx[1], 10);
@@ -12459,17 +12575,17 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.24';
+    const FALLBACK_VERSION = '2.1.25';
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
     }
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = 'Локализация v2.1.24: полный перевод всех 67 плагинов Маркетплейса, шагов чата, таймеров и статусов субагентов/задач.';
+        window.__antigravity_remote_changelog = 'Локализация v2.1.25: перевод модального окна Remote Debugging Required (Требуется удалённая отладка), строки поиска на новой вкладке (Search tabs, files, extensions, subagents, artifacts, commands...) и панели субагента (Full View / Полный вид).';
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Локализация v2.1.24: полный перевод всех 67 плагинов Маркетплейса, шагов чата, таймеров и статусов субагентов/задач.';
+    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Локализация v2.1.25: перевод модального окна Remote Debugging Required (Требуется удалённая отладка), строки поиска на новой вкладке (Search tabs, files, extensions, subagents, artifacts, commands...) и панели субагента (Full View / Полный вид).';
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;

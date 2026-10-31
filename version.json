@@ -1,7 +1,7 @@
 {
-  "version": "2.1.24",
-  "releaseDate": "2026-10-31T13:32:30.000Z",
-  "changelog": "Локализация v2.1.24: полный перевод всех 67 плагинов Маркетплейса (17 официальных и 50 партнёрских), шагов чата, таймеров (Timed 5m, 5m timer: Timer has expired), расписаний cron и статусов субагентов/задач (3 subagents/tasks running, Found N subagents, Started N subagents, Stop).",
+  "version": "2.1.25",
+  "releaseDate": "2026-10-31T19:45:49.345Z",
+  "changelog": "Локализация v2.1.25: перевод модального окна Remote Debugging Required (Требуется удалённая отладка), строки поиска на новой вкладке (Search tabs, files, extensions, subagents, artifacts, commands...) и панели субагента (Full View / Полный вид).",
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",
