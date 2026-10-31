@@ -1,7 +1,7 @@
 {
-  "version": "2.1.21",
-  "releaseDate": "2026-10-31T03:25:00Z",
-  "changelog": "Локализация v2.1.21: перевод Recent, Trigger, Time Zone, This Computer, Skill, UI Extensions, таблицы навыков Gemini API и всей страницы плагина Android CLI.",
+  "version": "2.1.22",
+  "releaseDate": "2026-10-31T00:43:00.273Z",
+  "changelog": "Локализация v2.1.22: полный перевод официальных плагинов Firebase, Science, Google Developer Knowledge, Modern Web Guidance, Google Maps Platform, Dart & Flutter, Data Agent Kit и Google Cloud Developer.",
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",

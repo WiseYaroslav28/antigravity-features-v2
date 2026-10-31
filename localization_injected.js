@@ -1898,6 +1898,93 @@ const translationDictionary = {
     "tool output": "Вывод инструмента",
     "tool input": "Входные данные инструмента",
     "tool result": "Результат инструмента",
+    "agents": "Агенты",
+    "context usage": "Использование контекста",
+    "science plugin": "Плагин Science",
+    "science plugin: scientific tools for your agent": "Плагин Science: научные инструменты для вашего агента",
+    "customizing or creating extensions": "Настройка и создание расширений",
+    "licensing & disclaimer": "Лицензирование и отказ от ответственности",
+    "copyright 2026 google llc": "Copyright 2026 Google LLC",
+    "skill licences and terms of use": "Лицензии навыков и условия использования",
+    "authentication & setup": "Аутентификация и настройка",
+    "1. enable the developer knowledge api": "1. Включите Developer Knowledge API",
+    "2. configure credentials": "2. Настройте учётные данные",
+    "choose one of the following authentication methods:": "Выберите один из следующих способов аутентификации:",
+    "option 1: application default credentials (recommended for mcp)": "Вариант 1: Стандартные учётные данные приложения — ADC (рекомендуется для MCP)",
+    "option 2: developer knowledge api key": "Вариант 2: API-ключ Developer Knowledge",
+    "included components": "Включённые компоненты",
+    "google developer knowledge documentation": "Документация Google Developer Knowledge",
+    "developer knowledge mcp server guide": "Руководство по MCP-серверу Developer Knowledge",
+    "google cloud console credentials page": "странице учётных данных Google Cloud Console",
+    "why?": "Зачем это нужно?",
+    "what's included?": "Что включено?",
+    "core disciplines": "Основные направления",
+    "user experience": "Пользовательский опыт (UX)",
+    "css layout": "CSS-вёрстка и макеты",
+    "forms & ui": "Формы и элементы UI",
+    "built-in ai": "Встроенный ИИ (Built-in AI)",
+    "the full list": "Полный список",
+    "232 modern web features": "232 современные веб-возможности",
+    "186 real-world developer use cases": "186 практических сценариев разработки",
+    "safe adoption of modern features": "Безопасное внедрение современных возможностей",
+    "progressive enhancement & nuanced fallbacks": "Прогрессивное улучшение и продуманные фолбэки",
+    "responsible fallbacks": "Ответственные фолбэки",
+    "gotchas & quirks": "Подводные камни и особенности",
+    "baseline-aware integration": "Интеграция с учётом Baseline",
+    "modern browser apis": "Современные API браузеров",
+    "performance & accessibility": "Производительность и доступность",
+    "how it works": "Как это работает",
+    "activation": "Активация",
+    "local semantic search": "Локальный семантический поиск",
+    "поиск local semantic": "Локальный семантический поиск",
+    "guide fetch": "Загрузка руководства",
+    "evals to prove this works well ;)": "Оценки (Evals), доказывающие эффективность ;)",
+    "simulated developer tasks": "Симуляция задач разработчика",
+    "browser-based assertions": "Проверки в реальном браузере",
+    "self-healing calibration": "Самовосстанавливающаяся калибровка",
+    "e2e testing": "Сквозное (E2E) тестирование",
+    "recent eval results snapshot": "Срез последних результатов оценок",
+    "date": "Дата",
+    "agent + model": "Агент + Модель",
+    "tasks / assertions": "Задачи / Проверки",
+    "unguided → guided (uplift)": "Без навыка → С навыком (Прирост)",
+    "telemetry & privacy": "Телеметрия и конфиденциальность",
+    "to opt-out:": "Чтобы отказаться от телеметрии:",
+    "contributors": "Участники проекта",
+    "huge thanks to everyone who has contributed!": "Огромное спасибо всем, кто внёс свой вклад!",
+    "attribution": "Атрибуция и источники",
+    "flutter agent plugin": "Плагин агента Flutter",
+    "available skills": "Доступные навыки",
+    "dart skills": "Навыки Dart",
+    "flutter skills": "Навыки Flutter",
+    "configuration": "Конфигурация",
+    "features and common uses": "Возможности и основные сценарии использования",
+    "data engineering:": "Инженерия данных:",
+    "data science:": "Наука о данных (Data Science):",
+    "data analysis:": "Анализ данных:",
+    "install the gcloud cli": "Установите gcloud CLI",
+    "log in with your google cloud account:": "Войдите в свой аккаунт Google Cloud:",
+    "log in to": "Авторизуйтесь в",
+    "usage statistics": "Статистика использования",
+    "open an issue": "создайте ишью",
+    "data agent kit homepage": "Домашняя страница Data Agent Kit",
+    "data agent kit documentation": "Документация Data Agent Kit",
+    "service account impersonation": "имперсонацию сервисного аккаунта",
+    "roles it needs": "необходимые ему роли",
+    "principal access boundary policies": "политики границ доступа принципалов (Principal Access Boundary)",
+    "mitigate prompt injection risks": "снизить риски промпт-инъекций",
+    "google cloud developer plugin": "Плагин Google Cloud Developer",
+    "bundled skills": "Встроенные навыки",
+    "developer knowledge mcp server": "MCP-сервер Developer Knowledge",
+    "routing rules": "Правила маршрутизации",
+    "plugin in action": "Плагин в действии",
+    "environment awareness": "Осведомлённость об окружении",
+    "interaction with guardrails": "Взаимодействие с защитными ограничениями",
+    "network, sandbox, and permission requirements": "Требования к сети, песочнице и разрешениям",
+    "1. required outbound url allowlist": "1. Список разрешённых исходящих URL",
+    "2. required terminal command permissions": "2. Требуемые разрешения для команд терминала",
+    "domain / endpoint": "Домен / Эндпоинт",
+    "used by": "Где используется",
     "recent": "Недавние",
     "recent:": "Недавние:",
     "recent projects": "Недавние проекты",
@@ -2371,16 +2458,16 @@ const regexTranslations = [
             : "Протестировать моё приложение и убедиться, что оно готово к публикации в Google Play."
     },
     {
-        pattern: /^(?:Creating|Создание)\s+a\s+new\s+Android\s+project$/i,
-        replace: () => "Создание нового проекта Android"
+        pattern: /^(?:Creating|Создание)\s+a\s+new\s+Android\s+project(:?)$/i,
+        replace: (m) => "Создание нового проекта Android" + (m[1] || "")
     },
     {
-        pattern: /^(?:Running|Запуск)\s+on\s+a\s+device$/i,
-        replace: () => "Запуск на устройстве"
+        pattern: /^(?:Running|Запуск)\s+on\s+a\s+device(:?)$/i,
+        replace: (m) => "Запуск на устройстве" + (m[1] || "")
     },
     {
-        pattern: /^(?:Testing|Тестирование)\s*&\s*Play\s+readiness$/i,
-        replace: () => "Тестирование и готовность к Google Play"
+        pattern: /^(?:Testing|Тестирование)\s*&\s*Play\s+readiness(:?)$/i,
+        replace: (m) => "Тестирование и готовность к Google Play" + (m[1] || "")
     },
     {
         // Android CLI Overview & Key Capabilities
@@ -2519,7 +2606,7 @@ const regexTranslations = [
     },
     {
         pattern: /^Returns\s+the\s+active\s+UI\s+layout\s+tree\s+in\s+JSON\s+format\s*\(supports\s*$/i,
-        replace: () => "Возвращает дерево активной UI-разметки в формате JSON (поддерживает фильтрацию "
+        replace: () => "Возвращает дерево активной UI-разметки в формате JSON (поддерживает "
     },
     {
         pattern: /^filtering\)\.?$/i,
@@ -2576,6 +2663,1334 @@ const regexTranslations = [
     {
         pattern: /^Sidecar\s+for\s+managing\s+Android\s+Virtual\s+Devices\s+\(list,\s*start,\s*stop,\s*create,\s*remove\).*$/i,
         replace: () => "Сайдкар для управления виртуальными устройствами Android (список, запуск, остановка, создание, удаление) через CLI эмулятора Android, а также для трансляции экрана и управления эмуляторами и физическими устройствами, подключёнными к adb."
+    },
+    {
+        // === v2.1.22: Official Plugins (Firebase, Science, Google Developer Knowledge, Modern Web Guidance, Maps, Flutter, Data Agent Kit, Google Cloud Developer) ===
+        // Emoji section headers (Android CLI & Modern Web Guidance)
+        pattern: /^(?:🚀\s*)?Key\s+Capabilities$/i,
+        replace: (m) => (/^🚀/.test(m[0]) ? "🚀 " : "") + "Ключевые возможности"
+    },
+    {
+        pattern: /^(?:🛠️?\s*)?Project\s+Scaffolding$/i,
+        replace: (m) => (/^🛠/.test(m[0]) ? "🛠️ " : "") + "Каркас и инициализация проекта"
+    },
+    {
+        pattern: /^(?:📱\s*)?Device\s*&\s*Emulator\s+Management$/i,
+        replace: (m) => (/^📱/.test(m[0]) ? "📱 " : "") + "Управление устройствами и эмуляторами"
+    },
+    {
+        pattern: /^(?:🧠\s*)?Agent\s+Skills\s+Management$/i,
+        replace: (m) => (/^🧠/.test(m[0]) ? "🧠 " : "") + "Управление навыками агента"
+    },
+    {
+        pattern: /^(?:🔍\s*)?UI\s+Layout\s+Inspection\s*&\s*Screen\s+Analysis$/i,
+        replace: (m) => (/^🔍/.test(m[0]) ? "🔍 " : "") + "Инспекция UI-разметки и анализ экрана"
+    },
+    {
+        pattern: /^(?:🧪\s*)?Journey\s+Testing$/i,
+        replace: (m) => (/^🧪/.test(m[0]) ? "🧪 " : "") + "Сценарное тестирование (Journey Testing)"
+    },
+    {
+        pattern: /^(?:📚\s*)?Official\s+Android\s+Knowledge\s+Base$/i,
+        replace: (m) => (/^📚/.test(m[0]) ? "📚 " : "") + "Официальная база знаний Android"
+    },
+    {
+        pattern: /^(?:🖥️?\s*)?Device\s+Hub\s*&\s*Compose\s+Preview\s+Panes$/i,
+        replace: (m) => (/^🖥/.test(m[0]) ? "🖥️ " : "") + "Панели Device Hub и предпросмотра Compose"
+    },
+    {
+        pattern: /^(?:🎨\s*)?User\s+Experience$/i,
+        replace: (m) => (/^🎨/.test(m[0]) ? "🎨 " : "") + "Пользовательский опыт (UX)"
+    },
+    {
+        pattern: /^(?:📐\s*)?CSS\s+Layout$/i,
+        replace: (m) => (/^📐/.test(m[0]) ? "📐 " : "") + "CSS-вёрстка и макеты"
+    },
+    {
+        pattern: /^(?:⚡\s*)?(?:Performance|Производительность)$/i,
+        replace: (m) => (/^⚡/.test(m[0]) ? "⚡ " : "") + "Производительность"
+    },
+    {
+        pattern: /^(?:📝\s*)?Forms\s*&\s*UI$/i,
+        replace: (m) => (/^📝/.test(m[0]) ? "📝 " : "") + "Формы и элементы UI"
+    },
+    {
+        pattern: /^(?:♿\s*)?(?:Accessibility|Доступность)$/i,
+        replace: (m) => (/^♿/.test(m[0]) ? "♿ " : "") + "Доступность"
+    },
+    {
+        pattern: /^(?:🤖\s*)?Built-in\s+AI$/i,
+        replace: (m) => (/^🤖/.test(m[0]) ? "🤖 " : "") + "Встроенный ИИ"
+    },
+    {
+        // Context usage tokens: "(713 tokens)" / "713 / 20 000 tokens (3.6%)"
+        pattern: /^\(([\d\s,.]+)\s+tokens\)\s*([\d.,]+%)?$/i,
+        replace: (m) => `(${m[1]} токенов)` + (m[2] ? ` ${m[2]}` : "")
+    },
+    {
+        pattern: /^([\d\s,.]+)\s*\/\s*([\d\s,.]+)\s+tokens\s*\(([^)]+)\)$/i,
+        replace: (m) => `${m[1]} / ${m[2]} токенов (${m[3]})`
+    },
+    // --- 1. FIREBASE PLUGIN ---
+    {
+        pattern: /^(?:Set\s+up|Установите\s+для\s+переменной\s+окружения\s+up)\s+Firebase\s+in\s+my\s+app\s+and\s+connect\s+it\s+to\s+a\s+Firebase\s+project\.?$/i,
+        replace: () => "Настроить Firebase в моём приложении и подключить его к проекту Firebase"
+    },
+    {
+        pattern: /^Add\s+Firebase\s+Authentication\s+with\s+Google\s+sign-in\s+to\s+my\s+app\.?$/i,
+        replace: () => "Добавить аутентификацию Firebase со входом через Google в моё приложение"
+    },
+    {
+        pattern: /^Write\s+and\s+audit\s+Firestore\s+security\s+rules\s+for\s+my\s+data\s+model\.?$/i,
+        replace: () => "Написать и проверить правила безопасности Firestore для моей модели данных"
+    },
+    {
+        pattern: /^Add\s+a\s+Gemini-powered\s+feature\s+to\s+my\s+app\s+with\s+Firebase\s+AI\s+Logic\.?$/i,
+        replace: () => "Добавить функцию на базе Gemini в моё приложение с помощью Firebase AI Logic"
+    },
+    {
+        pattern: /^Deploy\s+my\s+web\s+app\s+with\s+Firebase\s+App\s+Hosting\.?$/i,
+        replace: () => "Развернуть моё веб-приложение с помощью Firebase App Hosting"
+    },
+    {
+        pattern: /^(?:Skill|Навык)\s+for\s+converting\s+an\s+installed\s+Firebase\s+Extension.*$/i,
+        replace: () => "Навык для преобразования установленного расширения Firebase (или его исходного кода) в отдельную кодовую базу Cloud Functions для Firebase или публикуемый npm-пакет, включая обновление триггеров V1 до V2, хуки жизненного цикла и декларативную безопасность."
+    },
+    {
+        pattern: /^Official\s+skill\s+for\s+integrating\s+Firebase\s+AI\s+Logic\s+\(Gemini\s+API\)\s+into\s+web\s+applications.*$/i,
+        replace: () => "Официальный навык для интеграции Firebase AI Logic (Gemini API) в веб-приложения. Охватывает настройку, мультимодальный инференс, структурированный вывод и безопасность."
+    },
+    {
+        pattern: /^Deploys\s+and\s+manages\s+full-stack\s+web\s+applications\s+\(Next\.js,\s*Angular\)\s+with\s+Server-Side\s+Rendering.*$/i,
+        replace: () => "Развёртывание и управление full-stack веб-приложениями (Next.js, Angular) с серверным рендерингом (SSR) через Firebase App Hosting (конфигурация apphosting.yaml, секреты, CI/CD с GitHub)."
+    },
+    {
+        pattern: /^Guide\s+for\s+setting\s+up\s+and\s+using\s+Firebase\s+Authentication.*$/i,
+        replace: () => "Руководство по настройке и использованию Firebase Authentication. Используйте этот навык, когда приложению требуются вход пользователей, управление аккаунтами или защита доступа к данным."
+    },
+    {
+        pattern: /^Provides\s+foundational\s+Firebase\s+CLI\s+setup,\s*CLI\s+installation.*$/i,
+        replace: () => "Базовая настройка и установка Firebase CLI, проверка версий, вход в аккаунт (firebase login), создание и выбор проекта (firebase use), а также скачивание конфигурационных файлов приложения (google-services.json, GoogleService-Info.plist)."
+    },
+    {
+        pattern: /^Comprehensive\s+guide\s+for\s+Firebase\s+Crashlytics,\s*including\s+provisioning\s+and\s+SDK\s+usage.*$/i,
+        replace: () => "Полное руководство по Firebase Crashlytics, включая подключение и использование SDK для сбора отчётов о сбоях в приложении."
+    },
+    {
+        pattern: /^Builds\s+and\s+deploys\s+Firebase\s+SQL\s+Connect\s+\(aka\s+Firebase\s+Data\s+Connect\)\s+backends\s+with\s+PostgreSQL.*$/i,
+        replace: () => "Создание и безопасное развёртывание бэкендов Firebase SQL Connect (Firebase Data Connect) на базе PostgreSQL: проектирование схем, авторизованные запросы и мутации, обновления в реальном времени и генерация типобезопасных SDK."
+    },
+    {
+        pattern: /^Sets\s+up,\s*manages,\s*queries,\s*and\s+configures\s+Cloud\s+Firestore\s+databases.*$/i,
+        replace: () => "Настройка, управление и запросы к базам данных Cloud Firestore (Standard/Enterprise), включая моделирование данных, правила безопасности, индексы и интеграцию SDK (Web, Python, iOS, Android, Flutter)."
+    },
+    {
+        pattern: /^Deploys\s+and\s+configures\s+classic\s+Firebase\s+Hosting\s+for\s+static\s+websites.*$/i,
+        replace: () => "Развёртывание и настройка классического Firebase Hosting для статических сайтов, одностраничных приложений (SPA) и микросервисов (кастомные домены, редиректы, заголовки и каналы предпросмотра)."
+    },
+    {
+        pattern: /^Manages\s+Firebase\s+Remote\s+Config\s+templates,\s*feature\s+flags,\s*loading\s+strategies.*$/i,
+        replace: () => "Управление шаблонами Firebase Remote Config, фича-флагами, стратегиями загрузки и SDK (Android, iOS), включая версионирование, значения по умолчанию и слушатели в реальном времени."
+    },
+    {
+        pattern: /^Audits\s+Firebase\s+\(Firestore,\s*Cloud\s+Storage\)\s+security\s+rules\s+for\s+vulnerabilities.*$/i,
+        replace: () => "Аудит правил безопасности Firebase (Firestore, Cloud Storage) на уязвимости, повышение привилегий, обход ролей, несоответствия при создании/обновлении и проверку владения данными."
+    },
+    {
+        pattern: /^Designs,\s*authors,\s*refactors,\s*and\s+hardens\s+production-grade\s+Cloud\s+Firestore\s+Security\s+Rules.*$/i,
+        replace: () => "Проектирование, написание, рефакторинг и укрепление промышленных правил безопасности Cloud Firestore (firestore.rules)."
+    },
+    {
+        pattern: /^Safely\s+modifies\s+Xcode\s+projects\s+\(\.pbxproj\)\s+to\s+add\s+Swift\s+Packages\s+and\s+link\s+files.*$/i,
+        replace: () => "Безопасная модификация проектов Xcode (.pbxproj) для добавления пакетов Swift и привязки файлов при установке зависимостей в iOS-проектах (например, Firebase, Alamofire)."
+    },
+    {
+        pattern: /^MANDATORY\s+specialist\s+subagent\s+for\s+Cloud\s+Firestore\s+Security\s+Rules\s+\(firestore\.rules\).*$/i,
+        replace: () => "ОБЯЗАТЕЛЬНЫЙ специализированный субагент для правил безопасности Cloud Firestore (firestore.rules). При создании, написании или изменении правил безопасности Firestore делегируйте задачу этому субагенту."
+    },
+    // --- 2. SCIENCE PLUGIN ---
+    {
+        pattern: /^Curated\s+collection\s+of\s+agent\s+skills\s+for\s+science\s+tasks\.?$/i,
+        replace: () => "Курируемая коллекция навыков агента для научных задач."
+    },
+    {
+        pattern: /^A\s+collection\s+of\s+extensions\s+\(e\.g\.\s+skills\)\s+for\s+scientific\s+research\s+tasks.*$/i,
+        replace: () => "Коллекция расширений (навыков) для научно-исследовательских задач, охватывающая геномику, структурную биологию, хемоинформатику, научную литературу и многое другое."
+    },
+    {
+        pattern: /^Each\s+extension\s+provides\s+structured\s+instructions,\s*scripts,\s*and\s+resources\s+that\s+extend\s+Antigravity['’]s\s+capabilities\s+for\s+specialized\s+scientific\s+tasks\.?$/i,
+        replace: () => "Каждое расширение содержит структурированные инструкции, скрипты и ресурсы, которые расширяют возможности Antigravity для решения специализированных научных задач."
+    },
+    {
+        pattern: /^We\s+use\s+the\s*$/i,
+        replace: () => "Мы используем пакетный менеджер "
+    },
+    {
+        pattern: /^package\s+manager\s+to\s+handle\s+dependencies\.\s*The\s+first\s+time\s+you\s+trigger\s+an\s+extension\s+in\s+the\s+Science\s+Plugin,\s*the\s+agent\s+will\s+ask\s+for\s+approval\s+to\s+install\s*$/i,
+        replace: () => " для управления зависимостями. При первом вызове расширения из плагина Science агент запросит подтверждение на установку "
+    },
+    {
+        pattern: /^,\s*and\s+then\s+proceed\s+to\s+respond\s+to\s+your\s+scientific\s+query\s*\/\s*task\.\s*We\s+recommend\s+restarting\s+Antigravity\s+after\s+this\s+first\s+time\s+installation\.?$/i,
+        replace: () => ", а затем перейдёт к выполнению вашего научного запроса или задачи. Рекомендуем перезапустить Antigravity после этой первой установки."
+    },
+    {
+        pattern: /^Some\s+skills,\s*such\s+as\s+AlphaGenome,\s*require\s+an\s+API\s+key\s+to\s+function\..*$/i,
+        replace: () => "Некоторые навыки, такие как AlphaGenome, требуют API-ключ для работы. Другим, например ClinVar и OpenAlex, API-ключ позволяет повысить лимиты запросов, но они работают и без него. Агент подскажет, как получить API-ключ, и поможет сохранить его в нужное место. Если вы предпочитаете сделать это самостоятельно, выполните в терминале команду: "
+    },
+    {
+        pattern: /^If\s+you\s+want\s+to\s+customize\s+an\s+existing\s+extension\s+or\s+create\s+a\s+new\s+extension\s+of\s+your\s+own,\s*you\s+should\s*$/i,
+        replace: () => "Если вы хотите настроить существующее расширение или создать собственное, вам "
+    },
+    {
+        pattern: /^modify\s+the\s+files\s+inside\s+the\s+Science\s+Plugin\s+installation\s+directory.*$/i,
+        replace: () => " следует изменять файлы внутри установочной директории плагина Science, так как ваши изменения будут перезаписаны при обновлении плагина. Вместо этого размещайте свои или изменённые расширения в другом месте — например, в личной директории навыков:"
+    },
+    {
+        pattern: /^You\s+can\s+find\s+examples\s+of\s+Science\s+Plugin\s+use\s+cases,\s*including\s+demos,\s*at\s*$/i,
+        replace: () => "Примеры сценариев использования плагина Science, включая демоверсии, доступны на "
+    },
+    {
+        pattern: /^All\s+software\s+is\s+licensed\s+under\s+the\s+Apache\s+License,\s*Version\s+2\.0\s*\(Apache\s+2\.0\);\s*you\s+may\s+not\s+use\s+this\s+file\s+except\s+in\s+compliance\s+with\s+the\s+Apache\s+2\.0\s+license\.\s*You\s+may\s+obtain\s+a\s+copy\s+of\s+the\s+Apache\s+2\.0\s+license\s+at:?\s*$/i,
+        replace: () => "Всё программное обеспечение лицензировано по лицензии Apache License, Version 2.0 (Apache 2.0); вы можете использовать этот файл только в соответствии с лицензией Apache 2.0. Копию лицензии Apache 2.0 можно получить по адресу: "
+    },
+    {
+        pattern: /^As\s+set\s+out\s+in\s+the\s+attached\s+file\s*[‘'"]?$/i,
+        replace: () => "Как указано в прилагаемом файле «"
+    },
+    {
+        pattern: /^[’'"]?\s*certain\s+third\s+party\s+data\s+sources\s+referenced\s+within\s+individual\s+Skill\s+files\s+have\s+their\s+own\s+applicable\s+licenses\s+and\/or\s+terms\s+of\s+use\.\s*See\s+the\s*[‘'"]?$/i,
+        replace: () => "», некоторые сторонние источники данных, на которые ссылаются отдельные файлы навыков, имеют собственные применимые лицензии и/или условия использования. Подробности см. в файле «"
+    },
+    {
+        pattern: /^[’'"]?\s*file\s+for\s+more\s+information\.\s*You\s+are\s+responsible\s+for\s+ensuring\s+that\s+your\s+use\s+of\s+individual\s+Skill\s+files\s+complies\s+with\s+any\s+such\s+applicable\s+licenses\/\s*terms\s+of\s+use\.?$/i,
+        replace: () => "». Вы несёте ответственность за соблюдение всех применимых лицензий и условий использования при работе с отдельными файлами навыков."
+    },
+    {
+        pattern: /^All\s+other\s+materials\s+are\s+licensed\s+under\s+the\s+Creative\s+Commons\s+Attribution\s+4\.0\s+International\s+License\s+\(CC-BY\)\.\s*You\s+may\s+obtain\s+a\s+copy\s+of\s+the\s+CC-BY\s+license\s+at:?\s*$/i,
+        replace: () => "Все остальные материалы лицензированы по лицензии Creative Commons Attribution 4.0 International (CC-BY). Копию лицензии CC-BY можно получить по адресу: "
+    },
+    {
+        pattern: /^Unless\s+required\s+by\s+applicable\s+law\s+or\s+agreed\s+to\s+in\s+writing,\s*all\s+software\s+and\s+materials\s+distributed\s+here.*$/i,
+        replace: () => "Если иное не требуется применимым законодательством и не согласовано в письменной форме, всё программное обеспечение и материалы распространяются на условиях «КАК ЕСТЬ» (AS IS), БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ ИЛИ УСЛОВИЙ, явных или подразумеваемых. См. тексты лицензий для ознакомления с конкретными правами и ограничениями."
+    },
+    {
+        pattern: /^Interactive\s+3D\s+biomolecular\s+structure\s+viewer\s+via\s+Mol\*.*$/i,
+        replace: () => "Интерактивный 3D-просмотрщик биомолекулярных структур на базе Mol*. Отображает трёхмерные молекулярные структуры из локальных файлов (.cif, .mmcif, .pdb) и управляет 3D-аннотациями."
+    },
+    {
+        pattern: /^Retrieve\s+and\s+analyze\s+AlphaFold\s+predicted\s+structures\s+for\s+a\s+protein.*$/i,
+        replace: () => "Получение и анализ предсказанных структур белков AlphaFold по идентификатору UniProt (метрики достоверности pLDDT, границы доменов и оценка неупорядоченности)."
+    },
+    {
+        pattern: /^Constructs\s+deep-links\s+and\s+URLs\s+for\s+the\s+AlphaGenome\s+Atlas\s+website.*$/i,
+        replace: () => "Формирование прямых ссылок и URL для сайта AlphaGenome Atlas: просмотр одиночных вариантов, геномных локусов, сводных таблиц кандидатов и сравнений предсказаний."
+    },
+    {
+        pattern: /^Analyzes\s+genetic\s+variant\s+effects\s+on\s+gene\s+expression\s+\(RNA-seq\).*$/i,
+        replace: () => "Анализ влияния генетических вариантов на экспрессию генов (RNA-seq), доступность хроматина (DNASE), гистоновые метки (ChIP) и факторы транскрипции через AlphaGenome API."
+    },
+    {
+        pattern: /^Score,\s*annotate,\s*and\s+analyze\s+the\s+functional\s+impact\s+of\s+genetic\s+variants\s+using\s+AlphaGenome\s+Variant\s+Impact.*$/i,
+        replace: () => "Оценка, аннотирование и анализ функционального влияния генетических вариантов с помощью метрик AlphaGenome Variant Impact (AVI) через AlphaGenome Atlas API."
+    },
+    {
+        pattern: /^Query\s+the\s+ChEMBL\s+database\s+for\s+bioactive\s+molecules,\s*drug\s+targets.*$/i,
+        replace: () => "Запросы к базе данных ChEMBL по биоактивным молекулам, мишеням лекарств, данным биоактивности (IC50/Ki), одобренным препаратам и химическим структурам."
+    },
+    {
+        pattern: /^Query\s+ClinicalTrials\.gov\s+via\s+APIv2\..*$/i,
+        replace: () => "Поиск клинических исследований на ClinicalTrials.gov через APIv2 по заболеванию, препарату, локации, статусу, фазе или идентификатору NCT ID."
+    },
+    {
+        pattern: /^Use\s+when\s+needing\s+clinical\s+significance,\s*pathogenicity\s+classifications.*$/i,
+        replace: () => "Получение данных о клинической значимости, классификации патогенности (Pathogenic, Benign, VUS) и доказательной базы для генетических вариантов человека в ClinVar."
+    },
+    {
+        pattern: /^Instructions\s+for\s+handling\s+API\s+keys\s+and\s+credentials\s+safely.*$/i,
+        replace: () => "Инструкции по безопасной работе с API-ключами и учётными данными, проверке их наличия и безопасному запросу недостающих ключей у пользователя."
+    },
+    {
+        pattern: /^Use\s+when\s+you\s+want\s+to\s+look\s+up,\s*map,\s*and\s+search\s+for\s+short\s+genetic\s+variants.*$/i,
+        replace: () => "Поиск и сопоставление коротких генетических вариантов (SNP, инделов) в базе dbSNP NCBI по rsID, геномным координатам VCF и строкам HGVS."
+    },
+    {
+        pattern: /^Query\s+and\s+search\s+the\s+EMBL-EBI\s+Ontology\s+Lookup\s+Service\s+\(OLS\).*$/i,
+        replace: () => "Поиск и навигация по биомедицинским терминам, определениям и иерархиям в более чем 250 онтологиях (GO, DOID, HP) через EMBL-EBI OLS."
+    },
+    {
+        pattern: /^Query\s+the\s+ENCODE\s+Registry\s+of\s+cis-Regulatory\s+Elements\s+\(cCREs\).*$/i,
+        replace: () => "Запросы к реестру цис-регуляторных элементов ENCODE (cCREs) через SCREEN GraphQL API и к порталу ENCODE REST API для получения экспериментальных данных по типам клеток."
+    },
+    {
+        pattern: /^Query\s+the\s+Ensembl\s+database\s+to\s+resolve\s+gene,\s*transcript,\s*and\s+protein\s+IDs.*$/i,
+        replace: () => "Запросы к базе данных Ensembl для сопоставления ID генов, транскриптов и белков, получения последовательностей, структур экзонов и предсказания эффектов вариантов (VEP)."
+    },
+    {
+        pattern: /^Performs\s+3D\s+structural\s+searches\s+of\s+proteins\s+against\s+various\s+databases.*$/i,
+        replace: () => "Трёхмерный структурный поиск белков по базам данных (PDB, AlphaFold, CATH, MGnify и др.) с помощью Foldseek API по файлу 3D-координат (.cif, .mmcif, .pdb)."
+    },
+    {
+        pattern: /^Query\s+the\s+Genome\s+Aggregation\s+Database\s+\(gnomAD\).*$/i,
+        replace: () => "Запросы к базе данных gnomAD для определения частоты аллелей генетических вариантов, метрик толерантности генов к потере функции (pLI, LOEUF) и структурных вариантов."
+    },
+    {
+        pattern: /^Use\s+when\s+you\s+want\s+to\s+retrieve\s+quantitative\s+RNA\s+expression\s+data\s+and\s+variant\s+eQTL.*$/i,
+        replace: () => "Получение количественных данных об экспрессии РНК и информации о вариантах eQTL из проекта GTEx (Genotype-Tissue Expression) по 54 типам здоровых тканей."
+    },
+    {
+        pattern: /^Use\s+when\s+you\s+want\s+to\s+retrieve\s+semi-quantitative\s+protein\s+expression\s+and\s+spatial\s+localisation.*$/i,
+        replace: () => "Получение полуколичественных данных об экспрессии белков и их пространственной локализации из базы Human Protein Atlas (HPA)."
+    },
+    {
+        pattern: /^Identify\s+domains,\s*families,\s*and\s+sites\s+in\s+proteins;\s*find\s+all\s+proteins\s+in\s+a\s+family.*$/i,
+        replace: () => "Идентификация доменов, семейств и функциональных сайтов в белках, анализ распределения по видам и аннотирование геномов терминами GO с помощью объединённого ресурса InterPro."
+    },
+    {
+        pattern: /^Query\s+the\s+JASPAR\s+database\s+for\s+Transcription\s+Factor\s+\(TF\)\s+binding\s+profiles.*$/i,
+        replace: () => "Запросы к базе данных JASPAR для получения профилей связывания факторов транскрипции (TF), частотных и весовых матриц (PFM/PWM) в форматах MEME, TRANSFAC, JASPAR и YAML."
+    },
+    {
+        pattern: /^(?:Search|Поиск)\s+for\s+scientific\s+papers,\s*preprints,\s*and\s+publications\s+on\s+arXiv.*$/i,
+        replace: () => "Поиск научных статей, препринтов и публикаций на arXiv: извлечение метаданных, аннотаций и скачивание полных текстов в PDF или HTML."
+    },
+    {
+        pattern: /^Browse,\s*filter,\s*and\s+download\s+life\s+sciences,\s*biology,\s*and\s+medical\s+preprints\s+from\s+bioRxiv\s+and\s+medRxiv.*$/i,
+        replace: () => "Просмотр, фильтрация и скачивание препринтов по биологии и медицине с bioRxiv и medRxiv по DOI, диапазону дат, категориям и ключевым словам."
+    },
+    {
+        pattern: /^(?:Search|Поиск)\s+Europe\s+PMC\s+for\s+scientific\s+literature\s+and\s+download\s+open-access\s+full\s+texts.*$/i,
+        replace: () => "Поиск научной литературы в Europe PMC, скачивание полных текстов и PDF в открытом доступе по PMCID, получение списков цитирования и библиографии."
+    },
+    {
+        pattern: /^Query\s+the\s+OpenAlex\s+scholarly\s+database\s+for\s+research\s+papers,\s*authors.*$/i,
+        replace: () => "Запросы к научной базе OpenAlex по статьям, авторам, институтам, темам и источникам: поиск по DOI, библиометрические показатели (цитирования, h-index) и открытые PDF."
+    },
+    {
+        pattern: /^Retrieve\s+protein\s+and\s+nucleotide\s+sequences\s+from\s+NCBI\s+databases\s+using\s+E-utilities.*$/i,
+        replace: () => "Получение белковых и нуклеотидных последовательностей из баз данных NCBI с помощью E-utilities по идентификатору (accession), имени гена, локусу, PubMed ID или номеру патента."
+    },
+    {
+        pattern: /^Query,\s*search,\s*and\s+download\s+data\s+from\s+the\s+openFDA\s+API\s+for\s+drugs,\s*devices.*$/i,
+        replace: () => "Запросы и выгрузка данных из openFDA API по лекарствам, медицинским изделиям, продуктам питания и веществам (побочные эффекты, отзывы продукции, маркировка, одобрения FDA)."
+    },
+    {
+        pattern: /^Query\s+Open\s+Targets\s+Platform\s+for\s+target-disease\s+associations,\s*drug\s+target\s+discovery.*$/i,
+        replace: () => "Запросы к платформе Open Targets для анализа связей «мишень — заболевание», поиска лекарственных мишеней, оценки безопасности, омиксных доказательств и известных препаратов."
+    },
+    {
+        pattern: /^Use\s+when\s+you\s+want\s+to\s+search\s+for\s+or\s+download\s+experimentally-determined\s+3D\s+structures.*$/i,
+        replace: () => "Поиск и скачивание экспериментально определённых 3D-структур биомолекул (белков, нуклеиновых кислот, лигандов) и метаданных экспериментов в базе данных PDB."
+    },
+    {
+        pattern: /^Ancient\s+text\s+restoration,\s*attribution,\s*dating,\s*contextualization,\s*and\s+embedding\s+via\s+Aeneas.*$/i,
+        replace: () => "Реставрация, атрибуция, датировка, контекстуализация и эмбеддинг древних текстов и эпиграфических надписей с помощью моделей Aeneas (латынь) и Ithaca (древнегреческий)."
+    },
+    {
+        pattern: /^Performs\s+multiple\s+sequence\s+alignment\s+of\s+proteins\s+with\s+EBI\s+Clustal\s+Omega.*$/i,
+        replace: () => "Множественное выравнивание белковых последовательностей (MSA) с помощью EBI Clustal Omega для оценки сходства и консервативности доменов или ключевых остатков."
+    },
+    {
+        pattern: /^Searches\s+for\s+homologous\s+protein\s+sequences\s+using\s+MMseqs2\s+\(fast,\s*default\)\s+or\s+BLAST.*$/i,
+        replace: () => "Поиск гомологичных белковых последовательностей с помощью MMseqs2 (быстрый, по умолчанию) или BLAST для определения функции белка по сходству последовательностей."
+    },
+    {
+        pattern: /^Query\s+PubChem,\s*search\s+by\s+name\/CID\/SMILES,\s*retrieve\s+properties.*$/i,
+        replace: () => "Запросы к базе PubChem по названию, CID или SMILES: получение физико-химических свойств, поиск по структурному сходству и подструктуре, анализ биоактивности."
+    },
+    {
+        pattern: /^(?:Search|Поиск)\s+PubMed\s+for\s+scientific\s+literature,\s*including\s+published\s+clinical\s+trials.*$/i,
+        replace: () => "Поиск научной литературы и клинических исследований в PubMed, загрузка аннотаций и полных текстов, связывание публикаций с биологическими базами данных NCBI и PubChem."
+    },
+    {
+        pattern: /^Visualize,\s*analyze,\s*and\s+render\s+protein\s+and\s+molecular\s+structures\s+using\s+PyMOL.*$/i,
+        replace: () => "Визуализация, анализ и рендеринг структур белков и молекул с помощью PyMOL: выравнивание структур, измерение расстояний и контактов, выделение активных центров и окраска по pLDDT."
+    },
+    {
+        pattern: /^Query\s+the\s+QuickGO\s+and\s+Evidence\s*&\s*Conclusion\s+Ontology\s+\(ECO\)\s+REST\s+API.*$/i,
+        replace: () => "Запросы к REST API QuickGO и ECO для сопоставления генов с биологическими процессами, молекулярными функциями и клеточными компонентами, а также навигации по иерархии Gene Ontology."
+    },
+    {
+        pattern: /^Query\s+the\s+Reactome\s+database\s+\(Analysis\s+and\s+Content\s+Services\).*$/i,
+        replace: () => "Запросы к базе данных Reactome: анализ сигнальных и метаболических путей, обогащение списков генов, участники реакций, иерархия путей и экспорт диаграмм."
+    },
+    {
+        pattern: /^Query\s+the\s+STRING\s+database\s+for\s+protein-protein\s+interactions\s+\(PPIs\).*$/i,
+        replace: () => "Запросы к базе данных STRING для анализа белок-белковых взаимодействий (PPI), оценки достоверности связей, поиска партнёров взаимодействия и функционального обогащения."
+    },
+    {
+        pattern: /^Fetch\s+Evolutionary\s+Conservation\s+scores\s+\(phyloP,\s*phastCons\)\s+and\s+Transcription\s+Factor\s+Binding\s+Sites.*$/i,
+        replace: () => "Получение оценок эволюционной консервативности (phyloP, phastCons) и сайтов связывания факторов транскрипции (TFBS) из UCSC Genome Browser (проекты ENCODE, JASPAR, ReMap)."
+    },
+    {
+        pattern: /^Queries\s+the\s+UniBind\s+database\s+for\s+experimentally\s+validated\s+transcription\s+factor.*$/i,
+        replace: () => "Запросы к базе данных UniBind по экспериментально подтверждённым сайтам связывания факторов транскрипции (TF) и скачивание координат (BED/FASTA) по видам и клеточным линиям."
+    },
+    {
+        pattern: /^Access\s+protein\s+metadata,\s*function,\s*taxonomy,\s*and\s+sequences\s+across\s+UniProtKB.*$/i,
+        replace: () => "Доступ к метаданным, функциям, таксономии и последовательностям белков в UniProtKB, UniParc и UniRef: поиск белков, сопоставление идентификаторов и функциональные аннотации."
+    },
+    {
+        pattern: /^Checks\s+whether\s+the\s+uv\s+Python\s+package\s+manager\s+is\s+installed\s+and\s+installs\s+it\s+if\s+missing.*$/i,
+        replace: () => "Проверяет наличие пакетного менеджера Python uv в системе, устанавливает его при отсутствии и проверяет доступность в PATH."
+    },
+    {
+        pattern: /^Distills\s+a\s+completed\s+user\s+workflow\s+or\s+interaction\s+into\s+a\s+reusable\s+agent\s+skill.*$/i,
+        replace: () => "Преобразует выполненный рабочий процесс или многошаговое взаимодействие пользователя в переиспользуемый навык агента."
+    },
+    // --- 3. GOOGLE DEVELOPER KNOWLEDGE PLUGIN ---
+    {
+        pattern: /^"?Look\s+up\s+the\s+exact(?:\s+`?gcloud`?\s+CLI\s+command\s+and\s+IAM\s+roles\s+needed\s+to\s+deploy\s+a\s+Cloud\s+Run\s+service\s+with\s+Secret\s+Manager\.?|\s*)$/i,
+        replace: (m) => /clouds+run/i.test(m[0])
+            ? (m[0].startsWith('"') ? "«Найди точную команду gcloud CLI и роли IAM, необходимые для развёртывания сервиса Cloud Run с Secret Manager.»" : "Найди точную команду gcloud CLI и роли IAM, необходимые для развёртывания сервиса Cloud Run с Secret Manager")
+            : "«Найди точную команду "
+    },
+    {
+        pattern: /^CLI\s+command\s+and\s+IAM\s+roles\s+needed\s+to\s+deploy\s+a\s+Cloud\s+Run\s+service\s+with\s+Secret\s+Manager\.?"?$/i,
+        replace: () => " CLI и роли IAM, необходимые для развёртывания сервиса Cloud Run с Secret Manager.»"
+    },
+    {
+        pattern: /^"?(?:Search|Поиск)\s+official\s+Google\s+documentation\s+for\s+how\s+to\s+implement\s+structured\s+outputs\s+with\s+the\s+Gemini\s+API\.?"?$/i,
+        replace: (m) => m[0].startsWith('"')
+            ? "«Найди в официальной документации Google, как реализовать структурированный вывод с помощью Gemini API.»"
+            : "Найди в официальной документации Google, как реализовать структурированный вывод с помощью Gemini API"
+    },
+    {
+        pattern: /^"?Compare\s+Cloud\s+Run,\s*GKE\s+Autopilot,\s*and\s+App\s+Engine\s+based\s+on\s+official\s+Google\s+Cloud\s+architecture\s+guides\.?"?$/i,
+        replace: (m) => m[0].startsWith('"')
+            ? "«Сравни Cloud Run, GKE Autopilot и App Engine на основе официальных архитектурных руководств Google Cloud.»"
+            : "Сравни Cloud Run, GKE Autopilot и App Engine на основе официальных архитектурных руководств Google Cloud"
+    },
+    {
+        pattern: /^"?What\s+are\s+the\s+latest\s+Compose\s+navigation\s+best\s+practices\s+according\s+to\s+official\s+Android\s+developer\s+docs\?"?$/i,
+        replace: (m) => m[0].startsWith('"')
+            ? "«Каковы актуальные лучшие практики навигации в Compose согласно официальной документации для разработчиков Android?»"
+            : "Каковы актуальные лучшие практики навигации в Compose согласно официальной документации для разработчиков Android?"
+    },
+    {
+        pattern: /^Equip\s+your\s+agent\s+with\s+direct\s+access\s+to\s+Google['’]s\s+official\s+developer\s+documentation\s+and\s+knowledge\s+base.*$/i,
+        replace: () => "Обеспечьте своего агента прямым доступом к официальной документации и базе знаний Google для разработчиков. Ищите документацию, загружайте полные справочные страницы и получайте точные ответы по всей экосистеме Google."
+    },
+    {
+        pattern: /^plugin\s+connects\s+your\s+coding\s+agent\s+to\s+the\s+official\s*$/i,
+        replace: () => " подключает вашего кодинг-агента к официальному "
+    },
+    {
+        pattern: /^and\s+Model\s+Context\s+Protocol\s+\(MCP\)\s+server\.\s*Instead\s+of\s+relying\s+on\s+model\s+training\s+cutoffs.*$/i,
+        replace: () => " и серверу Model Context Protocol (MCP). Вместо того чтобы полагаться на устаревшие обучающие данные модели или непроверенные результаты веб-поиска, ваш агент может напрямую запрашивать авторитетную документацию по следующим направлениям:"
+    },
+    {
+        pattern: /^Using\s+the\s+Google\s+Developer\s+Knowledge\s+API\s+and\s+MCP\s+server\s+requires\s+a\s+Google\s+Cloud\s+project\s+with\s+the\s*$/i,
+        replace: () => "Для использования Google Developer Knowledge API и MCP-сервера требуется проект Google Cloud с включённым "
+    },
+    {
+        pattern: /^\)\s*enabled\.\s*You\s+can\s+authenticate\s+using\s+either\s*$/i,
+        replace: () => "). Вы можете аутентифицироваться с помощью "
+    },
+    {
+        pattern: /^or\s+an\s*$/i,
+        replace: () => " или "
+    },
+    {
+        pattern: /^Enable\s+the\s+API\s+on\s+your\s+Google\s+Cloud\s+project\s+using\s+the\s*$/i,
+        replace: () => "Включите API в вашем проекте Google Cloud с помощью "
+    },
+    {
+        pattern: /^or\s+the\s*$/i,
+        replace: () => " или "
+    },
+    {
+        pattern: /^The\s+bundled\s*$/i,
+        replace: () => "Встроенная конфигурация MCP-сервера "
+    },
+    {
+        pattern: /^MCP\s+server\s+configuration\s+uses\s+local\s+Google\s+Cloud\s+Application\s+Default\s+Credentials\s*\($/i,
+        replace: () => " автоматически использует локальные стандартные учётные данные приложения Google Cloud ("
+    },
+    {
+        pattern: /^\)\s*automatically:$/i,
+        replace: () => "):"
+    },
+    {
+        pattern: /^Ensure\s+your\s+account\s+has\s+the\s*$/i,
+        replace: () => "Убедитесь, что у вашего аккаунта есть IAM-роль "
+    },
+    {
+        pattern: /^\)\s*IAM\s+role\s+on\s*$/i,
+        replace: () => ") в проекте "
+    },
+    {
+        pattern: /^Alternatively,\s*create\s+an\s+API\s+key\s+in\s+the\s*$/i,
+        replace: () => "В качестве альтернативы создайте API-ключ на "
+    },
+    {
+        pattern: /^\(restricted\s+to\s+the\s*$/i,
+        replace: () => " (ограниченный использованием "
+    },
+    {
+        pattern: /^\)\s*and\s+export\s+it\s+in\s+your\s+environment\s+for\s+the\s+skill['’]s\s+REST\s+API\s+fallback:$/i,
+        replace: () => ") и экспортируйте его в переменные окружения для резервного доступа навыка через REST API:"
+    },
+    {
+        pattern: /^To\s+authenticate\s+the\s+remote\s+MCP\s+server\s+directly\s+with\s+an\s+API\s+key\s+instead\s+of\s+ADC,\s*configure\s+the\s*$/i,
+        replace: () => "Чтобы аутентифицировать удалённый MCP-сервер напрямую с помощью API-ключа вместо ADC, укажите заголовок "
+    },
+    {
+        pattern: /^header\s+in\s+your\s+MCP\s+server\s+configuration:$/i,
+        replace: () => " в конфигурации вашего MCP-сервера:"
+    },
+    {
+        pattern: /^Remote\s+MCP\s+Server\s*\($/i,
+        replace: () => "Удалённый MCP-сервер ("
+    },
+    {
+        pattern: /^Connects\s+to\s*$/i,
+        replace: () => "Подключается к "
+    },
+    {
+        pattern: /^and\s+provides\s+tools\s+for\s+documentation\s+retrieval:$/i,
+        replace: () => " и предоставляет инструменты для получения документации:"
+    },
+    {
+        pattern: /^:\s*Ask\s+natural-language\s+technical\s+questions\s+and\s+receive\s+synthesized\s+answers.*$/i,
+        replace: () => ": Задавайте технические вопросы на естественном языке и получайте сводные ответы на основе официальной документации Google со ссылками на источники."
+    },
+    {
+        pattern: /^:\s*(?:Search|Поиск)\s+across\s+official\s+Google\s+developer\s+documentation\s+for\s+matching\s+pages\s+and\s+snippets\.?$/i,
+        replace: () => ": Ищите подходящие страницы и фрагменты по всей официальной документации Google для разработчиков."
+    },
+    {
+        pattern: /^:\s*Fetch\s+the\s+full\s+Markdown\s+content\s+of\s+one\s+or\s+more\s+documentation\s+pages.*$/i,
+        replace: () => ": Загружайте полное содержимое одной или нескольких страниц документации в формате Markdown по имени документа (принимает до 20 имён документов за один вызов)."
+    },
+    {
+        pattern: /^Agent\s+Skill\s*\($/i,
+        replace: () => "Навык агента ("
+    },
+    {
+        pattern: /^Provides\s+structured\s+workflows\s+and\s+domain\s+filter\s+guidance\s+so\s+the\s+agent\s+selects\s+the\s+best\s+query\s+strategy.*$/i,
+        replace: () => "Предоставляет структурированные рабочие процессы и правила фильтрации доменов, чтобы агент выбирал оптимальную стратегию запросов, ограничивал поиск нужными продуктами Google, проверял версионно-зависимые детали API и корректно использовал резервный режим."
+    },
+    {
+        pattern: /^Searches,\s*retrieves,\s*and\s+synthesizes\s+official\s+Google\s+developer\s+documentation\s+across\s+Google\s+Cloud.*$/i,
+        replace: () => "Ищет, извлекает и обобщает официальную документацию Google для разработчиков по Google Cloud, AI/Gemini, Android, Chrome, Web, Flutter, Go, Firebase и другим платформам через MCP-сервер Developer Knowledge или резервный REST API."
+    },
+    // --- 4. MODERN WEB GUIDANCE PLUGIN ---
+    {
+        pattern: /^Audit\s+this\s+project\s+for\s+modern\s+web\s+best\s+practices\s+and\s+modernization\s+opportunities\.?$/i,
+        replace: () => "Провести аудит этого проекта на соответствие современным веб-практикам и найти возможности для модернизации"
+    },
+    {
+        pattern: /^What\s+is\s+the\s+recommended\s+modern\s+way\s+to\s+implement\s+responsive\s+dialogs\s+and\s+popovers\?$/i,
+        replace: () => "Каков рекомендуемый современный способ реализации адаптивных диалоговых окон и поповеров?"
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+a\s+Chrome\s+Extension\s+with\s+a\s+side\s+panel\s+using\s+Manifest\s+V3\s+best\s+practices\.?$/i,
+        replace: () => "Создать расширение Chrome с боковой панелью по лучшим практикам Manifest V3"
+    },
+    {
+        pattern: /^is\s+a\s+set\s+of\s+skills\s+that\s+embed\s+web\s+platform\s+expertise,\s*best\s+practices,\s*and\s+browser\s+compatibility\s+data\s+directly\s+into\s+your\s+coding\s+agents.*$/i,
+        replace: () => " — это набор навыков, встраивающих экспертизу по веб-платформе, лучшие практики и данные о совместимости браузеров прямо в ваших кодинг-агентов. Он помогает направлять агентов от устаревших подходов к решениям, использующим всю мощь и возможности современной веб-платформы."
+    },
+    {
+        pattern: /^Supported\s+by\s+the\s+Google\s+Chrome\s+team,\s*the\s+Microsoft\s+Edge\s+team,\s*and\s+the\s+web\s+development\s+community\.?$/i,
+        replace: () => "Поддерживается командами Google Chrome, Microsoft Edge и сообществом веб-разработчиков."
+    },
+    {
+        pattern: /^This\s+is\s+a\s*$/i,
+        replace: () => "Это "
+    },
+    {
+        pattern: /^preview\s+release$/i,
+        replace: () => "предварительный релиз (preview)"
+    },
+    {
+        pattern: /^of\s+Modern\s+Web\s+Guidance\.\s*We['’]re\s+actively\s+adding\s+new\s+content\s+and\s+we\s*$/i,
+        replace: () => " Modern Web Guidance. Мы активно добавляем новый контент и "
+    },
+    {
+        pattern: /^welcome\s+contributions\s+or\s+feedback\s+on\s+GitHub$/i,
+        replace: () => "будем рады вашему вкладу и отзывам на GitHub"
+    },
+    {
+        pattern: /^Coding\s+agents\s+often\s+default\s+to\s+older\s+patterns\s+because\s+LLM\s+training\s+data\s+contains\s+vast\s+amounts\s+of\s+legacy\s+code.*$/i,
+        replace: () => "Кодинг-агенты часто по умолчанию используют устаревшие подходы, поскольку обучающие данные LLM содержат огромное количество старого кода. Это нередко приводит к генерации громоздкого JavaScript для задач, у которых уже есть нативные, высокопроизводительные решения веб-платформы."
+    },
+    {
+        pattern: /^Even\s+if\s+a\s+model\s+knows\s+an\s+API\s+exists,\s*it\s+often\s+lacks\s+the\s+density\s+of\s+real-world,\s*modern\s+implementation\s+patterns\s+required\s+for\s+production-ready\s+code\.?$/i,
+        replace: () => "Даже если модель знает о существовании API, ей часто не хватает концентрации реальных современных паттернов реализации, необходимых для промышленного кода."
+    },
+    {
+        pattern: /^Modern\s+Web\s+Guidance\s+bridges\s+this\s+gap\.$/i,
+        replace: () => "Modern Web Guidance устраняет этот пробел."
+    },
+    {
+        pattern: /^Our\s+skill['’]s\s+CLI\s+returns\s+targeted,\s*expert-curated\s+guidelines\s+directly\s+into\s+your\s+agent['’]s\s+context\s+window,\s*focusing\s+on:$/i,
+        replace: () => "CLI нашего навыка возвращает точечные, проверенные экспертами руководства прямо в контекстное окно вашего агента, фокусируясь на:"
+    },
+    {
+        pattern: /^:\s*Helping\s+models\s+correctly\s+structure\s+APIs\s+they\s+frequently\s+misuse\.?$/i,
+        replace: () => ": Помогает моделям правильно структурировать API, которые они часто используют некорректно."
+    },
+    {
+        pattern: /^:\s*Preferring\s+platform-level\s+APIs\s+that\s+can\s+be\s+optimized\s+by\s+the\s+browser\s+and\s+include\s+built-in\s+accessibility\s+affordances\.?$/i,
+        replace: () => ": Отдаёт приоритет API уровня платформы, которые оптимизируются браузером и включают встроенные механизмы доступности."
+    },
+    {
+        pattern: /^:\s*Guiding\s+models\s+to\s+use\s+sensible,\s*lightweight\s+fallbacks\s+instead\s+of\s+heavy\s+polyfills\s+or\s+legacy\s+libraries\.?$/i,
+        replace: () => ": Направляет модели к использованию разумных легковесных фолбэков вместо тяжёлых полифилов или устаревших библиотек."
+    },
+    {
+        pattern: /^We\s+cover\s+the\s+past\s+several\s+years\s+of\s+the\s+web\s+platform['’]s\s+new\s+features,\s*all\s+the\s+way\s+up\s+to\s+the\s+cutting\s+edge\.\s*The\s+guides\s+are\s*$/i,
+        replace: () => "Мы охватываем новые возможности веб-платформы за последние несколько лет, вплоть до самых передовых технологий. Руководства "
+    },
+    {
+        pattern: /^designed\s+to\s+be\s+token-efficient$/i,
+        replace: () => "спроектированы для максимальной экономии токенов"
+    },
+    {
+        pattern: /^;\s*we\s+run\s+evals\s+enabling\s+us\s+to\s+prune\s+lowest-common-denominator\s+content\s+that\s+models\s+already\s+know\.?$/i,
+        replace: () => "; мы проводим оценки (evals), позволяющие отсекать очевидный базовый контент, который модели уже знают."
+    },
+    {
+        pattern: /^Smooth\s+visual\s+states\s+\(View\s+Transitions,\s*entry\/exit\s+animations,\s*parallax\s+scroll,\s*CSS\s*$/i,
+        replace: () => "Плавные визуальные состояния (View Transitions, анимации появления/скрытия, параллакс-скролл, CSS "
+    },
+    {
+        pattern: /^Modern\s+layout\s+systems\s+\(container\s+queries,\s*$/i,
+        replace: () => "Современные системы вёрстки (контейнерные запросы, "
+    },
+    {
+        pattern: /^,\s*modern\s+color\s+spaces\s+like\s*$/i,
+        replace: () => ", современные цветовые пространства вроде "
+    },
+    {
+        pattern: /^,\s*text-wrap\s+tuning,\s*and\s+line-height\s+trimming\)\.?$/i,
+        replace: () => ", настройка переноса текста и подрезка высоты строки)."
+    },
+    {
+        pattern: /^Speed\s+optimizations\s+\(instant\s+preloading,\s*Interaction\s+to\s+Next\s+Paint\s+\(INP\)\s+diagnostics,\s*and\s+scheduling\s+tasks\s+via\s*$/i,
+        replace: () => "Оптимизации скорости (мгновенная предзагрузка, диагностика Interaction to Next Paint (INP) и планирование задач через "
+    },
+    {
+        pattern: /^Native\s+components\s+\(Anchor\s+Positioning\s+for\s+tooltips,\s*Popover\s+API,\s*dialogs,\s*$/i,
+        replace: () => "Нативные компоненты (Anchor Positioning для тултипов, Popover API, диалоги, валидация "
+    },
+    {
+        pattern: /^validation,\s*and\s+auto-sizing\s+fields\)\.?$/i,
+        replace: () => " и авторазмер полей ввода)."
+    },
+    {
+        pattern: /^Important\s+considerations\s+\(screen\s+reader\s+and\s+keyboard\s+operability,\s*content\s+navigation\s+and\s+discoverability\)\.?$/i,
+        replace: () => "Важные аспекты доступности (работа со скринридерами и клавиатурой, навигация по контенту и его обнаруживаемость)."
+    },
+    {
+        pattern: /^Local\s+client\s+models\s+\(native\s+translation,\s*summarization,\s*and\s+language\s+detection\s+APIs\)\.?$/i,
+        replace: () => "Локальные клиентские модели (нативные API перевода, суммаризации и определения языка)."
+    },
+    {
+        pattern: /^(?:View|Просмотр)\s+an\s+example:?$/i,
+        replace: () => "Пример:"
+    },
+    {
+        pattern: /^:\s*We\s+distinguish\s+between\s+purely\s+additive\s+enhancements.*$/i,
+        replace: () => ": Мы различаем чисто аддитивные улучшения (такие как спекулятивная предзагрузка), которые старые браузеры могут безопасно игнорировать, и критически важное поведение (элементы управления диалогами или сетевые маяки), для которого мы пишем продуманные легковесные фолбэки."
+    },
+    {
+        pattern: /^:\s*We\s+prioritize\s+lightweight,\s*case-specific\s+custom\s+fallbacks\s+\(<50\s+LOC\).*$/i,
+        replace: () => ": Мы отдаём приоритет легковесным специализированным фолбэкам (<50 строк кода) или условно подгружаемым полифилам вместо тяжёлых сторонних бандлов."
+    },
+    {
+        pattern: /^:\s*We\s+document\s+hidden\s+platform\s+limitations,\s*such\s+as\s+the\s+64KB\s+payload\s+quota\s+for\s*$/i,
+        replace: () => ": Мы документируем скрытые ограничения платформы, такие как квота 64 КБ полезной нагрузки для "
+    },
+    {
+        pattern: /^or\s+macOS-specific\s+scrollbar\s+behaviors\.?$/i,
+        replace: () => " или специфичное для macOS поведение полос прокрутки."
+    },
+    {
+        pattern: /^:\s*We\s+leverage\s+real-time\s+compatibility\s+data\s+from\s+the\s*$/i,
+        replace: () => ": Мы используем актуальные данные о совместимости из проекта "
+    },
+    {
+        pattern: /^project\s+so\s+agents\s+can\s+dynamically\s+adapt\s+to\s+current\s+browser\s+support\s+and\s+any\s+browser\s+support\s+preferences\.?$/i,
+        replace: () => ", чтобы агенты могли динамически адаптироваться к текущей поддержке браузеров и заданным требованиям совместимости."
+    },
+    {
+        pattern: /^:\s*The\s+coding\s+agent\s+activates\s+the\s*$/i,
+        replace: () => ": Кодинг-агент активирует навык "
+    },
+    {
+        pattern: /^skill\s+because\s+of\s+a\s+relevant\s+task\.\s*The\s+agent\s+is\s+instructed\s+to\s+use\s+the\s*$/i,
+        replace: () => " при появлении релевантной задачи. Агент получает инструкцию использовать CLI "
+    },
+    {
+        pattern: /^CLI\s+for\s+web\s+platform\s+queries\.?$/i,
+        replace: () => " для запросов по веб-платформе."
+    },
+    {
+        pattern: /^:\s*The\s+agent\s+runs\s*$/i,
+        replace: () => ": Агент выполняет команду "
+    },
+    {
+        pattern: /^\.\s*The\s+tool\s+matches\s+the\s+query\s+to\s+the\s+best\s+guide\s+using\s+an\s+offline,\s*CPU-efficient\s+TensorFlow\.js\s+model\s+\(no\s+network\s+calls,\s*no\s+API\s+keys\)\.?$/i,
+        replace: () => ". Инструмент сопоставляет запрос с лучшим руководством с помощью офлайн-модели TensorFlow.js, эффективной для процессора (без сетевых вызовов и API-ключей)."
+    },
+    {
+        pattern: /^:\s*The\s+agent\s+retrieves\s+the\s+guide\s+via\s*$/i,
+        replace: () => ": Агент загружает руководство через "
+    },
+    {
+        pattern: /^,\s*inserting\s+targeted\s+code\s+patterns,\s*gotchas,\s*and\s+fallbacks\s+directly\s+into\s+its\s+context\s+window\.?$/i,
+        replace: () => ", вставляя целевые паттерны кода, подводные камни и фолбэки прямо в своё контекстное окно."
+    },
+    {
+        pattern: /^Note:\s*We\s+use\s*$/i,
+        replace: () => "Примечание: мы используем "
+    },
+    {
+        pattern: /^to\s+ensure\s+the\s+content\s+doesn['’]t\s+go\s+stale,\s*but\s+the\s+CLI\s+works\s+offline,\s*completely\s+private\s+and\s+local\.\s*The\s+npm\s+package\s+is\s+self-contained,\s*with\s+no\s+extra\s+dependencies\s+to\s+ensure\s+both\s+low-latency\s+and\s+supply-chain\s+security\.?$/i,
+        replace: () => ", чтобы контент не устаревал, однако сам CLI работает офлайн, полностью приватно и локально. Пакет npm самодостаточен и не имеет внешних зависимостей, что обеспечивает минимальную задержку и безопасность цепочки поставок."
+    },
+    {
+        pattern: /^We\s+developed\s+a\s+robust\s+eval\s+harness\s+to\s+ensure\s+that\s+the\s+content\s+is\s*$/i,
+        replace: () => "Мы разработали надёжную систему тестирования (eval harness), гарантирующую, что контент "
+    },
+    {
+        pattern: /^empirically\s+proven\s+and\s+continuously\s+calibrated$/i,
+        replace: () => "эмпирически проверен и непрерывно калибруется"
+    },
+    {
+        pattern: /^to\s+ensure\s+AI\s+agents\s+write\s+better\s+code\.\s*We\s+run\s+automated\s+evaluations\s+using\s+a\s+closed-loop\s+validation\s+pipeline:$/i,
+        replace: () => ", помогая ИИ-агентам писать более качественный код. Мы запускаем автоматизированные проверки с использованием замкнутого конвейера валидации:"
+    },
+    {
+        pattern: /^:\s*We\s+define\s+realistic,\s*developer\s+prompts\s+that\s+mimic\s+real-world\s+requests.*$/i,
+        replace: () => ": Мы формируем реалистичные запросы разработчиков, имитирующие практические задачи (например, «сделай так, чтобы изображения загружались быстрее»). В запросах специально не называются конкретные API или функции — так проверяется, сможет ли агент самостоятельно найти нужные руководства."
+    },
+    {
+        pattern: /^:\s*We\s+write\s+browser\s+automation\s+scripts\s+that\s+verify\s+the\s+guide\s+was\s+followed\s+correctly.*$/i,
+        replace: () => ": Мы пишем скрипты браузерной автоматизации, проверяющие точное соблюдение руководства: реальное поведение во время выполнения, вычисленные стили, состояния доступности и т.д."
+    },
+    {
+        pattern: /^:\s*Graders\s+are\s+calibrated\s+against\s+both\s+a\s+reference\s+implementation\s+\(100%\s+pass\s+target\).*$/i,
+        replace: () => ": Грейдеры калибруются как на эталонной реализации (цель — 100% прохождение), так и на контрольной странице с антипаттерном (цель — 0% прохождение). При сбоях агент автоматически дорабатывает тесты."
+    },
+    {
+        pattern: /^:\s*We\s+measure\s+coding\s+agent\s+performance\s+on\s+real\s+tasks\s+with\s+and\s+without\s+guidance\.\s*The\s*$/i,
+        replace: () => ": Мы измеряем эффективность кодинг-агентов на реальных задачах с использованием навыка и без него. Ключевые метрики — "
+    },
+    {
+        pattern: /^opportunity$/i,
+        replace: () => "потенциал роста (opportunity)"
+    },
+    {
+        pattern: /^\(100%\s*-\s*unguided\s+pass\s+rate\)\s+and\s*$/i,
+        replace: () => " (100% − доля успешных прохождений без навыка) и "
+    },
+    {
+        pattern: /^uplift$/i,
+        replace: () => "прирост (uplift)"
+    },
+    {
+        pattern: /^\(guided\s*-\s*unguided\s+pass\s+rate\)\s+are\s+key\..*$/i,
+        replace: () => " (разница успешных прохождений с навыком и без него). Если потенциал роста невелик, значит модели уже отлично справляются сами. На основе результатов мы дорабатываем руководства для максимизации прироста."
+    },
+    {
+        pattern: /^Google\s+collects\s+anonymous\s+usage\s+information\s+to\s+improve\s+the\s+tool['’]s\s+reliability,\s*relevance,\s*and\s+performance.*$/i,
+        replace: () => "Google собирает анонимную статистику использования для повышения надёжности, релевантности и производительности инструмента. Собираемая информация включает количество установок, имя вызывающего агента, идентификаторы запрошенных руководств и поисковые запросы к CLI (например, «dark mode scrollbar color-scheme»). Исходные промпты пользователя не собираются. Вы можете проверить, какие данные собираются, в файле "
+    },
+    {
+        pattern: /^(?:set\s+the|Установите\s+для\s+переменной\s+окружения)\s*$/i,
+        replace: () => "установите переменную окружения "
+    },
+    {
+        pattern: /^env\s+variable\s+in\s+your\s+shell\s+profile\s+\(e\.g\.,\s*$/i,
+        replace: () => " в профиле вашей командной оболочки (например, "
+    },
+    {
+        pattern: /^Google\s+handles\s+this\s+data\s+in\s+accordance\s+with\s+the\s*$/i,
+        replace: () => "Google обрабатывает эти данные в соответствии с "
+    },
+    {
+        pattern: /^Google\s+Privacy\s+Policy$/i,
+        replace: () => "Политикой конфиденциальности Google"
+    },
+    {
+        pattern: /^If\s+you['’]d\s+like\s+to\s+contribute\s+to\s+modern-web-guidance,\s*please\s+see\s+the\s*$/i,
+        replace: () => "Если вы хотите внести вклад в развитие modern-web-guidance, ознакомьтесь с файлом "
+    },
+    {
+        pattern: /^source\s+repo['’]s\s*$/i,
+        replace: () => "исходного репозитория "
+    },
+    {
+        pattern: /^\.\s*The\s*$/i,
+        replace: () => ". Репозиторий "
+    },
+    {
+        pattern: /^repo\s+is\s+purely\s+a\s+publish\s+target\s+for\s+clean\s+skills\s+installation\.?$/i,
+        replace: () => " служит исключительно целевым репозиторием публикации для чистой установки навыков."
+    },
+    {
+        pattern: /^Portions\s+of\s+the\s+documentation\s+in\s+this\s+project\s+are\s+derived\s+from\s*$/i,
+        replace: () => "Часть документации в этом проекте основана на материалах "
+    },
+    {
+        pattern: /^by\s+Mozilla\s+Contributors\s+and\s*$/i,
+        replace: () => " от участников сообщества Mozilla, а также на спецификациях "
+    },
+    {
+        pattern: /^,\s*and\s*$/i,
+        replace: () => " и "
+    },
+    {
+        pattern: /^specifications\.?$/i,
+        replace: () => "."
+    },
+    // --- 5. GOOGLE MAPS PLATFORM PLUGIN ---
+    {
+        pattern: /^A\s+collection\s+of\s+skills\s+for\s+architecting\s+and\s+implementing\s+production-ready\s+code\s+using\s+Google\s+Map.*$/i,
+        replace: () => "Набор навыков для проектирования и реализации готового к продакшену кода с использованием API и SDK Google Maps Platform (карты, места, адреса, геокодирование, маршруты/ETA, Street View, 3D-карты и данные об окружающей среде)."
+    },
+    // --- 6. DART AND FLUTTER PLUGIN ---
+    {
+        pattern: /^(?:Build|Сборка)\s+a\s+responsive\s+Flutter\s+layout\s+that\s+adapts\s+across\s+mobile,\s*tablet,\s*and\s+desktop\s+form\s+factors\.?$/i,
+        replace: () => "Создать адаптивный макет Flutter, подстраивающийся под экраны телефонов, планшетов и компьютеров"
+    },
+    {
+        pattern: /^Write\s+a\s+widget\s+test\s+using\s+WidgetTester\s+to\s+verify\s+UI\s+rendering\s+and\s+user\s+interactions\.?$/i,
+        replace: () => "Написать тест виджета с использованием WidgetTester для проверки рендеринга UI и действий пользователя"
+    },
+    {
+        pattern: /^Audit\s+my\s+app\s+for\s+accessibility\.?$/i,
+        replace: () => "Провести аудит моего приложения на доступность (accessibility)"
+    },
+    {
+        pattern: /^Diagnose\s+and\s+fix\s+layout\s+overflows\s+or\s+constraint\s+issues\s+in\s+this\s+Flutter\s+widget\.?$/i,
+        replace: () => "Диагностировать и исправить переполнение макета (overflow) или ошибки ограничений в этом виджете Flutter"
+    },
+    {
+        pattern: /^The\s+official\s+plugin\s+for\s+Dart\s+and\s+Flutter\s+maintained\s+by\s+the\s+Flutter\s+team\.?$/i,
+        replace: () => "Официальный плагин для Dart и Flutter, поддерживаемый командой Flutter."
+    },
+    {
+        pattern: /^This\s+plugin\s+is\s+designed\s+to\s+extend\s+AI\s+agent\s+capabilities\s+for\s+Flutter\s+development.*$/i,
+        replace: () => "Этот плагин создан для расширения возможностей ИИ-агентов при разработке на Flutter. Он объединяет навыки, конфигурацию MCP-сервера и правила, предоставляя специализированные рабочие процессы и инструкции для типовых задач разработки на Dart и Flutter. Экспертные знания предметной области помогают радикально сократить количество ошибок и гарантировать надёжное выполнение задач по лучшим практикам."
+    },
+    {
+        pattern: /^Write\s+and\s+organize\s+unit\s+tests\s+for\s+functions,\s*methods,\s*and\s+classes\s+using\s+`?package:test`?.*$/i,
+        replace: () => "Написание и организация модульных (unit) тестов для функций, методов и классов с использованием `package:test` для защиты кода от регрессий."
+    },
+    {
+        pattern: /^Architectural\s+patterns,\s*entrypoint\s+structure,\s*exit\s+codes,\s*stream\s+routing,\s*and\s+subprocess\s+spawning\s+for\s+D.*$/i,
+        replace: () => "Архитектурные паттерны, структура точки входа, коды возврата, маршрутизация потоков и запуск подпроцессов для консольных (CLI) приложений на Dart (`package:args`)."
+    },
+    {
+        pattern: /^Collect\s+coverage\s+using\s+the\s+coverage\s+packa?ge\s+and\s+create\s+an\s+LCOV\s+report\.?$/i,
+        replace: () => "Сбор данных о покрытии кода тестами с помощью пакета `coverage` и формирование отчёта в формате LCOV."
+    },
+    {
+        pattern: /^Uses\s+get_runtime_errors\s+and\s+lsp\s+to\s+fetch\s+an\s+active\s+stack\s+trace,\s*locate\s+the\s+failing\s+line.*$/i,
+        replace: () => "Использует `get_runtime_errors` и LSP для получения активного стектрейса, поиска проблемной строки, внесения исправления и проверки через `hot_reload`."
+    },
+    {
+        pattern: /^Define\s+and\s+generate\s+mock\s+objects\s+for\s+external\s+dependencies\s+using\s+`?package:mockito`?.*$/i,
+        replace: () => "Определение и генерация mock-объектов для внешних зависимостей с помощью `package:mockito` и `build_runner` при модульном тестировании."
+    },
+    {
+        pattern: /^Replace\s+the\s+usage\s+of\s+`?expect`?\s+and\s+similar\s+functions\s+from\s+`?package:matcher`?.*$/i,
+        replace: () => "Миграция с `expect` и аналогичных функций из `package:matcher` на современные эквиваленты из `package:checks`."
+    },
+    {
+        pattern: /^Workflow\s+for\s+fixing\s+package\s+version\s+conflicts\.\s*Use\s+this\s+when\s+`?pub\s+get`?\s+fails.*$/i,
+        replace: () => "Рабочий процесс разрешения конфликтов версий пакетов при ошибках `pub get`, вызванных несовместимыми зависимостями."
+    },
+    {
+        pattern: /^(?:Execute|Выполнение)\s+`?dart\s+analyze`?\s+to\s+identify\s+warnings\s+and\s+errors,\s*and\s+use\s+`?dart\s+fix\s+--apply`?.*$/i,
+        replace: () => "Выполнение `dart analyze` для выявления предупреждений и ошибок и `dart fix --apply` для автоматического исправления замечаний линтера."
+    },
+    {
+        pattern: /^Guides\s+agents\s+in\s+compiling\s+and\s+packaging\s+C\/C\+\+\s+source\s+code\s+into\s+dynamic\s+or\s+static\s+libraries.*$/i,
+        replace: () => "Компиляция и упаковка исходного кода C/C++ в динамические или статические библиотеки (Code Assets) с использованием системы хуков Native Assets в Dart (`hook/build.dart`, `hook/link.dart`)."
+    },
+    {
+        pattern: /^How\s+to\s+inject\s+external\s+code\s+examples\s+into\s+Dartdoc\s+using\s+the\s+\{@example\}\s+directive.*$/i,
+        replace: () => "Встраивание внешних примеров кода в документацию Dartdoc с помощью директивы `{@example}` и фильтрация через теги `#hide`, `#region` и `#endregion`."
+    },
+    {
+        pattern: /^Guide\s+agents\s+to\s+use\s+`?package:ffigen`?\s+to\s+automatically\s+generate\s+FFI\s+bindings.*$/i,
+        replace: () => "Автоматическая генерация FFI-привязок с помощью `package:ffigen` вместо ручного написания `dart:ffi` для интеграций с C/Objective-C/Swift."
+    },
+    {
+        pattern: /^Cross-platform\s+file\s+and\s+directory\s+path\s+manipulation,\s*segment\s+splitting,\s*extension\s+extraction.*$/i,
+        replace: () => "Кроссплатформенная работа с путями к файлам и директориям, разделение сегментов и извлечение расширений с помощью `package:path` и `package:file`."
+    },
+    {
+        pattern: /^Applies\s+Dart\s+3\s+pattern\s+matching,\s*switch\s+expressions,\s*and\s+destructuring\s+idiomatically.*$/i,
+        replace: () => "Идиоматическое применение сопоставления с образцом (pattern matching), switch-выражений и деструктуризации в Dart 3 для проверки схем данных и алгебраических типов."
+    },
+    {
+        pattern: /^Help\s+users\s+write\s+syntactically\s+and\s+semantically\s+correct\s+primary\s+constructors\s+in\s+Dart.*$/i,
+        replace: () => "Написание синтаксически и семантически корректных первичных конструкторов (primary constructors) в Dart и миграция на сокращённый синтаксис конструкторов."
+    },
+    {
+        pattern: /^Rules\s+and\s+formatting\s+guidelines\s+for\s+writing\s+Dart\s+\/\/\/\s+API\s+documentation\s+and\s+doc\s+comments.*$/i,
+        replace: () => "Правила и рекомендации по форматированию API-документации и doc-комментариев `///` в соответствии со стандартами Effective Dart."
+    },
+    {
+        pattern: /^Configures\s+Flutter\s+Driver\s+for\s+app\s+interaction\s+and\s+converts\s+MCP\s+actions\s+into\s+permanent\s+integr.*$/i,
+        replace: () => "Настройка Flutter Driver для взаимодействия с приложением и преобразование действий MCP в постоянные интеграционные тесты с пакетом `integration_test`."
+    },
+    {
+        pattern: /^Adds\s+interactive\s+widget\s+previews\s+to\s+the\s+project\s+using\s+the\s+previews\.dart\s+system.*$/i,
+        replace: () => "Добавление интерактивных превью виджетов в проект с помощью системы `previews.dart` для удобного тестирования UI-компонентов."
+    },
+    {
+        pattern: /^Implement\s+a\s+component-level\s+test\s+using\s+`?WidgetTester`?\s+to\s+verify\s+UI\s+rendering\s+and\s+user\s+interactio.*$/i,
+        replace: () => "Реализация компонентного теста виджета с использованием `WidgetTester` для проверки рендеринга UI и пользовательских взаимодействий (нажатий, прокрутки, ввода текста)."
+    },
+    {
+        pattern: /^Architects\s+a\s+Flutter\s+application\s+using\s+the\s+recommended\s+layered\s+approach\s+\(UI,\s*L.*$/i,
+        replace: () => "Проектирование архитектуры приложения Flutter с использованием рекомендуемого многослойного подхода (UI, логика, данные) для масштабируемости проекта."
+    },
+    {
+        pattern: /^Use\s+`?LayoutBuilder`?,\s*`?MediaQuery`?,\s*or\s+`?Expanded\/Flexible`?\s+to\s+create\s+a\s+layout\s+that\s+adapts\s+to.*$/i,
+        replace: () => "Использование `LayoutBuilder`, `MediaQuery` и `Expanded/Flexible` для создания адаптивных макетов под разные размеры экранов телефонов, планшетов и десктопов."
+    },
+    {
+        pattern: /^Fixes\s+Flutter\s+layout\s+errors\s+\(overflows,\s*unbounded\s+constraints\)\s+using\s+Dart\s+and\s+Flutter\s+MCP\s+tools.*$/i,
+        replace: () => "Исправление ошибок вёрстки во Flutter (RenderFlex overflowed, неограниченная высота/ширина) с помощью инструментов Dart и Flutter MCP."
+    },
+    {
+        pattern: /^(?:Create|Создать|Создано)\s+model\s+classes\s+with\s+`?fromJson`?\s+and\s+`?toJson`?\s+methods\s+using\s+`?dart:convert`?.*$/i,
+        replace: () => "Создание классов моделей данных с методами `fromJson` и `toJson` с использованием `dart:convert` для сериализации JSON."
+    },
+    {
+        pattern: /^Configure\s+`?MaterialApp\.router`?\s+using\s+a\s+package\s+like\s+`?go_router`?\s+for\s+advanced\s+URL-base.*$/i,
+        replace: () => "Настройка декларативной маршрутизации `MaterialApp.router` с пакетом `go_router` для навигации по URL, глубоких ссылок (deep linking) и истории браузера."
+    },
+    {
+        pattern: /^Add\s+`?flutter_localizations`?\s+and\s+`?intl`?\s+dependencies,\s*enable\s+["“]generate\s+true["”]\s+in\s+`?pubspec\.yaml`?.*$/i,
+        replace: () => "Добавление зависимостей `flutter_localizations` и `intl`, включение генерации в `pubspec.yaml` и создание конфигурации `l10n.yaml` для локализации проекта Flutter."
+    },
+    {
+        pattern: /^Use\s+the\s+`?http`?\s+package\s+to\s+execute\s+GET,\s*POST,\s*PUT,\s*or\s+DELETE\s+requests.*$/i,
+        replace: () => "Использование пакета `http` для выполнения запросов GET, POST, PUT и DELETE при обмене данными с REST API."
+    },
+    {
+        pattern: /^Audits\s+Flutter\s+code\s+for\s+accessibility\s+\(a11y\)\.\s*Invoke\s+this\s+agent\s+when\s+you\s+need\s+to\s+review\s+an\s+application.*$/i,
+        replace: () => "Аудит кода Flutter на доступность (a11y). Вызывайте этого агента для проверки приложения, пулреквеста или отдельного виджета на проблемы доступности и соответствие стандартам WCAG."
+    },
+    // --- 7. DATA AGENT KIT PLUGIN ---
+    {
+        pattern: /^"?(?:Create|Создать|Создано)\s+a\s+PySpark\s+notebook\s+to\s+train\s+a\s+distributed\s+Random\s+Forest\s+model\s+on\s+the\s+BigQuery\s+table(?:\s+`?my_transactions`?\s*"?|\s*)$/i,
+        replace: (m) => /my_transactions/i.test(m[0])
+            ? (m[0].startsWith('"') ? "«Создай ноутбук PySpark для обучения распределённой модели Random Forest на таблице BigQuery my_transactions»" : "Создать ноутбук PySpark для обучения распределённой модели Random Forest на таблице BigQuery my_transactions")
+            : (m[0].startsWith('"') ? "«Создай ноутбук PySpark для обучения распределённой модели Random Forest на таблице BigQuery " : "Создать ноутбук PySpark для обучения распределённой модели Random Forest на таблице BigQuery ")
+    },
+    {
+        pattern: /^"?Find\s+datasets\s+about\s+customer\s+orders\s+in\s+Knowledge\s+Catalog\s+and\s+show\s+their\s+lineage\.?"?$/i,
+        replace: (m) => m[0].startsWith('"')
+            ? "«Найди наборы данных о заказах клиентов в Knowledge Catalog и покажи их происхождение (lineage)»"
+            : "Найти наборы данных о заказах клиентов в Knowledge Catalog и показать их происхождение (lineage)"
+    },
+    {
+        pattern: /^"?(?:Create|Создать|Создано)\s+an\s+Airflow\s+DAG\s+that\s+runs\s+the\s+dedup\s+notebook,\s*the\s+dbt\s+pipeline,\s*and\s+model\s+training\s+every\s+Monday\s+morning\.?"?$/i,
+        replace: (m) => m[0].startsWith('"')
+            ? "«Создай DAG Airflow, который запускает ноутбук дедупликации, конвейер dbt и обучение модели каждый понедельник утром»"
+            : "Создать DAG Airflow, который запускает ноутбук дедупликации, конвейер dbt и обучение модели каждый понедельник утром"
+    },
+    {
+        pattern: /^"?My\s+last\s+Dataflow\s+job\s+failed\.\s*Find\s+the\s+root\s+cause\s+in\s+the\s+logs\s+and\s+propose\s+a\s+fix\.?"?$/i,
+        replace: (m) => m[0].startsWith('"')
+            ? "«Моя последняя задача Dataflow завершилась сбоем. Найди первопричину в логах и предложи исправление»"
+            : "Моя последняя задача Dataflow завершилась сбоем. Найди первопричину в логах и предложи исправление"
+    },
+    {
+        pattern: /^Data\s+Agent\s+Kit\s+is\s+a\s*$/i,
+        replace: () => "Data Agent Kit — это "
+    },
+    {
+        pattern: /^plugin\s+that\s+connects\s+your\s+coding\s+agent\s+to\s+15\+\s+Google\s+Data\s+Cloud\s+services.*$/i,
+        replace: () => " плагин, который подключает вашего кодинг-агента к более чем 15 сервисам Google Data Cloud, включая BigQuery, Cloud Storage, Spanner, AlloyDB, Managed Service for Apache Spark и Knowledge Catalog."
+    },
+    {
+        pattern: /^Spend\s+your\s+time\s+on\s+insights,\s*not\s+boilerplate\.\s*Describe\s+a\s+data\s+task\s+in\s+plain\s+language.*$/i,
+        replace: () => "Тратьте время на аналитику, а не на шаблонный код. Опишите задачу по работе с данными простым языком, и агент возьмёт всю рутину на себя: написание SQL-запросов, создание ноутбуков, генерацию кода конвейеров, настройку ML-процессов и многое другое."
+    },
+    {
+        pattern: /^\(latest\s+LTS\s+recommended\)\.?$/i,
+        replace: () => "(рекомендуется последняя LTS-версия)."
+    },
+    {
+        pattern: /^,\s*installed\s+and\s+authenticated:$/i,
+        replace: () => ", установленный и авторизованный:"
+    },
+    {
+        pattern: /^Provide\s+any\s+prompt\s+to\s+your\s+agent\s+and\s+it\s+will\s+walk\s+you\s+through\s+configuring\s+Data\s+Agent\s+Kit\.?$/i,
+        replace: () => "Отправьте любой запрос вашему агенту, и он пошагово проведёт вас через настройку Data Agent Kit."
+    },
+    {
+        pattern: /^Alternatively,\s*you\s+can\s+manually\s+invoke\s+the\s+Data\s+Agent\s+Kit\s+setup\s+skill:$/i,
+        replace: () => "В качестве альтернативы вы можете вручную вызвать навык настройки Data Agent Kit:"
+    },
+    {
+        pattern: /^Restart\s+your\s+agent\s+when\s+prompted\s+to\s+complete\s+the\s+setup\.?$/i,
+        replace: () => "Перезапустите агента по запросу для завершения настройки."
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+pipelines\s+that\s+turn\s+source\s+data\s+into\s+analysis-ready\s+tables.*$/i,
+        replace: () => "Создавайте конвейеры, преобразующие исходные данные в готовые для анализа таблицы с проверками качества на каждом этапе. Разрабатывайте трансформации с помощью dbt или Dataform, планируйте рабочие процессы в Managed Service for Apache Airflow и отлаживайте сбои по логам и коду."
+    },
+    {
+        pattern: /^Develop\s+experiments\s+in\s+Jupyter\s+notebooks\s+on\s+local\s+Python\s+or\s+remote\s+Managed\s+Service\s+for\s+Apache\s+Spark\s+kernels.*$/i,
+        replace: () => "Проводите эксперименты в ноутбуках Jupyter на локальном Python или удалённых ядрах Managed Service for Apache Spark. Готовьте признаки из BigQuery, обучайте модели в BigQuery ML и планируйте пакетный инференс."
+    },
+    {
+        pattern: /^Explore\s+data\s+across\s+BigQuery,\s*AlloyDB,\s*and\s+Cloud\s+SQL\.\s*Find\s+datasets\s+with\s+Knowledge\s+Catalog.*$/i,
+        replace: () => "Исследуйте данные в BigQuery, AlloyDB и Cloud SQL. Находите наборы данных через Knowledge Catalog с учётом метрик качества и происхождения (lineage), а затем стройте визуализации и переиспользуемые модели данных."
+    },
+    {
+        pattern: /^If\s+you\s+see\s*$/i,
+        replace: () => "Если вы видите ошибку "
+    },
+    {
+        pattern: /^or\s+other\s+auth\s+errors,\s*ensure\s+you\s+are\s+logged\s+into\s+gcloud\.?$/i,
+        replace: () => " или другие ошибки аутентификации, убедитесь, что вы авторизованы в gcloud."
+    },
+    {
+        pattern: /^Exit\s+your\s+agent,\s*run\s*$/i,
+        replace: () => "Выйдите из агента, выполните "
+    },
+    {
+        pattern: /^followed\s+by\s*$/i,
+        replace: () => ", а затем "
+    },
+    {
+        pattern: /^,\s*then\s+restart\s+your\s+agent\.?$/i,
+        replace: () => ", после чего перезапустите агента."
+    },
+    {
+        pattern: /^Your\s+agent\s+can\s+run\s+tools\s+and\s+commands\s+on\s+your\s+behalf\.\s*Apply\s+the\s*$/i,
+        replace: () => "Ваш агент может запускать инструменты и команды от вашего имени. Применяйте "
+    },
+    {
+        pattern: /^principle\s+of\s+least\s+privilege$/i,
+        replace: () => "принцип наименьших привилегий"
+    },
+    {
+        pattern: /^to\s+every\s+CLI,\s*MCP\s+server,\s*and\s+resource\s+it\s+can\s+access:$/i,
+        replace: () => " к каждому CLI, MCP-серверу и ресурсу, к которому он имеет доступ:"
+    },
+    {
+        pattern: /^instead\s+of\s+end-user\s+credentials\.?$/i,
+        replace: () => " вместо учётных данных конечного пользователя."
+    },
+    {
+        pattern: /^Grant\s+the\s+service\s+account\s+only\s+the\s*$/i,
+        replace: () => "Предоставляйте сервисному аккаунту только "
+    },
+    {
+        pattern: /^with\s+a\s+condition\s+in\s+the\s+policy\s+binding\s+to\s+restrict\s+your\s+agent['’]s\s+service\s+accounts\s+to\s+intended\s+projects\.?$/i,
+        replace: () => " с условием в привязке политики, чтобы ограничить сервисные аккаунты вашего агента только целевыми проектами."
+    },
+    {
+        pattern: /^Learn\s+how\s+to\s*$/i,
+        replace: () => "Узнайте, как "
+    },
+    {
+        pattern: /^with\s+Google\s+Cloud\s+MCP\.?$/i,
+        replace: () => " при использовании Google Cloud MCP."
+    },
+    {
+        pattern: /^Data\s+Agent\s+Kit\s+collects\s+usage\s+statistics\s+\(such\s+as\s+when\s+included\s+skills\s+and\s+MCP\s+tools\s+are\s+used\).*$/i,
+        replace: () => "Data Agent Kit собирает статистику использования (например, факты вызова встроенных навыков и инструментов MCP) для повышения надёжности и производительности. Пользовательский код, содержимое файлов и значения данных приложений не собираются."
+    },
+    {
+        pattern: /^To\s+opt\s+out,\s*either\s+set\s*$/i,
+        replace: () => "Чтобы отказаться от сбора статистики, установите переменную "
+    },
+    {
+        pattern: /^in\s+your\s+environment:$/i,
+        replace: () => " в вашем окружении:"
+    },
+    {
+        pattern: /^Or\s+create\s+or\s+update\s*$/i,
+        replace: () => "Или создайте / обновите файл "
+    },
+    {
+        pattern: /^We\s+want\s+your\s+feedback!\s*Please\s*$/i,
+        replace: () => "Нам важна ваша обратная связь! Пожалуйста, "
+    },
+    {
+        pattern: /^to\s+report\s+bugs,\s*file\s+feature\s+requests,\s*or\s+ask\s+questions\.?$/i,
+        replace: () => ", чтобы сообщить об ошибках, предложить новые функции или задать вопросы."
+    },
+    {
+        // Data Agent Kit 40 skills
+        pattern: /^\*\*STOP\s+AND\s+VERIFY\*\*:\s*Before\s+running\s+any\s+command\s+or\s+tool\s+that\s+results\s+in\s+irreversible\s+d.*$/i,
+        replace: () => "**ОСТАНОВИТЕСЬ И ПРОВЕРЬТЕ**: Перед выполнением любой команды или инструмента, приводящих к необратимой потере данных (DROP, TRUNCATE, удаление бакетов/ресурсов), необходимо получить явное согласие пользователя."
+    },
+    {
+        pattern: /^Leverages\s+BigQuery['’]s\s+built-in\s+machine\s+learning\s+and\s+GenAI\s+capabilities\s+for\s+advanced\s+data\s+analytics.*$/i,
+        replace: () => "Использование встроенных возможностей машинного обучения и GenAI в BigQuery для продвинутой аналитики данных (прогнозирование временных рядов, поиск аномалий, векторный поиск, классификация и генеративный ИИ в SQL)."
+    },
+    {
+        pattern: /^Generates\s+Python\s+code\s+using\s+BigQuery\s+DataFrames\s+\(BigFrames\).*$/i,
+        replace: () => "Генерация Python-кода с использованием BigQuery DataFrames (BigFrames) для обработки данных, аналитики и машинного обучения в BigQuery."
+    },
+    {
+        pattern: /^Discovers\s+and\s+inspects\s+BigQuery\s+Data\s+Transfer\s+Service\s+\(DTS\)\s+configurations.*$/i,
+        replace: () => "Обнаружение и инспекция конфигураций BigQuery Data Transfer Service (DTS) для анализа существующих конвейеров загрузки данных."
+    },
+    {
+        pattern: /^Provides\s+an\s+end-to-end\s+journey\s+for\s+authoring\s+a\s+BigQuery\s+property\s+graph\s+from\s+your\s+tables.*$/i,
+        replace: () => "Полный цикл создания графа свойств (Property Graph) в BigQuery на основе таблиц или диаграмм модели данных (CREATE PROPERTY GRAPH DDL и проверка связей)."
+    },
+    {
+        pattern: /^Provides\s+guidelines\s+and\s+best\s+practices\s+for\s+querying\s+BigQuery\s+property\s+graphs\s+and\s+semantic\s+graph.*$/i,
+        replace: () => "Рекомендации и лучшие практики выполнения запросов к графам свойств и семантическим графам в BigQuery с помощью нативного языка GQL и GRAPH_TABLE."
+    },
+    {
+        pattern: /^Provides\s+data-retrieval\s+best\s+practices,\s*tool\s+selection\s+guidance,\s*and\s+performant\s+SQL\s+query\s+syntax\s+f.*$/i,
+        replace: () => "Лучшие практики получения телеметрии BigQuery через INFORMATION_SCHEMA, Cloud Monitoring и REST API для анализа производительности, слотов и стоимости."
+    },
+    {
+        pattern: /^Provides\s+workflows\s+to\s+optimize\s+BigQuery\s+environments\s+\(capacity\s+planning,\s*editions\),\s*storage\s+asse.*$/i,
+        replace: () => "Рабочие процессы оптимизации окружений BigQuery (планирование ёмкости, редакции), хранилища (партиционирование, кластеризация) и SQL-запросов."
+    },
+    {
+        pattern: /^Provides\s+diagnostic\s+workflows\s+and\s+step-by-step\s+root-cause\s+analysis\s+procedures\s+for\s+actively\s+br.*$/i,
+        replace: () => "Диагностические процессы и пошаговый анализ первопричин (RCA) для сбойных, медленных или неожиданно дорогих задач и запросов в BigQuery."
+    },
+    {
+        pattern: /^Provisions\s+instances\s+and\s+tables,\s*designs\s+performant\s+schemas,\s*and\s+queries\s+data\s+in\s+Bigtable.*$/i,
+        replace: () => "Развёртывание инстансов и таблиц, проектирование производительных схем ключей строк и выполнение запросов к данным в Google Cloud Bigtable."
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+modern\s+data\s+apps,\s*dashboards,\s*and\s+interactive\s+reports\s+using\s+either\s+React\s*\+\s*Vite\s+or\s+Streamlit.*$/i,
+        replace: () => "Создание современных приложений данных, дашбордов и интерактивных отчётов на React + Vite или Streamlit с поддержкой чата Gemini Data Analytics."
+    },
+    {
+        pattern: /^Guides\s+users\s+through\s+discovering\s+their\s+database\s+requirements,\s*recommends\s+a\s+Google\s+Clou.*$/i,
+        replace: () => "Анализ требований к базе данных, подбор оптимальной СУБД в Google Cloud (или целевой СУБД для миграции) и помощь в её создании."
+    },
+    {
+        pattern: /^Configures\s+\(or\s+reconfigures\)\s+the\s+Google\s+Cloud\s+Data\s+Agent\s+Kit\s+\(DAK\)\s+plugin\s+by\s+checking\s+gcloud.*$/i,
+        replace: () => "Настройка и перенастройка плагина Google Cloud Data Agent Kit (DAK): проверка учётных данных gcloud и ADC, выбор проекта, региона и сервисов GCP."
+    },
+    {
+        pattern: /^Automated\s+data\s+quality\s+and\s+transformation\s+capabilities\s+for\s+Dataform\/dbt\/BigQuery\s+pipelines.*$/i,
+        replace: () => "Автоматизированный контроль качества, очистка и трансформация данных для конвейеров Dataform, dbt и BigQuery из источников BigQuery и Cloud Storage."
+    },
+    {
+        pattern: /^Expertise\s+in\s+generating\s+clean,\s*correct,\s*and\s+efficient\s+Dataform\s+pipeline\s+code\s+for\s+BigQuery\s+ELT.*$/i,
+        replace: () => "Генерация чистого, корректного и эффективного кода конвейеров Dataform (SQLX) для ELT-процессов в BigQuery."
+    },
+    {
+        pattern: /^Expert\s+guidance\s+for\s+creating,\s*modifying,\s*and\s+optimizing\s+dbt\s+pipelines\s+for\s+BigQuery.*$/i,
+        replace: () => "Экспертное руководство по созданию, модификации и оптимизации моделей и конвейеров dbt для BigQuery."
+    },
+    {
+        pattern: /^Finds\s+and\s+inspects\s+data\s+assets\s+within\s+Google\s+Cloud\.\s*Relevant\s+when\s+any\s+of\s+the\s+following\s+con.*$/i,
+        replace: () => "Поиск и инспекция активов данных в Google Cloud (наборы данных, таблицы и представления BigQuery, каталоги BigLake, базы Spanner, метаданные и политики)."
+    },
+    {
+        pattern: /^Enforces\s+resource\s+attribution\s+for\s+CLI\s+commands\.\s*Use\s+this\s+skill\s+whenever\s+you\s+are\s+running.*$/i,
+        replace: () => "Обязательная атрибуция и маркировка ресурсов при выполнении CLI-команд `bq` и `gcloud`."
+    },
+    {
+        pattern: /^Sets\s+up\s+Google\s+Cloud\s+Lakehouse\s+federated\s+catalogs\s+to\s+remote\s+Iceberg\s+REST\s+Catalogs.*$/i,
+        replace: () => "Настройка федеративных каталогов Google Cloud Lakehouse для подключения к внешним каталогам Iceberg REST (Databricks Unity, AWS Glue) и выполнения запросов из BigQuery и Spark."
+    },
+    {
+        pattern: /^Provides\s+expert\s+guidance\s+for\s+troubleshooting\s+Cloud\s+Composer\s+\(Apache\s+Airflow\)\s+and\s+Orc.*$/i,
+        replace: () => "Экспертное руководство по диагностике и устранению сбоев в конвейерах и DAG Cloud Composer (Apache Airflow) с формированием отчёта о первопричинах (RCA)."
+    },
+    {
+        pattern: /^Primary\s+entry\s+point\s+for\s+building,\s*managing,\s*and\s+orchestrating\s+data\s+pipelines\s+on\s+Google\s+Cloud.*$/i,
+        replace: () => "Основная точка входа для создания, управления и оркестрации конвейеров данных в Google Cloud (маршрутизация между dbt, Dataflow, Dataform, Spark, DTS и Cloud Composer)."
+    },
+    {
+        pattern: /^Guides\s+writing,\s*packaging,\s*executing,\s*and\s+troubleshooting\s+Apache\s+Beam\s+pipelines\s+on\s+Dataflow.*$/i,
+        replace: () => "Разработка, упаковка, запуск и диагностика конвейеров Apache Beam в Google Cloud Dataflow (Java/Python/Go, Flex Templates, анализ производительности и автоскейлинга)."
+    },
+    {
+        pattern: /^Guides\s+the\s+authoring\s+and\s+validation\s+of\s+Apache\s+Airflow\s+DAGs\s+for\s+Managed\s+Service\s+f.*$/i,
+        replace: () => "Разработка и валидация DAG Apache Airflow для Managed Service for Apache Airflow (MSAA / Cloud Composer) с учётом совместимости Airflow 2 и 3."
+    },
+    {
+        pattern: /^Provides\s+guidance\s+for\s+migrating\s+Apache\s+Airflow\s+DAGs\s+in\s+Managed\s+Service\s+for\s+Apache.*$/i,
+        replace: () => "Руководство по миграции DAG Apache Airflow в Managed Service for Apache Airflow (MSAA) на версии Airflow 2.11.1 и Airflow 3 с проверкой несовместимых изменений."
+    },
+    {
+        pattern: /^Provides\s+recommendations\s+and\s+best\s+practices\s+for\s+creating,\s*configuring,\s*tuning.*$/i,
+        replace: () => "Рекомендации и лучшие практики по созданию, настройке, масштабированию и оптимизации окружений Managed Service for Apache Airflow (Cloud Composer)."
+    },
+    {
+        pattern: /^Upgrades\s+Spark\s+workloads\s+on\s+Google\s+Cloud\s+Managed\s+Service\s+for\s+Apache\s+Spark\s+\(formerly.*$/i,
+        replace: () => "Обновление рабочих нагрузок Spark в Google Cloud Managed Service for Apache Spark (Dataproc и Serverless) на новые версии рантайма со статическим анализом совместимости."
+    },
+    {
+        pattern: /^This\s+skill\s+helps\s+the\s+agent\s+generate\s+or\s+update\s+orchestration\s+pipeline\s+definitions\s+for\s+Google\s+Clo.*$/i,
+        replace: () => "Генерация, обновление и развёртывание определений оркестрационных конвейеров в Google Cloud Composer для dbt, ноутбуков, задач Spark, Dataform, Vertex AI и BigQuery SQL."
+    },
+    {
+        pattern: /^Automates\s+declarative\s+resource\s+creation\s+and\s+provisioning\s+for\s+data\s+pipelines,\s*supporti.*$/i,
+        replace: () => "Автоматизация декларативного создания и развёртывания ресурсов конвейеров данных (BigQuery, Dataform, Dataproc, DTS) через файл `deployment.yaml`."
+    },
+    {
+        pattern: /^Authors,\s*optimizes,\s*and\s+runs\s+PySpark\s+and\s+Spark\s+code\s+on\s+Google\s+Cloud\s+Managed\s+Spark\s+\(Dataproc\s+Serverless.*$/i,
+        replace: () => "Написание, оптимизация и запуск кода PySpark и Spark SQL в Google Cloud Managed Spark (Dataproc Serverless, кластеры и Spark Connect)."
+    },
+    {
+        pattern: /^Monitors,\s*inventories,\s*and\s+assesses\s+Google\s+Cloud\s+Managed\s+Service\s+for\s+Apache\s+Spark\s+\(Dataproc\s+S.*$/i,
+        replace: () => "Мониторинг, инвентаризация и оценка окружений, кластеров, пакетных задач, метрик и затрат в Google Cloud Managed Service for Apache Spark (Dataproc)."
+    },
+    {
+        pattern: /^Provides\s+expert\s+guidance\s+for\s+troubleshooting\s+Google\s+Cloud\s+Spark\s+and\s+Dataproc\s+workloads.*$/i,
+        replace: () => "Экспертное руководство по диагностике и анализу первопричин (RCA) сбоев задач Google Cloud Spark и Dataproc, включая анализ логов драйвера и событий Spark в Cloud Storage."
+    },
+    {
+        pattern: /^Assesses\s+the\s+security\s+posture\s+of\s+Google\s+Cloud\s+Storage\s+\(GCS\)\s+buckets\s+and\s+projects.*$/i,
+        replace: () => "Оценка защищённости бакетов и проектов Google Cloud Storage (GCS): проверка публичного доступа, прав IAM, шифрования CMEK, VPC Service Controls и аудит-логов."
+    },
+    {
+        pattern: /^Stores,\s*retrieves,\s*and\s+manages\s+data\s+as\s+objects\s+in\s+Cloud\s+Storage\s+on\s+Google\s+Cloud\s+\(also\s+kno.*$/i,
+        replace: () => "Хранение, получение и управление объектами в бакетах Google Cloud Storage (GCS): настройка прав доступа, классов хранения, жизненного цикла и защита данных."
+    },
+    {
+        pattern: /^Creates\s+Cloud\s+Storage\s+\(Google\s+Cloud\s+Storage,\s*or\s+GCS\)\s+buckets\.\s*Analyzes\s+the\s+wor.*$/i,
+        replace: () => "Проектирование и создание бакетов Google Cloud Storage (GCS) с безопасной и экономичной конфигурацией по умолчанию под конкретный тип рабочей нагрузки."
+    },
+    {
+        pattern: /^Mounts\s+Cloud\s+Storage\s+buckets\s+as\s+a\s+POSIX\s+file\s+system\s+with\s+Cloud\s+Storage\s+FUSE\s+\(gcsfuse\).*$/i,
+        replace: () => "Монтирование бакетов Cloud Storage как файловой системы POSIX с помощью Cloud Storage FUSE (gcsfuse) в GKE, Compute Engine и Cloud Run с настройкой кэширования."
+    },
+    {
+        pattern: /^Ensures\s+proper\s+Python\s+dependency\s+management,\s*avoiding\s+global\s+`?pip\s+install`?\s+and\s+adhe.*$/i,
+        replace: () => "Обеспечивает правильное управление зависимостями Python в виртуальных окружениях проекта без глобального запуска `pip install`."
+    },
+    {
+        pattern: /^CRITICAL\s+RULE:\s*You\s+MUST\s+use\s+this\s+skill\s+whenever\s+the\s+task\s+involves\s+any\s+machine\s+learning\s+tasks\s+or\s+data\s+a.*$/i,
+        replace: () => "КРИТИЧЕСКОЕ ПРАВИЛО: Обязательный навык для любых задач машинного обучения и анализа данных (кластеризация, классификация, регрессия, временные ряды, статтесты и сравнение моделей)."
+    },
+    {
+        pattern: /^This\s+skill\s+guides\s+the\s+use\s+of\s+Jupyter\s+notebooks\s+for\s+data\s+analysis,\s*exploration,\s*and\s+visualization.*$/i,
+        replace: () => "Руководство по использованию ноутбуков Jupyter для анализа, исследования и визуализации данных (особенно с BigQuery через магические команды `%%bqsql`)."
+    },
+    {
+        pattern: /^Mandatory\s+Step\s+0\s+pre-flight\s+check\s+for\s+regional\s+Google\s+Cloud\s+MCP\s+servers\s+\(e\.g\.\s+Dataproc\).*$/i,
+        replace: () => "Обязательная предварительная проверка (Шаг 0) региональных MCP-серверов Google Cloud (например, Dataproc) для подстановки региона вместо плейсхолдера `$GCP_REGION`."
+    },
+    {
+        pattern: /^Guides\s+the\s+process\s+of\s+analyzing,\s*mapping,\s*and\s+documenting\s+transformations\s+between\s+source\s+and\s+targ.*$/i,
+        replace: () => "Анализ, сопоставление и документирование трансформаций между исходными и целевыми схемами данных (формирование плана Mapping Manifesto перед написанием ETL/ELT-кода)."
+    },
+    // --- 8. GOOGLE CLOUD DEVELOPER PLUGIN ---
+    {
+        pattern: /^Help\s+me\s+set\s+up\s+a\s+new\s+Google\s+Cloud\s+project,\s*link\s+billing,\s*and\s+configure\s+local\s+authentication\.?$/i,
+        replace: () => "Помоги мне настроить новый проект Google Cloud, привязать биллинг и настроить локальную аутентификацию."
+    },
+    {
+        pattern: /^Configure\s+Application\s+Default\s+Credentials\s+\(ADC\)\s+and\s+IAM\s+permissions\s+for\s+my\s+local\s+development\s+environment\.?$/i,
+        replace: () => "Настроить стандартные учётные данные приложения (ADC) и права IAM для моего локального окружения разработки."
+    },
+    {
+        pattern: /^(?:Search|Поиск)\s+official\s+Google\s+Cloud\s+documentation\s+using\s+Developer\s+Knowledge\s+and\s+validate\s+my\s+gcloud\s+CLI\s+commands\.?$/i,
+        replace: () => "Найти в официальной документации Google Cloud через Developer Knowledge и проверить мои команды gcloud CLI."
+    },
+    {
+        pattern: /^plugin\s+equips\s+Antigravity\s+with\s+foundational\s+skills,\s*safety\s+guardrails,\s*and\s+live\s+documentation\s+grounding\s+for\s+building\s+on\s+Google\s+Cloud\.?$/i,
+        replace: () => " оснащает Antigravity базовыми навыками, защитными ограничениями безопасности и прямым доступом к актуальной документации для разработки в Google Cloud."
+    },
+    {
+        pattern: /^This\s+plugin\s+bundles\s+curated\s+Agent\s+Skills,\s*routing\s+rules,\s*and\s+configuration\s+for\s+the\s*$/i,
+        replace: () => "Этот плагин объединяет курируемые навыки агента, правила маршрутизации и конфигурацию "
+    },
+    {
+        pattern: /^into\s+a\s+single\s+portable\s+package\.?$/i,
+        replace: () => " в единый переносимый пакет."
+    },
+    {
+        pattern: /^:\s*Safety-critical\s+validation,\s*best\s+practices,\s*and\s+execution\s+guardrails\s+for\s*$/i,
+        replace: () => ": Критически важная проверка безопасности, лучшие практики и защитные ограничения выполнения для команд "
+    },
+    {
+        pattern: /^CLI\s+commands\.?$/i,
+        replace: () => " CLI."
+    },
+    {
+        pattern: /^:\s*Authentication\s+workflows,\s*credential\s+selection,\s*and\s+service\s+identity\s+best\s+practices\.?$/i,
+        replace: () => ": Рабочие процессы аутентификации, выбор учётных данных и лучшие практики использования сервисных удостоверений."
+    },
+    {
+        pattern: /^:\s*First-project\s+onboarding,\s*account\s+setup,\s*and\s+billing\s+configuration\.?$/i,
+        replace: () => ": Первичная настройка проекта, создание аккаунта и конфигурация биллинга."
+    },
+    {
+        pattern: /^:\s*Discovery\s+and\s+on-demand\s+installation\s+of\s+specialized\s+skills\s+from\s+the\s+Google\s+Agent\s+Skills\s+repo\.?$/i,
+        replace: () => ": Поиск и установка по требованию специализированных навыков из репозитория Google Agent Skills."
+    },
+    {
+        pattern: /^:\s*Grounded\s+retrieval\s+of\s+official\s+Google\s+documentation\.?$/i,
+        replace: () => ": Достоверное получение официальной документации Google."
+    },
+    {
+        pattern: /^:\s*Provides\s+AI\s+agents\s+with\s+up-to-date\s+grounding\s+in\s+official\s+Google\s+developer\s+documentation\s+over\s+streamable\s+HTTP\.?$/i,
+        replace: () => ": Обеспечивает ИИ-агентов актуальными данными из официальной документации Google для разработчиков по протоколу потокового HTTP."
+    },
+    {
+        pattern: /^:\s*Always-on\s+routing\s+map\s+that\s+guides\s+the\s+agent\s+to\s+discover\s+and\s+suggest\s+deeper\s+product-specific\s+skills\s+\(such\s+as\s*$/i,
+        replace: () => ": Постоянно активная карта маршрутизации, помогающая агенту находить и предлагать узкоспециализированные продуктовые навыки (такие как "
+    },
+    {
+        pattern: /^\)\s*when\s+a\s+task\s+requires\s+specialized\s+domain\s+knowledge\s+beyond\s+the\s+foundational\s+bundle\.?$/i,
+        replace: () => "), когда задача требует глубоких предметных знаний за пределами базового набора."
+    },
+    {
+        pattern: /^To\s+see\s+how\s+this\s+plugin\s+works,\s*consider\s+a\s+situation\s+where\s+you['’]re\s+bootstrapping\s+a\s+new\s+project\s+as\s+part\s+of\s+working\s+on\s+a\s+script\.\s*With\s+the\s*$/i,
+        replace: () => "Чтобы увидеть, как работает этот плагин, представьте ситуацию, когда вы разворачиваете новый проект при работе над скриптом. С установленным плагином "
+    },
+    {
+        pattern: /^plugin\s+installed,\s*you\s+can\s+prompt\s+your\s+agent:$/i,
+        replace: () => " вы можете отправить агенту запрос:"
+    },
+    {
+        pattern: /^I['’]m\s+brand\s+new\s+to\s+this\s+platform,\s*and\s+I\s+need\s+to\s+get\s+an\s+account\s+and\s+a\s+first\s+project\s+with\s+billing\s+set\s+up.*$/i,
+        replace: () => "Я впервые работаю с этой платформой, и мне нужно создать аккаунт и первый проект с настроенным биллингом. Затем нужно авторизовать мою локальную машину так, чтобы скрипт, который я пишу, вызывал API от имени сервисного аккаунта, а не от моего личного имени."
+    },
+    {
+        pattern: /^:\s*The\s+agent\s+silently\s+runs\s+background\s+checks\s+against\s+your\s+live\s+environment.*$/i,
+        replace: () => ": Агент незаметно выполняет фоновые проверки вашего окружения на наличие необходимых компонентов, таких как доступность CLI и существующие проекты или организации."
+    },
+    {
+        pattern: /^:\s*The\s+agent\s+considers\s+IAM\s+best\s+practices\s+to\s+avoid\s+risks\s+that\s+might\s+be\s+assumed\s+as\s+part\s+of\s+the\s+prompt.*$/i,
+        replace: () => ": Агент учитывает лучшие практики IAM, чтобы избежать рисков, которые могли подразумеваться в запросе, таких как случайная утечка ключей или их коммит в git."
+    },
+    {
+        pattern: /^:\s*The\s+agent\s+outlines\s+a\s+workflow\s+roadmap\s+and\s+offers\s+to\s+act\s+on\s+those\s+steps\s+before\s+modifying\s+any\s+resources\.?$/i,
+        replace: () => ": Агент составляет пошаговый план действий и предлагает подтвердить выполнение шагов перед изменением любых ресурсов."
+    },
+    {
+        pattern: /^If\s+you\s+run\s+Antigravity\s+with\s+terminal\s+sandboxing\s+or\s+behind\s+a\s+corporate\s+firewall\/proxy.*$/i,
+        replace: () => "Если вы запускаете Antigravity с песочницей терминала или за корпоративным файрволом/прокси, настройте окружение так, чтобы разрешить следующие исходящие URL-адреса и команды терминала."
+    },
+    {
+        pattern: /^Google\s+platform\s+decision\s+and\s+setup\s+guidance,\s*loaded\s+on\s+demand\s+from\s+Google['’]s\s+skill\s+catalog.*$/i,
+        replace: () => "Руководство по выбору и настройке продуктов платформы Google, загружаемое по требованию из каталога навыков Google при выборе стека (вычисления, БД, хранилище, ИИ и др.)."
+    },
+    {
+        pattern: /^Provides\s+safety-critical\s+validation,\s*guardrails,\s*and\s+data\s+reduction\s+for\s+gcloud\s+CLI\s+operations.*$/i,
+        replace: () => "Критически важная проверка безопасности, защитные ограничения и сокращение объёма вывода для операций gcloud CLI при работе с сервисами и инфраструктурой Google Cloud Platform (GCP)."
+    },
+    {
+        pattern: /^Provides\s+expert\s+guidance\s+on\s+Identity\s+and\s+Access\s+Management\s+\(IAM\)\s+and\s+authenticating\s+and\s+authorizing\s+to\s+Google\s+Cloud.*$/i,
+        replace: () => "Экспертное руководство по управлению идентификацией и доступом (IAM), аутентификации и авторизации в сервисах и API Google Cloud (пользователи, сервисные аккаунты, ADC)."
+    },
+    {
+        pattern: /^Guides\s+a\s+developer['’]s\s+first\s+steps\s+on\s+Google\s+Cloud,\s*covering\s+account\s+creation,\s*billing\s+setup.*$/i,
+        replace: () => "Пошаговое руководство для первых шагов разработчика в Google Cloud: создание аккаунта, настройка биллинга, управление проектом и развёртывание первого ресурса."
     },
     {
         // "Editing <target>" or "Editing"
@@ -6831,6 +8246,10 @@ function shouldIgnore(node) {
             val === 'empty message' ||
             val === 'unread' ||
             val === 'context usage' ||
+            val === 'agents' ||
+            val === 'not' ||
+            val === 'free' ||
+            val === 'use' ||
             val.includes('low-latency, bidirectional voice') ||
             val.includes('stateful multi-turn chat') ||
             val.includes('real-time audio/video streaming') ||
@@ -7560,6 +8979,12 @@ function isFileName(text, parent) {
         lowerTrimmed === 'empty message' ||
         lowerTrimmed === 'unread' ||
         lowerTrimmed === 'context usage' ||
+        lowerTrimmed === 'agents' ||
+        lowerTrimmed === 'not' ||
+        lowerTrimmed === 'free' ||
+        lowerTrimmed === 'use' ||
+        lowerTrimmed === 'domain / endpoint' ||
+        lowerTrimmed === 'tasks / assertions' ||
         lowerTrimmed.includes('low-latency, bidirectional voice') ||
         lowerTrimmed.includes('stateful multi-turn chat') ||
         lowerTrimmed.includes('real-time audio/video streaming') ||
@@ -7977,6 +9402,36 @@ function translateTextNode(node) {
                 const pText = node.parentElement ? normalizeText(node.parentElement.textContent).toLowerCase() : '';
                 if (pText.includes('android skills')) {
                     translated = 'Команда';
+                } else if (pText.includes('google developer knowledge') && pText.includes('connects your coding agent')) {
+                    translated = 'Плагин';
+                } else if (pText.includes('google-cloud-developer') && pText.includes('equips antigravity')) {
+                    translated = 'Плагин';
+                } else if (pText.includes('modern-web-guidance') && pText.includes('publish target')) {
+                    translated = 'Репозиторий';
+                } else if (pText.includes('navigation-drawer')) {
+                    translated = 'руководство';
+                }
+            } else if (lowerText === 'guide') {
+                const pText = node.parentElement ? normalizeText(node.parentElement.textContent).toLowerCase() : '';
+                if (pText.includes('navigation-drawer')) {
+                    translated = ' ';
+                }
+            } else if (lowerText === 'not') {
+                const pText = node.parentElement ? normalizeText(node.parentElement.textContent).toLowerCase() : '';
+                const gpText = (node.parentElement && node.parentElement.parentElement) ? normalizeText(node.parentElement.parentElement.textContent).toLowerCase() : '';
+                if ((pText + ' ' + gpText).includes('science plugin') || (pText + ' ' + gpText).includes('плагина science')) {
+                    translated = 'не';
+                }
+            } else if (lowerText === 'free') {
+                const pText = node.parentElement ? normalizeText(node.parentElement.textContent).toLowerCase() : '';
+                const gpText = (node.parentElement && node.parentElement.parentElement) ? normalizeText(node.parentElement.parentElement.textContent).toLowerCase() : '';
+                if ((pText + ' ' + gpText).includes('data agent kit')) {
+                    translated = 'бесплатный';
+                }
+            } else if (lowerText === 'use') {
+                const pText = node.parentElement ? normalizeText(node.parentElement.textContent).toLowerCase() : '';
+                if (pText.includes('service account') || pText.includes('имперсонацию') || pText.includes('principal access') || pText.includes('политики границ')) {
+                    translated = 'Используйте';
                 }
             } else if (lowerText === 'if the') {
                 const pText = node.parentElement ? normalizeText(node.parentElement.textContent).toLowerCase() : '';
@@ -8378,17 +9833,17 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.21';
+    const FALLBACK_VERSION = '2.1.22';
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
     }
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = 'Локализация v2.1.21: перевод Recent, Trigger, Time Zone, This Computer, Skill, UI Extensions, таблицы навыков Gemini API и всей страницы плагина Android CLI.';
+        window.__antigravity_remote_changelog = 'Локализация v2.1.22: полный перевод официальных плагинов Firebase, Science, Google Developer Knowledge, Modern Web Guidance, Google Maps Platform, Dart & Flutter, Data Agent Kit и Google Cloud Developer.';
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Локализация v2.1.21: перевод Recent, Trigger, Time Zone, This Computer, Skill, UI Extensions, таблицы навыков Gemini API и всей страницы плагина Android CLI.';
+    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Локализация v2.1.22: полный перевод официальных плагинов Firebase, Science, Google Developer Knowledge, Modern Web Guidance, Google Maps Platform, Dart & Flutter, Data Agent Kit и Google Cloud Developer.';
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
