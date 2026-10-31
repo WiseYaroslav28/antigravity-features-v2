@@ -1,6 +1,6 @@
 # 🚀 Google AntiGravity 2.0 — Russian Localization & System Enhancement Suite (`antigravity-features-v2`)
 
-[![Version](https://img.shields.io/badge/version-v2.1.20-blue.svg)](version.json)
+[![Version](https://img.shields.io/badge/version-v2.1.21-blue.svg)](version.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
 [![Target](https://img.shields.io/badge/Google%20AntiGravity-2.0%2B-orange.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
@@ -27,7 +27,7 @@
 2. **🔄 Автоматическое обновление с GitHub силами MCP (без ручного скачивания)**:
    * Встроенный MCP-сервер ([`index.js`](index.js)) автоматически проверяет наличие новых версий в этом репозитории ([`version.json`](version.json)) по HTTPS — **работает даже если на ПК не установлен Git**.
    * Скачивает обновлённые файлы в фоне и проверяет их синтаксис через компилятор V8 (`node --check`) перед заменой.
-   * **Горячее применение (Hot-Reload)**: новые переводы мгновенно применяются к открытым окнам через Chrome DevTools Protocol (CDP) без перезапуска приложения, а в виджете `EN | RU` отображается переход версий (например, `✨ v2.0.0 → v2.1.20`) и список изменений (`changelog`).
+   * **Горячее применение (Hot-Reload)**: новые переводы мгновенно применяются к открытым окнам через Chrome DevTools Protocol (CDP) без перезапуска приложения, а в виджете `EN | RU` отображается переход версий (например, `✨ v2.0.0 → v2.1.21`) и список изменений (`changelog`).
 
 3. **🖥️ Запоминание 2-го монитора и развёрнутого состояния окна**:
    * Исправляет сброс окна на основной монитор (`1400x900`) при каждом запуске: сохраняет точные координаты (`x`, `y`, `width`, `height`, `isMaximized`) и открывает AntiGravity именно на том мониторе, где вы его закрыли.
@@ -60,7 +60,7 @@
 
 | Файл | Назначение |
 | :--- | :--- |
-| [`version.json`](version.json) | Паспорт релиза: номер версии SemVer (`2.1.20`), дата, описание изменений (`changelog`) и список обновляемых файлов. |
+| [`version.json`](version.json) | Паспорт релиза: номер версии SemVer (`2.1.21`), дата, описание изменений (`changelog`) и список обновляемых файлов. |
 | [`index.js`](index.js) | Фоновый MCP-сервер, движок автообновления с GitHub, HTTP-сервер статуса (`127.0.0.1:39228`) и CDP-инжектор. |
 | [`localization_injected.js`](localization_injected.js) | Единый модуль словаря переводов, регулярных выражений и верхнего виджета `EN \| RU` с индикацией версий. |
 | [`auto_patcher.cjs`](auto_patcher.cjs) | Автоматический сборщик `app.asar.patched` с проверкой каждого файла компилятором V8 (`vm.Script`). |
@@ -82,7 +82,7 @@
 2. **🔄 Zero-Touch GitHub Auto-Updater via MCP**:
    * The bundled Model Context Protocol (MCP) server ([`index.js`](index.js)) periodically checks [`version.json`](version.json) on GitHub over HTTPS (works even on machines without Git installed).
    * Validates every downloaded `.js`/`.cjs` file using Node's V8 syntax checker (`node --check`) before replacing local files.
-   * **Live CDP Hot-Reload**: dictionary updates are injected immediately into open windows via Chrome DevTools Protocol with zero downtime, displaying a version transition badge (`v2.0.0 → v2.1.20`) and release notes right in the top-bar widget.
+   * **Live CDP Hot-Reload**: dictionary updates are injected immediately into open windows via Chrome DevTools Protocol with zero downtime, displaying a version transition badge (`v2.0.0 → v2.1.21`) and release notes right in the top-bar widget.
 
 3. **🖥️ Multi-Monitor Window Geometry & Maximized State Persistence**:
    * Fixes the default `1400x900` primary-monitor reset by persisting `x`, `y`, `width`, `height`, and `isMaximized` state across sessions.

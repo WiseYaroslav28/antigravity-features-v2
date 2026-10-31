@@ -1,7 +1,7 @@
 {
-  "version": "2.1.20",
-  "releaseDate": "2026-10-31T02:47:00Z",
-  "changelog": "Локализация v2.1.20: синхронизация версий GitHub без задержки CDN-кеша (исключено отображение устаревшей версии из кеша Fastly сразу после релиза) и минималистичная иконка «i» без рамки.",
+  "version": "2.1.21",
+  "releaseDate": "2026-10-31T03:25:00Z",
+  "changelog": "Локализация v2.1.21: перевод Recent, Trigger, Time Zone, This Computer, Skill, UI Extensions, таблицы навыков Gemini API и всей страницы плагина Android CLI.",
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",

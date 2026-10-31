@@ -1898,6 +1898,82 @@ const translationDictionary = {
     "tool output": "Вывод инструмента",
     "tool input": "Входные данные инструмента",
     "tool result": "Результат инструмента",
+    "recent": "Недавние",
+    "recent:": "Недавние:",
+    "recent projects": "Недавние проекты",
+    "recent workspaces": "Недавние рабочие области",
+    "recent conversations": "Недавние диалоги",
+    "recent files": "Недавние файлы",
+    "trigger": "Триггер",
+    "triggers": "Триггеры",
+    "time zone": "Часовой пояс",
+    "timezone": "Часовой пояс",
+    "this computer": "Этот компьютер",
+    "this computer >": "Этот компьютер >",
+    "cloud": "Облако",
+    "runs on": "Где запускать",
+    "schedule": "Расписание",
+    "scheduled task": "Запланированная задача",
+    "new scheduled task": "Новая запланированная задача",
+    "add scheduled task": "Добавить запланированную задачу",
+    "enter scheduled task name...": "Введите название задачи...",
+    "environment": "Окружение",
+    "execution identity": "Учётная запись выполнения",
+    "standalone": "Вне проекта",
+    "no projects created": "Нет созданных проектов",
+    "select workspace": "Выберите рабочую область",
+    "you don't have any projects created. please create a project first.": "У вас нет созданных проектов. Пожалуйста, сначала создайте проект.",
+    "not cloned locally": "Не клонировано локально",
+    "search workspaces…": "Поиск рабочих областей…",
+    "search workspaces...": "Поиск рабочих областей...",
+    "search projects…": "Поиск проектов…",
+    "search projects...": "Поиск проектов...",
+    "more actions": "Другие действия",
+    "skill": "Навык",
+    "command": "Команда",
+    "note": "ПРИМЕЧАНИЕ",
+    "tip": "СОВЕТ",
+    "ui extensions": "UI-расширения",
+    "accounts": "Аккаунты",
+    "hooks": "Хуки",
+    "context providers": "Провайдеры контекста",
+    "explore the plugin marketplace": "Откройте для себя маркетплейс плагинов",
+    "find plugins - bundles of skills, agents, mcp servers, ui extensions and more, and install them in one click.": "Находите плагины — наборы навыков, агентов, MCP-серверов, UI-расширений и многого другого — и устанавливайте их в один клик.",
+    "empty message": "Пустое сообщение",
+    "unread": "Непрочитанные",
+    "context usage": "Использование контекста",
+    "key capabilities": "Ключевые возможности",
+    "🚀 key capabilities": "🚀 Ключевые возможности",
+    "project scaffolding": "Создание каркаса проекта",
+    "🛠️ project scaffolding": "🛠️ Создание каркаса проекта",
+    "device & emulator management": "Управление устройствами и эмуляторами",
+    "📱 device & emulator management": "📱 Управление устройствами и эмуляторами",
+    "agent skills management": "Управление навыками агента",
+    "🧠 agent skills management": "🧠 Управление навыками агента",
+    "ui layout inspection & screen analysis": "Инспекция UI-разметки и анализ экрана",
+    "🔍 ui layout inspection & screen analysis": "🔍 Инспекция UI-разметки и анализ экрана",
+    "journey testing": "Тестирование пользовательских сценариев (Journey)",
+    "🧪 journey testing": "🧪 Тестирование пользовательских сценариев (Journey)",
+    "official android knowledge base": "Официальная база знаний Android",
+    "📚 official android knowledge base": "📚 Официальная база знаний Android",
+    "device hub & compose preview panes": "Панели Device Hub и Compose Preview",
+    "🖥️ device hub & compose preview panes": "🖥️ Панели Device Hub и Compose Preview",
+    "installation & setup": "Установка и настройка",
+    "📦 installation & setup": "📦 Установка и настройка",
+    "initialize android cli": "Инициализация Android CLI",
+    "update android cli": "Обновление Android CLI",
+    "starter prompts": "Примеры стартовых запросов",
+    "💡 starter prompts": "💡 Примеры стартовых запросов",
+    "once enabled, try asking your agent:": "После включения попробуйте попросить вашего агента:",
+    "creating a new android project": "Создание нового проекта Android",
+    "создание a new android project": "Создание нового проекта Android",
+    "running on a device": "Запуск на устройстве",
+    "запуск on a device": "Запуск на устройстве",
+    "testing & play readiness": "Тестирование и готовность к Google Play",
+    "тестирование & play readiness": "Тестирование и готовность к Google Play",
+    "command reference": "Справочник команд",
+    "📖 command reference": "📖 Справочник команд",
+    "android developer tools team": "Команда Android Developer Tools",
     "find the trends and outliers in this sales sheet": "Найти тренды и аномалии в этой таблице продаж",
     "build a monthly budget tracker with formulas and a chart": "Создать трекер ежемесячного бюджета с формулами и диаграммой",
     "import this csv and turn it into a pivot table by region": "Импортировать этот CSV и превратить его в сводную таблицу по регионам",
@@ -2245,6 +2321,261 @@ const regexTranslations = [
         // "Edited <target>" or "Edited" (e.g. "Edited 📄 Sudo Proposal Agy Update 135 +11 -0", "Edited")
         pattern: /^Edited(?:\s+(.*))?$/i,
         replace: (match) => match[1] ? `Изменено ${match[1]}` : 'Изменено'
+    },
+    {
+        // === Gemini API Skills Table & Android CLI Plugin Page (must precede generic Creating/Ran/Test/Build rules!) ===
+        pattern: /^This\s+Computer(\s*>)?$/i,
+        replace: (m) => "Этот компьютер" + (m[1] ? " >" : "")
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+applications\s+with\s+the(?:\s+Interactions\s+API\.?|\s*)$/i,
+        replace: (m) => /interactions/i.test(m[0])
+            ? "Создавайте приложения с помощью Interactions API."
+            : "Создавайте приложения с помощью "
+    },
+    {
+        pattern: /^\.?\s*Covers\s+text\s+generation,\s*stateful\s+multi-turn\s+chat.*$/i,
+        replace: () => ". Охватывает генерацию текста, многошаговый чат с сохранением состояния, потоковую передачу, вызов функций, структурированный вывод, генерацию изображений, синтез речи (TTS), дизайн и клонирование голоса, управляемых агентов, Deep Research и миграцию с "
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+low-latency,\s*bidirectional\s+voice\s+and\s+video\s+applications\s+over\s+WebSockets\s+with\s+the(?:\s+Gemini\s+Live\s+API\.?|\s*)$/i,
+        replace: (m) => /gemini/i.test(m[0])
+            ? "Создавайте двунаправленные голосовые и видеоприложения с низкой задержкой поверх WebSockets с помощью Gemini Live API."
+            : "Создавайте двунаправленные голосовые и видеоприложения с низкой задержкой поверх WebSockets с помощью "
+    },
+    {
+        pattern: /^\.?\s*Covers\s+real-time\s+audio\/video\s+streaming,\s*background\s+reasoning.*$/i,
+        replace: () => ". Охватывает потоковую передачу аудио и видео в реальном времени, фоновые рассуждения (расширенное мышление), асинхронные неблокирующие вызовы инструментов, транскрибацию в реальном времени, живой перевод речи и управление сессиями."
+    },
+    {
+        pattern: /^Generate\s+and\s+edit\s+videos\s+with\s+Gemini\s+Omni\s+Flash\s+using\s+the\s+Interactions\s+API.*$/i,
+        replace: () => "Генерируйте и редактируйте видео с помощью Gemini Omni Flash через Interactions API, включая генерацию видео по тексту, переходы по первому и последнему кадру, генерацию по референсам и продление видео."
+    },
+    {
+        // Android CLI Example Prompts & Starter Prompts
+        pattern: /^"?(?:Create|Создать|Создано)\s+a\s+new\s+Android\s+project\s+called\s+MyFirstApp\s+using\s+the\s+empty-activity\s+template\.?"?$/i,
+        replace: (m) => m[0].startsWith('"')
+            ? "«Создать новый проект Android с именем MyFirstApp на основе шаблона empty-activity»"
+            : "Создать новый проект Android с именем MyFirstApp на основе шаблона empty-activity"
+    },
+    {
+        pattern: /^"?(?:Run|Запуск)\s+my\s+app\s+on\s+a\s+Samsung\s+Galaxy\s+Ultra\s+device\.?"?$/i,
+        replace: (m) => m[0].startsWith('"')
+            ? "«Запустить моё приложение на устройстве Samsung Galaxy Ultra.»"
+            : "Запустить моё приложение на устройстве Samsung Galaxy Ultra."
+    },
+    {
+        pattern: /^"?(?:Test|Тест:?|Тестирование)\s+my\s+app\s+and\s+make\s+sure\s+that\s+it['’]s\s+ready\s+to\s+publish\s+to\s+Google\s+Play\.?"?$/i,
+        replace: (m) => m[0].startsWith('"')
+            ? "«Протестировать моё приложение и убедиться, что оно готово к публикации в Google Play.»"
+            : "Протестировать моё приложение и убедиться, что оно готово к публикации в Google Play."
+    },
+    {
+        pattern: /^(?:Creating|Создание)\s+a\s+new\s+Android\s+project$/i,
+        replace: () => "Создание нового проекта Android"
+    },
+    {
+        pattern: /^(?:Running|Запуск)\s+on\s+a\s+device$/i,
+        replace: () => "Запуск на устройстве"
+    },
+    {
+        pattern: /^(?:Testing|Тестирование)\s*&\s*Play\s+readiness$/i,
+        replace: () => "Тестирование и готовность к Google Play"
+    },
+    {
+        // Android CLI Overview & Key Capabilities
+        pattern: /^is\s+the\s+official\s+command-line\s+interface\s+that\s+standardizes\s+core\s+Android\s+development.*$/i,
+        replace: () => " — это официальный интерфейс командной строки, стандартизирующий ключевые компетенции Android-разработки для рабочих процессов с участием ИИ-агентов. Он предоставляет кодинг-агентам и разработчикам единую точку входа к официальным инструментам, навыкам и документации для эффективной разработки под Android."
+    },
+    {
+        pattern: /^Whether\s+you\s+are\s+scaffolding\s+a\s+new\s+app,\s*launching\s+virtual\s+devices.*$/i,
+        replace: () => "Создаёте ли вы каркас нового приложения, запускаете виртуальные устройства, выполняете быстрые инкрементальные сборки, инспектируете живую разметку экрана или тестируете пользовательские сценарии — Android CLI оптимизирует разработку прямо из вашей рабочей области."
+    },
+    {
+        pattern: /^Initialize\s+modern\s+Android\s+projects\s+from\s+official\s+templates\s+using\s*$/i,
+        replace: () => "Инициализируйте современные проекты Android из официальных шаблонов с помощью "
+    },
+    {
+        pattern: /^Pre-configured\s+with\s+the\s+latest\s+Android\s+Gradle\s+Plugin\s+\(AGP\).*$/i,
+        replace: () => "Предварительно настроено с новейшим Android Gradle Plugin (AGP), Jetpack Compose и лучшими практиками."
+    },
+    {
+        pattern: /^Print\s+environment\s+information\s+including\s+SDK\s+location,\s*connected\s+devices,\s*and\s+configuration\s+variables(?:\s+using\s*|\.\s*Use\s+specific\s+fields\s+to\s+narrow\s+the\s+output\.?)$/i,
+        replace: (m) => /using\s*$/i.test(m[0])
+            ? "Выводите информацию об окружении, включая расположение SDK, подключённые устройства и переменные конфигурации, с помощью "
+            : "Вывод информации об окружении, включая путь к SDK, подключённые устройства и переменные конфигурации. Используйте конкретные поля для сужения вывода."
+    },
+    {
+        pattern: /^\(use\s+specific\s+fields\s+to\s+narrow\s+the\s+output\)\.?$/i,
+        replace: () => " (используйте конкретные поля для сужения вывода)."
+    },
+    {
+        pattern: /^(?:Inspect|Проверка),\s*create,\s*and\s+launch\s+Android\s+Virtual\s+Devices\s+\(AVDs\)\s+directly\s+from\s+the\s+terminal\s+with\s*$/i,
+        replace: () => "Проверяйте, создавайте и запускайте виртуальные устройства Android (AVD) прямо из терминала с помощью "
+    },
+    {
+        pattern: /^Deploy\s+and\s+launch\s+applications\s+with\s+fast\s+delta\s+installs\s+using\s*$/i,
+        replace: () => "Развёртывайте и запускайте приложения с быстрой дельта-установкой с помощью "
+    },
+    {
+        pattern: /^command\s+provides\s+an\s+official\s+way\s+to\s+discover,\s*install,\s*update,\s*and\s+manage\s+recommended\s+skills\.?$/i,
+        replace: () => " предоставляет официальный способ находить, устанавливать, обновлять и управлять рекомендуемыми навыками."
+    },
+    {
+        pattern: /^Skills\s+installed\s+using\s+this\s+command\s+aren['’]t\s+removed\s+if\s+the\s+Android\s+plugin\s+for\s+Antigravity\s+is\s+uninstalled\.?$/i,
+        replace: () => "Навыки, установленные с помощью этой команды, не удаляются при удалении плагина Android для Antigravity."
+    },
+    {
+        pattern: /^(?:Extract|Извлечение)\s+the\s+live\s+application\s+layout\s+tree\s+in\s+structured\s+JSON\s+using\s*$/i,
+        replace: () => "Извлекайте живое дерево разметки приложения в структурированном формате JSON с помощью "
+    },
+    {
+        pattern: /^(?:Inspect|Проверка)\s+UI\s+hierarchies,\s*interactive\s+bounds,\s*accessibility\s+attributes,\s*and\s+focus\s+states\.?$/i,
+        replace: () => "Инспектируйте иерархию интерфейса, границы интерактивных элементов, атрибуты доступности и состояния фокуса."
+    },
+    {
+        pattern: /^Capture\s+device\s+screenshots\s+and\s+resolve\s+visual\s+coordinates\s+for\s+automated\s+interactions\s+using\s*$/i,
+        replace: () => "Делайте скриншоты устройства и определяйте визуальные координаты для автоматизированных взаимодействий с помощью "
+    },
+    {
+        pattern: /^(?:Test|Тест:?|Тестирование)\s+end-to-end\s+user\s+flows\s+with\s+Journey\s+tests\s+defined\s+using\s+natural\s+language,\s*using\s*$/i,
+        replace: () => "Тестируйте сквозные пользовательские сценарии с помощью Journey-тестов, описанных на естественном языке, используя "
+    },
+    {
+        pattern: /^and\s+visual\s+verification\.?$/i,
+        replace: () => " и визуальную проверку."
+    },
+    {
+        pattern: /^Output\s+structured\s+Markdown\s+reports\s+detailing\s+pass\/fail\s+statuses.*$/i,
+        replace: () => "Формируйте структурированные отчёты в формате Markdown со статусами прохождения, командами взаимодействия ADB и проверочными скриншотами."
+    },
+    {
+        pattern: /^(?:Search|Поиск)\s+authoritative,\s*up-to-date\s+Android\s+developer\s+documentation\s+directly\s+from\s+the\s+CLI\s+via\s*$/i,
+        replace: () => "Ищите авторитетную и актуальную документацию для разработчиков Android прямо из CLI через "
+    },
+    {
+        pattern: /^Fetch\s+full\s+articles\s+and\s+migration\s+guides\s+using\s*$/i,
+        replace: () => "Загружайте полные статьи и руководства по миграции с помощью "
+    },
+    {
+        pattern: /^:\s*list,\s*start,\s*stop,\s*create,\s*and\s+remove\s+Android\s+Virtual\s+Devices.*$/i,
+        replace: () => ": просматривайте список, запускайте, останавливайте, создавайте и удаляйте виртуальные устройства Android, а также транслируйте экран и управляйте эмуляторами и физическими устройствами, подключёнными к adb, на боковой панели."
+    },
+    {
+        pattern: /^:\s*render\s+Jetpack\s+Compose\s*$/i,
+        replace: () => ": рендерите функции Jetpack Compose "
+    },
+    {
+        pattern: /^functions\s+with\s*$/i,
+        replace: () => " с помощью "
+    },
+    {
+        pattern: /^and\s+review\s+the\s+results\s+in\s+a\s+side\s+pane\.?$/i,
+        replace: () => " и просматривайте результаты на боковой панели."
+    },
+    {
+        pattern: /^Both\s+panes\s+are\s+served\s+by\s+the\s+Android\s+CLI\s*\($/i,
+        replace: () => "Обе панели обслуживаются через Android CLI ("
+    },
+    {
+        pattern: /^\),\s*which\s+downloads\s+their\s+implementation\s+on\s+first\s+use\.?$/i,
+        replace: () => "), который загружает их реализацию при первом использовании."
+    },
+    {
+        pattern: /^tool\s+is\s+not\s+already\s+in\s+your\s*$/i,
+        replace: () => " ещё не добавлен в ваш "
+    },
+    {
+        pattern: /^,\s*install\s+it\s+using\s+the\s+platform-specific\s+installer:$/i,
+        replace: () => ", установите его с помощью установщика для вашей платформы:"
+    },
+    {
+        pattern: /^You\s+must\s+run\s*$/i,
+        replace: () => "Необходимо выполнить "
+    },
+    {
+        pattern: /^for\s+Antigravity\s+to\s+discover\s+and\s+use\s+Android\s+CLI:$/i,
+        replace: () => ", чтобы Antigravity обнаружил и начал использовать Android CLI:"
+    },
+    {
+        pattern: /^The\s+skill\s+installed\s+by\s+running\s+this\s+command\s+isn['’]t\s+removed\s+if\s+the\s+Android\s+plugin\s+for\s+Antigravity\s+is\s+uninstalled\.?$/i,
+        replace: () => "Навык, установленный при выполнении этой команды, не удаляется при удалении плагина Android для Antigravity."
+    },
+    {
+        pattern: /^To\s+keep\s+your\s+CLI\s+and\s+embedded\s+skills\s+up\s+to\s+date,\s*run:$/i,
+        replace: () => "Чтобы поддерживать актуальность CLI и встроенных навыков, выполните:"
+    },
+    {
+        pattern: /^Initialize\s+a\s+new\s+Android\s+project\s+from\s+available\s+templates\.?$/i,
+        replace: () => "Инициализировать новый проект Android из доступных шаблонов."
+    },
+    {
+        pattern: /^Generate\s+descriptive\s+build\s+target\s+and\s+artifact\s+metadata\s+for\s+a\s+project\.?$/i,
+        replace: () => "Сгенерировать метаданные целей сборки и артефактов для проекта."
+    },
+    {
+        pattern: /^(?:Build|Сборка),\s*deploy,\s*and\s+launch\s+an\s+application\s+on\s+a\s+connected\s+device\s+or\s+emulator\.?$/i,
+        replace: () => "Собрать, развернуть и запустить приложение на подключённом устройстве или эмуляторе."
+    },
+    {
+        pattern: /^Returns\s+the\s+active\s+UI\s+layout\s+tree\s+in\s+JSON\s+format\s*\(supports\s*$/i,
+        replace: () => "Возвращает дерево активной UI-разметки в формате JSON (поддерживает фильтрацию "
+    },
+    {
+        pattern: /^filtering\)\.?$/i,
+        replace: () => ")."
+    },
+    {
+        pattern: /^Commands\s+to\s+view,\s*capture,\s*and\s+target\s+UI\s+elements\s+visually\s+on\s+device\.?$/i,
+        replace: () => "Команды для визуального просмотра, захвата и наведения на элементы интерфейса устройства."
+    },
+    {
+        pattern: /^(?:Create|Создать|Создано),\s*start,\s*stop,\s*and\s+list\s+Android\s+Virtual\s+Devices\s+\(AVDs\)\.?$/i,
+        replace: () => "Создание, запуск, остановка и просмотр списка виртуальных устройств Android (AVD)."
+    },
+    {
+        pattern: /^Manage\s+Android\s+SDK\s+packages,\s*platforms,\s*and\s+build\s+tools\.?$/i,
+        replace: () => "Управление пакетами Android SDK, платформами и инструментами сборки."
+    },
+    {
+        pattern: /^(?:Search|Поиск)\s+and\s+fetch\s+documentation\s+from\s+the\s+official\s+Android\s+Knowledge\s+Base\.?$/i,
+        replace: () => "Поиск и загрузка документации из официальной базы знаний Android."
+    },
+    {
+        pattern: /^Initialize\s+the\s+environment\s+and\s+install\s+default\s+Android\s+CLI\s+agent\s+skills.*$/i,
+        replace: () => "Инициализация окружения и установка стандартных навыков агента Android CLI (установленные навыки не удаляются при удалении плагина Android для Antigravity)."
+    },
+    {
+        pattern: /^Manage\s+Android\s+CLI\s+skills\s+\(search,\s*add,\s*remove,\s*list,\s*update\).*$/i,
+        replace: () => "Управление навыками Android CLI (поиск, добавление, удаление, просмотр списка, обновление). Установленные навыки не удаляются при удалении плагина Android для Antigravity."
+    },
+    {
+        pattern: /^(?:Update|Обновление)\s+the\s+Android\s+CLI\s+to\s+the\s+latest\s+version\.?$/i,
+        replace: () => "Обновить Android CLI до последней версии."
+    },
+    {
+        pattern: /^For\s+more\s+documentation,\s*visit\s*$/i,
+        replace: () => "Дополнительную документацию см. на сайте "
+    },
+    {
+        pattern: /^Provides\s+instructions\s+for\s+installing\s+and\s+using\s+the\s+`?android`?\s+CLI\..*$/i,
+        replace: () => "Содержит инструкции по установке и использованию CLI `android`. Инструмент командной строки `android` — ключевой инструмент для Android-разработки, который помогает создавать новые проекты Android, запускать приложения на устройствах, управлять виртуальными устройствами Android и взаимодействовать с ними (включая скриншоты и инспекцию UI), управлять компонентами Android SDK, искать в официальной документации Android, а также находить и устанавливать официальные навыки Android."
+    },
+    {
+        pattern: /^Instructions\s+for\s+working\s+with\s+the\s+Android\s+Device\s+Hub\s+sidecar.*$/i,
+        replace: () => "Инструкции по работе с сайдкаром Android Device Hub, который выводит список, запускает, останавливает, создаёт и удаляет виртуальные устройства Android (AVD), показывает физические устройства, подключённые к adb, и позволяет пользователю транслировать экран и управлять любым из них (видео, касания, клавиатура, колесо мыши) на панели Device Hub. Также объясняет, как инспектировать экран и взаимодействовать с ним с помощью `android layout`, `android screen` и `adb`."
+    },
+    {
+        pattern: /^Instructions\s+for\s+the\s+Android\s+Compose\s+Preview\s+sidecar.*$/i,
+        replace: () => "Инструкции для сайдкара Android Compose Preview, который рендерит функции Jetpack Compose @Preview с помощью `android preview render` и отображает их на панели Android Compose Preview. Используйте его, когда пользователь хочет увидеть превью Compose или проверить результат изменений интерфейса — выполняйте повторный рендеринг после изменения кода, чтобы панель отобразила актуальный результат."
+    },
+    {
+        pattern: /^Renders\s+Jetpack\s+Compose\s+previews\s+with\s+`?android\s+preview`?\s+and\s+shows\s+them\s+in\s+a\s+pane\.?$/i,
+        replace: () => "Рендерит превью Jetpack Compose с помощью `android preview` и отображает их на боковой панели."
+    },
+    {
+        pattern: /^Sidecar\s+for\s+managing\s+Android\s+Virtual\s+Devices\s+\(list,\s*start,\s*stop,\s*create,\s*remove\).*$/i,
+        replace: () => "Сайдкар для управления виртуальными устройствами Android (список, запуск, остановка, создание, удаление) через CLI эмулятора Android, а также для трансляции экрана и управления эмуляторами и физическими устройствами, подключёнными к adb."
     },
     {
         // "Editing <target>" or "Editing"
@@ -6469,6 +6800,51 @@ function shouldIgnore(node) {
             val.startsWith('read, create, edit, and manage google docs') ||
             val.startsWith('чтение, create, edit, and manage google docs') ||
             /^tool\s+(arguments?|outputs?|inputs?|results?|parameters?|calls?)$/i.test(val) ||
+            val === 'recent' ||
+            val === 'recent:' ||
+            val === 'trigger' ||
+            val === 'triggers' ||
+            val === 'time zone' ||
+            val === 'timezone' ||
+            val === 'this computer' ||
+            val === 'this computer >' ||
+            val === 'cloud' ||
+            val === 'runs on' ||
+            val === 'schedule' ||
+            val === 'scheduled task' ||
+            val === 'new scheduled task' ||
+            val === 'add scheduled task' ||
+            val === 'environment' ||
+            val === 'execution identity' ||
+            val === 'standalone' ||
+            val === 'no projects created' ||
+            val === 'select workspace' ||
+            val === 'not cloned locally' ||
+            val === 'skill' ||
+            val === 'command' ||
+            val === 'note' ||
+            val === 'tip' ||
+            val === 'ui extensions' ||
+            val === 'accounts' ||
+            val === 'hooks' ||
+            val === 'context providers' ||
+            val === 'empty message' ||
+            val === 'unread' ||
+            val === 'context usage' ||
+            val.includes('low-latency, bidirectional voice') ||
+            val.includes('stateful multi-turn chat') ||
+            val.includes('real-time audio/video streaming') ||
+            val.includes('gemini omni flash') ||
+            val.includes('myfirstapp') ||
+            val.includes('samsung galaxy ultra') ||
+            val.includes('ready to publish to google play') ||
+            val.includes('android cli') ||
+            val.includes('android virtual devices') ||
+            val.includes('jetpack compose') ||
+            val.includes('android gradle plugin') ||
+            val.includes('android knowledge base') ||
+            val.includes('android sdk') ||
+            val.includes('device hub') ||
             val.startsWith('find the trends and outliers') ||
             val.startsWith('build a monthly budget tracker') ||
             val.startsWith('сборка a monthly budget tracker') ||
@@ -7161,6 +7537,43 @@ function isFileName(text, parent) {
         lowerTrimmed.startsWith('read, create, edit, and manage google docs') ||
         lowerTrimmed.startsWith('чтение, create, edit, and manage google docs') ||
         /^tool\s+(arguments?|outputs?|inputs?|results?|parameters?|calls?)$/i.test(lowerTrimmed) ||
+        lowerTrimmed === 'recent' ||
+        lowerTrimmed === 'recent:' ||
+        lowerTrimmed === 'trigger' ||
+        lowerTrimmed === 'triggers' ||
+        lowerTrimmed === 'time zone' ||
+        lowerTrimmed === 'timezone' ||
+        lowerTrimmed === 'this computer' ||
+        lowerTrimmed === 'this computer >' ||
+        lowerTrimmed === 'cloud' ||
+        lowerTrimmed === 'runs on' ||
+        lowerTrimmed === 'schedule' ||
+        lowerTrimmed === 'scheduled task' ||
+        lowerTrimmed === 'skill' ||
+        lowerTrimmed === 'command' ||
+        lowerTrimmed === 'note' ||
+        lowerTrimmed === 'tip' ||
+        lowerTrimmed === 'ui extensions' ||
+        lowerTrimmed === 'accounts' ||
+        lowerTrimmed === 'hooks' ||
+        lowerTrimmed === 'context providers' ||
+        lowerTrimmed === 'empty message' ||
+        lowerTrimmed === 'unread' ||
+        lowerTrimmed === 'context usage' ||
+        lowerTrimmed.includes('low-latency, bidirectional voice') ||
+        lowerTrimmed.includes('stateful multi-turn chat') ||
+        lowerTrimmed.includes('real-time audio/video streaming') ||
+        lowerTrimmed.includes('gemini omni flash') ||
+        lowerTrimmed.includes('myfirstapp') ||
+        lowerTrimmed.includes('samsung galaxy ultra') ||
+        lowerTrimmed.includes('ready to publish to google play') ||
+        lowerTrimmed.includes('android cli') ||
+        lowerTrimmed.includes('android virtual devices') ||
+        lowerTrimmed.includes('jetpack compose') ||
+        lowerTrimmed.includes('android gradle plugin') ||
+        lowerTrimmed.includes('android knowledge base') ||
+        lowerTrimmed.includes('android sdk') ||
+        lowerTrimmed.includes('device hub') ||
         lowerTrimmed.startsWith('find the trends and outliers') ||
         lowerTrimmed.startsWith('build a monthly budget tracker') ||
         lowerTrimmed.startsWith('сборка a monthly budget tracker') ||
@@ -7560,6 +7973,16 @@ function translateTextNode(node) {
                 } else {
                     translated = 'Выполняется';
                 }
+            } else if (lowerText === 'the') {
+                const pText = node.parentElement ? normalizeText(node.parentElement.textContent).toLowerCase() : '';
+                if (pText.includes('android skills')) {
+                    translated = 'Команда';
+                }
+            } else if (lowerText === 'if the') {
+                const pText = node.parentElement ? normalizeText(node.parentElement.textContent).toLowerCase() : '';
+                if (pText.includes('android') && (pText.includes('path') || pText.includes('installer') || pText.includes('установщик'))) {
+                    translated = 'Если инструмент';
+                }
             } else if (lowerText === 'left') {
                 const pText = node.parentElement ? normalizeText(node.parentElement.textContent) : '';
                 const gpText = (node.parentElement && node.parentElement.parentElement) ? normalizeText(node.parentElement.parentElement.textContent) : '';
@@ -7955,17 +8378,17 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.20';
+    const FALLBACK_VERSION = '2.1.21';
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
     }
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = 'Локализация v2.1.20: синхронизация версий GitHub без задержки CDN-кеша и минималистичная иконка «i» без рамки рядом с EN | RU.';
+        window.__antigravity_remote_changelog = 'Локализация v2.1.21: перевод Recent, Trigger, Time Zone, This Computer, Skill, UI Extensions, таблицы навыков Gemini API и всей страницы плагина Android CLI.';
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Локализация v2.1.20: синхронизация версий GitHub без задержки CDN-кеша и минималистичная иконка «i» без рамки рядом с EN | RU.';
+    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Локализация v2.1.21: перевод Recent, Trigger, Time Zone, This Computer, Skill, UI Extensions, таблицы навыков Gemini API и всей страницы плагина Android CLI.';
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
