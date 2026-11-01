@@ -1,6 +1,8 @@
 # 🚀 Google AntiGravity 2.0 — Russian Localization & System Enhancement Suite (`antigravity-features-v2`)
 
-[![Version](https://img.shields.io/badge/version-v2.1.26-blue.svg)](version.json)
+![Google AntiGravity 2.0 — 100% RU + Live MCP Auto-Update](assets/hero-banner.jpg)
+
+[![Version](https://img.shields.io/badge/version-v2.1.27-blue.svg)](version.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
 [![Target](https://img.shields.io/badge/Google%20AntiGravity-2.0%2B-orange.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
