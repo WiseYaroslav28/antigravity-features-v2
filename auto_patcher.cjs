@@ -137,23 +137,40 @@ if (!window.__antigravity_translation_initialized) {
             mainContent = mainContent.replace(/label:\s*`Open \${electron_1\.app\.getName\(\)}`,/g, "label: `Открыть ${electron_1.app.getName()}`,");
             mainContent = mainContent.replace(/label:\s*['"]Quit['"],/g, "label: 'Выход',");
             mainContent = mainContent.replace(/appendSwitch\(['"]remote-debugging-port['"],\s*['"]0['"]\)/g, "appendSwitch('remote-debugging-port', '9222')");
+            if (!mainContent.includes('__saveWindowStateNow')) {
+                mainContent = mainContent.replace(
+                    /for\s*\(\s*const\s+win\s+of\s+windows\s*\)\s*\{\s*win\.destroy\(\);\s*\}/,
+                    `for (const win of windows) {
+            try { if (typeof win.__saveWindowStateNow === 'function') win.__saveWindowStateNow(); } catch (e) {}
+            win.destroy();
+        }`
+                );
+            }
             fs.writeFileSync(mainExtracted, mainContent, 'utf8');
-            console.log('[AutoPatcher-v2] Patched dist/main.js for second-instance shortcut re-launch & menu!');
+            console.log('[AutoPatcher-v2] Patched dist/main.js for second-instance shortcut re-launch, before-quit state save & menu!');
         }
 
-        // 4. PATCH UTILS.JS (Fix Geometry, Multi-Monitor Position, Maximized State & Zoom Restoration)
+        // 4. PATCH UTILS.JS (Fix Geometry V3: Multi-Monitor & Single-Monitor Fallback, Multi-DPI Maximized State & Zoom Restoration)
         const utilsExtracted = path.join(tempDir, 'dist', 'utils.js');
         if (fs.existsSync(utilsExtracted)) {
             let utilsContent = fs.readFileSync(utilsExtracted, 'utf8');
-            if (!utilsContent.includes('ANTIGRAVITY WINDOW GEOMETRY PATCH V2')) {
-                // Clean up any legacy partial V1 geometry patch first
+            if (!utilsContent.includes('ANTIGRAVITY WINDOW GEOMETRY PATCH V3')) {
+                // Clean up any legacy V1 or V2 geometry patch first
+                utilsContent = utilsContent.replace(
+                    /\/\/ ANTIGRAVITY WINDOW GEOMETRY PATCH V2[\s\S]*?(?=\s*ensureAppIsInDock\(\);)/,
+                    ''
+                );
                 utilsContent = utilsContent.replace(
                     /\/\/ ANTIGRAVITY WINDOW GEOMETRY PATCH[\s\S]*?try \{ if \(fsState\.existsSync\(stateFile\)\) windowState = JSON\.parse\(fsState\.readFileSync\(stateFile, 'utf8'\)\); \} catch\(e\)\{\}\s*/,
                     ''
                 );
                 utilsContent = utilsContent.replace(
-                    /width:\s*windowState\.width \|\| 1400,\s*height:\s*windowState\.height \|\| 900,\s*x:\s*windowState\.x,\s*y:\s*windowState\.y,/,
+                    /width:\s*(?:initWidth|windowState\.width \|\| 1400),\s*height:\s*(?:initHeight|windowState\.height \|\| 900),\s*x:\s*(?:initX|windowState\.x),\s*y:\s*(?:initY|windowState\.y),/,
                     'width: 1400, height: 900,'
+                );
+                utilsContent = utilsContent.replace(
+                    /if \(typeof initX === 'number' && typeof initY === 'number'\) \{[\s\S]*?void win\.loadURL\(url\);/,
+                    'void win.loadURL(url);'
                 );
                 utilsContent = utilsContent.replace(
                     /if \(windowState\.isMaximized\) win\.maximize\(\);[\s\S]*?void win\.loadURL\(url\);/,
@@ -163,7 +180,7 @@ if (!window.__antigravity_translation_initialized) {
                 utilsContent = utilsContent.replace(
                     /function\s+createWindow\s*\(([^)]*)\)\s*\{/,
                     `function createWindow($1) {
-    // ANTIGRAVITY WINDOW GEOMETRY PATCH V2
+    // ANTIGRAVITY WINDOW GEOMETRY PATCH V3
     if (storageManager) {
         global.__antigravity_storage_manager = storageManager;
     } else if (global.__antigravity_storage_manager) {
@@ -178,28 +195,57 @@ if (!window.__antigravity_translation_initialized) {
             windowState = JSON.parse(fsState.readFileSync(stateFile, 'utf8')) || {};
         }
     } catch (e) {}
-    let initWidth = windowState.normalWidth || windowState.width || 1400;
-    let initHeight = windowState.normalHeight || windowState.height || 900;
-    let initX = typeof windowState.normalX === 'number' ? windowState.normalX : windowState.x;
-    let initY = typeof windowState.normalY === 'number' ? windowState.normalY : windowState.y;
+    const shouldMaximize = !!windowState.isMaximized;
+    const shouldFullScreen = !!windowState.isFullScreen;
+    let targetDisplay = null;
     try {
-        if (windowState.isMaximized && typeof windowState.x === 'number' && typeof windowState.y === 'number') {
-            const disp = electron_1.screen.getDisplayMatching({
-                x: windowState.x,
-                y: windowState.y,
-                width: windowState.width || 1400,
-                height: windowState.height || 900
+        const refX = typeof windowState.x === 'number' ? windowState.x : windowState.normalX;
+        const refY = typeof windowState.y === 'number' ? windowState.y : windowState.normalY;
+        const refW = windowState.width || windowState.normalWidth || 1400;
+        const refH = windowState.height || windowState.normalHeight || 900;
+        if (typeof refX === 'number' && typeof refY === 'number') {
+            targetDisplay = electron_1.screen.getDisplayNearestPoint({
+                x: refX + Math.round(refW / 2),
+                y: refY + Math.round(refH / 2)
+            }) || electron_1.screen.getDisplayMatching({
+                x: refX,
+                y: refY,
+                width: refW,
+                height: refH
             });
-            if (disp && disp.workArea) {
-                if (typeof windowState.normalX !== 'number' || windowState.normalX < disp.workArea.x || windowState.normalX >= disp.workArea.x + disp.workArea.width) {
-                    initWidth = Math.min(1400, disp.workArea.width);
-                    initHeight = Math.min(900, disp.workArea.height);
-                    initX = disp.workArea.x + Math.round((disp.workArea.width - initWidth) / 2);
-                    initY = disp.workArea.y + Math.round((disp.workArea.height - initHeight) / 2);
-                }
-            }
         }
-    } catch (e) {}`
+        if (!targetDisplay) {
+            targetDisplay = electron_1.screen.getPrimaryDisplay();
+        }
+    } catch (e) {}
+    const wa = (targetDisplay && targetDisplay.workArea) ? targetDisplay.workArea : { x: 0, y: 0, width: 1400, height: 900 };
+    let initWidth = Math.min(Math.max(windowState.normalWidth || (!shouldMaximize && windowState.width) || 1400, 500), wa.width);
+    let initHeight = Math.min(Math.max(windowState.normalHeight || (!shouldMaximize && windowState.height) || 900, 400), wa.height);
+    if (shouldMaximize && initWidth >= Math.round(wa.width * 0.92) && initHeight >= Math.round(wa.height * 0.92)) {
+        initWidth = Math.min(1400, Math.round(wa.width * 0.8));
+        initHeight = Math.min(900, Math.round(wa.height * 0.8));
+    }
+    let initX = typeof windowState.normalX === 'number' ? windowState.normalX : (!shouldMaximize && typeof windowState.x === 'number' ? windowState.x : undefined);
+    let initY = typeof windowState.normalY === 'number' ? windowState.normalY : (!shouldMaximize && typeof windowState.y === 'number' ? windowState.y : undefined);
+    const centerX = typeof initX === 'number' ? initX + Math.round(initWidth / 2) : NaN;
+    const centerY = typeof initY === 'number' ? initY + Math.round(initHeight / 2) : NaN;
+    if (
+        typeof initX !== 'number' ||
+        typeof initY !== 'number' ||
+        isNaN(centerX) ||
+        isNaN(centerY) ||
+        centerX < wa.x ||
+        centerX >= wa.x + wa.width ||
+        centerY < wa.y ||
+        centerY >= wa.y + wa.height ||
+        initY < wa.y
+    ) {
+        initX = wa.x + Math.round((wa.width - initWidth) / 2);
+        initY = wa.y + Math.round((wa.height - initHeight) / 2);
+    } else {
+        initX = Math.max(wa.x, Math.min(initX, wa.x + wa.width - initWidth));
+        initY = Math.max(wa.y, Math.min(initY, wa.y + wa.height - initHeight));
+    }`
                 );
 
                 utilsContent = utilsContent.replace(
@@ -212,50 +258,95 @@ if (!window.__antigravity_translation_initialized) {
 
                 utilsContent = utilsContent.replace(
                     /void\s+win\.loadURL\(url\);/,
-                    `if (typeof initX === 'number' && typeof initY === 'number') {
-        try { win.setBounds({ x: initX, y: initY, width: initWidth, height: initHeight }); } catch (e) {}
-    }
-    if (windowState.isMaximized) {
-        win.maximize();
-    } else if (windowState.isFullScreen) {
-        win.setFullScreen(true);
-    }
-    const saveWindowState = () => {
+                    `let isRestoringWindowState = true;
+    const enforceWindowPlacement = () => {
         try {
             if (win.isDestroyed()) return;
+            if (shouldFullScreen) {
+                if (!win.isFullScreen()) win.setFullScreen(true);
+            } else if (shouldMaximize) {
+                if (!win.isMaximized()) {
+                    win.setBounds({ x: initX, y: initY, width: initWidth, height: initHeight });
+                    win.maximize();
+                }
+            }
+        } catch (e) {}
+    };
+    if (typeof initX === 'number' && typeof initY === 'number') {
+        try { win.setBounds({ x: initX, y: initY, width: initWidth, height: initHeight }); } catch (e) {}
+    }
+    enforceWindowPlacement();
+    win.once('ready-to-show', enforceWindowPlacement);
+    win.once('show', enforceWindowPlacement);
+    win.webContents.once('dom-ready', enforceWindowPlacement);
+    const saveWindowState = (forceSave = false) => {
+        try {
+            if (win.isDestroyed()) return;
+            if (isRestoringWindowState && forceSave !== true) return;
             const isMaximized = win.isMaximized();
             const isFullScreen = win.isFullScreen();
             const isMinimized = win.isMinimized();
+            if (isMinimized) return;
             const bounds = win.getBounds();
-            if (!isMaximized && !isFullScreen && !isMinimized) {
+            if (!isMaximized && !isFullScreen) {
                 windowState.normalX = bounds.x;
                 windowState.normalY = bounds.y;
                 windowState.normalWidth = bounds.width;
                 windowState.normalHeight = bounds.height;
+            } else {
+                try {
+                    const curDisp = electron_1.screen.getDisplayNearestPoint({
+                        x: bounds.x + Math.round(bounds.width / 2),
+                        y: bounds.y + Math.round(bounds.height / 2)
+                    });
+                    if (curDisp && curDisp.workArea) {
+                        const cwa = curDisp.workArea;
+                        const nw = windowState.normalWidth || 1400;
+                        const nh = windowState.normalHeight || 900;
+                        const nx = typeof windowState.normalX === 'number' ? windowState.normalX + Math.round(nw / 2) : NaN;
+                        const ny = typeof windowState.normalY === 'number' ? windowState.normalY + Math.round(nh / 2) : NaN;
+                        if (isNaN(nx) || isNaN(ny) || nx < cwa.x || nx >= cwa.x + cwa.width || ny < cwa.y || ny >= cwa.y + cwa.height || windowState.normalY < cwa.y) {
+                            windowState.normalWidth = Math.min(nw, cwa.width);
+                            windowState.normalHeight = Math.min(nh, cwa.height);
+                            windowState.normalX = cwa.x + Math.round((cwa.width - windowState.normalWidth) / 2);
+                            windowState.normalY = cwa.y + Math.round((cwa.height - windowState.normalHeight) / 2);
+                        }
+                    }
+                } catch (e) {}
             }
-            if (!isMinimized) {
-                windowState.x = bounds.x;
-                windowState.y = bounds.y;
-                windowState.width = bounds.width;
-                windowState.height = bounds.height;
-                windowState.isMaximized = isMaximized;
-                windowState.isFullScreen = isFullScreen;
-            }
+            windowState.x = bounds.x;
+            windowState.y = bounds.y;
+            windowState.width = bounds.width;
+            windowState.height = bounds.height;
+            windowState.isMaximized = isMaximized;
+            windowState.isFullScreen = isFullScreen;
             fsState.writeFileSync(stateFile, JSON.stringify(windowState));
         } catch (e) {}
     };
-    win.on('resize', saveWindowState);
-    win.on('move', saveWindowState);
-    win.on('maximize', saveWindowState);
-    win.on('unmaximize', saveWindowState);
-    win.on('enter-full-screen', saveWindowState);
-    win.on('leave-full-screen', saveWindowState);
-    win.on('close', saveWindowState);
+    win.__saveWindowStateNow = () => saveWindowState(true);
+    win.webContents.once('did-finish-load', () => {
+        enforceWindowPlacement();
+        setTimeout(() => {
+            enforceWindowPlacement();
+            isRestoringWindowState = false;
+            saveWindowState(true);
+        }, 400);
+    });
+    setTimeout(() => {
+        isRestoringWindowState = false;
+    }, 1500);
+    win.on('resize', () => saveWindowState(false));
+    win.on('move', () => saveWindowState(false));
+    win.on('maximize', () => saveWindowState(false));
+    win.on('unmaximize', () => saveWindowState(false));
+    win.on('enter-full-screen', () => saveWindowState(false));
+    win.on('leave-full-screen', () => saveWindowState(false));
+    win.on('close', () => saveWindowState(true));
     void win.loadURL(url);`
                 );
 
                 fs.writeFileSync(utilsExtracted, utilsContent, 'utf8');
-                console.log('[AutoPatcher-v2] Patched dist/utils.js (V2) for Monitor 2 geometry, resize/move/close persistence & maximized state!');
+                console.log('[AutoPatcher-v2] Patched dist/utils.js (V3) for multi-monitor/single-monitor geometry & multi-DPI maximized state!');
             }
         }
 
@@ -374,6 +465,21 @@ function buildContextMenuTemplate(items, onSelect) {`
                 );
             } else {
                 ipcContent = ipcContent.replace(/const CONTEXT_MENU_RU_MAP = \{[\s\S]*?\};/, ipcMapCode);
+            }
+            if (!ipcContent.includes('ANTIGRAVITY TITLEBAR OVERLAY MAXIMIZE GUARD')) {
+                ipcContent = ipcContent.replace(
+                    /win\.setTitleBarOverlay\(\{\s*color:\s*options\.color,\s*symbolColor:\s*options\.symbolColor,\s*height:\s*30,?\s*\}\);/,
+                    `// ANTIGRAVITY TITLEBAR OVERLAY MAXIMIZE GUARD
+            const wasMax = win.isMaximized();
+            win.setTitleBarOverlay({
+                color: options.color,
+                symbolColor: options.symbolColor,
+                height: 30,
+            });
+            if (wasMax && !win.isMaximized()) {
+                win.maximize();
+            }`
+                );
             }
             fs.writeFileSync(ipcHandlersExtracted, ipcContent, 'utf8');
             console.log('[AutoPatcher-v2] Patched dist/ipcHandlers.js for native context menu localization!');

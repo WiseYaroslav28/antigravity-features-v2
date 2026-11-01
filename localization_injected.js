@@ -13177,17 +13177,17 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.26';
+    const FALLBACK_VERSION = '2.1.27';
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
     }
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = 'Локализация v2.1.26: перевод относительного времени (2m ago → 2 мин назад), быстрых вопросов /btw (3 Side Questions → 3 быстрых вопроса), составных описаний команд после Ran/Running, статусов отмены/ошибки агента (User cancelled agent execution.), навигатора шагов (Turn 498 → Шаг 498, X of Y → X из Y), квот (100% left → 100% осталось), поиска и фильтров палитры (Search for files in the project..., Show N more..., Only Unread/Archived/Automations), голосового ввода (Finalizing... → Завершение...) и добавлен веб-установщик install.ps1 + GitHub Actions Release workflow.';
+        window.__antigravity_remote_changelog = 'Обновление v2.1.27: добавлен Window Geometry Patch V3 (точное сохранение монитора по центру окна, поддержка систем с 1 и 2+ мониторами с разным DPI, защита развёрнутого состояния на весь экран и сохранение при выходе из трея), в карточку иконки «i» встроена кнопка «💬 Предложить идею / Заказать доработку», добавлены шаблоны обращений на GitHub и обновлена статья ARTICLE_RU.md.';
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Локализация v2.1.26: перевод относительного времени (2m ago → 2 мин назад), быстрых вопросов /btw (3 Side Questions → 3 быстрых вопроса), составных описаний команд после Ran/Running, статусов отмены/ошибки агента (User cancelled agent execution.), навигатора шагов (Turn 498 → Шаг 498, X of Y → X из Y), квот (100% left → 100% осталось), поиска и фильтров палитры (Search for files in the project..., Show N more..., Only Unread/Archived/Automations), голосового ввода (Finalizing... → Завершение...) и добавлен веб-установщик install.ps1 + GitHub Actions Release workflow.';
+    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Обновление v2.1.27: добавлен Window Geometry Patch V3 (точное сохранение монитора по центру окна, поддержка систем с 1 и 2+ мониторами с разным DPI, защита развёрнутого состояния на весь экран и сохранение при выходе из трея), в карточку иконки «i» встроена кнопка «💬 Предложить идею / Заказать доработку», добавлены шаблоны обращений на GitHub и обновлена статья ARTICLE_RU.md.';
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -13220,6 +13220,7 @@ function initLanguageSwitcher() {
             <div class="update-popup-actions">
                 <button class="update-action-btn primary" id="update-check-install-btn">🔄 Проверить и установить обновления</button>
                 <button class="update-action-btn secondary" id="update-restart-action-btn">⚡ Перезапустить AntiGravity</button>
+                <button class="update-action-btn secondary" id="update-feedback-action-btn" title="Сообщить о непереведённой строке, предложить идею или заказать доработку на GitHub">💬 Предложить идею / Заказать доработку</button>
             </div>
         </div>
     `;
@@ -13766,6 +13767,19 @@ function initLanguageSwitcher() {
             try {
                 await fetch('http://127.0.0.1:39228/restart');
             } catch(err) {}
+        });
+    }
+
+    const feedbackBtn = document.getElementById('update-feedback-action-btn');
+    if (feedbackBtn) {
+        feedbackBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const issueUrl = 'https://github.com/WiseYaroslav28/antigravity-features-v2/issues/new/choose';
+            if (window.electronNative && typeof window.electronNative.openExternal === 'function') {
+                window.electronNative.openExternal(issueUrl);
+            } else {
+                window.open(issueUrl, '_blank', 'noopener,noreferrer');
+            }
         });
     }
 

@@ -1,7 +1,7 @@
 {
-  "version": "2.1.26",
-  "releaseDate": "2026-11-01T14:26:58.255Z",
-  "changelog": "Локализация v2.1.26: перевод относительного времени (2m ago → 2 мин назад), быстрых вопросов /btw (3 Side Questions → 3 быстрых вопроса), составных описаний команд после Ran/Running, статусов отмены/ошибки агента (User cancelled agent execution.), навигатора шагов (Turn 498 → Шаг 498, X of Y → X из Y), квот (100% left → 100% осталось), поиска и фильтров палитры (Search for files in the project..., Show N more..., Only Unread/Archived/Automations), голосового ввода (Finalizing... → Завершение...) и добавлен веб-установщик install.ps1 + GitHub Actions Release workflow.",
+  "version": "2.1.27",
+  "releaseDate": "2026-11-01T16:58:30.000Z",
+  "changelog": "Обновление v2.1.27: добавлен Window Geometry Patch V3 (точное сохранение монитора по центру окна, поддержка систем с 1 и 2+ мониторами с разным DPI, защита развёрнутого состояния на весь экран и сохранение при выходе из трея), в карточку иконки «i» встроена кнопка «💬 Предложить идею / Заказать доработку», добавлены шаблоны обращений на GitHub и обновлена статья ARTICLE_RU.md.",
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",
