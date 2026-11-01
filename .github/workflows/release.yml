@@ -1,0 +1,84 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to release (e.g. v2.1.26)'
+        required: true
+
+jobs:
+  release:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate JavaScript syntax
+        run: |
+          node --check localization_injected.js
+          node --check auto_patcher.cjs
+          node --check index.js
+          node --check backup_manager.js
+          node --check exit_patcher.cjs
+
+      - name: Prepare Release Notes from version.json
+        id: notes
+        shell: bash
+        run: |
+          TAG_NAME="${{ github.event.inputs.tag || github.ref_name }}"
+          VERSION="${TAG_NAME#v}"
+          node -e '
+            const fs = require("fs");
+            const ver = JSON.parse(fs.readFileSync("version.json", "utf8"));
+            const tag = process.env.TAG_NAME || ("v" + ver.version);
+            const body = [
+              "### 🇷🇺 Что нового в " + tag,
+              "",
+              "- " + (ver.changelog || ("Обновление локализации Google AntiGravity 2.0 (" + tag + ")")),
+              "",
+              "---",
+              "",
+              "### ⚡ Быстрая установка (в 1 строку PowerShell)",
+              "```powershell",
+              "irm https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/install.ps1 | iex",
+              "```",
+              "",
+              "### 🤖 Установка через чат самой AntiGravity (самоустановка агентом)",
+              "Скопируйте и отправьте агенту в чат AntiGravity:",
+              "> Установи полный русификатор и MCP-сервер автообновления AntiGravity 2.0 из https://github.com/WiseYaroslav28/antigravity-features-v2 — выполни в PowerShell команду: `irm https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/install.ps1 | iex`"
+            ].join("\n");
+            fs.writeFileSync("release_notes.md", body, "utf8");
+          '
+        env:
+          TAG_NAME: ${{ github.event.inputs.tag || github.ref_name }}
+
+      - name: Create GitHub Release (via github-actions[bot])
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG_NAME="${{ github.event.inputs.tag || github.ref_name }}"
+          if gh release view "$TAG_NAME" >/dev/null 2>&1; then
+            gh release edit "$TAG_NAME" --title "$TAG_NAME" --notes-file release_notes.md
+            gh release upload "$TAG_NAME" localization_injected.js install_on_new_pc.bat install.ps1 version.json --clobber
+          else
+            gh release create "$TAG_NAME" \
+              localization_injected.js \
+              install_on_new_pc.bat \
+              install.ps1 \
+              version.json \
+              --title "$TAG_NAME" \
+              --notes-file release_notes.md
+          fi

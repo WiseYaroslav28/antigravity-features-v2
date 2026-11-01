@@ -83,10 +83,13 @@ function translateRelativeTime(text) {
     if (/^yesterday$/i.test(res)) return 'вчера';
     if (/^today$/i.test(res)) return 'сегодня';
     
-    res = res.replace(/^(\d+)\s*s\s*(?:ago)?$/i, '$1 сек назад');
-    res = res.replace(/^(\d+)\s*m\s*(?:ago)?$/i, '$1 мин назад');
-    res = res.replace(/^(\d+)\s*h\s*(?:ago)?$/i, '$1 ч назад');
+    res = res.replace(/^(\d+)\s*(?:s|sec|secs)\s*(?:ago)?$/i, '$1 сек назад');
+    res = res.replace(/^(\d+)\s*(?:m|min|mins)\s*(?:ago)?$/i, '$1 мин назад');
+    res = res.replace(/^(\d+)\s*(?:h|hr|hrs)\s*(?:ago)?$/i, '$1 ч назад');
     res = res.replace(/^(\d+)\s*d\s*(?:ago)?$/i, '$1 дн назад');
+    res = res.replace(/^(\d+)\s*(?:w|wk|wks)\s*(?:ago)?$/i, '$1 нед назад');
+    res = res.replace(/^(\d+)\s*(?:mo|mos)\s*(?:ago)?$/i, '$1 мес назад');
+    res = res.replace(/^(\d+)\s*(?:y|yr|yrs)\s*(?:ago)?$/i, '$1 г. назад');
     
     const pluralize = (count, one, two, five) => {
         const n = Math.abs(count) % 100;
@@ -3322,8 +3325,250 @@ const translationDictionary = {
     "subagent ended": "Субагент завершил работу",
     "loading subagent...": "Загрузка субагента...",
     "loading subagent": "Загрузка субагента",
-    "background task output": "Вывод фоновой задачи"
+    "background task output": "Вывод фоновой задачи",
+    "side question": "Быстрый вопрос",
+    "side questions": "Быстрые вопросы",
+    "side question:": "Быстрый вопрос:",
+    "1 side question": "1 быстрый вопрос",
+    "previous side question": "Предыдущий быстрый вопрос",
+    "next side question": "Следующий быстрый вопрос",
+    "previous question": "Предыдущий вопрос",
+    "next question": "Следующий вопрос",
+    "delete side question": "Удалить быстрый вопрос",
+    "minimize side question": "Свернуть быстрый вопрос",
+    "resize side question panel": "Изменить размер панели быстрого вопроса",
+    "drag to resize, double-click to reset": "Потяните для изменения размера, дважды нажмите для сброса",
+    "side question answered.": "Ответ на быстрый вопрос получен.",
+    "side question answered": "Ответ на быстрый вопрос получен",
+    "new models have been enabled for you!": "Для вас включены новые модели!",
+    "select a model in the model selector": "Выберите модель в селекторе моделей",
+    "ask a quick question on the side without interrupting the main conversation.": "Задать быстрый вопрос, не прерывая основной диалог.",
+    "ask a quick question on the side without interrupting the main conversation": "Задать быстрый вопрос, не прерывая основной диалог",
+    "user cancelled agent execution.": "Пользователь отменил выполнение агента.",
+    "user cancelled agent execution": "Пользователь отменил выполнение агента",
+    "user canceled agent execution.": "Пользователь отменил выполнение агента.",
+    "user canceled agent execution": "Пользователь отменил выполнение агента",
+    "agent execution failed.": "Ошибка выполнения агента.",
+    "agent execution failed": "Ошибка выполнения агента",
+    "configure agent execution, queued message delivery, and permissions.": "Настройка выполнения агента, доставки сообщений из очереди и разрешений.",
+    "configure agent execution, queued message delivery, and permissions": "Настройка выполнения агента, доставки сообщений из очереди и разрешений",
+    "couldn't load message": "Не удалось загрузить сообщение",
+    "no message text": "Нет текста сообщения",
+    "scroll turns up": "Прокрутить шаги вверх",
+    "scroll turns down": "Прокрутить шаги вниз",
+    "turn on a flag you don't have": "Включить флаг, которого нет в списке",
+    "custom flag to turn on": "Пользовательский флаг для включения",
+    "% left": "% осталось",
+    "refreshing...": "Обновление...",
+    "no quota information available.": "Информация о квоте недоступна.",
+    "no quota information available": "Информация о квоте недоступна",
+    "search for files in the project...": "Поиск файлов в проекте...",
+    "search for files in the project": "Поиск файлов в проекте",
+    "search files...": "Поиск файлов...",
+    "search files": "Поиск файлов",
+    "search for conversations...": "Поиск диалогов...",
+    "search for conversations": "Поиск диалогов",
+    "search for commands...": "Поиск команд...",
+    "search for commands": "Поиск команд",
+    "search projects...": "Поиск проектов...",
+    "search projects": "Поиск проектов",
+    "code search": "Поиск по коду",
+    "recent conversations": "Недавние диалоги",
+    "untitled conversation": "Диалог без названия",
+    "command:": "Команда:",
+    "disk is full. search will no longer match in conversation bodies until you clear up space and restart.": "Диск заполнен. Поиск по содержимому диалогов приостановлен, пока вы не освободите место и не перезапустите приложение.",
+    "only unread": "Только непрочитанные",
+    "only archived": "Только в архиве",
+    "only automations": "Только автоматизации",
+    "only scheduled": "Только запланированные",
+    "sort conversations": "Сортировка диалогов",
+    "sort and filter conversations": "Сортировка и фильтрация диалогов",
+    "see less": "Свернуть",
+    "see more...": "Показать ещё...",
+    "see all": "Показать все",
+    "no results found": "Ничего не найдено",
+    "finalizing...": "Завершение...",
+    "finalizing": "Завершение",
+    "finalizing transcription...": "Завершение транскрибации...",
+    "finalizing transcription": "Завершение транскрибации",
+    "sending transcribed message...": "Отправка распознанного сообщения...",
+    "sending transcribed message": "Отправка распознанного сообщения",
+    "record audio": "Записать аудио",
+    "stop recording": "Остановить запись",
+    "recording": "Запись",
+    "stop recording and send": "Остановить запись и отправить",
+    "chief of staff voice mode is active": "Активен голосовой режим Начальника штаба",
+    "voice recording is unavailable while the chief of staff mic is on": "Запись голоса недоступна, пока включён микрофон Начальника штаба",
+    "send message": "Отправить сообщение",
+    "send message enter": "Отправить сообщение Enter",
+    "send message ⏎": "Отправить сообщение ⏎",
+    "queue message": "Поставить сообщение в очередь",
+    "send immediately": "Отправить немедленно"
 };
+
+function translateSingleEnglishClause(clause, isFirstClause) {
+    if (!clause) return clause;
+    const c = clause.trim();
+    const lower = c.toLowerCase();
+
+    const pluralizeRu = (count, one, two, five) => {
+        const n = Math.abs(count) % 100;
+        const n1 = n % 10;
+        if (n > 10 && n < 20) return five;
+        if (n1 > 1 && n1 < 5) return two;
+        if (n1 === 1) return one;
+        return five;
+    };
+
+    // Exact clause matches
+    if (lower === 'restore clean core') return isFirstClause ? 'Восстановление чистого ядра' : 'восстановление чистого ядра';
+    if (lower === 'create atomic snapshot') return isFirstClause ? 'Создание атомарного снимка' : 'создание атомарного снимка';
+    if (/^publish\s+(all\s+)?(\d+)\s+approved\s+doc(?:ument)?\s+revisions?\s+to\s+(\S+)$/i.test(c)) {
+        const m = c.match(/^publish\s+(all\s+)?(\d+)\s+approved\s+doc(?:ument)?\s+revisions?\s+to\s+(\S+)$/i);
+        const hasAll = Boolean(m[1]);
+        const cnt = parseInt(m[2], 10);
+        const revPhrase = hasAll ? 'утверждённых ревизий' : pluralizeRu(cnt, 'утверждённой ревизии', 'утверждённых ревизий', 'утверждённых ревизий');
+        const dest = /^db$/i.test(m[3]) ? 'БД' : m[3];
+        const prefix = isFirstClause ? 'Публикация' : 'публикация';
+        return `${prefix} ${hasAll ? 'всех ' : ''}${cnt} ${revPhrase} документов в ${dest}`;
+    }
+    if (/^publish\s+(all\s+)?(\d+)\s+doc(?:ument)?\s+revisions?\s+to\s+(\S+)$/i.test(c)) {
+        const m = c.match(/^publish\s+(all\s+)?(\d+)\s+doc(?:ument)?\s+revisions?\s+to\s+(\S+)$/i);
+        const hasAll = Boolean(m[1]);
+        const cnt = parseInt(m[2], 10);
+        const revPhrase = hasAll ? 'ревизий' : pluralizeRu(cnt, 'ревизии', 'ревизий', 'ревизий');
+        const dest = /^db$/i.test(m[3]) ? 'БД' : m[3];
+        const prefix = isFirstClause ? 'Публикация' : 'публикация';
+        return `${prefix} ${hasAll ? 'всех ' : ''}${cnt} ${revPhrase} документов в ${dest}`;
+    }
+
+    // General verb + object patterns for toolSummary clauses
+    const verbMap = [
+        [/^restore\s+(.+)$/i, 'Восстановление', 'восстановление'],
+        [/^publish\s+(.+)$/i, 'Публикация', 'публикация'],
+        [/^create\s+(.+)$/i, 'Создание', 'создание'],
+        [/^verify\s+(.+)$/i, 'Проверка', 'проверка'],
+        [/^validate\s+(.+)$/i, 'Валидация', 'валидация'],
+        [/^check\s+(.+)$/i, 'Проверка', 'проверка'],
+        [/^inspect\s+(.+)$/i, 'Проверка', 'проверка'],
+        [/^read\s+(.+)$/i, 'Чтение', 'чтение'],
+        [/^list\s+(.+)$/i, 'Список', 'список'],
+        [/^scan\s+(.+)$/i, 'Сканирование', 'сканирование'],
+        [/^sync(?:hronize)?\s+(.+)$/i, 'Синхронизация', 'синхронизация'],
+        [/^seed\s+(.+)$/i, 'Заполнение', 'заполнение'],
+        [/^populate\s+(.+)$/i, 'Заполнение', 'заполнение'],
+        [/^upsert\s+(.+)$/i, 'Обновление', 'обновление'],
+        [/^update\s+(.+)$/i, 'Обновление', 'обновление'],
+        [/^extract\s+(.+)$/i, 'Извлечение', 'извлечение'],
+        [/^compare\s+(.+)$/i, 'Сравнение', 'сравнение'],
+        [/^find\s+(.+)$/i, 'Поиск', 'поиск'],
+        [/^search\s+(.+)$/i, 'Поиск', 'поиск'],
+        [/^seal\s+(.+)$/i, 'Фиксация', 'фиксация'],
+        [/^print\s+(.+)$/i, 'Вывод', 'вывод'],
+        [/^count\s+(.+)$/i, 'Подсчёт', 'подсчёт'],
+        [/^launch\s+(.+)$/i, 'Запуск', 'запуск'],
+        [/^execute\s+(.+)$/i, 'Выполнение', 'выполнение'],
+        [/^run\s+(.+)$/i, 'Запуск', 'запуск'],
+        [/^test\s+(.+)$/i, 'Тестирование', 'тестирование'],
+        [/^clean\s+(.+)$/i, 'Очистка', 'очистка'],
+        [/^reload\s+(.+)$/i, 'Перезагрузка', 'перезагрузка'],
+        [/^restart\s+(.+)$/i, 'Перезапуск', 'перезапуск'],
+        [/^revert\s+(.+)$/i, 'Откат', 'откат'],
+        [/^upload\s+(.+)$/i, 'Загрузка', 'загрузка'],
+        [/^download\s+(.+)$/i, 'Скачивание', 'скачивание'],
+        [/^copy\s+(.+)$/i, 'Копирование', 'копирование'],
+        [/^delete\s+(.+)$/i, 'Удаление', 'удаление'],
+        [/^remove\s+(.+)$/i, 'Удаление', 'удаление'],
+        [/^build\s+(.+)$/i, 'Сборка', 'сборка'],
+        [/^deploy\s+(.+)$/i, 'Развёртывание', 'развёртывание'],
+        [/^fix\s+(.+)$/i, 'Исправление', 'исправление'],
+        [/^repair\s+(.+)$/i, 'Исправление', 'исправление'],
+        [/^generate\s+(.+)$/i, 'Генерация', 'генерация'],
+        [/^initialize\s+(.+)$/i, 'Инициализация', 'инициализация'],
+        [/^install\s+(.+)$/i, 'Установка', 'установка'],
+        [/^configure\s+(.+)$/i, 'Настройка', 'настройка'],
+        [/^disable\s+(.+)$/i, 'Отключение', 'отключение'],
+        [/^enable\s+(.+)$/i, 'Включение', 'включение']
+    ];
+
+    for (const [re, capNoun, lowNoun] of verbMap) {
+        const m = c.match(re);
+        if (m) {
+            let rest = m[1].trim();
+            rest = rest
+                .replace(/\bclean\s+core\b/gi, 'чистого ядра')
+                .replace(/\batomic\s+pre-worker\s+snapshot\b/gi, 'атомарного снимка перед воркером')
+                .replace(/\batomic\s+pre-execution\s+snapshot\b/gi, 'атомарного снимка перед выполнением')
+                .replace(/\bpre-worker\s+snapshot\b/gi, 'снимка перед воркером')
+                .replace(/\batomic\s+snapshot\b/gi, 'атомарного снимка')
+                .replace(/\bapproved\s+doc(?:ument)?\s+revisions?\b/gi, 'утверждённых ревизий документов')
+                .replace(/\bdoc(?:ument)?\s+revisions?\b/gi, 'ревизий документов')
+                .replace(/\bcanonical\s+role\s+presets?\b/gi, 'канонических пресетов ролей')
+                .replace(/\bmissing\s+canonical\s+role\s+presets?\b/gi, 'недостающих канонических пресетов ролей')
+                .replace(/\bin\s+read-only\s+mode\b/gi, 'в режиме только для чтения')
+                .replace(/\bacross\s+all\s+(\d+)\s+modules\s+in\s+(\S+)\s+contour\b/gi, 'по всем $1 модулям в контуре $2')
+                .replace(/\bacross\s+contours\b/gi, 'между контурами')
+                .replace(/\bacross\s+workspace,\s*beta,\s*and\s*main\b/gi, 'между рабочей областью, beta и main')
+                .replace(/\bin\s+Beta\s+project\s+DB\b/gi, 'в БД проекта Beta')
+                .replace(/\bfrom\s+Beta\s+project\s+DB\b/gi, 'из БД проекта Beta')
+                .replace(/\bin\s+Beta\s+DBs?\b/gi, 'в БД Beta')
+                .replace(/\bto\s+DB\b/gi, 'в БД')
+                .replace(/\bin\s+DB\b/gi, 'в БД')
+                .replace(/\bto\s+(\S+\.db)\b/gi, 'в $1')
+                .replace(/\bin\s+(\S+)\b/gi, 'в $1')
+                .replace(/\bfrom\s+snapshot\b/gi, 'из снимка')
+                .replace(/\bwith\s+snapshot\b/gi, 'со снимком')
+                .replace(/\bsource\s+code\b/gi, 'исходного кода')
+                .replace(/\bsignatures?\b/gi, 'сигнатур');
+            return `${isFirstClause ? capNoun : lowNoun} ${rest}`;
+        }
+    }
+    return null;
+}
+
+function translateEnglishCommandSummary(text) {
+    if (!text || /[а-яА-ЯёЁ]/.test(text)) return null;
+    const t = text.trim();
+    const lower = t.toLowerCase();
+
+    // Direct full-sentence matches
+    if (lower === 'restore clean core, publish 21 doc revisions to db, and create atomic snapshot') {
+        return 'Восстановление чистого ядра, публикация 21 ревизии документов в БД и создание атомарного снимка';
+    }
+    if (lower === 'publish 21 approved doc revisions to project.db and create atomic snapshot') {
+        return 'Публикация 21 утверждённой ревизии документов в project.db и создание атомарного снимка';
+    }
+
+    // Check if multi-clause command summary separated by ", and ", ", ", or " and <verb>"
+    const verbLookahead = '(?:restore|publish|create|verify|validate|check|inspect|read|list|scan|sync|synchronize|seed|populate|upsert|update|extract|compare|find|search|seal|print|count|launch|execute|run|test|clean|reload|restart|revert|upload|download|copy|delete|remove|build|deploy|fix|repair|generate|initialize|install|configure|disable|enable)\\b';
+    const splitRe = new RegExp(`\\s*(?:,\\s+and\\s+|\\s+and\\s+(?=${verbLookahead})|,\\s+(?=${verbLookahead}))`, 'i');
+
+    if (splitRe.test(t)) {
+        const rawParts = t.split(splitRe);
+        const translatedParts = [];
+        let anyTranslated = false;
+        for (let i = 0; i < rawParts.length; i++) {
+            const tr = translateSingleEnglishClause(rawParts[i], i === 0);
+            if (tr) {
+                translatedParts.push(tr);
+                anyTranslated = true;
+            } else {
+                translatedParts.push(rawParts[i].trim());
+            }
+        }
+        if (anyTranslated) {
+            if (translatedParts.length === 2) {
+                return `${translatedParts[0]} и ${translatedParts[1]}`;
+            }
+            if (translatedParts.length > 2) {
+                return translatedParts.slice(0, -1).join(', ') + ' и ' + translatedParts[translatedParts.length - 1];
+            }
+            return translatedParts[0];
+        }
+    }
+
+    return translateSingleEnglishClause(t, true);
+}
 
 function localizeActionTarget(target) {
     if (!target) return '';
@@ -3472,6 +3717,11 @@ function localizeActionTarget(target) {
 
     if (translationDictionary[lower]) {
         return translationDictionary[lower];
+    }
+
+    const cmdSummaryTranslated = translateEnglishCommandSummary(t);
+    if (cmdSummaryTranslated) {
+        return cmdSummaryTranslated;
     }
 
     return t;
@@ -3746,6 +3996,68 @@ const regexTranslations = [
         }
     },
     {
+        // "Send Message Enter" / "Send Message ⏎" / "Queue Message Enter"
+        pattern: /^(Send\s+Message|Queue\s+Message)\s+(Enter|\u23ce|Alt\+Enter|\u2325\u23ce)$/i,
+        replace: (match) => {
+            const prefix = /^send/i.test(match[1]) ? 'Отправить сообщение' : 'Поставить сообщение в очередь';
+            return `${prefix} ${match[2]}`;
+        }
+    },
+    {
+        // "100% left" / "85% remaining"
+        pattern: /^(\d+(?:[.,]\d+)?)%\s*(?:left|remaining)$/i,
+        replace: (match) => `${match[1]}% осталось`
+    },
+    {
+        // "Show 533 more..." / "Show 12 more"
+        pattern: /^Show\s+(\d+)\s+more(?:\.{3}|…)?$/i,
+        replace: (match) => `Показать ещё ${match[1]}...`
+    },
+    {
+        // "Sort and filter conversations (2 active)"
+        pattern: /^Sort\s+and\s+filter\s+conversations\s*\((\d+)\s+active\)$/i,
+        replace: (match) => `Сортировка и фильтрация диалогов (активно: ${match[1]})`
+    },
+    {
+        // "Turn 498" / "Turn 1"
+        pattern: /^Turn\s+(\d+)$/i,
+        replace: (match) => `Шаг ${match[1]}`
+    },
+    {
+        // "Turns 1–15" / "Turns 1-15"
+        pattern: /^Turns\s+(\d+)\s*([\u2013\u2014\-])\s*(\d+)$/i,
+        replace: (match) => `Шаги ${match[1]}${match[2]}${match[3]}`
+    },
+    {
+        // "Turns 1–15 · 15 turns" / "вс, 1 нояб., 16:00 – 16:40 · 7 turns"
+        pattern: /^(.*?)\s*([·•・])\s*(\d+)\s+turns?$/i,
+        replace: (match) => {
+            let prefix = match[1].trim()
+                .replace(/^Turns\s+(\d+)\s*([\u2013\u2014\-])\s*(\d+)$/i, 'Шаги $1$2$3')
+                .replace(/^Turn\s+(\d+)$/i, 'Шаг $1');
+            const sep = match[2];
+            const count = parseInt(match[3], 10);
+            const n = Math.abs(count) % 100;
+            const n1 = n % 10;
+            let noun = 'шагов';
+            if (n <= 10 || n >= 20) {
+                if (n1 === 1) noun = 'шаг';
+                else if (n1 > 1 && n1 < 5) noun = 'шага';
+            }
+            return `${prefix} ${sep} ${count} ${noun}`;
+        }
+    },
+    {
+        // "Go to turn 498 of 500"
+        pattern: /^Go\s+to\s+turn\s+(\d+)\s+of\s+(\d+)$/i,
+        replace: (match) => `Перейти к шагу ${match[1]} из ${match[2]}`
+    },
+    {
+        // "498 of 500"
+        pattern: /^(\d+)\s+of\s+(\d+)$/i,
+        replace: (match) => `${match[1]} из ${match[2]}`
+    },
+    {
         // "Waiting for command completion (up to 10 seconds)"
         pattern: /^Waiting\s+for\s+command\s+completion\s*\(up\s+to\s+(\d+)\s*seconds?\)$/i,
         replace: (match) => `Ожидание завершения команды (до ${match[1]} сек)`
@@ -3767,6 +4079,122 @@ const regexTranslations = [
     {
         pattern: /^Turn\s+(\d+)\s+of\s+(\d+)$/i,
         replace: (m) => `Шаг ${m[1]} из ${m[2]}`
+    },
+    {
+        // "2m ago" / "32m ago" / "15s ago" / "1h ago" / "3d ago" / "2w ago" / "1mo ago" / "1y ago" / "2 minutes ago" / "a minute ago"
+        pattern: /^(?:(\d+)\s*(s|sec|secs|second|seconds|m|min|mins|minute|minutes|h|hr|hrs|hour|hours|d|day|days|w|wk|wks|week|weeks|mo|mos|month|months|y|yr|yrs|year|years)|(a|an|a\s+few|several)\s+(seconds?|minutes?|hours?|days?|weeks?|months?|years?))\s+ago$/i,
+        replace: (match) => {
+            const pluralize = (count, one, two, five) => {
+                const n = Math.abs(count) % 100;
+                const n1 = n % 10;
+                if (n > 10 && n < 20) return five;
+                if (n1 > 1 && n1 < 5) return two;
+                if (n1 === 1) return one;
+                return five;
+            };
+            if (match[1]) {
+                const count = parseInt(match[1], 10);
+                const u = match[2].toLowerCase();
+                if (u === 's' || u === 'sec' || u === 'secs') return `${count} сек назад`;
+                if (u === 'm' || u === 'min' || u === 'mins') return `${count} мин назад`;
+                if (u === 'h' || u === 'hr' || u === 'hrs') return `${count} ч назад`;
+                if (u === 'd') return `${count} дн назад`;
+                if (u === 'w' || u === 'wk' || u === 'wks') return `${count} нед назад`;
+                if (u === 'mo' || u === 'mos') return `${count} мес назад`;
+                if (u === 'y' || u === 'yr' || u === 'yrs') return `${count} ${pluralize(count, 'г.', 'г.', 'лет')} назад`;
+                if (u.startsWith('second')) return `${count} ${pluralize(count, 'секунду', 'секунды', 'секунд')} назад`;
+                if (u.startsWith('minute')) return `${count} ${pluralize(count, 'минуту', 'минуты', 'минут')} назад`;
+                if (u.startsWith('hour')) return `${count} ${pluralize(count, 'час', 'часа', 'часов')} назад`;
+                if (u.startsWith('day')) return `${count} ${pluralize(count, 'день', 'дня', 'дней')} назад`;
+                if (u.startsWith('week')) return `${count} ${pluralize(count, 'неделю', 'недели', 'недель')} назад`;
+                if (u.startsWith('month')) return `${count} ${pluralize(count, 'месяц', 'месяца', 'месяцев')} назад`;
+                if (u.startsWith('year')) return `${count} ${pluralize(count, 'год', 'года', 'лет')} назад`;
+            }
+            const art = (match[3] || '').toLowerCase();
+            const u2 = (match[4] || '').toLowerCase();
+            if (art.includes('few') || art.includes('several')) {
+                if (u2.startsWith('second')) return 'несколько секунд назад';
+                if (u2.startsWith('minute')) return 'несколько минут назад';
+                if (u2.startsWith('hour')) return 'несколько часов назад';
+                if (u2.startsWith('day')) return 'несколько дней назад';
+            }
+            if (u2.startsWith('second')) return 'секунду назад';
+            if (u2.startsWith('minute')) return 'минуту назад';
+            if (u2.startsWith('hour')) return 'час назад';
+            if (u2.startsWith('day')) return 'день назад';
+            if (u2.startsWith('week')) return 'неделю назад';
+            if (u2.startsWith('month')) return 'месяц назад';
+            if (u2.startsWith('year')) return 'год назад';
+            return match[0];
+        }
+    },
+    {
+        // "1 Side Question" / "3 Side Questions" / "5 Side Questions"
+        pattern: /^(\d+)\s+Side\s+Questions?$/i,
+        replace: (match) => {
+            const count = parseInt(match[1], 10);
+            const n = Math.abs(count) % 100;
+            const n1 = n % 10;
+            if ((n <= 10 || n >= 20) && n1 === 1) return `${count} быстрый вопрос`;
+            if ((n <= 10 || n >= 20) && (n1 > 1 && n1 < 5)) return `${count} быстрых вопроса`;
+            return `${count} быстрых вопросов`;
+        }
+    },
+    {
+        // "View 3 side questions" / "Просмотр 3 side questions" / "View 1 side question"
+        pattern: /^(?:View|Просмотр)\s+(\d+)\s+side\s+questions?$/i,
+        replace: (match) => {
+            const count = parseInt(match[1], 10);
+            const n = Math.abs(count) % 100;
+            const n1 = n % 10;
+            if ((n <= 10 || n >= 20) && n1 === 1) return `Показать ${count} быстрый вопрос`;
+            if ((n <= 10 || n >= 20) && (n1 > 1 && n1 < 5)) return `Показать ${count} быстрых вопроса`;
+            return `Показать ${count} быстрых вопросов`;
+        }
+    },
+    {
+        // "Side Question:" / "Side Question" / "Side Questions"
+        pattern: /^Side\s+Questions?(:?)$/i,
+        replace: (match) => {
+            const colon = match[1] || '';
+            const isPlural = /questions/i.test(match[0]);
+            return (isPlural ? 'Быстрые вопросы' : 'Быстрый вопрос') + colon;
+        }
+    },
+    {
+        // "Question 1 of 3"
+        pattern: /^Question\s+(\d+)\s+of\s+(\d+)$/i,
+        replace: (m) => `Вопрос ${m[1]} из ${m[2]}`
+    },
+    {
+        // "Side question failed: ..."
+        pattern: /^Side\s+question\s+failed:\s*(.+)$/i,
+        replace: (m) => `Ошибка быстрого вопроса: ${m[1]}`
+    },
+    {
+        // "Select model with Ctrl+..."
+        pattern: /^Select\s+model\s+with\s+(.+)$/i,
+        replace: (m) => `Выберите модель с помощью ${m[1]}`
+    },
+    {
+        // "User cancelled agent execution." / "User canceled agent execution."
+        pattern: /^User\s+cancel+ed\s+agent\s+execution(\.?)$/i,
+        replace: (m) => "Пользователь отменил выполнение агента" + (m[1] || "")
+    },
+    {
+        // "Agent execution failed."
+        pattern: /^Agent\s+execution\s+failed(\.?)$/i,
+        replace: (m) => "Ошибка выполнения агента" + (m[1] || "")
+    },
+    {
+        // "Still thinking, 15 seconds"
+        pattern: /^Still\s+thinking,\s*(\d+)\s*seconds?$/i,
+        replace: (m) => `Продолжает размышлять, ${m[1]} сек`
+    },
+    {
+        // "Configure agent execution, queued message delivery, and permissions."
+        pattern: /^Configure\s+agent\s+execution,\s*queued\s+message\s+delivery,\s*and\s+permissions(\.?)$/i,
+        replace: (m) => "Настройка выполнения агента, доставки сообщений из очереди и разрешений" + (m[1] || "")
     },
     {
         pattern: /^Load\s+older\s+messages,\s*showing\s+(\d+)\s+of\s+(\d+)$/i,
@@ -7659,7 +8087,7 @@ const regexTranslations = [
         replace: () => "Создать задачу (issue) по проблеме, а затем сформировать пул-реквест (pull request) для её исправления"
     },
     {
-        pattern: /^Ask\s+a\s+quick\s+question\s+without\s+interrupting\s+the\s+main\s+conversation\.?$/i,
+        pattern: /^Ask\s+a\s+quick\s+question\s+(?:on\s+the\s+side\s+)?without\s+interrupting\s+the\s+main\s+conversation\.?$/i,
         replace: () => "Задать быстрый вопрос, не прерывая основной диалог."
     },
     {
@@ -10296,6 +10724,66 @@ function shouldIgnore(node) {
             val === 'go to' ||
             val === 'enable best-of-2' ||
             val === 'full view' ||
+            /^(?:\d+\s*(?:s|sec|secs|second|seconds|m|min|mins|minute|minutes|h|hr|hrs|hour|hours|d|day|days|w|wk|wks|week|weeks|mo|mos|month|months|y|yr|yrs|year|years)|(?:a|an|a\s+few|several)\s+(?:seconds?|minutes?|hours?|days?|weeks?|months?|years?))\s+ago$/i.test(val) ||
+            val.includes('side question') ||
+            /^question\s+\d+\s+of\s+\d+$/i.test(val) ||
+            val === 'previous question' ||
+            val === 'next question' ||
+            val.startsWith('drag to resize') ||
+            val.startsWith('user cancelled') ||
+            val.startsWith('user canceled') ||
+            val.startsWith('still thinking') ||
+            val.startsWith('configure agent execution') ||
+            /^turns?\s+\d+/i.test(val) ||
+            /\b\d+\s+turns?$/i.test(val) ||
+            /^\d+\s+of\s+\d+$/i.test(val) ||
+            (val === 'of' && /^\d+\s+of\s+\d+$/i.test(parentText.trim())) ||
+            val.startsWith('go to turn ') ||
+            val === "couldn't load message" ||
+            val === 'no message text' ||
+            val === 'scroll turns up' ||
+            val === 'scroll turns down' ||
+            val === "turn on a flag you don't have" ||
+            val === 'custom flag to turn on' ||
+            val === '% left' ||
+            val === 'refreshing...' ||
+            val.startsWith('no quota information available') ||
+            val.startsWith('search for files') ||
+            val.startsWith('search files') ||
+            val.startsWith('search for conversations') ||
+            val.startsWith('search for commands') ||
+            val.startsWith('search projects') ||
+            val === 'code search' ||
+            val === 'recent conversations' ||
+            val === 'untitled conversation' ||
+            val === 'command:' ||
+            val.startsWith('disk is full.') ||
+            val === 'only unread' ||
+            val === 'only archived' ||
+            val === 'only automations' ||
+            val === 'only scheduled' ||
+            val === 'sort conversations' ||
+            val.startsWith('sort and filter conversations') ||
+            /^show\s+\d+\s+more/i.test(val) ||
+            ((val === 'show' || val === 'more...' || val === 'more…' || val === 'more') && /^(?:show|показать(?:\s+ещё)?)\s+\d+\s+(?:more(?:\.{3}|…)?|\.{3}|…)$/i.test(parentText.trim())) ||
+            val === 'see less' ||
+            val === 'see more...' ||
+            val === 'see all' ||
+            val === 'no results found' ||
+            val === 'finalizing...' ||
+            val === 'finalizing' ||
+            val.startsWith('finalizing transcription') ||
+            val.startsWith('sending transcribed message') ||
+            val === 'record audio' ||
+            val === 'stop recording' ||
+            val === 'recording' ||
+            val === 'stop recording and send' ||
+            val === 'chief of staff voice mode is active' ||
+            val.startsWith('voice recording is unavailable') ||
+            val === 'send message' ||
+            val.startsWith('send message ') ||
+            val === 'queue message' ||
+            val === 'send immediately' ||
             val === 'subagent conversation' ||
             val === 'subagent ended' ||
             val === 'loading subagent...' ||
@@ -11093,6 +11581,13 @@ function shouldIgnore(node) {
 
 function isFileName(text, parent) {
     if (!text) return false;
+    if (parent && parent.previousElementSibling) {
+        const prevOrig = (parent.previousElementSibling.getAttribute && parent.previousElementSibling.getAttribute('data-original-text') || '').trim();
+        const prevTxt = (parent.previousElementSibling.textContent || '').trim();
+        if (/^(?:Ran|Running|Запущено|Выполняется:?)$/i.test(prevOrig) || /^(?:Ran|Running|Запущено|Выполняется:?)$/i.test(prevTxt)) {
+            return false;
+        }
+    }
     const trimmed = text.trim();
     const lowerTrimmed = trimmed.toLowerCase();
     if ((lowerTrimmed.includes(' ') || (typeof window !== 'undefined' && window.location && window.location.pathname && window.location.pathname.startsWith('/customizations/'))) && translationDictionary[lowerTrimmed]) return false;
@@ -11744,6 +12239,69 @@ function isFileName(text, parent) {
         lowerTrimmed === 'go to' ||
         lowerTrimmed === 'enable best-of-2' ||
         lowerTrimmed === 'full view' ||
+        /^(?:\d+\s*(?:s|sec|secs|second|seconds|m|min|mins|minute|minutes|h|hr|hrs|hour|hours|d|day|days|w|wk|wks|week|weeks|mo|mos|month|months|y|yr|yrs|year|years)|(?:a|an|a\s+few|several)\s+(?:seconds?|minutes?|hours?|days?|weeks?|months?|years?))\s+ago$/i.test(lowerTrimmed) ||
+        lowerTrimmed.includes('side question') ||
+        /^question\s+\d+\s+of\s+\d+$/i.test(lowerTrimmed) ||
+        lowerTrimmed === 'previous question' ||
+        lowerTrimmed === 'next question' ||
+        lowerTrimmed.startsWith('drag to resize') ||
+        lowerTrimmed.startsWith('user cancelled') ||
+        lowerTrimmed.startsWith('user canceled') ||
+        lowerTrimmed.startsWith('still thinking') ||
+        lowerTrimmed.startsWith('configure agent execution') ||
+        /^turns?\s+\d+/i.test(lowerTrimmed) ||
+        /\b\d+\s+turns?$/i.test(lowerTrimmed) ||
+        /^\d+\s+of\s+\d+$/i.test(lowerTrimmed) ||
+        lowerTrimmed === 'of' ||
+        lowerTrimmed.startsWith('go to turn ') ||
+        lowerTrimmed === "couldn't load message" ||
+        lowerTrimmed === 'no message text' ||
+        lowerTrimmed === 'scroll turns up' ||
+        lowerTrimmed === 'scroll turns down' ||
+        lowerTrimmed === "turn on a flag you don't have" ||
+        lowerTrimmed === 'custom flag to turn on' ||
+        lowerTrimmed === '% left' ||
+        lowerTrimmed === 'refreshing...' ||
+        lowerTrimmed.startsWith('no quota information available') ||
+        lowerTrimmed.startsWith('search for files') ||
+        lowerTrimmed.startsWith('search files') ||
+        lowerTrimmed.startsWith('search for conversations') ||
+        lowerTrimmed.startsWith('search for commands') ||
+        lowerTrimmed.startsWith('search projects') ||
+        lowerTrimmed === 'code search' ||
+        lowerTrimmed === 'recent conversations' ||
+        lowerTrimmed === 'untitled conversation' ||
+        lowerTrimmed === 'command:' ||
+        lowerTrimmed.startsWith('disk is full.') ||
+        lowerTrimmed === 'only unread' ||
+        lowerTrimmed === 'only archived' ||
+        lowerTrimmed === 'only automations' ||
+        lowerTrimmed === 'only scheduled' ||
+        lowerTrimmed === 'sort conversations' ||
+        lowerTrimmed.startsWith('sort and filter conversations') ||
+        /^show\s+\d+\s+more/i.test(lowerTrimmed) ||
+        lowerTrimmed === 'show' ||
+        lowerTrimmed === 'more...' ||
+        lowerTrimmed === 'more…' ||
+        lowerTrimmed === 'more' ||
+        lowerTrimmed === 'see less' ||
+        lowerTrimmed === 'see more...' ||
+        lowerTrimmed === 'see all' ||
+        lowerTrimmed === 'no results found' ||
+        lowerTrimmed === 'finalizing...' ||
+        lowerTrimmed === 'finalizing' ||
+        lowerTrimmed.startsWith('finalizing transcription') ||
+        lowerTrimmed.startsWith('sending transcribed message') ||
+        lowerTrimmed === 'record audio' ||
+        lowerTrimmed === 'stop recording' ||
+        lowerTrimmed === 'recording' ||
+        lowerTrimmed === 'stop recording and send' ||
+        lowerTrimmed === 'chief of staff voice mode is active' ||
+        lowerTrimmed.startsWith('voice recording is unavailable') ||
+        lowerTrimmed === 'send message' ||
+        lowerTrimmed.startsWith('send message ') ||
+        lowerTrimmed === 'queue message' ||
+        lowerTrimmed === 'send immediately' ||
         lowerTrimmed === 'subagent conversation' ||
         lowerTrimmed === 'subagent ended' ||
         lowerTrimmed === 'loading subagent...' ||
@@ -11972,6 +12530,8 @@ function translateTextNode(node) {
                 translated = translationDictionary[lowerText];
                 if ((lowerText === 'open' || lowerText === 'открыть') && parentText.includes('google chrome')) {
                     translated = 'Откройте';
+                } else if (lowerText === 'show' && /^(?:show|показать(?:\s+ещё)?)\s+\d+\s+(?:more(?:\.{3}|…)?|\.{3}|…)$/i.test(parentText.trim())) {
+                    translated = 'Показать ещё';
                 } else if (lowerText === 'found' || lowerText === 'killed' || lowerText === 'started' || lowerText === 'asked') {
                     const mCtx = fullContext.match(/(?:^|\s)(\d+)\s*(subagents?|субагент(?:а|ов)?|tasks?|задач[аи]?|results?|результат(?:а|ов)?|questions?|вопрос(?:а|ов)?)\b/i);
                     if (mCtx) {
@@ -11992,6 +12552,17 @@ function translateTextNode(node) {
                     if (match) {
                         translated = rule.replace(match);
                         break;
+                    }
+                }
+                if (!translated && node.parentElement && node.parentElement.previousElementSibling) {
+                    const prevEl = node.parentElement.previousElementSibling;
+                    const prevOrig = (prevEl.getAttribute && prevEl.getAttribute('data-original-text') || '').trim();
+                    const prevTxt = (prevEl.textContent || '').trim();
+                    if (/^(?:Ran|Running|Запущено|Выполняется:?)$/i.test(prevOrig) || /^(?:Ran|Running|Запущено|Выполняется:?)$/i.test(prevTxt)) {
+                        const loc = localizeActionTarget(normalized);
+                        if (loc && loc !== normalized) {
+                            translated = loc;
+                        }
                     }
                 }
             }
@@ -12180,11 +12751,31 @@ function translateTextNode(node) {
                     const isGen = fullContext.includes('defining') || fullContext.includes('killing') || fullContext.includes('определение') || fullContext.includes('остановка');
                     translated = `${isGen ? 'субагента' : 'субагент'} ${mName[1]}`;
                 }
-            } else if (lowerText === 'left') {
+            } else if (lowerText === 'left' || lowerText === '% left') {
                 const pText = node.parentElement ? normalizeText(node.parentElement.textContent) : '';
                 const gpText = (node.parentElement && node.parentElement.parentElement) ? normalizeText(node.parentElement.parentElement.textContent) : '';
                 if (/\d+%\s*left/i.test(pText) || /\d+%\s*left/i.test(gpText)) {
-                    translated = 'осталось';
+                    translated = lowerText === '% left' ? '% осталось' : 'осталось';
+                }
+            } else if ((lowerText === 'show' || lowerText === 'more...' || lowerText === 'more…' || lowerText === 'more') && node.parentElement) {
+                const pText = normalizeText(node.parentElement.textContent);
+                if (/^(?:show|показать(?:\s+ещё)?)\s+\d+\s+(?:more(?:\.{3}|…)?|\.{3}|…)$/i.test(pText)) {
+                    translated = lowerText === 'show' ? 'Показать ещё' : '...';
+                }
+            } else if (lowerText === 'of') {
+                const pText = node.parentElement ? normalizeText(node.parentElement.textContent) : '';
+                if (/^\d+\s+of\s+\d+$/i.test(pText)) {
+                    translated = 'из';
+                }
+            } else if (node.parentElement && node.parentElement.previousElementSibling) {
+                const prevEl = node.parentElement.previousElementSibling;
+                const prevOrig = (prevEl.getAttribute && prevEl.getAttribute('data-original-text') || '').trim();
+                const prevTxt = (prevEl.textContent || '').trim();
+                if (/^(?:Ran|Running|Запущено|Выполняется:?)$/i.test(prevOrig) || /^(?:Ran|Running|Запущено|Выполняется:?)$/i.test(prevTxt)) {
+                    const loc = localizeActionTarget(normalized);
+                    if (loc && loc !== normalized) {
+                        translated = loc;
+                    }
                 }
             }
         }
@@ -12276,6 +12867,17 @@ function translateTitle(element) {
                     if (match) {
                         translated = rule.replace(match);
                         break;
+                    }
+                }
+                if (!translated && element.previousElementSibling) {
+                    const prevEl = element.previousElementSibling;
+                    const prevOrig = (prevEl.getAttribute && prevEl.getAttribute('data-original-text') || '').trim();
+                    const prevTxt = (prevEl.textContent || '').trim();
+                    if (/^(?:Ran|Running|Запущено|Выполняется:?)$/i.test(prevOrig) || /^(?:Ran|Running|Запущено|Выполняется:?)$/i.test(prevTxt)) {
+                        const loc = localizeActionTarget(normalized);
+                        if (loc && loc !== normalized) {
+                            translated = loc;
+                        }
                     }
                 }
             }
@@ -12575,17 +13177,17 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.25';
+    const FALLBACK_VERSION = '2.1.26';
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
     }
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = 'Локализация v2.1.25: перевод модального окна Remote Debugging Required (Требуется удалённая отладка), строки поиска на новой вкладке (Search tabs, files, extensions, subagents, artifacts, commands...) и панели субагента (Full View / Полный вид).';
+        window.__antigravity_remote_changelog = 'Локализация v2.1.26: перевод относительного времени (2m ago → 2 мин назад), быстрых вопросов /btw (3 Side Questions → 3 быстрых вопроса), составных описаний команд после Ran/Running, статусов отмены/ошибки агента (User cancelled agent execution.), навигатора шагов (Turn 498 → Шаг 498, X of Y → X из Y), квот (100% left → 100% осталось), поиска и фильтров палитры (Search for files in the project..., Show N more..., Only Unread/Archived/Automations), голосового ввода (Finalizing... → Завершение...) и добавлен веб-установщик install.ps1 + GitHub Actions Release workflow.';
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Локализация v2.1.25: перевод модального окна Remote Debugging Required (Требуется удалённая отладка), строки поиска на новой вкладке (Search tabs, files, extensions, subagents, artifacts, commands...) и панели субагента (Full View / Полный вид).';
+    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Локализация v2.1.26: перевод относительного времени (2m ago → 2 мин назад), быстрых вопросов /btw (3 Side Questions → 3 быстрых вопроса), составных описаний команд после Ran/Running, статусов отмены/ошибки агента (User cancelled agent execution.), навигатора шагов (Turn 498 → Шаг 498, X of Y → X из Y), квот (100% left → 100% осталось), поиска и фильтров палитры (Search for files in the project..., Show N more..., Only Unread/Archived/Automations), голосового ввода (Finalizing... → Завершение...) и добавлен веб-установщик install.ps1 + GitHub Actions Release workflow.';
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;

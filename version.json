@@ -1,7 +1,7 @@
 {
-  "version": "2.1.25",
-  "releaseDate": "2026-10-31T19:45:49.345Z",
-  "changelog": "Локализация v2.1.25: перевод модального окна Remote Debugging Required (Требуется удалённая отладка), строки поиска на новой вкладке (Search tabs, files, extensions, subagents, artifacts, commands...) и панели субагента (Full View / Полный вид).",
+  "version": "2.1.26",
+  "releaseDate": "2026-11-01T14:26:58.255Z",
+  "changelog": "Локализация v2.1.26: перевод относительного времени (2m ago → 2 мин назад), быстрых вопросов /btw (3 Side Questions → 3 быстрых вопроса), составных описаний команд после Ran/Running, статусов отмены/ошибки агента (User cancelled agent execution.), навигатора шагов (Turn 498 → Шаг 498, X of Y → X из Y), квот (100% left → 100% осталось), поиска и фильтров палитры (Search for files in the project..., Show N more..., Only Unread/Archived/Automations), голосового ввода (Finalizing... → Завершение...) и добавлен веб-установщик install.ps1 + GitHub Actions Release workflow.",
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",
