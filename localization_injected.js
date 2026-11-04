@@ -14952,10 +14952,7 @@ function initLanguageSwitcher() {
             const resp = await fetch('http://127.0.0.1:39228/status');
             if (resp.ok) {
                 const data = await resp.json();
-                if (data.version && compareSemverClient(data.version, currentLocalVersion) >= 0) {
-                    currentLocalVersion = data.version;
-                    window.__antigravity_local_version = currentLocalVersion;
-                }
+                // Only bump currentLocalVersion if hotUpdateNotice confirms live injection
                 if (data.latestRemoteVersion && compareSemverClient(data.latestRemoteVersion, latestGithubVersion) > 0) {
                     latestGithubVersion = data.latestRemoteVersion;
                     window.__antigravity_remote_version = latestGithubVersion;
