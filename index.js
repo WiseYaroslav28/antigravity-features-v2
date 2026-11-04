@@ -150,12 +150,12 @@ const controlServer = http.createServer(async (req, res) => {
   }
 
   if (req.url === '/restart') {
-    log("1-Click Restart requested from UI widget! Launching apply_patch_and_restart.bat...");
+    log("1-Click Restart requested from UI widget! Launching exit_patcher.cjs --restart...");
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ success: true, message: "Restarting AntiGravity..." }));
 
-    const batPath = path.join(__dirname, 'apply_patch_and_restart.bat');
-    const child = spawn('powershell', ['-WindowStyle', 'Hidden', '-Command', `Start-Process cmd.exe -ArgumentList '/c ""${batPath}""' -WindowStyle Hidden`], {
+    const exitPatcherPath = path.join(__dirname, 'exit_patcher.cjs');
+    const child = spawn(process.execPath, [exitPatcherPath, '--restart'], {
       detached: true,
       stdio: 'ignore',
       windowsHide: true
@@ -469,20 +469,24 @@ server.tool(
 );
 
 // Graceful termination handlers for MCP on Windows (clean exit with zero child processes spawned on refresh)
-process.stdin.on("close", () => {
-  log("MCP Stdio connection closed. Exiting process cleanly.");
-  process.exit(0);
-});
+if (process.env.VITC_STANDALONE_DAEMON !== "1") {
+  process.stdin.on("close", () => {
+    log("MCP Stdio connection closed. Exiting process cleanly.");
+    process.exit(0);
+  });
 
-process.stdin.on("end", () => {
-  log("MCP Stdio connection ended. Exiting process cleanly.");
-  process.exit(0);
-});
+  process.stdin.on("end", () => {
+    log("MCP Stdio connection ended. Exiting process cleanly.");
+    process.exit(0);
+  });
 
-// Connect MCP Transport FIRST to establish JSON-RPC handshake immediately
-const transport = new StdioServerTransport();
-await server.connect(transport);
-log("MCP Server connected and listening on stdio.");
+  // Connect MCP Transport FIRST to establish JSON-RPC handshake immediately
+  const transport = new StdioServerTransport();
+  await server.connect(transport);
+  log("MCP Server connected and listening on stdio.");
+} else {
+  log("Standalone Control HTTP Daemon started on port 39228.");
+}
 
 if (isPrimaryUiInstance && !IS_HEADLESS_SUBAGENT_CALL) {
   // Start background config backup loop
