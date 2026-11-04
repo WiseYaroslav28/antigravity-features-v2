@@ -14108,6 +14108,12 @@ function translateTextNode(node) {
                     return;
                 }
                 
+                if (!parent.hasAttribute('data-original-nodes')) {
+                    try {
+                        const origNodes = Array.from(parent.childNodes).filter(n => n.nodeType === Node.TEXT_NODE).map(n => n.nodeValue);
+                        parent.setAttribute('data-original-nodes', JSON.stringify(origNodes));
+                    } catch (e) {}
+                }
                 parent.setAttribute('data-translated', 'true');
                 parent.setAttribute('data-original-text', text);
             }
@@ -14316,16 +14322,35 @@ function restoreOriginalTree() {
     try {
         const elements = document.querySelectorAll('[data-translated="true"]');
         elements.forEach(el => {
-            const originalText = el.getAttribute('data-original-text');
-            if (originalText) {
-                const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
-                let node;
-                while (node = walker.nextNode()) {
-                    node.nodeValue = originalText;
+            const directTextNodes = Array.from(el.childNodes).filter(n => n.nodeType === Node.TEXT_NODE);
+            const origNodesJson = el.getAttribute('data-original-nodes');
+            if (origNodesJson) {
+                try {
+                    const origNodes = JSON.parse(origNodesJson);
+                    if (Array.isArray(origNodes) && origNodes.length === directTextNodes.length) {
+                        directTextNodes.forEach((n, idx) => {
+                            n.nodeValue = origNodes[idx];
+                        });
+                    }
+                } catch (e) {}
+            } else {
+                const originalText = el.getAttribute('data-original-text');
+                if (originalText) {
+                    if (directTextNodes.length === 2 && directTextNodes[0].nodeValue === directTextNodes[1].nodeValue) {
+                        directTextNodes[0].nodeValue = ' ';
+                        directTextNodes[1].nodeValue = originalText;
+                    } else {
+                        directTextNodes.forEach(n => {
+                            if (/\S/.test(n.nodeValue)) {
+                                n.nodeValue = originalText;
+                            }
+                        });
+                    }
                 }
             }
             el.removeAttribute('data-translated');
             el.removeAttribute('data-original-text');
+            el.removeAttribute('data-original-nodes');
             el.removeAttribute('title');
         });
         
