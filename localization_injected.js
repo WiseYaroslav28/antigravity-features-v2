@@ -15236,9 +15236,14 @@ const initInterval = setInterval(() => {
         const hostname = window.location.hostname;
         const isInternal = protocol === 'vscode-file:' || protocol === 'vscode-webview:' || protocol === 'antigravity-ide:' || hostname === '127.0.0.1' || hostname === 'localhost';
         if (isInternal) {
+            const isHotReload = !!window.__antigravity_localizer_loaded;
+            window.__antigravity_localizer_loaded = true;
             initLanguageSwitcher();
             initTerminalInjection();
             if (localStorage.getItem('antigravity_lang') !== 'en') {
+                if (isHotReload) {
+                    try { restoreOriginalTree(); } catch (e) {}
+                }
                 startObserving();
                 translateTree(document.body);
             }
