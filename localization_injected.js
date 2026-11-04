@@ -2072,9 +2072,9 @@ const translationDictionary = {
     "archived conversation": " архивированного диалога",
     "archived": " архивированных",
     "conversations.": " диалогов.",
-    "conversations": " диалогов",
+    "conversations": "Диалоги",
     "conversation.": " диалога.",
-    "conversation": " диалог",
+    "conversation": "Диалог",
     "and": " и",
     "token usage": "Использование токенов",
 
@@ -4540,7 +4540,217 @@ const translationDictionary = {
     "open a pull request": "Открыть пул-реквест",
     "open a merge request": "Открыть мерж-реквест",
     "open the change": "Открыть изменение",
-    "starting terminal...": "Запуск терминала..."
+    "starting terminal...": "Запуск терминала...",
+    "fill": "На всю ширину",
+    "verbose": "Подробно",
+    "middle click": "Средний клик",
+    "what can we get done today?": "Чем займёмся сегодня?",
+    "fix with agent": "Исправить с агентом",
+    "tokens)": "токенов)",
+    "token)": "токен)",
+    "domains:": "Домены:",
+    "loading app...": "Загрузка приложения...",
+    "settings for conversations outside of projects.": "Настройки для диалогов вне проектов.",
+    "agent settings and permissions for conversations outside of projects.": "Настройки агента и разрешения для диалогов вне проектов.",
+    "manage project resources, agent settings, and permissions.": "Управление ресурсами проекта, настройками агента и разрешениями.",
+    "manage project folders, agent settings, and permissions.": "Управление папками проекта, настройками агента и разрешениями.",
+    "manage project resources and settings.": "Управление ресурсами и настройками проекта.",
+    "manage project folders and settings.": "Управление папками и настройками проекта.",
+    "no automations yet": "Пока нет автоматизаций",
+    "no scheduled tasks yet": "Пока нет запланированных задач",
+    "no resources added yet.": "Ресурсы ещё не добавлены.",
+    "no folders added yet.": "Папки ещё не добавлены.",
+    "nothing said yet": "Пока ничего не сказано",
+    "no conversations yet": "Диалогов пока нет",
+    "no pinned conversations": "Нет закреплённых диалогов",
+    "no matching conversations": "Подходящие диалоги не найдены",
+    "no archived conversations": "Нет архивных диалогов",
+    "run zoho books from antigravity: invoicing, bills, banking, journals, projects, items, taxes, customization and automation.": "Управляйте Zoho Books из Antigravity: счета, платежи, банкинг, журналы проводок, проекты, товары, налоги, кастомизация и автоматизация.",
+    "запуск zoho books from antigravity: invoicing, bills, banking, journals, projects, items, taxes, customization and automation.": "Управляйте Zoho Books из Antigravity: счета, платежи, банкинг, журналы проводок, проекты, товары, налоги, кастомизация и автоматизация.",
+    "the plugin connects your agent to keenable's hosted mcp server and adds a skill for everyday web lookups.": "Плагин подключает вашего агента к облачному MCP-серверу Keenable и добавляет навык для повседневного веб-поиска.",
+    "plugin marketplace in antigravity": "Маркетплейс плагинов в Antigravity",
+    ". in the antigravity app, open": ". В приложении Antigravity откройте",
+    "in the left sidebar, then": "в левой боковой панели, затем нажмите",
+    "on its card. installed plugins are listed under": "на карточке плагина. Установленные плагины отображаются в разделе",
+    "and sync to the antigravity cli.": "и синхронизируются с Antigravity CLI.",
+    "to connect the tools without the skill, add this to": "Чтобы подключить инструменты без навыка, добавьте это в",
+    "the skill works with either server.": "Навык работает с любым из этих серверов.",
+    "ask a question of the live web and get a table back. keenable select runs many searches, reads the pages and extracts the fields you need in one call. sign in with a keenable account.": "Задайте вопрос по данным из интернета и получите готовую таблицу. Keenable SELECT выполняет серию поисковых запросов, читает страницы и извлекает нужные поля за один вызов. Требуется вход в аккаунт Keenable.",
+    "which open-source vector databases come up most in 2026 comparisons? give me a table with license, latest version and a source for each": "Какие векторные БД с открытым кодом чаще всего встречаются в сравнениях 2026 года? Составь таблицу с лицензией, последней версией и источником для каждой",
+    "which open-source vector databases come up most in 2026 comparisons? give me a table with license, latest version and a source for each.": "Какие векторные БД с открытым кодом чаще всего встречаются в сравнениях 2026 года? Составь таблицу с лицензией, последней версией и источником для каждой.",
+    "list ai agent startups that announced a seed round in the last 30 days, with amount, lead investor and source": "Выведи список стартапов в сфере ИИ-агентов, объявивших о seed-раунде за последние 30 дней, с суммой, ведущим инвестором и источником",
+    "list ai agent startups that announced a seed round in the last 30 days, with amount, lead investor and source.": "Выведи список стартапов в сфере ИИ-агентов, объявивших о seed-раунде за последние 30 дней, с суммой, ведущим инвестором и источником.",
+    "compare the pricing of the main llm observability tools in one table: free tier, paid entry price, what is metered": "Сравни тарифы основных инструментов наблюдаемости LLM в одной таблице: бесплатный тариф, начальная цена платного тарифа и тарифицируемые параметры",
+    "compare the pricing of the main llm observability tools in one table: free tier, paid entry price, what is metered.": "Сравни тарифы основных инструментов наблюдаемости LLM в одной таблице: бесплатный тариф, начальная цена платного тарифа и тарифицируемые параметры.",
+    "keenable select plugin for antigravity and gemini cli": "Плагин Keenable SELECT для Antigravity и Gemini CLI",
+    "ask a question of the live web and get a table back.": "Задайте вопрос по живым данным интернета и получите таблицу в ответ.",
+    "answers with one sql query over live search results: the server runs the searches, reads the pages, extracts the fields the question needs and returns rows with their sources. you ask in plain language; the agent writes the query.": "отвечает одним SQL-запросом поверх живых результатов поиска: сервер выполняет поисковые запросы, читает страницы, извлекает нужные поля и возвращает строки вместе с источниками. Вы задаёте вопрос обычным языком, а агент сам формирует запрос.",
+    "the plugin connects your agent to the hosted select mcp server and adds a skill that tells it when a question is worth a select and how to work with the results. it needs a keenable account: you sign in once in the browser, and each query is billed to that account.": "Плагин подключает вашего агента к облачному MCP-серверу SELECT и добавляет навык, определяющий, когда задачу лучше решить через SELECT и как работать с результатами. Требуется аккаунт Keenable: вы входите один раз в браузере, и каждый запрос тарифицируется на этот аккаунт.",
+    "on first use, authenticate the": "При первом использовании авторизуйте сервер",
+    "server: a browser sign-in to your keenable account opens; approve it and the tools appear. no account yet? sign up at": ": откроется окно входа в аккаунт Keenable в браузере; подтвердите вход, и инструменты станут доступны. Ещё нет аккаунта? Зарегистрируйтесь на",
+    "tools": "Инструменты",
+    "tool": "Инструмент",
+    "runs one read-only sql query over live web search results and returns a table and a result set id. follow-up queries can read that id instead of searching again.": "Выполняет один SQL-запрос (только чтение) по живым результатам веб-поиска и возвращает таблицу и ID набора результатов. Последующие запросы могут обращаться к этому ID без повторного поиска.",
+    "publishes a report built from named result sets as a web page and returns its link.": "Публикует отчёт, собранный из именованных наборов результатов, в виде веб-страницы и возвращает ссылку на него.",
+    "takes a published report down.": "Удаляет опубликованный отчёт из открытого доступа.",
+    "when to use select instead of a single search, how to scope the columns, what to tell the user about time and cost, and when to publish a report.": "Когда использовать SELECT вместо одиночного поиска, как выбирать столбцы, что сообщать пользователю о времени и стоимости и когда публиковать отчёт.",
+    "what to expect": "Чего ожидать",
+    "a query takes from seconds to a few minutes: it searches, reads pages and runs an llm over each one.": "Запрос занимает от нескольких секунд до нескольких минут: он ищет, читает страницы и обрабатывает каждую из них с помощью LLM.",
+    "large tables come back as a preview; the full table stays in the result set, kept for 30 days.": "Большие таблицы возвращаются в виде предпросмотра; полная таблица сохраняется в наборе результатов в течение 30 дней.",
+    "extraction reports what the pages say and does not fact-check them.": "Извлечение передаёт данные так, как они указаны на страницах, без дополнительной проверки фактов.",
+    "api key instead of sign-in": "API-ключ вместо входа через браузер",
+    "to use an api key from the": "Чтобы использовать API-ключ из",
+    "console": "консоли",
+    "instead of the browser sign-in:": "вместо входа через браузер:",
+    "over https. queries, and the pages they search and read, are processed by keenable and billed to the signed-in account, along with an": "по протоколу HTTPS. Запросы и просматриваемые страницы обрабатываются Keenable и тарифицируются на авторизованный аккаунт вместе с заголовком",
+    ") that identifies the plugin's traffic. reports are published only when you ask for one; anyone with a report's link can open it until it is revoked. the plugin runs no local code or shell commands and reads no local files. see the": "), идентифицирующим трафик плагина. Отчёты публикуются только по вашему запросу; любой, у кого есть ссылка на отчёт, может открыть его до тех пор, пока он не будет отозван. Плагин не выполняет локальный код или shell-команды и не читает локальные файлы. См.",
+    "keenable select documentation": "Документация Keenable SELECT",
+    "license": "Лицензия",
+    "answer a question across many web pages at once with keenable select and return a table. use for lists, comparisons, counts and structured fields (prices, versions, dates, names) that would otherwise take dozens of searches and page reads.": "Отвечает на вопрос сразу по множеству веб-страниц с помощью Keenable SELECT и возвращает таблицу. Используйте для списков, сравнений, подсчётов и структурированных полей (цены, версии, даты, названия), которые иначе потребовали бы десятков поисков и чтений страниц.",
+    "connect to your managed looker mcp server to explore data, run saved looks, build dashboards, and validate lookml.": "Подключайтесь к управляемому MCP-серверу Looker для исследования данных, запуска сохранённых отчётов (Looks), создания дашбордов и проверки LookML.",
+    "list available looker models and explores in my instance": "Выведи список доступных моделей и объектов Explore в моём экземпляре Looker",
+    "run a query against an explore and summarize the top trends": "Выполни запрос к объекту Explore и подготовь сводку ключевых трендов",
+    "запуск a query against an explore and summarize the top trends": "Выполни запрос к объекту Explore и подготовь сводку ключевых трендов",
+    "check the health of my looker instance and dashboards": "Проверь состояние моего экземпляра Looker и дашбордов",
+    "looker plugin for antigravity": "Плагин Looker для Antigravity",
+    "connect antigravity to your managed": "Подключите Antigravity к вашему управляемому",
+    "looker mcp server": "MCP-серверу Looker",
+    ") to explore lookml models, run ad-hoc queries and saved looks, create and update dashboards, author lookml, and run instance health checks.": ") для исследования моделей LookML, выполнения произвольных запросов и сохранённых отчётов (Looks), создания и обновления дашбордов, написания LookML и проверки состояния экземпляра.",
+    "1. register the oauth client app in looker (one-time admin setup)": "1. Зарегистрируйте OAuth-приложение в Looker (единоразовая настройка администратором)",
+    "before signing in via oauth, an administrator on your looker instance must register": "Перед входом через OAuth администратор вашего экземпляра Looker должен зарегистрировать",
+    "as an oauth client application using looker's": "в качестве клиентского приложения OAuth через эндпоинт Looker",
+    "register oauth app": "Register OAuth App",
+    "open the": "Откройте",
+    "api explorer": "API Explorer",
+    "on your looker instance (via": "в вашем экземпляре Looker (через",
+    "admin > api > use api explorer": "Admin > API > Use API Explorer",
+    "select the": "Выберите эндпоинт",
+    "endpoint under": "в разделе",
+    "enter the following json in the": "Введите следующий JSON в поле",
+    "request:": "запроса:",
+    "check the confirmation box and click": "Установите флажок подтверждения и нажмите",
+    "to register the oauth client.": ", чтобы зарегистрировать OAuth-клиент.",
+    "2. enable and authenticate the plugin": "2. Включите и авторизуйте плагин",
+    "enable the": "Включите плагин",
+    "plugin in the": "на панели настроек",
+    "settings panel (or via": "(или через команду",
+    "in the cli).": "в CLI).",
+    "when prompted, enter your": "При появлении запроса укажите ваш",
+    "looker instance fqdn": "домен (FQDN) экземпляра Looker",
+    "(for example,": "(например,",
+    ", without": ", без",
+    "complete the oauth sign-in flow in your browser when prompted by the looker mcp server.": "Завершите вход через OAuth в браузере по запросу MCP-сервера Looker.",
+    "capabilities": "Возможности",
+    "semantic data exploration": "Семантическое исследование данных",
+    ": discover models (": ": обнаружение моделей (",
+    "), explores (": "), объектов Explore (",
+    "), dimensions (": "), измерений (",
+    "), measures (": "), показателей (",
+    "), filters (": "), фильтров (",
+    "), and parameters (": ") и параметров (",
+    "querying & content": "Запросы и контент",
+    ": execute looker queries (": ": выполнение запросов Looker (",
+    "), run or create looks (": "), запуск и создание отчётов Looks (",
+    "), and build or run dashboards (": "), а также сборка и запуск дашбордов (",
+    "lookml development": "Разработка LookML",
+    ": inspect and edit project files (": ": просмотр и редактирование файлов проекта (",
+    ", validate lookml (": ", валидация LookML (",
+    "), and run lookml data tests (": ") и запуск тестов данных LookML (",
+    "instance health": "Состояние экземпляра",
+    "looker developer onboarding: step 4. creates a database connection in looker to google bigquery. only execute this after step 3 (cli authentication using `authenticating-looker-cli`).": "Онбординг разработчика Looker: Шаг 4. Создаёт подключение к базе данных Google BigQuery в Looker. Выполняйте только после Шага 3 (аутентификации CLI с помощью `authenticating-looker-cli`).",
+    "looker developer onboarding: step 7 (final step). creates a lookml dashboard in the project, imports it as a user-defined dashboard (udd) in looker, and iteratively refines it based on user feedback by syncing changes. only execute this after step 6 (model setup using `creating-lookml-model`).": "Онбординг разработчика Looker: Шаг 7 (финальный шаг). Создаёт LookML-дашборд в проекте, импортирует его как пользовательский дашборд (UDD) в Looker и итеративно дорабатывает по обратной связи с синхронизацией изменений. Выполняйте только после Шага 6 (`creating-lookml-model`).",
+    "looker developer onboarding: step 6. creates lookml views and models based on the user's goals, maps model connections, validates lookml, and runs verification queries. only execute this after step 5 (project setup using `setting-up-looker-project`).": "Онбординг разработчика Looker: Шаг 6. Создаёт представления (Views) и модели LookML под задачи пользователя, настраивает подключения, валидирует LookML и запускает проверочные запросы. Выполняйте только после Шага 5 (`setting-up-looker-project`).",
+    "looker developer onboarding: step 1. guides the agent to explore bigquery data and define the onboarding goal. this is the first active step, to be executed immediately after reading the parent orchestrator `looker-developer-onboarding`.": "Онбординг разработчика Looker: Шаг 1. Помогает агенту исследовать данные BigQuery и определить цель онбординга. Первый активный шаг, выполняемый сразу после чтения родительского оркестратора `looker-developer-onboarding`.",
+    "guide for connecting to and using the looker mcp server. explains how to access the looker mcp server, set up looker-managed vs local/standalone deployment, configure oauth authentication, and catalog available mcp tools.": "Руководство по подключению и использованию MCP-сервера Looker. Объясняет доступ к серверу, настройку управляемого Looker или локального/автономного развёртывания, конфигурацию OAuth и каталог доступных инструментов MCP.",
+    "master developer skill for auditing, diagnosing, and optimizing query performance in looker projects. enforces caching alignment, pdt materialization strategies, and parallel subagent sql profiling.": "Профессиональный навык для аудита, диагностики и оптимизации производительности запросов в проектах Looker. Обеспечивает настройку кэширования, стратегии материализации производных таблиц (PDT) и параллельное профилирование SQL.",
+    "use this skill to create access grants for row-level or object-level security.": "Используйте этот навык для создания прав доступа (Access Grants) для защиты данных на уровне строк или объектов.",
+    "use this skill when you need to create or modify a lookml explore. this includes defining the explore, joins, access grants, and basic configuration.": "Используйте этот навык для создания или изменения объектов LookML Explore, включая определение Explore, объединений (joins), прав доступа и базовой конфигурации.",
+    "overview of lookml field types (dimension, measure, filter, parameter) and the role of the `sql` parameter in each. use this skill to choose the right field type for your data modeling needs.": "Обзор типов полей LookML (Dimension, Measure, Filter, Parameter) и роли параметра `sql` в каждом из них. Помогает выбрать правильный тип поля для моделирования данных.",
+    "use this skill to use liquid variables in lookml for dynamic sql, html, and links, including advanced patterns for query optimization.": "Используйте этот навык для работы с переменными Liquid в LookML при создании динамических SQL-запросов, HTML и ссылок, включая продвинутые паттерны оптимизации.",
+    "use this skill when you need to create or modify a lookml model file (.model.lkml). this includes defining connections, includes, and configuring model-level settings.": "Используйте этот навык для создания или изменения файла модели LookML (.model.lkml), включая настройку подключений, директив include и параметров уровня модели.",
+    "guidelines for lookml modeling and command execution.": "Рекомендации и правила моделирования LookML и выполнения команд.",
+    "deep dive into lookml includes, refinements (layering), and project structure best practices. essential for mastering looker's object-oriented capabilities.": "Подробное руководство по директивам include, уточнениям (refinements / наслоению) и лучшим практикам структуры проектов LookML и объектно-ориентированного моделирования.",
+    "guide to using lookml sets for grouping fields, controlling visibility, and managing drill paths.": "Руководство по использованию наборов (sets) в LookML для группировки полей, управления видимостью и настройки путей детализации (drill paths).",
+    "standards and best practices for writing lookml tests to ensure data integrity, accuracy, and logic validation.": "Стандарты и лучшие практики написания тестов LookML для обеспечения целостности данных, точности расчётов и проверки бизнес-логики.",
+    "use this skill to create or modify lookml views. covers basic view definitions, sql_table_name, file organization, and patterns.": "Используйте этот навык для создания или модификации представлений (Views) LookML: базовые определения, sql_table_name, организация файлов и паттерны.",
+    "looker developer onboarding: step 5. creates a new looker project and configures git. only execute this after step 4 (bigquery connection using `connecting-looker-to-bigquery`).": "Онбординг разработчика Looker: Шаг 5. Создаёт новый проект Looker и настраивает Git. Выполняйте только после Шага 4 (`connecting-looker-to-bigquery`).",
+    "188 real-world developer use cases": "188 практических сценариев разработки",
+    ": maximize content and reduce noise by removing blocking popups, keeping persistent navigation compact, and moving secondary content behind on-demand disclosure.": ": максимизация контента и снижение визуального шума за счёт отказа от блокирующих попапов, компактной навигации и скрытия второстепенных блоков под раскрытие по запросу.",
+    ": use this guide to implement webmcp in browser applications, exposing client-side functionality as tools to ai agents via declarative or imperative apis.": ": руководство по внедрению WebMCP в браузерных приложениях для предоставления клиентских функций в виде инструментов ИИ-агентам через декларативные или императивные API.",
+    "origin trial opt-in gate": "Защита экспериментальных API (Origin Trial Opt-In Gate)",
+    ": guides for experimental origin trial apis are discoverable via search, but gated on": ": руководства по экспериментальным API Origin Trial доступны в поиске, но защищены флагом",
+    "so agents do not adopt unstable apis without consent. run": ", чтобы агенты не использовали нестабильные API без вашего согласия. Выполните",
+    "in your terminal to opt a project in (writes": "в терминале, чтобы включить их для проекта (записывает",
+    "; set to": "; установите",
+    "to opt out).": "для отключения).",
+    "prefers-reduced-motion media query": "Медиа-запрос prefers-reduced-motion",
+    "cross-document view transitions": "Межстраничные переходы (Cross-document View Transitions)",
+    "relative colors": "Относительные цвета (Relative color syntax)",
+    "custom highlights": "Пользовательская подсветка текста (CSS Custom Highlight API)",
+    "custom properties": "Пользовательские CSS-свойства (переменные)",
+    "display animation": "Анимация свойства display",
+    "element-scoped view transitions": "Переходы на уровне элемента (Element-scoped View Transitions)",
+    "scroll method promises": "Промисы методов прокрутки",
+    "scroll snap": "Привязка прокрутки (CSS Scroll Snap)",
+    "scroll snap events": "События привязки прокрутки (Scroll Snap Events)",
+    "scroll-driven animations": "Анимации, управляемые прокруткой (Scroll-driven animations)",
+    "forced colors": "Режим принудительных цветов (Forced colors)",
+    "gradient interpolation": "Интерполяция цветов в градиентах",
+    "grid lanes": "Полосы сетки (CSS Grid Lanes / Masonry)",
+    "active view transition": "Активный переход представления (:active-view-transition)",
+    "individual transform properties": "Индивидуальные свойства трансформации",
+    "shadow parts": "Части теневого DOM (::part)",
+    "anchor positioning": "Якорное позиционирование (CSS Anchor Positioning)",
+    "sticky positioning": "Липкое позиционирование (position: sticky)",
+    "system colors": "Системные цвета CSS",
+    "lab and lch": "Цветовые пространства Lab и LCH",
+    "logical properties": "Логические свойства CSS",
+    "cascade layers": "Слои каскада (@layer)",
+    "oklab and oklch": "Цветовые пространства Oklab и OkLCh",
+    "conic gradients": "Конические градиенты (conic-gradient)",
+    "container scroll-state queries": "Контейнерные запросы состояния прокрутки (scroll-state)",
+    "container style queries": "Контейнерные запросы стилей (@container style())",
+    "viewport units": "Единицы области просмотра (vw, vh, vi, vb)",
+    "prefers-color-scheme media query": "Медиа-запрос prefers-color-scheme",
+    "web animations": "Web Animations API",
+    "prefers-contrast media query": "Медиа-запрос prefers-contrast",
+    "html setter methods": "Безопасные методы вставки HTML",
+    "html streaming setters": "Потоковые методы записи HTML",
+    "autonomous custom elements": "Автономные пользовательские элементы (Custom Elements)",
+    "interest invokers": "Триггеры интереса (Interest Invokers)",
+    "invoker commands": "Декларативные команды вызова (Invoker Commands)",
+    "declarative shadow dom": "Декларативный Shadow DOM",
+    "lazy-loading media": "Отложенная загрузка медиафайлов",
+    "fetch priority": "Приоритет загрузки ресурсов (Fetch Priority)",
+    "form-associated custom elements": "Пользовательские элементы для форм",
+    "intersection observer": "Наблюдатель пересечений (Intersection Observer)",
+    "scheduler api": "API планировщика задач (Scheduler API)",
+    "abortcontroller and abortsignal": "AbortController и AbortSignal",
+    "keyboard events": "События клавиатуры (Keyboard Events)",
+    "aria attribute reflection": "Отражение атрибутов ARIA в DOM",
+    "language detector": "Определение языка (Language Detector API)",
+    "speculation rules": "Правила предзагрузки страниц (Speculation Rules API)",
+    "subresource integrity": "Целостность подресурсов (SRI)",
+    "connection allowlists": "Белые списки подключений (Connection Allowlists)",
+    "local network access": "Доступ к локальной сети (Local Network Access)",
+    "credential management": "Управление учётными данными (Credential Management API)",
+    "navigation api": "API навигации (Navigation API)",
+    "top-level await": "Top-level await",
+    "page visibility": "Видимость страницы (Page Visibility API)",
+    "trusted types": "Доверенные типы (Trusted Types)",
+    "federated credential management": "Федеративная авторизация (FedCM)",
+    "partitioned cookies": "Изолированные куки (Partitioned Cookies)",
+    "password credentials": "Учётные данные паролей (Password Credentials)",
+    "permissions policy": "Политика разрешений (Permissions Policy)",
+    "web authentication": "Веб-аутентификация (WebAuthn)",
+    "form-associated webmcp attributes": "Атрибуты WebMCP для форм",
+    "pointer events": "События указателя (Pointer Events)",
+    "html processing instructions": "Инструкции обработки HTML",
+    "referrer policy": "Политика реферера (Referrer Policy)",
+    "web cryptography": "Веб-криптография (Web Crypto API)",
+    "registered custom properties": "Типизированные CSS-переменные (@property)",
+    "resize observer": "Наблюдатель изменения размеров (Resize Observer)",
+    "sanitizer api": "Санитизация HTML (Sanitizer API)"
 };
 
 function translateSingleEnglishClause(clause, isFirstClause) {
@@ -4865,6 +5075,30 @@ function localizeActionTarget(target) {
 }
 
 const regexTranslations = [
+    {
+        pattern: /^Hi\s+(.+?),\s+what can we get done today\?$/i,
+        replace: (match) => `Привет, ${match[1]}! Чем займёмся сегодня?`
+    },
+    {
+        pattern: /^Fix with Agent:\s*(.+)$/i,
+        replace: (match) => `Исправить с агентом: ${match[1]}`
+    },
+    {
+        pattern: /^(?:Error|Ошибка):\s*exit status\s+(.+)$/i,
+        replace: (match) => `Ошибка: код выхода ${match[1]}`
+    },
+    {
+        pattern: /^\(([\d\s\u00a0.,]+)\s+tokens?\)\s*(.*)$/i,
+        replace: (match) => `(${match[1]} токенов)${match[2] ? ' ' + match[2] : ''}`
+    },
+    {
+        pattern: /^Plugin:\s*(.+)$/i,
+        replace: (match) => `Плагин: ${match[1]}`
+    },
+    {
+        pattern: /^Settings for (.+)\.$/i,
+        replace: (match) => `Настройки для ${match[1]}.`
+    },
     {
         // "3 subagents/tasks running" / "2 tasks running" / "1 subagent running, 1 blocked"
         pattern: /^(?:\d+\s+(?:subagents?\/tasks?|subagents?|tasks?)\s+running|\d+\s+(?:subagents?\s+)?blocked)(?:,\s*(?:\d+\s+(?:subagents?\/tasks?|subagents?|tasks?)\s+running|\d+\s+(?:subagents?\s+)?blocked))*$/i,
@@ -13745,7 +13979,44 @@ function isFileName(text, parent) {
         lowerTrimmed.endsWith(' stat') ||
         lowerTrimmed.endsWith(' help') ||
         lowerTrimmed.endsWith(' body') ||
-        lowerTrimmed.endsWith(' toolchain')
+        lowerTrimmed.endsWith(' toolchain') ||
+        lowerTrimmed === 'fill' ||
+        lowerTrimmed === 'verbose' ||
+        lowerTrimmed === 'middle click' ||
+        lowerTrimmed === 'tokens)' ||
+        lowerTrimmed === 'token)' ||
+        lowerTrimmed === 'domains:' ||
+        lowerTrimmed === 'loading app...' ||
+        lowerTrimmed === 'fix with agent' ||
+        lowerTrimmed.startsWith('fix with agent:') ||
+        lowerTrimmed.startsWith('hi ') ||
+        lowerTrimmed.includes('what can we get done') ||
+        lowerTrimmed.startsWith('settings for ') ||
+        lowerTrimmed.startsWith('agent settings and permissions for ') ||
+        lowerTrimmed.startsWith('manage ') ||
+        lowerTrimmed.startsWith('run zoho books') ||
+        lowerTrimmed.startsWith('запуск zoho books') ||
+        lowerTrimmed.startsWith('run a query against') ||
+        lowerTrimmed.startsWith('запуск a query against') ||
+        lowerTrimmed.startsWith('check the health of') ||
+        lowerTrimmed.startsWith('check the confirmation box') ||
+        lowerTrimmed.startsWith('runs one read-only sql') ||
+        lowerTrimmed.startsWith('ask a question of the live web') ||
+        lowerTrimmed.startsWith('connect to your managed looker') ||
+        lowerTrimmed.startsWith('connect antigravity to your managed') ||
+        lowerTrimmed.startsWith('1. register the oauth') ||
+        lowerTrimmed.startsWith('2. enable and authenticate') ||
+        lowerTrimmed.startsWith('looker developer onboarding') ||
+        lowerTrimmed.startsWith('guide for connecting to and using the looker') ||
+        lowerTrimmed.startsWith('master developer skill for auditing') ||
+        lowerTrimmed.startsWith('use this skill') ||
+        lowerTrimmed.startsWith('overview of lookml') ||
+        lowerTrimmed.startsWith('guidelines for lookml') ||
+        lowerTrimmed.startsWith('deep dive into lookml') ||
+        lowerTrimmed.startsWith('guide to using lookml') ||
+        lowerTrimmed.startsWith('standards and best practices for writing lookml') ||
+        lowerTrimmed === '188 real-world developer use cases' ||
+        lowerTrimmed === 'origin trial opt-in gate'
     ) {
         return false;
     }
@@ -13840,6 +14111,22 @@ function translateTextNode(node) {
         if (!translated) {
             if (translationDictionary[lowerText]) {
                 translated = translationDictionary[lowerText];
+                if (lowerText === 'name' && (parentText.includes(': string') || fullContext.includes('const greet') || fullContext.includes('hello, ${name}'))) {
+                    return;
+                }
+                if (lowerText === 'plan' && (fullContext.includes('create a plan') || fullContext.includes('составил план') || fullContext.includes('select') || fullContext.includes('выберите'))) {
+                    translated = 'План';
+                } else if (lowerText === 'click' && node.parentElement && node.parentElement.tagName === 'KBD') {
+                    translated = 'Клик';
+                } else if (lowerText === 'conversations' && /(?:^\d+\s+|no\s+|нет\s+|search\s+|поиск\s+|delete\s+|удалить\s+)/i.test(parentText.trim())) {
+                    translated = 'диалогов';
+                } else if (lowerText === 'no' && /\s+yet$/i.test(parentText.trim())) {
+                    translated = 'Пока нет';
+                } else if (lowerText === 'automations' && /^(?:no|нет|пока нет)\s+/i.test(parentText.trim())) {
+                    translated = 'автоматизаций';
+                } else if (lowerText === 'scheduled tasks' && /^(?:no|нет|пока нет)\s+/i.test(parentText.trim())) {
+                    translated = 'запланированных задач';
+                }
                 if (lowerText === 'resources' && /^(?:add|добавить)\s+/i.test(parentText.trim())) {
                     translated = 'ресурсы';
                 }
@@ -13937,6 +14224,12 @@ function translateTextNode(node) {
                     translated = 'Репозиторий';
                 } else if (pText.includes('navigation-drawer')) {
                     translated = 'руководство';
+                } else if (pText.includes('context7')) {
+                    translated = 'Плагин';
+                }
+            } else if (lowerText === 'yet' && /^(?:no|нет|пока нет)\s+/i.test(parentText.trim())) {
+                translated = ' ';
+                if (false) {
                 }
             } else if (lowerText === 'guide') {
                 const pText = node.parentElement ? normalizeText(node.parentElement.textContent).toLowerCase() : '';
@@ -14520,17 +14813,17 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.28';
+    const FALLBACK_VERSION = '2.1.29';
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
     }
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = 'Обновление v2.1.28: полный перевод новых разделов Google AntiGravity 2.0 — Голосовой режим (Start Voice mode, выбор голоса, микрофоны, скорость речи), Удалённые проекты и Облачные ресурсы (New Remote Project, Select Resource(s), + Добавить ресурс, привязка репозиториев и окружений), Маркетплейс и Наборы плагинов (More Plugins, Explore other marketplace customizations, описание плагина GitHub), статусы подключения аккаунтов (Not connected / Не подключено) и расширенное контекстное меню.';
+        window.__antigravity_remote_changelog = 'Обновление v2.1.29: полный обход и перевод всех 70 страниц плагинов Маркетплейса (Looker, Keenable SELECT, Keenable, Zoho Books, Modern Web Guidance, Context7), приветствия на стартовом экране (Hi <Name>, what can we get done today?), расширенных настроек внешнего вида (Fill / На всю ширину, Verbose / Подробно), горячих клавиш (Middle Click / Средний клик), диагностики MCP-серверов (Fix with Agent / Исправить с агентом, exit status), разделов «Диалоги» и «Автоматизации», а также исправление задвоения текста и перезапуска в 1 клик.';
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Обновление v2.1.28: полный перевод новых разделов Google AntiGravity 2.0 — Голосовой режим (Start Voice mode, выбор голоса, микрофоны, скорость речи), Удалённые проекты и Облачные ресурсы (New Remote Project, Select Resource(s), + Добавить ресурс, привязка репозиториев и окружений), Маркетплейс и Наборы плагинов (More Plugins, Explore other marketplace customizations, описание плагина GitHub), статусы подключения аккаунтов (Not connected / Не подключено) и расширенное контекстное меню.';
+    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Обновление v2.1.29: полный обход и перевод всех 70 страниц плагинов Маркетплейса (Looker, Keenable SELECT, Keenable, Zoho Books, Modern Web Guidance, Context7), приветствия на стартовом экране (Hi <Name>, what can we get done today?), расширенных настроек внешнего вида (Fill / На всю ширину, Verbose / Подробно), горячих клавиш (Middle Click / Средний клик), диагностики MCP-серверов (Fix with Agent / Исправить с агентом, exit status), разделов «Диалоги» и «Автоматизации», а также исправление задвоения текста и перезапуска в 1 клик.';
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;

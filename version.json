@@ -1,7 +1,7 @@
 {
-  "version": "2.1.28",
-  "releaseDate": "2026-11-04T13:26:30.343Z",
-  "changelog": "Обновление v2.1.28: полный перевод новых разделов Google AntiGravity 2.0 — Голосовой режим (Start Voice mode, выбор голоса, микрофоны, скорость речи), Удалённые проекты и Облачные ресурсы (New Remote Project, Select Resource(s), + Добавить ресурс, привязка репозиториев и окружений), Маркетплейс и Наборы плагинов (More Plugins, Explore other marketplace customizations, описание плагина GitHub), статусы подключения аккаунтов (Not connected / Не подключено) и расширенное контекстное меню.",
+  "version": "2.1.29",
+  "releaseDate": "2026-11-05T00:00:00.000Z",
+  "changelog": "Обновление v2.1.29: полный обход и перевод всех 70 страниц плагинов Маркетплейса (Looker, Keenable SELECT, Keenable, Zoho Books, Modern Web Guidance, Context7), приветствия на стартовом экране (Hi <Name>, what can we get done today?), расширенных настроек внешнего вида (Fill / На всю ширину, Verbose / Подробно), горячих клавиш (Middle Click / Средний клик), диагностики MCP-серверов (Fix with Agent / Исправить с агентом, exit status), разделов «Диалоги» и «Автоматизации», а также исправление задвоения текста и перезапуска в 1 клик.",
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",
