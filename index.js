@@ -168,13 +168,25 @@ const controlServer = http.createServer(async (req, res) => {
   res.end();
 });
 
+const IS_HEADLESS_SUBAGENT_CALL = (
+  process.env.VITC_DISABLE_UI_LOCALIZER === "1" ||
+  process.env.VITC_INTERNAL_CLI_CALL === "1" ||
+  process.env.VITC_SUBAGENT_SESSION === "1"
+);
+let isPrimaryUiInstance = !IS_HEADLESS_SUBAGENT_CALL;
+
 controlServer.on('error', (err) => {
+  if (err && err.code === 'EADDRINUSE') {
+    isPrimaryUiInstance = false;
+  }
   log(`Control HTTP server port 39228 notice: ${err.message}`);
 });
 
-controlServer.listen(39228, '127.0.0.1', () => {
-  log("Control HTTP server listening on 127.0.0.1:39228");
-});
+if (!IS_HEADLESS_SUBAGENT_CALL) {
+  controlServer.listen(39228, '127.0.0.1', () => {
+    log("Control HTTP server listening on 127.0.0.1:39228");
+  });
+}
 
 // Fast SHA-256 hash comparison: verifies if app.asar is already our patched version with zero file scanning
 function checkAsarHashAndAutoBuildPatch() {
@@ -273,7 +285,7 @@ async function checkAndApplyGithubUpdate({ force = false } = {}) {
       // Prevent path traversal
       const safeRel = path.normalize(relFile).replace(/^(\.\.(\/|\\|$))+/, '');
       const targetPath = path.join(__dirname, safeRel);
-      const tmpPath = `${targetPath}.tmp`;
+      const tmpPath = targetPath.replace(/(\.[^.]+)$/, '.tmp$1');
       const fileUrl = `${GITHUB_RAW_BASE}/${safeRel.replace(/\\/g, '/')}?cb=${Date.now()}`;
 
       let downloadedContent = await fetchHttpsText(fileUrl);
@@ -351,8 +363,10 @@ async function checkAndApplyGithubUpdate({ force = false } = {}) {
   }
 }
 
-// Check ASAR hash on startup silently in background
-checkAsarHashAndAutoBuildPatch();
+// Check ASAR hash on startup silently in background (primary UI instance only)
+if (!IS_HEADLESS_SUBAGENT_CALL) {
+  checkAsarHashAndAutoBuildPatch();
+}
 
 // Initialize MCP Server
 const server = new McpServer({
@@ -470,17 +484,19 @@ const transport = new StdioServerTransport();
 await server.connect(transport);
 log("MCP Server connected and listening on stdio.");
 
-// Start background config backup loop
-startBackupLoop(30000);
+if (isPrimaryUiInstance && !IS_HEADLESS_SUBAGENT_CALL) {
+  // Start background config backup loop
+  startBackupLoop(30000);
 
-// Schedule automatic GitHub update checks (10s after boot, then every 30 minutes)
-setTimeout(() => {
-  checkAndApplyGithubUpdate().catch(() => {});
-}, 10000);
+  // Schedule automatic GitHub update checks (10s after boot, then every 30 minutes)
+  setTimeout(() => {
+    if (isPrimaryUiInstance) checkAndApplyGithubUpdate().catch(() => {});
+  }, 10000);
 
-setInterval(() => {
-  checkAndApplyGithubUpdate().catch(() => {});
-}, 30 * 60 * 1000);
+  setInterval(() => {
+    if (isPrimaryUiInstance) checkAndApplyGithubUpdate().catch(() => {});
+  }, 30 * 60 * 1000);
+}
 
 // CDP Injection State
 let cdpConnected = false;
@@ -582,8 +598,11 @@ async function attemptCdpInjection() {
   }
 }
 
-// Background periodic loop: check CDP and save geometry
-setInterval(() => {
-  attemptCdpInjection();
-  trackAndSaveWindowGeometry();
-}, 5000);
+// Background periodic loop: check CDP and save geometry (primary UI instance only)
+if (!IS_HEADLESS_SUBAGENT_CALL) {
+  setInterval(() => {
+    if (!isPrimaryUiInstance) return;
+    attemptCdpInjection();
+    trackAndSaveWindowGeometry();
+  }, 5000);
+}
