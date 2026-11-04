@@ -47,7 +47,7 @@ async function runPatch() {
         ${ctxMapCode}
         const mapItems = (arr) => Array.isArray(arr) ? arr.map(i => {
             const c = Object.assign({}, i);
-            if (c.label && typeof c.label === 'string') c.label = ctxMap[c.label.trim().toLowerCase()] || c.label;
+            if (c.label && typeof c.label === 'string') { const isEn = typeof localStorage !== 'undefined' && localStorage.getItem('antigravity_lang') === 'en'; if (!isEn) { const k = c.label.trim().toLowerCase(); c.label = ctxMap[k] || (typeof window !== 'undefined' && typeof window.__antigravity_translate_string === 'function' ? window.__antigravity_translate_string(c.label) : c.label); } }
             if (Array.isArray(c.submenu)) c.submenu = mapItems(c.submenu);
             return c;
         }) : arr;
