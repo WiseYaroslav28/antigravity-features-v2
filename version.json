@@ -1,12 +1,6 @@
 {
-  "version": "2.1.29",
-  "releaseDate": "2026-11-05T00:00:00.000Z",
-  "changelog": "Обновление v2.1.29: полный обход и перевод всех 70 страниц плагинов Маркетплейса (Looker, Keenable SELECT, Keenable, Zoho Books, Modern Web Guidance, Context7), приветствия на стартовом экране (Hi <Name>, what can we get done today?), расширенных настроек внешнего вида (Fill / На всю ширину, Verbose / Подробно), горячих клавиш (Middle Click / Средний клик), диагностики MCP-серверов (Fix with Agent / Исправить с агентом, exit status), разделов «Диалоги» и «Автоматизации», а также исправление задвоения текста и перезапуска в 1 клик.",
-  "files": [
-    "localization_injected.js",
-    "auto_patcher.cjs",
-    "index.js",
-    "backup_manager.js",
-    "exit_patcher.cjs"
-  ]
+  "version": "2.1.30",
+  "releasedAt": "2026-11-09T21:30:07.853Z",
+  "changelog": "Обновление v2.1.30: перевод всех новых разделов свежего обновления AntiGravity 2.0 — новые приветствия на стартовом экране (Hello, <Name> / Welcome back / Good to see you), выбор макета интерфейса (Interface Layout: Работа со знаниями и Разработка ПО), настройки встроенного браузера и загрузок (кнопка Изменить…, фильтрация URL), навык /migrate-agent-settings, а также 4 новых плагина в Маркетплейсе (Spacefast, Gmail, invideo, Neo4j — карточки, стартовые промпты, обзор и все 45 команд).",
+  "downloadUrl": "https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/localization_injected.js"
 }
