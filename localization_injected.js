@@ -4808,6 +4808,7 @@ const translationDictionary = {
     "publish an existing website, app, report, or other artifact to spacefast and verify its live link. also use to read or manage team memories and inspect team skills. for changes to an existing space's content or design, use edit-space.": "Публикация существующего веб-сайта, приложения, отчёта или другого артефакта на Spacefast с проверкой рабочей ссылки, а также чтение и управление памятью (Memories) и навыками команды.",
     "bring a named existing spacefast space or linked project into alignment with the team's current saved design system. update affected source and assets, verify the result, and follow the request's deployment intent.": "Приведение существующего пространства Spacefast Space или связанного проекта в соответствие с актуальной сохранённой дизайн-системой команды, обновление исходников и ресурсов и проверка результата.",
     "verify a spacefast source build or preview against its saved team design system, including visual and editorial results. report deviations and fix them when the task includes corrections.": "Проверка сборки или превью Spacefast на соответствие сохранённой дизайн-системе команды, включая визуальные и текстовые стандарты, с отчётом об отклонениях и их исправлением.",
+    "check a spacefast source build or preview against its saved team design system, including visual and editorial results. report deviations and fix them when the task includes corrections.": "Проверка сборки или превью Spacefast на соответствие сохранённой дизайн-системе команды, включая визуальные и текстовые стандарты, с отчётом об отклонениях и их исправлением.",
     "проверка a spacefast source build or preview against its saved team design system, including visual and editorial results. report deviations и исправление them when the task includes corrections.": "Проверка сборки или превью Spacefast на соответствие сохранённой дизайн-системе команды, включая визуальные и текстовые стандарты, с отчётом об отклонениях и их исправлением.",
     "search, read, draft, and send emails in gmail.": "Поиск, чтение, создание черновиков и отправка писем в Gmail.",
     "summarize my unread emails from today": "Сделай сводку моих непрочитанных писем за сегодня",
@@ -12287,8 +12288,9 @@ window.__antigravity_translate_string = function(str) {
     const lower = norm.toLowerCase();
     if (translationDictionary[lower]) return translationDictionary[lower];
     for (const rule of regexTranslations) {
-        if (rule.pattern.test(norm)) {
-            return norm.replace(rule.pattern, rule.replace);
+        const m = norm.match(rule.pattern);
+        if (m) {
+            return rule.replace(m);
         }
     }
     return str;
