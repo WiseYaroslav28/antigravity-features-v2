@@ -15047,17 +15047,17 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.30';
+    const FALLBACK_VERSION = '2.1.31';
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
     }
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = 'Обновление v2.1.30: перевод всех новых разделов свежего обновления AntiGravity 2.0 — новые приветствия на стартовом экране (Hello, <Name> / Welcome back / Good to see you), выбор макета интерфейса (Interface Layout: Работа со знаниями и Разработка ПО), настройки встроенного браузера и загрузок (кнопка Изменить…, фильтрация URL), навык /migrate-agent-settings, а также 4 новых плагина в Маркетплейсе (Spacefast, Gmail, invideo, Neo4j — карточки, стартовые промпты, обзор и все 45 команд).';
+        window.__antigravity_remote_changelog = 'Обновление v2.1.31: исправлено ложное срабатывание жёлтого знака восклицания («Требуется перезапуск AntiGravity») после фонового горячего обновления словаря, когда текущий app.asar уже пропатчен; полный перевод новых разделов AntiGravity 2.0.';
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Обновление v2.1.30: перевод всех новых разделов свежего обновления AntiGravity 2.0 — новые приветствия на стартовом экране (Hello, <Name> / Welcome back / Good to see you), выбор макета интерфейса (Interface Layout: Работа со знаниями и Разработка ПО), настройки встроенного браузера и загрузок (кнопка Изменить…, фильтрация URL), навык /migrate-agent-settings, а также 4 новых плагина в Маркетплейсе (Spacefast, Gmail, invideo, Neo4j — карточки, стартовые промпты, обзор и все 45 команд).';
+    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Обновление v2.1.31: исправлено ложное срабатывание жёлтого знака восклицания («Требуется перезапуск AntiGravity») после фонового горячего обновления словаря, когда текущий app.asar уже пропатчен; полный перевод новых разделов AntiGravity 2.0.';
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -15509,13 +15509,11 @@ function initLanguageSwitcher() {
                     latestGithubVersion = data.latestRemoteVersion;
                     window.__antigravity_remote_version = latestGithubVersion;
                 }
-                isUpdatePending = !!data.updatePending;
-                if (data.hotUpdateNotice) {
+                isUpdatePending = !!data.asarUnpatched;
+                if (data.hotUpdateNotice && data.hotUpdateNotice.to && compareSemverClient(data.hotUpdateNotice.to, currentLocalVersion) >= 0) {
                     isHotUpdated = true;
-                    if (data.hotUpdateNotice.to) {
-                        currentLocalVersion = data.hotUpdateNotice.to;
-                        window.__antigravity_local_version = currentLocalVersion;
-                    }
+                    currentLocalVersion = data.hotUpdateNotice.to;
+                    window.__antigravity_local_version = currentLocalVersion;
                     if (data.hotUpdateNotice.changelog) {
                         latestGithubChangelog = data.hotUpdateNotice.changelog;
                     }

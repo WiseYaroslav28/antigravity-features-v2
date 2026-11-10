@@ -125,6 +125,7 @@ const controlServer = http.createServer(async (req, res) => {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({
       updatePending: pendingPatchToApply,
+      asarUnpatched: pendingPatchToApply,
       version: localInfo.version,
       latestRemoteVersion: effectiveRemoteVersion,
       lastUpdateCheckAt,
@@ -136,6 +137,7 @@ const controlServer = http.createServer(async (req, res) => {
 
   if (req.url === '/dismiss-notice') {
     hotUpdateNotice = null;
+    pendingPatchToApply = false;
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ success: true }));
     return;
@@ -214,7 +216,26 @@ function checkAsarHashAndAutoBuildPatch() {
       return;
     }
 
-    // Hash mismatch: new Google version detected!
+    const isAlreadyPatched = currentBuffer.includes('// BEGIN ANTIGRAVITY TRANSLATION INJECTION');
+    if (isAlreadyPatched) {
+      pendingPatchToApply = false;
+      const patchedPath = path.join(__dirname, 'app.asar.patched');
+      if (fs.existsSync(patchedPath)) {
+        log(`app.asar already contains localization patch; arming silent exit-patcher to sync latest app.asar.patched on close...`);
+        const exitPatcherPath = path.join(__dirname, 'exit_patcher.cjs');
+        const child = spawn('node', [exitPatcherPath], {
+          detached: true,
+          stdio: 'ignore',
+          windowsHide: true
+        });
+        child.unref();
+      } else {
+        rebuildPatchedAsarInBackground(false);
+      }
+      return;
+    }
+
+    // Hash mismatch AND app.asar is unpatched: new Google version detected!
     pendingPatchToApply = true;
     log(`AntiGravity update / clean install detected via SHA-256 mismatch! Rebuilding patch in background (100% hidden)...`);
     rebuildPatchedAsarInBackground(true);

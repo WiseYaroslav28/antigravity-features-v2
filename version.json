@@ -1,6 +1,6 @@
 {
-  "version": "2.1.30",
-  "releasedAt": "2026-11-09T21:30:07.853Z",
-  "changelog": "Обновление v2.1.30: перевод всех новых разделов свежего обновления AntiGravity 2.0 — новые приветствия на стартовом экране (Hello, <Name> / Welcome back / Good to see you), выбор макета интерфейса (Interface Layout: Работа со знаниями и Разработка ПО), настройки встроенного браузера и загрузок (кнопка Изменить…, фильтрация URL), навык /migrate-agent-settings, а также 4 новых плагина в Маркетплейсе (Spacefast, Gmail, invideo, Neo4j — карточки, стартовые промпты, обзор и все 45 команд).",
+  "version": "2.1.31",
+  "releasedAt": "2026-11-10T03:29:00.000Z",
+  "changelog": "Обновление v2.1.31: исправлено ложное срабатывание жёлтого знака восклицания («Требуется перезапуск AntiGravity») после фонового горячего обновления словаря, когда текущий app.asar уже пропатчен; полный перевод новых разделов AntiGravity 2.0.",
   "downloadUrl": "https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/localization_injected.js"
 }

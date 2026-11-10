@@ -10,7 +10,24 @@ const ASAR_PATH = path.join(APP_DIR, 'resources', 'app.asar');
 const BAK_PATH = path.join(APP_DIR, 'resources', 'app.asar.bak');
 const PATCHED_PATH = path.join(__dirname, 'app.asar.patched');
 const LOG_FILE = path.join(__dirname, 'features_v2.log');
+const PID_FILE = path.join(__dirname, 'backups', 'exit-patcher.pid');
 const isRestartMode = process.argv.includes('--restart');
+
+if (!isRestartMode && fs.existsSync(PID_FILE)) {
+  try {
+    const existingPid = parseInt(fs.readFileSync(PID_FILE, 'utf8').trim(), 10);
+    if (existingPid > 0 && existingPid !== process.pid) {
+      process.kill(existingPid, 0);
+      process.exit(0);
+    }
+  } catch (e) {}
+}
+if (!isRestartMode) {
+  try {
+    fs.mkdirSync(path.dirname(PID_FILE), { recursive: true });
+    fs.writeFileSync(PID_FILE, String(process.pid), 'utf8');
+  } catch (e) {}
+}
 
 function log(msg) {
   try {
