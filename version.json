@@ -1,6 +1,6 @@
 {
-  "version": "2.1.32",
-  "releasedAt": "2026-11-11T00:52:00.000Z",
-  "changelog": "Обновление v2.1.32: мгновенная прямая запись патча в resources/app.asar после официальных обновлений AntiGravity (2.31.0+) и автоматическая активация плагина перевода без потери виджета EN | RU.",
+  "version": "2.1.33",
+  "releasedAt": "2026-11-11T01:35:00.000Z",
+  "changelog": "Обновление v2.1.33: нативная 0 мс локализация UI-плагинов в iframe (🐝 Рой / Swarm и будущие плагины) с синхронизацией EN | RU, полный перевод раздела Swarm и новых плагинов Marketplace (Arize AX, Elephant-Goldfish Model, CodeRabbit, Spacefast, VirusTotal), защита от частичного перевода английских предложений и обновлённый патчер для AntiGravity 2.31.0.",
   "downloadUrl": "https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/localization_injected.js"
 }

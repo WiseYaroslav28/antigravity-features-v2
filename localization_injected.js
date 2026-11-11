@@ -4948,7 +4948,464 @@ const translationDictionary = {
     "references": "Ссылки",
     "close references": "Закрыть ссылки",
     "open in full conversation": "Открыть в полном диалоге",
-    "keep open": "Оставить открытым"
+    "keep open": "Оставить открытым",
+
+    // --- 🐝 Swarm UI Plugin (index.html, app.js, hive.js, narrator_bootstrap.js, plugin.json) ---
+    "swarm": "Рой",
+    "🐝 swarm": "🐝 Рой",
+    "unlock the power of agent swarms.": "Раскройте возможности роя ИИ-агентов.",
+    "no swarm in this conversation": "В этом диалоге нет роя",
+    "watching for a swarm": "Ожидание запуска роя",
+    "looking for this conversation's swarm…": "Поиск роя для этого диалога…",
+    "looking for this conversation's swarm...": "Поиск роя для этого диалога…",
+    "open this pane from a conversation to see its swarm. swarms started there appear here automatically; start one with": "Откройте эту панель из диалога, чтобы увидеть его рой. Запущенные там рои появляются здесь автоматически; запустите рой командой",
+    "open this pane from a conversation to see its swarm. swarms started there appear here automatically; start one with /swarm .": "Откройте эту панель из диалога, чтобы увидеть его рой. Запущенные там рои появляются здесь автоматически; запустите рой командой /swarm.",
+    "open this pane from a conversation to see its swarm. swarms started there appear here automatically; start one with /swarm.": "Откройте эту панель из диалога, чтобы увидеть его рой. Запущенные там рои появляются здесь автоматически; запустите рой командой /swarm.",
+    "swarms started in this conversation appear here automatically, with their board, members and @mention graph. start one with": "Рои, запущенные в этом диалоге, появляются здесь автоматически вместе с доской сообщений, списком участников и графом упоминаний. Запустите рой командой",
+    "swarms started in this conversation appear here automatically, with their board, members and @mention graph. start one with /swarm.": "Рои, запущенные в этом диалоге, появляются здесь автоматически вместе с доской сообщений, списком участников и графом упоминаний. Запустите рой командой /swarm.",
+    "live": "Онлайн",
+    "reconnecting": "Переподключение",
+    "lost contact with the swarm sidecar; retrying": "Потеряна связь со службой роя; повторная попытка",
+    "updates automatically": "Обновляется автоматически",
+    "swarm views": "Режимы просмотра роя",
+    "system alerts": "Системные оповещения",
+    "board": "Доска",
+    "members": "Участники",
+    "graph": "Граф",
+    "raw": "Исходник",
+    "overview · from the narrator’s notes": "обзор · по заметкам рассказчика",
+    "overview · from the narrator's notes": "обзор · по заметкам рассказчика",
+    "narrator’s page": "Страница рассказчика",
+    "narrator's page": "Страница рассказчика",
+    "narrator's page · ai-generated": "страница рассказчика · создано ИИ",
+    "narrator’s page · ai-generated": "страница рассказчика · создано ИИ",
+    "narrator view (ai-generated)": "Обзор рассказчика (создано ИИ)",
+    "retry narrator's page": "Обновить страницу рассказчика",
+    "retry narrator’s page": "Обновить страницу рассказчика",
+    "want this view different? tell the coordinator.": "Хотите изменить этот вид? Скажите координатору.",
+    "open coordinator chat": "Открыть чат с координатором",
+    "give feedback on this item": "Оставить отзыв об этом элементе",
+    "no narrator in this swarm. ask the coordinator to add one.": "В этом рое нет рассказчика. Попросите координатора добавить его.",
+    "the narrator (": "Рассказчик (",
+    ") was stopped. ask the coordinator to add a new one (": ") остановлен. Попросите координатора добавить нового (",
+    "the narrator's view.json is over 64 kb, so it isn't shown.": "Файл view.json рассказчика превышает 64 КБ, поэтому не отображается.",
+    "the narrator's view.json isn't valid json yet.": "Файл view.json рассказчика ещё не содержит корректный JSON.",
+    "the narrator hasn't published an overview yet.": "Рассказчик ещё не опубликовал обзор.",
+    "the narrator is updating the overview": "Рассказчик обновляет обзор",
+    "the narrator is waiting for new board posts": "Рассказчик ожидает новых сообщений на доске",
+    "the narrator was killed; the overview no longer updates": "Рассказчик остановлен; обзор больше не обновляется",
+    "showing the last good view.json; the current file is": "Показан последний корректный view.json; текущий файл",
+    "over 64 kb.": "превышает 64 КБ.",
+    "not valid json.": "не является корректным JSON.",
+    "view.html is over 64 kb": "view.html превышает 64 КБ",
+    "no view.html yet": "view.html ещё не создан",
+    "it navigated away": "произошёл переход со страницы",
+    "that link isn't allowed here.": "Эта ссылка здесь не разрешена.",
+    "opening files needs the app.": "Для открытия файлов требуется приложение.",
+    "click a link in the view to open it.": "Нажмите на ссылку в обзоре, чтобы открыть её.",
+    "stale": "устарело",
+    "paused: quota": "пауза: лимит квоты",
+    "paused: error": "пауза: ошибка",
+    "system:": "система:",
+    "from anyone": "От кого угодно",
+    "to anyone": "Кому угодно",
+    "to no one": "Никому",
+    "to @all": "Всем (@all)",
+    "all channels": "Все каналы",
+    "posts in every channel": "Сообщения во всех каналах",
+    "main: the whole swarm reads it": "main: читает весь рой",
+    "follow": "Следить",
+    "latest": "К последним",
+    "hide inactive": "Скрыть неактивных",
+    "expand @all": "Развернуть @all",
+    "even pacing": "Равномерный темп",
+    "real-time gaps": "Реальные паузы",
+    "@mention, width = count": "@упоминание, толщина = кол-во",
+    "via @all": "через @all",
+    "posted with no mention": "без упоминаний",
+    "@all posts, drawn by expand @all": "сообщения @all (при «Развернуть @all»)",
+    "search posts": "Поиск сообщений",
+    "filters": "Фильтры",
+    "filters (active)": "Фильтры (активны)",
+    "channels": "Каналы",
+    "filter by poster": "Фильтр по автору",
+    "show posts by one member": "Показать сообщения одного участника",
+    "filter by recipient": "Фильтр по получателю",
+    "show posts that call on one member": "Показать сообщения с обращением к участнику",
+    "filter by channel": "Фильтр по каналу",
+    "show posts in one channel": "Показать сообщения в одном канале",
+    "keep the newest post in view": "Держать последнее сообщение в поле зрения",
+    "show or hide each member's posts": "Показать или скрыть сообщения участника",
+    "hidden from the board; click to show": "Скрыт с доски; нажмите, чтобы показать",
+    "click to hide from the board": "Нажмите, чтобы скрыть с доски",
+    "replay": "Повтор",
+    "jump to start": "В начало",
+    "previous post (←)": "Предыдущее сообщение (←)",
+    "previous post": "Предыдущее сообщение",
+    "play / pause replay (space)": "Воспроизвести / пауза (пробел)",
+    "play replay": "Воспроизвести повтор",
+    "pause replay": "Приостановить повтор",
+    "next post (→)": "Следующее сообщение (→)",
+    "next post": "Следующее сообщение",
+    "replay position": "Позиция повтора",
+    "scrub through board posts": "Перемотка сообщений на доске",
+    "show everything and follow live": "Показать всё и следить в реальном времени",
+    "hide killed and inactive members from the graph": "Скрыть остановленных и неактивных участников с графа",
+    "draw @all as an edge to every member": "Рисовать @all как линии ко всем участникам",
+    "replay pacing": "Темп повтора",
+    "replay speed": "Скорость повтора",
+    "who @mentions whom": "Кто кого @упоминает",
+    "copy to clipboard": "Копировать в буфер обмена",
+    "copy failed": "Не удалось скопировать",
+    "(empty)": "(пусто)",
+    "show more": "Показать больше",
+    "show less": "Свернуть",
+    "no posts yet": "Сообщений пока нет",
+    "posts to the swarm board will appear here as members talk.": "Сообщения на доске роя появятся здесь по мере общения участников.",
+    "untitled swarm": "Рой без названия",
+    "active: mid-turn (thinking, running a tool, or waiting on the model)": "Активен: выполняет шаг (размышляет, запускает инструмент или ждёт ответа модели)",
+    "waiting: turn ended, asleep on the board until a post wakes it": "Ожидание: шаг завершён, спит на доске, пока новое сообщение не разбудит его",
+    "killed: removed from the swarm": "Остановлен: удалён из роя",
+    "the team": "Команда",
+    "team": "Команда",
+    "coordinator": "Координатор",
+    "coordinator · working": "Координатор · В работе",
+    "working": "В работе",
+    "standing by": "В ожидании",
+    "retired": "Завершили работу",
+    "blocked": "Заблокировано",
+    "planned next": "Запланировано далее",
+    "goal": "Цель",
+    "threads": "Потоки задач",
+    "progress": "Прогресс",
+    "compare with now": "Сравнить с текущим",
+    "hide compare": "Скрыть сравнение",
+    "compare then and now": "Сравнить «до» и «сейчас»",
+    "open full timeline": "Открыть полную шкалу",
+    "scrub through progress": "Перемотка прогресса",
+    "frames": "Кадры",
+    "nothing blocked": "Нет заблокированных задач",
+    "nothing running": "Нет выполняемых задач",
+    "nothing planned": "Нет запланированных задач",
+    "reply": "Ответить",
+    "in review": "На проверке",
+    "no tasks completed yet.": "Завершённых задач пока нет.",
+    "tasks done": "задач выполнено",
+    "needs you": "Ждёт вас",
+    "moving": "В процессе",
+    "not started": "Не начато",
+    "other": "Прочее",
+    "tasks": "Задачи",
+    "search members": "Поиск участников",
+    "all workers": "Все исполнители",
+    "filter by worker": "Фильтр по исполнителю",
+    "seen just now": "только что в сети",
+    "your swarm is starting": "Ваш рой запускается",
+    "one goal": "Одна цель",
+    "the coordinator splits it into tasks.": "Координатор разбивает её на задачи.",
+    "many workers": "Множество исполнителей",
+    "each takes a task, and they run in parallel.": "Каждый берёт свою задачу, и они работают параллельно.",
+    "one board": "Общая доска",
+    "updates land here. you step in only when asked.": "Обновления публикуются здесь. Вы подключаетесь только при необходимости.",
+    "waiting for the first update": "Ожидание первого обновления",
+
+    // --- Antigravity 2.31.0 Hub UI, Onboarding, Coordinators, Browser Trajectory, Settings & Marketplace ---
+    "fill": "Заполнить",
+    "turbo": "Турбо",
+    "interface layout": "Макет интерфейса",
+    "knowledge work": "Работа со знаниями",
+    "simplified interface for research, writing, and everyday tasks.": "Упрощённый интерфейс для исследований, работы с текстами и повседневных задач.",
+    "software engineering": "Разработка ПО",
+    "full interface for coding, developer tools, and managing agents.": "Полный интерфейс для программирования, инструментов разработчика и управления агентами.",
+    "let's tailor the experience for you. what best describes your work?": "Давайте настроим интерфейс под вас. Что лучше всего описывает вашу работу?",
+    "a few things to know, and a couple settings to review.": "Несколько важных моментов и пара настроек для проверки.",
+    "one last thing before getting started…": "Последний штрих перед началом работы…",
+    "here's how you and your agents work together": "Как вы и ваши агенты работаете вместе",
+    "built to help, not hurt": "Создан помогать, а не мешать",
+    "you are in control": "Управление в ваших руках",
+    "optimized for you": "Оптимизировано для вас",
+    "next: review permissions": "Далее: проверка разрешений",
+    "coordinator goal": "Цель координатора",
+    "coordinator name": "Имя координатора",
+    "coordinator settings": "Настройки координатора",
+    "create coordinator": "Создать координатора",
+    "new coordinator": "Новый координатор",
+    "what should this coordinator accomplish?": "Какую задачу должен выполнить этот координатор?",
+    "canvas page · display only": "Страница холста · только просмотр",
+    "canvas · written by your chief of staff · display only": "Холст · подготовлен вашим начальником штаба · только просмотр",
+    "browser steps": "Шаги в браузере",
+    "clicked": "Нажато",
+    "clicked in browser": "Нажатие в браузере",
+    "clicking": "Нажатие",
+    "clicking in browser": "Нажатие в браузере",
+    "dragged in browser": "Перетаскивание в браузере",
+    "dragging in browser": "Перетаскивание в браузере",
+    "moved mouse in browser": "Перемещение курсора в браузере",
+    "moving mouse in browser": "Перемещение курсора в браузере",
+    "opened url in browser": "Открыт URL в браузере",
+    "opening url in browser": "Открытие URL в браузере",
+    "resized browser window": "Изменён размер окна браузера",
+    "resizing browser window": "Изменение размера окна браузера",
+    "scrolled": "Прокручено",
+    "scrolled in browser": "Прокрутка в браузере",
+    "scrolled down in browser": "Прокрутка вниз в браузере",
+    "scrolled up in browser": "Прокрутка вверх в браузере",
+    "scrolling in browser": "Прокрутка в браузере",
+    "scrolling down in browser": "Прокрутка вниз в браузере",
+    "scrolling up in browser": "Прокрутка вверх в браузере",
+    "selected option in browser": "Выбрана опция в браузере",
+    "selecting option in browser": "Выбор опции в браузере",
+    "typed into browser": "Введён текст в браузере",
+    "typing into browser": "Ввод текста в браузере",
+    "taking screenshot": "Создание скриншота",
+    "took screenshot": "Скриншот создан",
+    "confirm browser interaction": "Подтвердите действие в браузере",
+    "launching the browser...": "Запуск браузера...",
+    "antigravity would like to use the browser.": "Antigravity запрашивает доступ к браузеру.",
+    "when turbo mode is on, the agent will automatically capture screenshots in the browser without explicit user input. you can toggle this setting in antigravity's settings.": "Когда включён режим «Турбо», агент автоматически делает скриншоты в браузере без дополнительного подтверждения. Эту опцию можно изменить в настройках Antigravity.",
+    "loading browser recording...": "Загрузка записи браузера...",
+    "error loading browser recording": "Ошибка загрузки записи браузера",
+    "open browser setup": "Открыть настройку браузера",
+    "open system browser": "Открыть системный браузер",
+    "open the page in system browser": "Открыть страницу в системном браузере",
+    "open search in external browser": "Открыть поиск во внешнем браузере",
+    "open in antigravity ide": "Открыть в Antigravity IDE",
+    "open antigravity ide": "Открыть Antigravity IDE",
+    "open ide": "Открыть IDE",
+    "open in hub": "Открыть в Hub",
+    "open appearance": "Открыть настройки внешнего вида",
+    "open settings menu": "Открыть меню настроек",
+    "open source code": "Открыть исходный код",
+    "open allowlist": "Открыть белый список",
+    "site allowlist": "Белый список сайтов",
+    "denied sites": "Заблокированные сайты",
+    "added to allowlist": "Добавлено в белый список",
+    "cookies and site data": "Файлы cookie и данные сайтов",
+    "certificate details": "Сведения о сертификате",
+    "your connection is not private": "Ваше подключение не защищено",
+    "back to safety": "Вернуться в безопасный режим",
+    "back to home": "На главную",
+    "go to home": "Перейти на главную",
+    "browse connectors": "Обзор коннекторов",
+    "loading connectors…": "Загрузка коннекторов…",
+    "loading skills…": "Загрузка навыков…",
+    "loading runs…": "Загрузка запусков…",
+    "loading conversations...": "Загрузка диалогов...",
+    "loading instances...": "Загрузка экземпляров...",
+    "loading licenses...": "Загрузка лицензий...",
+    "loading media...": "Загрузка медиа...",
+    "loading token usage...": "Загрузка расхода токенов...",
+    "loading trajectory...": "Загрузка траектории...",
+    "(still loading…)": "(загрузка продолжается…)",
+    "taking longer than usual to load": "Загрузка занимает больше времени, чем обычно",
+    "no matching results": "Нет подходящих результатов",
+    "no resources available": "Нет доступных ресурсов",
+    "no skills available": "Нет доступных навыков",
+    "no workspaces open.": "Нет открытых рабочих областей.",
+    "no logs available.": "Логи отсутствуют.",
+    "no branches": "Нет веток",
+    "no folder selected": "Папка не выбрана",
+    "no project selected": "Проект не выбран",
+    "no upcoming run.": "Нет запланированных запусков.",
+    "no more older messages": "Более старых сообщений нет",
+    "paused.": "Приостановлено.",
+    "paused. resume it to schedule the next run.": "Приостановлено. Возобновите задачу, чтобы запланировать следующий запуск.",
+    "creates a local automation that runs on this computer": "Создаёт локальную автоматизацию, выполняющуюся на этом компьютере",
+    "approximate; may start a few minutes later": "Приблизительно; запуск может произойти на несколько минут позже",
+    "when it runs": "Когда запускается",
+    "create plugin": "Создать плагин",
+    "plugin details": "Сведения о плагине",
+    "plugin metadata": "Метаданные плагина",
+    "managed by plugin": "Управляется плагином",
+    "this plugin was force disabled.": "Этот плагин был принудительно отключён.",
+    "encountered an error while running the plugin.": "Произошла ошибка при выполнении плагина.",
+    "plugins are packaged collections of skills and mcps to help the agent": "Плагины — это готовые наборы навыков и MCP-серверов для расширения возможностей агента",
+    "unnamed mcp server": "Безымянный MCP-сервер",
+    "unnamed theme": "Безымянная тема",
+    "unnamed resource": "Безымянный ресурс",
+    "untitled project": "Проект без названия",
+    "workspace settings": "Настройки рабочей области",
+    "switch ide workspace": "Переключить рабочую область IDE",
+    "new chats will be grouped by workspace.": "Новые чаты будут группироваться по рабочим областям.",
+    "this conversation is in a different workspace.": "Этот диалог находится в другой рабочей области.",
+    "this project is associated with a different workspace.": "Этот проект связан с другой рабочей областью.",
+    "workspaces are not available for this project": "Рабочие области недоступны для этого проекта",
+    "select worktree": "Выбрать рабочее дерево (worktree)",
+    "artifact comments": "Комментарии к артефакту",
+    "artifact updated by agent": "Артефакт обновлён агентом",
+    "dismiss artifact update notice": "Скрыть уведомление об обновлении артефакта",
+    "select text in the artifact to add a comment": "Выделите текст в артефакте, чтобы добавить комментарий",
+    "drag to select a region to comment": "Выделите область перетаскиванием, чтобы оставить комментарий",
+    "file comments": "Комментарии к файлу",
+    "file diff comments": "Комментарии к изменениям файла",
+    "leave a comment": "Оставить комментарий",
+    "save comment": "Сохранить комментарий",
+    "submit comment": "Отправить комментарий",
+    "comment": "Комментарий",
+    "commented on:": "Комментарий к:",
+    "1 comment": "1 комментарий",
+    "review changes": "Проверить изменения",
+    "code change summary": "Сводка изменений кода",
+    "code preview": "Предпросмотр кода",
+    "toggle file diff": "Переключить просмотр diff файла",
+    "fold code block": "Свернуть блок кода",
+    "unfold code block": "Развернуть блок кода",
+    "copy as markdown": "Копировать как Markdown",
+    "copy error messages": "Копировать сообщения об ошибках",
+    "copy output": "Копировать вывод",
+    "copy sign-in link": "Копировать ссылку для входа",
+    "path copied!": "Путь скопирован!",
+    "scrollable table": "Прокручиваемая таблица",
+    "mermaid diagram": "Диаграмма Mermaid",
+    "open mermaid diagram preview": "Открыть предпросмотр диаграммы Mermaid",
+    "open image preview": "Открыть предпросмотр изображения",
+    "open video preview": "Открыть предпросмотр видео",
+    "markdown view mode": "Режим просмотра Markdown",
+    "web preview": "Веб-предпросмотр",
+    "preview unavailable": "Предпросмотр недоступен",
+    "image preview not available": "Предпросмотр изображения недоступен",
+    "listening. ask anything.": "Слушаю. Спрашивайте о чём угодно.",
+    "summarizing call…": "Подведение итогов звонка…",
+    "cancel recording": "Отменить запись",
+    "remove audio": "Удалить аудио",
+    "chime volume": "Громкость звукового сигнала",
+    "voice engine address": "Адрес голосового движка",
+    "waiting for user input": "Ожидание ответа пользователя",
+    "waiting for tool permission approval — click open in full conversation (↗) to approve": "Ожидание подтверждения разрешения инструмента — нажмите «Открыть в полном диалоге» (↗) для подтверждения",
+    "blocked, needs input": "Ожидает ввода",
+    "agent working": "Агент работает",
+    "agent encountered an internal error.": "В работе агента произошла внутренняя ошибка.",
+    "thought process": "Ход рассуждений",
+    "user intent": "Намерение пользователя",
+    "session summary": "Сводка сессии",
+    "trajectory stats": "Статистика траектории",
+    "show 1 earlier step": "Показать 1 предыдущий шаг",
+    "hide earlier steps": "Скрыть предыдущие шаги",
+    "hide tools": "Скрыть инструменты",
+    "hide advanced": "Скрыть расширенные настройки",
+    "hide error": "Скрыть ошибку",
+    "show error": "Показать ошибку",
+    "show in sidebar": "Показать на боковой панели",
+    "close sidebar": "Закрыть боковую панель",
+    "show all resources": "Показать все ресурсы",
+    "show fewer resources": "Свернуть ресурсы",
+    "show or hide extensions": "Показать или скрыть расширения",
+    "show remote control qr code": "Показать QR-код удалённого управления",
+    "get started with remote control": "Начать работу с удалённым управлением",
+    "cancel questionnaire": "Отменить опрос",
+    "cancel questionnaire and stop the agent": "Отменить опрос и остановить агента",
+    "other (write your answer)": "Другое (впишите свой вариант)",
+    "confirm & save": "Подтвердить и сохранить",
+    "confirm selection": "Подтвердить выбор",
+    "select an option": "Выберите вариант",
+    "select an option...": "Выберите вариант...",
+    "select...": "Выбрать...",
+    "choose…": "Выбрать…",
+    "choose icon and color": "Выбрать иконку и цвет",
+    "choose region": "Выбрать регион",
+    "choose a subscription": "Выбрать подписку",
+    "select theme": "Выбрать тему",
+    "select license": "Выбрать лицензию",
+    "select billing model": "Выбрать модель оплаты",
+    "billing model": "Модель оплаты",
+    "your plan": "Ваш тариф",
+    "your quota for this model is running low.": "Ваша квота для этой модели заканчивается.",
+    "pay only for the tokens you use, billed through gemini platform.": "Оплачивайте только использованные токены через платформу Gemini.",
+    "pricing is based on public api pricing": "Тарификация основана на публичных ценах API",
+    "no rate card for this model; showing comparable rates.": "Для этой модели нет прайс-листа; показаны сопоставимые тарифы.",
+    "/ 1m tokens": "/ 1 млн токенов",
+    "· estimated": "· оценочно",
+    "authentication required": "Требуется аутентификация",
+    "authorization code": "Код авторизации",
+    "paste authorization code": "Вставить код авторизации",
+    "paste a code instead": "Вставить код вручную",
+    "paste the code shown after you sign in.": "Вставьте код, показанный после входа.",
+    "trouble signing in? enter authorization code": "Проблемы со входом? Введите код авторизации",
+    "having trouble signing in?": "Возникли проблемы со входом?",
+    "finish signing in in your browser.": "Завершите вход в браузере.",
+    "waiting for you to finish signing in…": "Ожидание завершения входа в браузере…",
+    "sign in in your browser, then paste the authorization code shown on the callback page.": "Войдите в аккаунт в браузере, затем вставьте код авторизации со страницы подтверждения.",
+    "sign in with sso": "Войти через SSO",
+    "sign in with a different account": "Войти с другим аккаунтом",
+    "continue with different account": "Продолжить с другим аккаунтом",
+    "signed-in accounts": "Подключённые аккаунты",
+    "sign out of this server?": "Выйти с этого сервера?",
+    "signing out...": "Выход...",
+    "business account sign in": "Вход с корпоративным аккаунтом",
+    "use business account": "Использовать корпоративный аккаунт",
+    "use antigravity through your gemini subscription.": "Используйте Antigravity по вашей подписке Gemini.",
+    "use google cloud project instead": "Использовать проект Google Cloud",
+    "a google cloud project is required to use antigravity.": "Для использования Antigravity требуется проект Google Cloud.",
+    "enter google cloud project details": "Введите данные проекта Google Cloud",
+    "provide google cloud project": "Укажите проект Google Cloud",
+    "google cloud project id": "ID проекта Google Cloud",
+    "manage license": "Управление лицензией",
+    "manage permissions": "Управление разрешениями",
+    "license required": "Требуется лицензия",
+    "project required": "Требуется проект",
+    "reset all shortcuts to defaults": "Сбросить все сочетания клавиш по умолчанию",
+    "reset overrides": "Сбросить переопределения",
+    "resize terminal panes": "Изменить размер панелей терминала",
+    "delete terminal": "Удалить терминал",
+    "reload app": "Перезагрузить приложение",
+    "something went wrong!": "Что-то пошло не так!",
+    "something went wrong.": "Что-то пошло не так.",
+    "we apologize for the inconvenience. please try again later.": "Приносим извинения за неудобства. Пожалуйста, попробуйте позже.",
+    "thanks for your feedback!": "Спасибо за ваш отзыв!",
+    "thanks for helping make gemini better! this is a critical part of evaluating and improving our models.": "Спасибо, что помогаете делать Gemini лучше! Ваши отзывы играют важную роль в оценке и улучшении наших моделей.",
+    "the conversation was compacted to fit within the context window.": "Контекст диалога был сжат для размещения в контекстном окне.",
+    "this command ran in the sandbox.": "Эта команда была выполнена в песочнице.",
+    "⚠️ warning: \"always proceed\" is enabled without sandbox protection. this is very dangerous and we do not recommend doing this.": "⚠️ Внимание: режим «Всегда продолжать» включён без защиты песочницы. Это очень опасно и не рекомендуется.",
+
+    // --- Builtin Swarm Skills & Updated Marketplace Plugins (2.31.0) ---
+    "(preview & quota heavy) run a swarm: several agents working in parallel on one task, each in its own conversation, collaborating through a shared message board. use when the work splits into pieces that can be done at the same time, or when a second pair of eyes should check the first pair's work.": "(Превью · высокий расход квоты) Запуск роя: несколько агентов работают параллельно над одной задачей, каждый в своём диалоге, взаимодействуя через общую доску сообщений. Используйте, когда задачу можно разделить на параллельные части или требуется взаимная проверка.",
+    "only for the native-swarm worker whose brief says it is the monitor. on a timer, it checks whether the whole swarm has stalled and calls on the one member who can unstick it. coordinators and other workers: do not load this.": "ТОЛЬКО для участника роя с ролью монитора (monitor). По таймеру проверяет, не завис ли рой, и будит участника, способного разблокировать работу. Координаторам и обычным исполнителям не загружать.",
+    "only for the native-swarm worker whose brief says it is the narrator. it watches the board and keeps the facts behind the user's overview (view.json) current. coordinators and other workers: do not load this.": "ТОЛЬКО для участника роя с ролью рассказчика (narrator). Следит за доской сообщений и поддерживает актуальность данных обзора пользователя (view.json). Координаторам и обычным исполнителям не загружать.",
+
+    // Modern Web Guidance
+    "keep your coding agent up to date with the latest web best practices.": "Держите вашего кодинг-агента в курсе актуальных практик современной веб-разработки.",
+    "audit this project for modern web best practices and modernization opportunities": "Проверь этот проект на соответствие современным веб-практикам и найди возможности для модернизации",
+    "what is the recommended modern way to implement responsive dialogs and popovers?": "Какой современный способ рекомендуется для реализации адаптивных диалоговых окон и поповеров?",
+    "build a chrome extension with a side panel using manifest v3 best practices": "Создай расширение Chrome с боковой панелью по лучшим практикам Manifest V3",
+
+    // Elephant-Goldfish Model (EGM)
+    "develop ideas with context and review documents with fresh eyes.": "Развивайте идеи с учётом контекста и проверяйте документы свежим взглядом.",
+    "develop ideas and review plans": "Проработка идей и ревью планов",
+    "develop ideas": "Проработка идей",
+    "review plans and documents": "Ревью планов и документов",
+    "check software against designs": "Сверка кода с дизайн-документами",
+    "help me turn this idea into a clear plan.": "Помоги превратить эту идею в чёткий план.",
+    "review this proposal for gaps and unclear assumptions.": "Проверь это предложение на пробелы и неочевидные допущения.",
+    "review this software design before we build it.": "Проверь этот проект архитектуры ПО перед началом разработки.",
+    "bootstrap directory readme.md files across a repository subtree.": "Автоматическое создание файлов README.md по поддереву каталогов репозитория.",
+
+    // Arize AX
+    "query arize ax projects, traces, datasets, and experiments from antigravity, with skills for tracing, evals, and prompt optimization.": "Запрашивайте проекты, трейсы, датасеты и эксперименты Arize AX из Antigravity с навыками для трассировки, оценок (evals) и оптимизации промптов.",
+    "list my arize projects and show recent traces with errors": "Выведи список моих проектов Arize и покажи последние трейсы с ошибками",
+    "add arize tracing to this application": "Добавь трассировку Arize в это приложение",
+    "show the prompt version labeled production in my arize prompt hub": "Покажи версию промпта с меткой production в моём Arize Prompt Hub",
+
+    // CodeRabbit
+    "ai-powered code review, review-comment autofix, and repository configuration, powered by coderabbit.": "ИИ-ревью кода, автоисправление замечаний и настройка репозитория на базе CodeRabbit.",
+
+    // Spacefast (v0.8.0 & v0.8.1)
+    "turn an idea into a website, dashboard, report, or small web tool you can share. build it in your conversation, or bring something you already made, and publish it with spacefast.": "Превратите идею в веб-сайт, дашборд, отчёт или удобный веб-инструмент, которым можно поделиться. Создайте его прямо в диалоге или загрузите готовый проект и опубликуйте через Spacefast.",
+    "turn an idea into a website, dashboard, report, or small web tool you can share. build it in chat or bring your own work, and publish it with spacefast.": "Превратите идею в веб-сайт, дашборд, отчёт или удобный веб-инструмент, которым можно поделиться. Создайте его прямо в чате или загрузите готовый проект и опубликуйте через Spacefast.",
+    "build a website for my project and publish it on spacefast.": "Создай веб-сайт для моего проекта и опубликуй его на Spacefast.",
+    "build a website for my project and publish it on spacefast": "Создай веб-сайт для моего проекта и опубликуй его на Spacefast",
+    "publish this dashboard and give me a link to share.": "Опубликуй этот дашборд и дай мне ссылку для отправки.",
+    "publish this dashboard and give me a link to share": "Опубликуй этот дашборд и дай мне ссылку для отправки",
+    "update the content and design of my existing spacefast site.": "Обнови контент и дизайн моего существующего сайта на Spacefast.",
+    "update the content and design of my existing spacefast site": "Обнови контент и дизайн моего существующего сайта на Spacefast",
+
+    // VirusTotal
+    "investigate files, urls, domains and ip addresses with virustotal threat intelligence, analysis and submission recovery.": "Исследуйте файлы, URL-адреса, домены и IP-адреса с помощью аналитики угроз и отчётов VirusTotal.",
+    "check a file i downloaded before i run it. ask me for its local path, compute sha-256 without executing it, and look up its existing virustotal report. do not upload it.": "Проверь скачанный мной файл перед запуском: спроси локальный путь, вычисли SHA-256 без запуска файла и найди существующий отчёт VirusTotal. Не загружай сам файл.",
+    "help me assess a suspicious link. explain what a url lookup shares before asking for it, then retrieve its existing virustotal report. do not open the link or submit it for analysis.": "Помоги оценить подозрительную ссылку: сначала объясни, какие данные передаются при проверке URL, затем получи существующий отчёт VirusTotal. Не открывай ссылку и не отправляй её на новый анализ.",
+    "investigate an ip address from my logs. ask for the ip and a brief description of the activity, retrieve its existing virustotal report, and explain the evidence and its limits. do not request a new analysis.": "Исследуй IP-адрес из моих логов: запроси IP и краткое описание активности, получи существующий отчёт VirusTotal и объясни найденные данные и их ограничения. Не запрашивай новый анализ.",
+    "open this pane from a conversation to see its swarm. swarms started there appear here automatically; start one with": "Откройте эту панель из диалога, чтобы увидеть его рой. Запущенные там рои появляются здесь автоматически; начните рой командой",
+    "swarms started in this conversation appear here automatically, with their board, members and @mention graph. start one with": "Рои, запущенные в этом диалоге, появляются здесь автоматически вместе с доской сообщений, участниками и графом @упоминаний. Запустите рой командой",
+    "@all posts, drawn by expand @all": "сообщения @all (показывать через «Развернуть @all»)"
 };
 
 function translateSingleEnglishClause(clause, isFirstClause) {
@@ -5041,6 +5498,7 @@ function translateSingleEnglishClause(clause, isFirstClause) {
         if (m) {
             let rest = m[1].trim();
             const origRest = rest;
+            const hasEnglishProseTokens = /\b(?:a|an|the|my|your|our|their|its|this|that|these|those|it|on|by|as|or|if|so|we|you|me|us|they|them|when|where|while|whether|before|after|without|against|should|would|could|can|will)\b/i.test(origRest);
             rest = rest
                 .replace(/\bclean\s+core\b/gi, 'чистого ядра')
                 .replace(/\batomic\s+pre-worker\s+snapshot\b/gi, 'атомарного снимка перед воркером')
@@ -5061,12 +5519,14 @@ function translateSingleEnglishClause(clause, isFirstClause) {
                 .replace(/\bto\s+DB\b/gi, 'в БД')
                 .replace(/\bin\s+DB\b/gi, 'в БД')
                 .replace(/\bto\s+(\S+\.db)\b/gi, 'в $1')
-                .replace(/\bin\s+(\S+)\b/gi, 'в $1')
                 .replace(/\bfrom\s+snapshot\b/gi, 'из снимка')
                 .replace(/\bwith\s+snapshot\b/gi, 'со снимком')
                 .replace(/\bsource\s+code\b/gi, 'исходного кода')
                 .replace(/\bsignatures?\b/gi, 'сигнатур');
-            if (rest === origRest && (rest.split(/\s+/).length > 3 || /\b(?:a|an|the|my|your|our|their|its|this|that|these|those|when|where|while|with|from|into|for)\b/i.test(rest))) {
+            if (!hasEnglishProseTokens) {
+                rest = rest.replace(/\bin\s+(\S+)\b/gi, 'в $1');
+            }
+            if (rest === origRest && (rest.split(/\s+/).length > 3 || hasEnglishProseTokens || /\b(?:with|from|into|for|to)\b/i.test(rest))) {
                 return null;
             }
             return `${isFirstClause ? capNoun : lowNoun} ${rest}`;
@@ -5095,17 +5555,17 @@ function translateEnglishCommandSummary(text) {
     if (splitRe.test(t)) {
         const rawParts = t.split(splitRe);
         const translatedParts = [];
-        let anyTranslated = false;
+        let allTranslated = rawParts.length > 0;
         for (let i = 0; i < rawParts.length; i++) {
             const tr = translateSingleEnglishClause(rawParts[i], i === 0);
             if (tr) {
                 translatedParts.push(tr);
-                anyTranslated = true;
             } else {
-                translatedParts.push(rawParts[i].trim());
+                allTranslated = false;
+                break;
             }
         }
-        if (anyTranslated) {
+        if (allTranslated) {
             if (translatedParts.length === 2) {
                 return `${translatedParts[0]} и ${translatedParts[1]}`;
             }
@@ -5114,6 +5574,7 @@ function translateEnglishCommandSummary(text) {
             }
             return translatedParts[0];
         }
+        return null;
     }
 
     return translateSingleEnglishClause(t, true);
@@ -5276,6 +5737,24 @@ function localizeActionTarget(target) {
     return t;
 }
 
+function isLikelyEnglishProseTarget(s) {
+    if (!s) return false;
+    const trimmed = String(s).trim();
+    if (!trimmed) return false;
+    const words = trimmed.split(/\s+/);
+    if (words.length > 3) return true;
+    return /\b(?:a|an|the|my|your|our|their|its|this|that|these|those|it|on|by|as|or|if|so|we|you|me|us|they|them|when|where|while|whether|before|after|without|across|into|through|against|between|should|would|could|have|has|had|who|what|which|how|why|can|will|do|does|did|not|only|every|each)\b/i.test(trimmed);
+}
+
+function pluralizeRuCount(count, one, two, five) {
+    const n = Math.abs(count) % 100;
+    const n1 = n % 10;
+    if (n > 10 && n < 20) return five;
+    if (n1 > 1 && n1 < 5) return two;
+    if (n1 === 1) return one;
+    return five;
+}
+
 const regexTranslations = [
     {
         pattern: /^Hi\s+(.+?),\s+what can we get done today\?$/i,
@@ -5294,8 +5773,44 @@ const regexTranslations = [
         replace: (match) => `Рады видеть вас, ${match[1].trim()}!`
     },
     {
+        // Compact sidebar timestamps (case-sensitive so "1M" / "3D" are never touched)
+        pattern: /^(\d+)\s*(s|sec|m|min|h|hr|d|w|wk|mo|mos|yr|y)$/,
+        replace: (match) => {
+            const unitMap = {
+                s: 'сек', sec: 'сек',
+                m: 'мин', min: 'мин',
+                h: 'ч', hr: 'ч',
+                d: 'дн.',
+                w: 'нед.', wk: 'нед.',
+                mo: 'мес.', mos: 'мес.',
+                y: 'г.', yr: 'г.'
+            };
+            return `${match[1]} ${unitMap[match[2]] || match[2]}`;
+        }
+    },
+    {
         pattern: /^(\d+)\s*(?:mo|mos)$/i,
         replace: (match) => `${match[1]} мес.`
+    },
+    {
+        pattern: /^(\d+)\s*(?:h|hr)\s+(\d+)\s*(?:m|min)$/,
+        replace: (match) => `${match[1]} ч ${match[2]} мин`
+    },
+    {
+        pattern: /^(\d+)\s*(?:m|min)\s+(\d+)\s*(?:s|sec)$/,
+        replace: (match) => `${match[1]} мин ${match[2]} сек`
+    },
+    {
+        pattern: /^(\d+)\s+pinned(?:\s+(conversations?))?$/i,
+        replace: (match) => {
+            const count = parseInt(match[1], 10);
+            if (match[2]) {
+                const adj = pluralizeRuCount(count, 'закреплённый', 'закреплённых', 'закреплённых');
+                const noun = pluralizeRuCount(count, 'диалог', 'диалога', 'диалогов');
+                return `${count} ${adj} ${noun}`;
+            }
+            return `${count} ${pluralizeRuCount(count, 'закреплённый', 'закреплённых', 'закреплённых')}`;
+        }
     },
     {
         pattern: /^Fix with Agent:\s*(.+)$/i,
@@ -9761,7 +10276,10 @@ const regexTranslations = [
         replace: (match) => {
             const suffix = match[2] ? match[2] : '';
             const arrow = match[3] ? (' ' + match[3].trim()) : '';
-            return `Просмотр ${localizeActionTarget(match[1])}${suffix}${arrow}`;
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
+            const localized = localizeActionTarget(match[1]);
+            if (localized === match[1] && isLikelyEnglishProseTarget(match[1]) && !suffix && !hasChevron) return match[0];
+            return `Просмотр ${localized}${suffix}${arrow}`;
         }
     },
     {
@@ -9975,8 +10493,9 @@ const regexTranslations = [
         pattern: /^(?:Verify|Verifying)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
             const localized = localizeActionTarget(match[1]);
-            if (localized === match[1] && match[1].trim().split(/\s+/).length > 4 && !arrow) return match[0];
+            if (localized === match[1] && isLikelyEnglishProseTarget(match[1]) && !hasChevron) return match[0];
             return `Проверка ${localized}${arrow}`;
         }
     },
@@ -9985,7 +10504,10 @@ const regexTranslations = [
         pattern: /^(?:Approve|Approving)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
-            return `Утверждение ${localizeActionTarget(match[1])}${arrow}`;
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
+            const localized = localizeActionTarget(match[1]);
+            if (localized === match[1] && isLikelyEnglishProseTarget(match[1]) && !hasChevron) return match[0];
+            return `Утверждение ${localized}${arrow}`;
         }
     },
     {
@@ -9993,7 +10515,10 @@ const regexTranslations = [
         pattern: /^Approved\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
-            return `Утверждено ${localizeActionTarget(match[1])}${arrow}`;
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
+            const localized = localizeActionTarget(match[1]);
+            if (localized === match[1] && isLikelyEnglishProseTarget(match[1]) && !hasChevron) return match[0];
+            return `Утверждено ${localized}${arrow}`;
         }
     },
     {
@@ -10001,7 +10526,10 @@ const regexTranslations = [
         pattern: /^(?:Execute|Executing)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
-            return `Выполнение ${localizeActionTarget(match[1])}${arrow}`;
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
+            const localized = localizeActionTarget(match[1]);
+            if (localized === match[1] && isLikelyEnglishProseTarget(match[1]) && !hasChevron) return match[0];
+            return `Выполнение ${localized}${arrow}`;
         }
     },
     {
@@ -10009,7 +10537,10 @@ const regexTranslations = [
         pattern: /^Executed\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
-            return `Выполнено ${localizeActionTarget(match[1])}${arrow}`;
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
+            const localized = localizeActionTarget(match[1]);
+            if (localized === match[1] && isLikelyEnglishProseTarget(match[1]) && !hasChevron) return match[0];
+            return `Выполнено ${localized}${arrow}`;
         }
     },
     {
@@ -10087,8 +10618,9 @@ const regexTranslations = [
         pattern: /^(?:Inspect|Inspecting)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
             const localized = localizeActionTarget(match[1]);
-            if (localized === match[1] && match[1].trim().split(/\s+/).length > 4 && !arrow) return match[0];
+            if (localized === match[1] && isLikelyEnglishProseTarget(match[1]) && !hasChevron) return match[0];
             return `Проверка ${localized}${arrow}`;
         }
     },
@@ -10097,8 +10629,9 @@ const regexTranslations = [
         pattern: /^(?:Extract|Extracting)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
             const localized = localizeActionTarget(match[1]);
-            if (localized === match[1] && match[1].trim().split(/\s+/).length > 4 && !arrow) return match[0];
+            if (localized === match[1] && isLikelyEnglishProseTarget(match[1]) && !hasChevron) return match[0];
             return `Извлечение ${localized}${arrow}`;
         }
     },
@@ -10107,8 +10640,9 @@ const regexTranslations = [
         pattern: /^(?:Read|Reading)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
             const localized = localizeActionTarget(match[1]);
-            if (localized === match[1] && match[1].trim().split(/\s+/).length > 4 && !arrow) return match[0];
+            if (localized === match[1] && isLikelyEnglishProseTarget(match[1]) && !hasChevron) return match[0];
             return `Чтение ${localized}${arrow}`;
         }
     },
@@ -10117,8 +10651,9 @@ const regexTranslations = [
         pattern: /^(?:List|Listing)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
             const localized = localizeActionTarget(match[1]);
-            if (localized === match[1] && match[1].trim().split(/\s+/).length > 4 && !arrow) return match[0];
+            if (localized === match[1] && isLikelyEnglishProseTarget(match[1]) && !hasChevron) return match[0];
             return `Список ${localized}${arrow}`;
         }
     },
@@ -10127,6 +10662,7 @@ const regexTranslations = [
         pattern: /^(?:Test|Testing)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
             let target = match[1].trim();
             if (/^Thinking\s+for\s+(\d+)\s*([smhd])$/i.test(target)) {
                 target = target.replace(/^Thinking\s+for\s+(\d+)\s*([smhd])$/i, (m, c, u) => {
@@ -10135,7 +10671,9 @@ const regexTranslations = [
                 });
                 return `Тест ${target}${arrow}`;
             }
-            return `Тестирование ${localizeActionTarget(target)}${arrow}`;
+            const localized = localizeActionTarget(target);
+            if (localized === target && isLikelyEnglishProseTarget(target) && !hasChevron) return match[0];
+            return `Тестирование ${localized}${arrow}`;
         }
     },
     {
@@ -10494,8 +11032,9 @@ const regexTranslations = [
         pattern: /^(?:Search|Searching)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
             const localized = localizeActionTarget(match[1]);
-            if (localized === match[1] && match[1].trim().split(/\s+/).length > 4) {
+            if (localized === match[1] && isLikelyEnglishProseTarget(match[1]) && !hasChevron) {
                 return match[0];
             }
             return `Поиск ${localized}${arrow}`;
@@ -10507,8 +11046,9 @@ const regexTranslations = [
         replace: (match) => {
             const suffix = match[2] ? match[2] : '';
             const arrow = match[3] ? (' ' + match[3].trim()) : '';
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
             const localized = localizeActionTarget(match[1]);
-            if (localized === match[1] && (match[1].trim().split(/\s+/).length > 3 || /\b(?:a|an|the|my|your|our|their|its|this|that)\b/i.test(match[1])) && !suffix && !arrow) {
+            if (localized === match[1] && isLikelyEnglishProseTarget(match[1]) && !suffix && !hasChevron) {
                 return match[0];
             }
             return `Обновление ${localized}${suffix}${arrow}`;
@@ -10518,10 +11058,15 @@ const regexTranslations = [
         // "Updated <target> >"
         pattern: /^Updated(?:\s+(.+?))?(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
-            const target = match[1] ? ` ${localizeActionTarget(match[1])}` : '';
             const suffix = match[2] ? match[2] : '';
             const arrow = match[3] ? (' ' + match[3].trim()) : '';
-            return `Обновлено${target}${suffix}${arrow}`;
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
+            if (match[1]) {
+                const loc = localizeActionTarget(match[1]);
+                if (loc === match[1] && isLikelyEnglishProseTarget(match[1]) && !suffix && !hasChevron) return match[0];
+                return `Обновлено ${loc}${suffix}${arrow}`;
+            }
+            return `Обновлено${suffix}${arrow}`;
         }
     },
     {
@@ -10541,7 +11086,10 @@ const regexTranslations = [
         pattern: /^(?:Revert|Reverting)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
-            return `Откат ${localizeActionTarget(match[1])}${arrow}`;
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
+            const localized = localizeActionTarget(match[1]);
+            if (localized === match[1] && isLikelyEnglishProseTarget(match[1]) && !hasChevron) return match[0];
+            return `Откат ${localized}${arrow}`;
         }
     },
     {
@@ -10549,7 +11097,10 @@ const regexTranslations = [
         pattern: /^(?:Download|Downloading)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
-            return `Загрузка ${localizeActionTarget(match[1])}${arrow}`;
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
+            const localized = localizeActionTarget(match[1]);
+            if (localized === match[1] && isLikelyEnglishProseTarget(match[1]) && !hasChevron) return match[0];
+            return `Загрузка ${localized}${arrow}`;
         }
     },
     {
@@ -10573,6 +11124,8 @@ const regexTranslations = [
         pattern: /^Restore\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
+            if (isLikelyEnglishProseTarget(match[1]) && !hasChevron) return match[0];
             return `Восстановление ${match[1]}${arrow}`;
         }
     },
@@ -10589,8 +11142,9 @@ const regexTranslations = [
         pattern: /^(?:Check|Checking)\s+(.+?)(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
             const localized = localizeActionTarget(match[1]);
-            if (localized === match[1] && match[1].trim().split(/\s+/).length > 4 && !arrow) return match[0];
+            if (localized === match[1] && isLikelyEnglishProseTarget(match[1]) && !hasChevron) return match[0];
             return `Проверка ${localized}${arrow}`;
         }
     },
@@ -10662,12 +11216,16 @@ const regexTranslations = [
                 update: 'обновление',
                 upgrade: 'обновление'
             };
-            const v1 = verb1Map[match[1].toLowerCase()] || match[1];
-            const t1 = localizeActionTarget(match[2]);
-            const v2 = verb2Map[match[3].toLowerCase()] || match[3];
-            const t2 = localizeActionTarget(match[4]);
             const suffix = match[5] ? match[5] : '';
             const arrow = match[6] ? (' ' + match[6].trim()) : '';
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
+            const t1 = localizeActionTarget(match[2]);
+            const t2 = localizeActionTarget(match[4]);
+            if (!suffix && !hasChevron && ((t1 === match[2] && isLikelyEnglishProseTarget(match[2])) || (t2 === match[4] && isLikelyEnglishProseTarget(match[4])))) {
+                return match[0];
+            }
+            const v1 = verb1Map[match[1].toLowerCase()] || match[1];
+            const v2 = verb2Map[match[3].toLowerCase()] || match[3];
             return `${v1} ${t1} и ${v2} ${t2}${suffix}${arrow}`;
         }
     },
@@ -10676,9 +11234,10 @@ const regexTranslations = [
         pattern: /^(?:Build|Building)\s+(.+?)(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[3] ? (' ' + match[3].trim()) : '';
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
             const suffix = match[2] ? match[2] : '';
             const localized = localizeActionTarget(match[1]);
-            if (localized === match[1] && match[1].trim().split(/\s+/).length > 4 && !suffix && !arrow) {
+            if (localized === match[1] && isLikelyEnglishProseTarget(match[1]) && !suffix && !hasChevron) {
                 return match[0];
             }
             return `Сборка ${localized}${suffix}${arrow}`;
@@ -10702,8 +11261,13 @@ const regexTranslations = [
         pattern: /^(?:Clear|Clearing)\s+(.+?)(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
             const arrow = match[3] ? (' ' + match[3].trim()) : '';
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
             const suffix = match[2] ? match[2] : '';
-            return `Очистка ${localizeActionTarget(match[1])}${suffix}${arrow}`;
+            const localized = localizeActionTarget(match[1]);
+            if (localized === match[1] && isLikelyEnglishProseTarget(match[1]) && !suffix && !hasChevron) {
+                return match[0];
+            }
+            return `Очистка ${localized}${suffix}${arrow}`;
         }
     },
     {
@@ -12260,29 +12824,444 @@ const regexTranslations = [
     {
         pattern: /^Give\s+your\s+agent\s+a\s+real\s+browser:.*$/i,
         replace: () => "Дайте вашему агенту полноценный браузер: переходите по страницам, нажимайте, вводите текст, делайте скриншоты и извлекайте данные с любых сайтов локально или в облаке Browserbase."
+    },
+
+    // === v2.1.33: UI Plugin Swarm (app.js, hive.js, narrator_bootstrap.js), Antigravity 2.31.0 Hub & New Marketplace Plugins ===
+    {
+        pattern: /^From\s+(@?\S+)$/,
+        replace: (m) => `От ${m[1]}`
+    },
+    {
+        pattern: /^To\s+(@?\S+|#[a-z0-9_\-]+)$/i,
+        replace: (m) => `Кому: ${m[1]}`
+    },
+    {
+        pattern: /^(#[a-z0-9_\-]+)\s+\(archived\)$/i,
+        replace: (m) => `${m[1]} (в архиве)`
+    },
+    {
+        pattern: /^(#[a-z0-9_\-]+)\s+is\s+archived:\s*this\s+addresses\s+nobody\.?$/i,
+        replace: (m) => `Канал ${m[1]} в архиве: сообщение никому не адресовано`
+    },
+    {
+        pattern: /^Everyone\s+in\s+(#[a-z0-9_\-]+)$/i,
+        replace: (m) => `Все в ${m[1]}`
+    },
+    {
+        pattern: /^Posted\s+in\s+(#[a-z0-9_\-]+);\s*click\s+to\s+show\s+only\s+\1\.?$/i,
+        replace: (m) => `Опубликовано в ${m[1]}; нажмите, чтобы показать только ${m[1]}`
+    },
+    {
+        pattern: /^Go\s+to\s+(#\d+)$/i,
+        replace: (m) => `Перейти к ${m[1]}`
+    },
+    {
+        pattern: /^Open\s+(@[a-z0-9_\-]+)$/i,
+        replace: (m) => `Открыть ${m[1]}`
+    },
+    {
+        pattern: /^(@\S+)\s+ran\s+out\s+of\s+quota\.?$/i,
+        replace: (m) => `У ${m[1]} исчерпана квота`
+    },
+    {
+        pattern: /^(@\S+)\s+looks\s+stuck\.?$/i,
+        replace: (m) => `${m[1]} похоже завис`
+    },
+    {
+        pattern: /^(@\S+)\s+hit\s+an\s+error\.?$/i,
+        replace: (m) => `У ${m[1]} произошла ошибка`
+    },
+    {
+        pattern: /^(\d+)\s+of\s+(\d+)\s+tasks\s+done$/i,
+        replace: (m) => `Выполнено задач: ${m[1]} из ${m[2]}`
+    },
+    {
+        pattern: /^(\d+\s*(?:\/\s*\d+|%))\s+done$/i,
+        replace: (m) => `${m[1]} готово`
+    },
+    {
+        pattern: /^(\d+)\s+needs?\s+you$/i,
+        replace: (m) => `${m[1]} ${pluralizeRuCount(parseInt(m[1], 10), 'ждёт вас', 'ждут вас', 'ждут вас')}`
+    },
+    {
+        pattern: /^(\d+)\s+threads?\s+open$/i,
+        replace: (m) => `${m[1]} ${pluralizeRuCount(parseInt(m[1], 10), 'активный тред', 'активных треда', 'активных тредов')}`
+    },
+    {
+        pattern: /^(\d+)\s+active$/i,
+        replace: (m) => `${m[1]} ${pluralizeRuCount(parseInt(m[1], 10), 'активен', 'активны', 'активно')}`
+    },
+    {
+        pattern: /^Up\s+next\s*([·•])\s*(\d+)$/i,
+        replace: (m) => `Далее ${m[1]} ${m[2]}`
+    },
+    {
+        pattern: /^\+(\d+)\s+more$/i,
+        replace: (m) => `ещё +${m[1]}`
+    },
+    {
+        pattern: /^last\s+seen\s+(\d+)\s*(s|m|h|d)\s+ago$/i,
+        replace: (m) => {
+            const u = { s: 'сек', m: 'мин', h: 'ч', d: 'дн.' }[m[2].toLowerCase()] || m[2];
+            return `был(а) в сети ${m[1]} ${u} назад`;
+        }
+    },
+    {
+        pattern: /^Runs\s+on\s+(.+)$/i,
+        replace: (m) => `Выполняется на ${m[1]}`
+    },
+    {
+        pattern: /^(.+?)\s+runs\s+on\s+(.+?);\s*open\s+it\s+there\.?$/i,
+        replace: (m) => `${m[1]} выполняется на ${m[2]} — откройте его там.`
+    },
+    {
+        pattern: /^Remote\s*([·•])\s*(.+)$/i,
+        replace: (m) => {
+            let tail = m[2].trim()
+                .replace(/^(\d+)\s+machines?$/i, (_, c) => `${c} ${pluralizeRuCount(parseInt(c, 10), 'машина', 'машины', 'машин')}`)
+                .replace(/\breconnecting\b/gi, 'переподключение')
+                .replace(/\bconnecting\b/gi, 'подключение')
+                .replace(/\bunavailable\b/gi, 'недоступно');
+            return `Удалённо ${m[1]} ${tail}`;
+        }
+    },
+    {
+        pattern: /^read\s+#(\d+)\s*([·•])\s*updated\s+(.+?)\s+ago$/i,
+        replace: (m) => {
+            const dur = m[3].replace(/(\d+)\s*(s|m|h|d)\b/gi, (_, c, u) => `${c} ${{ s: 'сек', m: 'мин', h: 'ч', d: 'дн.' }[u.toLowerCase()] || u}`);
+            return `прочитано #${m[1]} ${m[2]} обновлено ${dur} назад`;
+        }
+    },
+    {
+        pattern: /^The\s+narrator['’]s\s+last\s+step\s+failed:\s*(.+)$/i,
+        replace: (m) => `Последний шаг рассказчика завершился ошибкой: ${m[1]}`
+    },
+    {
+        pattern: /^the\s+narrator['’]s\s+view\s+failed\s*\((.+)\)$/i,
+        replace: (m) => `сбой обзора рассказчика (${m[1]})`
+    },
+    {
+        pattern: /^Last\s+change:\s*[“"](.+)[”"]$/i,
+        replace: (m) => `Последнее изменение: «${m[1]}»`
+    },
+    {
+        pattern: /^Copied\s+[“"](.+?)[”"]\.\s*Paste\s+it\s+into\s+the\s+chat\s+to\s+send\.?$/i,
+        replace: (m) => `Скопировано «${m[1]}». Вставьте в чат для отправки.`
+    },
+    {
+        pattern: /^Type\s+[“"](.+?)[”"]\s+in\s+the\s+chat\.?$/i,
+        replace: (m) => `Введите «${m[1]}» в чате.`
+    },
+    {
+        pattern: /^Tell\s+the\s+coordinator:\s*[“"](.+?)[”"]$/i,
+        replace: (m) => `Сообщите координатору: «${m[1]}»`
+    },
+    {
+        pattern: /^(\d+)\s+posts?$/i,
+        replace: (m) => {
+            const c = parseInt(m[1], 10);
+            return `${c} ${pluralizeRuCount(c, 'сообщение', 'сообщения', 'сообщений')}`;
+        }
+    },
+
+    // --- Hub 2.31.0 Dynamic Strings ---
+    {
+        pattern: /^No\s+MCP\s+servers\s+found\s+for\s+["“](.+?)["”]\.?$/i,
+        replace: (m) => `MCP-серверы по запросу «${m[1]}» не найдены.`
+    },
+    {
+        pattern: /^There\s+are\s+currently\s+no\s+(.+?)\s+plugins\s+available\.?$/i,
+        replace: (m) => `Сейчас нет доступных плагинов в категории «${m[1]}».`
+    },
+    {
+        pattern: /^Show\s+(\d+)\s+earlier\s+steps?$/i,
+        replace: (m) => {
+            const c = parseInt(m[1], 10);
+            return `Показать ${c} ${pluralizeRuCount(c, 'предыдущий шаг', 'предыдущих шага', 'предыдущих шагов')}`;
+        }
+    },
+    {
+        pattern: /^(\d+)\s+comments?$/i,
+        replace: (m) => {
+            const c = parseInt(m[1], 10);
+            return `${c} ${pluralizeRuCount(c, 'комментарий', 'комментария', 'комментариев')}`;
+        }
+    },
+    {
+        pattern: /^Couldn['’]t\s+start\s+the\s+coordinator:\s*(.+)$/i,
+        replace: (m) => `Не удалось запустить координатора: ${m[1]}`
+    },
+    {
+        pattern: /^Could\s+not\s+load\s+the\s+app\s+view:\s*(.+)$/i,
+        replace: (m) => `Не удалось загрузить представление приложения: ${m[1]}`
+    },
+
+    // --- Builtin Swarm Skills (Full & Truncated) ---
+    {
+        pattern: /^\(Preview\s*&\s*Quota\s+Heavy\)\s*(?:Run|Запуск)\s+a\s+swarm:.*$/i,
+        replace: () => "(Превью · высокий расход квоты) Запуск роя: несколько агентов работают параллельно над одной задачей, каждый в своём диалоге, взаимодействуя через общую доску сообщений. Используйте, когда задачу можно разделить на параллельные части или требуется взаимная проверка."
+    },
+    {
+        pattern: /^ONLY\s+for\s+the\s+native-swarm\s+worker\s+whose\s+brief\s+says\s+it\s+is\s+the\s+monitor\..*$/i,
+        replace: () => "ТОЛЬКО для участника роя с ролью монитора (monitor). По таймеру проверяет, не завис ли рой, и будит участника, способного разблокировать работу. Координаторам и обычным исполнителям не загружать."
+    },
+    {
+        pattern: /^ONLY\s+for\s+the\s+native-swarm\s+worker\s+whose\s+brief\s+says\s+it\s+is\s+the\s+narrator\..*$/i,
+        replace: () => "ТОЛЬКО для участника роя с ролью рассказчика (narrator). Следит за доской сообщений и поддерживает актуальность данных обзора пользователя (view.json). Координаторам и обычным исполнителям не загружать."
+    },
+
+    // --- Spacefast Plugin, Prompts (with Franken-Rulish healing) & 11 Commands ---
+    {
+        pattern: /^Turn\s+an\s+idea\s+into\s+a\s+website,\s*dashboard,\s*report,\s*or\s+small\s+web\s+tool\s+you\s+can\s+share\..*Spacefast\.?$/i,
+        replace: () => "Превратите идею в веб-сайт, дашборд, отчёт или удобный веб-инструмент, которым можно поделиться. Создайте его прямо в диалоге или загрузите готовый проект и опубликуйте через Spacefast."
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+a\s+website\s+for\s+my\s+project\s+(?:and\s+publish|и\s+публикация)\s+it\s+on\s+Spacefast\.?$/i,
+        replace: () => "Создай веб-сайт для моего проекта и опубликуй его на Spacefast."
+    },
+    {
+        pattern: /^Publish\s+this\s+dashboard\s+and\s+give\s+me\s+a\s+link\s+to\s+share\.?$/i,
+        replace: () => "Опубликуй этот дашборд и дай мне ссылку для отправки."
+    },
+    {
+        pattern: /^(?:Update|Обновление)\s+the\s+content\s+and\s+design\s+of\s+my\s+existing\s+Spacefast\s+site\.?$/i,
+        replace: () => "Обнови контент и дизайн моего существующего сайта на Spacefast."
+    },
+    {
+        pattern: /^Apply\s+a\s+Spacefast\s+team['’]s\s+saved\s+design\s+system\s+to\s+a\s+new\s+build.*$/i,
+        replace: () => "Применение сохранённой дизайн-системы команды Spacefast к новой сборке или явно запрошенной правке исходного кода."
+    },
+    {
+        pattern: /^(?:Create|Создать|Создано)\s+and\s+publish\s+a\s+new\s+Spacefast\s+website\s+from\s+a\s+brief.*$/i,
+        replace: () => "Создание и публикация нового сайта на Spacefast по описанию задачи: лендинга, портфолио, отчёта или дашборда."
+    },
+    {
+        pattern: /^Find,\s*check,\s*and\s+register\s+domains\s+through\s+Spacefast\s+forms.*$/i,
+        replace: () => "Поиск, проверка и регистрация доменов через формы Spacefast, а также подключение собственного домена пользователя к Space."
+    },
+    {
+        pattern: /^Change\s+the\s+content,\s*design,\s*or\s+source\s+files\s+of\s+an\s+existing\s+Spacefast\s+Space.*$/i,
+        replace: () => "Изменение контента, дизайна или исходных файлов существующего пространства Spacefast и применение замечаний визуального ревью."
+    },
+    {
+        pattern: /^Diagnose\s+a\s+failed\s+Spacefast\s+build,\s*publish,\s*or\s+live\s+page.*$/i,
+        replace: () => "Диагностика сбоя сборки, публикации или рабочей страницы Spacefast, исправление по логам или откат к рабочей версии."
+    },
+    {
+        pattern: /^Save\s+branding,\s*design\s+tokens,\s*component\s+standards,\s*writing\s+guidelines,\s*and\s+asset\s+references.*$/i,
+        replace: () => "Сохранение брендинга, дизайн-токенов, стандартов компонентов, редполитики и ссылок на ресурсы в дизайн-систему команды Spacefast."
+    },
+    {
+        pattern: /^(?:Check|Проверка)\s+the\s+Spacefast\s+connection\s+and\s+continue\s+the\s+user['’]s\s+task.*$/i,
+        replace: () => "Проверка подключения к Spacefast и продолжение задачи пользователя."
+    },
+    {
+        pattern: /^Change\s+who\s+can\s+access\s+a\s+Spacefast\s+Space\s+or\s+path.*$/i,
+        replace: () => "Настройка прав доступа к пространству или пути Spacefast: публичный доступ, приватный режим или приглашение отдельных пользователей."
+    },
+    {
+        pattern: /^Publish\s+an\s+existing\s+website,\s*app,\s*report,\s*or\s+other\s+artifact\s+to\s+Spacefast.*$/i,
+        replace: () => "Публикация готового веб-сайта, приложения, отчёта или другого артефакта в Spacefast с проверкой рабочей ссылки и управлением пространством."
+    },
+    {
+        pattern: /^Bring\s+a\s+named\s+existing\s+Spacefast\s+Space\s+or\s+linked\s+project\s+into\s+alignment.*$/i,
+        replace: () => "Приведение существующего пространства Spacefast или связанного проекта в соответствие с актуальной сохранённой дизайн-системой команды."
+    },
+    {
+        pattern: /^(?:Verify|Проверка)\s+a\s+Spacefast\s+source\s+build\s+or\s+preview\s+against\s+its\s+saved\s+team\s+design\s+system.*$/i,
+        replace: () => "Проверка исходной сборки или превью Spacefast на соответствие сохранённой дизайн-системе команды, включая визуальный и структурный контроль."
+    },
+
+    // --- Elephant-Goldfish Model (EGM) & 7 Skills ---
+    {
+        pattern: /^Develop\s+an\s+idea,\s*improve\s+a\s+plan,\s*or\s+review\s+a\s+document\s+with\s+independent\s+AI\s+reviewers\..*$/i,
+        replace: () => "Развивайте идеи, улучшайте планы и проверяйте документы с помощью независимых ИИ-рецензентов. Рецензенты начинают без истории предыдущего диалога, чтобы выявлять пропущенный контекст, неясную аргументацию и скрытые допущения. Используйте плагин для проверки предложений, проектных планов, дизайн-документов и соответствия кода архитектуре."
+    },
+    {
+        pattern: /^Bootstrap\s+directory\s+README\.md\s+files\s+across\s+a\s+repository\s+subtree.*$/i,
+        replace: () => "Автоматическое создание файлов README.md по поддереву каталогов репозитория."
+    },
+    {
+        pattern: /^Interactive\s+ideation\s+and\s+brainstorming\s+skill\s+for\s+the\s+Elephant\s*&\s*Goldfish\s+Model.*$/i,
+        replace: () => "Интерактивный мозговой штурм и проработка идей по модели Elephant & Goldfish (EGM): превращает сырые концепции в структурированные гипотезы и итоговый RFC для ревью или подготовки дизайн-документа с egm-draft."
+    },
+    {
+        pattern: /^Drafts\s+a\s+design\s+document\s+section-by-section\s+using\s+the\s+concepts\s+brief\s+from\s+egm-brainstorm.*$/i,
+        replace: () => "Поэтапное написание дизайн-документа по разделам на основе концепции из egm-brainstorm или заметок пользователя (второй шаг процесса EGM)."
+    },
+    {
+        pattern: /^Runs\s+drift\s+detection\s+on\s+all\s+design\s+documents\s+to\s+check\s+for\s+document\s+and\s+code\s+consistency.*$/i,
+        replace: () => "Проверка расхождений (drift detection) между всеми дизайн-документами/README и реальным кодом с формированием подробного отчёта о различиях."
+    },
+    {
+        pattern: /^The\s+Elephant\s+resolution\s+skill\.\s*Ingests\s+flat\s+deficiency\s+reports\s+from\s+concurrent\s+Goldfish\s+reviewers.*$/i,
+        replace: () => "Навык разрешения замечаний Elephant: собирает отчёты независимых рецензентов Goldfish, применяет одобренные исправления через интерактивный выбор и проводит контрольные точки синхронизации."
+    },
+    {
+        pattern: /^Orchestrates\s+the\s+EGM\s+Goldfish\s+Review\s+Protocol\..*$/i,
+        replace: () => "Оркестрация протокола ревью EGM Goldfish по пяти фазам: первичный обзор, проверка понимания, критика архитектуры, промежуточный обзор и готовность к реализации."
+    },
+    {
+        pattern: /^Executes\s+the\s+Antagonistic-Review\s+process\s+from\s+the\s+Elephant-Goldfish\s+Model.*$/i,
+        replace: () => "Запуск многоагентного цикла критического ревью (Antagonistic-Review) по модели EGM для аудита дизайн-документов, README, спецификаций и планов реализации с автоматическим внесением одобренных правок."
+    },
+
+    // --- Arize AX & 18 Skills ---
+    {
+        pattern: /^Query\s+Arize\s+AX\s+projects,\s*traces,\s*datasets,\s*and\s+experiments\s+from\s+Antigravity.*$/i,
+        replace: () => "Запрашивайте проекты, трейсы, датасеты и эксперименты Arize AX из Antigravity с навыками для трассировки, оценок (evals) и оптимизации промптов."
+    },
+    {
+        pattern: /^(?:List|Список)\s+my\s+Arize\s+projects\s+and\s+show\s+recent\s+traces\s+with\s+errors\.?$/i,
+        replace: () => "Выведи список моих проектов Arize и покажи последние трейсы с ошибками"
+    },
+    {
+        pattern: /^Manages\s+Arize\s+users,\s*organizations,\s*spaces,\s*projects,\s*roles,\s*role\s+bindings.*$/i,
+        replace: () => "Управление пользователями, организациями, пространствами, проектами, ролями, привязками ролей, ограничениями доступа и API-ключами Arize через CLI `ax`."
+    },
+    {
+        pattern: /^Creates,\s*reads,\s*updates,\s*and\s+deletes\s+Arize\s+AI\s+integrations\s+that\s+store\s+LLM\s+provider\s+credentials.*$/i,
+        replace: () => "Создание, чтение, обновление и удаление ИИ-интеграций Arize для хранения ключей LLM-провайдеров (OpenAI, Anthropic, Gemini, Vertex AI, Bedrock и др.)."
+    },
+    {
+        pattern: /^Creates\s+and\s+manages\s+annotation\s+configs\s*\(categorical,\s*continuous,\s*freeform\s+label\s+schemas\).*$/i,
+        replace: () => "Создание и управление конфигурациями разметки и очередями ручной проверки (human review) в Arize, а также разметка спанов через Python SDK."
+    },
+    {
+        pattern: /^INVOKE\s+THIS\s+SKILL\s+when\s+auditing\s+an\s+AI\s+agent\s+or\s+LLM\s+app\s+for\s+regulatory\s+compliance.*$/i,
+        replace: () => "Аудит ИИ-агента или LLM-приложения на соответствие регуляторным стандартам (EU AI Act, GDPR, NIST AI RMF, HIPAA, ISO 42001) с проверкой полноты аудиторского следа в Arize."
+    },
+    {
+        pattern: /^Creates,\s*manages,\s*and\s+queries\s+Arize\s+datasets\s+and\s+examples.*$/i,
+        replace: () => "Создание, управление, экспорт и пополнение датасетов и тестовых примеров в Arize через CLI `ax`."
+    },
+    {
+        pattern: /^Handles\s+LLM-as-judge\s+and\s+code\s+evaluator\s+workflows\s+on\s+Arize.*$/i,
+        replace: () => "Управление оценщиками (LLM-as-judge и кодовыми эвалюаторами) в Arize: создание, запуск оценок по спанам и экспериментам, маппинг колонок и непрерывный мониторинг."
+    },
+    {
+        pattern: /^Creates,\s*runs,\s*and\s+analyzes\s+Arize\s+experiments\s+for\s+evaluating\s+and\s+comparing\s+model\s+performance.*$/i,
+        replace: () => "Создание, запуск и сравнение экспериментов в Arize для оценки качества и сопоставления моделей с помощью CLI `ax`."
+    },
+    {
+        pattern: /^Adds\s+Arize\s+AX\s+tracing\s+to\s+an\s+LLM\s+application\s+for\s+the\s+first\s+time.*$/i,
+        replace: () => "Первичное подключение трассировки Arize AX (OpenTelemetry / OpenInference) к LLM-приложению с автоопределением стека и проверкой поступления трейсов."
+    },
+    {
+        pattern: /^Audits\s+instrumentation\s+health\s+of\s+existing\s+Arize\s+traces.*$/i,
+        replace: () => "Аудит корректности инструментации существующих трейсов Arize: поиск потерянных или дублирующихся спанов, пустого ввода-вывода и отсутствующих счётчиков токенов."
+    },
+    {
+        pattern: /^Generates\s+deep\s+links\s+to\s+the\s+Arize\s+UI\s+for\s+projects,\s*traces,\s*spans.*$/i,
+        replace: () => "Генерация прямых ссылок в интерфейс Arize UI на проекты, трейсы, спаны, сессии, датасеты, эксперименты и оценщики."
+    },
+    {
+        pattern: /^Migrates\s+LLM\s+observability\s+from\s+Braintrust\s+into\s+Arize\s+AX.*$/i,
+        replace: () => "Миграция данных наблюдаемости LLM из Braintrust в Arize AX: импорт истории трейсов по OTLP, датасетов и промптов."
+    },
+    {
+        pattern: /^Migrates\s+LLM\s+observability\s+from\s+Langfuse\s+into\s+Arize\s+AX.*$/i,
+        replace: () => "Миграция данных наблюдаемости LLM из Langfuse в Arize AX: импорт истории трейсов по OTLP, датасетов и промптов с метками."
+    },
+    {
+        pattern: /^Migrates\s+LLM\s+observability\s+from\s+LangSmith\s+into\s+Arize\s+AX.*$/i,
+        replace: () => "Миграция данных наблюдаемости LLM из LangSmith в Arize AX: импорт истории запусков по OTLP, датасетов и промптов в Prompt Hub."
+    },
+    {
+        pattern: /^Migrate\s+existing\s+Phoenix\s+\(PX\)\s+traces,\s*datasets,\s*experiments.*$/i,
+        replace: () => "Миграция существующих трейсов, датасетов, экспериментов и результатов оценок из Phoenix (PX) в Arize AX с проверкой импортированных записей."
+    },
+    {
+        pattern: /^Optimizes,\s*improves,\s*and\s+debugs\s+LLM\s+prompts\s+using\s+production\s+trace\s+data.*$/i,
+        replace: () => "Оптимизация, улучшение и отладка LLM-промптов на основе продакшен-трейсов, оценок и разметки через итеративный цикл CLI `ax`."
+    },
+    {
+        pattern: /^INVOKE\s+THIS\s+SKILL\s+for\s+Arize\s+Prompt\s+Hub\s+and\s+`?ax\s+prompts`?\s+workflows.*$/i,
+        replace: () => "Работа с Arize Prompt Hub и `ax prompts`: создание и импорт шаблонов промптов, управление метками (production/staging), версиями и переменными."
+    },
+    {
+        pattern: /^Use\s+when\s+one\s+Python\s+service\s+must\s+send\s+each\s+agent['’]s,\s*tenant['’]s,\s*team['’]s,\s*or\s+request['’]s\s+spans.*$/i,
+        replace: () => "Динамическая маршрутизация спанов OpenTelemetry в Python-сервисах по нужным пространствам и проектам Arize для мультитенантных систем."
+    },
+    {
+        pattern: /^Downloads,\s*exports,\s*and\s+inspects\s+existing\s+Arize\s+traces\s+and\s+spans.*$/i,
+        replace: () => "Выгрузка, экспорт и инспекция трейсов, спанов и сессий Arize по ID для анализа работы LLM-приложения и поиска причин сбоев."
+    },
+
+    // --- CodeRabbit & 5 Skills ---
+    {
+        pattern: /^AI-powered\s+code\s+review,\s*review-comment\s+autofix,\s*and\s+repository\s+configuration,\s+powered\s+by\s+CodeRabbit\.?$/i,
+        replace: () => "ИИ-ревью кода, автоисправление замечаний и настройка репозитория на базе CodeRabbit."
+    },
+    {
+        pattern: /^Use\s+when\s+the\s+user\s+asks\s+for\s+code\s+review,\s*PR\s+feedback,\s*or\s+an\s+authorized\s+fix\s+and\s+review\s+cycle\s+with\s+CodeRabbit.*$/i,
+        replace: () => "Проведение ревью кода, разбор замечаний в PR и цикл исправлений с проверкой через подключённый MCP и CLI CodeRabbit."
+    },
+    {
+        pattern: /^Use\s+when\s+setting\s+up\s+CodeRabbit,\s*connecting\s+the\s+plugin,\s*tailoring\s+repository\s+review\s+settings.*$/i,
+        replace: () => "Настройка плагина CodeRabbit, подключение через браузерный вход MCP, конфигурация правил ревью репозитория и восстановление сессии."
+    },
+    {
+        pattern: /^Safely\s+review\s+and\s+apply\s+CodeRabbit\s+PR\s+review-thread\s+feedback\s+from\s+GitHub.*$/i,
+        replace: () => "Безопасный разбор и применение замечаний CodeRabbit из веток ревью PR на GitHub с подтверждением каждого изменения."
+    },
+    {
+        pattern: /^(?:Run|Запуск)\s+CodeRabbit\s+CLI\s+reviews,\s*retrieve\s+saved\s+local\s+or\s+GitHub\s+PR\s+fix\s+prompts.*$/i,
+        replace: () => "Запуск ревью через CodeRabbit CLI, получение промптов для исправления локальных изменений или PR на GitHub и интерпретация результатов проверки."
+    },
+    {
+        pattern: /^(?:Create|Создать|Создано),\s*update,\s*or\s+validate\s+CodeRabbit\s+repository\s+configuration\s+through\s+the\s+official\s+CLI.*$/i,
+        replace: () => "Создание, обновление и валидация конфигурации репозитория CodeRabbit (`.coderabbit.yaml`) через официальный CLI."
+    },
+
+    // --- Modern Web Guidance & VirusTotal ---
+    {
+        pattern: /^Keep\s+your\s+coding\s+agent\s+up\s+to\s+date\s+with\s+the\s+latest\s+web\s+best\s+practices\.?$/i,
+        replace: () => "Держите вашего кодинг-агента в курсе актуальных практик современной веб-разработки."
+    },
+    {
+        pattern: /^(?:Build|Сборка)\s+a\s+Chrome\s+Extension\s+with\s+a\s+side\s+panel\s+using\s+Manifest\s+V3\s+best\s+practices\.?$/i,
+        replace: () => "Создай расширение Chrome с боковой панелью по лучшим практикам Manifest V3"
+    },
+    {
+        pattern: /^Investigate\s+files,\s*URLs,\s*domains\s+and\s+IP\s+addresses\s+with\s+VirusTotal.*$/i,
+        replace: () => "Исследуйте файлы, URL-адреса, домены и IP-адреса с помощью аналитики угроз и отчётов VirusTotal."
+    },
+    {
+        pattern: /^(?:Check|Проверка)\s+a\s+file\s+I\s+downloaded\s+before\s+I\s+run\s+it\..*VirusTotal.*$/i,
+        replace: () => "Проверь скачанный мной файл перед запуском: спроси локальный путь, вычисли SHA-256 без запуска файла и найди существующий отчёт VirusTotal. Не загружай сам файл."
+    },
+    {
+        pattern: /^Help\s+me\s+assess\s+a\s+suspicious\s+link\..*VirusTotal.*$/i,
+        replace: () => "Помоги оценить подозрительную ссылку: сначала объясни, какие данные передаются при проверке URL, затем получи существующий отчёт VirusTotal. Не открывай ссылку и не отправляй её на новый анализ."
+    },
+    {
+        pattern: /^Investigate\s+an\s+IP\s+address\s+from\s+my\s+logs\..*VirusTotal.*$/i,
+        replace: () => "Исследуй IP-адрес из моих логов: запроси IP и краткое описание активности, получи существующий отчёт VirusTotal и объясни найденные данные и их ограничения. Не запрашивай новый анализ."
+    },
+    {
+        pattern: /^of\s+(\d+)\s*([·•])\s*#(\d+)\s+at\s+(.+)$/i,
+        replace: (m) => `из ${m[1]} ${m[2]} #${m[3]} в ${m[4]}`
     }
 ];
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function isEnglishMode() {
+    try {
+        if (window !== window.top && window.__antigravity_subframe_lang) {
+            return window.__antigravity_subframe_lang === 'en';
+        }
+    } catch (e) {}
+    try {
+        if (window.name && window.name.includes('antigravity_lang=en')) return true;
+        if (window.name && window.name.includes('antigravity_lang=ru')) return false;
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('antigravity_lang') === 'en') return true;
+    } catch (e) {}
+    return false;
+}
 
 window.__antigravity_translate_string = function(str) {
     if (!str || typeof str !== 'string') return str;
-    try {
-        if (typeof localStorage !== 'undefined' && localStorage.getItem('antigravity_lang') === 'en') return str;
-    } catch (e) {}
+    if (isEnglishMode()) return str;
     const norm = str.replace(/[\s\u00a0\xa0\u2007\u202f\r\n\t]+/g, ' ').trim();
     if (!norm) return str;
     const lower = norm.toLowerCase();
@@ -12290,7 +13269,10 @@ window.__antigravity_translate_string = function(str) {
     for (const rule of regexTranslations) {
         const m = norm.match(rule.pattern);
         if (m) {
-            return rule.replace(m);
+            const res = rule.replace(m);
+            if (res && res !== norm) {
+                return res;
+            }
         }
     }
     return str;
@@ -12322,10 +13304,91 @@ function shouldIgnore(node) {
         fullContext.includes('подробнее см. в')
     );
 
+    const isPluginFrame = (typeof window !== 'undefined' && window.location && window.location.protocol === 'plugin:');
+    const isInsideSwarmPostOrCode = !!(node.parentElement && typeof node.parentElement.closest === 'function' && node.parentElement.closest('.msg-body, pre, code, kbd'));
+
     const isMatchSpecial = (val) => {
         if (!val) return false;
-        if ((val.includes(' ') || (typeof window !== 'undefined' && window.location && window.location.pathname && window.location.pathname.startsWith('/customizations'))) && translationDictionary[val]) return true;
+        if ((val.includes(' ') || (isPluginFrame && !isInsideSwarmPostOrCode) || (typeof window !== 'undefined' && window.location && window.location.pathname && window.location.pathname.startsWith('/customizations'))) && translationDictionary[val]) return true;
         return (
+            /^\d+\s*(?:s|sec|m|min|h|hr|d|w|wk|mo|mos|yr|y)$/.test(val) ||
+            /^\d+\s*(?:h|hr)\s+\d+\s*(?:m|min)$/.test(val) ||
+            /^\d+\s*(?:m|min)\s+\d+\s*(?:s|sec)$/.test(val) ||
+            /^\d+\s+pinned(?:\s+conversations?)?$/i.test(val) ||
+            val === 'pinned' ||
+            val === 'swarm' ||
+            val === '🐝 swarm' ||
+            val.startsWith('(preview & quota heavy)') ||
+            val.startsWith('only for the native-swarm') ||
+            val.startsWith('turn an idea into a website') ||
+            val.startsWith('build a website for my project') ||
+            val.startsWith('сборка a website for my project') ||
+            val.startsWith('publish this dashboard') ||
+            val.startsWith('update the content and design') ||
+            val.startsWith('обновление the content and design') ||
+            val.startsWith('apply a spacefast') ||
+            val.startsWith('create and publish a new spacefast') ||
+            val.startsWith('создать and publish a new spacefast') ||
+            val.startsWith('создано and publish a new spacefast') ||
+            val.startsWith('find, check, and register domains') ||
+            val.startsWith('change the content, design, or source') ||
+            val.startsWith('diagnose a failed spacefast') ||
+            val.startsWith('save branding, design tokens') ||
+            val.startsWith('check the spacefast connection') ||
+            val.startsWith('проверка the spacefast connection') ||
+            val.startsWith('change who can access a spacefast') ||
+            val.startsWith('publish an existing website') ||
+            val.startsWith('bring a named existing spacefast') ||
+            val.startsWith('verify a spacefast source build') ||
+            val.startsWith('проверка a spacefast source build') ||
+            val.startsWith('develop an idea, improve a plan') ||
+            val.startsWith('develop ideas') ||
+            val.startsWith('bootstrap directory readme.md') ||
+            val.startsWith('interactive ideation and brainstorming') ||
+            val.startsWith('drafts a design document') ||
+            val.startsWith('runs drift detection') ||
+            val.startsWith('the elephant resolution skill') ||
+            val.startsWith('orchestrates the egm') ||
+            val.startsWith('executes the antagonistic-review') ||
+            val.startsWith('query arize ax') ||
+            val.startsWith('list my arize projects') ||
+            val.startsWith('список my arize projects') ||
+            val.startsWith('manages arize users') ||
+            val.startsWith('creates, reads, updates') ||
+            val.startsWith('creates and manages annotation') ||
+            val.startsWith('invoke this skill') ||
+            val.startsWith('creates, manages, and queries arize') ||
+            val.startsWith('handles llm-as-judge') ||
+            val.startsWith('creates, runs, and analyzes arize') ||
+            val.startsWith('adds arize ax tracing') ||
+            val.startsWith('audits instrumentation health') ||
+            val.startsWith('generates deep links to the arize') ||
+            val.startsWith('migrates llm observability') ||
+            val.startsWith('migrate existing phoenix') ||
+            val.startsWith('optimizes, improves, and debugs llm') ||
+            val.startsWith('use when one python service') ||
+            val.startsWith('downloads, exports, and inspects') ||
+            val.startsWith('ai-powered code review') ||
+            val.startsWith('use when the user asks for code review') ||
+            val.startsWith('use when setting up coderabbit') ||
+            val.startsWith('safely review and apply coderabbit') ||
+            val.startsWith('run coderabbit cli reviews') ||
+            val.startsWith('запуск coderabbit cli reviews') ||
+            val.startsWith('create, update, or validate coderabbit') ||
+            val.startsWith('создать, update, or validate coderabbit') ||
+            val.startsWith('создано, update, or validate coderabbit') ||
+            val.startsWith('keep your coding agent up to date') ||
+            val.startsWith('build a chrome extension with a side panel') ||
+            val.startsWith('сборка a chrome extension with a side panel') ||
+            val.startsWith('investigate files, urls') ||
+            val.startsWith('check a file i downloaded') ||
+            val.startsWith('проверка a file i downloaded') ||
+            val.startsWith('help me assess a suspicious link') ||
+            val.startsWith('investigate an ip address') ||
+            val.startsWith('no mcp servers found for') ||
+            val.startsWith('there are currently no ') ||
+            /^show\s+\d+\s+earlier\s+steps?$/i.test(val) ||
+            /^\d+\s+comments?$/i.test(val) ||
             val === 'see plans' ||
             val === 'running' ||
             val === 'run' ||
@@ -13261,6 +14324,16 @@ function shouldIgnore(node) {
             return true;
         }
 
+        // Защищаем код внутри <code>, <pre>, <kbd> от перевода компактных таймстемпов и содержимого в UI-плагинах
+        if (tagName === 'CODE' || tagName === 'PRE' || tagName === 'KBD') {
+            if (/^\d+\s*(?:s|sec|m|min|h|hr|d|w|wk|mo|mos|yr|y)$/i.test(textVal)) {
+                return true;
+            }
+            if (isPluginFrame) {
+                return true;
+            }
+        }
+
         // Защищаем код внутри <code> от перевода, если это не специальный UI-текст
         if (tagName === 'CODE' && !isSpecialUiText) {
             return true;
@@ -13269,10 +14342,15 @@ function shouldIgnore(node) {
         if (tagName === 'PRE' && !isSpecialUiText) {
             return true;
         }
+
+        if (isPluginFrame && isStringClass && lowerClass.includes('msg-body')) {
+            return true;
+        }
         
         // 2. Белый список (White List) для интерфейса настроек, кнопок и модалок.
         // Переводим их сразу, даже если они внутри контейнера чата!
         if (
+            (isPluginFrame && !isInsideSwarmPostOrCode) ||
             isSpecialUiText ||
             tagName === 'BUTTON' || 
             parent.getAttribute('role') === 'button' || 
@@ -14223,7 +15301,69 @@ function isFileName(text, parent) {
         lowerTrimmed.startsWith('hello ') ||
         lowerTrimmed.startsWith('welcome back') ||
         lowerTrimmed.startsWith('good to see you') ||
-        /^\d+\s*(?:mo|mos)$/i.test(lowerTrimmed) ||
+        /^\d+\s*(?:s|sec|m|min|h|hr|d|w|wk|mo|mos|yr|y)$/i.test(lowerTrimmed) ||
+        /^\d+\s+pinned(?:\s+conversations?)?$/i.test(lowerTrimmed) ||
+        lowerTrimmed === 'pinned' ||
+        lowerTrimmed === 'swarm' ||
+        lowerTrimmed === '🐝 swarm' ||
+        lowerTrimmed.startsWith('(preview & quota heavy)') ||
+        lowerTrimmed.startsWith('only for the native-swarm') ||
+        lowerTrimmed.startsWith('turn an idea into a website') ||
+        lowerTrimmed.startsWith('build a website for my project') ||
+        lowerTrimmed.startsWith('сборка a website for my project') ||
+        lowerTrimmed.startsWith('publish this dashboard') ||
+        lowerTrimmed.startsWith('update the content and design') ||
+        lowerTrimmed.startsWith('обновление the content and design') ||
+        lowerTrimmed.startsWith('apply a spacefast') ||
+        lowerTrimmed.startsWith('create and publish a new spacefast') ||
+        lowerTrimmed.startsWith('создать and publish a new spacefast') ||
+        lowerTrimmed.startsWith('создано and publish a new spacefast') ||
+        lowerTrimmed.startsWith('find, check, and register') ||
+        lowerTrimmed.startsWith('change the content, design') ||
+        lowerTrimmed.startsWith('diagnose a failed spacefast') ||
+        lowerTrimmed.startsWith('save branding, design tokens') ||
+        lowerTrimmed.startsWith('check the spacefast connection') ||
+        lowerTrimmed.startsWith('проверка the spacefast connection') ||
+        lowerTrimmed.startsWith('change who can access') ||
+        lowerTrimmed.startsWith('publish an existing website') ||
+        lowerTrimmed.startsWith('bring a named existing') ||
+        lowerTrimmed.startsWith('verify a spacefast') ||
+        lowerTrimmed.startsWith('проверка a spacefast') ||
+        lowerTrimmed.startsWith('develop an idea') ||
+        lowerTrimmed.startsWith('develop ideas') ||
+        lowerTrimmed.startsWith('bootstrap directory') ||
+        lowerTrimmed.startsWith('interactive ideation') ||
+        lowerTrimmed.startsWith('drafts a design document') ||
+        lowerTrimmed.startsWith('runs drift detection') ||
+        lowerTrimmed.startsWith('the elephant resolution') ||
+        lowerTrimmed.startsWith('orchestrates the egm') ||
+        lowerTrimmed.startsWith('executes the antagonistic-review') ||
+        lowerTrimmed.startsWith('query arize ax') ||
+        lowerTrimmed.startsWith('manages arize') ||
+        lowerTrimmed.startsWith('creates,') ||
+        lowerTrimmed.startsWith('creates and manages') ||
+        lowerTrimmed.startsWith('invoke this skill') ||
+        lowerTrimmed.startsWith('handles llm-as-judge') ||
+        lowerTrimmed.startsWith('adds arize ax') ||
+        lowerTrimmed.startsWith('audits instrumentation') ||
+        lowerTrimmed.startsWith('generates deep links') ||
+        lowerTrimmed.startsWith('migrates llm observability') ||
+        lowerTrimmed.startsWith('migrate existing phoenix') ||
+        lowerTrimmed.startsWith('optimizes, improves') ||
+        lowerTrimmed.startsWith('use when ') ||
+        lowerTrimmed.startsWith('downloads, exports') ||
+        lowerTrimmed.startsWith('ai-powered code review') ||
+        lowerTrimmed.startsWith('safely review and apply') ||
+        lowerTrimmed.startsWith('run coderabbit') ||
+        lowerTrimmed.startsWith('запуск coderabbit') ||
+        lowerTrimmed.startsWith('create, update, or validate') ||
+        lowerTrimmed.startsWith('создать, update, or validate') ||
+        lowerTrimmed.startsWith('создано, update, or validate') ||
+        lowerTrimmed.startsWith('keep your coding agent') ||
+        lowerTrimmed.startsWith('investigate ') ||
+        lowerTrimmed.startsWith('help me ') ||
+        lowerTrimmed.startsWith('open this pane from a conversation') ||
+        lowerTrimmed.startsWith('swarms started in this conversation') ||
         lowerTrimmed.includes('what can we get done') ||
         lowerTrimmed.startsWith('settings for ') ||
         lowerTrimmed.startsWith('agent settings and permissions for ') ||
@@ -14310,7 +15450,7 @@ function isFileName(text, parent) {
 
 function translateTextNode(node) {
     try {
-        if (localStorage.getItem('antigravity_lang') === 'en') return;
+        if (isEnglishMode()) return;
         if (node.nodeType !== Node.TEXT_NODE) return;
 
         const text = node.nodeValue;
@@ -14386,8 +15526,11 @@ function translateTextNode(node) {
                 for (const rule of regexTranslations) {
                     const match = normalized.match(rule.pattern);
                     if (match) {
-                        translated = rule.replace(match);
-                        break;
+                        const res = rule.replace(match);
+                        if (res && res !== normalized) {
+                            translated = res;
+                            break;
+                        }
                     }
                 }
                 if (!translated && node.parentElement && node.parentElement.previousElementSibling) {
@@ -14612,6 +15755,28 @@ function translateTextNode(node) {
                 if (/^\d+\s+of\s+\d+$/i.test(pText)) {
                     translated = 'из';
                 }
+            } else if (/^pinned(?:\s+conversations?)?$/i.test(normalized)) {
+                const pText = node.parentElement ? normalizeText(node.parentElement.textContent) : '';
+                const gpText = (node.parentElement && node.parentElement.parentElement) ? normalizeText(node.parentElement.parentElement.textContent) : '';
+                const mPin = (pText + ' ' + gpText).match(/(\d+)\s*pinned/i);
+                if (mPin) {
+                    const c = parseInt(mPin[1], 10);
+                    const adj = pluralizeRuCount(c, 'закреплённый', 'закреплённых', 'закреплённых');
+                    if (/conversation/i.test(normalized)) {
+                        const noun = pluralizeRuCount(c, 'диалог', 'диалога', 'диалогов');
+                        translated = `${adj} ${noun}`;
+                    } else {
+                        translated = adj;
+                    }
+                } else {
+                    translated = 'закреплено';
+                }
+            } else if (/^over\s+(.+)$/i.test(normalized) && node.parentElement && node.parentElement.id === 'replay-label') {
+                const mOver = normalized.match(/^over\s+(.+)$/i);
+                if (mOver) {
+                    const dur = mOver[1].replace(/(\d+)\s*(s|m|h|d)\b/gi, (_, c, u) => `${c} ${{ s: 'сек', m: 'мин', h: 'ч', d: 'дн.' }[u.toLowerCase()] || u}`);
+                    translated = `за ${dur}`;
+                }
             } else if (node.parentElement && node.parentElement.previousElementSibling) {
                 const prevEl = node.parentElement.previousElementSibling;
                 const prevOrig = (prevEl.getAttribute && prevEl.getAttribute('data-original-text') || '').trim();
@@ -14665,6 +15830,7 @@ function translateTextNode(node) {
 
 function translatePlaceholder(element) {
     try {
+        if (isEnglishMode()) return;
         if (!element || element.nodeType !== Node.ELEMENT_NODE || !element.getAttribute) return;
         if (shouldIgnore(element)) return;
         if (element.tagName !== 'INPUT' && element.tagName !== 'TEXTAREA') return;
@@ -14681,8 +15847,11 @@ function translatePlaceholder(element) {
             for (const rule of regexTranslations) {
                 const match = normalized.match(rule.pattern);
                 if (match) {
-                    translatedValue = rule.replace(match);
-                    break;
+                    const res = rule.replace(match);
+                    if (res && res !== normalized) {
+                        translatedValue = res;
+                        break;
+                    }
                 }
             }
         }
@@ -14701,6 +15870,7 @@ function translatePlaceholder(element) {
 
 function translateTitle(element) {
     try {
+        if (isEnglishMode()) return;
         if (!element || element.nodeType !== Node.ELEMENT_NODE || !element.getAttribute) return;
         if (shouldIgnore(element)) return;
         
@@ -14716,8 +15886,11 @@ function translateTitle(element) {
                 for (const rule of regexTranslations) {
                     const match = normalized.match(rule.pattern);
                     if (match) {
-                        translated = rule.replace(match);
-                        break;
+                        const res = rule.replace(match);
+                        if (res && res !== normalized) {
+                            translated = res;
+                            break;
+                        }
                     }
                 }
                 if (!translated && element.previousElementSibling) {
@@ -14753,8 +15926,11 @@ function translateTitle(element) {
                 for (const rule of regexTranslations) {
                     const match = normalized.match(rule.pattern);
                     if (match) {
-                        translated = rule.replace(match);
-                        break;
+                        const res = rule.replace(match);
+                        if (res && res !== normalized) {
+                            translated = res;
+                            break;
+                        }
                     }
                 }
             }
@@ -14773,6 +15949,7 @@ function translateTitle(element) {
 
 function translateAriaLabel(element) {
     try {
+        if (isEnglishMode()) return;
         if (!element || element.nodeType !== Node.ELEMENT_NODE || !element.getAttribute) return;
         if (shouldIgnore(element)) return;
         
@@ -14788,8 +15965,11 @@ function translateAriaLabel(element) {
                 for (const rule of regexTranslations) {
                     const match = normalized.match(rule.pattern);
                     if (match) {
-                        translated = rule.replace(match);
-                        break;
+                        const res = rule.replace(match);
+                        if (res && res !== normalized) {
+                            translated = res;
+                            break;
+                        }
                     }
                 }
             }
@@ -15047,17 +16227,18 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.32';
+    const FALLBACK_VERSION = '2.1.33';
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
     }
     let currentLocalVersion = window.__antigravity_local_version;
+    const DEFAULT_CHANGELOG_V2133 = 'Обновление v2.1.33: полная локализация UI-плагинов (панель 🐝 Рой / Swarm и будущие плагины в iframe plugin://), защита английских промптов от частичного перевода, компактные метки времени (ч/мин/дн.) и новые плагины Antigravity 2.31.0.';
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = 'Обновление v2.1.32: мгновенная прямая запись патча в resources/app.asar после официальных обновлений AntiGravity (2.31.0+) и автоматическая активация плагина перевода без потери виджета EN | RU.';
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2133;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Обновление v2.1.32: мгновенная прямая запись патча в resources/app.asar после официальных обновлений AntiGravity (2.31.0+) и автоматическая активация плагина перевода без потери виджета EN | RU.';
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2133;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -15417,6 +16598,30 @@ function initLanguageSwitcher() {
     const checkInstallBtn = document.getElementById('update-check-install-btn');
     const restartBtn = document.getElementById('update-restart-action-btn');
 
+    function broadcastLanguageToSubframes(lang) {
+        try {
+            const iframes = document.querySelectorAll('iframe');
+            iframes.forEach(frame => {
+                try {
+                    if (frame.contentWindow) {
+                        frame.contentWindow.postMessage({ type: 'ANTIGRAVITY_LANG_SYNC', lang }, '*');
+                    }
+                } catch (e) {}
+            });
+        } catch (e) {}
+    }
+
+    if (!window.__antigravity_top_lang_responder_bound) {
+        window.__antigravity_top_lang_responder_bound = true;
+        window.addEventListener('message', (ev) => {
+            try {
+                if (ev && ev.data && ev.data.type === 'ANTIGRAVITY_LANG_QUERY' && ev.source && typeof ev.source.postMessage === 'function') {
+                    ev.source.postMessage({ type: 'ANTIGRAVITY_LANG_SYNC', lang: getSavedLanguage() }, '*');
+                }
+            } catch (e) {}
+        });
+    }
+
     function updateUI() {
         const lang = getSavedLanguage();
         if (lang === 'ru') {
@@ -15430,6 +16635,7 @@ function initLanguageSwitcher() {
             stopObserving();
             restoreOriginalTree();
         }
+        broadcastLanguageToSubframes(lang);
     }
 
     btnEn.addEventListener('click', () => {
@@ -15781,18 +16987,55 @@ const initInterval = setInterval(() => {
         clearInterval(initInterval);
         const protocol = window.location.protocol;
         const hostname = window.location.hostname;
-        const isInternal = protocol === 'vscode-file:' || protocol === 'vscode-webview:' || protocol === 'antigravity-ide:' || hostname === '127.0.0.1' || hostname === 'localhost';
+        const isInternal = protocol === 'vscode-file:' || protocol === 'vscode-webview:' || protocol === 'antigravity-ide:' || protocol === 'plugin:' || hostname === '127.0.0.1' || hostname === 'localhost';
         if (isInternal) {
+            const isTopFrame = (window === window.top);
             const isHotReload = !!window.__antigravity_localizer_loaded;
             window.__antigravity_localizer_loaded = true;
-            initLanguageSwitcher();
-            initTerminalInjection();
-            if (localStorage.getItem('antigravity_lang') !== 'en') {
-                if (isHotReload) {
-                    try { restoreOriginalTree(); } catch (e) {}
+            if (isTopFrame) {
+                initLanguageSwitcher();
+                initTerminalInjection();
+                if (!isEnglishMode()) {
+                    if (isHotReload) {
+                        try { restoreOriginalTree(); } catch (e) {}
+                    }
+                    startObserving();
+                    translateTree(document.body);
                 }
-                startObserving();
-                translateTree(document.body);
+            } else {
+                if (!window.__antigravity_subframe_lang) {
+                    window.__antigravity_subframe_lang = 'ru';
+                }
+                if (!window.__antigravity_subframe_sync_bound) {
+                    window.__antigravity_subframe_sync_bound = true;
+                    window.addEventListener('message', (ev) => {
+                        try {
+                            if (ev && ev.data && ev.data.type === 'ANTIGRAVITY_LANG_SYNC') {
+                                const nextLang = ev.data.lang === 'en' ? 'en' : 'ru';
+                                window.__antigravity_subframe_lang = nextLang;
+                                if (nextLang === 'en') {
+                                    stopObserving();
+                                    restoreOriginalTree();
+                                } else {
+                                    startObserving();
+                                    translateTree(document.body);
+                                }
+                            }
+                        } catch (e) {}
+                    });
+                }
+                try {
+                    if (window.parent && window.parent !== window) {
+                        window.parent.postMessage({ type: 'ANTIGRAVITY_LANG_QUERY' }, '*');
+                    }
+                } catch (e) {}
+                if (!isEnglishMode()) {
+                    if (isHotReload) {
+                        try { restoreOriginalTree(); } catch (e) {}
+                    }
+                    startObserving();
+                    translateTree(document.body);
+                }
             }
         }
     }

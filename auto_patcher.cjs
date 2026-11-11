@@ -75,43 +75,51 @@ if (!window.__antigravity_translation_initialized) {
             console.log('[AutoPatcher-v2] Patched dist/preload.js with full localization & update widget!');
         }
 
-        // 2. PATCH TRAY.JS (Fix Left-Click & Double-Click on Tray Icon safely)
+        // 2. PATCH TRAY.JS (Fix Left-Click & Double-Click on Tray Icon safely for BaseWindow & BrowserWindow)
         const trayExtracted = path.join(tempDir, 'dist', 'tray.js');
         if (fs.existsSync(trayExtracted)) {
             let trayContent = fs.readFileSync(trayExtracted, 'utf8');
-            if (!trayContent.includes('ANTIGRAVITY TRAY CLICK PATCH')) {
-                trayContent = trayContent.replace(
-                    /tray\.setContextMenu\(contextMenu\);/,
-                    `tray.setContextMenu(contextMenu);
-    // ANTIGRAVITY TRAY CLICK PATCH
+            trayContent = trayContent.replace(
+                /\s*\/\/ ANTIGRAVITY TRAY CLICK PATCH(?: V2)?[\s\S]*?tray\.on\('double-click',\s*handleTrayClick\);/,
+                ''
+            );
+            trayContent = trayContent.replace(
+                /tray\.setContextMenu\(contextMenu\);/,
+                `tray.setContextMenu(contextMenu);
+    // ANTIGRAVITY TRAY CLICK PATCH V2
     const handleTrayClick = () => {
+        if (typeof onClick === 'function') {
+            onClick();
+            return;
+        }
         if (Array.isArray(actions)) {
-            const openAction = actions.find(a => a && a.label && String(a.label).includes('Open')) || actions[2];
+            const openAction = actions.find(a => a && a.label && (String(a.label).includes('Open') || String(a.label).includes('Открыть'))) || actions[2];
             if (openAction && typeof openAction.click === 'function') {
                 openAction.click();
                 return;
             }
         }
-        const wins = electron_1.BrowserWindow.getAllWindows();
+        const wins = typeof utils_1.getHubWindows === 'function' ? (0, utils_1.getHubWindows)() : electron_1.BrowserWindow.getAllWindows();
         if (wins.length > 0) {
-            if (wins[0].isMinimized()) wins[0].restore();
-            wins[0].show();
-            wins[0].focus();
+            if (wins[0].isMinimized?.()) wins[0].restore?.();
+            wins[0].show?.();
+            wins[0].focus?.();
         }
     };
-    tray.on('click', handleTrayClick);
+    if (!onClick || (0, utils_1.isMacOS)()) {
+        tray.on('click', handleTrayClick);
+    }
     tray.on('double-click', handleTrayClick);`
-                );
-            }
+            );
             trayContent = trayContent.replace(
                 /\(count > 0 \? `\$\{count\}` : 'No'\) \+\s*' agent' \+\s*\(count === 1 \? '' : 's'\) \+\s*' running'/,
                 `(count > 0 ? (count + (count % 10 === 1 && count % 100 !== 11 ? ' активный агент' : (count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20) ? ' активных агента' : ' активных агентов'))) : 'Нет запущенных агентов')`
             );
             fs.writeFileSync(trayExtracted, trayContent, 'utf8');
-            console.log('[AutoPatcher-v2] Patched dist/tray.js for left-click/double-click & localization!');
+            console.log('[AutoPatcher-v2] Patched dist/tray.js (V2) for BaseWindow left-click/double-click & localization!');
         }
 
-        // 3. PATCH MAIN.JS (Fix Desktop/Taskbar Shortcut Re-launch when window is closed to tray & Localize Menu)
+        // 3. PATCH MAIN.JS (Fix Desktop/Taskbar Shortcut Re-launch when window is closed to tray & Localize Menu/Dialogs)
         const mainExtracted = path.join(tempDir, 'dist', 'main.js');
         if (fs.existsSync(mainExtracted)) {
             let mainContent = fs.readFileSync(mainExtracted, 'utf8');
@@ -136,6 +144,13 @@ if (!window.__antigravity_translation_initialized) {
             mainContent = mainContent.replace(/label:\s*['"]No agents running['"],/g, "label: 'Нет запущенных агентов',");
             mainContent = mainContent.replace(/label:\s*`Open \${electron_1\.app\.getName\(\)}`,/g, "label: `Открыть ${electron_1.app.getName()}`,");
             mainContent = mainContent.replace(/label:\s*['"]Quit['"],/g, "label: 'Выход',");
+            mainContent = mainContent.replace(/label:\s*['"]New Window['"],/g, "label: 'Новое окно',");
+            mainContent = mainContent.replace(/buttons:\s*\[['"]Cancel['"],\s*['"]Quit['"]\],/g, "buttons: ['Отмена', 'Выход'],");
+            mainContent = mainContent.replace(/title:\s*['"]Confirm Quit['"],/g, "title: 'Подтверждение выхода',");
+            mainContent = mainContent.replace(/message:\s*['"]Are you sure you want to quit\?['"],/g, "message: 'Вы уверены, что хотите выйти?',");
+            mainContent = mainContent.replace(/detail:\s*['"]There may be agents or background tasks running\.['"],/g, "detail: 'В фоновом режиме могут выполняться агенты или задачи.',");
+            mainContent = mainContent.replace(/title:\s*['"]WSL distro not found['"],/g, "title: 'Дистрибутив WSL не найден',");
+            mainContent = mainContent.replace(/detail:\s*['"]Antigravity opened on Windows instead\.['"],/g, "detail: 'Приложение Antigravity открыто локально в Windows.',");
             mainContent = mainContent.replace(/appendSwitch\(['"]remote-debugging-port['"],\s*['"]0['"]\)/g, "appendSwitch('remote-debugging-port', '9222')");
             if (!mainContent.includes('__saveWindowStateNow')) {
                 mainContent = mainContent.replace(
@@ -147,10 +162,10 @@ if (!window.__antigravity_translation_initialized) {
                 );
             }
             fs.writeFileSync(mainExtracted, mainContent, 'utf8');
-            console.log('[AutoPatcher-v2] Patched dist/main.js for second-instance shortcut re-launch, before-quit state save & menu!');
+            console.log('[AutoPatcher-v2] Patched dist/main.js for second-instance shortcut re-launch, before-quit state save, menu & dialogs!');
         }
 
-        // 4. PATCH UTILS.JS (Fix Geometry V3: Multi-Monitor & Single-Monitor Fallback, Multi-DPI Maximized State & Zoom Restoration)
+        // 4. PATCH UTILS.JS (Fix Geometry V3, WebContentsView bounds sync & Native 0ms plugin:// Subframe Localization)
         const utilsExtracted = path.join(tempDir, 'dist', 'utils.js');
         if (fs.existsSync(utilsExtracted)) {
             let utilsContent = fs.readFileSync(utilsExtracted, 'utf8');
@@ -270,6 +285,7 @@ if (!window.__antigravity_translation_initialized) {
                     win.maximize();
                 }
             }
+            if (typeof syncHubViewBounds === 'function') syncHubViewBounds();
         } catch (e) {}
     };
     if (typeof initX === 'number' && typeof initY === 'number') {
@@ -344,10 +360,55 @@ if (!window.__antigravity_translation_initialized) {
     win.on('close', () => saveWindowState(true));
     void win.loadURL(url);`
                 );
-
-                fs.writeFileSync(utilsExtracted, utilsContent, 'utf8');
-                console.log('[AutoPatcher-v2] Patched dist/utils.js (V3) for multi-monitor/single-monitor geometry & multi-DPI maximized state!');
             }
+
+            if (!utilsContent.includes("if (typeof syncHubViewBounds === 'function') syncHubViewBounds();")) {
+                utilsContent = utilsContent.replace(
+                    /if\s*\(!win\.isMaximized\(\)\)\s*\{\s*win\.setBounds\(\{\s*x:\s*initX,\s*y:\s*initY,\s*width:\s*initWidth,\s*height:\s*initHeight\s*\}\);\s*win\.maximize\(\);\s*\}\s*\}/,
+                    `if (!win.isMaximized()) {
+                    win.setBounds({ x: initX, y: initY, width: initWidth, height: initHeight });
+                    win.maximize();
+                }
+            }
+            if (typeof syncHubViewBounds === 'function') syncHubViewBounds();`
+                );
+            }
+
+            utilsContent = utilsContent.replace(
+                /\s*\/\/ BEGIN ANTIGRAVITY PLUGIN SUBFRAME PATCH[\s\S]*?\/\/ END ANTIGRAVITY PLUGIN SUBFRAME PATCH\s*/,
+                '\n    '
+            );
+            if (utilsContent.includes('const hubContents = getHubWebContents(win);')) {
+                utilsContent = utilsContent.replace(
+                    /void\s+win\.loadURL\(url\);/,
+                    `// BEGIN ANTIGRAVITY PLUGIN SUBFRAME PATCH
+    const injectPluginSubframeLocalization = (_ev, isMainFrame, frameProcessId, frameRoutingId) => {
+        if (isMainFrame) return;
+        try {
+            const frame = electron_1.webFrameMain?.fromId?.(frameProcessId, frameRoutingId);
+            if (!frame || frame.isDestroyed?.()) return;
+            const fUrl = frame.url || '';
+            if (!fUrl.startsWith('plugin://')) return;
+            if (!global.__antigravity_cached_subframe_loc) {
+                const pCode = fs.readFileSync(path_1.default.join(__dirname, 'preload.js'), 'utf8');
+                const marker = '// BEGIN ANTIGRAVITY TRANSLATION INJECTION';
+                const idx = pCode.indexOf(marker);
+                if (idx !== -1) global.__antigravity_cached_subframe_loc = pCode.slice(idx);
+            }
+            if (global.__antigravity_cached_subframe_loc) {
+                void frame.executeJavaScript(global.__antigravity_cached_subframe_loc).catch(() => {});
+            }
+        } catch (e) {}
+    };
+    hubContents.on('did-frame-finish-load', injectPluginSubframeLocalization);
+    win.on('closed', () => { hubContents.off?.('did-frame-finish-load', injectPluginSubframeLocalization); });
+    // END ANTIGRAVITY PLUGIN SUBFRAME PATCH
+    void win.loadURL(url);`
+                );
+            }
+
+            fs.writeFileSync(utilsExtracted, utilsContent, 'utf8');
+            console.log('[AutoPatcher-v2] Patched dist/utils.js (V3 + WebContentsView sync + plugin:// subframe localization)!');
         }
 
         // 5. PATCH UPDATER.JS (Localize native Electron dialogs & updater menu items)
@@ -386,17 +447,23 @@ if (!window.__antigravity_translation_initialized) {
             console.log('[AutoPatcher-v2] Patched dist/updater.js for native dialogs & update menu localization!');
         }
 
-        // 6. PATCH MENU.JS (Localize application menu)
+        // 6. PATCH MENU.JS (Localize application menu, Hub zoom items & WSL menu)
         const menuExtracted = path.join(tempDir, 'dist', 'menu.js');
         if (fs.existsSync(menuExtracted)) {
             let menuContent = fs.readFileSync(menuExtracted, 'utf8');
             menuContent = menuContent.replace(/label:\s*['"]New Window['"],/g, "label: 'Новое окно',");
             menuContent = menuContent.replace(/label:\s*['"]Docs['"],/g, "label: 'Документация',");
+            menuContent = menuContent.replace(/label:\s*item\.label\s*\|\|\s*['"]Actual Size['"],/g, "label: 'Фактический размер',");
+            menuContent = menuContent.replace(/label:\s*item\.label\s*\|\|\s*['"]Zoom In['"],/g, "label: 'Увеличить масштаб',");
+            menuContent = menuContent.replace(/label:\s*['"]Zoom In['"],/g, "label: 'Увеличить масштаб',");
+            menuContent = menuContent.replace(/label:\s*item\.label\s*\|\|\s*['"]Zoom Out['"],/g, "label: 'Уменьшить масштаб',");
+            menuContent = menuContent.replace(/label:\s*['"]Connect to WSL['"]/g, "label: 'Подключиться к WSL'");
+            menuContent = menuContent.replace(/label:\s*['"]Reopen Locally['"]/g, "label: 'Открыть заново локально'");
             fs.writeFileSync(menuExtracted, menuContent, 'utf8');
-            console.log('[AutoPatcher-v2] Patched dist/menu.js for application menu localization!');
+            console.log('[AutoPatcher-v2] Patched dist/menu.js for application menu, zoom & WSL localization!');
         }
 
-        // 7. PATCH IPCHANDLERS.JS (Localize native context menu: Cut, Copy, Paste, Select All, etc.)
+        // 7. PATCH IPCHANDLERS.JS (Localize native context menu & file/folder dialogs)
         const ipcHandlersExtracted = path.join(tempDir, 'dist', 'ipcHandlers.js');
         if (fs.existsSync(ipcHandlersExtracted)) {
             let ipcContent = fs.readFileSync(ipcHandlersExtracted, 'utf8');
@@ -466,6 +533,11 @@ function buildContextMenuTemplate(items, onSelect) {`
             } else {
                 ipcContent = ipcContent.replace(/const CONTEXT_MENU_RU_MAP = \{[\s\S]*?\};/, ipcMapCode);
             }
+            ipcContent = ipcContent.replace(/showErrorBox\(['"]Cannot open folder['"],/g, "showErrorBox('Не удалось открыть папку',");
+            ipcContent = ipcContent.replace(/message:\s*['"]Folder is on the Windows filesystem['"],/g, "message: 'Папка находится в файловой системе Windows',");
+            ipcContent = ipcContent.replace(/title:\s*['"]Open workspace['"],/g, "title: 'Открыть рабочую область',");
+            ipcContent = ipcContent.replace(/title:\s*['"]Open workspaces['"],/g, "title: 'Открыть рабочие области',");
+            ipcContent = ipcContent.replace(/title:\s*['"]Select Download Folder['"],/g, "title: 'Выберите папку для загрузок',");
             if (!ipcContent.includes('ANTIGRAVITY TITLEBAR OVERLAY MAXIMIZE GUARD')) {
                 ipcContent = ipcContent.replace(
                     /win\.setTitleBarOverlay\(\{\s*color:\s*options\.color,\s*symbolColor:\s*options\.symbolColor,\s*height:\s*30,?\s*\}\);/,
@@ -482,11 +554,33 @@ function buildContextMenuTemplate(items, onSelect) {`
                 );
             }
             fs.writeFileSync(ipcHandlersExtracted, ipcContent, 'utf8');
-            console.log('[AutoPatcher-v2] Patched dist/ipcHandlers.js for native context menu localization!');
+            console.log('[AutoPatcher-v2] Patched dist/ipcHandlers.js for native context menu & dialogs localization!');
+        }
+
+        // 7.5 PATCH PROVISIONSPLASH.JS & WIZARDHTML.JS (Localize WSL splash & IDE Install Wizard)
+        const provisionSplashExtracted = path.join(tempDir, 'dist', 'provisionSplash.js');
+        if (fs.existsSync(provisionSplashExtracted)) {
+            let splashContent = fs.readFileSync(provisionSplashExtracted, 'utf8');
+            splashContent = splashContent.replace(/<div>Setting up WSL: \$\{escapeHtml\(distro\)\}<\/div>/g, '<div>Настройка WSL: ${escapeHtml(distro)}</div>');
+            fs.writeFileSync(provisionSplashExtracted, splashContent, 'utf8');
+        }
+        const wizardHtmlExtracted = path.join(tempDir, 'dist', 'ideInstall', 'wizardHtml.js');
+        if (fs.existsSync(wizardHtmlExtracted)) {
+            let wizContent = fs.readFileSync(wizardHtmlExtracted, 'utf8');
+            wizContent = wizContent.replace(/<title>Welcome to Antigravity<\/title>/g, '<title>Добро пожаловать в Antigravity</title>');
+            wizContent = wizContent.replace(/>Setting up…<\/div>/g, '>Настройка…</div>');
+            wizContent = wizContent.replace(/<h1>Welcome to the new Antigravity!<\/h1>/g, '<h1>Добро пожаловать в новый Antigravity!</h1>');
+            wizContent = wizContent.replace(
+                /<p>Antigravity has been redesigned to put agents first with new capabilities\. If you'd still like a code editor, you can download it as a separate app named <b>Antigravity IDE<\/b>\.<\/p>/g,
+                '<p>Интерфейс Antigravity был переработан для работы с ИИ-агентами и новыми возможностями. Если вам по-прежнему нужен классический редактор кода, вы можете скачать его как отдельное приложение <b>Antigravity IDE</b>.</p>'
+            );
+            wizContent = wizContent.replace(/<span>Download the Antigravity IDE<\/span>/g, '<span>Скачать Antigravity IDE</span>');
+            wizContent = wizContent.replace(/>Explore the new Antigravity<\/button>/g, '>Открыть новый Antigravity</button>');
+            fs.writeFileSync(wizardHtmlExtracted, wizContent, 'utf8');
         }
 
         // 8. VALIDATE ALL PATCHED JS FILES WITH NATIVE V8 IN-MEMORY COMPILER (ZERO CHILD PROCESSES)
-        const filesToValidate = [preloadExtracted, trayExtracted, mainExtracted, utilsExtracted, updaterExtracted, menuExtracted, ipcHandlersExtracted];
+        const filesToValidate = [preloadExtracted, trayExtracted, mainExtracted, utilsExtracted, updaterExtracted, menuExtracted, ipcHandlersExtracted, provisionSplashExtracted, wizardHtmlExtracted];
         for (const file of filesToValidate) {
             if (fs.existsSync(file)) {
                 const code = fs.readFileSync(file, 'utf8');

@@ -587,7 +587,7 @@ let injectedTargets = new Set();
 async function trackAndSaveWindowGeometry() {
   try {
     const targets = await CDP.List({ port: 9222 });
-    const pageTarget = targets.find(t => t.type === 'page');
+    const pageTarget = targets.find(t => t.type === 'page' && t.url && !t.url.startsWith('data:') && !t.url.startsWith('devtools:'));
     if (!pageTarget) return;
 
     const client = await CDP({ target: pageTarget.id, port: 9222 });
@@ -618,6 +618,7 @@ async function forceHotReloadLocalization() {
     if (!targets || targets.length === 0) return;
 
     for (const target of targets) {
+      if (!target.url || target.url.startsWith('data:') || target.url.startsWith('devtools:')) continue;
       if (target.type === 'page' || target.type === 'iframe' || (target.title && target.title.includes('Antigravity'))) {
         try {
           const client = await CDP({ target: target.id, port: 9222 });
@@ -642,6 +643,7 @@ async function attemptCdpInjection() {
     if (!targets || targets.length === 0) return;
 
     for (const target of targets) {
+      if (!target.url || target.url.startsWith('data:') || target.url.startsWith('devtools:')) continue;
       if (target.type === 'page' || target.type === 'iframe' || (target.title && target.title.includes('Antigravity'))) {
         if (injectedTargets.has(target.id)) continue;
 
