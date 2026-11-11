@@ -501,6 +501,29 @@ function buildContextMenuTemplate(items, onSelect) {`
         await asar.createPackage(tempDir, patchedAsar);
 
         fs.rmSync(tempDir, { recursive: true, force: true });
+
+        // 6.5 IMMEDIATELY APPLY TO resources/app.asar ON DISK (WITH RENAME FALLBACK)
+        const bakPath = path.join(resourcesDir, 'app.asar.bak');
+        if (!fs.existsSync(bakPath) && fs.existsSync(asarPath)) {
+            try { fs.copyFileSync(asarPath, bakPath); } catch (e) {}
+        }
+        try {
+            fs.copyFileSync(patchedAsar, asarPath);
+            console.log('[AutoPatcher-v2] Directly applied app.asar.patched to resources/app.asar!');
+        } catch (copyErr) {
+            try {
+                const oldTmp = asarPath + '.old_unpatched';
+                if (fs.existsSync(oldTmp)) {
+                    try { fs.unlinkSync(oldTmp); } catch (e) {}
+                }
+                fs.renameSync(asarPath, oldTmp);
+                fs.copyFileSync(patchedAsar, asarPath);
+                try { fs.unlinkSync(oldTmp); } catch (e) {}
+                console.log('[AutoPatcher-v2] Applied app.asar.patched via rename fallback!');
+            } catch (renameErr) {
+                console.log('[AutoPatcher-v2] Direct copy deferred to exit_patcher:', renameErr.message);
+            }
+        }
         
         // 7. RECORD SHA-256 HASH OF PATCHED ASAR
         const patchedBuffer = fs.readFileSync(patchedAsar);

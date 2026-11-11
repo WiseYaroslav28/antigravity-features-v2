@@ -1,6 +1,6 @@
 {
-  "version": "2.1.31",
-  "releasedAt": "2026-11-10T03:29:00.000Z",
-  "changelog": "Обновление v2.1.31: исправлено ложное срабатывание жёлтого знака восклицания («Требуется перезапуск AntiGravity») после фонового горячего обновления словаря, когда текущий app.asar уже пропатчен; полный перевод новых разделов AntiGravity 2.0.",
+  "version": "2.1.32",
+  "releasedAt": "2026-11-11T00:52:00.000Z",
+  "changelog": "Обновление v2.1.32: мгновенная прямая запись патча в resources/app.asar после официальных обновлений AntiGravity (2.31.0+) и автоматическая активация плагина перевода без потери виджета EN | RU.",
   "downloadUrl": "https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/localization_injected.js"
 }

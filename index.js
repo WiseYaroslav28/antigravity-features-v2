@@ -238,23 +238,80 @@ function checkAsarHashAndAutoBuildPatch() {
     // Hash mismatch AND app.asar is unpatched: new Google version detected!
     pendingPatchToApply = true;
     log(`AntiGravity update / clean install detected via SHA-256 mismatch! Rebuilding patch in background (100% hidden)...`);
-    rebuildPatchedAsarInBackground(true);
+    rebuildPatchedAsarInBackground(true, true);
   } catch(err) {
     log(`Hash check error: ${err.message}`);
   }
 }
 
-function rebuildPatchedAsarInBackground(markPendingRestart = false) {
-  exec(`node "${path.join(__dirname, 'auto_patcher.cjs')}"`, { windowsHide: true }, (err) => {
+function checkCdpPortOpen() {
+  return new Promise((resolve) => {
+    const req = http.get('http://127.0.0.1:9222/json/version', { timeout: 1200 }, (res) => {
+      res.resume();
+      resolve(res.statusCode === 200);
+    });
+    req.on('error', () => resolve(false));
+    req.on('timeout', () => {
+      req.destroy();
+      resolve(false);
+    });
+  });
+}
+
+function rebuildPatchedAsarInBackground(markPendingRestart = false, autoRestartIfCdpClosed = false) {
+  exec(`node "${path.join(__dirname, 'auto_patcher.cjs')}"`, { windowsHide: true }, async (err) => {
     if (err) {
       log(`Auto-patcher error: ${err.message}`);
     } else {
-      if (markPendingRestart) {
+      // Check if auto_patcher.cjs already directly updated resources/app.asar on disk
+      let directlyPatched = false;
+      try {
+        if (fs.existsSync(ASAR_PATH)) {
+          const buf = fs.readFileSync(ASAR_PATH);
+          directlyPatched = buf.includes('// BEGIN ANTIGRAVITY TRANSLATION INJECTION');
+        }
+      } catch (e) {}
+
+      const cdpOpen = await checkCdpPortOpen();
+      if (directlyPatched && cdpOpen) {
+        pendingPatchToApply = false;
+      } else if (markPendingRestart) {
         pendingPatchToApply = true;
       }
-      log("Auto-patcher built app.asar.patched successfully! Arming silent exit-patcher...");
-      
+
+      log(`Auto-patcher built app.asar.patched successfully (directlyPatched=${directlyPatched}, cdpOpen=${cdpOpen})! Arming silent exit-patcher...`);
+
       const exitPatcherPath = path.join(__dirname, 'exit_patcher.cjs');
+      if (autoRestartIfCdpClosed && !cdpOpen) {
+        // Fresh official AntiGravity update launched without CDP port 9222 or preload patch:
+        // auto-restart once (with 5-minute cooldown guard) so localization loads immediately
+        const cooldownFile = path.join(__dirname, 'backups', 'last-auto-restart.json');
+        let canAutoRestart = true;
+        try {
+          if (fs.existsSync(cooldownFile)) {
+            const lastData = JSON.parse(fs.readFileSync(cooldownFile, 'utf8'));
+            if (lastData && lastData.timestamp && (Date.now() - lastData.timestamp) < 300000) {
+              canAutoRestart = false;
+            }
+          }
+        } catch (e) {}
+
+        if (canAutoRestart) {
+          try {
+            fs.mkdirSync(path.dirname(cooldownFile), { recursive: true });
+            fs.writeFileSync(cooldownFile, JSON.stringify({ timestamp: Date.now() }), 'utf8');
+          } catch (e) {}
+          log("Fresh IDE update detected with CDP port 9222 closed. Triggering 1-time automatic restart to activate patched app.asar...");
+          const restartChild = spawn(process.execPath, [exitPatcherPath, '--restart'], {
+            detached: true,
+            stdio: 'ignore',
+            windowsHide: true
+          });
+          restartChild.unref();
+          return;
+        }
+      }
+
       const child = spawn('node', [exitPatcherPath], {
         detached: true,
         stdio: 'ignore',

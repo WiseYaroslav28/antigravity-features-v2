@@ -15047,17 +15047,17 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.31';
+    const FALLBACK_VERSION = '2.1.32';
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
     }
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = 'Обновление v2.1.31: исправлено ложное срабатывание жёлтого знака восклицания («Требуется перезапуск AntiGravity») после фонового горячего обновления словаря, когда текущий app.asar уже пропатчен; полный перевод новых разделов AntiGravity 2.0.';
+        window.__antigravity_remote_changelog = 'Обновление v2.1.32: мгновенная прямая запись патча в resources/app.asar после официальных обновлений AntiGravity (2.31.0+) и автоматическая активация плагина перевода без потери виджета EN | RU.';
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Обновление v2.1.31: исправлено ложное срабатывание жёлтого знака восклицания («Требуется перезапуск AntiGravity») после фонового горячего обновления словаря, когда текущий app.asar уже пропатчен; полный перевод новых разделов AntiGravity 2.0.';
+    let latestGithubChangelog = window.__antigravity_remote_changelog || 'Обновление v2.1.32: мгновенная прямая запись патча в resources/app.asar после официальных обновлений AntiGravity (2.31.0+) и автоматическая активация плагина перевода без потери виджета EN | RU.';
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;

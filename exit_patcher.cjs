@@ -37,6 +37,17 @@ function log(msg) {
 }
 
 function applyAsarWithRetry() {
+  try {
+    if (fs.existsSync(ASAR_PATH)) {
+      const currentBuf = fs.readFileSync(ASAR_PATH);
+      const isAlreadyPatched = currentBuf.includes('// BEGIN ANTIGRAVITY TRANSLATION INJECTION');
+      if (!isAlreadyPatched) {
+        log("Detected fresh unpatched app.asar on exit; rebuilding app.asar.patched from new version first...");
+        execSync(`node "${path.join(__dirname, 'auto_patcher.cjs')}"`, { stdio: 'ignore', windowsHide: true });
+      }
+    }
+  } catch (e) {}
+
   if (!fs.existsSync(PATCHED_PATH)) {
     log("No app.asar.patched found; skipping copy.");
     return false;
