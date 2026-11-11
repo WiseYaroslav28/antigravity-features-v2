@@ -17987,7 +17987,8 @@ function initLanguageSwitcher() {
                 }
             } catch (errServer) {}
 
-            if ((isNewerOnGh || forceInstall) && !serverUpdated) {
+            const isNotOlderOnGh = compareSemverClient(remoteVer, currentLocalVersion) >= 0;
+            if ((isNewerOnGh || (forceInstall && isNotOlderOnGh)) && !serverUpdated) {
                 const scriptResp = await fetch('https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/localization_injected.js?cb=' + Date.now(), { cache: 'no-store' });
                 if (scriptResp.ok) {
                     const scriptCode = await scriptResp.text();

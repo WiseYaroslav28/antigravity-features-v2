@@ -339,8 +339,8 @@ async function checkAndApplyGithubUpdate({ force = false } = {}) {
     const cmp = compareSemver(remoteMeta.version, localVersion);
     latestRemoteVersion = cmp >= 0 ? (remoteMeta.version || localVersion) : localVersion;
 
-    if (cmp <= 0 && !force) {
-      log(`[AutoUpdater] Local version v${localVersion} is up to date (GitHub: v${latestRemoteVersion}).`);
+    if (cmp < 0 || (cmp === 0 && !force)) {
+      log(`[AutoUpdater] Local version v${localVersion} is up to date (GitHub: v${latestRemoteVersion}, cmp=${cmp}).`);
       return {
         status: "up_to_date",
         localVersion,
