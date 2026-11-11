@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------------------
 // Language Translation System (RU / EN) for Injected Chromium Pages
 // ---------------------------------------------------------------------------
-
+(() => {
 // ---------------------------------------------------------------------------
 // Global Crash / Exception Catchers for Injected Page
 // ---------------------------------------------------------------------------
@@ -134,8 +134,11 @@ function translateText(text) {
         for (const rule of regexTranslations) {
             const match = normalized.match(rule.pattern);
             if (match) {
-                translated = rule.replace(match);
-                break;
+                const res = rule.replace(match);
+                if (res && res !== normalized) {
+                    translated = res;
+                    break;
+                }
             }
         }
     }
@@ -5405,7 +5408,519 @@ const translationDictionary = {
     "investigate an ip address from my logs. ask for the ip and a brief description of the activity, retrieve its existing virustotal report, and explain the evidence and its limits. do not request a new analysis.": "Исследуй IP-адрес из моих логов: запроси IP и краткое описание активности, получи существующий отчёт VirusTotal и объясни найденные данные и их ограничения. Не запрашивай новый анализ.",
     "open this pane from a conversation to see its swarm. swarms started there appear here automatically; start one with": "Откройте эту панель из диалога, чтобы увидеть его рой. Запущенные там рои появляются здесь автоматически; начните рой командой",
     "swarms started in this conversation appear here automatically, with their board, members and @mention graph. start one with": "Рои, запущенные в этом диалоге, появляются здесь автоматически вместе с доской сообщений, участниками и графом @упоминаний. Запустите рой командой",
-    "@all posts, drawn by expand @all": "сообщения @all (показывать через «Развернуть @all»)"
+    "@all posts, drawn by expand @all": "сообщения @all (показывать через «Развернуть @all»)",
+
+    // --- Antigravity 2.31.1 Home Greetings, Tip Cards, Card Deck & Comprehensive UI ---
+    "hey there, what should we build today?": "Привет! Что создадим сегодня?",
+    "welcome back. where should we pick up?": "С возвращением! С чего продолжим?",
+    "good to see you. what's next?": "Рады видеть вас! Что дальше?",
+    "good to see you. what’s next?": "Рады видеть вас! Что дальше?",
+    "previous card": "Предыдущая карточка",
+    "next card": "Следующая карточка",
+    "card": "Карточка",
+    "dismiss tip": "Скрыть подсказку",
+    "browse the marketplace": "Открыть Marketplace",
+    "explore the plugin marketplace": "Откройте каталог плагинов Marketplace",
+    "find plugins - bundles of skills, agents, mcp servers, ui extensions and more, and install them in one click.": "Находите плагины — наборы навыков, агентов, MCP-серверов, расширений интерфейса и других возможностей — и устанавливайте их в один клик.",
+    "new models have been enabled for you!": "Для вас включены новые модели!",
+    "select a model in the model selector": "Выберите модель в селекторе моделей",
+
+    // Live Accessibility & Message Controls
+    "agent said": "Ответ агента",
+    "you said": "Ваше сообщение",
+    "expand message": "Развернуть сообщение",
+    "collapse message": "Свернуть сообщение",
+    "model switched": "Модель переключена",
+    "message subagent, @ to mention": "Напишите субагенту (@ — упоминание)",
+    "message subagent, @ to mention, / for actions": "Напишите субагенту (@ — упоминание, / — команды)",
+    "ask anything, @ to mention": "Спросите что угодно (@ — упоминание)",
+    "ask anything, @ to mention, / for actions": "Спросите что угодно (@ — упоминание, / — команды)",
+    "subagent conversation header": "Заголовок диалога с субагентом",
+    "close swarm": "Закрыть панель «Рой»",
+    "swarm worker": "Агент роя",
+    "close message": "Закрыть сообщение",
+    "message this chat": "Написать в этот чат",
+    "write a message": "Написать сообщение",
+    "sent message": "Отправленное сообщение",
+
+    // Dialogs, Confirmations, Security & Account Setup
+    "are you sure you want to delete this conversation? this action cannot be undone.": "Вы уверены, что хотите удалить этот диалог? Это действие нельзя отменить.",
+    "? this action cannot be undone.": "? Это действие нельзя отменить.",
+    "? this will remove it from your mcp configuration.": "? Это удалит сервер из вашей конфигурации MCP.",
+    "? this removes it from your config directory.": "? Это удалит элемент из вашего каталога конфигурации.",
+    "a project with this name already exists.": "Проект с таким именем уже существует.",
+    "with this name already exists.": "с таким именем уже существует.",
+    "a license or project selection is required to use antigravity.": "Для использования Antigravity требуется выбрать лицензию или проект.",
+    "your antigravity use will be associated with provided project.": "Использование Antigravity будет привязано к указанному проекту.",
+    "verify that these licenses were provided by your administrator and that you trust the project id before proceeding. account activity and data may be logged by your organization.": "Перед продолжением убедитесь, что эти лицензии предоставлены вашим администратором и вы доверяете ID проекта. Активность аккаунта и данные могут регистрироваться вашей организацией.",
+    "contact your administrator to set up gemini enterprise for this project": "Обратитесь к администратору для настройки Gemini Enterprise для этого проекта",
+    "ai coding agents are known to have certain security risks, including autonomous code execution, data exfiltration, prompt injection and supply chain risks. ensure that you monitor and verify all actions taken by the agent.": "ИИ-агенты для разработки сопряжены с определёнными рисками безопасности, включая автономное выполнение кода, утечку данных, промпт-инъекции и риски цепочки поставок. Внимательно контролируйте и проверяйте все действия агента.",
+    "browser is currently being operated by this conversation in another hub window": "В данный момент браузером управляет этот диалог в другом окне Hub",
+    "the agent attempted to interact with some sites that are not allowlisted": "Агент попытался взаимодействовать с сайтами, не входящими в список разрешённых",
+    "the agent was prevented from accessing some sites": "Доступ агента к некоторым сайтам был заблокирован",
+    "the agent will wait for you to install the browser extension.": "Агент подождёт, пока вы установите расширение для браузера.",
+    "we'll keep waiting, or you can open it directly in a new tab.": "Мы продолжим ожидание, либо вы можете открыть страницу напрямую в новой вкладке.",
+    "deny setting up browser": "Отклонить настройку браузера",
+    "there was an unexpected issue setting up your account.": "Возникла непредвиденная ошибка при настройке вашего аккаунта.",
+    "account connection was not completed.": "Подключение аккаунта не было завершено.",
+    "this extension has no declared permissions requiring user input.": "У этого расширения нет объявленных разрешений, требующих ввода от пользователя.",
+    "this may take a few minutes": "Это может занять несколько минут",
+    "this project uses firebase. do you want to download the firebase skill?": "В этом проекте используется Firebase. Хотите скачать навык Firebase?",
+    "failed to download firebase skill.": "Не удалось скачать навык Firebase.",
+    "failed to determine plugin install directory": "Не удалось определить каталог установки плагина",
+    "error occurred during import.": "Во время импорта произошла ошибка.",
+    "please fill out all required values to continue.": "Заполните все обязательные поля для продолжения.",
+    "please sign in using the antigravity sidebar panel to view this page.": "Войдите в аккаунт через боковую панель Antigravity для просмотра этой страницы.",
+    "did restarting the desktop app help?": "Помог ли перезапуск настольного приложения?",
+    "snooze for 24 hours": "Отложить на 24 часа",
+    "stay up to date.": "Будьте в курсе обновлений.",
+    "you have a conversation in progress. updating will cancel it and you'll need to manually restart it.": "У вас есть активный диалог. Обновление отменит его, и вам потребуется перезапустить его вручную.",
+    "you have a conversation in progress. updating will interrupt it, and it will automatically resume once the update completes.": "У вас есть активный диалог. Обновление временно прервёт его, и он автоматически продолжится после завершения обновления.",
+    "the agent made no code changes, but other files may still be affected if your workspace changed for other reasons (e.g. a sync) in the meantime.": "Агент не вносил изменений в код, однако другие файлы могут быть затронуты, если рабочая область тем временем изменилась по другим причинам (например, из-за синхронизации).",
+    "the files below were changed by the agent and will be reverted, but other files may also be affected if your workspace changed for other reasons (e.g. a sync) in the meantime.": "Указанные ниже файлы были изменены агентом и будут возвращены к прежнему состоянию, но другие файлы также могут быть затронуты, если рабочая область изменилась по другим причинам (например, из-за синхронизации).",
+    "both staged and unstaged changes are being committed.": "Коммит включает как индексированные, так и неиндексированные изменения.",
+    "only staged changes are being committed.": "В коммит попадут только индексированные изменения.",
+    "couldn't fetch the google drive file's title. the link was kept as-is.": "Не удалось получить название файла Google Диска. Ссылка оставлена без изменений.",
+    "timed out fetching the google drive file's title. the link was kept as-is.": "Превышено время ожидания при получении названия файла Google Диска. Ссылка оставлена без изменений.",
+
+    // Chunks, Documents, CEL, Custom Flags & Settings
+    "a chunk is a section of the page. long pages are chunked so that only the sections that are relevant to your query are read.": "Фрагмент (chunk) — это раздел страницы. Длинные страницы разбиваются на фрагменты, чтобы читались только разделы, релевантные вашему запросу.",
+    "(specific to this client's truncation and pagination)": "(Зависит от настроек обрезки и пагинации этого клиента)",
+    "artifacts like google docs, pdfs, office documents (word, excel, powerpoint), etc. everything else the agent creates is under artifacts.": "Документы вроде Google Документов, PDF, файлов Office (Word, Excel, PowerPoint) и т. п. Всё остальное, что создаёт агент, находится в разделе «Артефакты».",
+    "what counts as a document": "Что считается документом",
+    "cel expression reference": "Справочник выражений CEL",
+    "cel reference": "Справочник CEL",
+    "valid cel": "Корректный CEL",
+    "invalid cel": "Некорректный CEL",
+    "available cel field tokens and helpers": "Доступные токены полей и функции CEL",
+    "available cel helper functions": "Доступные вспомогательные функции CEL",
+    "indexed cel helper functions": "Индексированные вспомогательные функции CEL",
+    "conditions": "Условия",
+    "fields": "Поля",
+    "helpers": "Функции-помощники",
+    "variables": "Переменные",
+    "— narrow matched events by status, priority, or event details": "— фильтрация событий по статусу, приоритету или деталям",
+    "ignore events emitted by automated review or robot accounts (groupagent-*).": "Игнорировать события от автоматических ревьюеров и робот-аккаунтов (groupagent-*).",
+    "ignore events triggered by the automation owner to avoid self-trigger loops.": "Игнорировать события, вызванные владельцем автоматизации, чтобы избежать зацикливания.",
+    "match when any modified file path starts with the given depot prefix.": "Совпадает, если путь изменённого файла начинается с указанного префикса репозитория.",
+    "match when push_def equals or is a child of the given pushdef prefix.": "Совпадает, если push_def равен указанному префиксу PushDef или вложен в него.",
+    "match when the issue component equals or is under the given buganizer component id.": "Совпадает, если компонент задачи равен указанному ID компонента Buganizer или входит в него.",
+    "match when the principal belongs to the specified mdb group.": "Совпадает, если субъект принадлежит указанной группе MDB.",
+    "match when the principal equals any listed username or belongs to any listed mdb/ group.": "Совпадает, если субъект равен одному из указанных имён пользователей или входит в группу mdb/.",
+    "boolean and, or, and negation": "Логические И (AND), ИЛИ (OR) и отрицание",
+    "one or more, comma-separated": "Одно или несколько значений через запятую",
+    "change vcs in general settings, under advanced": "Изменить систему контроля версий можно в разделе «Общие настройки» → «Дополнительно»",
+    "controls whether terminal commands require your approval before running. note: a change to this setting will only apply to new messages sent to the agent. in-progress responses will use the previous setting value.": "Определяет, требуется ли ваше подтверждение перед запуском команд в терминале. Примечание: изменение этой настройки применится только к новым сообщениям агенту; текущие ответы используют прежнее значение.",
+    "select the workspace type that will be used for new conversations started with the new workspace option.": "Выберите тип рабочей области для новых диалогов, запускаемых с опцией «Новая рабочая область».",
+    "git-on-borg repository used when creating a new cog workspace from your initial prompt (e.g., chromium/src or android/platform/superproject).": "Репозиторий Git-on-Borg для создания новой рабочей области Cog из начального запроса (например, chromium/src).",
+    "optional branch or ref used when creating a new cog workspace (defaults to main if unset).": "Необязательная ветка или ref при создании новой рабочей области Cog (по умолчанию main).",
+    "each rule lets the agent run the listed workflow files on the listed refs — each a comma-separated list like ci.yml, deploy.yml and main, dev (glob patterns like fix-* allowed), or * for all. both fields must be set for a rule to grant anything.": "Каждое правило разрешает агенту запускать указанные файлы workflow на указанных ветках/тегах (refs) — списки через запятую, например ci.yml, deploy.yml и main, dev (допустимы шаблоны вида fix-*), либо * для всех. Чтобы правило действовало, должны быть заполнены оба поля.",
+    "workflow files": "Файлы workflow",
+    "workflow refs": "Ветки и теги workflow",
+    "custom flags": "Пользовательские флаги",
+    "this client was started with no custom flags.": "Этот клиент запущен без пользовательских флагов.",
+    "no custom flag matches your search.": "По вашему запросу пользовательские флаги не найдены.",
+    "feature environment override": "Переопределение среды функций",
+    "flags come from mendel experiments and from the host app. overrides are local to this browser and change how every feature gated on the flag resolves. some features are only read at startup — reload the window if a change does not take effect.": "Флаги поступают из экспериментов Mendel и хост-приложения. Переопределения действуют локально и меняют работу функций, зависящих от флага. Некоторые функции считываются только при запуске — перезагрузите окно, если изменение не вступило в силу.",
+    "use advanced sso config": "Использовать расширенную конфигурацию SSO",
+    "use this if your admin gave you a wif config. paste it below to sign in.": "Используйте этот вариант, если администратор предоставил вам конфигурацию WIF. Вставьте её ниже для входа.",
+    "continue with sso": "Продолжить через SSO",
+    "continue with google": "Войти через Google",
+    "other sign-in options": "Другие способы входа",
+    "other license": "Другая лицензия",
+    "available licenses": "Доступные лицензии",
+    "license:": "Лицензия:",
+    "plan upgrade required": "Требуется повышение тарифа",
+    "don't enter corp passwords": "Не вводите корпоративные пароли",
+    "password prompt blocked": "Запрос пароля заблокирован",
+    "entering your corp password in the web terminal triggers a chrome password alert (watchword) forced password reset, so this prompt was automatically cancelled.": "Ввод корпоративного пароля в веб-терминале вызывает принудительный сброс пароля системой защиты Chrome Password Alert (Watchword), поэтому запрос был автоматически отменён.",
+    "typing your corp password here may trigger a password alert reset.": "Ввод корпоративного пароля здесь может вызвать сброс пароля системой безопасности.",
+    "google3 projects are being deprecated. select a citc workspace instead.": "Проекты Google3 выводятся из эксплуатации. Выберите вместо них рабочую область CitC.",
+    "google3 projects are deprecated": "Проекты Google3 устарели",
+    "google3 configuration": "Конфигурация Google3",
+
+    // Feedback Form Prompts
+    "any error messages seen when trying to log in": "Любые сообщения об ошибках при попытке входа",
+    "how this feature would help you and other users": "Как эта функция поможет вам и другим пользователям",
+    "what functionality you expect your account tier to have available that is missing": "Какая ожидаемая для вашего тарифа функциональность отсутствует",
+    "what is missing in your workflow": "Чего не хватает в вашем рабочем процессе",
+    "what quota or feature is being incorrectly limited": "Какая квота или функция ограничивается некорректно",
+    "what you would like to see to address this gap in your workflow": "Что вы хотели бы видеть для устранения этого пробела в рабочем процессе",
+    "whether it never connects or is intermittent/flaky": "Не подключается совсем или работает с перебоями",
+    "ask questions, report issues, and discuss features": "Задавайте вопросы, сообщайте о проблемах и обсуждайте функции",
+    "join the google chat space": "Присоединиться к пространству Google Chat",
+
+    // KaTeX, Markdown, Playback, Media, PDF & Certificates
+    "determines the markup language of the output.": "Определяет язык разметки выходных данных.",
+    "limit the number of macro expansions to the specified number, to prevent e.g. infinite macro loops. if set to infinity, the macro expander will try to fully expand as in latex.": "Ограничить число раскрытий макросов указанным значением для предотвращения бесконечных циклов. При значении Infinity макросы раскрываются полностью, как в LaTeX.",
+    "makes \\color behave like latex's 2-argument \\textcolor, instead of latex's one-argument \\color mode change.": "Заставляет \\color работать как \\textcolor с двумя аргументами вместо смены режима цвета с одним аргументом.",
+    "render display math flush left.": "Выравнивать блочные формулы по левому краю.",
+    "render display math in leqno style (left-justified tags).": "Отображать блочные формулы в стиле leqno (номера формул слева).",
+    "render math in display mode, which puts the math in display style (so \\int and \\sum are large, for example), and centers the math on the page on its own line.": "Отображать формулы в блочном режиме (крупные символы \\int и \\sum с выравниванием по центру на отдельной строке).",
+    "trust the input, enabling all html features such as \\url.": "Доверять входным данным, разрешая все HTML-возможности (например, \\url).",
+    "turn on strict / latex faithfulness mode, which throws an error if the input uses features that are not supported by latex.": "Включить строгий режим совместимости с LaTeX (выдавать ошибку при использовании неподдерживаемых в LaTeX конструкций).",
+    "⚠️ failed to render latex:": "⚠️ Не удалось отрисовать LaTeX:",
+    "⚠️ failed to render mermaid diagram:": "⚠️ Не удалось отрисовать диаграмму Mermaid:",
+    "image rendering blocked (strict mode enabled)": "Отображение изображений заблокировано (включён строгий режим)",
+    "embedding limitations": "Ограничения встраивания",
+    "about embedding": "О встраивании",
+    "invalid embed:": "Некорректное встраивание:",
+    "unable to load pdf:": "Не удалось загрузить PDF:",
+    "unable to resolve audio source url": "Не удалось определить URL аудиоисточника",
+    "error rendering playback": "Ошибка подготовки воспроизведения",
+    "playback available": "Запись воспроизведения доступна",
+    "rendering playback": "Подготовка воспроизведения",
+    "2x playback speed": "Скорость воспроизведения 2x",
+    "enter fullscreen": "На весь экран",
+    "exit fullscreen": "Выйти из полноэкранного режима",
+    "fullscreen (f)": "На весь экран (f)",
+    "exit fullscreen (f)": "Выйти из полноэкранного режима (f)",
+    "mute (m)": "Выключить звук (m)",
+    "unmute (m)": "Включить звук (m)",
+    "play": "Воспроизвести",
+    "play (k)": "Воспроизвести (k)",
+    "pause": "Пауза",
+    "pause (k)": "Пауза (k)",
+    "next (→)": "Далее (→)",
+    "previous (←)": "Назад (←)",
+    "media actions": "Действия с медиа",
+    "image attachment": "Прикреплённое изображение",
+    "video attachment": "Прикреплённое видео",
+    "code snippet": "Фрагмент кода",
+    "drop to attach": "Перетащите для прикрепления",
+    "upload to google drive": "Загрузить на Google Диск",
+    "uploading to drive…": "Загрузка на Диск…",
+    "upload to agent": "Загрузить в чат агента",
+    "to upload": "для загрузки",
+    "to add to agent": "чтобы добавить в чат агента",
+    "issued by": "Кем выдан",
+    "issued to": "Кому выдан",
+    "valid until": "Действителен до",
+    "certificate is not valid": "Сертификат недействителен",
+    "protocol": "Протокол",
+
+    // UI Controls, Statuses, Tooltips & Headers
+    "active tasks & conversations:": "Активные задачи и диалоги:",
+    "address bar": "Адресная строка",
+    "address bar suggestions": "Подсказки адресной строки",
+    "agent id:": "ID агента:",
+    "agent:": "Агент:",
+    "agent options": "Параметры агента",
+    "agent script": "Скрипт агента",
+    "archived only": "Только архивные",
+    "ask /btw": "Спросить /btw",
+    "reply to /help... (esc to minimize)": "Ответить в /help... (Esc — свернуть)",
+    "waiting for response... (esc to minimize)": "Ожидание ответа... (Esc — свернуть)",
+    "waiting for your answer": "Ожидание вашего ответа",
+    "at mention code block": "Упомянуть блок кода через @",
+    "auto pin": "Автозакрепление",
+    "auto": "Авто",
+    "back to": "Назад к",
+    "best of n mode is not available": "Режим «Лучший из N» недоступен",
+    "best of n models": "Модели режима «Лучший из N»",
+    "bookmarked": "В закладках",
+    "removed bookmark": "Закладка удалена",
+    "browse": "Обзор",
+    "bytes": "Байт",
+    "cache:": "Кэш:",
+    "capturing": "Захват",
+    "manually captured": "Захвачено вручную",
+    "manually rejected": "Отклонено вручную",
+    "checking…": "Проверка…",
+    "creating...": "Создание...",
+    "creating…": "Создание…",
+    "installing": "Установка",
+    "loading": "Загрузка",
+    "loading...": "Загрузка...",
+    "loading…": "Загрузка…",
+    "processing": "Обработка",
+    "reading": "Чтение",
+    "searching": "Поиск",
+    "searching…": "Поиск…",
+    "semantic searched": "Семантический поиск выполнен",
+    "semantic searching": "Семантический поиск",
+    "skipping...": "Пропуск...",
+    "submitting...": "Отправка...",
+    "updating…": "Обновление…",
+    "resolving link…": "Обработка ссылки…",
+    "resolving permissions...": "Проверка разрешений...",
+    "validating setup script…": "Проверка скрипта настройки…",
+    "setup script failed.": "Сбой выполнения скрипта настройки.",
+    "setup script ran successfully.": "Скрипт настройки успешно выполнен.",
+    "cleared count": "Счётчик очисток",
+    "count": "Количество",
+    "click to view more": "Нажмите, чтобы показать больше",
+    "click to open docs": "Нажмите, чтобы открыть документацию",
+    "close logs modal": "Закрыть окно логов",
+    "close downloads": "Закрыть загрузки",
+    "collapse command": "Свернуть команду",
+    "show full command": "Показать полную команду",
+    "comments unavailable at this screen size": "Комментарии недоступны при таком размере экрана",
+    "view or edit comment": "Просмотреть или изменить комментарий",
+    "configure": "Настроить",
+    "console telemetry": "Телеметрия консоли",
+    "continue": "Продолжить",
+    "save & continue": "Сохранить и продолжить",
+    "coordinators": "Координаторы",
+    "no coordinators": "Нет координаторов",
+    "couldn't start the coordinator:": "Не удалось запустить координатора:",
+    "copied to clipboard": "Скопировано в буфер обмена",
+    "copied version details": "Сведения о версии скопированы",
+    "copy version details": "Копировать сведения о версии",
+    "copy gh auth login command": "Скопировать команду gh auth login",
+    "create a fig shared workspace": "Создать общую рабочую область Fig",
+    "create a jj worktree": "Создать рабочее дерево JJ",
+    "new fig workspace": "Новая рабочая область Fig",
+    "cumulative total": "Накопительный итог",
+    "grand total": "Общий итог",
+    "cumulative total for the conversation up to this point": "накопительный итог по диалогу до этого момента",
+    "• aggregate cost across all subagents": "• Суммарная стоимость по всем субагентам",
+    "• includes nested subagent costs": "• Включает стоимость вложенных субагентов",
+    "current page": "Текущая страница",
+    "dark mode": "Тёмная тема",
+    "light mode": "Светлая тема",
+    "legacy dark": "Классическая тёмная",
+    "legacy light": "Классическая светлая",
+    "switch to dark mode": "Переключить на тёмную тему",
+    "switch to light mode": "Переключить на светлую тему",
+    "days": "Дней",
+    "decorations": "Оформление",
+    "delete organization policy": "Удалить политику организации",
+    "delete repository policy": "Удалить политику репозитория",
+    "remove policy": "Удалить политику",
+    "remove trigger": "Удалить триггер",
+    "remove from history": "Удалить из истории",
+    "details:": "Подробности:",
+    "error details:": "Подробности ошибки:",
+    "developer: reset nux": "Разработчик: сбросить подсказки знакомства (NUX)",
+    "developer: reset onboarding": "Разработчик: сбросить начальную настройку",
+    "directories": "Каталоги",
+    "disable text selection": "Отключить выделение текста",
+    "enable text selection": "Включить выделение текста",
+    "disable word wrap (alt+z)": "Отключить перенос строк (Alt+Z)",
+    "enable word wrap (alt+z)": "Включить перенос строк (Alt+Z)",
+    "toggle word wrap (alt+z)": "Переключить перенос строк (Alt+Z)",
+    "dismiss error": "Скрыть ошибку",
+    "dismiss notification": "Скрыть уведомление",
+    "dismiss suggestion": "Скрыть предложение",
+    "dismiss text selection notice": "Скрыть уведомление о выделении текста",
+    "document answers": "Ответы по документам",
+    "image answers": "Ответы по изображениям",
+    "image url:": "URL изображения:",
+    "edit permission target": "Изменить цель разрешения",
+    "edit task title": "Изменить название задачи",
+    "end": "Конец",
+    "environments": "Среды",
+    "resume environment": "Возобновить среду",
+    "resuming environment…": "Возобновление среды…",
+    "error: artifacts from remote conversations are not available here.": "Ошибка: артефакты из удалённых диалогов здесь недоступны.",
+    "error: no artifact uri provided in url parameters.": "Ошибка: в параметрах URL не указан URI артефакта.",
+    "excluded": "Исключено",
+    "executed": "Выполнено",
+    "executing": "Выполнение",
+    "exit inspect element mode (esc)": "Выйти из режима выбора элемента (Esc)",
+    "expand": "Развернуть",
+    "extension": "Расширение",
+    "external": "Внешний",
+    "extracted dom elements": "Извлечённые элементы DOM",
+    "failed to load shared conversation": "Не удалось загрузить общий диалог",
+    "failed to parse settings. fix and restart.": "Не удалось разобрать файл настроек. Исправьте его и перезапустите приложение.",
+    "fallback summary used": "Использована резервная сводка",
+    "model summarization failed": "Сбой суммаризации моделью",
+    "fetched network request for page.": "Получен сетевой запрос страницы.",
+    "fetched network requests for page.": "Получены сетевые запросы страницы.",
+    "file path breadcrumbs": "Навигационная цепочка пути к файлу",
+    "file tree component is not loaded.": "Компонент дерева файлов не загружен.",
+    "files to edit:": "Файлы для редактирования:",
+    "fix": "Исправить",
+    "for turn": "Для хода",
+    "forked from": "Ответвлено от",
+    "found references to": "Найдены ссылки на",
+    "full output written to": "Полный вывод записан в",
+    "get api key": "Получить API-ключ",
+    "get anything done with": "Решайте любые задачи с",
+    "by google": "от Google",
+    "github repositories": "Репозитории GitHub",
+    "missing a repository? configure on github": "Не видите нужный репозиторий? Настройте доступ на GitHub",
+    "handler #": "Обработчик #",
+    "help": "Справка",
+    "hide": "Скрыть",
+    "image": "Изображение",
+    "video": "Видео",
+    "input:": "Ввод:",
+    "output:": "Вывод:",
+    "local only": "Только локально",
+    "remote only": "Только удалённо",
+    "manager error": "Ошибка менеджера",
+    "process error": "Ошибка процесса",
+    "sidecar error": "Ошибка фонового сервиса",
+    "untrusted sidecar": "Недоверенный фоновый сервис",
+    "match case": "Учитывать регистр",
+    "match whole word": "Слово целиком",
+    "use regular expression": "Использовать регулярное выражение",
+    "maximize width": "Максимальная ширина",
+    "minimize width": "Минимальная ширина",
+    "microphone": "Микрофон",
+    "mode": "Режим",
+    "more toolbar actions": "Дополнительные действия панели инструментов",
+    "multi-select": "Множественный выбор",
+    "needs target": "Требуется цель",
+    "next": "Далее",
+    "previous": "Назад",
+    "no connectors available in this project": "В этом проекте нет доступных коннекторов",
+    "no content available for this resource": "Для этого ресурса нет доступного содержимого",
+    "no conversation": "Нет диалога",
+    "no matching": "Нет подходящих",
+    "no matching project folders. apply to use the custom uri.": "Подходящие папки проекта не найдены. Нажмите «Применить», чтобы использовать указанный URI.",
+    "no project selected or project management not available.": "Проект не выбран или управление проектами недоступно.",
+    "not found": "Не найдено",
+    "not available": "Недоступно",
+    "(no subject)": "(без темы)",
+    "(no title)": "(без названия)",
+    "(intent only)": "(Только намерение)",
+    "+ add": "+ Добавить",
+    "only for": "Только для",
+    "open url": "Открыть URL",
+    "open in cider": "Открыть в Cider",
+    "other conversations": "Другие диалоги",
+    "other conversation": "Другой диалог",
+    "other projects": "Другие проекты",
+    "page contents": "Содержимое страницы",
+    "page title:": "Заголовок страницы:",
+    "post": "Опубликовать",
+    "pr details unavailable": "Сведения о PR недоступны",
+    "change details unavailable": "Сведения об изменениях недоступны",
+    "pressed": "Нажато",
+    "pressing": "Нажатие",
+    "previous worktrees": "Предыдущие рабочие деревья",
+    "proceeded with": "Продолжено с",
+    "auto-proceeded with": "Автоматически продолжено с",
+    "project + worktree": "Проект + рабочее дерево",
+    "workspace + worktree": "Рабочая область + рабочее дерево",
+    "project id:": "ID проекта:",
+    "project location": "Расположение проекта",
+    "promote to conversation": "Преобразовать в диалог",
+    "read browser page in browser": "Страница прочитана в браузере",
+    "reading browser page in browser": "Чтение страницы в браузере",
+    "simulated key press in browser": "Выполнено нажатие клавиши в браузере",
+    "simulating key press in browser": "Нажатие клавиши в браузере",
+    "requested changes": "Запрошены изменения",
+    "approved": "Одобрено",
+    "required": "Обязательно",
+    "restart": "Перезапустить",
+    "saved": "Сохранено",
+    "saved!": "Сохранено!",
+    "scope": "Область действия",
+    "scroll position": "Позиция прокрутки",
+    "search conversations, commands, and code...": "Поиск диалогов, команд и кода...",
+    "searched": "Выполнен поиск",
+    "select all in": "Выделить всё в",
+    "send": "Отправить",
+    "settings -": "Настройки —",
+    "show in sidebar": "Показывать в боковой панели",
+    "sort conversations": "Сортировать диалоги",
+    "sort projects": "Сортировать проекты",
+    "sort workspaces": "Сортировать рабочие области",
+    "source:": "Источник:",
+    "sources": "Источники",
+    "start": "Запустить",
+    "started during": "Запущено во время",
+    "started from": "Запущено из",
+    "step type": "Тип шага",
+    "steps": "Шаги",
+    "subtitles": "Субтитры",
+    "table options": "Параметры таблицы",
+    "target": "Цель",
+    "terms and privacy:": "Условия и конфиденциальность:",
+    "terms of service & data use": "Условия использования и обработки данных",
+    "this page says": "Сообщение с этой страницы",
+    "an embedded page on this page says": "Сообщение со встроенной на этой странице панели",
+    "analyzing task log": "Анализ журнала задачи",
+    "analyzing content": "Анализ содержимого",
+    "tip:": "Совет:",
+    "title:": "Заголовок:",
+    "toggle google cloud projects": "Переключить проекты Google Cloud",
+    "triggered": "Сработало",
+    "ui view does not exist.": "Представление интерфейса не существует.",
+    "unknown notebook": "Неизвестный блокнот",
+    "untracked": "Неотслеживаемые",
+    "upload debug bundle": "Загрузить диагностический архив",
+    "view could not be opened": "Не удалось открыть представление",
+    "workspace uri switcher": "Переключатель URI рабочей области",
+    "workspace uri to switch to": "URI рабочей области для переключения",
+    "workspace folder suggestions": "Предложения папок рабочей области",
+    "workspace mismatch actions": "Действия при несовпадении рабочей области",
+    "zoom level": "Масштаб",
+    "drawing line preview": "предпросмотр рисования линии",
+    "drawing rectangle preview": "предпросмотр рисования прямоугольника",
+    "line bounding box": "рамка линии",
+    "square bounding box": "прямоугольная рамка",
+
+    // Split JSX Multi-Child Fragments
+    "generation steps (": "Шаги генерации (",
+    "show more (": "Показать ещё (",
+    "show submitted (": "Показать отправленные (",
+    "not referenced by any feature (": "Не используется ни одной функцией (",
+    "agent can scroll on browser pages to access more content.": "Агент может прокручивать страницы в браузере для доступа к дополнительному содержимому.",
+    "in this case,": "В данном случае",
+    "chunks were collapsed into one. chunks included in this read:": "фрагментов были объединены в один. Фрагменты, включённые в это чтение:",
+    "plugins are packaged collections of skills and mcps to help the agent in": "Плагины — это готовые наборы навыков и MCP-серверов, помогающие агенту в",
+    "work with google developer products. you can always change your choices in settings.": "работать с продуктами Google для разработчиков. Вы всегда можете изменить свой выбор в Настройках.",
+    "sign up for newsletters, tips and tricks, and other notifications about": "Подпишитесь на рассылки, советы и другие уведомления о",
+    "signed in as": "Вы вошли как",
+    ". to use another account, add it in the": ". Чтобы использовать другой аккаунт, добавьте его в",
+    "and make it the default.": "и сделайте его аккаунтом по умолчанию.",
+    "stream and control": "Транслируйте и управляйте",
+    "directly in the side pane.": "прямо в боковой панели.",
+    "there are currently no build with": "Сейчас нет доступных плагинов для разработки с",
+    "to switch accounts, sign out in the": "Чтобы сменить аккаунт, выйдите в разделе",
+    "and sign in again.": "и войдите снова.",
+    "web search prioritized results from": "Веб-поиск приоритизировал результаты с домена",
+    ". the llm decided that this would yield the best results. if this is not desired, you can simply tell the agent to search without a domain filter.": ". Модель решила, что это даст наилучший результат. Если это не требуется, просто попросите агента выполнить поиск без фильтра по домену.",
+    "zipping": "Архивация",
+    "needs a few details from you before it can run.": "требует указать несколько параметров перед запуском.",
+    "(for example, passwords, messages, or credit cards).": "(например, пароли, сообщения или банковские карты).",
+    "does not collect any of your prompts, content, or model responses but does collect general usage patterns such as feature adoption and active user counts (“product analytics”). telemetry data will be handled in accordance with the google privacy policy.": "не собирает ваши промпты, контент или ответы моделей, но собирает общую статистику использования (например, востребованность функций и число активных пользователей — «продуктовую аналитику»). Данные телеметрии обрабатываются в соответствии с Политикой конфиденциальности Google.",
+    "does not collect any of your prompts, content, or model responses but will still collect general usage patterns (e.g., feature adoption, active user counts).": "не собирает ваши промпты, контент или ответы моделей, но продолжает собирать общую статистику использования (например, востребованность функций и число активных пользователей).",
+    "normally uses encryption to protect your information. when the browser tried to connect to": "обычно использует шифрование для защиты ваших данных. Когда браузер попытался подключиться к",
+    "this time, the website sent back unusual and incorrect credentials.": "в этот раз, сайт вернул необычные и некорректные учётные данные.",
+    "on for this conversation": "включено для этого диалога",
+    "’s agents are powerful and will help you get a lot done better and faster than before, but still make sure to verify the actions taken by the agent.": "предоставляет мощных агентов, которые помогут выполнять задачи лучше и быстрее, однако обязательно проверяйте действия, предпринимаемые агентом.",
+    "automation and can only be deleted by deleting that automation.": "и может быть удалён только вместе с удалением этой автоматизации.",
+    "pick a model to change it.": "Выберите модель, чтобы изменить её.",
+    "from ai studio": "из AI Studio",
+    "within it.": "внутри неё.",
+
+    // Placeholders
+    "e.g. release helper": "напр., Помощник релизов",
+    "e.g. ci.yml,deploy.yml or *": "напр., ci.yml,deploy.yml или *",
+    "e.g. google or *": "напр., google или *",
+    "e.g. jetski or *": "напр., jetski или *",
+    "e.g. main,dev or *": "напр., main,dev или *",
+    "e.g. work": "напр., рабочий",
+    "e.g., /path/to/file": "напр., /path/to/file",
+    "e.g., chromium/src": "напр., chromium/src",
+    "e.g., curl": "напр., curl",
+    "e.g., example.com": "напр., example.com",
+    "e.g., https://example.com": "напр., https://example.com",
+    "e.g., main or refs/heads/main": "напр., main или refs/heads/main",
+    "e.g., npm test": "напр., npm test",
+    "e.g. locations/global/workforcepools...": "напр., locations/global/workforcePools...",
+
+    // Marketplace Catalog & Suggested Prompts
+    "antigravity plugins marketplace catalog.": "Каталог плагинов Marketplace Antigravity.",
+    "antigravity partner plugins marketplace catalog.": "Каталог партнёрских плагинов Marketplace Antigravity.",
+    "identity and access management": "Управление идентификацией и доступом",
+    "productivity": "Продуктивность",
+    "observability": "Наблюдаемость",
+    "design": "Дизайн",
+    "databases": "Базы данных",
+    "marketing": "Маркетинг",
+    "add firebase authentication with google sign-in to my app": "Добавь аутентификацию Firebase со входом через Google в моё приложение",
+    "add a gemini-powered feature to my app with firebase ai logic": "Добавь функцию на базе Gemini в моё приложение с помощью Firebase AI Logic",
+    "run my leapwork runlist and show me what failed": "Запусти мой список прогонов Leapwork и покажи, где произошёл сбой",
+    "run a technical seo audit on example.com": "Проведи технический SEO-аудит сайта example.com",
+    "update my task with the changes made and tests performed and log 2 hours today for it.": "Обнови мою задачу внесёнными изменениями и выполненными тестами и спиши на неё 2 часа за сегодня."
 };
 
 function translateSingleEnglishClause(clause, isFirstClause) {
@@ -5757,11 +6272,23 @@ function pluralizeRuCount(count, one, two, five) {
 
 const regexTranslations = [
     {
-        pattern: /^Hi\s+(.+?),\s+what can we get done today\?$/i,
-        replace: (match) => `Привет, ${match[1]}! Чем займёмся сегодня?`
+        pattern: /^Hey\s+(.+?),\s+what\s+should\s+we\s+build\s+today\?$/i,
+        replace: (match) => `Привет, ${match[1].trim()}! Что создадим сегодня?`
     },
     {
-        pattern: /^(?:Hi|Hello),?\s+([^${}!?.]+?)[.!]*$/i,
+        pattern: /^Welcome\s+back,\s+(.+?)\.\s+Where\s+should\s+we\s+pick\s+up\?$/i,
+        replace: (match) => `С возвращением, ${match[1].trim()}! С чего продолжим?`
+    },
+    {
+        pattern: /^Good\s+to\s+see\s+you,\s+(.+?)\.\s+What['’]s\s+next\?$/i,
+        replace: (match) => `Рады видеть вас, ${match[1].trim()}! Что дальше?`
+    },
+    {
+        pattern: /^Hi\s+(.+?),\s+what can we get done today\?$/i,
+        replace: (match) => `Привет, ${match[1].trim()}! Чем займёмся сегодня?`
+    },
+    {
+        pattern: /^(?:Hi|Hello|Hey),?\s+([^${}!?.]+?)[.!]*$/i,
         replace: (match) => `Привет, ${match[1].trim()}!`
     },
     {
@@ -5771,6 +6298,36 @@ const regexTranslations = [
     {
         pattern: /^Good\s+to\s+see\s+you,\s+([^${}!?.]+?)[.!]*$/i,
         replace: (match) => `Рады видеть вас, ${match[1].trim()}!`
+    },
+    {
+        pattern: /^Welcome\s+to\s+(.+?)!$/i,
+        replace: (match) => `Добро пожаловать в ${match[1].trim()}!`
+    },
+    {
+        pattern: /^Card\s+(\d+)\s+of\s+(\d+)$/i,
+        replace: (match) => `Карточка ${match[1]} из ${match[2]}`
+    },
+    {
+        pattern: /^Swarm\s+Worker\s*\((.+)\)$/i,
+        replace: (match) => `Агент роя (${match[1].trim()})`
+    },
+    {
+        pattern: /^Close\s+Swarm\s+Worker\s*\((.+)\)$/i,
+        replace: (match) => `Закрыть агента роя (${match[1].trim()})`
+    },
+    {
+        pattern: /^(\d+)\s+messages?\s+from\s+board\s*\((.+)\)$/i,
+        replace: (match) => {
+            const c = parseInt(match[1], 10);
+            return `${c} ${pluralizeRuCount(c, 'сообщение', 'сообщения', 'сообщений')} с доски (${match[2]})`;
+        }
+    },
+    {
+        pattern: /^board\s*\((\d+)\s+messages?\)$/i,
+        replace: (match) => {
+            const c = parseInt(match[1], 10);
+            return `доска (${c} ${pluralizeRuCount(c, 'сообщение', 'сообщения', 'сообщений')})`;
+        }
     },
     {
         // Compact sidebar timestamps (case-sensitive so "1M" / "3D" are never touched)
@@ -6335,6 +6892,7 @@ const regexTranslations = [
                 "organization policy": "политику организации"
             };
             if (nounMap[low]) return `Добавить ${nounMap[low]}`;
+            if (isLikelyEnglishProseTarget(sub)) return m[0];
             return `Добавить ${sub}`;
         }
     },
@@ -6480,7 +7038,11 @@ const regexTranslations = [
     },
     {
         pattern: /^Install\s+(.+)$/i,
-        replace: (m) => `Установить ${m[1]}`
+        replace: (m) => {
+            const sub = m[1].trim();
+            if (isLikelyEnglishProseTarget(sub)) return m[0];
+            return `Установить ${sub}`;
+        }
     },
     {
         pattern: /^See\s+more\s+in\s+(.+)$/i,
@@ -13242,6 +13804,572 @@ const regexTranslations = [
     {
         pattern: /^of\s+(\d+)\s*([·•])\s*#(\d+)\s+at\s+(.+)$/i,
         replace: (m) => `из ${m[1]} ${m[2]} #${m[3]} в ${m[4]}`
+    },
+
+    // --- Antigravity 2.31.1 Dynamic Template Literals (Quota, Composer, Trajectory, Modals, Tools & Settings) ---
+    {
+        pattern: /^Select\s+model\s+with\s+(.+)$/i,
+        replace: (m) => `Выбрать модель с помощью ${m[1]}`
+    },
+    {
+        pattern: /^Your\s+plan['’]s\s+baseline\s+quota\s+will\s+refresh\s+on\s+(.+?)\.?$/i,
+        replace: (m) => `Базовая квота вашего тарифа обновится ${m[1]}.`
+    },
+    {
+        pattern: /^Your\s+quota\s+for\s+(.+?)\s+has\s+been\s+reached\.\s*Switch\s+to\s+another\s+available\s+model\s+to\s+continue\.?$/i,
+        replace: (m) => `Квота для модели ${m[1]} исчерпана. Переключитесь на другую доступную модель для продолжения.`
+    },
+    {
+        pattern: /^Your\s+quota\s+for\s+(.+?)\s+will\s+reset\s+on\s+(.+?)\.\s*Switch\s+to\s+another\s+available\s+model\s+to\s+continue\.?$/i,
+        replace: (m) => `Квота для модели ${m[1]} обновится ${m[2]}. Переключитесь на другую доступную модель для продолжения.`
+    },
+    {
+        pattern: /^You\s+need\s+(.+?)\s+AI\s+Credits\s+to\s+send\s+messages\.\s*To\s+continue\s+using\s+(.+?)\s+now,\s*purchase\s+more\s+AI\s+Credits\.?$/i,
+        replace: (m) => `Для отправки сообщений требуется ${m[1]} AI-кредитов. Чтобы продолжить использовать ${m[2]} сейчас, приобретите дополнительные AI-кредиты.`
+    },
+    {
+        pattern: /^When\s+toggled\s+on,\s*(.+?)\s+will\s+use\s+your\s+AI\s+credits\s+to\s+fulfill\s+model\s+requests\s+once\s+you['’]re\s+out\s+of\s+model\s+quota\.\s*(.+?)\s+will\s+always\s+use\s+your\s+model\s+quota\s+first\s+before\s+using\s+AI\s+credits\.?$/i,
+        replace: (m) => `Когда включено, ${m[1]} будет использовать ваши AI-кредиты для выполнения запросов после исчерпания квоты модели. Сначала всегда расходуется базовая квота модели.`
+    },
+    {
+        pattern: /^When\s+toggled\s+on,\s*(.+?)\s+collects\s+usage\s+data\s+to\s+help\s+Google\s+enhance\s+performance\s+and\s+features\.?$/i,
+        replace: (m) => `Когда включено, ${m[1]} собирает данные об использовании, чтобы помочь Google улучшать производительность и функции.`
+    },
+    {
+        pattern: /^(.+?)\s+On\s+empty\s+prompt,\s*sends\s+next\s+in\s+queue$/i,
+        replace: (m) => `${m[1]} При пустом поле отправляет следующее сообщение из очереди`
+    },
+    {
+        pattern: /^(.+?)\s+Queues\s+after\s+the\s+turn$/i,
+        replace: (m) => `${m[1]} Добавляет в очередь после текущего ответа`
+    },
+    {
+        pattern: /^(.+?)\s+Sends\s+immediately$/i,
+        replace: (m) => `${m[1]} Отправляет немедленно`
+    },
+    {
+        pattern: /^Message\s+queued\.\s*(\d+)\s+messages?\s+in\s+queue\.?$/i,
+        replace: (m) => `Сообщение в очереди. Сообщений в очереди: ${m[1]}.`
+    },
+    {
+        pattern: /^Send\s+all\s*\((\d+)\)$/i,
+        replace: (m) => `Отправить все (${m[1]})`
+    },
+    {
+        pattern: /^Send\s+now:\s*(.+)$/i,
+        replace: (m) => `Отправить сейчас: ${m[1]}`
+    },
+    {
+        pattern: /^Cancel\s+Questionnaire\s+and\s+Stop\s+the\s+Agent\s*\((.+)\)$/i,
+        replace: (m) => `Отменить опрос и остановить агента (${m[1]})`
+    },
+    {
+        pattern: /^Recording\s+shortcut\s+for\s+(.+?)\.\s*Press\s+keys\s+to\s+bind,\s*Enter\s+to\s+save,\s*Escape\s+to\s+cancel\.?$/i,
+        replace: (m) => `Запись сочетания клавиш для «${m[1]}». Нажмите клавиши для назначения, Enter — сохранить, Escape — отмена.`
+    },
+    {
+        pattern: /^Conflicts\s+with\s+"(.+?)"\s*\(press\s+Enter\s+to\s+replace\)$/i,
+        replace: (m) => `Конфликтует с «${m[1]}» (нажмите Enter для замены)`
+    },
+    {
+        pattern: /^Conflict:\s*also\s+assigned\s+to\s+(.+)$/i,
+        replace: (m) => `Конфликт: также назначено для «${m[1]}»`
+    },
+    {
+        pattern: /^Remove\s+shortcut\s+(.+?)\s+for\s+(.+)$/i,
+        replace: (m) => `Удалить сочетание ${m[1]} для «${m[2]}»`
+    },
+    {
+        pattern: /^Shortcut\s+(.+?)\s+for\s+(.+)$/i,
+        replace: (m) => `Сочетание ${m[1]} для «${m[2]}»`
+    },
+    {
+        pattern: /^\(Steps\s+(\d+)\s*[\u2013\-]\s*(\d+)\)$/i,
+        replace: (m) => `(Шаги ${m[1]}–${m[2]})`
+    },
+    {
+        pattern: /^\(attempt\s+(\d+)\/(\d+)\)$/i,
+        replace: (m) => `(попытка ${m[1]}/${m[2]})`
+    },
+    {
+        pattern: /^\(line\s+(\d+)\)$/i,
+        replace: (m) => `(строка ${m[1]})`
+    },
+    {
+        pattern: /^Step\s+(\d+)\s+of\s+(\d+)$/i,
+        replace: (m) => `Шаг ${m[1]} из ${m[2]}`
+    },
+    {
+        pattern: /^Turns\s+(\d+)\s*[\u2013\-]\s*(\d+)$/i,
+        replace: (m) => `Ходы ${m[1]}–${m[2]}`
+    },
+    {
+        pattern: /^Turn:\s*(\d+)\/(\d+)$/i,
+        replace: (m) => `Ход: ${m[1]}/${m[2]}`
+    },
+    {
+        pattern: /^(\d+)\s+Files?\s+With\s+Changes$/i,
+        replace: (m) => {
+            const c = parseInt(m[1], 10);
+            return `${c} ${pluralizeRuCount(c, 'файл', 'файла', 'файлов')} с изменениями`;
+        }
+    },
+    {
+        pattern: /^(\d+)\s+lines?\s+added,\s*(\d+)\s+lines?\s+removed$/i,
+        replace: (m) => `Добавлено строк: ${m[1]}, удалено строк: ${m[2]}`
+    },
+    {
+        pattern: /^(\d+)\s+Help\s*[·•]\s*(\d+)\s+Side\s+Questions?$/i,
+        replace: (m) => `Справка: ${m[1]} · Быстрые вопросы: ${m[2]}`
+    },
+    {
+        pattern: /^Side\s+Question:\s*(.+)$/i,
+        replace: (m) => `Быстрый вопрос: ${m[1]}`
+    },
+    {
+        pattern: /^Delete\s+side\s+question:\s*(.+)$/i,
+        replace: (m) => `Удалить быстрый вопрос: ${m[1]}`
+    },
+    {
+        pattern: /^Edit\s+side\s+question\s+title:\s*(.+)$/i,
+        replace: (m) => `Изменить заголовок быстрого вопроса: ${m[1]}`
+    },
+    {
+        pattern: /^(\d+)\s+MCP\s+servers?\s+failed\s+to\s+start$/i,
+        replace: (m) => `Не удалось запустить MCP-серверов: ${m[1]}`
+    },
+    {
+        pattern: /^(\d+)\s+customizations?\s+failed\s+to\s+load$/i,
+        replace: (m) => `Не удалось загрузить персонализаций: ${m[1]}`
+    },
+    {
+        pattern: /^(\d+)\s+browser\s+steps?$/i,
+        replace: (m) => {
+            const c = parseInt(m[1], 10);
+            return `${c} ${pluralizeRuCount(c, 'шаг', 'шага', 'шагов')} в браузере`;
+        }
+    },
+    {
+        pattern: /^(\d+)\s+chunks?$/i,
+        replace: (m) => {
+            const c = parseInt(m[1], 10);
+            return `${c} ${pluralizeRuCount(c, 'фрагмент', 'фрагмента', 'фрагментов')}`;
+        }
+    },
+    {
+        pattern: /^(\d+)\s+models?\s+selected$/i,
+        replace: (m) => `Выбрано моделей: ${m[1]}`
+    },
+    {
+        pattern: /^(\d+)\s+tools?\s+enabled$/i,
+        replace: (m) => `Включено инструментов: ${m[1]}`
+    },
+    {
+        pattern: /^(\d+)\s+tools?\s+disabled$/i,
+        replace: (m) => `Отключено инструментов: ${m[1]}`
+    },
+    {
+        pattern: /^(\d+)\s+tools?$/i,
+        replace: (m) => {
+            const c = parseInt(m[1], 10);
+            return `${c} ${pluralizeRuCount(c, 'инструмент', 'инструмента', 'инструментов')}`;
+        }
+    },
+    {
+        pattern: /^Thinking\s*\((\d+(?:\.\d+)?)s\)[\u2026.]*$/i,
+        replace: (m) => `Размышляет (${m[1]} сек)…`
+    },
+    {
+        pattern: /^Working\s*[·•]\s*(\d+(?:\.\d+)?)s$/i,
+        replace: (m) => `Работает · ${m[1]} сек`
+    },
+    {
+        pattern: /^Using\s+browser\s*\((\d+(?:\.\d+)?)s\)$/i,
+        replace: (m) => `Работа в браузере (${m[1]} сек)`
+    },
+    {
+        pattern: /^Using\s+browser\s*[·•]\s*(.+?)\s*\((\d+(?:\.\d+)?)s\)$/i,
+        replace: (m) => `Работа в браузере · ${m[1]} (${m[2]} сек)`
+    },
+    {
+        pattern: /^Using\s+browser\s*[·•]\s*(.+)$/i,
+        replace: (m) => `Работа в браузере · ${m[1]}`
+    },
+    {
+        pattern: /^Typed\s+['"](.*)['"]\s+in\s+Browser$/i,
+        replace: (m) => `Введено «${m[1]}» в браузере`
+    },
+    {
+        pattern: /^Typing\s+['"](.*)['"]\s+in\s+Browser$/i,
+        replace: (m) => `Ввод «${m[1]}» в браузере`
+    },
+    {
+        pattern: /^Pressing\s+(.+)$/i,
+        replace: (m) => `Нажатие ${m[1]}`
+    },
+    {
+        pattern: /^Scrolling\s+(.+)$/i,
+        replace: (m) => `Прокрутка ${m[1]}`
+    },
+    {
+        pattern: /^Opened\s+browser:\s*(.+)$/i,
+        replace: (m) => `Открыт браузер: ${m[1]}`
+    },
+    {
+        pattern: /^Browser\s+task:\s*"(.+)"$/i,
+        replace: (m) => `Задача в браузере: «${m[1]}»`
+    },
+    {
+        pattern: /^Searched\s+for\s+"(.+)"$/i,
+        replace: (m) => `Поиск «${m[1]}»`
+    },
+    {
+        pattern: /^Searched\s+for\s+files:\s*(.+)$/i,
+        replace: (m) => `Поиск файлов: ${m[1]}`
+    },
+    {
+        pattern: /^Searched\s+web:\s*"(.+)"$/i,
+        replace: (m) => `Веб-поиск: «${m[1]}»`
+    },
+    {
+        pattern: /^Code\s+search:\s*"(.+)"$/i,
+        replace: (m) => `Поиск по коду: «${m[1]}»`
+    },
+    {
+        pattern: /^Internal\s+search:\s*"(.+)"$/i,
+        replace: (m) => `Внутренний поиск: «${m[1]}»`
+    },
+    {
+        pattern: /^Viewed\s+(.+?):(\d+)-(\d+)$/i,
+        replace: (m) => `Просмотрено ${m[1]}:${m[2]}-${m[3]}`
+    },
+    {
+        pattern: /^Viewed\s+(.+)$/i,
+        replace: (m) => {
+            const sub = m[1].trim();
+            if (isLikelyEnglishProseTarget(sub)) return m[0];
+            return `Просмотрено ${sub}`;
+        }
+    },
+    {
+        pattern: /^Listed\s+directory\s+(.+)$/i,
+        replace: (m) => `Просмотрен каталог ${m[1]}`
+    },
+    {
+        pattern: /^Invoked\s+subagent:\s*(.+)$/i,
+        replace: (m) => `Вызван субагент: ${m[1]}`
+    },
+    {
+        pattern: /^Open\s+Subagent:\s*(.+)$/i,
+        replace: (m) => `Открыть субагента: ${m[1]}`
+    },
+    {
+        pattern: /^Agent\s+finished:\s*(.+)$/i,
+        replace: (m) => `Агент завершил работу: ${m[1]}`
+    },
+    {
+        pattern: /^Used\s+MCP\s+tool:\s*(.+)$/i,
+        replace: (m) => `Использован MCP-инструмент: ${m[1]}`
+    },
+    {
+        pattern: /^Used\s+tool:\s*(.+)$/i,
+        replace: (m) => `Использован инструмент: ${m[1]}`
+    },
+    {
+        pattern: /^Wants\s+to\s+run:\s*(.+)$/i,
+        replace: (m) => `Запрашивает запуск: ${m[1]}`
+    },
+    {
+        pattern: /^Generate\s+with\s+(.+?)\s*🍌$/i,
+        replace: (m) => `Сгенерировать с ${m[1]} 🍌`
+    },
+    {
+        pattern: /^Generated\s+with\s+(.+?)\s*🍌$/i,
+        replace: (m) => `Сгенерировано с ${m[1]} 🍌`
+    },
+    {
+        pattern: /^Generating\s+with\s+(.+?)\s*🍌$/i,
+        replace: (m) => `Генерация с ${m[1]} 🍌`
+    },
+    {
+        pattern: /^Generated\s+image:\s*"(.+)"$/i,
+        replace: (m) => `Сгенерировано изображение: «${m[1]}»`
+    },
+    {
+        pattern: /^Pushed\s+(\d+)\s+commits?\s+to\s+(.+?)\.?$/i,
+        replace: (m) => `Отправлено коммитов (${m[1]}) в ${m[2]}.`
+    },
+    {
+        pattern: /^Pushed\s+to\s+(.+?)\.?$/i,
+        replace: (m) => `Отправлено в ${m[1]}.`
+    },
+    {
+        pattern: /^Committed\s+to\s+(.+?)\.?$/i,
+        replace: (m) => `Закоммичено в ${m[1]}.`
+    },
+    {
+        pattern: /^Amended\s+commit\s+on\s+(.+?)\.?$/i,
+        replace: (m) => `Изменён последний коммит в ${m[1]}.`
+    },
+    {
+        pattern: /^Publish\s+(.+?)\s+to\s+origin$/i,
+        replace: (m) => `Опубликовать ${m[1]} в origin`
+    },
+    {
+        pattern: /^Published\s+(.+?)\s+to\s+origin\.?$/i,
+        replace: (m) => `Опубликовано ${m[1]} в origin.`
+    },
+    {
+        pattern: /^Checked\s+out\s+in\s+(.+)$/i,
+        replace: (m) => `Переключено в ${m[1]}`
+    },
+    {
+        pattern: /^Detached\s+at\s+(.+)$/i,
+        replace: (m) => `Отсоединённый HEAD на ${m[1]}`
+    },
+    {
+        pattern: /^Worktree\s+from\s+(.+)$/i,
+        replace: (m) => `Рабочее дерево от ${m[1]}`
+    },
+    {
+        pattern: /^Forked\s+from\s+(.+)$/i,
+        replace: (m) => `Ответвлено от ${m[1]}`
+    },
+    {
+        pattern: /^(?:Process\s+exited|Exited)\s+with\s+code\s+(.+?)\.?$/i,
+        replace: (m) => `Процесс завершился с кодом ${m[1]}.`
+    },
+    {
+        pattern: /^Yes,\s+allow\s+downloads\s+from\s+(.+?)\s+for\s+this\s+run$/i,
+        replace: (m) => `Да, разрешить загрузки с ${m[1]} для этого запуска`
+    },
+    {
+        pattern: /^Yes,\s+always\s+allow\s+downloads\s+from\s+(.+)$/i,
+        replace: (m) => `Да, всегда разрешать загрузки с ${m[1]}`
+    },
+    {
+        pattern: /^Yes,\s+always\s+allow\s+(.+)$/i,
+        replace: (m) => `Да, всегда разрешать ${m[1]}`
+    },
+    {
+        pattern: /^Yes,\s+save\s+rule\s+for\s+'(.+?)'\s+globally$/i,
+        replace: (m) => `Да, сохранить правило для «${m[1]}» глобально`
+    },
+    {
+        pattern: /^Save\s+rule\s+to\s+always\s+allow\s+(.+)\?$/i,
+        replace: (m) => `Сохранить правило для постоянного разрешения ${m[1]}?`
+    },
+    {
+        pattern: /^Requires\s+manual\s+confirmation:\s*(.+)$/i,
+        replace: (m) => `Требуется ручное подтверждение: ${m[1]}`
+    },
+    {
+        pattern: /^Agent\s+needs\s+permission\s+to\s+act\s+on\s+(.+)$/i,
+        replace: (m) => `Агенту требуется разрешение для действия с ${m[1]}`
+    },
+    {
+        pattern: /^Review\s+permissions\s+for\s+(.+)$/i,
+        replace: (m) => `Проверить разрешения для ${m[1]}`
+    },
+    {
+        pattern: /^Are\s+you\s+sure\s+you\s+want\s+to\s+delete\s+the\s+hook\s+"(.+?)"\?$/i,
+        replace: (m) => `Вы уверены, что хотите удалить хук «${m[1]}»?`
+    },
+    {
+        pattern: /^The\s+folder\s+[“"](.+?)[”"]\s+does\s+not\s+exist\.\s*Would\s+you\s+like\s+to\s+create\s+it\?$/i,
+        replace: (m) => `Папка «${m[1]}» не существует. Хотите создать её?`
+    },
+    {
+        pattern: /^[“"](.+?)[”"]\s+isn['’]t\s+a\s+valid\s+folder\s+name\.?$/i,
+        replace: (m) => `«${m[1]}» не является допустимым именем папки.`
+    },
+    {
+        pattern: /^Can['’]t\s+create\s+this\s+path\s*[\u2014\-]\s*[“"](.+?)[”"]\s+is\s+a\s+file,\s*not\s+a\s+folder\.?$/i,
+        replace: (m) => `Невозможно создать этот путь — «${m[1]}» является файлом, а не папкой.`
+    },
+    {
+        pattern: /^You\s+have\s+(\d+)\s+conversations\s+in\s+progress\.\s*Updating\s+will\s+cancel\s+them\s+and\s+you['’]ll\s+need\s+to\s+manually\s+restart\s+them\.?$/i,
+        replace: (m) => `У вас активных диалогов: ${m[1]}. Обновление отменит их, и вам потребуется перезапустить их вручную.`
+    },
+    {
+        pattern: /^You\s+have\s+(\d+)\s+conversations\s+in\s+progress\.\s*Updating\s+will\s+interrupt\s+them,\s*and\s+they\s+will\s+automatically\s+resume\s+once\s+the\s+update\s+completes\.?$/i,
+        replace: (m) => `У вас активных диалогов: ${m[1]}. Обновление временно прервёт их, и они автоматически продолжатся после завершения.`
+    },
+    {
+        pattern: /^Marked\s+(\d+)\s+conversations?\s+as\s+read$/i,
+        replace: (m) => `Отмечено прочитанными диалогов: ${m[1]}`
+    },
+    {
+        pattern: /^No\s+apps\s+found\s+for\s+"(.+?)"\.?$/i,
+        replace: (m) => `Приложения по запросу «${m[1]}» не найдены.`
+    },
+    {
+        pattern: /^No\s+plugins\s+found\s+for\s+"(.+?)"\.?$/i,
+        replace: (m) => `Плагины по запросу «${m[1]}» не найдены.`
+    },
+    {
+        pattern: /^No\s+MCP\s+servers\s+found\s+for\s+"(.+?)"\.?$/i,
+        replace: (m) => `MCP-серверы по запросу «${m[1]}» не найдены.`
+    },
+    {
+        pattern: /^No\s+connectors\s+match\s+[“"](.+?)[”"]$/i,
+        replace: (m) => `Нет коннекторов по запросу «${m[1]}»`
+    },
+    {
+        pattern: /^Search\s+for\s+"(.+?)"\s+in\s+the\s+Marketplace$/i,
+        replace: (m) => `Искать «${m[1]}» в Marketplace`
+    },
+    {
+        pattern: /^Downloads,\s*(\d+)%\s+complete$/i,
+        replace: (m) => `Загрузки, выполнено ${m[1]}%`
+    },
+    {
+        pattern: /^Zoom\s+(\d+)%,\s*reset\s+to\s+fit$/i,
+        replace: (m) => `Масштаб ${m[1]}%, сбросить по размеру окна`
+    },
+    {
+        pattern: /^Playback\s+speed\s+(\d+(?:\.\d+)?)x$/i,
+        replace: (m) => `Скорость воспроизведения ${m[1]}x`
+    },
+    {
+        pattern: /^Fold\s+lines\s+(\d+)-(\d+)$/i,
+        replace: (m) => `Свернуть строки ${m[1]}–${m[2]}`
+    },
+    {
+        pattern: /^Unfold\s+lines\s+(\d+)-(\d+)$/i,
+        replace: (m) => `Развернуть строки ${m[1]}–${m[2]}`
+    },
+    {
+        pattern: /^Go\s+to\s+page\s+(\d+)$/i,
+        replace: (m) => `Перейти к странице ${m[1]}`
+    },
+    {
+        pattern: /^Go\s+to\s+slide\s+(\d+)$/i,
+        replace: (m) => `Перейти к слайду ${m[1]}`
+    },
+    {
+        pattern: /^Today\s+(.+)$/i,
+        replace: (m) => `Сегодня, ${m[1]}`
+    },
+    {
+        pattern: /^Yesterday\s+(.+)$/i,
+        replace: (m) => `Вчера, ${m[1]}`
+    },
+    {
+        pattern: /^Tomorrow\s+(.+)$/i,
+        replace: (m) => `Завтра, ${m[1]}`
+    },
+    {
+        pattern: /^Every\s+(\d+)\s+hours?(.*)$/i,
+        replace: (m) => `Каждые ${m[1]} ч${m[2] || ''}`
+    },
+    {
+        pattern: /^Every\s+(\d+)\s+minutes?(.*)$/i,
+        replace: (m) => `Каждые ${m[1]} мин${m[2] || ''}`
+    },
+    {
+        pattern: /^Daily\s+at\s+(.+)$/i,
+        replace: (m) => `Ежедневно в ${m[1]}`
+    },
+    {
+        pattern: /^Monthly\s+on\s+the\s+(.+?)\s+at\s+(.+)$/i,
+        replace: (m) => `Ежемесячно ${m[1]}-го числа в ${m[2]}`
+    },
+    {
+        pattern: /^Managed\s+by\s+the\s+(.+?)\s+plugin$/i,
+        replace: (m) => `Управляется плагином ${m[1]}`
+    },
+    {
+        pattern: /^Managed\s+by\s+the\s+(.+?)\s+automation$/i,
+        replace: (m) => `Управляется автоматизацией ${m[1]}`
+    },
+    {
+        pattern: /^Account\s+this\s+MCP\s+server\s+uses:\s*(.+)$/i,
+        replace: (m) => `Аккаунт этого MCP-сервера: ${m[1]}`
+    },
+    {
+        pattern: /^(.+?)\s+needs\s+you\s+to\s+sign\s+in\s+before\s+it\s+can\s+be\s+used\.?$/i,
+        replace: (m) => `Для использования ${m[1]} необходимо войти в аккаунт.`
+    },
+    {
+        pattern: /^MCP\s+server\s+(.+?)\s+requires\s+authentication$/i,
+        replace: (m) => `MCP-сервер ${m[1]} требует аутентификации`
+    },
+    {
+        pattern: /^Sign\s+in\s+to\s+use\s+(.+?)!$/i,
+        replace: (m) => `Войдите, чтобы использовать ${m[1]}!`
+    },
+    {
+        pattern: /^Sign\s+in\s+to\s+(.+)$/i,
+        replace: (m) => {
+            const sub = m[1].trim();
+            if (isLikelyEnglishProseTarget(sub)) return m[0];
+            return `Войти в ${sub}`;
+        }
+    },
+    {
+        pattern: /^Signed\s+in:\s*(.+)$/i,
+        replace: (m) => `Выполнен вход: ${m[1]}`
+    },
+    {
+        pattern: /^Started\s+voice\s+chat\s*[·•]\s*(.+)$/i,
+        replace: (m) => `Голосовой чат начат · ${m[1]}`
+    },
+    {
+        pattern: /^Stopped\s+voice\s+chat\s*[·•]\s*(.+)$/i,
+        replace: (m) => `Голосовой чат завершён · ${m[1]}`
+    },
+    {
+        pattern: /^Choose\s+(.+?)['’]s\s+Voice$/i,
+        replace: (m) => `Выбрать голос ${m[1]}`
+    },
+    {
+        pattern: /^Microphone\s+blocked\.\s*Allow\s+in\s+(.+?)\.?$/i,
+        replace: (m) => `Микрофон заблокирован. Разрешите доступ в ${m[1]}.`
+    },
+    {
+        pattern: /^Model\s+unavailable,\s*retrying\s+in\s+(\d+)s(.*)$/i,
+        replace: (m) => `Модель недоступна, повтор через ${m[1]} сек${m[2] || ''}`
+    },
+    {
+        pattern: /^Model\s+unavailable,\s*retrying(.*)$/i,
+        replace: (m) => `Модель недоступна, повторная попытка${m[1] || ''}`
+    },
+    {
+        pattern: /^\+(\d+)\s+attachments?$/i,
+        replace: (m) => `+${m[1]} влож.`
+    },
+    {
+        pattern: /^\+(\d+)\s+more\s*\(Show\s+all\)$/i,
+        replace: (m) => `+${m[1]} ещё (Показать все)`
+    },
+    {
+        pattern: /^\.\.\.\s*\(\+(\d+)\s+more\)$/i,
+        replace: (m) => `... (+${m[1]} ещё)`
+    },
+    {
+        pattern: /^Generation\s+Steps\s*\((\d+)\)$/i,
+        replace: (m) => `Шаги генерации (${m[1]})`
+    },
+    {
+        pattern: /^Show\s+more\s*\((\d+)\)$/i,
+        replace: (m) => `Показать ещё (${m[1]})`
+    },
+    {
+        pattern: /^Show\s+submitted\s*\((\d+)\)$/i,
+        replace: (m) => `Показать отправленные (${m[1]})`
+    },
+    {
+        pattern: /^Show\s+(\d+)\s+more\s+subagents?$/i,
+        replace: (m) => `Показать ещё субагентов (${m[1]})`
+    },
+    {
+        pattern: /^Showing\s+first\s+(\d+)\s+references$/i,
+        replace: (m) => `Показаны первые ссылки (${m[1]})`
+    },
+    {
+        pattern: /^No\s+more\s+older\s+messages,\s*showing\s+(\d+)\s+of\s+(\d+)$/i,
+        replace: (m) => `Старых сообщений больше нет (показано ${m[1]} из ${m[2]})`
     }
 ];
 
@@ -13572,7 +14700,11 @@ function shouldIgnore(node) {
             /^turns?\s+\d+/i.test(val) ||
             /\b\d+\s+turns?$/i.test(val) ||
             /^\d+\s+of\s+\d+$/i.test(val) ||
-            (val === 'of' && /^\d+\s+of\s+\d+$/i.test(parentText.trim())) ||
+            /^card\s+\d+\s+of\s+\d+$/i.test(val) ||
+            /^step\s+\d+\s+of\s+\d+$/i.test(val) ||
+            (val === 'of' && /^(?:(?:card|карточка|step|шаг|page|страница|question|вопрос|turn|ход)\s+)?\d+\s+of\s+\d+$/i.test(parentText.trim())) ||
+            (val === 'card' && /(?:^|\s)(?:card|карточка)\s*\d+\s+(?:of|из)\s+\d+/i.test(fullContext)) ||
+            (val === 'hold' && /(?:to upload|to add to agent|для загрузки|чтобы добавить)/i.test(fullContext)) ||
             val.startsWith('go to turn ') ||
             val === "couldn't load message" ||
             val === 'no message text' ||
@@ -14279,6 +15411,32 @@ function shouldIgnore(node) {
             val.startsWith('exploring files') ||
             val.startsWith('verify ') ||
             val.startsWith('start using gemini') ||
+            val.startsWith('hey ') ||
+            val.startsWith('welcome back') ||
+            val.startsWith('good to see you') ||
+            val.startsWith('welcome to ') ||
+            val === 'previous card' ||
+            val === 'next card' ||
+            val === 'dismiss tip' ||
+            val === 'explore the plugin marketplace' ||
+            val.startsWith('find plugins - bundles') ||
+            val.startsWith('new models have been enabled') ||
+            val === 'select a model in the model selector' ||
+            val.startsWith('select model with ') ||
+            val === 'agent said' ||
+            val === 'you said' ||
+            val === 'expand message' ||
+            val === 'collapse message' ||
+            val === 'to upload' ||
+            val === 'to add to agent' ||
+            val.startsWith('generation steps (') ||
+            val.startsWith('show more (') ||
+            val.startsWith('show submitted (') ||
+            val.startsWith('swarm worker') ||
+            val.startsWith('close swarm') ||
+            val.includes('messages from board') ||
+            val.includes('message from board') ||
+            val.startsWith('board (') ||
             (isTroubleshootingSentence && (
                 val === 'see our' ||
                 val === 'see our:' ||
@@ -15297,10 +16455,38 @@ function isFileName(text, parent) {
         lowerTrimmed === 'change...' ||
         lowerTrimmed === 'hello.' ||
         lowerTrimmed.startsWith('hi ') ||
+        lowerTrimmed.startsWith('hey ') ||
         lowerTrimmed.startsWith('hello, ') ||
         lowerTrimmed.startsWith('hello ') ||
         lowerTrimmed.startsWith('welcome back') ||
+        lowerTrimmed.startsWith('welcome to ') ||
         lowerTrimmed.startsWith('good to see you') ||
+        lowerTrimmed === 'previous card' ||
+        lowerTrimmed === 'next card' ||
+        lowerTrimmed === 'card' ||
+        lowerTrimmed === 'hold' ||
+        lowerTrimmed === 'dismiss tip' ||
+        lowerTrimmed === 'explore the plugin marketplace' ||
+        lowerTrimmed.startsWith('find plugins - bundles') ||
+        lowerTrimmed.startsWith('new models have been enabled') ||
+        lowerTrimmed === 'select a model in the model selector' ||
+        lowerTrimmed.startsWith('select model with ') ||
+        lowerTrimmed === 'agent said' ||
+        lowerTrimmed === 'you said' ||
+        lowerTrimmed === 'expand message' ||
+        lowerTrimmed === 'collapse message' ||
+        lowerTrimmed === 'to upload' ||
+        lowerTrimmed === 'to add to agent' ||
+        lowerTrimmed.startsWith('generation steps (') ||
+        lowerTrimmed.startsWith('show more (') ||
+        lowerTrimmed.startsWith('show submitted (') ||
+        lowerTrimmed.startsWith('swarm worker') ||
+        lowerTrimmed.startsWith('close swarm') ||
+        lowerTrimmed.includes('messages from board') ||
+        lowerTrimmed.includes('message from board') ||
+        lowerTrimmed.startsWith('board (') ||
+        /^card\s+\d+\s+of\s+\d+$/i.test(lowerTrimmed) ||
+        /^step\s+\d+\s+of\s+\d+$/i.test(lowerTrimmed) ||
         /^\d+\s*(?:s|sec|m|min|h|hr|d|w|wk|mo|mos|yr|y)$/i.test(lowerTrimmed) ||
         /^\d+\s+pinned(?:\s+conversations?)?$/i.test(lowerTrimmed) ||
         lowerTrimmed === 'pinned' ||
@@ -15486,6 +16672,9 @@ function translateTextNode(node) {
             if (translationDictionary[lowerText]) {
                 translated = translationDictionary[lowerText];
                 if (lowerText === 'name' && (parentText.includes(': string') || fullContext.includes('const greet') || fullContext.includes('hello, ${name}'))) {
+                    return;
+                }
+                if (lowerText === 'card' && !/(?:^|\s)(?:card|карточка)\s*\d+\s+(?:of|из)\s+\d+/i.test(fullContext)) {
                     return;
                 }
                 if (lowerText === 'plan' && (fullContext.includes('create a plan') || fullContext.includes('составил план') || fullContext.includes('select') || fullContext.includes('выберите'))) {
@@ -15752,8 +16941,12 @@ function translateTextNode(node) {
                 }
             } else if (lowerText === 'of') {
                 const pText = node.parentElement ? normalizeText(node.parentElement.textContent) : '';
-                if (/^\d+\s+of\s+\d+$/i.test(pText)) {
+                if (/^(?:(?:card|карточка|step|шаг|page|страница|question|вопрос|turn|ход)\s+)?\d+\s+of\s+\d+$/i.test(pText)) {
                     translated = 'из';
+                }
+            } else if (lowerText === 'hold') {
+                if (/(?:to upload|to add to agent|для загрузки|чтобы добавить)/i.test(fullContext)) {
+                    translated = 'Удерживайте';
                 }
             } else if (/^pinned(?:\s+conversations?)?$/i.test(normalized)) {
                 const pText = node.parentElement ? normalizeText(node.parentElement.textContent) : '';
@@ -16227,18 +17420,18 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.33';
+    const FALLBACK_VERSION = '2.1.34';
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
     }
     let currentLocalVersion = window.__antigravity_local_version;
-    const DEFAULT_CHANGELOG_V2133 = 'Обновление v2.1.33: полная локализация UI-плагинов (панель 🐝 Рой / Swarm и будущие плагины в iframe plugin://), защита английских промптов от частичного перевода, компактные метки времени (ч/мин/дн.) и новые плагины Antigravity 2.31.0.';
+    const DEFAULT_CHANGELOG_V2134 = 'Обновление v2.1.34: полная локализация AntiGravity 2.31.1 — все ротируемые приветствия главного экрана («С возвращением… С чего продолжим?», «Привет… Что создадим сегодня?», «Рады видеть вас… Что дальше?»), карточки подсказок и колоды (Tip Cards, Marketplace, новые модели), нативные диалоги Passkeys/WebAuthn/устройств/сертификатов и более 350 статических и динамических строк интерфейса.';
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2133;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2134;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2133;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2134;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -17040,5 +18233,10 @@ const initInterval = setInterval(() => {
         }
     }
 }, 50);
+
+window.__antigravity_translate_tree = translateTree;
+window.__antigravity_restore_tree = restoreOriginalTree;
+})();
+
 
 

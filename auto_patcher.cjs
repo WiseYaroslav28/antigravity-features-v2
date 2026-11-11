@@ -579,8 +579,66 @@ function buildContextMenuTemplate(items, onSelect) {`
             fs.writeFileSync(wizardHtmlExtracted, wizContent, 'utf8');
         }
 
+        // 7.6 PATCH CABLEV2.JS, DEVICECHOOSER.JS, WEBAUTHN.JS & WEBVIEWPOPUPSECURITY.JS (Antigravity 2.31.1+ dialogs & menus)
+        const cablev2Extracted = path.join(tempDir, 'dist', 'cablev2.js');
+        if (fs.existsSync(cablev2Extracted)) {
+            let cableContent = fs.readFileSync(cablev2Extracted, 'utf8');
+            cableContent = cableContent.replace(/<h1 class="sheet-title">Passkeys<\/h1>/g, '<h1 class="sheet-title">Ключи доступа (Passkeys)</h1>');
+            cableContent = cableContent.replace(/<p class="mechanism-header">Use your phone or tablet<\/p>/g, '<p class="mechanism-header">Используйте телефон или планшет</p>');
+            cableContent = cableContent.replace(/Scan this QR code with the camera on the device that has your passkey for \$\{safeRpId\}/g, 'Отсканируйте этот QR-код камерой устройства с ключом доступа для ${safeRpId}');
+            cableContent = cableContent.replace(/>Cancel<\/button>/g, '>Отмена</button>');
+            cableContent = cableContent.replace(/title:\s*'Passkeys',/g, "title: 'Ключи доступа (Passkeys)',");
+            cableContent = cableContent.replace(/updateStatus\('Connecting to your device…'\)/g, "updateStatus('Подключение к вашему устройству…')");
+            cableContent = cableContent.replace(/updateStatus\('Verify on your device to continue…'\)/g, "updateStatus('Подтвердите вход на устройстве для продолжения…')");
+            fs.writeFileSync(cablev2Extracted, cableContent, 'utf8');
+        }
+        const deviceChooserExtracted = path.join(tempDir, 'dist', 'deviceChooser.js');
+        if (fs.existsSync(deviceChooserExtracted)) {
+            let devContent = fs.readFileSync(deviceChooserExtracted, 'utf8');
+            devContent = devContent.replace(/hid:\s*'HID device',/g, "hid: 'HID-устройству',");
+            devContent = devContent.replace(/usb:\s*'USB device',/g, "usb: 'USB-устройству',");
+            devContent = devContent.replace(/serial:\s*'serial port',/g, "serial: 'последовательному порту',");
+            devContent = devContent.replace(/'Unknown device'/g, "'Неизвестное устройство'");
+            devContent = devContent.replace(/title:\s*'Connect a device',/g, "title: 'Подключение устройства',");
+            devContent = devContent.replace(/message:\s*`\$\{origin\} wants to connect to a \$\{KIND_NOUNS\[kind\]\}`,/g, "message: `${origin} запрашивает подключение к ${KIND_NOUNS[kind]}`,");
+            devContent = devContent.replace(/\?\s*'Select a device:'/g, "? 'Выберите устройство:'");
+            devContent = devContent.replace(/:\s*'No compatible devices found\.',/g, ": 'Совместимые устройства не найдены.',");
+            devContent = devContent.replace(/buttons:\s*\[\.\.\.snapshot\.map\(\(\{\s*label\s*\}\)\s*=>\s*label\),\s*'Cancel'\],/g, "buttons: [...snapshot.map(({ label }) => label), 'Отмена'],");
+            fs.writeFileSync(deviceChooserExtracted, devContent, 'utf8');
+        }
+        const webauthnExtracted = path.join(tempDir, 'dist', 'webauthn.js');
+        if (fs.existsSync(webauthnExtracted)) {
+            let waContent = fs.readFileSync(webauthnExtracted, 'utf8');
+            waContent = waContent.replace(/return `Account \$\{index \+ 1\}`;/g, 'return `Аккаунт ${index + 1}`;');
+            waContent = waContent.replace(/details\.relyingPartyId \|\| 'this site'/g, "details.relyingPartyId || 'этот сайт'");
+            waContent = waContent.replace(/title:\s*'Choose a Passkey',/g, "title: 'Выберите ключ доступа (Passkey)',");
+            waContent = waContent.replace(/message:\s*`Sign in to \$\{rpLabel\}`,/g, 'message: `Вход на ${rpLabel}`,');
+            waContent = waContent.replace(/detail:\s*'Select a passkey account to continue:',/g, "detail: 'Выберите аккаунт с ключом доступа для продолжения:',");
+            waContent = waContent.replace(/buttons:\s*\[\.\.\.accountLabels,\s*'Cancel'\],/g, "buttons: [...accountLabels, 'Отмена'],");
+            fs.writeFileSync(webauthnExtracted, waContent, 'utf8');
+        }
+        const webviewPopupSecurityExtracted = path.join(tempDir, 'dist', 'webviewPopupSecurity.js');
+        if (fs.existsSync(webviewPopupSecurityExtracted)) {
+            let wpsContent = fs.readFileSync(webviewPopupSecurityExtracted, 'utf8');
+            wpsContent = wpsContent.replace(/insecure:\s*'Not secure',/g, "insecure: 'Не защищено',");
+            wpsContent = wpsContent.replace(/dangerous:\s*'⚠ Not secure',/g, "dangerous: '⚠ Не защищено',");
+            wpsContent = wpsContent.replace(/'Your connection to this site is not secure',/g, "'Подключение к этому сайту не защищено',");
+            wpsContent = wpsContent.replace(/'You should not enter any sensitive information on this site \(for '\s*\+\s*'example, passwords or credit cards\), because it could be stolen by '\s*\+\s*'attackers\.',/g, "'Не вводите на этом сайте конфиденциальные данные (например, пароли или номера банковских карт), так как их могут похитить злоумышленники.',");
+            wpsContent = wpsContent.replace(/'Connection is secure',/g, "'Подключение защищено',");
+            wpsContent = wpsContent.replace(/'Your information \(for example, passwords or credit card numbers\) is '\s*\+\s*'private when it is sent to this site\.',/g, "'Ваши данные (например, пароли или номера банковских карт) защищены при передаче на этот сайт.',");
+            wpsContent = wpsContent.replace(/'Connection security information is not available for this page'/g, "'Сведения о безопасности подключения для этой страницы недоступны'");
+            wpsContent = wpsContent.replace(/\?\s*'Certificate is valid'\s*:\s*'Certificate details'/g, "? 'Сертификат действителен' : 'Сведения о сертификате'");
+            wpsContent = wpsContent.replace(/`Error: \$\{state\.certificateError\}`/g, '`Ошибка: ${state.certificateError}`');
+            wpsContent = wpsContent.replace(/`Issued to: \$\{certificate\.subjectName\}`,\s*`Issued by: \$\{certificate\.issuer\}`,\s*`Valid from: \$\{formatDate\(certificate\.validFromMs\)\}`,\s*`Valid until: \$\{formatDate\(certificate\.validToMs\)\}`/g, '`Кому выдан: ${certificate.subjectName}`, `Кем выдан: ${certificate.issuer}`, `Действителен с: ${formatDate(certificate.validFromMs)}`, `Действителен до: ${formatDate(certificate.validToMs)}`');
+            wpsContent = wpsContent.replace(/`Protocol: \$\{certificate\.protocol\}`/g, '`Протокол: ${certificate.protocol}`');
+            wpsContent = wpsContent.replace(/label:\s*'Connection info…',/g, "label: 'Сведения о подключении…',");
+            wpsContent = wpsContent.replace(/title:\s*'Connection info',/g, "title: 'Сведения о подключении',");
+            wpsContent = wpsContent.replace(/buttons:\s*\['OK'\],/g, "buttons: ['ОК'],");
+            fs.writeFileSync(webviewPopupSecurityExtracted, wpsContent, 'utf8');
+        }
+
         // 8. VALIDATE ALL PATCHED JS FILES WITH NATIVE V8 IN-MEMORY COMPILER (ZERO CHILD PROCESSES)
-        const filesToValidate = [preloadExtracted, trayExtracted, mainExtracted, utilsExtracted, updaterExtracted, menuExtracted, ipcHandlersExtracted, provisionSplashExtracted, wizardHtmlExtracted];
+        const filesToValidate = [preloadExtracted, trayExtracted, mainExtracted, utilsExtracted, updaterExtracted, menuExtracted, ipcHandlersExtracted, provisionSplashExtracted, wizardHtmlExtracted, cablev2Extracted, deviceChooserExtracted, webauthnExtracted, webviewPopupSecurityExtracted];
         for (const file of filesToValidate) {
             if (fs.existsSync(file)) {
                 const code = fs.readFileSync(file, 'utf8');

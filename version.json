@@ -1,6 +1,6 @@
 {
-  "version": "2.1.33",
-  "releasedAt": "2026-11-11T01:35:00.000Z",
-  "changelog": "Обновление v2.1.33: нативная 0 мс локализация UI-плагинов в iframe (🐝 Рой / Swarm и будущие плагины) с синхронизацией EN | RU, полный перевод раздела Swarm и новых плагинов Marketplace (Arize AX, Elephant-Goldfish Model, CodeRabbit, Spacefast, VirusTotal), защита от частичного перевода английских предложений и обновлённый патчер для AntiGravity 2.31.0.",
+  "version": "2.1.34",
+  "releasedAt": "2026-11-11T18:15:00.000Z",
+  "changelog": "Обновление v2.1.34: полная локализация AntiGravity 2.31.1 — все ротируемые приветствия главного экрана («С возвращением… С чего продолжим?», «Привет… Что создадим сегодня?», «Рады видеть вас… Что дальше?»), карточки подсказок и колоды (Tip Cards, Marketplace, новые модели), нативные диалоги Passkeys/WebAuthn/устройств/сертификатов и более 350 статических и динамических строк интерфейса.",
   "downloadUrl": "https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/localization_injected.js"
 }
