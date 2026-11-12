@@ -377,6 +377,16 @@ async function checkAndApplyGithubUpdate({ force = false } = {}) {
         downloadedContent = downloadedContent.replace(/\r?\n/g, "\r\n");
       }
 
+      // Safeguard for macOS: if downloading system patcher/runner scripts and the remote file does NOT support darwin/macOS,
+      // skip overwriting the local macOS-adapted script so we don't regress to Windows-only paths.
+      if (isMac && ["auto_patcher.cjs", "index.js", "exit_patcher.cjs", "launcher.js", "backup_manager.js"].includes(safeRel)) {
+        const hasMacSupport = downloadedContent.includes("darwin") || downloadedContent.includes("isMac") || downloadedContent.includes("/Applications/Antigravity");
+        if (!hasMacSupport) {
+          log(`[AutoUpdater] Safeguard: Remote ${safeRel} is Windows-only (lacks macOS support). Keeping local macOS-adapted version.`);
+          continue;
+        }
+      }
+
       fs.writeFileSync(tmpPath, downloadedContent, "utf8");
 
       // Validate JS/CJS syntax before accepting
