@@ -26,7 +26,13 @@ const GITHUB_BRANCH = "main";
 const GITHUB_RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_REPO}/${GITHUB_BRANCH}`;
 
 const username = process.env.USERNAME || process.env.USER || path.basename(os.homedir());
-const ASAR_PATH = path.join('C:', 'Users', username, 'AppData', 'Local', 'Programs', 'Antigravity', 'resources', 'app.asar');
+const isMac = process.platform === 'darwin';
+const APP_BUNDLE_PATH = isMac
+  ? (fs.existsSync('/Applications/Antigravity.app') ? '/Applications/Antigravity.app' : '/Applications/Antigravity IDE.app')
+  : null;
+const ASAR_PATH = isMac
+  ? path.join(APP_BUNDLE_PATH, 'Contents', 'Resources', 'app.asar')
+  : path.join('C:', 'Users', username, 'AppData', 'Local', 'Programs', 'Antigravity', 'resources', 'app.asar');
 const HASH_FILE = path.join(__dirname, "backups", "patch-hash.json");
 
 let pendingPatchToApply = false;

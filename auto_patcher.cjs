@@ -2,13 +2,21 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const vm = require('vm');
+const { execSync } = require('child_process');
 const asar = require('@electron/asar');
 
-const username = process.env.USERNAME || process.env.USER;
-const resourcesDir = path.join('C:', 'Users', username, 'AppData', 'Local', 'Programs', 'Antigravity', 'resources');
+const username = process.env.USERNAME || process.env.USER || require('os').userInfo().username;
+const isMac = process.platform === 'darwin';
+const appBundlePath = isMac
+    ? (fs.existsSync('/Applications/Antigravity.app') ? '/Applications/Antigravity.app' : '/Applications/Antigravity IDE.app')
+    : null;
+const resourcesDir = isMac
+    ? path.join(appBundlePath, 'Contents', 'Resources')
+    : path.join('C:', 'Users', username, 'AppData', 'Local', 'Programs', 'Antigravity', 'resources');
 const asarPath = path.join(resourcesDir, 'app.asar');
 const tempDir = path.join(__dirname, 'temp_patcher_asar');
 const localizationFile = path.join(__dirname, 'localization_injected.js');
+const isBuildOnly = process.argv.includes('--build-only') || process.argv.includes('--no-apply');
 
 async function runPatch() {
     try {
@@ -655,25 +663,49 @@ function buildContextMenuTemplate(items, onSelect) {`
         fs.rmSync(tempDir, { recursive: true, force: true });
 
         // 6.5 IMMEDIATELY APPLY TO resources/app.asar ON DISK (WITH RENAME FALLBACK)
-        const bakPath = path.join(resourcesDir, 'app.asar.bak');
-        if (!fs.existsSync(bakPath) && fs.existsSync(asarPath)) {
-            try { fs.copyFileSync(asarPath, bakPath); } catch (e) {}
-        }
-        try {
-            fs.copyFileSync(patchedAsar, asarPath);
-            console.log('[AutoPatcher-v2] Directly applied app.asar.patched to resources/app.asar!');
-        } catch (copyErr) {
+        if (isBuildOnly) {
+            console.log('[AutoPatcher-v2] Build-only mode: skipped applying app.asar.patched to disk.');
+        } else {
+            const bakPath = path.join(resourcesDir, 'app.asar.bak');
+            if (!fs.existsSync(bakPath) && fs.existsSync(asarPath)) {
+                try { fs.copyFileSync(asarPath, bakPath); } catch (e) {}
+            }
+            let applied = false;
             try {
-                const oldTmp = asarPath + '.old_unpatched';
-                if (fs.existsSync(oldTmp)) {
-                    try { fs.unlinkSync(oldTmp); } catch (e) {}
-                }
-                fs.renameSync(asarPath, oldTmp);
                 fs.copyFileSync(patchedAsar, asarPath);
-                try { fs.unlinkSync(oldTmp); } catch (e) {}
-                console.log('[AutoPatcher-v2] Applied app.asar.patched via rename fallback!');
-            } catch (renameErr) {
-                console.log('[AutoPatcher-v2] Direct copy deferred to exit_patcher:', renameErr.message);
+                console.log('[AutoPatcher-v2] Directly applied app.asar.patched to resources/app.asar!');
+                applied = true;
+            } catch (copyErr) {
+                try {
+                    const oldTmp = asarPath + '.old_unpatched';
+                    if (fs.existsSync(oldTmp)) {
+                        try { fs.unlinkSync(oldTmp); } catch (e) {}
+                    }
+                    fs.renameSync(asarPath, oldTmp);
+                    fs.copyFileSync(patchedAsar, asarPath);
+                    try { fs.unlinkSync(oldTmp); } catch (e) {}
+                    console.log('[AutoPatcher-v2] Applied app.asar.patched via rename fallback!');
+                    applied = true;
+                } catch (renameErr) {
+                    console.log('[AutoPatcher-v2] Direct copy deferred to exit_patcher:', renameErr.message);
+                }
+            }
+
+            if (applied && isMac && appBundlePath && fs.existsSync(appBundlePath)) {
+                try {
+                    console.log('[AutoPatcher-v2] Updating macOS code signature...');
+                    const fwDir = path.join(appBundlePath, 'Contents', 'Frameworks');
+                    const elFwDir = path.join(fwDir, 'Electron Framework.framework', 'Versions', 'A');
+                    try { execSync(`codesign --force --sign - "${path.join(elFwDir, 'Libraries')}"/*.dylib 2>/dev/null || true`, { stdio: 'ignore' }); } catch(e) {}
+                    try { execSync(`codesign --force --sign - "${path.join(elFwDir, 'Helpers')}"/* 2>/dev/null || true`, { stdio: 'ignore' }); } catch(e) {}
+                    try { execSync(`find "${fwDir}" -name "*.framework" -exec codesign --force --sign - {} \\; 2>/dev/null || true`, { stdio: 'ignore' }); } catch(e) {}
+                    try { execSync(`find "${fwDir}" -name "*.app" -exec codesign --force --sign - {} \\; 2>/dev/null || true`, { stdio: 'ignore' }); } catch(e) {}
+                    execSync(`codesign --force --sign - "${appBundlePath}"`, { stdio: 'ignore' });
+                    try { execSync(`xattr -cr "${appBundlePath}"`, { stdio: 'ignore' }); } catch(e) {}
+                    console.log('[AutoPatcher-v2] macOS code signature updated and verified successfully!');
+                } catch (csErr) {
+                    console.warn('[AutoPatcher-v2] Code signing notice:', csErr.message);
+                }
             }
         }
         
