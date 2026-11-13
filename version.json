@@ -1,6 +1,6 @@
 {
-  "version": "2.1.35",
-  "releasedAt": "2026-11-13T17:15:00.000Z",
-  "changelog": "Обновление v2.1.35: исправлены бейджи «Новинка» (вместо «Создать») в выборе моделей, локализованы уровни рассуждения Extra/Max («Экстра»/«Макс.»), тултипы моделей Orchestrator и уведомление о выводе GPT-OSS, переведены все описания/промпты Marketplace и страница Granola с защитой inline-кода (version, LICENSE), а также выполнена сквозная локализация терминала, настроек, MCP-серверов, роя и нативных диалогов WSL/Main процесса в Antigravity 2.31.2.",
+  "version": "2.1.36",
+  "releasedAt": "2026-11-13T18:06:00.000Z",
+  "changelog": "Обновление v2.1.36: исправлено появление виджета EN/RU и перевод чужих страниц во встроенном браузере (localhost / 127.0.0.1 / WebContentsView) — теперь локализатор строго проверяет нативный мост оболочки AntiGravity (electronNative / electronUpdater) и работает исключительно в самом интерфейсе IDE и её плагинах (plugin://).",
   "downloadUrl": "https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/localization_injected.js"
 }

@@ -18031,8 +18031,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.35';
-    const DEFAULT_CHANGELOG_V2135 = 'Обновление v2.1.35: исправлены бейджи «Новинка» (вместо «Создать») в выборе моделей, локализованы уровни рассуждения Extra/Max («Экстра»/«Макс.»), тултипы моделей Orchestrator и уведомление о выводе GPT-OSS, переведены все описания/промпты Marketplace и страница Granola с защитой inline-кода (version, LICENSE), а также выполнена сквозная локализация терминала, настроек, MCP-серверов, роя и нативных диалогов WSL/Main процесса в Antigravity 2.31.2.';
+    const FALLBACK_VERSION = '2.1.36';
+    const DEFAULT_CHANGELOG_V2136 = 'Обновление v2.1.36: исправлено появление виджета EN/RU и перевод чужих страниц во встроенном браузере (localhost / 127.0.0.1 / WebContentsView) — теперь локализатор строго проверяет нативный мост оболочки AntiGravity (electronNative / electronUpdater) и работает исключительно в самом интерфейсе IDE и её плагинах (plugin://).';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -18040,10 +18040,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2135;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2136;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2135;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2136;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -18792,56 +18792,96 @@ const initInterval = setInterval(() => {
     if (document.body && document.head) {
         clearInterval(initInterval);
         const protocol = window.location.protocol;
-        const hostname = window.location.hostname;
-        const isInternal = protocol === 'vscode-file:' || protocol === 'vscode-webview:' || protocol === 'antigravity-ide:' || protocol === 'plugin:' || hostname === '127.0.0.1' || hostname === 'localhost';
-        if (isInternal) {
-            const isTopFrame = (window === window.top);
+        const isTopFrame = (window === window.top);
+        const hasNativeBridge = !!(
+            window.electronNative ||
+            window.electronUpdater ||
+            window.nativeStorage ||
+            window.vscode ||
+            window.__antigravity_force_shell === true
+        );
+        // Only the real Antigravity BrowserWindow shell (with preload contextBridge or IDE scheme)
+        // gets the EN/RU widget & terminal hook — NEVER guest tabs in Built-in Browser (e.g. localhost:3000)
+        const isAntigravityShell = isTopFrame && (
+            hasNativeBridge ||
+            protocol === 'vscode-file:' ||
+            protocol === 'antigravity-ide:'
+        );
+        // Only internal Antigravity UI plugin frames (e.g. plugin://swarm) get subframe DOM translation
+        const isAntigravitySubframe = !isAntigravityShell && (
+            protocol === 'plugin:' ||
+            protocol === 'vscode-webview:' ||
+            (!isTopFrame && (protocol === 'vscode-file:' || protocol === 'antigravity-ide:'))
+        );
+        if (isAntigravityShell) {
             const isHotReload = !!window.__antigravity_localizer_loaded;
             window.__antigravity_localizer_loaded = true;
-            if (isTopFrame) {
-                initLanguageSwitcher();
-                initTerminalInjection();
-                if (!isEnglishMode()) {
-                    if (isHotReload) {
-                        try { restoreOriginalTree(); } catch (e) {}
-                    }
-                    startObserving();
-                    translateTree(document.body);
+            initLanguageSwitcher();
+            initTerminalInjection();
+            if (!isEnglishMode()) {
+                if (isHotReload) {
+                    try { restoreOriginalTree(); } catch (e) {}
                 }
-            } else {
-                if (!window.__antigravity_subframe_lang) {
-                    window.__antigravity_subframe_lang = 'ru';
-                }
-                if (!window.__antigravity_subframe_sync_bound) {
-                    window.__antigravity_subframe_sync_bound = true;
-                    window.addEventListener('message', (ev) => {
-                        try {
-                            if (ev && ev.data && ev.data.type === 'ANTIGRAVITY_LANG_SYNC') {
-                                const nextLang = ev.data.lang === 'en' ? 'en' : 'ru';
-                                window.__antigravity_subframe_lang = nextLang;
-                                if (nextLang === 'en') {
-                                    stopObserving();
-                                    restoreOriginalTree();
-                                } else {
-                                    startObserving();
-                                    translateTree(document.body);
-                                }
+                startObserving();
+                translateTree(document.body);
+            }
+        } else if (isAntigravitySubframe) {
+            const isHotReload = !!window.__antigravity_localizer_loaded;
+            window.__antigravity_localizer_loaded = true;
+            if (!window.__antigravity_subframe_lang) {
+                window.__antigravity_subframe_lang = 'ru';
+            }
+            if (!window.__antigravity_subframe_sync_bound) {
+                window.__antigravity_subframe_sync_bound = true;
+                window.addEventListener('message', (ev) => {
+                    try {
+                        if (ev && ev.data && ev.data.type === 'ANTIGRAVITY_LANG_SYNC') {
+                            const nextLang = ev.data.lang === 'en' ? 'en' : 'ru';
+                            window.__antigravity_subframe_lang = nextLang;
+                            if (nextLang === 'en') {
+                                stopObserving();
+                                restoreOriginalTree();
+                            } else {
+                                startObserving();
+                                translateTree(document.body);
                             }
-                        } catch (e) {}
-                    });
+                        }
+                    } catch (e) {}
+                });
+            }
+            try {
+                if (window.parent && window.parent !== window) {
+                    window.parent.postMessage({ type: 'ANTIGRAVITY_LANG_QUERY' }, '*');
                 }
-                try {
-                    if (window.parent && window.parent !== window) {
-                        window.parent.postMessage({ type: 'ANTIGRAVITY_LANG_QUERY' }, '*');
-                    }
-                } catch (e) {}
-                if (!isEnglishMode()) {
-                    if (isHotReload) {
-                        try { restoreOriginalTree(); } catch (e) {}
-                    }
-                    startObserving();
-                    translateTree(document.body);
+            } catch (e) {}
+            if (!isEnglishMode()) {
+                if (isHotReload) {
+                    try { restoreOriginalTree(); } catch (e) {}
                 }
+                startObserving();
+                translateTree(document.body);
+            }
+        } else {
+            // Guest web page (e.g. Built-in Browser tab on http://localhost:3000):
+            // clean up any stray widget/observer left by older versions and leave the page untouched.
+            stopObserving();
+            const strayWrapper = document.getElementById('antigravity-topbar-controls');
+            if (strayWrapper) strayWrapper.remove();
+            const straySwitcher = document.getElementById('antigravity-lang-switcher');
+            if (straySwitcher) straySwitcher.remove();
+            const strayStyle = document.getElementById('antigravity-lang-switcher-style');
+            if (strayStyle) strayStyle.remove();
+            if (window.__antigravity_status_interval) {
+                clearInterval(window.__antigravity_status_interval);
+                window.__antigravity_status_interval = null;
+            }
+            if (window.__antigravity_remote_check_interval) {
+                clearInterval(window.__antigravity_remote_check_interval);
+                window.__antigravity_remote_check_interval = null;
+            }
+            if (window.__antigravity_localizer_loaded) {
+                window.__antigravity_localizer_loaded = false;
+                try { restoreOriginalTree(); } catch (e) {}
             }
         }
     }

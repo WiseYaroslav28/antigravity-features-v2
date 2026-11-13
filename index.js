@@ -584,10 +584,28 @@ if (isPrimaryUiInstance && !IS_HEADLESS_SUBAGENT_CALL) {
 let cdpConnected = false;
 let injectedTargets = new Set();
 
+function isAntigravityHubTarget(target) {
+  if (!target || target.type !== 'page' || !target.url) return false;
+  const u = target.url;
+  if (u.startsWith('vscode-file://') || u.startsWith('antigravity-ide://')) return true;
+  if (/^https:\/\/(?:127\.0\.0\.1|localhost):\d+\//.test(u)) {
+    if (target.title && target.title.includes('Antigravity')) return true;
+    if (/^https:\/\/(?:127\.0\.0\.1|localhost):\d+\/(?:c\/|settings|customizations|plugins|projects|automations|onboarding)/.test(u)) return true;
+  }
+  return false;
+}
+
+function isAntigravityUiTarget(target) {
+  if (!target || !target.url) return false;
+  if (isAntigravityHubTarget(target)) return true;
+  const u = target.url;
+  return u.startsWith('plugin://') || u.startsWith('vscode-webview://');
+}
+
 async function trackAndSaveWindowGeometry() {
   try {
     const targets = await CDP.List({ port: 9222 });
-    const pageTarget = targets.find(t => t.type === 'page' && t.url && !t.url.startsWith('data:') && !t.url.startsWith('devtools:'));
+    const pageTarget = targets.find(t => isAntigravityHubTarget(t));
     if (!pageTarget) return;
 
     const client = await CDP({ target: pageTarget.id, port: 9222 });
@@ -618,21 +636,19 @@ async function forceHotReloadLocalization() {
     if (!targets || targets.length === 0) return;
 
     for (const target of targets) {
-      if (!target.url || target.url.startsWith('data:') || target.url.startsWith('devtools:')) continue;
-      if (target.type === 'page' || target.type === 'iframe' || (target.title && target.title.includes('Antigravity'))) {
-        try {
-          const client = await CDP({ target: target.id, port: 9222 });
-          const { Page, Runtime } = client;
-          await Page.enable();
-          await Runtime.enable();
-          await Page.addScriptToEvaluateOnNewDocument({ source: wrappedCode });
-          await Runtime.evaluate({ expression: wrappedCode });
-          injectedTargets.add(target.id);
-          cdpConnected = true;
-          log(`[HotReload] Live-updated localization in target: ${target.title} (${target.id})`);
-          await client.close();
-        } catch (e) {}
-      }
+      if (!isAntigravityUiTarget(target)) continue;
+      try {
+        const client = await CDP({ target: target.id, port: 9222 });
+        const { Page, Runtime } = client;
+        await Page.enable();
+        await Runtime.enable();
+        await Page.addScriptToEvaluateOnNewDocument({ source: wrappedCode });
+        await Runtime.evaluate({ expression: wrappedCode });
+        injectedTargets.add(target.id);
+        cdpConnected = true;
+        log(`[HotReload] Live-updated localization in target: ${target.title} (${target.id})`);
+        await client.close();
+      } catch (e) {}
     }
   } catch (e) {}
 }
@@ -643,37 +659,35 @@ async function attemptCdpInjection() {
     if (!targets || targets.length === 0) return;
 
     for (const target of targets) {
-      if (!target.url || target.url.startsWith('data:') || target.url.startsWith('devtools:')) continue;
-      if (target.type === 'page' || target.type === 'iframe' || (target.title && target.title.includes('Antigravity'))) {
-        if (injectedTargets.has(target.id)) continue;
+      if (!isAntigravityUiTarget(target)) continue;
+      if (injectedTargets.has(target.id)) continue;
 
-        try {
-          const client = await CDP({ target: target.id, port: 9222 });
-          const { Page, Runtime } = client;
-          await Page.enable();
-          await Runtime.enable();
+      try {
+        const client = await CDP({ target: target.id, port: 9222 });
+        const { Page, Runtime } = client;
+        await Page.enable();
+        await Runtime.enable();
 
-          if (fs.existsSync(LOCALIZATION_FILE)) {
-            const locCode = fs.readFileSync(LOCALIZATION_FILE, 'utf8');
-            const wrappedCode = `{\n${locCode}\n}`;
-            
-            // 1. Inject for future navigation/loads
-            await Page.addScriptToEvaluateOnNewDocument({ source: wrappedCode });
+        if (fs.existsSync(LOCALIZATION_FILE)) {
+          const locCode = fs.readFileSync(LOCALIZATION_FILE, 'utf8');
+          const wrappedCode = `{\n${locCode}\n}`;
+          
+          // 1. Inject for future navigation/loads
+          await Page.addScriptToEvaluateOnNewDocument({ source: wrappedCode });
 
-            // 2. Evaluate immediately on currently open document
-            await Runtime.evaluate({ expression: wrappedCode });
+          // 2. Evaluate immediately on currently open document
+          await Runtime.evaluate({ expression: wrappedCode });
 
-            injectedTargets.add(target.id);
-            cdpConnected = true;
-            log(`Successfully injected localization into target: ${target.title} (${target.id})`);
-          }
-
-          client.on('disconnect', () => {
-            injectedTargets.delete(target.id);
-          });
-        } catch (errTarget) {
-          // Target might be transient, ignore quietly
+          injectedTargets.add(target.id);
+          cdpConnected = true;
+          log(`Successfully injected localization into target: ${target.title} (${target.id})`);
         }
+
+        client.on('disconnect', () => {
+          injectedTargets.delete(target.id);
+        });
+      } catch (errTarget) {
+        // Target might be transient, ignore quietly
       }
     }
   } catch (err) {
