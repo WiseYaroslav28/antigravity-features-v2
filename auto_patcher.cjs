@@ -150,7 +150,11 @@ if (!window.__antigravity_translation_initialized) {
             mainContent = mainContent.replace(/message:\s*['"]Are you sure you want to quit\?['"],/g, "message: 'Вы уверены, что хотите выйти?',");
             mainContent = mainContent.replace(/detail:\s*['"]There may be agents or background tasks running\.['"],/g, "detail: 'В фоновом режиме могут выполняться агенты или задачи.',");
             mainContent = mainContent.replace(/title:\s*['"]WSL distro not found['"],/g, "title: 'Дистрибутив WSL не найден',");
+            mainContent = mainContent.replace(/message:\s*`The WSL distro "\$\{WSL_DISTRO\}" is no longer installed\.`,/g, "message: `Дистрибутив WSL «${WSL_DISTRO}» больше не установлен.`,");
             mainContent = mainContent.replace(/detail:\s*['"]Antigravity opened on Windows instead\.['"],/g, "detail: 'Приложение Antigravity открыто локально в Windows.',");
+            mainContent = mainContent.replace(/showErrorBox\(['"]Binary not found['"],/g, "showErrorBox('Бинарный файл не найден',");
+            mainContent = mainContent.replace(/showErrorBox\(['"]WSL setup failed['"],/g, "showErrorBox('Сбой настройки WSL',");
+            mainContent = mainContent.replace(/showErrorBox\(['"]Startup failed['"],/g, "showErrorBox('Сбой запуска',");
             mainContent = mainContent.replace(/appendSwitch\(['"]remote-debugging-port['"],\s*['"]0['"]\)/g, "appendSwitch('remote-debugging-port', '9222')");
             if (!mainContent.includes('__saveWindowStateNow')) {
                 mainContent = mainContent.replace(
@@ -557,12 +561,19 @@ function buildContextMenuTemplate(items, onSelect) {`
             console.log('[AutoPatcher-v2] Patched dist/ipcHandlers.js for native context menu & dialogs localization!');
         }
 
-        // 7.5 PATCH PROVISIONSPLASH.JS & WIZARDHTML.JS (Localize WSL splash & IDE Install Wizard)
+        // 7.5 PATCH PROVISIONSPLASH.JS, WSL.JS & WIZARDHTML.JS (Localize WSL splash, WSL progress & IDE Install Wizard)
         const provisionSplashExtracted = path.join(tempDir, 'dist', 'provisionSplash.js');
         if (fs.existsSync(provisionSplashExtracted)) {
             let splashContent = fs.readFileSync(provisionSplashExtracted, 'utf8');
             splashContent = splashContent.replace(/<div>Setting up WSL: \$\{escapeHtml\(distro\)\}<\/div>/g, '<div>Настройка WSL: ${escapeHtml(distro)}</div>');
             fs.writeFileSync(provisionSplashExtracted, splashContent, 'utf8');
+        }
+        const wslExtracted = path.join(tempDir, 'dist', 'wsl.js');
+        if (fs.existsSync(wslExtracted)) {
+            let wslContent = fs.readFileSync(wslExtracted, 'utf8');
+            wslContent = wslContent.replace(/['"]Downloading the Antigravity binary(?:\u2026|\\u2026|\.\.\.)['"]/g, "'Загрузка бинарного файла Antigravity…'");
+            wslContent = wslContent.replace(/`Installing into \$\{distro\}(?:\u2026|\\u2026|\.\.\.)`/g, "`Установка в ${distro}…`");
+            fs.writeFileSync(wslExtracted, wslContent, 'utf8');
         }
         const wizardHtmlExtracted = path.join(tempDir, 'dist', 'ideInstall', 'wizardHtml.js');
         if (fs.existsSync(wizardHtmlExtracted)) {

@@ -1220,6 +1220,8 @@ const translationDictionary = {
     "five hour limit remaining": "Остаток 5-часового лимита",
     "view usage": "Просмотр использования",
     "fast": "Быстро",
+    "max": "Макс.",
+    "extra": "Экстра",
     "high": "Высокий",
     "medium": "Средний",
     "low": "Низкий",
@@ -3629,6 +3631,16 @@ const translationDictionary = {
     "see less in bundles": "Свернуть в наборах",
     "see more in plugins": "Показать ещё в плагинах",
     "see less in plugins": "Свернуть в плагинах",
+    "google workspace": "Google Workspace",
+    "build with google": "Разработка с Google",
+    "design, creative & media": "Дизайн, графика и медиа",
+    "productivity & project management": "Продуктивность и управление проектами",
+    "cloud hosting & deployment": "Облачный хостинг и деплой",
+    "developer tools": "Инструменты разработчика",
+    "business": "Бизнес",
+    "more plugins": "Другие плагины",
+    "recommended": "Рекомендуемые",
+    "loading notebook view...": "Загрузка просмотра блокнота...",
     "see more results": "Показать больше результатов",
     "no description available.": "Описание отсутствует.",
     "loading available plugins...": "Загрузка доступных плагинов...",
@@ -5113,7 +5125,6 @@ const translationDictionary = {
     "waiting for the first update": "Ожидание первого обновления",
 
     // --- Antigravity 2.31.0 Hub UI, Onboarding, Coordinators, Browser Trajectory, Settings & Marketplace ---
-    "fill": "Заполнить",
     "turbo": "Турбо",
     "interface layout": "Макет интерфейса",
     "knowledge work": "Работа со знаниями",
@@ -5920,7 +5931,243 @@ const translationDictionary = {
     "add a gemini-powered feature to my app with firebase ai logic": "Добавь функцию на базе Gemini в моё приложение с помощью Firebase AI Logic",
     "run my leapwork runlist and show me what failed": "Запусти мой список прогонов Leapwork и покажи, где произошёл сбой",
     "run a technical seo audit on example.com": "Проведи технический SEO-аудит сайта example.com",
-    "update my task with the changes made and tests performed and log 2 hours today for it.": "Обнови мою задачу внесёнными изменениями и выполненными тестами и спиши на неё 2 часа за сегодня."
+    "update my task with the changes made and tests performed and log 2 hours today for it.": "Обнови мою задачу внесёнными изменениями и выполненными тестами и спиши на неё 2 часа за сегодня.",
+
+    // --- Antigravity 2.31.2 Terminal, Settings, MCP Servers, Swarm Board & Marketplace Full Coverage ---
+    // Thinking & Token Breakdown
+    "extra high": "Экстра",
+    "response (incl. tool calls)": "Ответ (вкл. вызовы инструментов)",
+    "attached context:": "Прикреплённый контекст:",
+    "cache": "Кэш",
+
+    // Terminal, Command Setup, Bottom Panel & Diff/Find
+    "terminal input": "Ввод терминала",
+    "too much output to announce, navigate to rows manually to read": "Слишком много вывода для озвучивания, перемещайтесь по строкам вручную для чтения",
+    "connecting to terminal...": "Подключение к терминалу...",
+    "starting terminal…": "Запуск терминала…",
+    "no active terminals": "Нет активных терминалов",
+    "resume it to open a new terminal. anything that was running in this one has stopped.": "Возобновите его, чтобы открыть новый терминал. Всё, что работало в этом терминале, остановлено.",
+    "standalone terminals": "Отдельные терминалы",
+    "toggle terminal": "Переключить терминал",
+    "new terminal": "Новый терминал",
+    "new terminal tab": "Новая вкладка терминала",
+    "close terminal tab": "Закрыть вкладку терминала",
+    "split terminal": "Разделить терминал",
+    "kill terminal": "Завершить терминал",
+    "delete terminal": "Удалить терминал",
+    "close panel": "Закрыть панель",
+    "bottom panel": "Нижняя панель",
+    "side panel": "Боковая панель",
+    "background tasks": "Фоновые задачи",
+    "running (dev only)": "Выполняются (только для разработчиков)",
+    "background tasks and terminals agents left running, across all conversations.": "Фоновые задачи и терминалы, оставленные агентами запущенными во всех диалогах.",
+    "terminal: add to chat": "Терминал: добавить в чат",
+    "connection lost. reload to reconnect.": "Соединение потеряно. Перезагрузите для переподключения.",
+    "connection lost. reconnecting...": "Соединение потеряно. Переподключение...",
+    "command setup script": "Скрипт настройки команд",
+    "a shell setup script run before every command the agent executes.": "Скрипт оболочки, выполняемый перед каждой командой агента.",
+    "validate": "Проверить",
+    "validating setup script…": "Проверка скрипта настройки…",
+    "validation timed out.": "Время проверки истекло.",
+    "example:\nsource ~/.jetski_shell_setup": "пример:\nsource ~/.jetski_shell_setup",
+    "example:": "пример:",
+    "process exited with an error": "Процесс завершился с ошибкой",
+    "match case (aa)": "Учитывать регистр (Aa)",
+    "match whole word (ab)": "Слово целиком (ab)",
+    "use regular expression (.*)": "Регулярное выражение (.*)",
+    "previous match (shift+enter)": "Предыдущее совпадение (Shift+Enter)",
+    "next match (enter)": "Следующее совпадение (Enter)",
+    "full logs": "Полные логи",
+    "copy command output": "Копировать вывод команды",
+
+    // Settings, Security Policies, Workspace, Project & Account
+    "request review": "Запрашивать проверку",
+    "every command requires approval.": "Каждая команда требует подтверждения.",
+    "ask before sensitive operations.": "Спрашивать перед потенциально опасными операциями.",
+    "automatically decide if commands run.": "Автоматически решать, запускать ли команды.",
+    "run all commands without restrictions.": "Выполнять все команды без ограничений.",
+    "interrupt the agent and send immediately.": "Прервать агента и отправить немедленно.",
+    "allow the agent to automatically view and edit files outside the current workspace. use with caution: this gives the agent access to additional potentially-relevant information, but also allows the agent to access credential files, secrets, and other files outside of the workspace that could be targeted in prompt injection attacks or other exploits by malicious actors.": "Разрешить агенту автоматически просматривать и редактировать файлы вне текущей рабочей области. Используйте с осторожностью: это даёт агенту доступ к важным файлам, но также открывает доступ к файлам учётных данных и секретам вне рабочей области, которые могут стать целью атак типа prompt injection.",
+    "controls whether terminal commands require your approval before running.\n\nnote: a change to this setting will only apply to new messages sent to the agent. in-progress responses will use the previous setting value.": "Определяет, требуется ли ваше подтверждение перед выполнением команд в терминале.\n\nПримечание: изменение этой настройки применится только к новым сообщениям агенту. Текущие ответы используют прежнее значение.",
+    "the agent never asks for confirmation before executing terminal commands (except those in the deny list). this provides the agent with the maximum ability to operate over long periods without intervention, but also has the highest risk of the agent executing an unsafe terminal command.": "Агент никогда не запрашивает подтверждение перед выполнением команд в терминале (кроме команд из списка запрета Deny). Это обеспечивает максимальную автономность при длительной работе, но несёт наибольший риск выполнения небезопасной команды.",
+    "terminal commands automatically proceed inside the sandbox. a command that needs to leave the sandbox proceeds only if an agent judges it reversible, and otherwise requests review.": "Команды терминала автоматически выполняются внутри песочницы. Команда, требующая выхода за пределы песочницы, выполняется автоматически только если агент сочтёт её обратимой, иначе запрашивается проверка.",
+    "the agent always asks for confirmation before executing terminal commands (except those in the allow list).": "Агент всегда запрашивает подтверждение перед выполнением команд в терминале (кроме команд из списка разрешения Allow).",
+    "the agent never asks for review. this maximizes the autonomy of the agent, but also has the highest risk of the agent operating over unsafe or injected artifact content.": "Агент никогда не запрашивает проверку. Это максимизирует автономность агента, но создаёт наибольший риск работы с небезопасным или подменённым содержимым артефактов.",
+    "the agent always asks for review.": "Агент всегда запрашивает проверку.",
+    "let the agent use browser tools to open urls, read web pages, and interact with browser content. this gives the agent access to important (and often critical) knowledge and methods of validation, but any browser integration does increase exposure to external malicious parties for security exploits.": "Разрешить агенту использовать инструменты браузера для открытия URL, чтения веб-страниц и взаимодействия с их содержимым. Это даёт агенту доступ к важным источникам знаний и способам проверки, но любая интеграция с браузером повышает риск атак со стороны внешних вредоносных ресурсов.",
+    "the browser subagent has been disabled by your administrator. contact your administrator to enable browser use.": "Браузерный субагент отключён вашим администратором. Обратитесь к администратору для включения.",
+    "your agent’s ability to execute commands is also controlled by enterprise security policies.": "Возможность агента выполнять команды также регулируется корпоративными политиками безопасности.",
+    "your agent's ability to execute commands is also controlled by enterprise security policies.": "Возможность агента выполнять команды также регулируется корпоративными политиками безопасности.",
+    "managed by your organization": "Управляется вашей организацией",
+    "project general": "Общие (проект)",
+    "project folders": "Папки проекта",
+    "project agent": "Агент проекта",
+    "this conversation": "Этот диалог",
+    "same project": "Тот же проект",
+    "all conversations": "Все диалоги",
+    "last workspace": "Последняя рабочая область",
+    "repo default": "По умолчанию из репозитория",
+    "loading branches…": "Загрузка веток…",
+    "create a new workspace from your first message.": "Создавать новую рабочую область по первому сообщению.",
+    "start without a workspace, for general questions.": "Начинать без рабочей области, для общих вопросов.",
+    "reuse your last workspace.": "Повторно использовать последнюю рабочую область.",
+    "citc workspace type": "Тип рабочей области CitC",
+    "citc workspace": "Рабочая область CitC",
+    "cog workspace": "Рабочая область Cog",
+    "abfs workspace (alpha)": "Рабочая область ABFS (Alpha)",
+    "all files": "Все файлы",
+    "audio file": "Аудиофайл",
+    "audio clip": "Аудиофрагмент",
+    "open tabs": "Открытые вкладки",
+    "create a project": "Создать проект",
+    "review permissions": "Проверить разрешения",
+    "open remote control": "Открыть удалённое управление",
+    "enable remote control": "Включить удалённое управление",
+    "manage your conversations from the companion website.": "Управляйте своими диалогами через веб-приложение компаньона.",
+    "available for": "Доступно для",
+    "location:": "Регион:",
+    "no license available for this project and location": "Для этого проекта и региона нет доступной лицензии",
+    "your antigravity use will be associated with provided project. make sure you trust the project id before proceeding. account activity and data may be logged by your organization.": "Использование Antigravity будет привязано к указанному проекту. Перед продолжением убедитесь, что вы доверяете ID проекта. Активность аккаунта и данные могут регистрироваться вашей организацией.",
+    "please describe the feature you'd like to see. the more detailed the requirements, the easier it will be for our team to incorporate your ideas. some helpful information includes:": "Опишите функцию, которую вы хотели бы видеть. Чем подробнее требования, тем проще нашей команде будет реализовать вашу идею. Полезно указать:",
+    "please describe your auth or billing issue. more details will help our support team resolve your issue quicker. some helpful information includes:": "Опишите проблему с авторизацией или оплатой. Подробности помогут службе поддержки быстрее её решить. Полезно указать:",
+    "for any feedback that does not fit into the above categories.": "Для любых отзывов и предложений, не подходящих под перечисленные выше категории.",
+    "describe the bug you encountered...": "Опишите обнаруженную ошибку...",
+    "describe the feature you would like to see...": "Опишите желаемую функцию...",
+    "screenshot must be under 10 mb": "Размер скриншота не должен превышать 10 МБ",
+    "attaching logs requires an email address": "Для прикрепления логов необходимо указать адрес электронной почты",
+    "we recommend attaching logs. attaching logs will help the antigravity team act on and prioritize your feedback.": "Рекомендуем прикрепить логи — это поможет команде Antigravity быстрее разобраться в проблеме и расставить приоритеты.",
+    "summarizing call…": "Подведение итогов звонка…",
+    "active environment: os=": "Активная среда: os=",
+
+    // MCP Servers, Hooks, Customizations, CEL & Swarm Board
+    "your administrator has disabled mcp servers for this workspace.": "Ваш администратор отключил MCP-серверы для этой рабочей области.",
+    "organization mcp allowlist (read-only)": "Белый список MCP организации (только чтение)",
+    "these mcp allowlist rules are enforced by your organization's administrator.": "Эти правила белого списка MCP принудительно применяются администратором вашей организации.",
+    "blocked by organization policy": "Заблокировано политикой организации",
+    "pre tool use": "До вызова инструмента",
+    "post tool use": "После вызова инструмента",
+    "pre invocation": "Перед вызовом",
+    "post invocation": "После вызова",
+    "all tools (*)": "Все инструменты (*)",
+    "hook will trigger if any tool is executed.": "Хук будет срабатывать при запуске любого инструмента.",
+    "hook will only trigger if the tool name matches run_command.": "Хук будет срабатывать только при вызове инструмента run_command.",
+    "configure mcp server": "Настроить MCP-сервер",
+    "enter the required configuration values to install this mcp server.": "Введите обязательные параметры конфигурации для установки этого MCP-сервера.",
+    "this mcp server can no longer be configured.": "Этот MCP-сервер больше нельзя настроить.",
+    "installed mcp servers": "Установленные MCP-серверы",
+    "refresh mcp servers": "Обновить MCP-серверы",
+    "add mcp": "Добавить MCP",
+    "bundled with the app": "Встроен в приложение",
+    "included in:": "Включён в:",
+    "listed in your config": "Указан в конфигурации",
+    "found in this workspace": "Найден в этой рабочей области",
+    "plugins available.": "доступных плагинов.",
+    "downloading...": "Скачивание...",
+    "enabling...": "Включение...",
+    "installing...": "Установка...",
+    "saving...": "Сохранение...",
+    "removing...": "Удаление...",
+    "adding...": "Добавление...",
+    "create new": "Создать новый",
+    "use existing": "Использовать существующий",
+    "event fired": "Событие сработало",
+    "on a schedule": "По расписанию",
+    "when something happens": "Когда происходит событие",
+    "when it runs": "Когда запускается",
+    "schedule type": "Тип расписания",
+    "match condition (cel)": "Условие совпадения (CEL)",
+    "inserts:": "Вставляет:",
+    "✓ target set": "✓ Цель выбрана",
+    "always on": "Всегда включён",
+    "paused": "Приостановлен",
+    "parent conversation": "Родительский диалог",
+    "forked conversation": "Ответвлённый диалог",
+    "last used": "Последнее использование",
+    "chat anyways": "Всё равно открыть чат",
+    "select citc workspace": "Выбрать рабочую область CitC",
+    "not on the roster": "Нет в составе роя",
+    "all channels": "Все каналы",
+    "hidden from the board; click to show": "Скрыт на доске; нажмите, чтобы показать",
+    "click to hide from the board": "Нажмите, чтобы скрыть с доски",
+
+    // Marketplace Catalog (Official & Partners 2.31.2) + Granola README
+    "setup": "Настройка",
+    "releasing": "Публикация релизов",
+    "granola mcp": "MCP-сервер Granola",
+    "your meetings in your workflow.": "Ваши встречи в вашем рабочем процессе.",
+    "granola gives your agent access to what your team discussed, decided, and committed to in meetings. instead of context-switching to check your notes or asking teammates to repeat themselves, you get answers where you're already working.": "Granola предоставляет вашему агенту доступ к тому, что ваша команда обсуждала, решила и взяла в работу на встречах. Вместо переключения контекста для поиска заметок или повторных вопросов коллегам вы получаете ответы прямо там, где уже работаете.",
+    "in google antigravity, open": "В Google Antigravity откройте",
+    "customizations → plugins": "Персонализация → Плагины",
+    "and install granola. the first time you use a granola tool, you'll be prompted to sign in via your browser. you need a": "и установите Granola. При первом использовании инструмента Granola появится запрос на вход через браузер. Вам потребуется аккаунт",
+    "account with meeting data.": "с данными встреч.",
+    "the plugin connects to granola's mcp server at": "Плагин подключается к MCP-серверу Granola по адресу",
+    ". the plugin only installs that connection: the server provides the tools and the instructions for using them, so the plugin can't fall out of date as the server changes.": ". Плагин устанавливает только это подключение: сервер сам предоставляет инструменты и инструкции по их использованию, поэтому плагин не устаревает при обновлении сервера.",
+    "once the plugin is published, bump": "После публикации плагина увеличивайте",
+    "whenever you change the manifest,": "при каждом изменении манифеста,",
+    ". installed clients only update when the version changes.": ". Установленные клиенты обновляются только при изменении версии.",
+    "apache-2.0. see": "Apache-2.0. Подробнее см. файл",
+    "reach out at hey@granola.so.": "Свяжитесь с нами: hey@granola.so.",
+    "the ai notepad for meetings. connect to your meeting history and use your conversation context to get things done.": "ИИ-блокнот для встреч. Подключите историю своих встреч и используйте контекст обсуждений для выполнения рабочих задач.",
+    "what did we decide in my meetings this week?": "Какие решения мы приняли на встречах на этой неделе?",
+    "what action items came out of my last meeting?": "Какие задачи и поручения появились по итогам моей последней встречи?",
+    "summarize what my team discussed about this project": "Сделай сводку того, что моя команда обсуждала по этому проекту",
+    "this plugin provides a specialized suite of skills for data engineers and database practitioners working on google cloud. it acts as an expert assistant, allowing you to use natural language prompts in your preferred coding agent to architect complex data pipelines, transform data with dbt, write spark and bigquery sql notebooks, and orchestrate end-to-end workflows across gcp's data ecosystem.": "Этот плагин предоставляет специализированный набор навыков для инженеров данных и специалистов по базам данных в Google Cloud. Он работает как экспертный ассистент для проектирования пайплайнов данных, трансформаций dbt, написания ноутбуков Spark и BigQuery SQL и оркестрации рабочих процессов в экосистеме GCP.",
+    "create a pyspark notebook to train a distributed random forest model on the bigquery table my_transactions": "Создай PySpark-ноутбук для обучения распределённой модели Random Forest на таблице BigQuery my_transactions",
+    "find datasets about customer orders in knowledge catalog and show their lineage": "Найди наборы данных о заказах клиентов в Knowledge Catalog и покажи их происхождение (lineage)",
+    "my last dataflow job failed. find the root cause in the logs and propose a fix": "Моё последнее задание Dataflow завершилось сбоем. Найди причину в логах и предложи исправление",
+    "core tools and knowledge required to develop for android.": "Основные инструменты и знания, необходимые для разработки под Android.",
+    "create a new android project called myfirstapp using the empty-activity template": "Создай новый проект Android с именем MyFirstApp на основе шаблона empty-activity",
+    "run my app on a samsung galaxy ultra device.": "Запусти моё приложение на устройстве Samsung Galaxy Ultra.",
+    "test my app and make sure that it's ready to publish to google play.": "Протестируй моё приложение и убедись, что оно готово к публикации в Google Play.",
+    "prototype, build & run modern apps that users love with firebase's backend, ai, and operational infrastructure.": "Прототипируйте, создавайте и запускайте современные приложения с бэкендом, ИИ и инфраструктурой Firebase.",
+    "set up firebase in my app and connect it to a firebase project": "Настрой Firebase в моём приложении и подключи его к проекту Firebase",
+    "write and audit firestore security rules for my data model": "Напиши и проверь правила безопасности Firestore для моей модели данных",
+    "deploy my web app with firebase app hosting": "Разверни моё веб-приложение с помощью Firebase App Hosting",
+    "search and retrieve official documentation across google cloud, gemini, android, firebase, flutter, and web. requires google cloud credentials (adc) or an api key.": "Поиск и получение официальной документации по Google Cloud, Gemini, Android, Firebase, Flutter и вебу. Требуются учётные данные Google Cloud (ADC) или API-ключ.",
+    "look up the exact gcloud cli command and iam roles needed to deploy a cloud run service with secret manager": "Найди точную команду gcloud CLI и роли IAM, необходимые для развёртывания сервиса Cloud Run с Secret Manager",
+    "search official google documentation for how to implement structured outputs with the gemini api": "Найди в официальной документации Google, как реализовать структурированный вывод (Structured Outputs) в Gemini API",
+    "compare cloud run, gke autopilot, and app engine based on official google cloud architecture guides": "Сравни Cloud Run, GKE Autopilot и App Engine на основе официальных руководств по архитектуре Google Cloud",
+    "integration skill and tools for google maps platform apis": "Навык интеграции и инструменты для API Google Maps Platform",
+    "build applications and shell workflows with the gemini interactions api, live api, and gemini api cli, including text, image, video, and speech generation, managed agents, and real-time multimodal streaming.": "Создавайте приложения и консольные сценарии с помощью Gemini Interactions API, Live API и Gemini API CLI: генерация текста, изображений, видео и речи, управляемые агенты и потоковая мультимодальность в реальном времени.",
+    "google cloud guidance for coding agents: first-project onboarding, authentication and credential selection, and safety-critical validation for gcloud cli commands. includes the google developer knowledge mcp server for grounded, up-to-date google cloud documentation.": "Руководство по Google Cloud для кодинг-агентов: настройка первого проекта, выбор учётных данных и проверка безопасности команд gcloud CLI. Включает MCP-сервер Google Developer Knowledge для актуальной документации Google Cloud.",
+    "help me set up a new google cloud project, link billing, and configure local authentication.": "Помоги настроить новый проект Google Cloud, привязать биллинг и сконфигурировать локальную аутентификацию.",
+    "configure application default credentials (adc) and iam permissions for my local development environment.": "Настрой Application Default Credentials (ADC) и права IAM для моей локальной среды разработки.",
+    "search official google cloud documentation using developer knowledge and validate my gcloud cli commands.": "Найди официальную документацию Google Cloud через Developer Knowledge и проверь мои команды gcloud CLI.",
+    "official plugin for dart and flutter that installs flutter/dart skills, rules, custom agents, and dart mcp server for building natively compiled, visually stunning applications for mobile, web, desktop, and embedded devices from a single codebase": "Официальный плагин для Dart и Flutter с навыками, правилами, кастомными агентами и MCP-сервером Dart для создания нативных приложений для мобильных устройств, веба, десктопа и встраиваемых систем из единой кодовой базы.",
+    "build a responsive flutter layout that adapts across mobile, tablet, and desktop form factors": "Создай адаптивный макет Flutter, подстраивающийся под телефоны, планшеты и десктоп",
+    "write a widget test using widgettester to verify ui rendering and user interactions": "Напиши тест виджета с помощью WidgetTester для проверки отрисовки и взаимодействия с интерфейсом",
+    "audit my app for accessibility": "Проведи аудит доступности моего приложения",
+    "diagnose and fix layout overflows or constraint issues in this flutter widget": "Найди и исправь переполнение макета или ошибки ограничений в этом виджете Flutter",
+    "teamwork graph cli is atlassian's agent-first interface to your entire work context: jira issues, confluence pages, bitbucket prs, along with your connected third-party data sources. purpose-built for coding agents like antigravity (terminal or desktop), and powered by atlassian's context graph. try: \"draft a jira issue from this pr and link it to the epic.\" run /twg-setup after install to connect atlassian teamwork graph cli to antigravity.": "Teamwork Graph CLI — агентный интерфейс Atlassian к вашему рабочему контексту: задачам Jira, страницам Confluence, пул-реквестам Bitbucket и подключённым внешним источникам данных. Выполните /twg-setup после установки для подключения к Antigravity.",
+    "build and deploy base44 full-stack apps: cli project management, javascript/typescript sdk development, and production troubleshooting skills.": "Создавайте и развёртывайте full-stack приложения Base44: управление проектами через CLI, разработка на JS/TS SDK и диагностика продакшена.",
+    "up-to-date documentation lookup. pull version-specific documentation and code examples directly from source repositories into your coding agent's context.": "Поиск актуальной документации: загрузка документации конкретных версий и примеров кода напрямую из исходных репозиториев в контекст вашего агента.",
+    "use the official crowdstrike-hosted mcp server to work across falcon: detections, cases, threat intel, siem, hosts, vulnerabilities, cloud, and more.": "Используйте официальный MCP-сервер CrowdStrike для работы с Falcon: обнаружения, инциденты, аналитика угроз, SIEM, хосты, уязвимости и облачная инфраструктура.",
+    "use datadog directly in antigravity through a preconfigured datadog mcp server. query logs, metrics, traces, dashboards, and more through natural conversation. this plugin is in preview.": "Работайте с Datadog напрямую в Antigravity через преднастроенный MCP-сервер Datadog: запрашивайте логи, метрики, трейсы и дашборды на естественном языке (версия Preview).",
+    "packaged workflows for sca remediation, ai sast triage, ci/cd posture, malware response, findings review, endor labs setup, and more.": "Готовые рабочие процессы для устранения уязвимостей SCA, сортировки ИИ-SAST, проверки безопасности CI/CD, реагирования на вредоносный код и настройки Endor Labs.",
+    "query grafana cloud metrics, logs, traces and profiles, manage dashboards, alerts and incidents, and ask grafana assistant through the hosted mcp server.": "Запрашивайте метрики, логи, трейсы и профили Grafana Cloud, управляйте дашбордами, алертами и инцидентами и обращайтесь к Grafana Assistant через облачный MCP-сервер.",
+    "ask grafana assistant why checkout latency is spiking right now": "Спроси Grafana Assistant, почему прямо сейчас резко выросла задержка оформления заказа",
+    "investigate errors from the latest deployment": "Исследуй ошибки из последнего развёртывания (deployment)",
+    "summarize active incidents and related alerts": "Сделай сводку активных инцидентов и связанных оповещений",
+    "build and debug pipelines, manage deployments, investigate security findings, and operate harness with connected tools and reusable workflow skills.": "Создавайте и отлаживайте пайплайны, управляйте развёртываниями, анализируйте отчёты безопасности и работайте с Harness через подключённые инструменты и готовые навыки.",
+    "search intercom conversations, contacts, and companies, spot support trends, and install the intercom messenger with secure identity verification.": "Ищите переписки, контакты и компании в Intercom, выявляйте тренды поддержки и настраивайте Intercom Messenger с безопасной верификацией.",
+    "edit the clips in this folder into a 30-second vertical ad in invideo with captions and music": "Смонтируй клипы из этой папки в 30-секундный вертикальный рекламный ролик в invideo с субтитрами и музыкой",
+    "edit this video in invideo: trim the pauses, grade it golden hour, duck the music": "Смонтируй это видео в invideo: вырежи паузы, примени цветокоррекцию «золотой час» и приглуши фоновую музыку",
+    "search the web and read any page as clean markdown with keenable, a search engine built for ai agents. keyless: no signup or api key needed.": "Ищите в интернете и читайте любые страницы в виде чистого Markdown через Keenable — поисковую систему для ИИ-агентов (без регистрации и API-ключа).",
+    "create, run and debug leapwork play tests and runlists, build agents, and hand work to play's ai workflows, right from antigravity.": "Создавайте, запускайте и отлаживайте тесты и списки прогона Leapwork Play, собирайте агентов и передавайте задачи ИИ-сценариям Play прямо из Antigravity.",
+    "official antigravity plugin for mongodb atlas (hosted mcp server + skills). connect to the mongodb-hosted atlas mcp server, explore data, manage collections, optimize queries, generate reliable code, implement best practices, develop advanced features, and more.": "Официальный плагин Antigravity для MongoDB Atlas (облачный MCP-сервер и навыки): исследуйте данные, управляйте коллекциями, оптимизируйте запросы и применяйте лучшие практики.",
+    "search the live web and fetch page content with parallel's hosted mcp server. free access with no parallel account, api key, or parallel cli required.": "Поиск в реальном времени и извлечение контента веб-страниц через облачный MCP-сервер Parallel (бесплатно, без аккаунта, API-ключа и CLI).",
+    "equip antigravity with specialized postman skills for the complete api lifecycle. discover, design, test, document, mock, monitor, and improve apis through agent-friendly, filesystem-first workflows.": "Оснастите Antigravity навыками Postman для полного жизненного цикла API: поиск, проектирование, тестирование, документирование, мокинг и мониторинг.",
+    "set up qodo, explore code and repository history, review local changes, and resolve pull-request findings directly from antigravity.": "Настройте Qodo, исследуйте код и историю репозитория, проверяйте локальные изменения и устраняйте замечания в пул-реквестах прямо из Antigravity.",
+    "seo workflows on live semrush data: keyword research, site audits, backlinks, competitor, traffic and market analytics, ppc, and ai brand visibility.": "SEO-сценарии на актуальных данных Semrush: подбор ключевых слов, аудит сайтов, обратные ссылки, анализ конкурентов, трафика, PPC и видимости бренда в ИИ.",
+    "query your sentinelone singularity console from antigravity through a self-hosted, read-only purple ai mcp server. requires an active console deployment, your console url, and an api token.": "Запрашивайте данные из SentinelOne Singularity Console в Antigravity через автономный read-only MCP-сервер Purple AI (требуется URL консоли и API-токен).",
+    "triage exabeam new-scale alerts and cases end to end: gather the evidence, map mitre, reach a verdict, and record it behind an approval step.": "Проводите полный триаж оповещений и кейсов Exabeam New-Scale: сбор артефактов, маппинг на MITRE, вынесение вердикта и сохранение с подтверждением.",
+    "official supabase plugin for antigravity with supabase skills and mcp access for project management, database work, auth, storage, and postgres best practices.": "Официальный плагин Supabase для Antigravity с навыками и MCP-доступом для управления проектами, базами данных, авторизацией, хранилищем и лучшими практиками Postgres.",
+    "search and read your wispr flow meeting notes, transcripts, scratchpad notes, and calendar events. read-only access to your own account.": "Ищите и читайте свои заметки встреч, расшифровки, черновики и события календаря Wispr Flow (доступ только на чтение к вашему аккаунту).",
+    "build wix apps and headless sites, and manage wix stores, bookings, cms and more, with wix cli skills and the official wix mcp server.": "Создавайте приложения и headless-сайты Wix, управляйте магазинами, бронированиями и CMS с помощью навыков Wix CLI и официального MCP-сервера Wix.",
+    "build, publish, and manage wordpress.com and jetpack-connected sites. draft posts, edit blocks, check traffic stats, moderate comments, and manage plugins.": "Создавайте, публикуйте и управляйте сайтами WordPress.com и Jetpack: черновики записей, редактирование блоков, статистика трафика, модерация комментариев и управление плагинами.",
+    "connect 9,000+ apps to your ai workflow. discover, enable, and execute zapier actions and workflows directly from your client.": "Подключите более 9000 приложений к вашему ИИ-процессу: находите, включайте и запускайте действия и сценарии Zapier прямо из клиента.",
+    "manage your bigin crm from antigravity: review pipelines, find contacts and deals, log calls, plan follow-ups, and email customers.": "Управляйте Bigin CRM из Antigravity: просматривайте воронки продаж, находите контакты и сделки, фиксируйте звонки, планируйте задачи и отправляйте письма клиентам.",
+    "connect zoho projects to antigravity to turn tasks and issues into working code. access project context, investigate bugs, and update work items as you develop.": "Подключите Zoho Projects к Antigravity, чтобы превращать задачи и баги в готовый код: доступ к контексту проекта, анализ ошибок и обновление статусов в процессе работы."
 };
 
 function translateSingleEnglishClause(clause, isFirstClause) {
@@ -6259,6 +6506,17 @@ function isLikelyEnglishProseTarget(s) {
     const words = trimmed.split(/\s+/);
     if (words.length > 3) return true;
     return /\b(?:a|an|the|my|your|our|their|its|this|that|these|those|it|on|by|as|or|if|so|we|you|me|us|they|them|when|where|while|whether|before|after|without|across|into|through|against|between|should|would|could|have|has|had|who|what|which|how|why|can|will|do|does|did|not|only|every|each)\b/i.test(trimmed);
+}
+
+function isTitleCaseName(s) {
+    if (!s) return false;
+    const trimmed = String(s).trim();
+    const words = trimmed.split(/\s+/);
+    if (words.length === 0 || words.length > 6) return false;
+    if (/\b(?:a|an|the|my|your|our|their|its|this|that|these|those|is|are|was|were|be|been|you|we|they|when|where|while|which|what|how|should|would|could)\b/i.test(trimmed)) {
+        return false;
+    }
+    return words.every(w => /^[A-Z0-9][A-Za-z0-9.+_-]*(?:\s*\/\s*[A-Za-z0-9.+_-]+)?$/.test(w) || /^(?:for|of|and|with|in|on|to|by|&|-|–|—)$/i.test(w));
 }
 
 function pluralizeRuCount(count, one, two, five) {
@@ -6784,22 +7042,26 @@ const regexTranslations = [
         replace: (m) => `Плагины в наборе «${m[1]}»`
     },
     {
-        // "See more in Bundles" / "See more in <Shelf>"
-        pattern: /^See\s+more\s+in\s+(.+)$/i,
+        // "See more in <Shelf>" / "Show more in <Shelf>"
+        pattern: /^(?:See|Show)\s+more\s+in\s+[«"“]?(.+?)[»"”]?$/i,
         replace: (m) => {
-            const t = m[1].trim();
-            if (/^bundles$/i.test(t)) return "Показать ещё в наборах";
-            if (/^plugins$/i.test(t)) return "Показать ещё в плагинах";
+            const raw = m[1].trim();
+            const low = raw.toLowerCase();
+            if (low === 'bundles') return "Показать ещё в наборах";
+            if (low === 'plugins') return "Показать ещё в плагинах";
+            const t = translationDictionary[low] || raw;
             return `Показать ещё в «${t}»`;
         }
     },
     {
-        // "See less in Bundles" / "See less in <Shelf>"
-        pattern: /^See\s+less\s+in\s+(.+)$/i,
+        // "See less in <Shelf>" / "Collapse in <Shelf>"
+        pattern: /^(?:See\s+less|Collapse)\s+in\s+[«"“]?(.+?)[»"”]?$/i,
         replace: (m) => {
-            const t = m[1].trim();
-            if (/^bundles$/i.test(t)) return "Свернуть в наборах";
-            if (/^plugins$/i.test(t)) return "Свернуть в плагинах";
+            const raw = m[1].trim();
+            const low = raw.toLowerCase();
+            if (low === 'bundles') return "Свернуть в наборах";
+            if (low === 'plugins') return "Свернуть в плагинах";
+            const t = translationDictionary[low] || raw;
             return `Свернуть в «${t}»`;
         }
     },
@@ -6892,7 +7154,7 @@ const regexTranslations = [
                 "organization policy": "политику организации"
             };
             if (nounMap[low]) return `Добавить ${nounMap[low]}`;
-            if (isLikelyEnglishProseTarget(sub)) return m[0];
+            if (isLikelyEnglishProseTarget(sub) && !isTitleCaseName(sub)) return m[0];
             return `Добавить ${sub}`;
         }
     },
@@ -7021,12 +7283,22 @@ const regexTranslations = [
         replace: (m) => `Загрузить старые сообщения (показано ${m[1]} из ${m[2]})`
     },
     {
-        pattern: /^Agent\s+permissions\s+preset\s+selector,\s*current:\s*(.+)$/i,
-        replace: (m) => `Выбор профиля разрешений агента, текущий: ${m[1]}`
+        pattern: /^Agent\s+permissions\s+preset\s+selector,\s*(?:current|текущий):\s*(.+)$/i,
+        replace: (m) => {
+            const raw = m[1].trim();
+            const t = translationDictionary[raw.toLowerCase()] || raw;
+            return `Выбор профиля разрешений агента, текущий: ${t}`;
+        }
     },
     {
-        pattern: /^Выбор\s+модели,\s*current:\s*(.+)$/i,
-        replace: (m) => `Выбор модели, текущая: ${m[1]}`
+        pattern: /^(?:Model\s+selector|Выбор\s+модели),\s*(?:current|текущая):\s*(.+)$/i,
+        replace: (m) => {
+            const val = m[1].trim().replace(/\s+(Low|Medium|High|Extra|Max|Minimal|Fast)$/i, (_, eff) => {
+                const effRu = translationDictionary[eff.toLowerCase()] || eff;
+                return ` ${effRu}`;
+            });
+            return `Выбор модели, текущая: ${val}`;
+        }
     },
     {
         pattern: /^Details\s+for\s+(.+)$/i,
@@ -7040,17 +7312,9 @@ const regexTranslations = [
         pattern: /^Install\s+(.+)$/i,
         replace: (m) => {
             const sub = m[1].trim();
-            if (isLikelyEnglishProseTarget(sub)) return m[0];
+            if (isLikelyEnglishProseTarget(sub) && !isTitleCaseName(sub)) return m[0];
             return `Установить ${sub}`;
         }
-    },
-    {
-        pattern: /^See\s+more\s+in\s+(.+)$/i,
-        replace: (m) => `Показать ещё в разделе «${m[1]}»`
-    },
-    {
-        pattern: /^See\s+less\s+in\s+(.+)$/i,
-        replace: (m) => `Свернуть раздел «${m[1]}»`
     },
     {
         pattern: /^(.+),\s*Installed$/i,
@@ -14370,6 +14634,306 @@ const regexTranslations = [
     {
         pattern: /^No\s+more\s+older\s+messages,\s*showing\s+(\d+)\s+of\s+(\d+)$/i,
         replace: (m) => `Старых сообщений больше нет (показано ${m[1]} из ${m[2]})`
+    },
+    {
+        pattern: /^(?:Hi|Hey)\s+([^,]+),\s*what\s+can\s+we\s+get\s+done\s+today\?$/i,
+        replace: (m) => `Привет, ${m[1].trim()}! Чем займёмся сегодня?`
+    },
+    {
+        // Orchestrator model tooltip: "Carbon that may offload routine steps to Hydrogen. Same Carbon-level quality, fewer tokens used."
+        pattern: /^(.+?)\s+that\s+may\s+offload\s+routine\s+steps\s+to\s+(.+?)\.\s*Same\s+(.+?)-level\s+quality,\s*fewer\s+tokens\s+used\.?$/i,
+        replace: (m) => `Модель ${m[1].trim()}, которая может передавать рутинные шаги модели ${m[2].trim()}. Качество уровня ${m[3].trim()} при меньшем расходе токенов.`
+    },
+    {
+        // Deprecation notice: "GPT-OSS will be removed from Antigravity on November 18, 2026."
+        pattern: /^([A-Za-z0-9.\-_() ]+?)\s+will\s+be\s+removed\s+from\s+Antigravity\s+on\s+([A-Za-z]+)\s+(\d{1,2}),\s+(\d{4})\.?$/i,
+        replace: (m) => {
+            const months = {
+                january: 'января', february: 'февраля', march: 'марта', april: 'апреля',
+                may: 'мая', june: 'июня', july: 'июля', august: 'августа',
+                september: 'сентября', october: 'октября', november: 'ноября', december: 'декабря'
+            };
+            const monthRu = months[m[2].toLowerCase()] || m[2];
+            return `Модель ${m[1].trim()} будет удалена из Antigravity ${m[3]} ${monthRu} ${m[4]} г.`;
+        }
+    },
+    {
+        // Model name + trailing thinking effort in combined trigger/button labels
+        pattern: /^((?:Gemini|Claude)\s+[^\n()]+?)\s+(Low|Medium|High|Extra|Max|Minimal)$/i,
+        replace: (m) => {
+            const effMap = { low: 'Низкий', medium: 'Средний', high: 'Высокий', extra: 'Экстра', max: 'Макс.', minimal: 'Минимальный' };
+            return `${m[1].trim()} ${effMap[m[2].toLowerCase()] || m[2]}`;
+        }
+    },
+    {
+        // Context token breakdown: "Response (incl. tool calls): 1,234 tokens"
+        pattern: /^(?:(.+?):\s*)?([\d,\s\u00a0]+)\s+tokens$/i,
+        replace: (m) => {
+            const cnt = m[2].trim();
+            if (!m[1]) return `${cnt} токенов`;
+            const rawLabel = m[1].trim();
+            const labelMap = {
+                'context': 'Контекст',
+                'prompt': 'Запрос',
+                'input': 'Ввод',
+                'output': 'Вывод',
+                'response': 'Ответ',
+                'response (incl. tool calls)': 'Ответ (вкл. вызовы инструментов)',
+                'cache': 'Кэш',
+                'thinking': 'Размышление',
+                'total': 'Всего'
+            };
+            const ruLabel = labelMap[rawLabel.toLowerCase()] || translationDictionary[rawLabel.toLowerCase()] || rawLabel;
+            return `${ruLabel}: ${cnt} токенов`;
+        }
+    },
+    {
+        pattern: /^Cost\s+summary:\s*(.+)$/i,
+        replace: (m) => `Сводка стоимости: ${m[1]}`
+    },
+    {
+        pattern: /^(\d+)\s+demoted$/i,
+        replace: (m) => `${m[1]} понижено`
+    },
+    {
+        pattern: /^(\d+)\s+excluded$/i,
+        replace: (m) => `${m[1]} исключено`
+    },
+    {
+        pattern: /^(\d+)\s+rules?\s+exceeded\s+the\s+rules\s+budget\s+and\s+(?:was|were)\s+demoted\s+from\s+full\s+inline\s+content\s+to\s+a\s+file-path\s+pointer\.?$/i,
+        replace: (m) => {
+            const c = parseInt(m[1], 10);
+            const noun = pluralizeRuCount(c, 'правило', 'правила', 'правил');
+            const exceeded = (c % 10 === 1 && c % 100 !== 11) ? 'превысило' : 'превысили';
+            const demoted = (c % 10 === 1 && c % 100 !== 11) ? 'было понижено' : 'были понижены';
+            return `${c} ${noun} ${exceeded} лимит правил и ${demoted} со встраивания содержимого до ссылки на путь к файлу.`;
+        }
+    },
+    {
+        pattern: /^(\d+)\s+items?\s+in\s+(.+?)\s+exceeded\s+the\s+customization\s+budget\s+and\s+(?:was|were)\s+excluded\s+from\s+context\.?$/i,
+        replace: (m) => {
+            const c = parseInt(m[1], 10);
+            const rawCat = m[2].trim();
+            const catMap = { workflows: 'Рабочие процессы', skills: 'Навыки', rules: 'Правила', 'mcp servers': 'MCP-серверы', 'mcp tools': 'Инструменты MCP', mcp: 'MCP', subagents: 'Субагенты', plugins: 'Плагины', hooks: 'Хуки', commands: 'Команды' };
+            const cat = catMap[rawCat.toLowerCase()] || translationDictionary[rawCat.toLowerCase()] || rawCat;
+            const noun = pluralizeRuCount(c, 'элемент', 'элемента', 'элементов');
+            const exceeded = (c % 10 === 1 && c % 100 !== 11) ? 'превысил' : 'превысили';
+            const excluded = (c % 10 === 1 && c % 100 !== 11) ? 'был исключён' : 'были исключены';
+            return `${c} ${noun} в разделе «${cat}» ${exceeded} лимит персонализации и ${excluded} из контекста.`;
+        }
+    },
+    {
+        pattern: /^Give\s+each\s+Best\s+of\s+N\s+fork\s+a\s+full\s+clone\s+of\s+your\s+workspace,\s*including\s+its\s+local\s+commit\s+history\.\s*Choosing\s+a\s+winner\s+then\s+gives\s+your\s+workspace\s+that\s+fork['’]s\s+state,\s*so\s+the\s+commits\s+it\s+made\s+are\s+kept\.\s*Forks\s+take\s+longer\s+to\s+create\s+than\s+the\s+default\s+CitC\s+clone\.?(.*)$/i,
+        replace: (m) => `Создавать для каждой ветки режима «Лучший из N» полную копию рабочей области, включая локальную историю коммитов. При выборе победителя его состояние и созданные коммиты переносятся в вашу рабочую область. Создание веток занимает больше времени, чем стандартное клонирование CitC.${m[1] ? ' ' + m[1].trim() : ''}`
+    },
+    {
+        pattern: /^Give\s+each\s+Best\s+of\s+N\s+fork\s+its\s+own\s+clone\s+of\s+your\s+Git\s+repository\s+instead\s+of\s+a\s+copy-on-write\s+overlay\.\s*Each\s+fork\s+is\s+then\s+a\s+real\s+repository,\s*so\s+commits\s+it\s+makes\s+are\s+kept\s+when\s+you\s+choose\s+it\s+as\s+the\s+winner\.\s*Forks\s+take\s+longer\s+to\s+create,\s*and\s+the\s+wait\s+grows\s+with\s+the\s+size\s+of\s+your\s+repository\.?(.*)$/i,
+        replace: (m) => `Создавать для каждой ветки режима «Лучший из N» отдельный клон Git-репозитория вместо наложения copy-on-write. Каждая ветка является полноценным репозиторием, поэтому её коммиты сохраняются при выборе победителя. Время создания растёт пропорционально размеру репозитория.${m[1] ? ' ' + m[1].trim() : ''}`
+    },
+    {
+        pattern: /^Manage\s+(.+?)\s+app\s+settings\.?$/i,
+        replace: (m) => `Управление настройками приложения ${m[1].trim()}.`
+    },
+    {
+        pattern: /^Reset\s+(\d+)\s+overrides?$/i,
+        replace: (m) => `Сбросить переопределения (${m[1]})`
+    },
+    {
+        pattern: /^Version\s+([0-9][A-Za-z0-9._\-+]*)$/i,
+        replace: (m) => `Версия ${m[1]}`
+    },
+    {
+        pattern: /^Branch,\s*current:\s*(.+)$/i,
+        replace: (m) => `Ветка, текущая: ${m[1]}`
+    },
+    {
+        pattern: /^Receive\s+product\s+updates,\s*tips,\s*and\s+promotions\s+from\s+Google\s+(.+?)\s+via\s+email\.?$/i,
+        replace: (m) => `Получать новости о продукте, советы и акции Google ${m[1].trim()} по электронной почте.`
+    },
+    {
+        pattern: /^When\s+toggled\s+on,\s*(.+?)\s+collects\s+usage\s+data\s+to\s+help\s+Google\s+enhance\s+performance\s+and\s+features\.?$/i,
+        replace: (m) => `Когда включено, ${m[1].trim()} собирает данные об использовании, чтобы помочь Google улучшать производительность и функции.`
+    },
+    {
+        pattern: /^When\s+toggled\s+on,\s*(.+?)\s+will\s+use\s+your\s+AI\s+credits\s+to\s+fulfill\s+model\s+requests\s+once\s+you['’]re\s+out\s+of\s+model\s+quota\.\s*.+?\s+will\s+always\s+use\s+your\s+model\s+quota\s+first\s+before\s+using\s+AI\s+credits\.?$/i,
+        replace: (m) => `Когда включено, ${m[1].trim()} будет использовать ваши ИИ-кредиты для запросов к моделям после исчерпания квоты. ${m[1].trim()} всегда сначала расходует основную квоту моделей.`
+    },
+    {
+        pattern: /^Your\s+Plan:\s*(.+)$/i,
+        replace: (m) => `Ваш тариф: ${m[1]}`
+    },
+    {
+        pattern: /^Available\s+AI\s+Credits:\s*(.+)$/i,
+        replace: (m) => `Доступно ИИ-кредитов: ${m[1]}`
+    },
+    {
+        pattern: /^Build\s+with\s+(.+?)\s+Plugins$/i,
+        replace: (m) => `Плагины для разработки с ${m[1].trim()}`
+    },
+    {
+        pattern: /^(\d+)\s+CEL\s+values$/i,
+        replace: (m) => `Значения CEL: ${m[1]}`
+    },
+    {
+        pattern: /^(.+?)\s*[—–-]\s*Inserts:\s*(.+)$/i,
+        replace: (m) => `${m[1]} — Вставляет: ${m[2]}`
+    },
+    {
+        pattern: /^Configure\s+(.+?),\s*values\s+missing$/i,
+        replace: (m) => `Настроить ${m[1].trim()} (не заполнены параметры)`
+    },
+    {
+        pattern: /^Configure\s+(.+)$/i,
+        replace: (m) => {
+            const sub = m[1].trim();
+            if (isLikelyEnglishProseTarget(sub) && !isTitleCaseName(sub)) return m[0];
+            return `Настроить ${sub}`;
+        }
+    },
+    {
+        pattern: /^The\s+(.+?)\s+MCP\s+server\s+requires\s+configuration\s+parameters\s+before\s+it\s+can\s+be\s+started\.?$/i,
+        replace: (m) => `Для запуска MCP-сервера ${m[1].trim()} требуется указать параметры конфигурации.`
+    },
+    {
+        pattern: /^(\d+)\s+tools?\s+(enabled|disabled)$/i,
+        replace: (m) => {
+            const c = parseInt(m[1], 10);
+            const toolWord = pluralizeRuCount(c, 'инструмент', 'инструмента', 'инструментов');
+            const isEn = m[2].toLowerCase() === 'enabled';
+            const stateWord = (c % 10 === 1 && c % 100 !== 11)
+                ? (isEn ? 'включён' : 'отключён')
+                : (isEn ? 'включены' : 'отключены');
+            return `${c} ${toolWord} ${stateWord}`;
+        }
+    },
+    {
+        pattern: /^(Disable|Enable)\s+(.+?)\s+tool\s+for\s+(.+)$/i,
+        replace: (m) => `${m[1].toLowerCase() === 'disable' ? 'Отключить' : 'Включить'} инструмент ${m[2]} для ${m[3]}`
+    },
+    {
+        pattern: /^Auth(?:orization)?\s+code\s+for\s+(.+)$/i,
+        replace: (m) => `Код авторизации для ${m[1]}`
+    },
+    {
+        pattern: /^(Reconnect|Disconnect|Connect)\s+(.+)$/i,
+        replace: (m) => {
+            const sub = m[2].trim();
+            if (isLikelyEnglishProseTarget(sub) && !isTitleCaseName(sub)) return m[0];
+            const verbMap = { reconnect: 'Переподключить', disconnect: 'Отключить', connect: 'Подключить' };
+            return `${verbMap[m[1].toLowerCase()] || m[1]} ${sub}`;
+        }
+    },
+    {
+        pattern: /^More\s+for\s+(.+)$/i,
+        replace: (m) => `Ещё для ${m[1]}`
+    },
+    {
+        pattern: /^MCP\s+error(?:\s+(\d+))?:\s*(.+)$/i,
+        replace: (m) => `Ошибка MCP${m[1] ? ' ' + m[1] : ''}: ${m[2]}`
+    },
+    {
+        pattern: /^(Sent|Sending)\s+(.+?)\s+to\s+command$/i,
+        replace: (m) => `${m[1].toLowerCase() === 'sent' ? 'Отправлено' : 'Отправка'} «${m[2]}» команде`
+    },
+    {
+        pattern: /^Error\s+while\s+(?:running:\s*)?(.+)$/i,
+        replace: (m) => `Ошибка при выполнении: ${m[1]}`
+    },
+    {
+        pattern: /^Stopping\s+(.+)$/i,
+        replace: (m) => {
+            const sub = m[1].trim();
+            if (isLikelyEnglishProseTarget(sub) && !isTitleCaseName(sub)) return m[0];
+            return `Остановка ${sub}`;
+        }
+    },
+    {
+        pattern: /^Stop\s+(\d+)\s+selected$/i,
+        replace: (m) => `Остановить выбранные (${m[1]})`
+    },
+    {
+        pattern: /^(\d+)\s+selected$/i,
+        replace: (m) => `Выбрано: ${m[1]}`
+    },
+    {
+        pattern: /^Unnamed\s+Agent\s+(\d+)$/i,
+        replace: (m) => `Безымянный агент ${m[1]}`
+    },
+    {
+        pattern: /^Rule\s+(\d+)$/i,
+        replace: (m) => `Правило ${m[1]}`
+    },
+    {
+        pattern: /^See\s+(\d+)\s+more(?:\s+(.+))?$/i,
+        replace: (m) => m[2] ? `Показать ещё ${m[1]} (${translationDictionary[m[2].trim().toLowerCase()] || m[2].trim()})` : `Показать ещё ${m[1]}`
+    },
+    {
+        pattern: /^See\s+all\s*\((\d+)\)$/i,
+        replace: (m) => `Показать все (${m[1]})`
+    },
+    {
+        pattern: /^Adding\s+(.+)$/i,
+        replace: (m) => {
+            const sub = m[1].trim();
+            if (isLikelyEnglishProseTarget(sub) && !isTitleCaseName(sub)) return m[0];
+            return `Добавление ${sub}`;
+        }
+    },
+    {
+        pattern: /^(.+?),\s*voice\s+(\d+)\s+of\s+(\d+)$/i,
+        replace: (m) => `${m[1]}, голос ${m[2]} из ${m[3]}`
+    },
+    {
+        pattern: /^The\s+narrator\s*\(\s*(.+?)\s*\)\s*was\s+stopped\.\s*Ask\s+the\s+coordinator\s+to\s+add\s+a\s+new\s+one$/i,
+        replace: (m) => `Рассказчик (${m[1].trim()}) был остановлен. Попросите координатора добавить нового`
+    },
+    {
+        pattern: /^Opening\s+(.+?)['’]s\s+conversation\s+needs\s+the\s+app\.?$/i,
+        replace: (m) => `Для открытия диалога агента ${m[1].trim()} требуется настольное приложение.`
+    },
+    {
+        pattern: /^Everyone\s+in\s+#(.+)$/i,
+        replace: (m) => `Все в #${m[1]}`
+    },
+    {
+        pattern: /^Go\s+to\s+#(\d+)(?:\s+\((.+?)\))?$/i,
+        replace: (m) => `Перейти к #${m[1]}${m[2] ? ' (' + m[2] + ')' : ''}`
+    },
+    {
+        pattern: /^Posted\s+in\s+#(.+?);\s*click\s+to\s+show\s+only\s+#(.+)$/i,
+        replace: (m) => `Опубликовано в #${m[1]}; нажмите, чтобы показать только #${m[2]}`
+    },
+    {
+        pattern: /^Copied\s+["“](.+?)["”]\.\s*Paste\s+it\s+to\s+the\s+coordinator\s+and\s+say\s+what\s+you\s+want\s+changed\.?$/i,
+        replace: (m) => `Скопировано: «${m[1]}». Вставьте это сообщение координатору и укажите, что нужно изменить.`
+    },
+    {
+        pattern: /^Copied\s+["“](.+?)["”]\.\s*Paste\s+it\s+in\s+the\s+chat\.?$/i,
+        replace: (m) => `Скопировано: «${m[1]}». Вставьте в чат.`
+    },
+    {
+        pattern: /^Type\s+["“](.+?)["”]\s+in\s+the\s+chat\.?$/i,
+        replace: (m) => `Введите «${m[1]}» в чате.`
+    },
+    {
+        pattern: /^Tell\s+the\s+coordinator:\s*["“](.+?)["”]$/i,
+        replace: (m) => `Скажите координатору: «${m[1]}»`
+    },
+    {
+        pattern: /^Tell\s+it\s+["“](.+?)["”]$/i,
+        replace: (m) => `Напишите ему: «${m[1]}»`
+    },
+    {
+        pattern: /^Failed\s+to\s+save\s+(.+?):\s*(.+)$/i,
+        replace: (m) => `Не удалось сохранить ${m[1]}: ${m[2]}`
+    },
+    {
+        pattern: /^Failed\s+to\s+delete\s+(.+?):\s*(.+)$/i,
+        replace: (m) => `Не удалось удалить ${m[1]}: ${m[2]}`
+    },
+    {
+        pattern: /^Failed\s+to\s+update\s+(.+?)(?::\s*(.+))?$/i,
+        replace: (m) => `Не удалось обновить ${m[1]}${m[2] ? ': ' + m[2] : ''}`
     }
 ];
 
@@ -14434,10 +14998,11 @@ function shouldIgnore(node) {
 
     const isPluginFrame = (typeof window !== 'undefined' && window.location && window.location.protocol === 'plugin:');
     const isInsideSwarmPostOrCode = !!(node.parentElement && typeof node.parentElement.closest === 'function' && node.parentElement.closest('.msg-body, pre, code, kbd'));
+    const isInsideCodeOrPre = !!(node.parentElement && typeof node.parentElement.closest === 'function' && node.parentElement.closest('code, pre'));
 
     const isMatchSpecial = (val) => {
         if (!val) return false;
-        if ((val.includes(' ') || (isPluginFrame && !isInsideSwarmPostOrCode) || (typeof window !== 'undefined' && window.location && window.location.pathname && window.location.pathname.startsWith('/customizations'))) && translationDictionary[val]) return true;
+        if (!isInsideCodeOrPre && (val.includes(' ') || (isPluginFrame && !isInsideSwarmPostOrCode) || (typeof window !== 'undefined' && window.location && window.location.pathname && window.location.pathname.startsWith('/customizations'))) && translationDictionary[val]) return true;
         return (
             /^\d+\s*(?:s|sec|m|min|h|hr|d|w|wk|mo|mos|yr|y)$/.test(val) ||
             /^\d+\s*(?:h|hr)\s+\d+\s*(?:m|min)$/.test(val) ||
@@ -15412,6 +15977,9 @@ function shouldIgnore(node) {
             val.startsWith('verify ') ||
             val.startsWith('start using gemini') ||
             val.startsWith('hey ') ||
+            val.startsWith('hi ') ||
+            val.startsWith('hello,') ||
+            val.startsWith('hello ') ||
             val.startsWith('welcome back') ||
             val.startsWith('good to see you') ||
             val.startsWith('welcome to ') ||
@@ -15492,12 +16060,8 @@ function shouldIgnore(node) {
             }
         }
 
-        // Защищаем код внутри <code> от перевода, если это не специальный UI-текст
-        if (tagName === 'CODE' && !isSpecialUiText) {
-            return true;
-        }
-
-        if (tagName === 'PRE' && !isSpecialUiText) {
+        // Всегда защищаем содержимое <code> и <pre> от перевода (например, version, mcp_config.json, assets/ в README)
+        if (tagName === 'CODE' || tagName === 'PRE') {
             return true;
         }
 
@@ -15598,7 +16162,8 @@ function isFileName(text, parent) {
     }
     const trimmed = text.trim();
     const lowerTrimmed = trimmed.toLowerCase();
-    if ((lowerTrimmed.includes(' ') || (typeof window !== 'undefined' && window.location && window.location.pathname && window.location.pathname.startsWith('/customizations'))) && translationDictionary[lowerTrimmed]) return false;
+    const inCode = !!(parent && typeof parent.closest === 'function' && parent.closest('code, pre'));
+    if (!inCode && (lowerTrimmed.includes(' ') || (typeof window !== 'undefined' && window.location && window.location.pathname && window.location.pathname.startsWith('/customizations'))) && translationDictionary[lowerTrimmed]) return false;
     
     if (
         lowerTrimmed === 'troubleshooting_guide' || 
@@ -16648,8 +17213,25 @@ function translateTextNode(node) {
         const lowerText = normalized.toLowerCase();
         let translated = null;
 
-        const parentText = (node.parentElement ? (node.parentElement.textContent || '') : '').toLowerCase();
-        const grandParentText = (node.parentElement && node.parentElement.parentElement ? (node.parentElement.parentElement.textContent || '') : '').toLowerCase();
+        // Защита от перевода имён файлов-ссылок вроде [LICENSE](LICENSE) и коротких inline-тегов внутри непереведённого английского абзаца
+        const pEl = node.parentElement;
+        const pTag = pEl ? pEl.tagName : '';
+        if (pTag === 'A' && /^LICENSE(?:\.[A-Z]+)?$/i.test(normalized) && (normalized === 'LICENSE' || (pEl.getAttribute && (pEl.getAttribute('href') || '').toUpperCase().includes('LICENSE')))) {
+            return;
+        }
+        if ((pTag === 'A' || pTag === 'STRONG' || pTag === 'B' || pTag === 'EM' || pTag === 'SPAN') && typeof pEl.closest === 'function') {
+            const proseContainer = pEl.closest('p, li');
+            if (proseContainer && proseContainer !== pEl) {
+                const encText = (proseContainer.textContent || '').trim();
+                const isProse = proseContainer.tagName === 'P' || /[a-z][.!?]$/.test(encText);
+                if (isProse && !/[а-яА-ЯёЁ]/.test(encText) && normalized.split(/\s+/).length <= 2 && encText.split(/\s+/).length >= 5) {
+                    return;
+                }
+            }
+        }
+
+        const parentText = (pEl ? (pEl.textContent || '') : '').toLowerCase();
+        const grandParentText = (pEl && pEl.parentElement ? (pEl.parentElement.textContent || '') : '').toLowerCase();
         const fullContext = parentText + ' ' + grandParentText;
         const isTroubleshootingSentence = (
             fullContext.includes('troubleshooting_guide') ||
@@ -16671,6 +17253,31 @@ function translateTextNode(node) {
         if (!translated) {
             if (translationDictionary[lowerText]) {
                 translated = translationDictionary[lowerText];
+                if (lowerText === 'new') {
+                    const pTestId = (node.parentElement && node.parentElement.getAttribute) ? (node.parentElement.getAttribute('data-testid') || '') : '';
+                    const pClass = (node.parentElement && typeof node.parentElement.className === 'string') ? node.parentElement.className.toLowerCase() : '';
+                    const closestBtn = (node.parentElement && typeof node.parentElement.closest === 'function') ? node.parentElement.closest('button, [role="button"]') : null;
+                    const btnHasAddIcon = !!(closestBtn && (
+                        (closestBtn.textContent || '').trim().startsWith('+') ||
+                        (closestBtn.innerHTML || '').includes('>add<') ||
+                        /^(?:new|\+\s*new)$/i.test((closestBtn.getAttribute('aria-label') || '').trim())
+                    ));
+                    if (pTestId === 'swarm-unread-divider' || pClass.includes('divider')) {
+                        translated = 'Новые';
+                    } else if (
+                        !btnHasAddIcon && (
+                            pClass.includes('rounded-full') ||
+                            pClass.includes('rounded ') ||
+                            pClass.includes('badge') ||
+                            pClass.includes('pill') ||
+                            (node.parentElement && typeof node.parentElement.closest === 'function' && node.parentElement.closest('[role="option"], [role="menuitem"], [role="listbox"], [role="menu"], [data-base-ui-portal]'))
+                        )
+                    ) {
+                        translated = 'Новинка';
+                    } else {
+                        translated = 'Создать';
+                    }
+                }
                 if (lowerText === 'name' && (parentText.includes(': string') || fullContext.includes('const greet') || fullContext.includes('hello, ${name}'))) {
                     return;
                 }
@@ -16802,6 +17409,10 @@ function translateTextNode(node) {
                 if (pText.includes('navigation-drawer')) {
                     translated = ' ';
                 }
+            } else if (lowerText === 'or' && (fullContext.includes('mcp_config.json') || fullContext.includes('assets/'))) {
+                translated = 'или';
+            } else if (lowerText === 'in' && (fullContext.includes('plugin.json') || fullContext.includes('mcp_config.json') || fullContext.includes('bump'))) {
+                translated = 'в';
             } else if (lowerText === 'not') {
                 const pText = node.parentElement ? normalizeText(node.parentElement.textContent).toLowerCase() : '';
                 const gpText = (node.parentElement && node.parentElement.parentElement) ? normalizeText(node.parentElement.parentElement.textContent).toLowerCase() : '';
@@ -17420,18 +18031,19 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.34';
+    const FALLBACK_VERSION = '2.1.35';
+    const DEFAULT_CHANGELOG_V2135 = 'Обновление v2.1.35: исправлены бейджи «Новинка» (вместо «Создать») в выборе моделей, локализованы уровни рассуждения Extra/Max («Экстра»/«Макс.»), тултипы моделей Orchestrator и уведомление о выводе GPT-OSS, переведены все описания/промпты Marketplace и страница Granola с защитой inline-кода (version, LICENSE), а также выполнена сквозная локализация терминала, настроек, MCP-серверов, роя и нативных диалогов WSL/Main процесса в Antigravity 2.31.2.';
+    const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
     }
     let currentLocalVersion = window.__antigravity_local_version;
-    const DEFAULT_CHANGELOG_V2134 = 'Обновление v2.1.34: полная локализация AntiGravity 2.31.1 — все ротируемые приветствия главного экрана («С возвращением… С чего продолжим?», «Привет… Что создадим сегодня?», «Рады видеть вас… Что дальше?»), карточки подсказок и колоды (Tip Cards, Marketplace, новые модели), нативные диалоги Passkeys/WebAuthn/устройств/сертификатов и более 350 статических и динамических строк интерфейса.';
-    if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0) {
+    if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2134;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2135;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2134;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2135;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
