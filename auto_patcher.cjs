@@ -37,7 +37,8 @@ async function runPatch() {
             'new terminal tab': 'Новая вкладка терминала', 'split terminal': 'Разделить терминал', 'next aux pane tab': 'Следующая вкладка вспомогательной панели', 'previous aux pane tab': 'Предыдущая вкладка вспомогательной панели',
             'download diagnostics': 'Скачать диагностику', 'toggle between light/dark themes': 'Переключить светлую/тёмную тему', 'open command palette': 'Открыть палитру команд', 'open project picker': 'Открыть выбор проекта',
             'open keyboard shortcuts': 'Открыть сочетания клавиш', 'collapse all folders': 'Свернуть все папки', 'expand all folders': 'Развернуть все папки',
-            'see plans': 'Посмотреть тарифы', 'enable overages': 'Включить перерасход', 'enable ai credit overages': 'Включить оплату перерасхода (AI Credit)'
+            'see plans': 'Посмотреть тарифы', 'enable overages': 'Включить перерасход', 'enable ai credit overages': 'Включить оплату перерасхода (AI Credit)',
+            'confirm': 'Подтвердить', 'apply': 'Применить', 'approve': 'Одобрить', 'reject': 'Отклонить', 'accept': 'Принять', 'proceed': 'Продолжить', 'reset': 'Сбросить'
         };`;
             if (!preloadContent.includes('ANTIGRAVITY PRELOAD CONTEXT MENU TRANSLATE')) {
                 preloadContent = preloadContent.replace(

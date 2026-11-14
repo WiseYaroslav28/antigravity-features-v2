@@ -6393,7 +6393,99 @@ const translationDictionary = {
     "build a deduplicated table of matches for a set, using tavily. the table is what search returned, not every match that exists. use when the user wants a list, all of something, or a table with duplicates removed. confirm the columns and a cap before searching. for one crm record, or a csv of rows they already have, use tavily-entity. for a deep comprehensive report use tavily-research.": "Сбор и дедупликация структурированных таблиц совпадений по заданным критериям с помощью поиска Tavily.",
     "build a tavily search or extraction that runs on a cadence, with a saved baseline. search monitors set max_age_hours to the interval so a cached copy from before it is not returned. use when the user wants to monitor, track, watch, or be alerted when something changes, or asks for a recurring check of a query or a page. for a deep comprehensive report use tavily-research. for a one-time lookup use tavily-search. for a one-time table use tavily-list.": "Настройка регулярного мониторинга поисковых запросов и веб-страниц через Tavily со сравнением изменений относительно базового снимка.",
     "research a topic in depth with tavily. use this skill when a question needs many sources gathered and weighed together: analysing a market, policy, technology or trend, comparing options across several criteria, reviewing the literature, or any request to research, investigate or analyze something in depth. a single fact or answer to find, even one with many clues, is a tavily-search task. for one crm record use tavily-entity, for a table of matches use tavily-list, and for a recurring check use tavily-monitor.": "Глубокое многоисточниковое исследование тем, рынков, технологий и трендов со сравнением по множеству критериев через Tavily.",
-    "reminds the agent to use tavily when a request needs live web data or the contents of a web page": "Напоминает агенту использовать инструменты Tavily, когда запрос требует актуальных данных из интернета или чтения веб-страницы"
+    "reminds the agent to use tavily when a request needs live web data or the contents of a web page": "Напоминает агенту использовать инструменты Tavily, когда запрос требует актуальных данных из интернета или чтения веб-страницы",
+
+    // v2.1.38 — Modal Action Buttons (Confirm / Confirm Undo / Apply / Approve / Reject / Accept) & Split JSX UI Strings
+    "confirm": "Подтвердить",
+    "confirm ↵": "Подтвердить ↵",
+    "confirm ⏎": "Подтвердить ⏎",
+    "apply": "Применить",
+    "proceed": "Продолжить",
+    "approve": "Одобрить",
+    "reject": "Отклонить",
+    "accept": "Принять",
+    "reject all": "Отклонить все",
+    "accept all": "Принять все",
+    "reset": "Сбросить",
+    "manage": "Управлять",
+    "select": "Выбрать",
+    "skipped": "Пропущено",
+    "optional": "Необязательно",
+    "make default": "Сделать по умолчанию",
+    "use default": "По умолчанию",
+    "+ add hook": "+ Добавить хук",
+    "no handlers configured for": "Не настроено обработчиков для",
+    "add new handler to": "Добавить новый обработчик в",
+    "hook with this name already exists": "Хук с таким именем уже существует",
+    "relaunch ↻": "Перезапустить ↻",
+    "settings ↗": "Настройки ↗",
+    "cancel (⌃c)": "Отмена (⌃C)",
+    "back to all agents": "Назад ко всем агентам",
+    "focus this tile": "Развернуть эту плитку",
+    "submit code": "Отправить код",
+    "pick at most 2 reasons": "Выберите не более 2 причин",
+    "grant repository access": "Предоставить доступ к репозиторию",
+    "only the conversation will be rewound; your files will be left as-is.": "Будет отмотан только диалог; ваши файлы останутся без изменений.",
+    "undo restores your entire workspace to its state at this point.": "Отмена восстановит всю вашу рабочую область до состояния на этот момент.",
+    "are you sure you want to delete": "Вы уверены, что хотите удалить",
+    "intended primarily for previewing local development servers (e.g.,": "Предназначен в первую очередь для предпросмотра локальных серверов разработки (например,",
+    "this page is taking longer than expected to load, or it may be blocking embedded views (via x-frame-options or csp).": "Страница загружается дольше обычного или блокирует встраивание (через X-Frame-Options либо CSP).",
+    "this page is blocked in the built-in browser by your organization's context-aware access policy.": "Эта страница заблокирована во встроенном браузере политикой контекстно-зависимого доступа вашей организации.",
+    "an error was thrown.": "Произошла ошибка.",
+    "clearing cookies and site data for": "Очистка файлов cookie и данных сайта для",
+    "may sign you out of this site.": "может привести к выходу из аккаунта на этом сайте.",
+    "could not clear site data for": "Не удалось очистить данные сайта для",
+    "services this plugin connects to on your behalf.": "Сервисы, к которым этот плагин подключается от вашего имени.",
+    "sign-in failed:": "Ошибка входа:",
+    "scopes:": "Области доступа:",
+    "plugin:": "Плагин:",
+    "suggested plugin:": "Рекомендуемый плагин:",
+    "current parameter:": "Текущий параметр:",
+    "enter [user@]host[:port], or pick a host from your ssh config.": "Введите [user@]host[:port] или выберите хост из конфигурации SSH.",
+    "no hosts in": "Нет хостов в",
+    "yet. type one above.": "— введите адрес выше.",
+    "successfully imported project:": "Проект успешно импортирован:",
+    "alt text:": "Альтернативный текст:",
+    "agent can retrieve console logs from the browser and return it for further processing.": "Агент может получать логи консоли из браузера и передавать их для дальнейшей обработки.",
+    "working directory:": "Рабочая директория:",
+    "could not load the app view:": "Не удалось загрузить окно приложения:",
+    "[dev mode] view full search results": "[Режим разработчика] Показать полные результаты поиска",
+    "section header:": "Заголовок раздела:",
+    "trajectory id:": "ID траектории:",
+    "couldn't switch accounts:": "Не удалось переключить аккаунт:",
+    "payload:": "Данные (Payload):",
+    "previous chats live under a deprecated google3 project": "Предыдущие чаты находятся в устаревшем проекте Google3",
+    "this google cloud project is not supported. input a different project, or sign in with another account.": "Этот проект Google Cloud не поддерживается. Укажите другой проект или войдите с другим аккаунтом.",
+    "connecting to language server...": "Подключение к языковому серверу...",
+    "skill deletion is not available.": "Удаление навыков недоступно.",
+    "failed to toggle plugin. please try again.": "Не удалось переключить плагин. Попробуйте ещё раз.",
+    "failed to approve browser interaction": "Не удалось одобрить действие в браузере",
+    "failed to reject browser interaction": "Не удалось отклонить действие в браузере",
+    "a snapshot was saved before running. to restore your previous output:": "Перед запуском был сохранён снимок состояния. Чтобы восстановить прежний результат:",
+    "in the top menu.": "в верхнем меню.",
+    "select the latest snapshot from the": "Выберите последний снимок состояния в",
+    "quick pick": "быстром списке",
+    "ai credits are used when you've exceeded your model quota. keep track of your current ai credits in the": "ИИ-кредиты расходуются после исчерпания квоты модели. Отслеживайте остаток ИИ-кредитов на",
+    "remote control isn't active on this instance. enable it in": "Удалённое управление не активно в этом экземпляре. Включите его в разделе",
+    ", then reopen this dialog.": ", а затем снова откройте это окно.",
+    "validated with github and stored in": "Проверяется в GitHub и сохраняется в",
+    ". it is not visible in the agent's sandbox and is shared across all your projects.": ". Токен недоступен в песочнице агента и используется во всех ваших проектах.",
+    "finish signing in to": "Завершите вход в",
+    "in your browser.": "в вашем браузере.",
+    "captured dom tree for": "Получено DOM-дерево для",
+    "inspected commit": "Проверен коммит",
+    "connection closed": "Соединение закрыто",
+    "model context updates are not supported here": "Обновление контекста модели здесь не поддерживается",
+    "the aux pane is not supported here": "Вспомогательная панель здесь не поддерживается",
+    "auto-dismissed due to conversation switching": "Автоматически скрыто при переключении диалога",
+    "webmcp unavailable": "WebMCP недоступен",
+    "keyboard input": "Ввод с клавиатуры",
+    "text input": "Ввод текста",
+    "number of columns should be a positive integer": "Число столбцов должно быть положительным целым числом",
+    "no comments yet": "Комментариев пока нет",
+    "select text in the pdf and click + add to start commenting.": "Выделите текст в PDF и нажмите «+ Добавить», чтобы оставить комментарий.",
+    "text selection is paused for smoother viewing. search, comments, and annotations still work. use the toolbar text button when selection is needed.": "Выделение текста приостановлено для плавной прокрутки. Поиск, комментарии и заметки продолжают работать. Используйте кнопку текста на панели инструментов, когда нужно выделение.",
+    "blocked: file type not allowed": "Заблокировано: недопустимый тип файла"
 };
 
 function translateSingleEnglishClause(clause, isFirstClause) {
@@ -11323,6 +11415,10 @@ const regexTranslations = [
         replace: (match) => "Показать/скрыть панель обзора" + (match[1] ? (" " + match[1]) : "")
     },
     {
+        pattern: /^View\s+Diff\s+for\s+(.+)$/i,
+        replace: (m) => `Показать различия для ${m[1]}`
+    },
+    {
         // "View / Viewing <target> >" / "View / Viewing <target>"
         pattern: /^(?:View|Viewing)\s+(.+?)(\s*(?:—|–|-)\s*завершено|\s+finished)?(\s*([↺↻⟳⟲]|\.\.\.|\u2026)?\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?)?$/i,
         replace: (match) => {
@@ -15299,6 +15395,14 @@ const regexTranslations = [
     {
         pattern: /^\+(\d+)\s+more\s+\(Show\s+all\)$/i,
         replace: (m) => `Ещё +${m[1]} (Показать все)`
+    },
+    {
+        pattern: /^There\s+was\s+an\s+error\s+determining\s+the\s+code\s+changes\s+(?:that\s+this\s+undo\s+action\s+will\s+make|that\s+would\s+be\s+reverted):\s*(.+)$/i,
+        replace: (m) => `Произошла ошибка при определении изменений кода для этой отмены: ${m[1]}`
+    },
+    {
+        pattern: /^Are\s+you\s+sure\s+you\s+want\s+to\s+delete\s+the\s+hook\s+"(.+?)"\??$/i,
+        replace: (m) => `Вы уверены, что хотите удалить хук «${m[1]}»?`
     }
 ];
 
@@ -15706,6 +15810,9 @@ function shouldIgnore(node) {
             val.startsWith('starting ') ||
             val.startsWith('wants to run:') ||
             val === 'needs your approval' ||
+            val === 'inspected commit' ||
+            val.startsWith('captured dom tree') ||
+            val.startsWith('fetched network request') ||
             val === 'view' ||
             val === 'viewing' ||
             val.startsWith('view ') ||
@@ -17657,6 +17764,9 @@ function translateTextNode(node) {
                 if (lowerText === 'card' && !/(?:^|\s)(?:card|карточка)\s*\d+\s+(?:of|из)\s+\d+/i.test(fullContext)) {
                     return;
                 }
+                if (lowerText === 'select' && normalized === 'SELECT') {
+                    return;
+                }
                 if (lowerText === 'stage' && node.parentElement && typeof node.parentElement.closest === 'function' && node.parentElement.closest('[data-agy-layout-option], [data-agy-layout]')) {
                     translated = 'Сцена';
                 }
@@ -17739,6 +17849,8 @@ function translateTextNode(node) {
                 const parentText = node.parentElement ? node.parentElement.textContent.toLowerCase() : '';
                 if (parentText.includes('legal help') || parentText.includes('legal reasons')) {
                     translated = 'Посетите раздел';
+                } else if (node.parentElement && (node.parentElement.tagName === 'BUTTON' || (typeof node.parentElement.closest === 'function' && node.parentElement.closest('button, [role="button"]')))) {
+                    translated = 'Перейти';
                 }
             } else if (lowerText === 'legal help') {
                 translated = '«Юридическая помощь»';
@@ -17917,6 +18029,21 @@ function translateTextNode(node) {
                 if (mName && (fullContext.includes('defin') || fullContext.includes('kill') || fullContext.includes('определ') || fullContext.includes('останов'))) {
                     const isGen = fullContext.includes('defining') || fullContext.includes('killing') || fullContext.includes('определение') || fullContext.includes('остановка');
                     translated = `${isGen ? 'субагента' : 'субагент'} ${mName[1]}`;
+                }
+            } else if (lowerText === 'insertion' || lowerText === 'insertions' || lowerText === 'deletion' || lowerText === 'deletions') {
+                const pText = node.parentElement ? normalizeText(node.parentElement.textContent) : '';
+                const mDiff = pText.match(/(\d+)\s*(?:insertion|deletion)/i);
+                if (mDiff && /\([+-]\)/.test(pText)) {
+                    const c = parseInt(mDiff[1], 10);
+                    translated = lowerText.startsWith('ins')
+                        ? pluralizeRuCount(c, 'вставка', 'вставки', 'вставок')
+                        : pluralizeRuCount(c, 'удаление', 'удаления', 'удалений');
+                }
+            } else if (lowerText === 's' && node.parentElement) {
+                const nextTxt = node.nextSibling ? (node.nextSibling.nodeValue || '') : '';
+                const prevTxt = node.previousSibling ? (node.previousSibling.nodeValue || '') : '';
+                if (/^\s*\([+-]\)\s*$/.test(nextTxt) && /(?:insertion|deletion|встав(?:к|ок)|удален)/i.test(prevTxt)) {
+                    translated = '\u200b';
                 }
             } else if (lowerText === 'left' || lowerText === '% left') {
                 const pText = node.parentElement ? normalizeText(node.parentElement.textContent) : '';
@@ -18410,8 +18537,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.37';
-    const DEFAULT_CHANGELOG_V2137 = 'Обновление v2.1.37: полная локализация нововведений AntiGravity 2.32.1 — новые сочетания клавиш (Pin / Unpin Conversation, Submit Prompt / Alternate to Enter, Jump to Previous/Next Prompt, Toggle Word Wrap), все 7 новых и обновлённых плагинов Маркетплейса (Better Stack, Cloudflare, incident.io, Levels.fyi, SonarQube, Tavily, Gemini API) вместе с их навыками, а также SSH-подключения, QR-доступ с телефона, мульти-агентная панель (Layout / Stage / Grid), черновики комментариев браузера и заголовки запуска субагентов (Started / Starting).';
+    const FALLBACK_VERSION = '2.1.38';
+    const DEFAULT_CHANGELOG_V2138 = 'Обновление v2.1.38: перевод кнопки Confirm ↵ («Подтвердить ↵») и всех состояний диалога отмены (Confirm Undo), а также кнопок действий во всём интерфейсе (Apply, Proceed, Approve, Reject, Accept, Reject all, Accept all, Reset, Manage, Select, Visit, Relaunch ↻, Settings ↗, Cancel (⌃C), Back to all agents, Focus this tile), диалогов SSH, Web Preview, Cookies, Hooks и MCP-авторизации.';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -18419,10 +18546,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2137;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2138;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2137;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2138;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
