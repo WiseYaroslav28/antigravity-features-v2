@@ -6167,7 +6167,233 @@ const translationDictionary = {
     "build, publish, and manage wordpress.com and jetpack-connected sites. draft posts, edit blocks, check traffic stats, moderate comments, and manage plugins.": "Создавайте, публикуйте и управляйте сайтами WordPress.com и Jetpack: черновики записей, редактирование блоков, статистика трафика, модерация комментариев и управление плагинами.",
     "connect 9,000+ apps to your ai workflow. discover, enable, and execute zapier actions and workflows directly from your client.": "Подключите более 9000 приложений к вашему ИИ-процессу: находите, включайте и запускайте действия и сценарии Zapier прямо из клиента.",
     "manage your bigin crm from antigravity: review pipelines, find contacts and deals, log calls, plan follow-ups, and email customers.": "Управляйте Bigin CRM из Antigravity: просматривайте воронки продаж, находите контакты и сделки, фиксируйте звонки, планируйте задачи и отправляйте письма клиентам.",
-    "connect zoho projects to antigravity to turn tasks and issues into working code. access project context, investigate bugs, and update work items as you develop.": "Подключите Zoho Projects к Antigravity, чтобы превращать задачи и баги в готовый код: доступ к контексту проекта, анализ ошибок и обновление статусов в процессе работы."
+    "connect zoho projects to antigravity to turn tasks and issues into working code. access project context, investigate bugs, and update work items as you develop.": "Подключите Zoho Projects к Antigravity, чтобы превращать задачи и баги в готовый код: доступ к контексту проекта, анализ ошибок и обновление статусов в процессе работы.",
+
+    // Antigravity 2.32.1 — Keyboard Shortcuts, Commands, SSH Remote, Multi-Agent Pane & Browser Drafts
+    "pin / unpin conversation": "Закрепить / открепить диалог",
+    "submit prompt (alternate to enter)": "Отправить запрос (альтернатива Enter)",
+    "enter always submits. this adds a second shortcut.": "Enter всегда отправляет запрос. Это добавляет второе сочетание клавиш.",
+    "jump to previous prompt": "Перейти к предыдущему запросу",
+    "jump to next prompt": "Перейти к следующему запросу",
+    "toggle word wrap": "Переключить перенос строк",
+    "stop ssh server…": "Остановить SSH-сервер…",
+    "stop ssh server...": "Остановить SSH-сервер...",
+    "connect to ssh host…": "Подключиться к SSH-хосту…",
+    "connect to ssh host...": "Подключиться к SSH-хосту...",
+    "switch to this computer": "Переключиться на этот компьютер",
+    "ssh host…": "SSH-хост…",
+    "ssh host...": "SSH-хост...",
+    "ssh host": "SSH-хост",
+    "open ssh host": "Открыть SSH-хост",
+    "ssh config": "Конфигурация SSH",
+    "ssh config:": "Конфигурация SSH:",
+    "~/.ssh/config (default)": "~/.ssh/config (по умолчанию)",
+    "choose file…": "Выбрать файл…",
+    "choose file...": "Выбрать файл...",
+    "loading hosts…": "Загрузка хостов…",
+    "loading hosts...": "Загрузка хостов...",
+    "couldn't load your ssh hosts": "Не удалось загрузить список SSH-хостов",
+    "couldn't load your ssh hosts. you can still type one.": "Не удалось загрузить список SSH-хостов. Вы по-прежнему можете ввести адрес вручную.",
+    "1 hidden host": "1 скрытый хост",
+    "hidden hosts": "Скрытые хосты",
+    "hide from this list": "Скрыть из этого списка",
+    "show in the list again": "Снова показать в списке",
+    "remove from recent": "Удалить из недавних",
+    "waiting for the ssh connection to finish": "Ожидание завершения SSH-подключения",
+    "switch to": "Переключиться на",
+    "open on phone": "Открыть на телефоне",
+    "open on another device": "Открыть на другом устройстве",
+    "pick up this remote conversation on your phone or in any browser. scan the qr code or open the link below.": "Продолжите этот удалённый диалог на телефоне или в любом браузере. Отсканируйте QR-код или откройте ссылку ниже.",
+    "conversation link": "Ссылка на диалог",
+    "main agent": "Основной агент",
+    "filter agents": "Фильтр агентов",
+    "all agents": "Все агенты",
+    "stop all agents": "Остановить всех агентов",
+    "layout": "Раскладка",
+    "desktop": "Рабочий стол",
+    "stage": "Индексировать",
+    "icon": "Значок",
+    "color": "Цвет",
+    "pause this agent; it keeps its place and streams. resume to continue.": "Приостановить агента с сохранением контекста и потоков. Нажмите «Возобновить», чтобы продолжить.",
+    "resume this agent where it paused": "Возобновить работу агента с места паузы",
+    "stop this agent": "Остановить этого агента",
+    "no agent is working right now.": "Сейчас ни один агент не работает.",
+    "waiting for the agents’ windows…": "Ожидание окон агентов…",
+    "waiting for the agents' windows...": "Ожидание окон агентов...",
+    "needs your approval": "Требуется ваше подтверждение",
+    "1 draft": "1 черновик",
+    "resume comment draft": "Продолжить черновик комментария",
+    "resume 1 comment draft": "Продолжить 1 черновик комментария",
+    "discard comment draft": "Удалить черновик комментария",
+    "inspect element to comment": "Выбрать элемент для комментария",
+    "add an optional message, ⏎ to submit comments": "Добавьте сообщение (необязательно), ⏎ — отправить комментарии",
+    "add a message...": "Добавьте сообщение...",
+    "this link wants to open an app on your device.": "Эта ссылка пытается открыть приложение на вашем устройстве.",
+    "nothing waiting": "Нет ожидающих задач",
+    "nothing stuck": "Нет зависших задач",
+    "nothing needs you": "Ваше участие не требуется",
+    "latest action": "Последнее действие",
+    "waiting for your reply in chat": "Ожидает вашего ответа в чате",
+    "the coordinator is waiting for your reply": "Координатор ожидает вашего ответа",
+    "answer it in the coordinator chat.": "Ответьте в чате координатора.",
+    "waiting for the first post.": "Ожидание первого сообщения.",
+    "show details": "Показать подробности",
+    "saving…": "Сохранение…",
+    "searching...": "Поиск...",
+    "relaunches the app": "Перезапускает приложение",
+    "environment setup script": "Скрипт настройки окружения",
+    "a bash script run in your cloud environment after cloning repositories (or configure interactively in chat with /env-setup).": "Bash-скрипт, выполняемый в облачном окружении после клонирования репозиториев (также настраивается в чате командой /env-setup).",
+    "no compatible devices found.": "Совместимые устройства не найдены.",
+    "1. accessibility": "1. Универсальный доступ",
+    "2. screen recording": "2. Запись экрана",
+    "failed to export artifact": "Не удалось экспортировать артефакт",
+    "mcp server error": "Ошибка MCP-сервера",
+    "mcp error": "Ошибка MCP",
+    "failed to unarchive local project": "Не удалось разархивировать локальный проект",
+    "failed to clone project locally": "Не удалось клонировать проект локально",
+    "starting the conversation…": "Запуск диалога…",
+    "starting the conversation...": "Запуск диалога...",
+    "importing shared conversation...": "Импорт общего диалога...",
+    "importing shared conversation…": "Импорт общего диалога…",
+    "migrate with agent": "Мигрировать с помощью агента",
+    "workflows are changing on october 19th—stay tuned for updates. you can use the agent to migrate your workflows.": "Рабочие процессы изменятся 19 октября — следите за обновлениями. Вы можете поручить агенту миграцию ваших процессов.",
+    "custom models are only supported on linux machines.": "Пользовательские модели поддерживаются только на компьютерах с Linux.",
+    "wif config": "Конфигурация WIF",
+    "drag to move": "Перетащите для перемещения",
+    "set at least one scope filter": "Укажите хотя бы один фильтр области",
+    "optional boolean filter": "Необязательный логический фильтр",
+    "preview disabled (experiment off)": "Предпросмотр отключён (эксперимент выключен)",
+    "open ↗": "Открыть ↗",
+    "continue task →": "Продолжить задачу →",
+    "add them to allow future interactions": "добавьте их, чтобы разрешить дальнейшее взаимодействие",
+    "workspace > restore to snapshot": "Рабочая область > Восстановить из снимка",
+    "models tab": "вкладке «Модели»",
+    "some non-image binary content was truncated.": "Часть бинарных данных (не являющихся изображениями) была обрезана.",
+    "automated safeguards help to protect your conversations from insecure or unsafe content. that being said, users should be aware of potential agentic risks, including data exfiltration.": "Автоматические механизмы защиты оберегают ваши диалоги от небезопасного контента. Тем не менее учитывайте потенциальные риски при работе агентов, включая возможную утечку данных.",
+    "pick one of these themes under preset in settings > appearance.": "Выберите одну из этих тем в поле «Пресет» в разделе Настройки > Внешний вид.",
+    "couldn't search files": "Не удалось выполнить поиск файлов",
+    "allow next non-corp prompt": "Разрешить следующий не-корпоративный запрос",
+    "electron (desktop)": "Electron (настольное приложение)",
+    "electron (gemini app)": "Electron (приложение Gemini)",
+    "electron (android desktop)": "Electron (Android Desktop)",
+    "web (desktop)": "Веб (ПК)",
+    "web (desktop, pwa)": "Веб (ПК, PWA)",
+    "web (desktop, remote control)": "Веб (ПК, удалённое управление)",
+    "web (desktop, remote control, pwa)": "Веб (ПК, удалённое управление, PWA)",
+    "web (mobile)": "Веб (мобильный)",
+    "web (mobile, pwa)": "Веб (мобильный, PWA)",
+    "web (mobile, remote control)": "Веб (мобильный, удалённое управление)",
+    "web (mobile, remote control, pwa)": "Веб (мобильный, удалённое управление, PWA)",
+    "extension (cider)": "Расширение (Cider)",
+    "extension (vs code)": "Расширение (VS Code)",
+    "extension (antigravity ide)": "Расширение (Antigravity IDE)",
+    "extension (visual studio)": "Расширение (Visual Studio)",
+    "extension (eclipse)": "Расширение (Eclipse)",
+    "google (internal)": "Google (внутренний)",
+
+    // Antigravity 2.32.1 — New & Updated Marketplace Plugins (Gemini API v2.7, Better Stack, Cloudflare, incident.io, Levels.fyi, SonarQube, Tavily)
+    "build applications and shell workflows with the gemini interactions api, decisions api, live api, and gemini api cli, including text, image, video, and speech generation, managed agents, and real-time multimodal streaming.": "Создавайте приложения и консольные сценарии с помощью Gemini Interactions API, Decisions API, Live API и Gemini API CLI: генерация текста, изображений, видео и речи, управляемые агенты и мультимодальный стриминг в реальном времени.",
+    "investigate incidents, check who's on call, and query logs, metrics, traces, errors and rum in better stack. build dashboards and manage uptime monitors.": "Исследуйте инциденты, проверяйте дежурных (on-call), запрашивайте логи, метрики, трейсы, ошибки и данные RUM в Better Stack, создавайте дашборды и управляйте мониторами доступности.",
+    "show me all monitors that are currently down.": "Покажи все мониторы, которые сейчас недоступны.",
+    "who's on call right now?": "Кто сейчас на дежурстве (on-call)?",
+    "create a dashboard showing error rates for my api service.": "Создай дашборд с частотой ошибок для моего API-сервиса.",
+    "build, deploy and manage apps on cloudflare workers, storage and ai, with platform skills and the cloudflare api through one mcp server.": "Создавайте, развёртывайте и управляйте приложениями на Cloudflare Workers, хранилищами и ИИ с помощью платформенных навыков и Cloudflare API через единый MCP-сервер.",
+    "deploy this project to cloudflare workers": "Разверни этот проект в Cloudflare Workers",
+    "which cloudflare storage fits this app: d1, kv, r2 or durable objects?": "Какое хранилище Cloudflare подойдёт этому приложению: D1, KV, R2 или Durable Objects?",
+    "list my cloudflare zones and workers and flag anything that needs attention": "Выведи список моих зон и Workers в Cloudflare и отметь всё, что требует внимания",
+    "respond to and investigate incidents, manage on-call schedules and escalations, and write runbooks and skills. bundles the official incident.io mcp server.": "Реагируйте на инциденты и расследуйте их, управляйте графиками дежурств и эскалациями, создавайте ранбуки и навыки. Включает официальный MCP-сервер incident.io.",
+    "run the extensions skill": "Запусти навык настройки расширений (extensions)",
+    "what incidents are open right now?": "Какие инциденты сейчас открыты?",
+    "who's on call this week?": "Кто дежурит на этой неделе?",
+    "real salaries and company levels from levels.fyi: check if an offer is fair, compare offers, find jobs with pay shown and add your own salary.": "Реальные зарплаты и грейды компаний из Levels.fyi: проверяйте справедливость оффера, сравнивайте предложения, ищите вакансии с указанной оплатой и добавляйте свою зарплату.",
+    "i'm a google l5 in seattle making $190k base and $120k stock a year. am i underpaid?": "Я на уровне L5 в Google в Сиэтле с базой $190k и акциями $120k в год. Мне недоплачивают?",
+    "i have a stripe offer: $210k base, $400k rsus over 4 years. is it good?": "У меня оффер в Stripe: база $210k и $400k RSU на 4 года. Это хорошее предложение?",
+    "find remote product manager jobs that pay at least $200k base.": "Найди удалённые вакансии продакт-менеджера с базовым окладом от $200k.",
+    "sonarqube is the ai code quality and security verification platform used by millions of developers to catch bugs, vulnerabilities, and leaked secrets. this plugin enforces those standards in the agent coding loop: 7,500+ distinct issue types, secrets scanning, agentic analysis, and quality gates across 40+ languages.": "SonarQube — ИИ-платформа проверки качества и безопасности кода для поиска багов, уязвимостей и утечек секретов: более 7500 типов правил, сканирование секретов, агентный анализ и контроль качества (Quality Gates) для 40+ языков.",
+    "web search, content extraction, website crawling, url discovery, and deep research for antigravity via tavily's hosted mcp server and skills.": "Веб-поиск, извлечение контента, обход сайтов, поиск URL и глубокие исследования для Antigravity через облачный MCP-сервер и навыки Tavily.",
+    "find key decision-makers at [company] and summarize their professional backgrounds.": "Найди ключевых лиц, принимающих решения в [компании], и составь краткую сводку их опыта.",
+    "research [company], including its products, competitors, and latest news.": "Исследуй [компанию], включая её продукты, конкурентов и последние новости.",
+    "find the latest documentation and code examples for integrating [api or library] into my project.": "Найди актуальную документацию и примеры кода для интеграции [API или библиотеки] в мой проект.",
+
+    // Inner Skill, Agent & Rule Descriptions of the 7 New/Updated Plugins
+    "call the gemini api from the shell with gemini-api. use for media generation (images, tts, music, video), file and youtube analysis, audio/video transcription, deep research, and sandboxed agents.": "Вызов Gemini API из командной строки через gemini-api: генерация медиа (изображения, TTS, музыка, видео), анализ локальных файлов и YouTube, транскрибация аудио/видео, Deep Research и агенты в песочнице.",
+    "use this skill when writing code that calls the gemini api for text generation, multi-turn chat, multimodal understanding, image generation, video generation, speech generation (tts), voice design, voice replication, streaming responses, background research tasks, function calling, structured output, calibrated decisions (yes/no, choice, rubric scoring), or migrating from the old generatecontent api. covers sdk usage and best practices for gemini models and agents in python and typescript.": "Навык для написания кода с Gemini API: генерация текста, многошаговый чат, мультимодальность, генерация изображений, видео и речи (TTS), дизайн и клонирование голоса, стриминг, фоновые исследования, вызов функций, структурированный вывод, калиброванные решения и миграция с generateContent (Python и TypeScript).",
+    "use this skill when building real-time, bidirectional streaming applications with the gemini live api, or migrating legacy live models (2.0/2.5/3.1) to gemini 3.8 live. covers websocket-based audio/video/text streaming, voice activity detection (vad), background reasoning (extended thinking), asynchronous function calling, session management, ephemeral tokens, live transcription, and live translation. sdks covered - google-genai (python), @google/genai (javascript/typescript).": "Навык для создания двунаправленных потоковых приложений реального времени на базе Gemini Live API и миграции на Gemini 3.8 Live: стриминг аудио, видео и текста по WebSocket, детекция речи (VAD), фоновые рассуждения, асинхронные функции, эфемерные токены, живая транскрибация и перевод.",
+    "use this skill for generative video editing, text-to-video, image- and video-referenced video generation, first-frame-to-video, first-and-last-frame transitions, and video extensions using gemini omni 1.2 flash (gemini-omni-1.2-flash) via the official google-genai sdk. includes workflows for pre-processing/optimizing high-resolution or long source videos with ffmpeg, stripping audio for full sound regeneration, and handling turn-by-turn video editing and parallel execution.": "Навык генеративного видеомонтажа и синтеза видео в Gemini Omni 1.2 Flash через SDK google-genai: генерация по тексту, изображениям и видео-референсам, переходы между первым и последним кадрами, продление клипов, предобработка через ffmpeg и пошаговое редактирование.",
+    "guide for creating and managing better stack chart alerts. load when asked to set up alerting, create alerts on charts, or configure monitoring thresholds.": "Руководство по созданию и настройке оповещений для графиков Better Stack: пороговые значения, аномалии и уведомления.",
+    "complete reference for chart types, units, and settings on better stack dashboards. load right before creating charts - after the queries are built with the query skills.": "Полный справочник по типам графиков, единицам измерения и параметрам виджетов на дашбордах Better Stack.",
+    "better stack chart styling and advanced settings reference - series colors and order, number chart coloring thresholds, heatmap color categories, gauge bounds, y-axis tuning, custom units, and the per-key settings table with cross-setting gotchas. load when configuring how a chart looks beyond defaults, or when unsure which settings key applies to a chart type.": "Справочник по стилизации и расширенным настройкам графиков Better Stack: цвета и порядок серий, пороги окраски индикаторов, тепловые карты, шкалы, настройка оси Y и пользовательские единицы.",
+    "proven metrics queries for better stack collector sources (the source tool's platform \"collector\") - per-host node_* metrics, per-container and per-service container_resources_*, requests and errors by destination, tcp health, and the container-level saturation checks that host averages hide. load after metrics-query when the source platform is collector, for health checks, resource questions and service dashboards.": "Проверенные запросы метрик для источников Better Stack Collector: метрики хостов node_*, контейнеров container_resources_*, ошибки и запросы по назначениям, состояние TCP и проверка насыщения контейнеров.",
+    "connect the better stack mcp server and check that it works. use when the user installs the better stack plugin or asks to set it up, when a better stack request comes in but no better stack tools (such as `incidents`, `monitors`, `query`, `documentation`) are available, or when a better stack tool fails with \"unauthorized\", 401 or \"needs authentication\". tells the user exactly how to connect in the app they are using (chatgpt, codex, cursor, antigravity, claude code, claude chat and cowork, claude tag in slack). once connected, suggests what to set up next from what the account has, such as claude investigating every new incident or fixing errors on a schedule. also use when the user asks what better stack can do for them.": "Подключение MCP-сервера Better Stack и проверка его работоспособности: пошаговая авторизация при установке плагина или ошибках 401/unauthorized и рекомендации по начальной настройке мониторинга.",
+    "guide for building better stack dashboards. load when asked to create a dashboard or add multiple charts in better stack.": "Руководство по созданию информативных дашбордов и добавлению наборов графиков в Better Stack.",
+    "definitive guide for better stack dashboard layout — grid system, layout rules, row templates, planning process, coordinate math, section manipulation. load when creating or modifying dashboard layouts.": "Подробное руководство по вёрстке дашбордов Better Stack: модульная сетка, шаблоны строк, расчёт координат и управление секциями.",
+    "load before querying better stack exception or error-pattern data with sql - exception counts, trends, first/last occurrence, affected users, raw stack traces. contains instructions for querying errors/exceptions.": "Инструкции по SQL-запросам ошибок и исключений в Better Stack: частота, тренды, первое и последнее появление, затронутые пользователи и стек-трейсы.",
+    "import grafana dashboards from grafana.com templates. translates promql to clickhouse. load when user asks to import, convert, or recreate a grafana dashboard in better stack.": "Импорт и конвертация дашбордов Grafana в Better Stack с автоматическим переводом запросов из PromQL в диалект ClickHouse.",
+    "quick health assessment of servers or services (databases, webservers) from their better stack telemetry. checks metrics, logs, dependencies for anomalies. use for \"how is nginx and redis doing?\" questions, not incident diagnosis.": "Быстрая оценка состояния серверов и сервисов (СУБД, веб-серверов) по телеметрии Better Stack: проверка метрик, логов и зависимостей на аномалии.",
+    "investigate a better stack incident, alert or outage report end to end. find the incident, check who is on call, drill into the metrics, logs, traces and errors around it, correlate with recent releases, and post a short situation report. use when someone asks why something is down, slow or erroring, mentions a better stack incident, monitor or alert, or when claude is working as an on-call first responder in an incident channel (for example in claude tag).": "Комплексное расследование инцидентов и сбоев в Better Stack: поиск инцидента, проверка дежурных, анализ метрик, логов, трейсов и ошибок, сопоставление с релизами и подготовка сводного отчёта.",
+    "must load before writing any better stack logs or web-events sql query. contains required syntax for raw-event queries - without this, queries will fail. compatible with explore. also load when the user asks how raw-event queries look.": "Обязательный справочник синтаксиса SQL-запросов по сырым логам и веб-событиям в Better Stack и режиме Explore.",
+    "query shapes and settings for better stack map_chart (geographic map) and hierarchy_chart (host map hexagons). must load before creating either chart type — on dashboards or in explore.": "Структура запросов и настройки географических карт (map_chart) и гексагональных карт хостов (hierarchy_chart) в Better Stack.",
+    "must load before writing any better stack metrics sql query. better stack's pre-aggregated metrics dialect (merge functions, template variables, storage layouts, the ways a query silently blends series) - without it queries fail or return wrong numbers. also load when the user asks how metrics queries look.": "Обязательный справочник диалекта SQL для предагрегированных метрик Better Stack: Merge-функции, шаблонные переменные и схемы хранения.",
+    "must load before writing any better stack spans/traces sql query. contains required syntax for span queries - without this, queries will fail.": "Обязательный справочник синтаксиса SQL-запросов для трассировок и спанов (spans/traces) в Better Stack.",
+    "reference for better stack uptime monitors and escalation policies — monitor types, valid configuration values, how escalation policies work, and the limits of what the monitor tools can do. load before using create_monitor, create_heartbeat, monitors, monitor, escalation_policies or escalation_policy.": "Справочник по мониторам доступности (Uptime) и политикам эскалации Better Stack: типы проверок, допустимые параметры и правила оповещения.",
+    "build, debug, or review cloudflare agents sdk applications using the agents package.": "Разработка, отладка и ревью приложений на базе Cloudflare Agents SDK (пакет agents).",
+    "build and troubleshoot cloudflare basin analytics workflows with basin pipelines, basin catalog, and basin sql. use for streaming data into r2 iceberg tables, managing catalogs, or querying those tables; also use for requests using the former data platform, pipelines, r2 data catalog, or r2 sql names.": "Создание и диагностика аналитических конвейеров Cloudflare Basin (Basin Pipelines, Catalog и SQL) для потоковой загрузки данных в таблицы R2 Iceberg и выполнения запросов.",
+    "cloudflare's official cf cli (beta) for the public cloudflare api and workers projects. use for finding and running cloudflare commands from the terminal — sign-in and profiles, cf cli search, cf schema, cf deploy/dev/build, resource commands for dns, zones, d1, kv, and r2 — and for choosing between cf and wrangler in a project.": "Официальный инструмент командной строки Cloudflare cf CLI (бета) для работы с Cloudflare API и проектами Workers: авторизация, развёртывание и управление DNS, зонами, D1, KV и R2.",
+    "get a cloudflare workers app to a working local request by connecting its bindings, secrets, and initial data, then verifying real application behavior. use for app setup or onboarding after the project exists; use frameworks-on-cloudflare or cf-cli to create or configure the project, and wrangler or cf-cli for isolated commands.": "Первичная настройка и локальный запуск приложения Cloudflare Workers: подключение привязок (bindings), секретов, начальных данных и проверка работы.",
+    "implement or troubleshoot cloudflare email sending and email routing integrations and their delivery configuration.": "Внедрение и диагностика отправки и маршрутизации почты в Cloudflare (Email Sending и Email Routing).",
+    "assess and plan migrations from existing vpn, swg, or sase platforms to cloudflare one, including policy mapping, parity gaps, and rollout.": "Оценка и планирование миграции с существующих решений VPN, SWG и SASE на платформу Cloudflare One: сопоставление политик и план развёртывания.",
+    "design, configure, troubleshoot, or review cloudflare one zero trust and sase deployments. use cloudflare-one-migrations for migration planning from other vendors. also use when an agent, script, crawler, or other non-browser client needs to reach a webpage or api protected by cloudflare access.": "Проектирование, настройка, диагностика и аудит развёртываний Cloudflare One Zero Trust и SASE, а также доступа клиентов к ресурсам под защитой Cloudflare Access.",
+    "discover and choose cloudflare products for apps, apis, ai agents, storage, networking, and security. use for architecture and product selection, including when the user describes a need without naming a cloudflare product; then find the relevant skill or documentation. also use when a cloudflare-proxied site shows a cloudflare error page, a `52x` status, a 1xxx error code, or a cloudflare `403`, to decide whether to fix cloudflare configuration or the origin.": "Подбор продуктов и архитектуры Cloudflare для приложений, API, ИИ-агентов, хранилищ, сети и безопасности, а также диагностика ошибок 52x, 1xxx и 403.",
+    "build, debug, or review cloudflare durable objects code for persistent state and coordination.": "Разработка, отладка и ревью кода Cloudflare Durable Objects для хранения состояния и координации.",
+    "build, migrate, and deploy web-framework applications on cloudflare workers. use when a framework project such as astro, sveltekit, react router, tanstack start, nuxt, hono, or a react or vue spa targets cloudflare, or when a framework repository contains workers deployment configuration.": "Сборка, миграция и развёртывание веб-фреймворков (Astro, SvelteKit, React Router, TanStack Start, Nuxt, Hono, React/Vue SPA) на Cloudflare Workers.",
+    "build, debug, or review cloudflare workers invoked by the forward action in gateway http policies, including the gatewaymiddleware entrypoint, gateway types, context, and continuation.": "Разработка, отладка и ревью обработчиков Cloudflare Workers для HTTP-политик Gateway (GatewayMiddleware, типы и контекст).",
+    "build and troubleshoot cloudflare k2 or k2 streams durable logs. use for stream setup, producing from workers or http, configuring retention and inputs, and consuming through subscriptions.": "Настройка и диагностика долговременных потоков логов Cloudflare K2 и K2 Streams: запись из Workers/HTTP, хранение и подписки.",
+    "build, migrate, and deploy next.js apps on cloudflare workers with vinext. use when starting a next.js project on cloudflare, moving an existing app to workers, choosing between vinext and opennext, or setting up vinext for workers. for setup, migration, or deployment, install vinext's upstream skills with `npx skills add cloudflare/vinext` if missing, then read and follow the applicable skill and docs.": "Сборка, миграция и развёртывание приложений Next.js на Cloudflare Workers с использованием vinext и выбор между vinext и OpenNext.",
+    "migrate cloudflare sandbox apps from stable @cloudflare/sandbox to @cloudflare/sandbox@next (sdk 1.0 preview). use sandbox-next for apps already on the preview.": "Миграция приложений Cloudflare Sandbox со стабильного пакета @cloudflare/sandbox на @cloudflare/sandbox@next (SDK 1.0 preview).",
+    "build or maintain cloudflare sandbox apps on @cloudflare/sandbox@next (sdk 1.0 preview). use sandbox-migrate-to-next when porting a stable app.": "Разработка и поддержка приложений Cloudflare Sandbox на пакете @cloudflare/sandbox@next (SDK 1.0 preview).",
+    "build or maintain cloudflare sandbox apps on the stable @cloudflare/sandbox package. use sandbox-next for preview apps and sandbox-migrate-to-next for stable-to-preview migrations.": "Разработка и поддержка приложений Cloudflare Sandbox на стабильном пакете @cloudflare/sandbox.",
+    "set up, repair, or migrate to cloudflare turnstile bot verification in an existing frontend and backend, including server-side siteverify.": "Настройка, починка и миграция на защиту от ботов Cloudflare Turnstile во фронтенде и бэкенде (включая серверную проверку Siteverify).",
+    "audit, diagnose, or optimize website loading and interaction performance, core web vitals, and lighthouse performance scores.": "Аудит, диагностика и оптимизация скорости загрузки и отклика сайта, показателей Core Web Vitals и оценок Lighthouse.",
+    "cloudflare workers best practices for production applications. use when writing, reviewing, or configuring workers.": "Лучшие практики разработки, ревью и настройки промышленных приложений на Cloudflare Workers.",
+    "run, inspect, and debug cloudflare workers during local development with cf dev, wrangler dev, or the cloudflare vite plugin, using local explorer to read and seed binding data and query local traces and logs. also routes production debugging to workers observability. use for debugging requests whether or not the project uses wrangler.": "Локальный запуск, инспекция и отладка Cloudflare Workers через cf dev, wrangler dev или плагин Vite с просмотром привязок, локальных логов и трейсов.",
+    "profile or debug cpu usage and memory allocation in deployed cloudflare workers and durable objects. then use this information to optimize your code.": "Профилирование и отладка нагрузки на CPU и потребления памяти в развёрнутых Cloudflare Workers и Durable Objects для оптимизации кода.",
+    "run or troubleshoot wrangler cli commands in projects that have a wrangler.jsonc, wrangler.json, or wrangler.toml file, including local development, previews, deployment, and resource management. for new projects and projects without a wrangler configuration file, use the cf cli instead.": "Выполнение и диагностика команд Wrangler CLI в проектах с конфигурацией wrangler.jsonc / wrangler.toml: локальная разработка, превью, деплой и управление ресурсами.",
+    "guidance for writing, reviewing, or configuring cloudflare workers and applications deployed to workers.": "Руководство по написанию, проверке и настройке кода Cloudflare Workers и развёртываемых на них приложений.",
+    "write and maintain architecture docs — the documents that say what each system is, where it runs, what it depends on, and the real names of things (cloud projects, clusters, namespaces, hostnames, buckets). the heart of it is an interview that pins down what each system name actually means before anything is written. use when asked to write, extend or improve architecture documentation, to document a system, or to fill a gap the `architecture` skill could not answer.": "Написание и актуализация архитектурной документации систем: назначение сервисов, среда запуска, зависимости и точные имена кластеров, проектов, хостов и бакетов.",
+    "answer questions about how the organisation's own systems are built and run — what a system is, who owns it, where it runs, what it depends on and what depends on it, and the real names of things (clusters, hostnames, queues, buckets, repos) — from architecture docs, the catalog and past incidents. use whenever a question is about a specific system or piece of infrastructure: \"what is x\", \"what breaks if x goes down\", \"where does x run\", \"do we have docs on x\", or grounding a component before debugging it.": "Ответы на вопросы об устройстве и работе внутренних систем организации, их владельцах, инфраструктуре и зависимостях на основе архитектурной документации, каталога и прошлых инцидентов.",
+    "the organisation's catalog in incident.io: its types and entries (services, teams, components, customers, users and whatever else it models), their attributes, and the references between them. use whenever you're working with any of these in any way, including plain reads (\"who owns checkout?\", \"what is atlas?\", \"what depends on search?\", \"who's in the platform team?\") and finding an entry's id before setting a field or escalating. load it before the first catalog or team tool call: the tools return raw entries and references, and this skill says how to prove a match and walk a reference. not for schedule rotas and shifts (the on-call skill), nor how a system works internally (architecture docs, but ground the subject here first).": "Работа с каталогом организации в incident.io: сервисы, команды, компоненты, клиенты, их атрибуты и связи между ними.",
+    "review the health of your incident.io agent estate — plugins, skills, connections — and say what to fix, without fixing anything itself. use whenever anyone asks whether their incident.io setup is healthy, what's degraded, or what to improve, in any phrasing — one-off or as a recurring review. every finding routes to the thing that fixes it.": "Диагностика состояния экосистемы агентов incident.io (плагинов, навыков и подключений) с рекомендациями по устранению проблем.",
+    "set up, explain and troubleshoot incident.io extensions: the plugins of skills and the connectors (mcp servers, http apis) that give incident.io's agents an organisation's own knowledge and tools. use whenever you're working with incident.io plugins, skills, connectors or the extension_ tools in any way, including why one isn't working: a skill that never loads, a change that wasn't picked up, a sync error, a connector tool investigations won't call, whether a skill is used or helping. not for questions about the organisation's own systems, which the architecture skill answers.": "Настройка, объяснение и диагностика расширений incident.io: плагинов навыков и коннекторов (MCP-серверов, HTTP API).",
+    "reading and changing incidents in incident.io: status, severity, roles, fields, updates, channel messages and the ai investigation. use whenever you're working with an incident in any way, even a single read or change. load it before the first incident, update, follow-up or investigation tool call: the tools accept changes the organisation's rules then reject, and this skill says what to check first. not for fleet-wide statistics, runbooks or who is on call.": "Чтение и обновление инцидентов в incident.io: статусы, критичность, роли, поля, сводки, сообщения в каналах и ИИ-расследование.",
+    "who is on call in incident.io and how they get paged: schedules, rotas and shifts, overrides, cover requests, escalation paths, and pages (escalations). use whenever you're working with any of these in any way, including plain reads (\"who's on call tonight?\", \"when am i next on?\") and paging (\"page ava\", \"ack my page\", \"has anyone acked?\"). load it before the first schedule, escalation or cover-request tool call: the tools return raw shifts and levels, and this skill says how to read them.": "Дежурства (on-call) и вызовы в incident.io: расписания, смены, подмены, цепочки эскалации и отправка оповещений.",
+    "work with an incident's postmortem document — the write-up a team produces after an incident. use when the conversation is about a postmortem, post-incident review, debrief or retro document: finding it, creating one, reading it, changing its text, or reviewing it against what actually happened. covers rewriting a section, fixing a claim, adding a timeline entry or a learning, and also judging whether its claims hold up, what is missing, and what should become a follow-up. not for general questions about an incident, which is the incidents skill.": "Создание, редактирование и проверка постмортемов (разборов полётов после инцидентов): хронология событий, выводы и последующие задачи.",
+    "create and improve the skills in your own plugins — the ones incident.io's agents and your coding agents load. use whenever you're writing, editing, or reviewing a skill in any way: creating one, improving one from usage feedback or a review brief, or asking what makes a good skill.": "Создание, редактирование и улучшение пользовательских навыков в ваших плагинах для агентов incident.io и кодинг-агентов.",
+    "how the incident.io skills speak to the person in the session: what the user hears and what goes in the record, ending each reply with one next step, keeping a fixed milestone list through a multi-step job, and using the user's words instead of the skills' own vocabulary. load it before you reply to the user while running any other incident.io skill.": "Правила коммуникации навыков incident.io с пользователем: структура ответов, фиксация этапов многошаговых задач и предложение следующего шага.",
+    "query an organization's observability data — logs, metrics, traces, profiles, dashboards, kubernetes, sql databases — with the incident.io telemetry tools. use when answering a question that needs evidence from its monitoring: what errors fired, when latency moved, which pod restarted, what a dashboard showed, what its databases hold. not for questions the incident record already answers, and not for querying incident.io's own data.": "Запрос данных наблюдаемости организации (логов, метрик, трейсов, профилей, дашбордов, Kubernetes и SQL-баз) через инструменты телеметрии incident.io.",
+    "benchmark the user's current pay with levels.fyi data. use for 'am i underpaid', raise or promotion talks, merit-cycle or comp statements, equity refreshers, and recruiter pay-expectation questions.": "Сравнение текущей зарплаты пользователя с рыночными данными Levels.fyi для подготовки к пересмотру оклада, повышению или переговорам с рекрутером.",
+    "compare job offers side by side with levels.fyi pay data. use when the user has two or more offers, a counteroffer, or an offer and their current job, and asks which to take or which pays more.": "Наглядное сравнение нескольких офферов, контроффера или текущего места работы на основе рыночной аналитики Levels.fyi.",
+    "add the user's own salary or offer to levels.fyi. use when the user wants to share, submit or add their pay, including from an offer letter or comp statement, or says yes after you offer to add it.": "Добавление информации о собственной зарплате или полученном оффере пользователя в базу Levels.fyi.",
+    "evaluate a job offer, counteroffer or retention offer against levels.fyi pay. use when the user shares or uploads an offer letter and asks if it's good, fair or low, or what to negotiate.": "Оценка оффера, контроффера или предложения об удержании по данным Levels.fyi и рекомендации для переговоров об условиях.",
+    "show what levels.fyi can do and suggest first questions. use right after the plugin is installed, or when the user asks what levels.fyi can do or how to start.": "Обзор возможностей плагина Levels.fyi и примеры стартовых запросов сразу после установки.",
+    "answer pay and job questions with levels.fyi data, or report wrong or missing data. use for any salary or pay question, company pay by level, pay by city or country, rsu vesting, or open jobs.": "Ответы на вопросы о зарплатах, грейдах компаний, оплате по городам и странам, вестинге RSU и открытых вакансиях по данным Levels.fyi.",
+    "reviews code changes against sonarqube quality, security, and dependency-risk standards by composing this plugin's sonar-* skills. use proactively before merging a pr or when the user asks for a sonarqube-based code review, a second opinion on code quality, or to \"review my changes with sonarqube.\"": "Агент ревью изменений кода по стандартам качества, безопасности и рисков зависимостей SonarQube перед слиянием PR или по запросу пользователя.",
+    "analyze a file for quality and security issues using sonarqube": "Анализ файла на проблемы качества и безопасности кода с помощью SonarQube",
+    "find files with low test coverage and inspect uncovered lines in a sonarqube project (project key optional when mcp integration already defines the default project)": "Поиск файлов с низким покрытием тестами и просмотр непокрытых строк в проекте SonarQube",
+    "search for software composition analysis (sca) dependency risks in a sonarqube project (project key optional when mcp integration already defines the default project)": "Поиск рисков уязвимых зависимостей (SCA) в проекте SonarQube",
+    "find files with code duplications in a sonarqube project and inspect duplication blocks for a file (project key optional when mcp integration already defines the default project)": "Поиск файлов с дублированием кода и просмотр повторяющихся блоков в проекте SonarQube",
+    "fix a specific sonarqube issue in code by rule key and location": "Исправление конкретной проблемы SonarQube в коде по ключу правила и расположению",
+    "installs sonarqube-cli if not already installed, authenticates, and integrates sonarqube with the current agent (installs analysis hooks & sonarqube mcp server). use when the user wants to set up sonarqube integration or asks to configure sonarqube.": "Установка sonarqube-cli, авторизация и интеграция SonarQube с текущим агентом (настройка хуков анализа и MCP-сервера SonarQube).",
+    "search and filter sonarqube issues for a project, branch, or pull request via sonarqube-cli (`-p` is always required on the cli; resolve the key from user arguments or sonar-project.properties)": "Поиск и фильтрация замечаний SonarQube для проекта, ветки или пул-реквеста через sonarqube-cli",
+    "list sonarqube projects accessible to the current user": "Просмотр списка проектов SonarQube, доступных текущему пользователю",
+    "show sonarqube quality gate status for a project — pass/fail and each condition (metric key, threshold, actual value), plus worst-offender breakdowns. project key optional — resolved from `sonar-project.properties` or the mcp integration default.": "Проверка статуса контроля качества (Quality Gate) проекта в SonarQube с детализацией всех метрик, порогов и проблемных участков.",
+    "triage sonarqube sca dependency risks by cve reachability, prepare safe ui writeups, and optionally bundle confirmed package fixes.": "Триаж рисков зависимостей (SCA) в SonarQube с проверкой достижимости CVE и подготовкой безопасных обновлений пакетов.",
+    "use this skill whenever a task needs the web: searching for information, checking current facts or news, finding sources, reading a url, finding a page on a site, or collecting many pages from a site. use it for anything past your training data or anything the user wants verified online.": "Универсальный веб-навык Tavily: поиск актуальной информации и новостей, проверка фактов, чтение URL и сбор страниц с сайтов.",
+    "build production-ready tavily integrations with best practices baked in. reference documentation for developers using coding assistants to implement web search, content extraction, crawling, and research in agentic workflows, rag systems, or autonomous agents.": "Справочник и лучшие практики интеграции Tavily SDK для реализации веб-поиска, извлечения контента, краулинга и исследований в RAG-системах и автономных агентах.",
+    "fill in a company, person, or organization for a crm from the web, using tavily, including a csv of rows the user already has. identifies the right entity when others share the name, then fills the fields from authoritative sources. use when the user wants to enrich an account, a spreadsheet, or a pasted list of known names, or says \"enrich\", \"crm\", or \"who is\". for discovering matches use tavily-list. for a deep comprehensive report use tavily-research.": "Обогащение карточек компаний, персон и организаций для CRM или CSV-таблиц данными из авторитетных веб-источников через Tavily.",
+    "build a deduplicated table of matches for a set, using tavily. the table is what search returned, not every match that exists. use when the user wants a list, all of something, or a table with duplicates removed. confirm the columns and a cap before searching. for one crm record, or a csv of rows they already have, use tavily-entity. for a deep comprehensive report use tavily-research.": "Сбор и дедупликация структурированных таблиц совпадений по заданным критериям с помощью поиска Tavily.",
+    "build a tavily search or extraction that runs on a cadence, with a saved baseline. search monitors set max_age_hours to the interval so a cached copy from before it is not returned. use when the user wants to monitor, track, watch, or be alerted when something changes, or asks for a recurring check of a query or a page. for a deep comprehensive report use tavily-research. for a one-time lookup use tavily-search. for a one-time table use tavily-list.": "Настройка регулярного мониторинга поисковых запросов и веб-страниц через Tavily со сравнением изменений относительно базового снимка.",
+    "research a topic in depth with tavily. use this skill when a question needs many sources gathered and weighed together: analysing a market, policy, technology or trend, comparing options across several criteria, reviewing the literature, or any request to research, investigate or analyze something in depth. a single fact or answer to find, even one with many clues, is a tavily-search task. for one crm record use tavily-entity, for a table of matches use tavily-list, and for a recurring check use tavily-monitor.": "Глубокое многоисточниковое исследование тем, рынков, технологий и трендов со сравнением по множеству критериев через Tavily.",
+    "reminds the agent to use tavily when a request needs live web data or the contents of a web page": "Напоминает агенту использовать инструменты Tavily, когда запрос требует актуальных данных из интернета или чтения веб-страницы"
 };
 
 function translateSingleEnglishClause(clause, isFirstClause) {
@@ -14934,6 +15160,145 @@ const regexTranslations = [
     {
         pattern: /^Failed\s+to\s+update\s+(.+?)(?::\s*(.+))?$/i,
         replace: (m) => `Не удалось обновить ${m[1]}${m[2] ? ': ' + m[2] : ''}`
+    },
+    {
+        pattern: /^(Started|Starting)\s+(.+)$/i,
+        replace: (m) => {
+            const sub = m[2].trim();
+            if (/^["“]/.test(sub)) {
+                return `Запущено: «${sub.replace(/^["“]|["”]\.?$/g, '')}»`;
+            }
+            const verb = m[1].toLowerCase() === 'starting' ? 'Запуск:' : 'Запущено:';
+            const trSub = (typeof translateEnglishCommandSummary === 'function' ? translateEnglishCommandSummary(sub) : null) || translationDictionary[sub.toLowerCase()] || sub;
+            return `${verb} ${trSub}`;
+        }
+    },
+    {
+        pattern: /^Wants\s+to\s+run:\s*(.+)$/i,
+        replace: (m) => `Хочет выполнить: ${m[1]}`
+    },
+    {
+        pattern: /^(\d+)\s+hidden\s+hosts?$/i,
+        replace: (m) => {
+            const c = parseInt(m[1], 10);
+            const isSing = (c % 10 === 1 && c % 100 !== 11);
+            return `${c} ${isSing ? 'скрытый' : 'скрытых'} ${pluralizeRuCount(c, 'хост', 'хоста', 'хостов')}`;
+        }
+    },
+    {
+        pattern: /^Remove\s+(.+?)\s+from\s+Recent$/i,
+        replace: (m) => `Удалить ${m[1]} из недавних`
+    },
+    {
+        pattern: /^Couldn['’]t\s+connect\s+to\s+(.+)$/i,
+        replace: (m) => `Не удалось подключиться к ${m[1]}`
+    },
+    {
+        pattern: /^Connected\s+to\s+(.+)$/i,
+        replace: (m) => `Подключено к ${m[1]}`
+    },
+    {
+        pattern: /^No\s+hosts\s+in\s*(.*?)\s*yet\.\s*Type\s+one\s+above\.?$/i,
+        replace: (m) => m[1] ? `В ${m[1].trim()} пока нет хостов. Введите адрес выше.` : `Хостов пока нет. Введите адрес выше.`
+    },
+    {
+        pattern: /^(\d+)\s+Drafts?$/i,
+        replace: (m) => {
+            const c = parseInt(m[1], 10);
+            return `${c} ${pluralizeRuCount(c, 'черновик', 'черновика', 'черновиков')}`;
+        }
+    },
+    {
+        pattern: /^Resume\s+(\d+)\s+comment\s+drafts?$/i,
+        replace: (m) => {
+            const c = parseInt(m[1], 10);
+            return `Продолжить ${c} ${pluralizeRuCount(c, 'черновик', 'черновика', 'черновиков')} комментариев`;
+        }
+    },
+    {
+        pattern: /^Open\s+([a-z0-9+.-]+)\s+link\?$/i,
+        replace: (m) => `Открыть ссылку ${m[1]}?`
+    },
+    {
+        pattern: /^Open\s+(.+?)\s+skill$/i,
+        replace: (m) => `Открыть навык ${m[1]}`
+    },
+    {
+        pattern: /^Open\s+the\s+(.+?)\s+plugin$/i,
+        replace: (m) => `Открыть плагин ${m[1]}`
+    },
+    {
+        pattern: /^Cannot\s+add\s+folder:\s*"(.+?)"\s+is\s+not\s+a\s+valid\s+folder\s+location\.?$/i,
+        replace: (m) => `Невозможно добавить папку: «${m[1]}» не является допустимым путём к папке.`
+    },
+    {
+        pattern: /^Failed\s+to\s+resolve\s+folder:\s*(.+)$/i,
+        replace: (m) => `Не удалось определить папку: ${m[1]}`
+    },
+    {
+        pattern: /^(?:Couldn['’]t|Failed\s+to)\s+(pin|unpin|archive|unarchive|rename|delete)\s+conversation$/i,
+        replace: (m) => {
+            const map = { pin: 'закрепить', unpin: 'открепить', archive: 'архивировать', unarchive: 'разархивировать', rename: 'переименовать', delete: 'удалить' };
+            return `Не удалось ${map[m[1].toLowerCase()] || m[1]} диалог`;
+        }
+    },
+    {
+        pattern: /^Failed\s+to\s+(unarchive\s+project|select\s+workspace):\s*(.+)$/i,
+        replace: (m) => `Не удалось ${m[1].toLowerCase().includes('unarchive') ? 'разархивировать проект' : 'выбрать рабочую область'}: ${m[2]}`
+    },
+    {
+        pattern: /^Message\s+from\s+(.+)$/i,
+        replace: (m) => `Сообщение от ${m[1]}`
+    },
+    {
+        pattern: /^App\s+view\s+for\s+(.+)$/i,
+        replace: (m) => `Окно приложения для ${m[1]}`
+    },
+    {
+        pattern: /^(Enabled|Restarted|Deleted)\s+"(.+?)"\.?$/i,
+        replace: (m) => {
+            const map = { enabled: 'Включено:', restarted: 'Перезапущено:', deleted: 'Удалено:' };
+            return `${map[m[1].toLowerCase()] || m[1]} «${m[2]}»`;
+        }
+    },
+    {
+        pattern: /^Failed\s+to\s+(start|save|delete|create)\s+"?(.+?)"?\.?$/i,
+        replace: (m) => {
+            const map = { start: 'запустить', save: 'сохранить', delete: 'удалить', create: 'создать' };
+            return `Не удалось ${map[m[1].toLowerCase()] || m[1]} «${m[2]}»`;
+        }
+    },
+    {
+        pattern: /^Install\s+folder\s+"(.+?)"\s+is\s+already\s+in\s+use$/i,
+        replace: (m) => `Папка установки «${m[1]}» уже используется`
+    },
+    {
+        pattern: /^Move\s+to\s+Group:\s*(.+)$/i,
+        replace: (m) => `Переместить в группу: ${m[1]}`
+    },
+    {
+        pattern: /^Detached\s+at\s+([0-9a-f]{6,40})$/i,
+        replace: (m) => `Отсоединён на ${m[1]}`
+    },
+    {
+        pattern: /^System\s+default\s*\((.+)\)$/i,
+        replace: (m) => `Системный по умолчанию (${m[1]})`
+    },
+    {
+        pattern: /^Search\s+Google\s+for\s+"(.+)"$/i,
+        replace: (m) => `Найти в Google «${m[1]}»`
+    },
+    {
+        pattern: /^Created\s+automation\s+"(.+?)"\.?$/i,
+        replace: (m) => `Создана автоматизация «${m[1]}»`
+    },
+    {
+        pattern: /^Unfold\s+lines\s+(\d+-\d+)$/i,
+        replace: (m) => `Развернуть строки ${m[1]}`
+    },
+    {
+        pattern: /^\+(\d+)\s+more\s+\(Show\s+all\)$/i,
+        replace: (m) => `Ещё +${m[1]} (Показать все)`
     }
 ];
 
@@ -15337,6 +15702,10 @@ function shouldIgnore(node) {
             val.startsWith('ran ') ||
             val.startsWith('run ') ||
             val.startsWith('running ') ||
+            val.startsWith('started ') ||
+            val.startsWith('starting ') ||
+            val.startsWith('wants to run:') ||
+            val === 'needs your approval' ||
             val === 'view' ||
             val === 'viewing' ||
             val.startsWith('view ') ||
@@ -16745,8 +17114,12 @@ function isFileName(text, parent) {
         lowerTrimmed === 'stop subagent' ||
         lowerTrimmed === 'stop task' ||
         lowerTrimmed === 'needs attention' ||
+        lowerTrimmed === 'needs your approval' ||
         lowerTrimmed === 'started' ||
         lowerTrimmed === 'starting' ||
+        lowerTrimmed.startsWith('started ') ||
+        lowerTrimmed.startsWith('starting ') ||
+        lowerTrimmed.startsWith('wants to run:') ||
         lowerTrimmed === 'timed' ||
         lowerTrimmed === 'timing' ||
         lowerTrimmed.startsWith('timed ') ||
@@ -17148,7 +17521,7 @@ function isFileName(text, parent) {
     
     // Исключения: фразы с пробелами, содержащие email или известные глаголы интерфейса — не имена файлов!
     if (trimmed.includes(' ')) {
-        if (/@/.test(trimmed) || /^(?:\d+\s*h\s+limit|\d+(?:[.,]\d+)?%\s+left|create\s+(?:a|an)\s+|no\s+extensions\s+available|customize\s+sections|modified\s+files|open\s+file|select\s+folder|поиск\s+tabs|auto\s*\(preview\)|automatically\s+decide|enter\s+tool\s+name|give\s+feedback|проверка\s+|enable\s+(?:notifications|sounds)\s+for\s+agent|manage\s+your\s+notification|show\s+system\s+notifications|play\s+a\s+sound|set\s+the\s+volume)\b/i.test(trimmed) || /for\s+commands/i.test(trimmed) || /conversations\s+with/i.test(trimmed) || /\(.*?menu\)/i.test(trimmed) || /^created\s+/i.test(trimmed) || /^creating\s+/i.test(trimmed) || /^(?:canceled|cancelled)\s+/i.test(trimmed) || /^plan\s+carefully/i.test(trimmed) || /^invoke\s+the\s+boost/i.test(trimmed) || /^compact\s+the\s+conversation/i.test(trimmed) || /^assign\s+github\s+coding/i.test(trimmed) || /^create\s+an\s+issue/i.test(trimmed) || /^ask\s+a\s+quick\s+question/i.test(trimmed) || /^interview\s+me/i.test(trimmed) || /^invoke\s+a\s+(?:browser|team)/i.test(trimmed) || /^reflect\s+on\s+recent/i.test(trimmed) || /^uses\s+chrome\s+devtools/i.test(trimmed) || /^interactive\s+guide/i.test(trimmed) || /^guides\s+debugging/i.test(trimmed) || /^diagnoses\s+and\s+resolves/i.test(trimmed) || /^(?:search|поиск)\s+tool\s+for\s+modern/i.test(trimmed) || /^(?:build|сборка)\s+and\s+publish/i.test(trimmed) || /^comprehensive\s+guide/i.test(trimmed) || /^provides\s+a\s+comprehensive/i.test(trimmed) || /^how\s+to\s+render\s+rich/i.test(trimmed) || /^design,\s*implement/i.test(trimmed) || /^automatically\s+migrate/i.test(trimmed) || /^guidelines\s+for\s+interacting/i.test(trimmed) || /^how\s+to\s+manage\s+and\s+create/i.test(trimmed) || /^how\s+to\s+write\s+and\s+run/i.test(trimmed) || /^discover\s+ui\s+plugin/i.test(trimmed) || /^inspecting\s+/i.test(trimmed) || /^extracting\s+/i.test(trimmed) || /^listing\s+/i.test(trimmed) || /^reading\s+/i.test(trimmed) || /^testing\s+/i.test(trimmed) || /^searching\s+/i.test(trimmed) || /^checking\s+/i.test(trimmed) || /^updating\s+/i.test(trimmed) || /^updated\s+/i.test(trimmed) || /^update\s+/i.test(trimmed) || /^upgrading\s+/i.test(trimmed) || /^viewing\s+/i.test(trimmed) || /^message\s+from\s+/i.test(trimmed) || /^compacting/i.test(trimmed) || /^mark\s+all\s+as\s+read/i.test(trimmed) || /^this\s+page\s+is\s+going/i.test(trimmed) || /^toggle\s+maximize/i.test(trimmed) || /^toggle\s+overview/i.test(trimmed) || /^sincpro\s+/i.test(trimmed) || /^reverting\s+/i.test(trimmed) || /^downloading\s+/i.test(trimmed) || /^github\s+actions/i.test(trimmed) || /^untracked\s+/i.test(trimmed) || /^consilium\s+/i.test(trimmed) || /^schema\s+/i.test(trimmed) || /^contract\s+/i.test(trimmed) || /^validator\s+/i.test(trimmed) || /^dispatch_cli\s+/i.test(trimmed) || /^git\s+pickaxe/i.test(trimmed) || /\s+stat$/i.test(trimmed) || /\s+help$/i.test(trimmed) || /\s+body$/i.test(trimmed) || /\s+toolchain$/i.test(trimmed) || /^edited\s+/i.test(trimmed) || /^editing\s+/i.test(trimmed) || /^build\s+/i.test(trimmed) || /^building\s+/i.test(trimmed) || /^clear\s+/i.test(trimmed) || /^clearing\s+/i.test(trimmed) || /^push\s+/i.test(trimmed) || /^pushing\s+/i.test(trimmed) || /^killed\s+task/i.test(trimmed) || /^cancel\s+task/i.test(trimmed) || /^stop\s+recording/i.test(trimmed) || /^approve\s+/i.test(trimmed) || /^approved\s+/i.test(trimmed) || /^execute\s+/i.test(trimmed) || /^executed\s+/i.test(trimmed) || /^see\s+plans/i.test(trimmed) || /^enable\s+overages/i.test(trimmed) || /^explored\s+/i.test(trimmed) || /^ran\s+/i.test(trimmed) || /^run\s+/i.test(trimmed) || /^running\s+/i.test(trimmed) || /^view\s+/i.test(trimmed) || /^test\s+/i.test(trimmed) || /^commands/i.test(trimmed) || /^close\s+tab/i.test(trimmed) || /^split\s+/i.test(trimmed) || /^open\s+/i.test(trimmed) || /^collapse\s+/i.test(trimmed) || /^expand\s+/i.test(trimmed) || /^unpin\s+/i.test(trimmed) || /^pin\s+/i.test(trimmed) || /^rename\s+/i.test(trimmed) || /^archive\s+/i.test(trimmed) || /^download\s+/i.test(trimmed) || /^toggle\s+/i.test(trimmed) || /^next\s+aux/i.test(trimmed) || /^previous\s+aux/i.test(trimmed) || /^send\s+feedback/i.test(trimmed) || /^this\s+conversation/i.test(trimmed) || /^visit\s+/i.test(trimmed) || /^the\s+canva/i.test(trimmed) || /^our\s+servers/i.test(trimmed) || /^error\s+/i.test(trimmed) || /^model\s+unavailable/i.test(trimmed) || /^agent\s+execution/i.test(trimmed) || /^working/i.test(trimmed) || /^worked\s+for/i.test(trimmed) || /^copy/i.test(trimmed) || /^select\s+all/i.test(trimmed) || /files?\s+changed/i.test(trimmed) || /^(good|bad)\s+response/i.test(trimmed) || / finished$/i.test(trimmed) || /^the\s+subagent/i.test(trimmed) || /^failed_precondition/i.test(trimmed) || /architect\s+session/i.test(trimmed) || /^thought\s+for/i.test(trimmed) || /^thinking\s+for/i.test(trimmed) || /^exploring\s+/i.test(trimmed) || /^analyzed\s+/i.test(trimmed) || /^automations/i.test(trimmed) || /marketplace/i.test(trimmed) || /pane$/i.test(trimmed) || /^\+\s*create/i.test(trimmed) || /baseline quota/i.test(trimmed) || /ai credit overages/i.test(trimmed) || /all automations run/i.test(trimmed) || /google workspace/i.test(trimmed) || /custom agents/i.test(trimmed) || /skills & rules/i.test(trimmed) || /mcp servers/i.test(trimmed) || /^search\s+/i.test(trimmed) || /^inspect\s+/i.test(trimmed) || /^compare\s+/i.test(trimmed) || /^restore\s+/i.test(trimmed) || /^check\s+/i.test(trimmed) || /^checked\s+task/i.test(trimmed) || /^select\s+project/i.test(trimmed) || /^leaving\s+soon/i.test(trimmed) || /^notice/i.test(trimmed) || /^verify\s+/i.test(trimmed) || /^start\s+using/i.test(trimmed)) {
+        if (/@/.test(trimmed) || /^(?:\d+\s*h\s+limit|\d+(?:[.,]\d+)?%\s+left|create\s+(?:a|an)\s+|no\s+extensions\s+available|customize\s+sections|modified\s+files|open\s+file|select\s+folder|поиск\s+tabs|auto\s*\(preview\)|automatically\s+decide|enter\s+tool\s+name|give\s+feedback|проверка\s+|enable\s+(?:notifications|sounds)\s+for\s+agent|manage\s+your\s+notification|show\s+system\s+notifications|play\s+a\s+sound|set\s+the\s+volume)\b/i.test(trimmed) || /for\s+commands/i.test(trimmed) || /conversations\s+with/i.test(trimmed) || /\(.*?menu\)/i.test(trimmed) || /^created\s+/i.test(trimmed) || /^creating\s+/i.test(trimmed) || /^(?:canceled|cancelled)\s+/i.test(trimmed) || /^plan\s+carefully/i.test(trimmed) || /^invoke\s+the\s+boost/i.test(trimmed) || /^compact\s+the\s+conversation/i.test(trimmed) || /^assign\s+github\s+coding/i.test(trimmed) || /^create\s+an\s+issue/i.test(trimmed) || /^ask\s+a\s+quick\s+question/i.test(trimmed) || /^interview\s+me/i.test(trimmed) || /^invoke\s+a\s+(?:browser|team)/i.test(trimmed) || /^reflect\s+on\s+recent/i.test(trimmed) || /^uses\s+chrome\s+devtools/i.test(trimmed) || /^interactive\s+guide/i.test(trimmed) || /^guides\s+debugging/i.test(trimmed) || /^diagnoses\s+and\s+resolves/i.test(trimmed) || /^(?:search|поиск)\s+tool\s+for\s+modern/i.test(trimmed) || /^(?:build|сборка)\s+and\s+publish/i.test(trimmed) || /^comprehensive\s+guide/i.test(trimmed) || /^provides\s+a\s+comprehensive/i.test(trimmed) || /^how\s+to\s+render\s+rich/i.test(trimmed) || /^design,\s*implement/i.test(trimmed) || /^automatically\s+migrate/i.test(trimmed) || /^guidelines\s+for\s+interacting/i.test(trimmed) || /^how\s+to\s+manage\s+and\s+create/i.test(trimmed) || /^how\s+to\s+write\s+and\s+run/i.test(trimmed) || /^discover\s+ui\s+plugin/i.test(trimmed) || /^inspecting\s+/i.test(trimmed) || /^extracting\s+/i.test(trimmed) || /^listing\s+/i.test(trimmed) || /^reading\s+/i.test(trimmed) || /^testing\s+/i.test(trimmed) || /^searching\s+/i.test(trimmed) || /^checking\s+/i.test(trimmed) || /^updating\s+/i.test(trimmed) || /^updated\s+/i.test(trimmed) || /^update\s+/i.test(trimmed) || /^upgrading\s+/i.test(trimmed) || /^viewing\s+/i.test(trimmed) || /^message\s+from\s+/i.test(trimmed) || /^compacting/i.test(trimmed) || /^mark\s+all\s+as\s+read/i.test(trimmed) || /^this\s+page\s+is\s+going/i.test(trimmed) || /^toggle\s+maximize/i.test(trimmed) || /^toggle\s+overview/i.test(trimmed) || /^sincpro\s+/i.test(trimmed) || /^reverting\s+/i.test(trimmed) || /^downloading\s+/i.test(trimmed) || /^github\s+actions/i.test(trimmed) || /^untracked\s+/i.test(trimmed) || /^consilium\s+/i.test(trimmed) || /^schema\s+/i.test(trimmed) || /^contract\s+/i.test(trimmed) || /^validator\s+/i.test(trimmed) || /^dispatch_cli\s+/i.test(trimmed) || /^git\s+pickaxe/i.test(trimmed) || /\s+stat$/i.test(trimmed) || /\s+help$/i.test(trimmed) || /\s+body$/i.test(trimmed) || /\s+toolchain$/i.test(trimmed) || /^edited\s+/i.test(trimmed) || /^editing\s+/i.test(trimmed) || /^build\s+/i.test(trimmed) || /^building\s+/i.test(trimmed) || /^clear\s+/i.test(trimmed) || /^clearing\s+/i.test(trimmed) || /^push\s+/i.test(trimmed) || /^pushing\s+/i.test(trimmed) || /^killed\s+task/i.test(trimmed) || /^cancel\s+task/i.test(trimmed) || /^stop\s+recording/i.test(trimmed) || /^approve\s+/i.test(trimmed) || /^approved\s+/i.test(trimmed) || /^execute\s+/i.test(trimmed) || /^executed\s+/i.test(trimmed) || /^see\s+plans/i.test(trimmed) || /^enable\s+overages/i.test(trimmed) || /^explored\s+/i.test(trimmed) || /^ran\s+/i.test(trimmed) || /^run\s+/i.test(trimmed) || /^running\s+/i.test(trimmed) || /^view\s+/i.test(trimmed) || /^test\s+/i.test(trimmed) || /^commands/i.test(trimmed) || /^close\s+tab/i.test(trimmed) || /^split\s+/i.test(trimmed) || /^open\s+/i.test(trimmed) || /^collapse\s+/i.test(trimmed) || /^expand\s+/i.test(trimmed) || /^unpin\s+/i.test(trimmed) || /^pin\s+/i.test(trimmed) || /^rename\s+/i.test(trimmed) || /^archive\s+/i.test(trimmed) || /^download\s+/i.test(trimmed) || /^toggle\s+/i.test(trimmed) || /^next\s+aux/i.test(trimmed) || /^previous\s+aux/i.test(trimmed) || /^send\s+feedback/i.test(trimmed) || /^this\s+conversation/i.test(trimmed) || /^visit\s+/i.test(trimmed) || /^the\s+canva/i.test(trimmed) || /^our\s+servers/i.test(trimmed) || /^error\s+/i.test(trimmed) || /^model\s+unavailable/i.test(trimmed) || /^agent\s+execution/i.test(trimmed) || /^working/i.test(trimmed) || /^worked\s+for/i.test(trimmed) || /^copy/i.test(trimmed) || /^select\s+all/i.test(trimmed) || /files?\s+changed/i.test(trimmed) || /^(good|bad)\s+response/i.test(trimmed) || / finished$/i.test(trimmed) || /^the\s+subagent/i.test(trimmed) || /^failed_precondition/i.test(trimmed) || /architect\s+session/i.test(trimmed) || /^thought\s+for/i.test(trimmed) || /^thinking\s+for/i.test(trimmed) || /^exploring\s+/i.test(trimmed) || /^analyzed\s+/i.test(trimmed) || /^automations/i.test(trimmed) || /marketplace/i.test(trimmed) || /pane$/i.test(trimmed) || /^\+\s*create/i.test(trimmed) || /baseline quota/i.test(trimmed) || /ai credit overages/i.test(trimmed) || /all automations run/i.test(trimmed) || /google workspace/i.test(trimmed) || /custom agents/i.test(trimmed) || /skills & rules/i.test(trimmed) || /mcp servers/i.test(trimmed) || /^search\s+/i.test(trimmed) || /^inspect\s+/i.test(trimmed) || /^compare\s+/i.test(trimmed) || /^restore\s+/i.test(trimmed) || /^check\s+/i.test(trimmed) || /^checked\s+task/i.test(trimmed) || /^select\s+project/i.test(trimmed) || /^leaving\s+soon/i.test(trimmed) || /^notice/i.test(trimmed) || /^verify\s+/i.test(trimmed) || /^start\s+using/i.test(trimmed) || /^started\s+/i.test(trimmed) || /^starting\s+/i.test(trimmed) || /^wants\s+to\s+run:/i.test(trimmed)) {
             return false;
         }
     }
@@ -17283,6 +17656,12 @@ function translateTextNode(node) {
                 }
                 if (lowerText === 'card' && !/(?:^|\s)(?:card|карточка)\s*\d+\s+(?:of|из)\s+\d+/i.test(fullContext)) {
                     return;
+                }
+                if (lowerText === 'stage' && node.parentElement && typeof node.parentElement.closest === 'function' && node.parentElement.closest('[data-agy-layout-option], [data-agy-layout]')) {
+                    translated = 'Сцена';
+                }
+                if (lowerText === 'copy link' && normalized[0] === 'C') {
+                    translated = 'Скопировать ссылку';
                 }
                 if (lowerText === 'plan' && (fullContext.includes('create a plan') || fullContext.includes('составил план') || fullContext.includes('select') || fullContext.includes('выберите'))) {
                     translated = 'План';
@@ -18031,8 +18410,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.36';
-    const DEFAULT_CHANGELOG_V2136 = 'Обновление v2.1.36: исправлено появление виджета EN/RU и перевод чужих страниц во встроенном браузере (localhost / 127.0.0.1 / WebContentsView) — теперь локализатор строго проверяет нативный мост оболочки AntiGravity (electronNative / electronUpdater) и работает исключительно в самом интерфейсе IDE и её плагинах (plugin://).';
+    const FALLBACK_VERSION = '2.1.37';
+    const DEFAULT_CHANGELOG_V2137 = 'Обновление v2.1.37: полная локализация нововведений AntiGravity 2.32.1 — новые сочетания клавиш (Pin / Unpin Conversation, Submit Prompt / Alternate to Enter, Jump to Previous/Next Prompt, Toggle Word Wrap), все 7 новых и обновлённых плагинов Маркетплейса (Better Stack, Cloudflare, incident.io, Levels.fyi, SonarQube, Tavily, Gemini API) вместе с их навыками, а также SSH-подключения, QR-доступ с телефона, мульти-агентная панель (Layout / Stage / Grid), черновики комментариев браузера и заголовки запуска субагентов (Started / Starting).';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -18040,10 +18419,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2136;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2137;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2136;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2137;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;

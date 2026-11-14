@@ -1,6 +1,6 @@
 {
-  "version": "2.1.36",
-  "releasedAt": "2026-11-13T18:06:00.000Z",
-  "changelog": "Обновление v2.1.36: исправлено появление виджета EN/RU и перевод чужих страниц во встроенном браузере (localhost / 127.0.0.1 / WebContentsView) — теперь локализатор строго проверяет нативный мост оболочки AntiGravity (electronNative / electronUpdater) и работает исключительно в самом интерфейсе IDE и её плагинах (plugin://).",
+  "version": "2.1.37",
+  "releasedAt": "2026-11-14T02:40:00.000Z",
+  "changelog": "Обновление v2.1.37: полная локализация нововведений AntiGravity 2.32.1 — новые сочетания клавиш (Pin / Unpin Conversation, Submit Prompt / Alternate to Enter, Jump to Previous/Next Prompt, Toggle Word Wrap), все 7 новых и обновлённых плагинов Маркетплейса (Better Stack, Cloudflare, incident.io, Levels.fyi, SonarQube, Tavily, Gemini API) вместе с их навыками, а также SSH-подключения, QR-доступ с телефона, мульти-агентная панель (Layout / Stage / Grid), черновики комментариев браузера и заголовки запуска субагентов (Started / Starting).",
   "downloadUrl": "https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/localization_injected.js"
 }
