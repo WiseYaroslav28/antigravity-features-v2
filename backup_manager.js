@@ -7,7 +7,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const USER_PROFILE = process.env.USERPROFILE || process.env.HOME || os.homedir();
-const APPDATA_ROAMING = path.join(USER_PROFILE, 'AppData', 'Roaming', 'Antigravity');
+const APPDATA_ROAMING = process.platform === 'darwin'
+  ? path.join(USER_PROFILE, 'Library', 'Application Support', 'Antigravity')
+  : (process.platform === 'win32'
+      ? path.join(USER_PROFILE, 'AppData', 'Roaming', 'Antigravity')
+      : path.join(USER_PROFILE, '.config', 'Antigravity'));
 const CONFIG_DIR = path.join(USER_PROFILE, '.gemini', 'config');
 const PROJECTS_DIR = path.join(CONFIG_DIR, 'projects');
 const BACKUP_DIR = path.join(__dirname, 'backups');

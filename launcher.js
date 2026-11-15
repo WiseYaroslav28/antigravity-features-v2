@@ -2,19 +2,32 @@ import { spawn } from 'child_process';
 import CDP from 'chrome-remote-interface';
 import path from 'path';
 import os from 'os';
+import fs from 'fs';
 
 const USER_PROFILE = process.env.USERPROFILE || process.env.HOME || os.homedir();
-const EXE_PATH = path.join(USER_PROFILE, 'AppData', 'Local', 'Programs', 'antigravity', 'Antigravity.exe');
+const isMac = process.platform === 'darwin';
+const APP_DIR = isMac
+  ? (fs.existsSync('/Applications/Antigravity.app') ? '/Applications/Antigravity.app' : '/Applications/Antigravity IDE.app')
+  : null;
+const EXE_PATH = isMac
+  ? path.join(APP_DIR, 'Contents', 'MacOS', 'Antigravity')
+  : path.join(USER_PROFILE, 'AppData', 'Local', 'Programs', 'antigravity', 'Antigravity.exe');
+
+function spawnApp(args = []) {
+  if (isMac) {
+    const child = spawn('open', ['-a', APP_DIR, ...(args.length ? ['--args', ...args] : [])], { detached: true, stdio: 'ignore' });
+    child.unref();
+  } else {
+    const child = spawn(EXE_PATH, args, { detached: true, stdio: 'ignore' });
+    child.unref();
+  }
+}
 
 async function launchOrFocus() {
   try {
     const targets = await CDP.List({ port: 9222 });
     if (targets && targets.length > 0) {
-      // AntiGravity is already running with CDP port 9222.
-      // Spawning Antigravity.exe WITHOUT the debugging port flag sends a clean second-instance IPC event to Electron main process,
-      // which natively calls mainWindow.show(), mainWindow.restore(), and mainWindow.focus() to unhide from system tray!
-      const child = spawn(EXE_PATH, [], { detached: true, stdio: 'ignore' });
-      child.unref();
+      spawnApp([]);
       process.exit(0);
     }
   } catch (e) {
@@ -22,8 +35,7 @@ async function launchOrFocus() {
   }
 
   // Initial launch with remote debugging port enabled
-  const child = spawn(EXE_PATH, ['--remote-debugging-port=9222'], { detached: true, stdio: 'ignore' });
-  child.unref();
+  spawnApp(['--remote-debugging-port=9222']);
   process.exit(0);
 }
 

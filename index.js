@@ -26,7 +26,13 @@ const GITHUB_BRANCH = "main";
 const GITHUB_RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_REPO}/${GITHUB_BRANCH}`;
 
 const username = process.env.USERNAME || process.env.USER || path.basename(os.homedir());
-const ASAR_PATH = path.join('C:', 'Users', username, 'AppData', 'Local', 'Programs', 'Antigravity', 'resources', 'app.asar');
+const isMac = process.platform === 'darwin';
+const APP_BUNDLE_PATH = isMac
+  ? (fs.existsSync('/Applications/Antigravity.app') ? '/Applications/Antigravity.app' : '/Applications/Antigravity IDE.app')
+  : null;
+const ASAR_PATH = isMac
+  ? path.join(APP_BUNDLE_PATH, 'Contents', 'Resources', 'app.asar')
+  : path.join('C:', 'Users', username, 'AppData', 'Local', 'Programs', 'Antigravity', 'resources', 'app.asar');
 const HASH_FILE = path.join(__dirname, "backups", "patch-hash.json");
 
 let pendingPatchToApply = false;
@@ -369,6 +375,16 @@ async function checkAndApplyGithubUpdate({ force = false } = {}) {
       let downloadedContent = await fetchHttpsText(fileUrl);
       if (safeRel === "localization_injected.js" || safeRel.endsWith(".bat")) {
         downloadedContent = downloadedContent.replace(/\r?\n/g, "\r\n");
+      }
+
+      // Safeguard for macOS: if downloading system patcher/runner scripts and the remote file does NOT support darwin/macOS,
+      // skip overwriting the local macOS-adapted script so we don't regress to Windows-only paths.
+      if (isMac && ["auto_patcher.cjs", "index.js", "exit_patcher.cjs", "launcher.js", "backup_manager.js"].includes(safeRel)) {
+        const hasMacSupport = downloadedContent.includes("darwin") || downloadedContent.includes("isMac") || downloadedContent.includes("/Applications/Antigravity");
+        if (!hasMacSupport) {
+          log(`[AutoUpdater] Safeguard: Remote ${safeRel} is Windows-only (lacks macOS support). Keeping local macOS-adapted version.`);
+          continue;
+        }
       }
 
       fs.writeFileSync(tmpPath, downloadedContent, "utf8");
