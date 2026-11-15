@@ -1,4 +1,4 @@
-# ==============================================================================
+﻿# ==============================================================================
 # Google AntiGravity 2.0 — Автоматический веб-установщик русификатора и MCP (v2)
 # Запуск в 1 строку в PowerShell:
 #   irm https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/install.ps1 | iex
@@ -8,7 +8,7 @@ $ErrorActionPreference = "Stop"
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
 Write-Host "================================================================" -ForegroundColor Cyan
-Write-Host "  🚀 Установка русификатора Google AntiGravity 2.0 (v2.1.26+)   " -ForegroundColor Cyan
+Write-Host "  🚀 Установка русификатора Google AntiGravity 2.0 (Windows)    " -ForegroundColor Cyan
 Write-Host "================================================================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -129,4 +129,6 @@ Pop-Location
 Write-Host ""
 Write-Host "================================================================" -ForegroundColor Cyan
 Write-Host "  ✅ Установка завершена! Переключатель EN | RU доступен сверху." -ForegroundColor Green
+Write-Host "  ⭐ Сохранить проект в закладки / поставить звезду на GitHub:" -ForegroundColor Yellow
+Write-Host "     https://github.com/WiseYaroslav28/antigravity-features-v2" -ForegroundColor White
 Write-Host "================================================================" -ForegroundColor Cyan

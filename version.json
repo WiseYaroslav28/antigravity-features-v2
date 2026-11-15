@@ -1,7 +1,7 @@
 {
-  "version": "2.1.39",
-  "releasedAt": "2026-11-15T18:35:00.000Z",
-  "changelog": "Обновление v2.1.39: официальная поддержка macOS (Apple Silicon и Intel) — кроссплатформенные пути /Applications и ~/Applications, автоподпись codesign для Gatekeeper, однострочный bash-установщик install.sh и стабильный запуск через process.execPath (спасибо @MrRay57 за PR #1).",
+  "version": "2.1.40",
+  "releasedAt": "2026-11-15T22:05:00.000Z",
+  "changelog": "Обновление v2.1.40: добавлена кнопка быстрой поддержки проекта звездой на GitHub в меню статуса версии (рядом с EN | RU) и ссылка для сохранения репозитория в закладки в установочных скриптах Windows и macOS.",
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",

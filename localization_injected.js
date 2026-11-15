@@ -18537,8 +18537,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.39';
-    const DEFAULT_CHANGELOG_V2139 = 'Обновление v2.1.39: официальная поддержка macOS (Apple Silicon и Intel) — кроссплатформенные пути /Applications и ~/Applications, автоподпись codesign для Gatekeeper, однострочный bash-установщик install.sh и стабильный запуск через process.execPath (спасибо @MrRay57 за PR #1).';
+    const FALLBACK_VERSION = '2.1.40';
+    const DEFAULT_CHANGELOG_V2140 = 'Обновление v2.1.40: добавлена кнопка быстрой поддержки проекта звездой на GitHub в меню статуса версии (рядом с EN | RU) и ссылка для сохранения репозитория в закладки в установочных скриптах Windows и macOS.';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -18546,10 +18546,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2139;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2140;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2139;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2140;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -18582,6 +18582,7 @@ function initLanguageSwitcher() {
             <div class="update-popup-actions">
                 <button class="update-action-btn primary" id="update-check-install-btn">🔄 Проверить и установить обновления</button>
                 <button class="update-action-btn secondary" id="update-restart-action-btn">⚡ Перезапустить AntiGravity</button>
+                <button class="update-action-btn star-btn" id="update-star-action-btn" title="Открыть репозиторий на GitHub и поддержать проект звездой">⭐ Поддержать звездой на GitHub</button>
                 <button class="update-action-btn secondary" id="update-feedback-action-btn" title="Сообщить о непереведённой строке, предложить идею или заказать доработку на GitHub">💬 Предложить идею / Заказать доработку</button>
             </div>
         </div>
@@ -18889,6 +18890,26 @@ function initLanguageSwitcher() {
             background: rgba(255, 255, 255, 0.14);
             color: #ffffff;
         }
+        .update-action-btn.star-btn {
+            background: rgba(251, 191, 36, 0.10);
+            color: #fde68a;
+            border: 1px solid rgba(251, 191, 36, 0.28);
+        }
+        .update-action-btn.star-btn:hover {
+            background: rgba(251, 191, 36, 0.18);
+            color: #ffffff;
+            border-color: rgba(251, 191, 36, 0.50);
+        }
+        [data-theme="light"] .update-action-btn.star-btn {
+            background: #fffbeb;
+            color: #b45309;
+            border: 1px solid #fcd34d;
+        }
+        [data-theme="light"] .update-action-btn.star-btn:hover {
+            background: #fef3c7;
+            color: #92400e;
+            border-color: #f59e0b;
+        }
         .update-action-btn:disabled {
             opacity: 0.6;
             cursor: wait;
@@ -19150,6 +19171,19 @@ function initLanguageSwitcher() {
             try {
                 await fetch('http://127.0.0.1:39228/restart');
             } catch(err) {}
+        });
+    }
+
+    const starBtn = document.getElementById('update-star-action-btn');
+    if (starBtn) {
+        starBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const repoUrl = 'https://github.com/WiseYaroslav28/antigravity-features-v2';
+            if (window.electronNative && typeof window.electronNative.openExternal === 'function') {
+                window.electronNative.openExternal(repoUrl);
+            } else {
+                window.open(repoUrl, '_blank', 'noopener,noreferrer');
+            }
         });
     }
 
