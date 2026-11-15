@@ -1309,7 +1309,7 @@ const translationDictionary = {
     "load older messages": "Загрузить ранние сообщения",
     "skills used": "Использовано скиллов",
     "explored": "Исследовано",
-    "ran": "Запущено",
+    "ran": "Выполнено",
     
     // Поле ввода чата
     "ask anything, @ to mention, / for actions": "Спросите о чём угодно, @ для упоминания, / для действий",
@@ -2189,8 +2189,8 @@ const translationDictionary = {
     "analyzing directory": "Анализ директории",
     "web search": "Поиск в интернете",
     "searching the web": "Поиск в интернете",
-    "git status check": "Проверка статуса git",
-    "checking git status": "Проверка статуса git",
+    "git status check": "Проверка статуса Git",
+    "checking git status": "Проверка статуса Git",
     "test execution": "Выполнение тестов",
     "running tests": "Выполнение тестов",
     "code search": "Поиск в коде",
@@ -2366,6 +2366,8 @@ const translationDictionary = {
 
     // Google Workspace & Build with Google Marketplace Cards & Descriptions
     "google workspace": "Google Workspace",
+    "connect to google workspace, including docs, sheets, slides, drive, calendar, and gmail.": "Подключение к Google Workspace, включая Документы, Таблицы, Презентации, Диск, Календарь и Gmail.",
+    "connect to google workspace, including docs, sheets, slides, drive, calendar, and gmail": "Подключение к Google Workspace, включая Документы, Таблицы, Презентации, Диск, Календарь и Gmail",
     "connect to google workspace, including docs, sheets, slides, drive, and calendar.": "Подключение к Google Workspace, включая Документы, Таблицы, Презентации, Диск и Календарь.",
     "connect to google workspace, including docs, sheets, slides, drive, and calendar": "Подключение к Google Workspace, включая Документы, Таблицы, Презентации, Диск и Календарь",
     "google docs": "Google Docs",
@@ -2394,6 +2396,8 @@ const translationDictionary = {
     "using the google antigravity python sdk to build ai agents.": "Использование Google Antigravity Python SDK для создания ИИ-агентов.",
     "using the google antigravity python sdk to build ai agents": "Использование Google Antigravity Python SDK для создания ИИ-агентов",
     "google maps platform": "Google Maps Platform",
+    "integration skill and tools for google maps platform apis.": "Навык интеграции и инструменты для API Google Maps Platform.",
+    "integration skill and tools for google maps platform apis": "Навык интеграции и инструменты для API Google Maps Platform",
     "integration skill and tools for google maps platform...": "Навык интеграции и инструменты для Google Maps Platform...",
     "integration skill and tools for google maps platform.": "Навык интеграции и инструменты для Google Maps Platform.",
     "integration skill and tools for google maps platform": "Навык интеграции и инструменты для Google Maps Platform",
@@ -6485,10 +6489,464 @@ const translationDictionary = {
     "no comments yet": "Комментариев пока нет",
     "select text in the pdf and click + add to start commenting.": "Выделите текст в PDF и нажмите «+ Добавить», чтобы оставить комментарий.",
     "text selection is paused for smoother viewing. search, comments, and annotations still work. use the toolbar text button when selection is needed.": "Выделение текста приостановлено для плавной прокрутки. Поиск, комментарии и заметки продолжают работать. Используйте кнопку текста на панели инструментов, когда нужно выделение.",
-    "blocked: file type not allowed": "Заблокировано: недопустимый тип файла"
+    "blocked: file type not allowed": "Заблокировано: недопустимый тип файла",
+
+    // Automations schedules, Terminal, Background Tasks, Running Processes & IDE UI fixes
+    "custom schedule": "Своё расписание",
+    "add terminal": "Добавить терминал",
+    "close terminal": "Закрыть терминал",
+    "creating projects for your conversations": "Создание проектов для ваших диалогов",
+    "open blame in code search": "Открыть Blame в Code Search",
+    "view mcp servers": "Показать MCP-серверы",
+    "running (dev only)": "Запущенные процессы (Dev)",
+    "background tasks and terminals agents left running, across all conversations.": "Фоновые задачи и терминалы, оставленные агентами запущенными во всех диалогах.",
+    "background tasks and terminals agents left running, across all conversations": "Фоновые задачи и терминалы, оставленные агентами запущенными во всех диалогах",
+    "nothing is running right now": "Сейчас ничего не запущено",
+    "running processes are killed. this cannot be undone.": "Запущенные процессы будут принудительно завершены. Это действие нельзя отменить.",
+    "running processes are killed. this cannot be undone": "Запущенные процессы будут принудительно завершены. Это действие нельзя отменить",
+    "other conversation": "Другой диалог",
+    "no conversation": "Без диалога",
+    "still running": "Всё ещё выполняется",
+    "stopping…": "Остановка…",
+    "stopping...": "Остановка...",
+    "don't enter corp passwords": "Не вводите корпоративные пароли",
+    "typing your corp password here may trigger a password alert reset.": "Ввод корпоративного пароля здесь может вызвать принудительный сброс пароля (Password Alert).",
+    "typing your corp password here may trigger a password alert reset": "Ввод корпоративного пароля здесь может вызвать принудительный сброс пароля (Password Alert)",
+    "password prompt blocked": "Запрос пароля заблокирован",
+    "allow next non-corp prompt": "Разрешить следующий некорпоративный запрос",
+    "terminal sandbox is not supported in this environment": "Песочница терминала не поддерживается в этом окружении",
+    "terminal sandbox is not supported in this environment.": "Песочница терминала не поддерживается в этом окружении.",
+    "requesting your permission in terminal:": "Запрос вашего разрешения в терминале:",
+    "requesting your permission in terminal": "Запрос вашего разрешения в терминале",
+    "failed to create terminal": "Не удалось создать терминал",
+    "failed to initialize terminal:": "Не удалось инициализировать терминал:",
+    "failed to initialize terminal": "Не удалось инициализировать терминал",
+    "failed to delete terminal:": "Не удалось удалить терминал:",
+    "failed to delete terminal": "Не удалось удалить терминал",
+    "connect github: run `gh auth login` in a terminal": "Подключить GitHub: выполните `gh auth login` в терминале",
+    "connect github: run gh auth login in a terminal": "Подключить GitHub: выполните gh auth login в терминале",
+    "in a terminal": "в терминале",
+    "choose whether to be notified when the agent needs your attention or completes a task.": "Выберите, получать ли уведомления, когда агенту требуется ваше внимание или он завершает задачу.",
+    "choose whether to be notified when the agent needs your attention or completes a task": "Выберите, получать ли уведомления, когда агенту требуется ваше внимание или он завершает задачу",
+    "allow gemini to notify you when the agent needs your attention or completes a task.": "Разрешить Gemini отправлять уведомления, когда агенту требуется ваше внимание или он завершает задачу.",
+    "allow gemini to notify you when the agent needs your attention or completes a task": "Разрешить Gemini отправлять уведомления, когда агенту требуется ваше внимание или он завершает задачу",
+    "citc workspace paths cannot be used as a browser download directory": "Пути рабочей области CitC нельзя использовать в качестве папки загрузок браузера",
+    "citc workspace paths cannot be used as a browser download directory.": "Пути рабочей области CitC нельзя использовать в качестве папки загрузок браузера.",
+    "authenticated as": "Выполнен вход как",
+    "see all (": "Показать все (",
+    "at ref": "на ревизии",
+    "many external websites (such as google search, github, or wikipedia) restrict iframe embedding via": "Многие внешние сайты (например, Google Поиск, GitHub или Википедия) запрещают встраивание в iframe через",
+    "attackers might be trying to steal your information from": "Злоумышленники могут пытаться похитить ваши данные с сайта",
+    "site data cleared for": "Данные сайта очищены для",
+    "for antigravity business consumption options, see": "Варианты использования Antigravity Business см. в",
+    "this project was created for": "Этот проект был создан для",
+    "are you sure you want to delete the": "Вы уверены, что хотите удалить",
+    "couldn't connect to": "Не удалось подключиться к",
+    "agents created by": "Агенты, созданные",
+    "could not load": "Не удалось загрузить",
+    "please verify your account to continue using": "Подтвердите аккаунт, чтобы продолжить использование",
+    "please verify your account, then sign in again to continue. learn more by visiting our": "Подтвердите аккаунт и войдите снова, чтобы продолжить. Подробнее — в разделе",
+    "sorry, this account is ineligible to use": "К сожалению, этот аккаунт не подходит для использования"
 };
 
-function translateSingleEnglishClause(clause, isFirstClause) {
+function lowercaseFirstCyrillic(str) {
+    if (!str || typeof str !== 'string') return str;
+    if (/^[А-ЯЁ]/.test(str) && !/^[А-ЯЁ]{2}/.test(str)) {
+        return str.charAt(0).toLowerCase() + str.slice(1);
+    }
+    return str;
+}
+
+function uppercaseFirstCyrillic(str) {
+    if (!str || typeof str !== 'string') return str;
+    if (/^[а-яё]/.test(str)) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+    return str;
+}
+
+function translateScheduleTimes(timesStr) {
+    if (!timesStr) return '';
+    return timesStr.trim().replace(/\s+and\s+/gi, ' и ');
+}
+
+function translateScheduleDays(daysStr, capitalize) {
+    if (!daysStr) return '';
+    const raw = daysStr.trim();
+    const low = raw.toLowerCase();
+    const exactMap = {
+        'weekdays': 'по будням',
+        'weekends': 'по выходным',
+        'sundays': 'по воскресеньям',
+        'mondays': 'по понедельникам',
+        'tuesdays': 'по вторникам',
+        'wednesdays': 'по средам',
+        'thursdays': 'по четвергам',
+        'fridays': 'по пятницам',
+        'saturdays': 'по субботам'
+    };
+    let res = exactMap[low];
+    if (!res) {
+        const shortDayMap = {
+            sun: 'Вс', mon: 'Пн', tue: 'Вт', wed: 'Ср', thu: 'Чт', fri: 'Пт', sat: 'Сб'
+        };
+        const converted = raw
+            .replace(/\b(Sun|Mon|Tue|Wed|Thu|Fri|Sat)\b/gi, (d) => shortDayMap[d.toLowerCase()] || d)
+            .replace(/\s+and\s+/gi, ' и ');
+        res = `по ${converted}`;
+    }
+    return capitalize ? uppercaseFirstCyrillic(res) : res;
+}
+
+function translateNextRunDate(dateStr) {
+    if (!dateStr) return '';
+    const raw = dateStr.trim();
+    const low = raw.toLowerCase();
+    if (low === 'today') return 'сегодня';
+    if (low === 'tomorrow') return 'завтра';
+    const dowAccMap = {
+        'on sunday': 'в воскресенье',
+        'on monday': 'в понедельник',
+        'on tuesday': 'во вторник',
+        'on wednesday': 'в среду',
+        'on thursday': 'в четверг',
+        'on friday': 'в пятницу',
+        'on saturday': 'в субботу'
+    };
+    if (dowAccMap[low]) return dowAccMap[low];
+    const mDate = raw.match(/^on\s+([A-Za-z]+)\s+(\d{1,2})$/i);
+    if (mDate) {
+        const monthMap = {
+            january: 'января', jan: 'января',
+            february: 'февраля', feb: 'февраля',
+            march: 'марта', mar: 'марта',
+            april: 'апреля', apr: 'апреля',
+            may: 'мая',
+            june: 'июня', jun: 'июня',
+            july: 'июля', jul: 'июля',
+            august: 'августа', aug: 'августа',
+            september: 'сентября', sep: 'сентября', sept: 'сентября',
+            october: 'октября', oct: 'октября',
+            november: 'ноября', nov: 'ноября',
+            december: 'декабря', dec: 'декабря'
+        };
+        const mRu = monthMap[mDate[1].toLowerCase()];
+        if (mRu) return `${mDate[2]} ${mRu}`;
+    }
+    return raw;
+}
+
+const SUMMARY_HEAD_NOUNS_GEN = [
+    [/^dev(?:elopment)?\s+server\s+daemon$/i, 'фонового dev-сервера', 'm'],
+    [/^web\s+server\s+daemon$/i, 'фонового веб-сервера', 'm'],
+    [/^server\s+daemon$/i, 'фонового сервера', 'm'],
+    [/^background\s+daemon$/i, 'фонового процесса', 'm'],
+    [/^dev(?:elopment)?\s+servers?$/i, 'dev-сервера', 'm'],
+    [/^preview\s+servers?$/i, 'сервера предпросмотра', 'm'],
+    [/^web\s+servers?$/i, 'веб-сервера', 'm'],
+    [/^http\s+servers?$/i, 'HTTP-сервера', 'm'],
+    [/^api\s+servers?$/i, 'API-сервера', 'm'],
+    [/^mcp\s+servers?$/i, 'MCP-сервера', 'm'],
+    [/^local\s+servers?$/i, 'локального сервера', 'm'],
+    [/^servers?$/i, 'сервера', 'm'],
+    [/^daemons?$/i, 'фонового процесса', 'm'],
+    [/^project\s+integrity$/i, 'целостности проекта', 'f'],
+    [/^code(?:base)?\s+integrity$/i, 'целостности кода', 'f'],
+    [/^file\s+integrity$/i, 'целостности файлов', 'f'],
+    [/^data\s+integrity$/i, 'целостности данных', 'f'],
+    [/^package\s+integrity$/i, 'целостности пакета', 'f'],
+    [/^build\s+integrity$/i, 'целостности сборки', 'f'],
+    [/^system\s+integrity$/i, 'целостности системы', 'f'],
+    [/^integrity\s+checks?$/i, 'проверки целостности', 'f'],
+    [/^integrity\s+verification$/i, 'проверки целостности', 'f'],
+    [/^integrity$/i, 'целостности', 'f'],
+    [/^lint(?:ing)?\s+and\s+type[\s-]?checks?$/i, 'линтинга и проверки типов', 'm'],
+    [/^type[\s-]?checks?\s+and\s+lint(?:ing)?$/i, 'проверки типов и линтинга', 'f'],
+    [/^lint\s+checks?$/i, 'проверки линтером', 'f'],
+    [/^linter$/i, 'линтера', 'm'],
+    [/^lint(?:ing)?$/i, 'линтинга', 'm'],
+    [/^type[\s-]?check(?:s|ing)?$/i, 'проверки типов', 'f'],
+    [/^type\s+errors?$/i, 'ошибок типов', 'pl'],
+    [/^lint\s+errors?$/i, 'ошибок линтера', 'pl'],
+    [/^types$/i, 'типов', 'pl'],
+    [/^syntax\s+checks?$/i, 'проверки синтаксиса', 'f'],
+    [/^syntax$/i, 'синтаксиса', 'm'],
+    [/^unit\s+tests?$/i, 'unit-тестов', 'pl'],
+    [/^integration\s+tests?$/i, 'интеграционных тестов', 'pl'],
+    [/^e2e\s+tests?$/i, 'e2e-тестов', 'pl'],
+    [/^smoke\s+tests?$/i, 'smoke-тестов', 'pl'],
+    [/^regression\s+tests?$/i, 'регрессионных тестов', 'pl'],
+    [/^test\s+suites?$/i, 'набора тестов', 'm'],
+    [/^tests$/i, 'тестов', 'pl'],
+    [/^test$/i, 'теста', 'm'],
+    [/^prod(?:uction)?\s+builds?$/i, 'продакшен-сборки', 'f'],
+    [/^dev(?:elopment)?\s+builds?$/i, 'dev-сборки', 'f'],
+    [/^build\s+(?:output|artifacts?)$/i, 'артефактов сборки', 'pl'],
+    [/^builds?$/i, 'сборки', 'f'],
+    [/^bundles?$/i, 'бандла', 'm'],
+    [/^npm\s+dependencies$/i, 'npm-зависимостей', 'pl'],
+    [/^npm\s+packages$/i, 'npm-пакетов', 'pl'],
+    [/^dependencies$/i, 'зависимостей', 'pl'],
+    [/^deps$/i, 'зависимостей', 'pl'],
+    [/^packages$/i, 'пакетов', 'pl'],
+    [/^package$/i, 'пакета', 'm'],
+    [/^repository\s+traffic\s+stat(?:istic)?s$/i, 'статистики трафика репозитория', 'f'],
+    [/^traffic\s+stat(?:istic)?s$/i, 'статистики трафика', 'f'],
+    [/^stat(?:istic)?s$/i, 'статистики', 'f'],
+    [/^git\s+status$/i, 'статуса Git', 'm'],
+    [/^git\s+diff$/i, 'изменений Git', 'pl'],
+    [/^git\s+log$/i, 'истории коммитов Git', 'f'],
+    [/^commit\s+history$/i, 'истории коммитов', 'f'],
+    [/^working\s+tree$/i, 'рабочего дерева', 'n'],
+    [/^status$/i, 'статуса', 'm'],
+    [/^state$/i, 'состояния', 'n'],
+    [/^health(?:\s*checks?)?$/i, 'работоспособности', 'f'],
+    [/^versions$/i, 'версий', 'pl'],
+    [/^version$/i, 'версии', 'f'],
+    [/^release\s+notes$/i, 'примечаний к релизу', 'pl'],
+    [/^releases$/i, 'релизов', 'pl'],
+    [/^release$/i, 'релиза', 'm'],
+    [/^branches$/i, 'веток', 'pl'],
+    [/^branch$/i, 'ветки', 'f'],
+    [/^commits$/i, 'коммитов', 'pl'],
+    [/^commit$/i, 'коммита', 'm'],
+    [/^pull\s+requests?$/i, 'пул-реквеста', 'm'],
+    [/^changes$/i, 'изменений', 'pl'],
+    [/^files$/i, 'файлов', 'pl'],
+    [/^file$/i, 'файла', 'm'],
+    [/^(?:directories|folders)$/i, 'директорий', 'pl'],
+    [/^(?:directory|folder)$/i, 'директории', 'f'],
+    [/^project$/i, 'проекта', 'm'],
+    [/^workspace$/i, 'рабочей области', 'f'],
+    [/^repo(?:sitory)?$/i, 'репозитория', 'm'],
+    [/^codebase$/i, 'кодовой базы', 'f'],
+    [/^source\s+code$/i, 'исходного кода', 'm'],
+    [/^code$/i, 'кода', 'm'],
+    [/^config(?:uration)?$/i, 'конфигурации', 'f'],
+    [/^settings$/i, 'настроек', 'pl'],
+    [/^env(?:ironment)?$/i, 'окружения', 'n'],
+    [/^(?:database|db)\s+schema$/i, 'схемы БД', 'f'],
+    [/^(?:database|db)$/i, 'базы данных', 'f'],
+    [/^schema$/i, 'схемы', 'f'],
+    [/^migrations$/i, 'миграций', 'pl'],
+    [/^migration$/i, 'миграции', 'f'],
+    [/^cache$/i, 'кэша', 'm'],
+    [/^logs$/i, 'логов', 'pl'],
+    [/^log$/i, 'лога', 'm'],
+    [/^output$/i, 'вывода', 'm'],
+    [/^errors$/i, 'ошибок', 'pl'],
+    [/^error$/i, 'ошибки', 'f'],
+    [/^warnings$/i, 'предупреждений', 'pl'],
+    [/^issues$/i, 'проблем', 'pl'],
+    [/^ports$/i, 'портов', 'pl'],
+    [/^port$/i, 'порта', 'm'],
+    [/^processes$/i, 'процессов', 'pl'],
+    [/^process$/i, 'процесса', 'm'],
+    [/^tasks$/i, 'задач', 'pl'],
+    [/^task$/i, 'задачи', 'f'],
+    [/^scripts$/i, 'скриптов', 'pl'],
+    [/^script$/i, 'скрипта', 'm'],
+    [/^components$/i, 'компонентов', 'pl'],
+    [/^component$/i, 'компонента', 'm'],
+    [/^pages$/i, 'страниц', 'pl'],
+    [/^page$/i, 'страницы', 'f'],
+    [/^routes$/i, 'маршрутов', 'pl'],
+    [/^route$/i, 'маршрута', 'm'],
+    [/^endpoints$/i, 'эндпоинтов', 'pl'],
+    [/^endpoint$/i, 'эндпоинта', 'm'],
+    [/^styles$/i, 'стилей', 'pl'],
+    [/^assets$/i, 'ресурсов', 'pl'],
+    [/^translations$/i, 'переводов', 'pl'],
+    [/^dictionary$/i, 'словаря', 'm'],
+    [/^screenshots$/i, 'скриншотов', 'pl'],
+    [/^screenshot$/i, 'скриншота', 'm'],
+    [/^patch(?:es)?$/i, 'патча', 'm']
+];
+
+const SUMMARY_ADJ_GEN = {
+    fresh: { m: 'чистого', f: 'чистой', n: 'чистого', pl: 'чистых' },
+    clean: { m: 'чистого', f: 'чистой', n: 'чистого', pl: 'чистых' },
+    new: { m: 'нового', f: 'новой', n: 'нового', pl: 'новых' },
+    local: { m: 'локального', f: 'локальной', n: 'локального', pl: 'локальных' },
+    remote: { m: 'удалённого', f: 'удалённой', n: 'удалённого', pl: 'удалённых' },
+    background: { m: 'фонового', f: 'фоновой', n: 'фонового', pl: 'фоновых' },
+    live: { m: 'живого', f: 'живой', n: 'живого', pl: 'живых' },
+    current: { m: 'текущего', f: 'текущей', n: 'текущего', pl: 'текущих' },
+    latest: { m: 'последнего', f: 'последней', n: 'последнего', pl: 'последних' },
+    existing: { m: 'существующего', f: 'существующей', n: 'существующего', pl: 'существующих' },
+    updated: { m: 'обновлённого', f: 'обновлённой', n: 'обновлённого', pl: 'обновлённых' },
+    patched: { m: 'пропатченного', f: 'пропатченной', n: 'пропатченного', pl: 'пропатченных' },
+    full: { m: 'полного', f: 'полной', n: 'полного', pl: 'полных' },
+    complete: { m: 'полного', f: 'полной', n: 'полного', pl: 'полных' },
+    quick: { m: 'быстрого', f: 'быстрой', n: 'быстрого', pl: 'быстрых' },
+    fast: { m: 'быстрого', f: 'быстрой', n: 'быстрого', pl: 'быстрых' },
+    all: { m: 'всего', f: 'всей', n: 'всего', pl: 'всех' },
+    unused: { m: 'неиспользуемого', f: 'неиспользуемой', n: 'неиспользуемого', pl: 'неиспользуемых' },
+    missing: { m: 'недостающего', f: 'недостающей', n: 'недостающего', pl: 'недостающих' },
+    broken: { m: 'сломанного', f: 'сломанной', n: 'сломанного', pl: 'сломанных' },
+    stale: { m: 'старого', f: 'старой', n: 'старого', pl: 'старых' },
+    old: { m: 'старого', f: 'старой', n: 'старого', pl: 'старых' },
+    active: { m: 'активного', f: 'активной', n: 'активного', pl: 'активных' },
+    running: { m: 'запущенного', f: 'запущенной', n: 'запущенного', pl: 'запущенных' },
+    staged: { m: 'проиндексированного', f: 'проиндексированной', n: 'проиндексированного', pl: 'проиндексированных' },
+    untracked: { m: 'неотслеживаемого', f: 'неотслеживаемой', n: 'неотслеживаемого', pl: 'неотслеживаемых' },
+    modified: { m: 'изменённого', f: 'изменённой', n: 'изменённого', pl: 'изменённых' },
+    remaining: { m: 'оставшегося', f: 'оставшейся', n: 'оставшегося', pl: 'оставшихся' }
+};
+
+const SUMMARY_MODIFIER_NOUN_GEN = {
+    project: 'проекта',
+    app: 'приложения',
+    application: 'приложения',
+    workspace: 'рабочей области',
+    repo: 'репозитория',
+    repository: 'репозитория',
+    server: 'сервера',
+    client: 'клиента',
+    frontend: 'фронтенда',
+    backend: 'бэкенда',
+    ui: 'интерфейса',
+    db: 'БД',
+    database: 'БД'
+};
+
+const SUMMARY_KNOWN_TECH_LOWER = new Set([
+    'git', 'github', 'npm', 'pnpm', 'yarn', 'bun', 'npx', 'node', 'nodejs', 'deno',
+    'vite', 'next', 'nextjs', 'nuxt', 'astro', 'remix', 'react', 'vue', 'svelte', 'angular',
+    'tailwind', 'tailwindcss', 'postcss', 'prisma', 'drizzle', 'supabase', 'firebase',
+    'docker', 'playwright', 'puppeteer', 'cypress', 'vitest', 'jest', 'mocha',
+    'eslint', 'biome', 'oxlint', 'prettier', 'tsc', 'ts', 'tsx', 'js', 'jsx', 'cjs', 'mjs', 'css', 'scss', 'html', 'json',
+    'rust', 'cargo', 'python', 'pip', 'uv', 'pytest', 'go', 'asar', 'cdp', 'mcp', 'cli', 'sdk', 'api',
+    'ssh', 'http', 'https', 'dns', 'sql', 'sqlite', 'postgres', 'postgresql', 'mysql', 'redis', 'graphql', 'webpack', 'turbopack', 'esbuild', 'rollup', 'tauri', 'electron'
+]);
+
+function translateSummaryAtomicObjectGenitive(phrase, isStepContext) {
+    if (!phrase) return null;
+    let p = phrase.trim();
+    if (isStepContext) {
+        p = p.replace(/^(?:the|a|an)\s+/i, '').trim();
+    }
+    if (!p) return null;
+
+    const tails = [];
+    let changedTail = true;
+    while (changedTail) {
+        changedTail = false;
+        let m;
+        if ((m = p.match(/^(.+?)\s+on\s+port\s+(\d+)$/i))) {
+            tails.unshift(`на порту ${m[2]}`);
+            p = m[1].trim();
+            changedTail = true;
+        } else if ((m = p.match(/^(.+?)\s+(?:at|on)\s+((?:localhost|127\.0\.0\.1)(?::\d+)?|https?:\/\/\S+)$/i))) {
+            tails.unshift(`на ${m[2]}`);
+            p = m[1].trim();
+            changedTail = true;
+        } else if ((m = p.match(/^(.+?)\s+in\s+background(?:\s+mode)?$/i))) {
+            tails.unshift('в фоновом режиме');
+            p = m[1].trim();
+            changedTail = true;
+        } else if ((m = p.match(/^(.+?)\s+as\s+(?:a\s+)?daemon$/i))) {
+            tails.unshift('в фоновом режиме');
+            p = m[1].trim();
+            changedTail = true;
+        } else if ((m = p.match(/^(.+?)\s+in\s+(workspace|project|repo|repository|production|dev|development|[A-Za-z0-9_.\-\/]+\.[A-Za-z0-9]+)$/i))) {
+            const locMap = {
+                workspace: 'в рабочей области',
+                project: 'в проекте',
+                repo: 'в репозитории',
+                repository: 'в репозитории',
+                production: 'в продакшене',
+                dev: 'в режиме разработки',
+                development: 'в режиме разработки'
+            };
+            tails.unshift(locMap[m[2].toLowerCase()] || `в ${m[2]}`);
+            p = m[1].trim();
+            changedTail = true;
+        } else if ((m = p.match(/^(.+?)\s+for\s+(production|dev|development|windows|macos|linux|[A-Za-z0-9_.\-\/]+)$/i))) {
+            const forMap = {
+                production: 'для продакшена',
+                dev: 'для разработки',
+                development: 'для разработки',
+                windows: 'для Windows',
+                macos: 'для macOS',
+                linux: 'для Linux'
+            };
+            const targetTok = m[2];
+            if (forMap[targetTok.toLowerCase()] || /[A-Z0-9._\-\/]/.test(targetTok) || SUMMARY_KNOWN_TECH_LOWER.has(targetTok.toLowerCase())) {
+                tails.unshift(forMap[targetTok.toLowerCase()] || `для ${targetTok}`);
+                p = m[1].trim();
+                changedTail = true;
+            }
+        } else if ((m = p.match(/^(.+?)\s+via\s+([A-Za-z0-9_.\-\/]+)$/i))) {
+            if (/[A-Z0-9._\-\/]/.test(m[2]) || SUMMARY_KNOWN_TECH_LOWER.has(m[2].toLowerCase())) {
+                tails.unshift(`через ${m[2]}`);
+                p = m[1].trim();
+                changedTail = true;
+            }
+        }
+    }
+
+    const tailStr = tails.length ? (' ' + tails.join(' ')) : '';
+
+    const words = p.split(/\s+/);
+    for (let splitIdx = 0; splitIdx < words.length; splitIdx++) {
+        const suffixCandidate = words.slice(splitIdx).join(' ');
+        for (const [re, ruHead, gender] of SUMMARY_HEAD_NOUNS_GEN) {
+            if (re.test(suffixCandidate)) {
+                const prefixTokens = words.slice(0, splitIdx);
+                const ruAdjs = [];
+                const postMods = [];
+                for (const tok of prefixTokens) {
+                    const lowTok = tok.toLowerCase();
+                    if (isStepContext && (lowTok === 'the' || lowTok === 'a' || lowTok === 'an')) {
+                        continue;
+                    }
+                    if (SUMMARY_ADJ_GEN[lowTok]) {
+                        const adjVal = SUMMARY_ADJ_GEN[lowTok][gender] || SUMMARY_ADJ_GEN[lowTok].m;
+                        if (!ruHead.toLowerCase().startsWith(adjVal.toLowerCase())) {
+                            ruAdjs.push(adjVal);
+                        }
+                    } else if (SUMMARY_MODIFIER_NOUN_GEN[lowTok]) {
+                        postMods.push(SUMMARY_MODIFIER_NOUN_GEN[lowTok]);
+                    } else if (/[A-Z0-9._\-\/@:+]/.test(tok) || SUMMARY_KNOWN_TECH_LOWER.has(lowTok)) {
+                        postMods.push(tok);
+                    } else {
+                        return null;
+                    }
+                }
+                const adjPart = ruAdjs.length ? (ruAdjs.join(' ') + ' ') : '';
+                const postPart = postMods.length ? (' ' + postMods.join(' ')) : '';
+                return `${adjPart}${ruHead}${postPart}${tailStr}`.replace(/\s+/g, ' ').trim();
+            }
+        }
+    }
+
+    if (words.length === 1 && (/[A-Z0-9._\-\/@:+]/.test(p) || SUMMARY_KNOWN_TECH_LOWER.has(p.toLowerCase()))) {
+        return `${p}${tailStr}`;
+    }
+
+    return null;
+}
+
+function translateSummaryObjectGenitive(rest, isStepContext) {
+    if (!rest) return null;
+    const trimmed = rest.trim();
+    if (/\s+and\s+/i.test(trimmed)) {
+        const parts = trimmed.split(/\s+and\s+/i);
+        if (parts.length >= 2 && parts.length <= 3) {
+            const out = [];
+            for (const part of parts) {
+                const tr = translateSummaryAtomicObjectGenitive(part, isStepContext);
+                if (!tr) return null;
+                out.push(tr);
+            }
+            return out.join(' и ');
+        }
+    }
+    return translateSummaryAtomicObjectGenitive(trimmed, isStepContext);
+}
+
+function translateSingleEnglishClause(clause, isFirstClause, isStepContext = false) {
     if (!clause) return clause;
     const c = clause.trim();
     const lower = c.toLowerCase();
@@ -6502,9 +6960,32 @@ function translateSingleEnglishClause(clause, isFirstClause) {
         return five;
     };
 
-    // Exact clause matches
-    if (lower === 'restore clean core') return isFirstClause ? 'Восстановление чистого ядра' : 'восстановление чистого ядра';
-    if (lower === 'create atomic snapshot') return isFirstClause ? 'Создание атомарного снимка' : 'создание атомарного снимка';
+    const standaloneVerbNouns = {
+        'lint': ['Линтинг', 'линтинг'],
+        'linting': ['Линтинг', 'линтинг'],
+        'typecheck': ['Проверка типов', 'проверка типов'],
+        'type-check': ['Проверка типов', 'проверка типов'],
+        'typechecking': ['Проверка типов', 'проверка типов'],
+        'build': ['Сборка', 'сборка'],
+        'compile': ['Компиляция', 'компиляция'],
+        'test': ['Тестирование', 'тестирование'],
+        'tests': ['Тесты', 'тесты'],
+        'format': ['Форматирование', 'форматирование'],
+        'clean': ['Очистка', 'очистка'],
+        'deploy': ['Развёртывание', 'развёртывание'],
+        'stage': ['Индексация', 'индексация'],
+        'commit': ['Коммит', 'коммит'],
+        'push': ['Отправка', 'отправка'],
+        'pull': ['Получение', 'получение'],
+        'verify': ['Проверка', 'проверка'],
+        'validate': ['Валидация', 'валидация'],
+        'restore clean core': ['Восстановление чистого ядра', 'восстановление чистого ядра'],
+        'create atomic snapshot': ['Создание атомарного снимка', 'создание атомарного снимка']
+    };
+    if (standaloneVerbNouns[lower]) {
+        return isFirstClause ? standaloneVerbNouns[lower][0] : standaloneVerbNouns[lower][1];
+    }
+
     if (/^publish\s+(all\s+)?(\d+)\s+approved\s+doc(?:ument)?\s+revisions?\s+to\s+(\S+)$/i.test(c)) {
         const m = c.match(/^publish\s+(all\s+)?(\d+)\s+approved\s+doc(?:ument)?\s+revisions?\s+to\s+(\S+)$/i);
         const hasAll = Boolean(m[1]);
@@ -6524,26 +7005,49 @@ function translateSingleEnglishClause(clause, isFirstClause) {
         return `${prefix} ${hasAll ? 'всех ' : ''}${cnt} ${revPhrase} документов в ${dest}`;
     }
 
-    // General verb + object patterns for toolSummary clauses
     const verbMap = [
+        [/^re-?run\s+(.+)$/i, 'Повторный запуск', 'повторный запуск'],
+        [/^re-?(?:check|verify)\s+(.+)$/i, 'Повторная проверка', 'повторная проверка'],
+        [/^re-?test\s+(.+)$/i, 'Повторное тестирование', 'повторное тестирование'],
+        [/^re-?build\s+(.+)$/i, 'Пересборка', 'пересборка'],
+        [/^(?:start|spin\s+up|boot)\s+(.+)$/i, 'Запуск', 'запуск'],
+        [/^(?:stop|shut\s*down|kill|terminate)\s+(.+)$/i, 'Остановка', 'остановка'],
+        [/^(?:restart|relaunch)\s+(.+)$/i, 'Перезапуск', 'перезапуск'],
+        [/^(?:reload|refresh)\s+(.+)$/i, 'Перезагрузка', 'перезагрузка'],
+        [/^lint\s+(.+)$/i, 'Линтинг', 'линтинг'],
+        [/^type[\s-]?check\s+(.+)$/i, 'Проверка типов', 'проверка типов'],
+        [/^format\s+(.+)$/i, 'Форматирование', 'форматирование'],
+        [/^compile\s+(.+)$/i, 'Компиляция', 'компиляция'],
+        [/^(?:bundle|pack)\s+(.+)$/i, 'Упаковка', 'упаковка'],
+        [/^audit\s+(.+)$/i, 'Аудит', 'аудит'],
+        [/^(?:analyze|analyse)\s+(.+)$/i, 'Анализ', 'анализ'],
+        [/^(?:debug|diagnose)\s+(.+)$/i, 'Отладка', 'отладка'],
         [/^restore\s+(.+)$/i, 'Восстановление', 'восстановление'],
         [/^publish\s+(.+)$/i, 'Публикация', 'публикация'],
         [/^create\s+(.+)$/i, 'Создание', 'создание'],
+        [/^add\s+(.+)$/i, 'Добавление', 'добавление'],
         [/^verify\s+(.+)$/i, 'Проверка', 'проверка'],
         [/^validate\s+(.+)$/i, 'Валидация', 'валидация'],
         [/^check\s+(.+)$/i, 'Проверка', 'проверка'],
         [/^inspect\s+(.+)$/i, 'Проверка', 'проверка'],
         [/^read\s+(.+)$/i, 'Чтение', 'чтение'],
+        [/^(?:write|save)\s+(.+)$/i, 'Запись', 'запись'],
+        [/^(?:edit|modify)\s+(.+)$/i, 'Изменение', 'изменение'],
+        [/^patch\s+(.+)$/i, 'Патчинг', 'патчинг'],
+        [/^apply\s+(.+)$/i, 'Применение', 'применение'],
+        [/^(?:fetch|retrieve|get|load)\s+(.+)$/i, 'Получение', 'получение'],
+        [/^query\s+(.+)$/i, 'Запрос', 'запрос'],
         [/^list\s+(.+)$/i, 'Список', 'список'],
         [/^scan\s+(.+)$/i, 'Сканирование', 'сканирование'],
         [/^sync(?:hronize)?\s+(.+)$/i, 'Синхронизация', 'синхронизация'],
         [/^seed\s+(.+)$/i, 'Заполнение', 'заполнение'],
         [/^populate\s+(.+)$/i, 'Заполнение', 'заполнение'],
+        [/^migrate\s+(.+)$/i, 'Миграция', 'миграция'],
         [/^upsert\s+(.+)$/i, 'Обновление', 'обновление'],
-        [/^update\s+(.+)$/i, 'Обновление', 'обновление'],
+        [/^(?:update|upgrade|bump)\s+(.+)$/i, 'Обновление', 'обновление'],
         [/^extract\s+(.+)$/i, 'Извлечение', 'извлечение'],
-        [/^compare\s+(.+)$/i, 'Сравнение', 'сравнение'],
-        [/^find\s+(.+)$/i, 'Поиск', 'поиск'],
+        [/^(?:compare|diff)\s+(.+)$/i, 'Сравнение', 'сравнение'],
+        [/^(?:find|locate|grep)\s+(.+)$/i, 'Поиск', 'поиск'],
         [/^search\s+(.+)$/i, 'Поиск', 'поиск'],
         [/^seal\s+(.+)$/i, 'Фиксация', 'фиксация'],
         [/^print\s+(.+)$/i, 'Вывод', 'вывод'],
@@ -6552,23 +7056,31 @@ function translateSingleEnglishClause(clause, isFirstClause) {
         [/^execute\s+(.+)$/i, 'Выполнение', 'выполнение'],
         [/^run\s+(.+)$/i, 'Запуск', 'запуск'],
         [/^test\s+(.+)$/i, 'Тестирование', 'тестирование'],
-        [/^clean\s+(.+)$/i, 'Очистка', 'очистка'],
-        [/^reload\s+(.+)$/i, 'Перезагрузка', 'перезагрузка'],
-        [/^restart\s+(.+)$/i, 'Перезапуск', 'перезапуск'],
+        [/^(?:clean|clear|purge|prune)\s+(.+)$/i, 'Очистка', 'очистка'],
+        [/^reset\s+(.+)$/i, 'Сброс', 'сброс'],
         [/^revert\s+(.+)$/i, 'Откат', 'откат'],
+        [/^stage\s+(.+)$/i, 'Индексация', 'индексация'],
+        [/^commit\s+(.+)$/i, 'Коммит', 'коммит'],
+        [/^push\s+(.+)$/i, 'Отправка', 'отправка'],
+        [/^pull\s+(.+)$/i, 'Получение', 'получение'],
+        [/^merge\s+(.+)$/i, 'Слияние', 'слияние'],
+        [/^clone\s+(.+)$/i, 'Клонирование', 'клонирование'],
         [/^upload\s+(.+)$/i, 'Загрузка', 'загрузка'],
         [/^download\s+(.+)$/i, 'Скачивание', 'скачивание'],
         [/^copy\s+(.+)$/i, 'Копирование', 'копирование'],
-        [/^delete\s+(.+)$/i, 'Удаление', 'удаление'],
-        [/^remove\s+(.+)$/i, 'Удаление', 'удаление'],
+        [/^(?:move|rename)\s+(.+)$/i, 'Переименование', 'переименование'],
+        [/^(?:delete|remove|uninstall)\s+(.+)$/i, 'Удаление', 'удаление'],
         [/^build\s+(.+)$/i, 'Сборка', 'сборка'],
         [/^deploy\s+(.+)$/i, 'Развёртывание', 'развёртывание'],
-        [/^fix\s+(.+)$/i, 'Исправление', 'исправление'],
-        [/^repair\s+(.+)$/i, 'Исправление', 'исправление'],
+        [/^(?:fix|repair|resolve)\s+(.+)$/i, 'Исправление', 'исправление'],
         [/^generate\s+(.+)$/i, 'Генерация', 'генерация'],
-        [/^initialize\s+(.+)$/i, 'Инициализация', 'инициализация'],
+        [/^init(?:ialize)?\s+(.+)$/i, 'Инициализация', 'инициализация'],
         [/^install\s+(.+)$/i, 'Установка', 'установка'],
-        [/^configure\s+(.+)$/i, 'Настройка', 'настройка'],
+        [/^(?:configure|set\s+up|setup)\s+(.+)$/i, 'Настройка', 'настройка'],
+        [/^open\s+(.+)$/i, 'Открытие', 'открытие'],
+        [/^close\s+(.+)$/i, 'Закрытие', 'закрытие'],
+        [/^serve\s+(.+)$/i, 'Раздача', 'раздача'],
+        [/^(?:watch|monitor)\s+(.+)$/i, 'Мониторинг', 'мониторинг'],
         [/^disable\s+(.+)$/i, 'Отключение', 'отключение'],
         [/^enable\s+(.+)$/i, 'Включение', 'включение']
     ];
@@ -6578,7 +7090,17 @@ function translateSingleEnglishClause(clause, isFirstClause) {
         if (m) {
             let rest = m[1].trim();
             const origRest = rest;
-            const hasEnglishProseTokens = /\b(?:a|an|the|my|your|our|their|its|this|that|these|those|it|on|by|as|or|if|so|we|you|me|us|they|them|when|where|while|whether|before|after|without|against|should|would|could|can|will)\b/i.test(origRest);
+            const hasEnglishProseTokens = isStepContext
+                ? /\b(?:my|your|our|their|its|this|that|these|those|it|by|or|if|so|we|you|me|us|they|them|when|where|while|whether|before|after|without|against|should|would|could|can|will)\b/i.test(origRest)
+                : /\b(?:a|an|the|my|your|our|their|its|this|that|these|those|it|on|by|as|or|if|so|we|you|me|us|they|them|when|where|while|whether|before|after|without|against|should|would|could|can|will)\b/i.test(origRest);
+
+            if (!hasEnglishProseTokens) {
+                const compObj = translateSummaryObjectGenitive(origRest, isStepContext);
+                if (compObj) {
+                    return `${isFirstClause ? capNoun : lowNoun} ${compObj}`;
+                }
+            }
+
             rest = rest
                 .replace(/\bclean\s+core\b/gi, 'чистого ядра')
                 .replace(/\batomic\s+pre-worker\s+snapshot\b/gi, 'атомарного снимка перед воркером')
@@ -6612,15 +7134,58 @@ function translateSingleEnglishClause(clause, isFirstClause) {
             return `${isFirstClause ? capNoun : lowNoun} ${rest}`;
         }
     }
+
+    const SUMMARY_ADJ_NOM = {
+        full: { m: 'Полный', f: 'Полная', n: 'Полное' },
+        complete: { m: 'Полный', f: 'Полная', n: 'Полное' },
+        quick: { m: 'Быстрый', f: 'Быстрая', n: 'Быстрое' },
+        fast: { m: 'Быстрый', f: 'Быстрая', n: 'Быстрое' },
+        clean: { m: 'Чистый', f: 'Чистая', n: 'Чистое' },
+        fresh: { m: 'Чистый', f: 'Чистая', n: 'Чистое' },
+        initial: { m: 'Начальный', f: 'Начальная', n: 'Начальное' },
+        final: { m: 'Финальный', f: 'Финальная', n: 'Финальное' },
+        local: { m: 'Локальный', f: 'Локальная', n: 'Локальное' },
+        remote: { m: 'Удалённый', f: 'Удалённая', n: 'Удалённое' }
+    };
+    const nounFinalMap = [
+        [/^(.+?)\s+(?:checks?|verification)$/i, 'Проверка', 'проверка', 'f'],
+        [/^(.+?)\s+validation$/i, 'Валидация', 'валидация', 'f'],
+        [/^(.+?)\s+execution$/i, 'Выполнение', 'выполнение', 'n'],
+        [/^(.+?)\s+(?:startup|launch)$/i, 'Запуск', 'запуск', 'm'],
+        [/^(.+?)\s+shutdown$/i, 'Остановка', 'остановка', 'f'],
+        [/^(.+?)\s+cleanup$/i, 'Очистка', 'очистка', 'f'],
+        [/^(.+?)\s+compilation$/i, 'Компиляция', 'компиляция', 'f'],
+        [/^(.+?)\s+installation$/i, 'Установка', 'установка', 'f'],
+        [/^(.+?)\s+build$/i, 'Сборка', 'сборка', 'f']
+    ];
+    for (const [re, capNoun, lowNoun, gender] of nounFinalMap) {
+        const m = c.match(re);
+        if (m) {
+            const rawObj = m[1].trim();
+            const objGen = translateSummaryObjectGenitive(rawObj, isStepContext);
+            if (objGen) {
+                return `${isFirstClause ? capNoun : lowNoun} ${objGen}`;
+            }
+            const adjSplit = rawObj.match(/^([A-Za-z]+)\s+(.+)$/);
+            if (adjSplit && SUMMARY_ADJ_NOM[adjSplit[1].toLowerCase()]) {
+                const subGen = translateSummaryObjectGenitive(adjSplit[2].trim(), isStepContext);
+                if (subGen) {
+                    const nomAdj = SUMMARY_ADJ_NOM[adjSplit[1].toLowerCase()][gender] || SUMMARY_ADJ_NOM[adjSplit[1].toLowerCase()].f;
+                    const adjFormatted = isFirstClause ? nomAdj : lowercaseFirstCyrillic(nomAdj);
+                    return `${adjFormatted} ${lowNoun} ${subGen}`;
+                }
+            }
+        }
+    }
+
     return null;
 }
 
-function translateEnglishCommandSummary(text) {
+function translateEnglishCommandSummary(text, isStepContext = false) {
     if (!text || /[а-яА-ЯёЁ]/.test(text)) return null;
     const t = text.trim();
     const lower = t.toLowerCase();
 
-    // Direct full-sentence matches
     if (lower === 'restore clean core, publish 21 doc revisions to db, and create atomic snapshot') {
         return 'Восстановление чистого ядра, публикация 21 ревизии документов в БД и создание атомарного снимка';
     }
@@ -6628,8 +7193,7 @@ function translateEnglishCommandSummary(text) {
         return 'Публикация 21 утверждённой ревизии документов в project.db и создание атомарного снимка';
     }
 
-    // Check if multi-clause command summary separated by ", and ", ", ", or " and <verb>"
-    const verbLookahead = '(?:restore|publish|create|verify|validate|check|inspect|read|list|scan|sync|synchronize|seed|populate|upsert|update|extract|compare|find|search|seal|print|count|launch|execute|run|test|clean|reload|restart|revert|upload|download|copy|delete|remove|build|deploy|fix|repair|generate|initialize|install|configure|disable|enable)\\b';
+    const verbLookahead = '(?:re-?run|re-?check|re-?verify|re-?test|re-?build|start|spin\\s+up|boot|stop|shut\\s*down|kill|terminate|restart|relaunch|reload|refresh|lint|type[\\s-]?check|format|compile|bundle|pack|audit|analyze|analyse|debug|diagnose|restore|publish|create|add|verify|validate|check|inspect|read|write|save|edit|modify|patch|apply|fetch|retrieve|get|load|query|list|scan|sync|synchronize|seed|populate|migrate|upsert|update|upgrade|bump|extract|compare|diff|find|locate|grep|search|seal|print|count|launch|execute|run|test|clean|clear|purge|prune|reset|revert|stage|commit|push|pull|merge|clone|upload|download|copy|move|rename|delete|remove|uninstall|build|deploy|fix|repair|resolve|generate|init|initialize|install|configure|set\\s+up|setup|open|close|serve|watch|monitor|disable|enable)(?:\\s|,|$)';
     const splitRe = new RegExp(`\\s*(?:,\\s+and\\s+|\\s+and\\s+(?=${verbLookahead})|,\\s+(?=${verbLookahead}))`, 'i');
 
     if (splitRe.test(t)) {
@@ -6637,7 +7201,7 @@ function translateEnglishCommandSummary(text) {
         const translatedParts = [];
         let allTranslated = rawParts.length > 0;
         for (let i = 0; i < rawParts.length; i++) {
-            const tr = translateSingleEnglishClause(rawParts[i], i === 0);
+            const tr = translateSingleEnglishClause(rawParts[i], i === 0, isStepContext);
             if (tr) {
                 translatedParts.push(tr);
             } else {
@@ -6654,13 +7218,12 @@ function translateEnglishCommandSummary(text) {
             }
             return translatedParts[0];
         }
-        return null;
     }
 
-    return translateSingleEnglishClause(t, true);
+    return translateSingleEnglishClause(t, true, isStepContext);
 }
 
-function localizeActionTarget(target) {
+function localizeActionTarget(target, isStepContext = false) {
     if (!target) return '';
     const t = target.trim();
     const lower = t.toLowerCase();
@@ -6760,7 +7323,7 @@ function localizeActionTarget(target) {
     if (/^install\s+js\s+files$/i.test(t)) return 'установочных JS-файлов';
     if (/^recent\s+commits$/i.test(t)) return 'недавних коммитов';
     if (/^consilium\s+commit$/i.test(t)) return 'коммита Consilium';
-    if (/^git\s+status$/i.test(t)) return 'статуса git';
+    if (/^git\s+status$/i.test(t)) return 'статуса Git';
     if (/^active\s+contract$/i.test(t)) return 'активного контракта';
     if (/^current\s+hash\s+of\s+app\.asar$/i.test(t)) return 'текущего хэша app.asar';
     if (/^resources\s+directory\s+in\s+antigravity$/i.test(t)) return 'директории resources в Antigravity';
@@ -6802,17 +7365,22 @@ function localizeActionTarget(target) {
     if (/^fix\s+quote\s+escaping\s+in\s+localization_injected\.js,\s*validate,\s*build\s+and\s+deploy\s+app\.asar$/i.test(t)) return 'Исправление экранирования кавычек в localization_injected.js, проверка, сборка и деплой app.asar';
     if (/^cli\s+versions$/i.test(t)) return 'версий CLI';
     if (/^openwrt\s+hosts$/i.test(t)) return 'openwrt hosts';
-    if (/unit\s+tests?$/i.test(t)) return t.replace(/unit\s+tests?$/i, 'unit-тестов');
-    if (/tests?$/i.test(t)) return t.replace(/tests?$/i, 'тестов');
-
     if (translationDictionary[lower]) {
         return translationDictionary[lower];
     }
 
-    const cmdSummaryTranslated = translateEnglishCommandSummary(t);
+    const cmdSummaryTranslated = translateEnglishCommandSummary(t, isStepContext);
     if (cmdSummaryTranslated) {
         return cmdSummaryTranslated;
     }
+
+    const objGenTranslated = translateSummaryObjectGenitive(t, isStepContext);
+    if (objGenTranslated && objGenTranslated !== t) {
+        return objGenTranslated;
+    }
+
+    if (/unit\s+tests?$/i.test(t)) return t.replace(/unit\s+tests?$/i, 'unit-тестов');
+    if (/tests?$/i.test(t)) return t.replace(/tests?$/i, 'тестов');
 
     return t;
 }
@@ -7453,6 +8021,8 @@ const regexTranslations = [
             const low = sub.toLowerCase();
             if (translationDictionary["add " + low]) return translationDictionary["add " + low];
             const nounMap = {
+                "terminal": "терминал",
+                "terminals": "терминалы",
                 "resource": "ресурс",
                 "resources": "ресурсы",
                 "folder": "папку",
@@ -7718,68 +8288,71 @@ const regexTranslations = [
         replace: (match) => `Ошибка: ${match[1].trim()}`
     },
     {
-        // "<action / task> finished" (e.g. "Run full clean architect session finished", "Directory analysis finished")
-        pattern: /^(.+?)\s+finished$/i,
+        // "<action / task> finished" or re-processed "<action / task> — завершено"
+        pattern: /^(.+?)(?:\s+finished|\s*[—–-]\s*завершено)(\s*[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?$/i,
         replace: (match) => {
             const raw = match[1].trim();
+            const arrow = match[2] ? (' ' + match[2].trim()) : '';
             const lower = raw.toLowerCase();
             if (translationDictionary[lower]) {
                 const trans = translationDictionary[lower];
                 if (trans.endsWith('сессия') || trans.endsWith('задача') || trans.endsWith('команда') || trans.endsWith('операция') || trans.endsWith('проверка')) {
-                    return trans + ' завершена';
+                    return trans + ' завершена' + arrow;
                 }
                 if (trans.endsWith('запуск') || trans.endsWith('анализ') || trans.endsWith('поиск') || trans.endsWith('процесс')) {
-                    return trans + ' завершен';
+                    return trans + ' завершен' + arrow;
                 }
-                return trans + ' — завершено';
+                return trans + ' — завершено' + arrow;
             }
             if (/^Restore\s+(.+?)\s+from\s+(.+)$/i.test(raw)) {
                 const m = raw.match(/^Restore\s+(.+?)\s+from\s+(.+)$/i);
-                return `Восстановление ${m[1]} из ${m[2]} — завершено`;
+                return `Восстановление ${m[1]} из ${m[2]} — завершено${arrow}`;
             }
             if (/^Search\s+(.+?)\s+in\s+transcript$/i.test(raw)) {
                 const m = raw.match(/^Search\s+(.+?)\s+in\s+transcript$/i);
-                return `Поиск ${m[1]} в стенограмме — завершен`;
+                return `Поиск ${m[1]} в стенограмме — завершен${arrow}`;
             }
             if (/^Inspect\s+(.+?)\s+with\s+parameters$/i.test(raw)) {
                 const m = raw.match(/^Inspect\s+(.+?)\s+with\s+parameters$/i);
-                return `Проверка ${m[1]} с параметрами — завершена`;
-            }
-            if (/^Inspect\s+(.+)$/i.test(raw)) {
-                const m = raw.match(/^Inspect\s+(.+)$/i);
-                return `Проверка ${m[1]} — завершена`;
-            }
-            if (/^Check\s+(.+)$/i.test(raw)) {
-                const m = raw.match(/^Check\s+(.+)$/i);
-                return `Проверка ${m[1]} — завершена`;
+                return `Проверка ${m[1]} с параметрами — завершена${arrow}`;
             }
             if (/^Compare\s+(?:against|with)\s+(.+)$/i.test(raw)) {
                 const m = raw.match(/^Compare\s+(?:against|with)\s+(.+)$/i);
-                return `Сравнение с ${m[1]} — завершено`;
+                return `Сравнение с ${m[1]} — завершено${arrow}`;
             }
             if (/architect session/i.test(raw)) {
-                return 'Сессия архитектора завершена';
+                return 'Сессия архитектора завершена' + arrow;
             }
             if (/^Run\s+(.+)$/i.test(raw)) {
                 const m = raw.match(/^Run\s+(.+)$/i);
-                let target = m[1].trim();
+                const target = m[1].trim();
                 if (/real hook acceptance test/i.test(target)) {
-                    return 'Выполнение приёмочного теста хука — завершено';
+                    return 'Выполнение приёмочного теста хука — завершено' + arrow;
                 }
                 if (/acceptance test/i.test(target)) {
-                    return 'Выполнение приёмочного теста — завершено';
+                    return 'Выполнение приёмочного теста — завершено' + arrow;
                 }
-                return `Запуск ${target} — завершен`;
+            }
+            const loc = localizeActionTarget(raw, true);
+            if (loc && loc !== raw) {
+                return `${uppercaseFirstCyrillic(loc)} — завершено${arrow}`;
+            }
+            if (/^Inspect\s+(.+)$/i.test(raw)) {
+                return `Проверка ${raw.match(/^Inspect\s+(.+)$/i)[1]} — завершена${arrow}`;
+            }
+            if (/^Check\s+(.+)$/i.test(raw)) {
+                return `Проверка ${raw.match(/^Check\s+(.+)$/i)[1]} — завершена${arrow}`;
+            }
+            if (/^Run\s+(.+)$/i.test(raw)) {
+                return `Запуск ${raw.match(/^Run\s+(.+)$/i)[1].trim()} — завершен${arrow}`;
             }
             if (/^View\s+(.+)$/i.test(raw)) {
-                const m = raw.match(/^View\s+(.+)$/i);
-                return `Просмотр ${m[1]} — завершен`;
+                return `Просмотр ${raw.match(/^View\s+(.+)$/i)[1]} — завершен${arrow}`;
             }
             if (/^Test\s+(.+)$/i.test(raw)) {
-                const m = raw.match(/^Test\s+(.+)$/i);
-                return `Тест ${m[1]} — завершен`;
+                return `Тест ${raw.match(/^Test\s+(.+)$/i)[1]} — завершен${arrow}`;
             }
-            return raw + ' — завершено';
+            return raw + ' — завершено' + arrow;
         }
     },
     {
@@ -10432,13 +11005,42 @@ const regexTranslations = [
         replace: (match) => `Строка ${match[1]} с помощью ${match[2]}${match[3] ? (' ' + match[3].trim()) : ''}`
     },
     {
+        // "<action> · Exited with code 1 >" or standalone "· Exited with code 1 >" / "Exited with code 1 >" (must precede generic Ran/Running rules)
+        pattern: /^(?:(?:([^·•・].*?)\s*)?([·•・])\s*)?(?:Exited\s+with\s+code|Завершено\s+с\s+кодом)\s+(-?\d+)(\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]))?$/i,
+        replace: (match) => {
+            const code = match[3];
+            const arrow = match[4] ? (' ' + match[4].trim()) : '';
+            if (match[1]) {
+                let rawCmd = match[1].trim();
+                const bullet = match[2] || '·';
+                const ranPrefix = rawCmd.match(/^(?:Ran|Запущено:?|Выполнено:?)\s+(.+)$/i);
+                if (ranPrefix) {
+                    const inner = ranPrefix[1].trim();
+                    const locInner = translationDictionary[inner.toLowerCase()] || localizeActionTarget(inner, true) || inner;
+                    return `Выполнено: ${lowercaseFirstCyrillic(locInner)} ${bullet} Завершено с кодом ${code}${arrow}`;
+                }
+                const runPrefix = rawCmd.match(/^(?:Running|Выполняется:?)\s+(.+)$/i);
+                if (runPrefix) {
+                    const inner = runPrefix[1].trim();
+                    const locInner = translationDictionary[inner.toLowerCase()] || localizeActionTarget(inner, true) || inner;
+                    return `Выполняется: ${lowercaseFirstCyrillic(locInner)} ${bullet} Завершено с кодом ${code}${arrow}`;
+                }
+                const lowerCmd = rawCmd.toLowerCase();
+                const locCmd = translationDictionary[lowerCmd] || localizeActionTarget(rawCmd, true) || rawCmd;
+                return `${locCmd} ${bullet} Завершено с кодом ${code}${arrow}`;
+            }
+            const leadingBullet = match[2] ? (match[2] + ' ') : '';
+            return `${leadingBullet}Завершено с кодом ${code}${arrow}`;
+        }
+    },
+    {
         // "Ran commands >" / "Ran commands ˅"
         pattern: /^Ran\s+commands(\s*[^a-zA-Z0-9\s]+)?$/i,
         replace: (match) => "Выполнены команды" + (match[1] ? (" " + match[1].trim()) : "")
     },
     {
-        // "Ran <command>" / "Ran <command> >"
-        pattern: /^Ran\s+(.+?)(\s+([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]))?$/i,
+        // "Ran <command>" / "Запущено <command>" / "Выполнено: <command>"
+        pattern: /^(?:Ran|Запущено:?|Выполнено:?)\s+(.+?)(\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]))?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
             const cmd = match[1].trim();
@@ -10451,7 +11053,11 @@ const regexTranslations = [
             if (/^commands$/i.test(cmd)) {
                 return `Выполнены команды${arrow}`;
             }
-            return `Запуск ${cmd}${arrow}`;
+            const locCmd = localizeActionTarget(cmd, true);
+            if (!/^Ran\b/i.test(match[0]) && locCmd === cmd) {
+                return match[0];
+            }
+            return `Выполнено: ${lowercaseFirstCyrillic(locCmd)}${arrow}`;
         }
     },
     {
@@ -10552,23 +11158,7 @@ const regexTranslations = [
         pattern: /^(?:Searched|Searching|Поиск(?:\s+в)?)\s+marketplace(?:\s+for\s+(.+))?$/i,
         replace: (match) => match[1] ? `Поиск в Маркетплейсе: ${match[1].trim()}` : "Поиск в Маркетплейсе"
     },
-    {
-        // "<action> · Exited with code 1 >" or standalone "Exited with code 1 >"
-        pattern: /^(?:(.+?)\s*([·•・])\s*)?(?:Exited\s+with\s+code|Завершено\s+с\s+кодом)\s+(-?\d+)(\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]))?$/i,
-        replace: (match) => {
-            const code = match[3];
-            const arrow = match[4] ? (' ' + match[4].trim()) : '';
-            if (match[1]) {
-                const rawCmd = match[1].trim();
-                const lowerCmd = rawCmd.toLowerCase();
-                const locCmd = translationDictionary[lowerCmd] || localizeActionTarget(rawCmd) || rawCmd;
-                const bullet = match[2] || '·';
-                return `${locCmd} ${bullet} Завершено с кодом ${code}${arrow}`;
-            }
-            const leadingBullet = match[2] ? (match[2] + ' ') : '';
-            return `${leadingBullet}Завершено с кодом ${code}${arrow}`;
-        }
-    },
+
     {
         // Canva example prompts & commands
         pattern: /^Resize\s+this\s+Canva\s+design\s+for\s+Instagram\s+and\s+LinkedIn\.?$/i,
@@ -11271,9 +11861,11 @@ const regexTranslations = [
         }
     },
     {
-        // "Run <target> —" / "Run <target>" / "Running <target>"
-        pattern: /^(?:Running|Run)\s+(.+?)(\s*([—–-]|finished|завершено).*|\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40]))?$/i,
+        // "Running <target>" / "Выполняется: <target>" / "Run <target>"
+        pattern: /^(?:Running|Выполняется:?|Run)\s+(.+?)(\s*([—–-]|finished|завершено).*|\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]))?$/i,
         replace: (match) => {
+            const isProgressive = /^(?:Running|Выполняется)/i.test(match[0]);
+            const isAlreadyRuPrefix = /^Выполняется/i.test(match[0]);
             const trailing = match[2] ? match[2] : '';
             const cmd = match[1].trim();
             if (/^real hook acceptance test$/i.test(cmd)) {
@@ -11291,16 +11883,30 @@ const regexTranslations = [
             if (/^tests?$/i.test(cmd)) {
                 return `Выполнение тестов${trailing}`;
             }
-            if (/^(?:Check|Checking|Проверка)\s+(.+)$/i.test(cmd)) {
-                const sub = cmd.match(/^(?:Check|Checking|Проверка)\s+(.+)$/i)[1];
-                return `Выполняется: Проверка ${localizeActionTarget(sub)}${trailing}`;
-            }
-            if (/^[а-яё]/i.test(cmd)) {
+            if (isProgressive) {
+                if (/^[а-яё]/i.test(cmd) && !/[a-zA-Z]/.test(cmd)) {
+                    return `Выполняется: ${lowercaseFirstCyrillic(cmd)}${trailing}`;
+                }
+                const locCmd = localizeActionTarget(cmd, true);
+                if (locCmd !== cmd) {
+                    return `Выполняется: ${lowercaseFirstCyrillic(locCmd)}${trailing}`;
+                }
+                if (isAlreadyRuPrefix) return match[0];
+                if (/[.,;!?]$/.test(cmd) && cmd.split(/\s+/).length > 5) {
+                    return match[0];
+                }
                 return `Выполняется: ${cmd}${trailing}`;
             }
-            const locCmd = localizeActionTarget(cmd);
+            if (/^(?:Check|Checking|Проверка)\s+(.+)$/i.test(cmd)) {
+                const sub = cmd.match(/^(?:Check|Checking|Проверка)\s+(.+)$/i)[1];
+                return `Проверка ${localizeActionTarget(sub, false)}${trailing}`;
+            }
+            const locCmd = localizeActionTarget(cmd, false);
             if (locCmd !== cmd && /^[а-яё]/i.test(locCmd)) {
-                return `Выполняется: ${locCmd}${trailing}`;
+                if (/^(?:Запуск|Выполнение|Повторный запуск)\b/i.test(locCmd)) {
+                    return `${uppercaseFirstCyrillic(locCmd)}${trailing}`;
+                }
+                return `Запуск ${lowercaseFirstCyrillic(locCmd)}${trailing}`;
             }
             if (locCmd === cmd && (cmd.split(/\s+/).length > 3 || /\b(?:a|an|the|my|your|our|their|its|this|that)\b/i.test(cmd)) && !trailing) {
                 return match[0];
@@ -11720,15 +12326,27 @@ const regexTranslations = [
         }
     },
     {
-        // "Checked task <task>" or "Checked task", "Killed task <task>" or "Killed task"
-        pattern: /^(Checked|Killed)\s+task(?:\s+(.+))?$/i,
+        // "Checked task <task>", "Killed task <task>", "Stopped task <task>", or half-translated "Задача остановлена <task>"
+        pattern: /^(?:(Checked|Checking|Killed|Killing|Stopped|Stopping)\s+task|(Задача\s+остановлена|Завершена\s+задача|Остановка\s+задачи|Задача\s+проверена|Проверена\s+задача|Проверка\s+задачи):?)(?:\s+(.+?))?(\s*[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»])?$/i,
         replace: (match) => {
-            const isChecked = match[1].toLowerCase() === 'checked';
-            const action = isChecked ? 'Проверена задача' : 'Завершена задача';
-            if (match[2]) {
-                return `${action}: ${match[2].trim()}`;
+            const arrow = match[4] ? (' ' + match[4].trim()) : '';
+            let action = 'Задача остановлена';
+            if (match[1]) {
+                const v = match[1].toLowerCase();
+                if (v === 'checked') action = 'Задача проверена';
+                else if (v === 'checking') action = 'Проверка задачи';
+                else if (v === 'killing' || v === 'stopping') action = 'Остановка задачи';
+                else action = 'Задача остановлена';
+            } else if (match[2]) {
+                action = match[2].replace(/:$/, '').trim();
             }
-            return action;
+            if (match[3]) {
+                const rawTask = match[3].trim();
+                const locTask = localizeActionTarget(rawTask, true);
+                if (match[2] && locTask === rawTask) return match[0];
+                return `${action}: ${lowercaseFirstCyrillic(locTask)}${arrow}`;
+            }
+            return action + arrow;
         }
     },
     {
@@ -14846,20 +15464,48 @@ const regexTranslations = [
         replace: (m) => `Завтра, ${m[1]}`
     },
     {
-        pattern: /^Every\s+(\d+)\s+hours?(.*)$/i,
-        replace: (m) => `Каждые ${m[1]} ч${m[2] || ''}`
+        pattern: /^Every\s+(\d+)\s+hours?(?:\s+on\s+(.+))?$/i,
+        replace: (m) => `Каждые ${m[1]} ч${m[2] ? ' ' + translateScheduleDays(m[2], false) : ''}`
     },
     {
-        pattern: /^Every\s+(\d+)\s+minutes?(.*)$/i,
-        replace: (m) => `Каждые ${m[1]} мин${m[2] || ''}`
+        pattern: /^Every\s+(\d+)\s+minutes?(?:\s+on\s+(.+))?$/i,
+        replace: (m) => `Каждые ${m[1]} мин${m[2] ? ' ' + translateScheduleDays(m[2], false) : ''}`
+    },
+    {
+        pattern: /^Every\s+hour,\s*(.+?)\s+to\s+(.+?)(?:,\s*on\s+(.+))?$/i,
+        replace: (m) => `Каждый час с ${m[1].trim()} до ${m[2].trim()}${m[3] ? ' ' + translateScheduleDays(m[3], false) : ''}`
+    },
+    {
+        pattern: /^Every\s+hour(?:\s+at\s+:(\d{1,2}))?(?:\s+on\s+(.+))?$/i,
+        replace: (m) => `Каждый час${m[1] ? ' в :' + m[1] : ''}${m[2] ? ' ' + translateScheduleDays(m[2], false) : ''}`
     },
     {
         pattern: /^Daily\s+at\s+(.+)$/i,
-        replace: (m) => `Ежедневно в ${m[1]}`
+        replace: (m) => `Ежедневно в ${translateScheduleTimes(m[1])}`
+    },
+    {
+        pattern: /^(Weekdays|Weekends|Sundays|Mondays|Tuesdays|Wednesdays|Thursdays|Fridays|Saturdays|(?:(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat)(?:,\s*|\s+and\s+))*(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat))\s+at\s+(.+)$/i,
+        replace: (m) => `${translateScheduleDays(m[1], true)} в ${translateScheduleTimes(m[2])}`
     },
     {
         pattern: /^Monthly\s+on\s+the\s+(.+?)\s+at\s+(.+)$/i,
-        replace: (m) => `Ежемесячно ${m[1]}-го числа в ${m[2]}`
+        replace: (m) => {
+            const daysClean = m[1].trim()
+                .replace(/\b(\d+)(?:st|nd|rd|th)?\b/gi, '$1-го')
+                .replace(/\s+and\s+/gi, ' и ');
+            return `Ежемесячно ${daysClean} числа в ${translateScheduleTimes(m[2])}`;
+        }
+    },
+    {
+        pattern: /^Next\s+run\s+(today|tomorrow|on\s+(?:Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|[A-Za-z]+\s+\d{1,2}))\s+around\s+(.+)$/i,
+        replace: (m) => `Следующий запуск ${translateNextRunDate(m[1])} около ${m[2].trim()}`
+    },
+    {
+        pattern: /^(Sun|Mon|Tue|Wed|Thu|Fri|Sat)\s+(\d{1,2}:\d{2}(?:\s*(?:AM|PM))?)$/i,
+        replace: (m) => {
+            const dMap = { sun: 'Вс', mon: 'Пн', tue: 'Вт', wed: 'Ср', thu: 'Чт', fri: 'Пт', sat: 'Сб' };
+            return `${dMap[m[1].toLowerCase()] || m[1]}, ${m[2].trim()}`;
+        }
     },
     {
         pattern: /^Managed\s+by\s+the\s+(.+?)\s+plugin$/i,
@@ -15403,6 +16049,83 @@ const regexTranslations = [
     {
         pattern: /^Are\s+you\s+sure\s+you\s+want\s+to\s+delete\s+the\s+hook\s+"(.+?)"\??$/i,
         replace: (m) => `Вы уверены, что хотите удалить хук «${m[1]}»?`
+    },
+    {
+        pattern: /^Stop\s+(\d+)\s+items?\?$/i,
+        replace: (m) => `Остановить выбранные (${m[1]})?`
+    },
+    {
+        pattern: /^Stopping\s+(\d+)\s+tasks?(?:\.\s*Closed\s+(\d+)\s+terminals?)?\.?$/i,
+        replace: (m) => m[2] ? `Остановка задач: ${m[1]}. Закрыто терминалов: ${m[2]}` : `Остановка задач: ${m[1]}`
+    },
+    {
+        pattern: /^Closed\s+(\d+)\s+terminals?\.?$/i,
+        replace: (m) => `Закрыто терминалов: ${m[1]}`
+    },
+    {
+        pattern: /^(\d+)\s+items?\s+could\s+not\s+be\s+stopped:\s*(.+)$/i,
+        replace: (m) => `Не удалось остановить (${m[1]}): ${m[2]}`
+    },
+    {
+        pattern: /^Select\s+all\s+in\s+(.+)$/i,
+        replace: (m) => {
+            const sub = m[1].trim();
+            const tr = translationDictionary[sub.toLowerCase()] || sub;
+            return `Выбрать всё в «${tr}»`;
+        }
+    },
+    {
+        pattern: /^and\s+(\d+)\s+more$/i,
+        replace: (m) => `и ещё ${m[1]}`
+    },
+    {
+        pattern: /^(Close|Unpin|Pin)\s+(.+)$/i,
+        replace: (m) => {
+            const verb = m[1].toLowerCase();
+            const rawTarget = m[2].trim();
+            const vRu = verb === 'close' ? 'Закрыть' : (verb === 'unpin' ? 'Открепить' : 'Закрепить');
+            const dictHit = translationDictionary[rawTarget.toLowerCase()];
+            if (dictHit) return `${vRu}: ${dictHit}`;
+            const cmdSum = translateEnglishCommandSummary(rawTarget, false);
+            if (cmdSum) return `${vRu}: ${uppercaseFirstCyrillic(cmdSum)}`;
+            if (/^(?:Terminal|bash|pwsh|powershell|zsh|cmd|sh|node|python)\b/i.test(rawTarget)) {
+                return `${vRu}: ${rawTarget.replace(/^Terminal\b/i, 'Терминал')}`;
+            }
+            return m[0];
+        }
+    },
+    {
+        pattern: /^([^\n]+?)\s*→\s*([^\n]+?):\s*(\d+)\s+direct$/i,
+        replace: (m) => `${m[1].trim()} → ${m[2].trim()}: ${m[3]} прямых`
+    },
+    {
+        pattern: /^([^\n]+?)\s*·\s*(Active|Waiting|Working|Stopped|Killed)$/i,
+        replace: (m) => {
+            const namePart = m[1].trim().replace(/\s*\(you\)\s*$/i, ' (вы)');
+            const stMap = { active: 'Активен', waiting: 'Ожидает', working: 'В работе', stopped: 'Приостановлен', killed: 'Остановлен' };
+            return `${namePart} · ${stMap[m[2].toLowerCase()] || m[2]}`;
+        }
+    },
+    {
+        pattern: /^([\s\S]+?)\.\s*(Click to (?:hide from the board|show on the board|open conversation))\.?$/i,
+        replace: (m) => {
+            const body = m[1]
+                .replace(/\s*\(you\)/gi, ' (вы)')
+                .replace(/·\s*(Active|Waiting|Working|Stopped|Killed)\b/gi, (_, st) => {
+                    const stMap = { active: 'Активен', waiting: 'Ожидает', working: 'В работе', stopped: 'Приостановлен', killed: 'Остановлен' };
+                    return `· ${stMap[st.toLowerCase()] || st}`;
+                })
+                .replace(/\b(\d+)\s+steps?\b/gi, (_, c) => `${c} ${pluralizeRuCount(parseInt(c, 10), 'шаг', 'шага', 'шагов')}`)
+                .replace(/\b(\d+)\s+posts?\b/gi, '$1 сообщ.')
+                .replace(/\b(\d+)\s+unread\b/gi, '$1 непрочит.');
+            const actLow = m[2].toLowerCase();
+            const actRu = actLow.includes('hide from the board')
+                ? 'Нажмите, чтобы скрыть с доски'
+                : actLow.includes('show on the board')
+                    ? 'Нажмите, чтобы показать на доске'
+                    : 'Нажмите, чтобы открыть диалог';
+            return `${body.replace(/\.+$/, '')}. ${actRu}`;
+        }
     }
 ];
 
@@ -15688,8 +16411,25 @@ function shouldIgnore(node) {
             /^cron\s*\(/i.test(val) ||
             val === 'every minute' ||
             val === 'every hour' ||
+            val.startsWith('every hour ') ||
+            val.startsWith('every hour,') ||
+            val === 'custom schedule' ||
             /^every\s+\d+\s+(?:seconds?|minutes?|hours?|days?)/i.test(val) ||
             /^daily\s+at\s+\d/i.test(val) ||
+            /^(?:weekdays|weekends|sundays|mondays|tuesdays|wednesdays|thursdays|fridays|saturdays|(?:sun|mon|tue|wed|thu|fri|sat)\b.*)\s+at\s+\d/i.test(val) ||
+            /^monthly\s+on\s+the\s+/i.test(val) ||
+            /^next\s+run\s+(?:today|tomorrow|on\s+)/i.test(val) ||
+            val === 'add terminal' ||
+            val === 'close terminal' ||
+            val === 'failed to create terminal' ||
+            val.startsWith('failed to initialize terminal') ||
+            val.startsWith('failed to delete terminal') ||
+            val.startsWith('terminal sandbox is not supported') ||
+            val.startsWith('requesting your permission in terminal') ||
+            val === "don't enter corp passwords" ||
+            val.startsWith('typing your corp password') ||
+            val === 'password prompt blocked' ||
+            val === 'allow next non-corp prompt' ||
             val === 'no active tasks.' ||
             val === 'no active tasks' ||
             val === 'no messages.' ||
@@ -16606,7 +17346,9 @@ function shouldIgnore(node) {
                 lowerClass.includes('tool') || 
                 lowerClass.includes('step') || 
                 lowerClass.includes('header') || 
-                lowerClass.includes('footer')
+                lowerClass.includes('footer') ||
+                lowerClass.includes('agy-hover-label') ||
+                lowerClass.includes('agy-aux-tab-title')
             ))
         ) {
             return false;
@@ -16633,6 +17375,11 @@ function isFileName(text, parent) {
         const prevOrig = (parent.previousElementSibling.getAttribute && parent.previousElementSibling.getAttribute('data-original-text') || '').trim();
         const prevTxt = (parent.previousElementSibling.textContent || '').trim();
         if (/^(?:Ran|Running|Запущено|Выполняется:?)$/i.test(prevOrig) || /^(?:Ran|Running|Запущено|Выполняется:?)$/i.test(prevTxt)) {
+            return false;
+        }
+    }
+    if (parent && typeof parent.className === 'string' && text.trim().includes(' ')) {
+        if ((parent.className.includes('agy-hover-label') && parent.className.includes('font-mono')) || parent.className.includes('agy-aux-tab-title')) {
             return false;
         }
     }
@@ -17259,8 +18006,14 @@ function isFileName(text, parent) {
         /^cron\s*\(/i.test(lowerTrimmed) ||
         lowerTrimmed === 'every minute' ||
         lowerTrimmed === 'every hour' ||
+        lowerTrimmed.startsWith('every hour ') ||
+        lowerTrimmed.startsWith('every hour,') ||
+        lowerTrimmed === 'custom schedule' ||
         /^every\s+\d+\s+(?:seconds?|minutes?|hours?|days?)/i.test(lowerTrimmed) ||
         /^daily\s+at\s+\d/i.test(lowerTrimmed) ||
+        /^(?:weekdays|weekends|sundays|mondays|tuesdays|wednesdays|thursdays|fridays|saturdays|(?:sun|mon|tue|wed|thu|fri|sat)\b.*)\s+at\s+\d/i.test(lowerTrimmed) ||
+        /^monthly\s+on\s+the\s+/i.test(lowerTrimmed) ||
+        /^next\s+run\s+(?:today|tomorrow|on\s+)/i.test(lowerTrimmed) ||
         lowerTrimmed === 'no active tasks.' ||
         lowerTrimmed === 'no active tasks' ||
         lowerTrimmed === 'no messages.' ||
@@ -17628,7 +18381,7 @@ function isFileName(text, parent) {
     
     // Исключения: фразы с пробелами, содержащие email или известные глаголы интерфейса — не имена файлов!
     if (trimmed.includes(' ')) {
-        if (/@/.test(trimmed) || /^(?:\d+\s*h\s+limit|\d+(?:[.,]\d+)?%\s+left|create\s+(?:a|an)\s+|no\s+extensions\s+available|customize\s+sections|modified\s+files|open\s+file|select\s+folder|поиск\s+tabs|auto\s*\(preview\)|automatically\s+decide|enter\s+tool\s+name|give\s+feedback|проверка\s+|enable\s+(?:notifications|sounds)\s+for\s+agent|manage\s+your\s+notification|show\s+system\s+notifications|play\s+a\s+sound|set\s+the\s+volume)\b/i.test(trimmed) || /for\s+commands/i.test(trimmed) || /conversations\s+with/i.test(trimmed) || /\(.*?menu\)/i.test(trimmed) || /^created\s+/i.test(trimmed) || /^creating\s+/i.test(trimmed) || /^(?:canceled|cancelled)\s+/i.test(trimmed) || /^plan\s+carefully/i.test(trimmed) || /^invoke\s+the\s+boost/i.test(trimmed) || /^compact\s+the\s+conversation/i.test(trimmed) || /^assign\s+github\s+coding/i.test(trimmed) || /^create\s+an\s+issue/i.test(trimmed) || /^ask\s+a\s+quick\s+question/i.test(trimmed) || /^interview\s+me/i.test(trimmed) || /^invoke\s+a\s+(?:browser|team)/i.test(trimmed) || /^reflect\s+on\s+recent/i.test(trimmed) || /^uses\s+chrome\s+devtools/i.test(trimmed) || /^interactive\s+guide/i.test(trimmed) || /^guides\s+debugging/i.test(trimmed) || /^diagnoses\s+and\s+resolves/i.test(trimmed) || /^(?:search|поиск)\s+tool\s+for\s+modern/i.test(trimmed) || /^(?:build|сборка)\s+and\s+publish/i.test(trimmed) || /^comprehensive\s+guide/i.test(trimmed) || /^provides\s+a\s+comprehensive/i.test(trimmed) || /^how\s+to\s+render\s+rich/i.test(trimmed) || /^design,\s*implement/i.test(trimmed) || /^automatically\s+migrate/i.test(trimmed) || /^guidelines\s+for\s+interacting/i.test(trimmed) || /^how\s+to\s+manage\s+and\s+create/i.test(trimmed) || /^how\s+to\s+write\s+and\s+run/i.test(trimmed) || /^discover\s+ui\s+plugin/i.test(trimmed) || /^inspecting\s+/i.test(trimmed) || /^extracting\s+/i.test(trimmed) || /^listing\s+/i.test(trimmed) || /^reading\s+/i.test(trimmed) || /^testing\s+/i.test(trimmed) || /^searching\s+/i.test(trimmed) || /^checking\s+/i.test(trimmed) || /^updating\s+/i.test(trimmed) || /^updated\s+/i.test(trimmed) || /^update\s+/i.test(trimmed) || /^upgrading\s+/i.test(trimmed) || /^viewing\s+/i.test(trimmed) || /^message\s+from\s+/i.test(trimmed) || /^compacting/i.test(trimmed) || /^mark\s+all\s+as\s+read/i.test(trimmed) || /^this\s+page\s+is\s+going/i.test(trimmed) || /^toggle\s+maximize/i.test(trimmed) || /^toggle\s+overview/i.test(trimmed) || /^sincpro\s+/i.test(trimmed) || /^reverting\s+/i.test(trimmed) || /^downloading\s+/i.test(trimmed) || /^github\s+actions/i.test(trimmed) || /^untracked\s+/i.test(trimmed) || /^consilium\s+/i.test(trimmed) || /^schema\s+/i.test(trimmed) || /^contract\s+/i.test(trimmed) || /^validator\s+/i.test(trimmed) || /^dispatch_cli\s+/i.test(trimmed) || /^git\s+pickaxe/i.test(trimmed) || /\s+stat$/i.test(trimmed) || /\s+help$/i.test(trimmed) || /\s+body$/i.test(trimmed) || /\s+toolchain$/i.test(trimmed) || /^edited\s+/i.test(trimmed) || /^editing\s+/i.test(trimmed) || /^build\s+/i.test(trimmed) || /^building\s+/i.test(trimmed) || /^clear\s+/i.test(trimmed) || /^clearing\s+/i.test(trimmed) || /^push\s+/i.test(trimmed) || /^pushing\s+/i.test(trimmed) || /^killed\s+task/i.test(trimmed) || /^cancel\s+task/i.test(trimmed) || /^stop\s+recording/i.test(trimmed) || /^approve\s+/i.test(trimmed) || /^approved\s+/i.test(trimmed) || /^execute\s+/i.test(trimmed) || /^executed\s+/i.test(trimmed) || /^see\s+plans/i.test(trimmed) || /^enable\s+overages/i.test(trimmed) || /^explored\s+/i.test(trimmed) || /^ran\s+/i.test(trimmed) || /^run\s+/i.test(trimmed) || /^running\s+/i.test(trimmed) || /^view\s+/i.test(trimmed) || /^test\s+/i.test(trimmed) || /^commands/i.test(trimmed) || /^close\s+tab/i.test(trimmed) || /^split\s+/i.test(trimmed) || /^open\s+/i.test(trimmed) || /^collapse\s+/i.test(trimmed) || /^expand\s+/i.test(trimmed) || /^unpin\s+/i.test(trimmed) || /^pin\s+/i.test(trimmed) || /^rename\s+/i.test(trimmed) || /^archive\s+/i.test(trimmed) || /^download\s+/i.test(trimmed) || /^toggle\s+/i.test(trimmed) || /^next\s+aux/i.test(trimmed) || /^previous\s+aux/i.test(trimmed) || /^send\s+feedback/i.test(trimmed) || /^this\s+conversation/i.test(trimmed) || /^visit\s+/i.test(trimmed) || /^the\s+canva/i.test(trimmed) || /^our\s+servers/i.test(trimmed) || /^error\s+/i.test(trimmed) || /^model\s+unavailable/i.test(trimmed) || /^agent\s+execution/i.test(trimmed) || /^working/i.test(trimmed) || /^worked\s+for/i.test(trimmed) || /^copy/i.test(trimmed) || /^select\s+all/i.test(trimmed) || /files?\s+changed/i.test(trimmed) || /^(good|bad)\s+response/i.test(trimmed) || / finished$/i.test(trimmed) || /^the\s+subagent/i.test(trimmed) || /^failed_precondition/i.test(trimmed) || /architect\s+session/i.test(trimmed) || /^thought\s+for/i.test(trimmed) || /^thinking\s+for/i.test(trimmed) || /^exploring\s+/i.test(trimmed) || /^analyzed\s+/i.test(trimmed) || /^automations/i.test(trimmed) || /marketplace/i.test(trimmed) || /pane$/i.test(trimmed) || /^\+\s*create/i.test(trimmed) || /baseline quota/i.test(trimmed) || /ai credit overages/i.test(trimmed) || /all automations run/i.test(trimmed) || /google workspace/i.test(trimmed) || /custom agents/i.test(trimmed) || /skills & rules/i.test(trimmed) || /mcp servers/i.test(trimmed) || /^search\s+/i.test(trimmed) || /^inspect\s+/i.test(trimmed) || /^compare\s+/i.test(trimmed) || /^restore\s+/i.test(trimmed) || /^check\s+/i.test(trimmed) || /^checked\s+task/i.test(trimmed) || /^select\s+project/i.test(trimmed) || /^leaving\s+soon/i.test(trimmed) || /^notice/i.test(trimmed) || /^verify\s+/i.test(trimmed) || /^start\s+using/i.test(trimmed) || /^started\s+/i.test(trimmed) || /^starting\s+/i.test(trimmed) || /^wants\s+to\s+run:/i.test(trimmed)) {
+        if (/@/.test(trimmed) || /^(?:\d+\s*h\s+limit|\d+(?:[.,]\d+)?%\s+left|create\s+(?:a|an)\s+|no\s+extensions\s+available|customize\s+sections|modified\s+files|open\s+file|select\s+folder|поиск\s+tabs|auto\s*\(preview\)|automatically\s+decide|enter\s+tool\s+name|give\s+feedback|проверка\s+|enable\s+(?:notifications|sounds)\s+for\s+agent|manage\s+your\s+notification|show\s+system\s+notifications|play\s+a\s+sound|set\s+the\s+volume)\b/i.test(trimmed) || /for\s+commands/i.test(trimmed) || /conversations\s+with/i.test(trimmed) || /\(.*?menu\)/i.test(trimmed) || /^created\s+/i.test(trimmed) || /^creating\s+/i.test(trimmed) || /^(?:canceled|cancelled)\s+/i.test(trimmed) || /^plan\s+carefully/i.test(trimmed) || /^invoke\s+the\s+boost/i.test(trimmed) || /^compact\s+the\s+conversation/i.test(trimmed) || /^assign\s+github\s+coding/i.test(trimmed) || /^create\s+an\s+issue/i.test(trimmed) || /^ask\s+a\s+quick\s+question/i.test(trimmed) || /^interview\s+me/i.test(trimmed) || /^invoke\s+a\s+(?:browser|team)/i.test(trimmed) || /^reflect\s+on\s+recent/i.test(trimmed) || /^uses\s+chrome\s+devtools/i.test(trimmed) || /^interactive\s+guide/i.test(trimmed) || /^guides\s+debugging/i.test(trimmed) || /^diagnoses\s+and\s+resolves/i.test(trimmed) || /^(?:search|поиск)\s+tool\s+for\s+modern/i.test(trimmed) || /^(?:build|сборка)\s+and\s+publish/i.test(trimmed) || /^comprehensive\s+guide/i.test(trimmed) || /^provides\s+a\s+comprehensive/i.test(trimmed) || /^how\s+to\s+render\s+rich/i.test(trimmed) || /^design,\s*implement/i.test(trimmed) || /^automatically\s+migrate/i.test(trimmed) || /^guidelines\s+for\s+interacting/i.test(trimmed) || /^how\s+to\s+manage\s+and\s+create/i.test(trimmed) || /^how\s+to\s+write\s+and\s+run/i.test(trimmed) || /^discover\s+ui\s+plugin/i.test(trimmed) || /^inspecting\s+/i.test(trimmed) || /^extracting\s+/i.test(trimmed) || /^listing\s+/i.test(trimmed) || /^reading\s+/i.test(trimmed) || /^testing\s+/i.test(trimmed) || /^searching\s+/i.test(trimmed) || /^checking\s+/i.test(trimmed) || /^updating\s+/i.test(trimmed) || /^updated\s+/i.test(trimmed) || /^update\s+/i.test(trimmed) || /^upgrading\s+/i.test(trimmed) || /^viewing\s+/i.test(trimmed) || /^message\s+from\s+/i.test(trimmed) || /^compacting/i.test(trimmed) || /^mark\s+all\s+as\s+read/i.test(trimmed) || /^this\s+page\s+is\s+going/i.test(trimmed) || /^toggle\s+maximize/i.test(trimmed) || /^toggle\s+overview/i.test(trimmed) || /^sincpro\s+/i.test(trimmed) || /^reverting\s+/i.test(trimmed) || /^downloading\s+/i.test(trimmed) || /^github\s+actions/i.test(trimmed) || /^untracked\s+/i.test(trimmed) || /^consilium\s+/i.test(trimmed) || /^schema\s+/i.test(trimmed) || /^contract\s+/i.test(trimmed) || /^validator\s+/i.test(trimmed) || /^dispatch_cli\s+/i.test(trimmed) || /^git\s+pickaxe/i.test(trimmed) || /\s+stat$/i.test(trimmed) || /\s+help$/i.test(trimmed) || /\s+body$/i.test(trimmed) || /\s+toolchain$/i.test(trimmed) || /^edited\s+/i.test(trimmed) || /^editing\s+/i.test(trimmed) || /^build\s+/i.test(trimmed) || /^building\s+/i.test(trimmed) || /^clear\s+/i.test(trimmed) || /^clearing\s+/i.test(trimmed) || /^push\s+/i.test(trimmed) || /^pushing\s+/i.test(trimmed) || /^killed\s+task/i.test(trimmed) || /^cancel\s+task/i.test(trimmed) || /^stop\s+recording/i.test(trimmed) || /^approve\s+/i.test(trimmed) || /^approved\s+/i.test(trimmed) || /^execute\s+/i.test(trimmed) || /^executed\s+/i.test(trimmed) || /^see\s+plans/i.test(trimmed) || /^enable\s+overages/i.test(trimmed) || /^explored\s+/i.test(trimmed) || /^ran\s+/i.test(trimmed) || /^run\s+/i.test(trimmed) || /^running\s+/i.test(trimmed) || /^view\s+/i.test(trimmed) || /^test\s+/i.test(trimmed) || /^commands/i.test(trimmed) || /^close\s+tab/i.test(trimmed) || /^split\s+/i.test(trimmed) || /^open\s+/i.test(trimmed) || /^collapse\s+/i.test(trimmed) || /^expand\s+/i.test(trimmed) || /^unpin\s+/i.test(trimmed) || /^pin\s+/i.test(trimmed) || /^rename\s+/i.test(trimmed) || /^archive\s+/i.test(trimmed) || /^download\s+/i.test(trimmed) || /^toggle\s+/i.test(trimmed) || /^next\s+aux/i.test(trimmed) || /^previous\s+aux/i.test(trimmed) || /^send\s+feedback/i.test(trimmed) || /^this\s+conversation/i.test(trimmed) || /^visit\s+/i.test(trimmed) || /^the\s+canva/i.test(trimmed) || /^our\s+servers/i.test(trimmed) || /^error\s+/i.test(trimmed) || /^model\s+unavailable/i.test(trimmed) || /^agent\s+execution/i.test(trimmed) || /^working/i.test(trimmed) || /^worked\s+for/i.test(trimmed) || /^copy/i.test(trimmed) || /^select\s+all/i.test(trimmed) || /files?\s+changed/i.test(trimmed) || /^(good|bad)\s+response/i.test(trimmed) || / finished$/i.test(trimmed) || /^the\s+subagent/i.test(trimmed) || /^failed_precondition/i.test(trimmed) || /architect\s+session/i.test(trimmed) || /^thought\s+for/i.test(trimmed) || /^thinking\s+for/i.test(trimmed) || /^exploring\s+/i.test(trimmed) || /^analyzed\s+/i.test(trimmed) || /^automations/i.test(trimmed) || /marketplace/i.test(trimmed) || /pane$/i.test(trimmed) || /^\+\s*create/i.test(trimmed) || /baseline quota/i.test(trimmed) || /ai credit overages/i.test(trimmed) || /all automations run/i.test(trimmed) || /google workspace/i.test(trimmed) || /custom agents/i.test(trimmed) || /skills & rules/i.test(trimmed) || /mcp servers/i.test(trimmed) || /^search\s+/i.test(trimmed) || /^inspect\s+/i.test(trimmed) || /^compare\s+/i.test(trimmed) || /^restore\s+/i.test(trimmed) || /^check\s+/i.test(trimmed) || /^checked\s+task/i.test(trimmed) || /^select\s+project/i.test(trimmed) || /^leaving\s+soon/i.test(trimmed) || /^notice/i.test(trimmed) || /^verify\s+/i.test(trimmed) || /^start\s+/i.test(trimmed) || /^stop\s+/i.test(trimmed) || /^restart\s+/i.test(trimmed) || /^re-?run\s+/i.test(trimmed) || /^lint\s+/i.test(trimmed) || /^type[\s-]?check\s+/i.test(trimmed) || /^format\s+/i.test(trimmed) || /^compile\s+/i.test(trimmed) || /^patch\s+/i.test(trimmed) || /^fix\s+/i.test(trimmed) || /^clean\s+/i.test(trimmed) || /^install\s+/i.test(trimmed) || /^deploy\s+/i.test(trimmed) || /^commit\s+/i.test(trimmed) || /^stage\s+/i.test(trimmed) || /^validate\s+/i.test(trimmed) || /^audit\s+/i.test(trimmed) || /^analyze\s+/i.test(trimmed) || /^started\s+/i.test(trimmed) || /^starting\s+/i.test(trimmed) || /^wants\s+to\s+run:/i.test(trimmed)) {
             return false;
         }
     }
@@ -17677,6 +18430,69 @@ function isFileName(text, parent) {
     }
     
     return false;
+}
+
+const STEP_PREFIX_EXACT_RE = /^(?:Ran|Running|Killed\s+task|Killing\s+task|Stopped\s+task|Checked\s+task|Checking\s+task|Sent\s+input\s+to\s+task|Sending\s+input\s+to\s+task|Запущено:?|Выполнено:?|Выполняется:?|Задача\s+остановлена:?|Завершена\s+задача:?|Остановка\s+задачи:?|Задача\s+проверена:?|Проверена\s+задача:?|Проверка\s+задачи:?|Ввод\s+отправлен\s+в\s+задачу:?|Отправка\s+ввода\s+в\s+задачу:?)$/i;
+
+function hasFollowingStepTarget(node, normalizedPrefix) {
+    if (!node || !normalizedPrefix) return false;
+    const pEl = node.parentElement;
+    if (!pEl) return false;
+    const pClass = (typeof pEl.className === 'string' ? pEl.className : '').toLowerCase();
+    if (/\b(?:badge|pill|rounded-full|status-badge|chip)\b/.test(pClass)) return false;
+
+    const escaped = normalizedPrefix.replace(/[.*+?^$()|[\]\\]/g, '\\$&');
+    const rowStartRe = new RegExp('^' + escaped + '\\s+(.+)$', 'i');
+
+    const candidates = [pEl, pEl.parentElement, pEl.parentElement && pEl.parentElement.parentElement];
+    for (const container of candidates) {
+        if (!container) continue;
+        const cTxt = (container.textContent || '').replace(/[\s\u00a0\r\n\t]+/g, ' ').trim();
+        if (!cTxt || cTxt.length > 220) continue;
+        const m = cTxt.match(rowStartRe);
+        if (m) {
+            const rem = m[1].replace(/[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»↺↻⟳⟲·•]/g, '').trim();
+            if (rem.length >= 2) {
+                const nextEl = pEl.nextElementSibling;
+                if (nextEl && nextEl.tagName === 'BUTTON') return false;
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+function getPrecedingStepPrefix(node, normalizedTarget) {
+    if (!node || !normalizedTarget) return null;
+    const pEl = node.parentElement;
+    const prevCandidates = [
+        node.previousSibling,
+        pEl && pEl.previousElementSibling,
+        pEl && pEl.parentElement && pEl.parentElement.previousElementSibling
+    ];
+    for (const prev of prevCandidates) {
+        if (!prev) continue;
+        const orig = (prev.getAttribute && prev.getAttribute('data-original-text') || '').trim();
+        const txt = (prev.textContent || prev.nodeValue || '').trim();
+        if (STEP_PREFIX_EXACT_RE.test(orig) || STEP_PREFIX_EXACT_RE.test(txt)) {
+            return txt || orig;
+        }
+    }
+    // Also check if compact row container starts with "<stepPrefix> <normalizedTarget>"
+    const containers = [pEl, pEl && pEl.parentElement, pEl && pEl.parentElement && pEl.parentElement.parentElement];
+    for (const c of containers) {
+        if (!c) continue;
+        const cTxt = (c.textContent || '').replace(/[\s\u00a0\r\n\t]+/g, ' ').trim();
+        if (!cTxt || cTxt.length > 220) continue;
+        const m = cTxt.match(/^(Ran|Running|Killed\s+task|Killing\s+task|Stopped\s+task|Checked\s+task|Checking\s+task|Sent\s+input\s+to\s+task|Sending\s+input\s+to\s+task|Запущено:?|Выполнено:?|Выполняется:?|Задача\s+остановлена:?|Завершена\s+задача:?|Остановка\s+задачи:?|Задача\s+проверена:?|Проверена\s+задача:?|Проверка\s+задачи:?)\s+(.+)$/i);
+        if (m) {
+            const afterPrefix = m[2].trim();
+            if (afterPrefix === normalizedTarget || afterPrefix.startsWith(normalizedTarget + ' ') || afterPrefix.startsWith(normalizedTarget + '·')) {
+                return m[1];
+            }
+        }
+    }
+    return null;
 }
 
 function translateTextNode(node) {
@@ -17806,8 +18622,24 @@ function translateTextNode(node) {
                         else if (lowerText === 'started') translated = isSing ? (isFem ? 'Запущена' : 'Запущен') : 'Запущено';
                         else if (lowerText === 'asked') translated = isSing ? 'Задан' : 'Задано';
                     }
+                } else if (
+                    lowerText === 'ran' ||
+                    lowerText === 'running' ||
+                    lowerText === 'killed task' ||
+                    lowerText === 'killing task' ||
+                    lowerText === 'checked task' ||
+                    lowerText === 'checking task' ||
+                    lowerText === 'sent input to task' ||
+                    lowerText === 'sending input to task'
+                ) {
+                    if (hasFollowingStepTarget(node, normalized)) {
+                        translated = translated.replace(/:$/, '') + ':';
+                    }
+                } else if (!STEP_PREFIX_EXACT_RE.test(normalized) && !/^[·•・]/.test(normalized) && getPrecedingStepPrefix(node, normalized)) {
+                    translated = lowercaseFirstCyrillic(translated);
                 }
             } else {
+                const stepPrefixBefore = getPrecedingStepPrefix(node, normalized);
                 for (const rule of regexTranslations) {
                     const match = normalized.match(rule.pattern);
                     if (match) {
@@ -17818,16 +18650,14 @@ function translateTextNode(node) {
                         }
                     }
                 }
-                if (!translated && node.parentElement && node.parentElement.previousElementSibling) {
-                    const prevEl = node.parentElement.previousElementSibling;
-                    const prevOrig = (prevEl.getAttribute && prevEl.getAttribute('data-original-text') || '').trim();
-                    const prevTxt = (prevEl.textContent || '').trim();
-                    if (/^(?:Ran|Running|Запущено|Выполняется:?)$/i.test(prevOrig) || /^(?:Ran|Running|Запущено|Выполняется:?)$/i.test(prevTxt)) {
-                        const loc = localizeActionTarget(normalized);
-                        if (loc && loc !== normalized) {
-                            translated = loc;
-                        }
+                if (!translated && stepPrefixBefore) {
+                    const loc = localizeActionTarget(normalized, true);
+                    if (loc && loc !== normalized) {
+                        translated = loc;
                     }
+                }
+                if (translated && stepPrefixBefore) {
+                    translated = lowercaseFirstCyrillic(translated);
                 }
             }
         }
@@ -18087,14 +18917,27 @@ function translateTextNode(node) {
                     const dur = mOver[1].replace(/(\d+)\s*(s|m|h|d)\b/gi, (_, c, u) => `${c} ${{ s: 'сек', m: 'мин', h: 'ч', d: 'дн.' }[u.toLowerCase()] || u}`);
                     translated = `за ${dur}`;
                 }
-            } else if (node.parentElement && node.parentElement.previousElementSibling) {
-                const prevEl = node.parentElement.previousElementSibling;
-                const prevOrig = (prevEl.getAttribute && prevEl.getAttribute('data-original-text') || '').trim();
-                const prevTxt = (prevEl.textContent || '').trim();
-                if (/^(?:Ran|Running|Запущено|Выполняется:?)$/i.test(prevOrig) || /^(?:Ran|Running|Запущено|Выполняется:?)$/i.test(prevTxt)) {
-                    const loc = localizeActionTarget(normalized);
+            } else {
+                const stepPrefixFallback = getPrecedingStepPrefix(node, normalized);
+                if (stepPrefixFallback) {
+                    const loc = localizeActionTarget(normalized, true);
                     if (loc && loc !== normalized) {
-                        translated = loc;
+                        translated = lowercaseFirstCyrillic(loc);
+                    }
+                } else if (node.parentElement) {
+                    const pCls = typeof node.parentElement.className === 'string' ? node.parentElement.className : '';
+                    if (pCls.includes('agy-hover-label') && pCls.includes('font-mono')) {
+                        const cmdSum = translateEnglishCommandSummary(normalized, true);
+                        if (cmdSum && cmdSum !== normalized) {
+                            translated = uppercaseFirstCyrillic(cmdSum);
+                        }
+                    } else if (pCls.includes('agy-aux-tab-title') || (typeof node.parentElement.closest === 'function' && node.parentElement.closest('[role="tooltip"]'))) {
+                        const cmdSum = translateEnglishCommandSummary(normalized, false);
+                        if (cmdSum && cmdSum !== normalized) {
+                            translated = uppercaseFirstCyrillic(cmdSum);
+                        }
+                    } else if (lowerText === 'daemon' && (pCls.includes('rounded') || pCls.includes('badge') || pCls.includes('pill') || pCls.includes('text-[10px]') || pCls.includes('text-xs'))) {
+                        translated = 'фоновый';
                     }
                 }
             }
@@ -18207,11 +19050,17 @@ function translateTitle(element) {
                     const prevEl = element.previousElementSibling;
                     const prevOrig = (prevEl.getAttribute && prevEl.getAttribute('data-original-text') || '').trim();
                     const prevTxt = (prevEl.textContent || '').trim();
-                    if (/^(?:Ran|Running|Запущено|Выполняется:?)$/i.test(prevOrig) || /^(?:Ran|Running|Запущено|Выполняется:?)$/i.test(prevTxt)) {
-                        const loc = localizeActionTarget(normalized);
+                    if (STEP_PREFIX_EXACT_RE.test(prevOrig) || STEP_PREFIX_EXACT_RE.test(prevTxt)) {
+                        const loc = localizeActionTarget(normalized, true);
                         if (loc && loc !== normalized) {
-                            translated = loc;
+                            translated = lowercaseFirstCyrillic(loc);
                         }
+                    }
+                }
+                if (!translated && typeof element.className === 'string' && element.className.includes('agy-hover-label') && element.className.includes('font-mono')) {
+                    const cmdSum = translateEnglishCommandSummary(normalized, true);
+                    if (cmdSum && cmdSum !== normalized) {
+                        translated = uppercaseFirstCyrillic(cmdSum);
                     }
                 }
             }
@@ -18537,8 +19386,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.40';
-    const DEFAULT_CHANGELOG_V2140 = 'Обновление v2.1.40: добавлена кнопка быстрой поддержки проекта звездой на GitHub в меню статуса версии (рядом с EN | RU) и ссылка для сохранения репозитория в закладки в установочных скриптах Windows и macOS.';
+    const FALLBACK_VERSION = '2.1.41';
+    const DEFAULT_CHANGELOG_V2141 = 'Обновление v2.1.41: умный композиционный перевод описаний шагов терминала и фоновых задач (Ran / Running / Killed task + toolSummary), полный перевод расписаний автоматизаций (Custom schedule, cron-интервалы и дни недели), обновлённой полки Google Workspace (+ Gmail), предупреждений терминала и страницы запущенных процессов.';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -18546,10 +19395,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2140;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2141;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2140;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2141;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
