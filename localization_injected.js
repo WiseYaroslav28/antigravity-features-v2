@@ -18537,8 +18537,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.38';
-    const DEFAULT_CHANGELOG_V2138 = 'Обновление v2.1.38: перевод кнопки Confirm ↵ («Подтвердить ↵») и всех состояний диалога отмены (Confirm Undo), а также кнопок действий во всём интерфейсе (Apply, Proceed, Approve, Reject, Accept, Reject all, Accept all, Reset, Manage, Select, Visit, Relaunch ↻, Settings ↗, Cancel (⌃C), Back to all agents, Focus this tile), диалогов SSH, Web Preview, Cookies, Hooks и MCP-авторизации.';
+    const FALLBACK_VERSION = '2.1.39';
+    const DEFAULT_CHANGELOG_V2139 = 'Обновление v2.1.39: официальная поддержка macOS (Apple Silicon и Intel) — кроссплатформенные пути /Applications и ~/Applications, автоподпись codesign для Gatekeeper, однострочный bash-установщик install.sh и стабильный запуск через process.execPath (спасибо @MrRay57 за PR #1).';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -18546,10 +18546,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2138;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2139;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2138;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2139;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;

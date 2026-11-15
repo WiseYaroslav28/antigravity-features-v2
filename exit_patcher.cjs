@@ -5,8 +5,17 @@ const { execSync, spawn } = require('child_process');
 
 const username = process.env.USERNAME || process.env.USER || path.basename(os.homedir());
 const isMac = process.platform === 'darwin';
+function resolveMacAppBundle() {
+  const candidates = [
+    '/Applications/Antigravity.app',
+    '/Applications/Antigravity IDE.app',
+    path.join(os.homedir(), 'Applications', 'Antigravity.app'),
+    path.join(os.homedir(), 'Applications', 'Antigravity IDE.app')
+  ];
+  return candidates.find(p => fs.existsSync(p)) || '/Applications/Antigravity.app';
+}
 const APP_DIR = isMac
-  ? (fs.existsSync('/Applications/Antigravity.app') ? '/Applications/Antigravity.app' : '/Applications/Antigravity IDE.app')
+  ? resolveMacAppBundle()
   : path.join('C:', 'Users', username, 'AppData', 'Local', 'Programs', 'Antigravity');
 const EXE_PATH = isMac
   ? path.join(APP_DIR, 'Contents', 'MacOS', 'Antigravity')
@@ -84,7 +93,7 @@ function applyAsarWithRetry() {
       const isAlreadyPatched = currentBuf.includes('// BEGIN ANTIGRAVITY TRANSLATION INJECTION');
       if (!isAlreadyPatched) {
         log("Detected fresh unpatched app.asar on exit; rebuilding app.asar.patched from new version first...");
-        execSync(`node "${path.join(__dirname, 'auto_patcher.cjs')}" --build-only`, { stdio: 'ignore' });
+        execSync(`"${process.execPath}" "${path.join(__dirname, 'auto_patcher.cjs')}" --build-only`, { stdio: 'ignore', windowsHide: true });
       }
     }
   } catch (e) {}

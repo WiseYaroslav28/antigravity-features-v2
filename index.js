@@ -27,9 +27,16 @@ const GITHUB_RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_REPO}/${GITH
 
 const username = process.env.USERNAME || process.env.USER || path.basename(os.homedir());
 const isMac = process.platform === 'darwin';
-const APP_BUNDLE_PATH = isMac
-  ? (fs.existsSync('/Applications/Antigravity.app') ? '/Applications/Antigravity.app' : '/Applications/Antigravity IDE.app')
-  : null;
+function resolveMacAppBundle() {
+  const candidates = [
+    '/Applications/Antigravity.app',
+    '/Applications/Antigravity IDE.app',
+    path.join(os.homedir(), 'Applications', 'Antigravity.app'),
+    path.join(os.homedir(), 'Applications', 'Antigravity IDE.app')
+  ];
+  return candidates.find(p => fs.existsSync(p)) || '/Applications/Antigravity.app';
+}
+const APP_BUNDLE_PATH = isMac ? resolveMacAppBundle() : null;
 const ASAR_PATH = isMac
   ? path.join(APP_BUNDLE_PATH, 'Contents', 'Resources', 'app.asar')
   : path.join('C:', 'Users', username, 'AppData', 'Local', 'Programs', 'Antigravity', 'resources', 'app.asar');
@@ -229,7 +236,7 @@ function checkAsarHashAndAutoBuildPatch() {
       if (fs.existsSync(patchedPath)) {
         log(`app.asar already contains localization patch; arming silent exit-patcher to sync latest app.asar.patched on close...`);
         const exitPatcherPath = path.join(__dirname, 'exit_patcher.cjs');
-        const child = spawn('node', [exitPatcherPath], {
+        const child = spawn(process.execPath, [exitPatcherPath], {
           detached: true,
           stdio: 'ignore',
           windowsHide: true
@@ -265,7 +272,7 @@ function checkCdpPortOpen() {
 }
 
 function rebuildPatchedAsarInBackground(markPendingRestart = false, autoRestartIfCdpClosed = false) {
-  exec(`node "${path.join(__dirname, 'auto_patcher.cjs')}"`, { windowsHide: true }, async (err) => {
+  exec(`"${process.execPath}" "${path.join(__dirname, 'auto_patcher.cjs')}"`, { windowsHide: true }, async (err) => {
     if (err) {
       log(`Auto-patcher error: ${err.message}`);
     } else {
@@ -318,7 +325,7 @@ function rebuildPatchedAsarInBackground(markPendingRestart = false, autoRestartI
         }
       }
 
-      const child = spawn('node', [exitPatcherPath], {
+      const child = spawn(process.execPath, [exitPatcherPath], {
         detached: true,
         stdio: 'ignore',
         windowsHide: true
@@ -358,7 +365,7 @@ async function checkAndApplyGithubUpdate({ force = false } = {}) {
     log(`[AutoUpdater] New GitHub release detected: v${localVersion} -> v${remoteMeta.version}! Downloading files...`);
     const filesToUpdate = Array.isArray(remoteMeta.files) && remoteMeta.files.length > 0
       ? remoteMeta.files
-      : ["localization_injected.js", "auto_patcher.cjs", "index.js", "backup_manager.js", "exit_patcher.cjs"];
+      : ["localization_injected.js", "auto_patcher.cjs", "index.js", "backup_manager.js", "exit_patcher.cjs", "launcher.js"];
 
     let autoPatcherChanged = false;
     const oldPatcherPath = path.join(__dirname, "auto_patcher.cjs");
@@ -373,7 +380,9 @@ async function checkAndApplyGithubUpdate({ force = false } = {}) {
       const fileUrl = `${GITHUB_RAW_BASE}/${safeRel.replace(/\\/g, '/')}?cb=${Date.now()}`;
 
       let downloadedContent = await fetchHttpsText(fileUrl);
-      if (safeRel === "localization_injected.js" || safeRel.endsWith(".bat")) {
+      if (safeRel.endsWith(".sh")) {
+        downloadedContent = downloadedContent.replace(/\r\n/g, "\n");
+      } else if (!isMac && (safeRel === "localization_injected.js" || safeRel.endsWith(".bat"))) {
         downloadedContent = downloadedContent.replace(/\r?\n/g, "\r\n");
       }
 
@@ -392,7 +401,7 @@ async function checkAndApplyGithubUpdate({ force = false } = {}) {
       // Validate JS/CJS syntax before accepting
       if (safeRel.endsWith(".js") || safeRel.endsWith(".cjs")) {
         try {
-          execSync(`node --check "${tmpPath}"`, { stdio: "ignore", windowsHide: true });
+          execSync(`"${process.execPath}" --check "${tmpPath}"`, { stdio: "ignore", windowsHide: true });
         } catch (syntaxErr) {
           try { fs.unlinkSync(tmpPath); } catch (e) {}
           throw new Error(`Syntax validation failed for downloaded file ${safeRel}: ${syntaxErr.message}`);

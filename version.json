@@ -1,6 +1,14 @@
 {
-  "version": "2.1.38",
-  "releasedAt": "2026-11-14T18:55:00.000Z",
-  "changelog": "Обновление v2.1.38: переведена кнопка «Confirm ↵» → «Подтвердить ↵» и все дополнительные сценарии в модальном окне «Подтвердить отмену» (Confirm Undo), а также проведена ревизия всех JSX-кнопок и составных уведомлений AntiGravity 2.32.1 (Apply, Approve, Reject, Accept, Proceed, Reset, Manage, Select, PDF-комментарии, SSH, Web Preview и куки сайтов).",
+  "version": "2.1.39",
+  "releasedAt": "2026-11-15T18:35:00.000Z",
+  "changelog": "Обновление v2.1.39: официальная поддержка macOS (Apple Silicon и Intel) — кроссплатформенные пути /Applications и ~/Applications, автоподпись codesign для Gatekeeper, однострочный bash-установщик install.sh и стабильный запуск через process.execPath (спасибо @MrRay57 за PR #1).",
+  "files": [
+    "localization_injected.js",
+    "auto_patcher.cjs",
+    "index.js",
+    "backup_manager.js",
+    "exit_patcher.cjs",
+    "launcher.js"
+  ],
   "downloadUrl": "https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/localization_injected.js"
 }

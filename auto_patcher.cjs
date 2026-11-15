@@ -5,11 +5,19 @@ const vm = require('vm');
 const { execSync } = require('child_process');
 const asar = require('@electron/asar');
 
-const username = process.env.USERNAME || process.env.USER || require('os').userInfo().username;
+const os = require('os');
+const username = process.env.USERNAME || process.env.USER || os.userInfo().username;
 const isMac = process.platform === 'darwin';
-const appBundlePath = isMac
-    ? (fs.existsSync('/Applications/Antigravity.app') ? '/Applications/Antigravity.app' : '/Applications/Antigravity IDE.app')
-    : null;
+function resolveMacAppBundle() {
+    const candidates = [
+        '/Applications/Antigravity.app',
+        '/Applications/Antigravity IDE.app',
+        path.join(os.homedir(), 'Applications', 'Antigravity.app'),
+        path.join(os.homedir(), 'Applications', 'Antigravity IDE.app')
+    ];
+    return candidates.find(p => fs.existsSync(p)) || '/Applications/Antigravity.app';
+}
+const appBundlePath = isMac ? resolveMacAppBundle() : null;
 const resourcesDir = isMac
     ? path.join(appBundlePath, 'Contents', 'Resources')
     : path.join('C:', 'Users', username, 'AppData', 'Local', 'Programs', 'Antigravity', 'resources');

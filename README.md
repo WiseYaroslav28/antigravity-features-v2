@@ -2,9 +2,9 @@
 
 ![Google AntiGravity 2.0 — 100% RU + Live MCP Auto-Update](assets/hero-banner.jpg)
 
-[![Version](https://img.shields.io/badge/version-v2.1.27-blue.svg)](version.json)
+[![Version](https://img.shields.io/badge/version-v2.1.39-blue.svg)](version.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
+[![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11%20%7C%20macOS-0078D6.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
 [![Target](https://img.shields.io/badge/Google%20AntiGravity-2.0%2B-orange.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
 [![MCP Server](https://img.shields.io/badge/MCP-Auto--Updater%20Ready-10b981.svg)](index.js)
 [![Donate Tribute](https://img.shields.io/badge/❤️_Donate_/_Поддержать-Tribute-ff4b4b.svg)](https://web.tribute.tg/d/SGR)
@@ -40,20 +40,32 @@
 
 ---
 
-### ⚡ Мгновенная установка (3 способа на выбор)
+### ⚡ Мгновенная установка (Windows и macOS)
 
 #### Способ 1. Попросить саму AntiGravity установить русификатор себе (Self-Install Prompt)
 Откройте чат в вашей AntiGravity, вставьте этот промпт и нажмите **Enter**:
-> ```text
-> Установи полный русификатор и MCP-сервер автообновления AntiGravity 2.0 из репозитория https://github.com/WiseYaroslav28/antigravity-features-v2 — выполни в PowerShell команду: irm https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/install.ps1 | iex
-> ```
 
-#### Способ 2. Одной командой в PowerShell (работает даже без Git)
-```powershell
-irm https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/install.ps1 | iex
-```
+* **Для Windows:**
+  > ```text
+  > Установи полный русификатор и MCP-сервер автообновления AntiGravity 2.0 из репозитория https://github.com/WiseYaroslav28/antigravity-features-v2 — выполни в PowerShell команду: irm https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/install.ps1 | iex
+  > ```
+* **Для macOS (Apple Silicon & Intel):**
+  > ```text
+  > Установи полный русификатор и MCP-сервер автообновления AntiGravity 2.0 для macOS из репозитория https://github.com/WiseYaroslav28/antigravity-features-v2 — выполни в bash команду: curl -fsSL https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/install.sh | bash
+  > ```
 
-#### Способ 3. Классическая установка через `install_on_new_pc.bat`
+#### Способ 2. Одной командой в терминале (работает даже без Git)
+
+* **Windows (PowerShell):**
+  ```powershell
+  irm https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/install.ps1 | iex
+  ```
+* **macOS (Terminal — Apple Silicon & Intel, с автоподписью `codesign` для Gatekeeper):**
+  ```bash
+  curl -fsSL https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/install.sh | bash
+  ```
+
+#### Способ 3. Классическая установка через `git clone`
 
 1. Скачайте архив репозитория или склонируйте его:
    ```cmd
@@ -81,8 +93,9 @@ irm https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/mai
 | [`auto_patcher.cjs`](auto_patcher.cjs) | Автоматический сборщик `app.asar.patched` с проверкой каждого файла компилятором V8 (`vm.Script`). |
 | [`exit_patcher.cjs`](exit_patcher.cjs) | Фоновый модуль тихой подмены `app.asar` после штатного закрытия AntiGravity пользователем. |
 | [`backup_manager.js`](backup_manager.js) | Служба резервного копирования состояния и координат окна каждые 30 секунд. |
-| [`install_on_new_pc.bat`](install_on_new_pc.bat) | Автоматический установщик для нового компьютера. |
-| [`apply_patch_and_restart.bat`](apply_patch_and_restart.bat) | Скрипт быстрой подмены `app.asar` и перезапуска AntiGravity в 1 клик. |
+| [`install_on_new_pc.bat`](install_on_new_pc.bat) | Автоматический установщик для Windows. |
+| [`install.sh`](install.sh) | Однострочный bash-установщик для macOS / Unix с автоматической переподписью `codesign`. |
+| [`apply_patch_and_restart.bat`](apply_patch_and_restart.bat) | Скрипт быстрой подмены `app.asar` и перезапуска AntiGravity в 1 клик (Windows). |
 
 ---
 
@@ -105,12 +118,16 @@ irm https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/mai
 4. **🖱️ System Tray Left-Click & Desktop Shortcut Restore Fixes**:
    * Patches `dist/tray.js` and `dist/main.js` inside `app.asar` so left-clicking/double-clicking the tray icon or re-launching the desktop shortcut reliably restores the window from the system tray.
 
-### 🚀 Quick Start (1-Click Install)
+### 🚀 Quick Start (1-Line Install)
 
-```cmd
-git clone https://github.com/WiseYaroslav28/antigravity-features-v2.git
-cd antigravity-features-v2
-install_on_new_pc.bat
+**Windows (PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/install.ps1 | iex
+```
+
+**macOS (Apple Silicon & Intel):**
+```bash
+curl -fsSL https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/install.sh | bash
 ```
 
 ---
@@ -129,6 +146,13 @@ If you find this project helpful, you can support its continued development:
   ```text
   0x729D819802EF2B8Eaab8eE7F0431fE1d288E6688
   ```
+
+---
+
+## 🤝 Благодарности и участники / Contributors
+
+Спасибо участникам сообщества за вклад в развитие проекта:
+* **[@MrRay57](https://github.com/MrRay57)** — кроссплатформенная адаптация под **macOS**, автоматическая переподпись бандла `codesign` для Apple Gatekeeper и bash-установщик [`install.sh`](install.sh) ([PR #1](https://github.com/WiseYaroslav28/antigravity-features-v2/pull/1)).
 
 ---
 

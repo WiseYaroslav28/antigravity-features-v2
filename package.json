@@ -1,7 +1,7 @@
 {
   "name": "antigravity-features-v2",
-  "version": "2.1.38",
-  "description": "Google AntiGravity 2.0 Russian Localization (100% RU Русификатор), Non-Invasive CDP Injector, Electron Auto-Patcher, Multi-Monitor Geometry Saver & GitHub Auto-Update MCP Server",
+  "version": "2.1.39",
+  "description": "Google AntiGravity 2.0 Russian Localization (100% RU Русификатор for Windows & macOS), Non-Invasive CDP Injector, Electron Auto-Patcher, Multi-Monitor Geometry Saver & GitHub Auto-Update MCP Server",
   "keywords": [
     "google-antigravity",
     "antigravity-ide",
