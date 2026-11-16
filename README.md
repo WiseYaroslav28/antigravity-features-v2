@@ -177,6 +177,16 @@ If you find this project helpful, you can support its continued development:
 
 ---
 
+## 👨‍💻 Автор и публикации / Author & Media
+
+Автор проекта: **Ярослав (Yaroslav Wise — [@WiseYaroslav28](https://github.com/WiseYaroslav28))**
+* **▶️ YouTube-канал**: [@Yaroslav_Wise](https://www.youtube.com/@Yaroslav_Wise) • [Видеодемонстрация русификатора (Shorts)](https://www.youtube.com/shorts/sucYFc3UqpM)
+* **📖 Блог на Хабре**: [@Wise_Yaroslav](https://habr.com/ru/users/Wise_Yaroslav/) • [Статья: «Как я сделал 100% русификатор Google AntiGravity 2.0 с живым автообновлением через MCP и CDP»](https://habr.com/ru/articles/1104106/)
+* **📰 Блог на VC.ru**: [vc.ru/id6168328](https://vc.ru/id6168328) • [Разбор проекта на VC.ru](https://vc.ru/id6168328/3229744-rusifikator-google-antigravity-2-0-avtoobnovleniem-cherez-mcp)
+* **💬 Предложить идею или заказать доработку**: [Оставить заявку в GitHub Issues](https://github.com/WiseYaroslav28/antigravity-features-v2/issues/new/choose)
+
+---
+
 ## 🤝 Благодарности и участники / Contributors
 
 Спасибо участникам сообщества за вклад в развитие проекта:
