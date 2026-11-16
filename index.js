@@ -449,11 +449,17 @@ async function checkAndApplyGithubUpdate({ force = false, checkOnly = false } = 
       // Safeguard for macOS: if downloading system patcher/runner scripts and the remote file does NOT support darwin/macOS,
       // skip overwriting the local macOS-adapted script so we don't regress to Windows-only paths.
       if (isMac && ["auto_patcher.cjs", "index.js", "exit_patcher.cjs", "launcher.js", "backup_manager.js"].includes(safeRel)) {
-        const hasMacSupport = downloadedContent.includes("darwin") || downloadedContent.includes("isMac") || downloadedContent.includes("/Applications/Antigravity");
+        const hasMacSupport = /process\.platform\s*===\s*['"]darwin['"]/.test(downloadedContent) || downloadedContent.includes("/Applications/Antigravity");
         if (!hasMacSupport) {
           log(`[AutoUpdater] Safeguard: Remote ${safeRel} is Windows-only (lacks macOS support). Keeping local macOS-adapted version.`);
           continue;
         }
+      }
+
+      // Safeguard for macOS topbar positioning in localization_injected.js if upstream lacks dynamic syncTopbarPosition
+      if (isMac && safeRel === "localization_injected.js" && !downloadedContent.includes("syncTopbarPosition")) {
+        downloadedContent = downloadedContent
+          .replace(/top:\s*5px;\s*(\r?\n\s*)right:\s*180px;/, "top: 6px;$1right: 210px;");
       }
 
       fs.writeFileSync(tmpPath, downloadedContent, "utf8");
