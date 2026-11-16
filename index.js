@@ -41,6 +41,27 @@ const ASAR_PATH = isMac
   ? path.join(APP_BUNDLE_PATH, 'Contents', 'Resources', 'app.asar')
   : path.join('C:', 'Users', username, 'AppData', 'Local', 'Programs', 'Antigravity', 'resources', 'app.asar');
 const HASH_FILE = path.join(__dirname, "backups", "patch-hash.json");
+const SETTINGS_FILE = path.join(__dirname, "backups", "settings.json");
+const UNINSTALL_LOCK_FILE = path.join(__dirname, "backups", "uninstalling.lock");
+
+function getSettings() {
+  try {
+    if (fs.existsSync(SETTINGS_FILE)) {
+      const parsed = JSON.parse(fs.readFileSync(SETTINGS_FILE, "utf8"));
+      return { autoUpdate: parsed.autoUpdate !== false };
+    }
+  } catch (e) {}
+  return { autoUpdate: true };
+}
+
+function saveSettings(patch) {
+  const next = { ...getSettings(), ...patch };
+  try {
+    fs.mkdirSync(path.dirname(SETTINGS_FILE), { recursive: true });
+    fs.writeFileSync(SETTINGS_FILE, JSON.stringify(next, null, 2) + "\n", "utf8");
+  } catch (e) {}
+  return next;
+}
 
 let pendingPatchToApply = false;
 let latestRemoteVersion = null;
@@ -132,6 +153,7 @@ const controlServer = http.createServer(async (req, res) => {
 
   if (req.url === '/status') {
     const localInfo = getLocalVersionInfo();
+    const settings = getSettings();
     const effectiveRemoteVersion = (latestRemoteVersion && compareSemver(latestRemoteVersion, localInfo.version) >= 0)
       ? latestRemoteVersion
       : localInfo.version;
@@ -143,8 +165,33 @@ const controlServer = http.createServer(async (req, res) => {
       latestRemoteVersion: effectiveRemoteVersion,
       lastUpdateCheckAt,
       versionTransition,
-      hotUpdateNotice
+      hotUpdateNotice,
+      autoUpdate: settings.autoUpdate !== false
     }));
+    return;
+  }
+
+  if (req.url && req.url.startsWith('/set-auto-update')) {
+    const enabled = !(req.url.includes('enabled=0') || req.url.includes('enabled=false'));
+    const updated = saveSettings({ autoUpdate: enabled });
+    log(`[Settings] Auto-update toggled via HTTP UI: ${updated.autoUpdate}`);
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: true, autoUpdate: updated.autoUpdate }));
+    return;
+  }
+
+  if (req.url === '/uninstall') {
+    log("1-Click Uninstall requested from UI widget! Launching uninstaller.cjs --from-ui...");
+    try {
+      const uninstallerPath = path.join(__dirname, 'uninstaller.cjs');
+      execSync(`"${process.execPath}" "${uninstallerPath}" --from-ui`, { windowsHide: true, stdio: 'ignore' });
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: true, message: "Uninstalling localization and restarting clean AntiGravity..." }));
+    } catch (err) {
+      log(`Uninstall error: ${err.message}`);
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: false, error: err.message }));
+    }
     return;
   }
 
@@ -206,6 +253,7 @@ if (!IS_HEADLESS_SUBAGENT_CALL) {
 // Fast SHA-256 hash comparison: verifies if app.asar is already our patched version with zero file scanning
 function checkAsarHashAndAutoBuildPatch() {
   try {
+    if (fs.existsSync(UNINSTALL_LOCK_FILE)) return;
     if (!fs.existsSync(ASAR_PATH)) return;
     
     let savedHash = null;
@@ -336,7 +384,7 @@ function rebuildPatchedAsarInBackground(markPendingRestart = false, autoRestartI
 }
 
 // GitHub Auto-Update Engine (HTTPS Raw + V8 Syntax Validation + Live CDP Hot-Reload)
-async function checkAndApplyGithubUpdate({ force = false } = {}) {
+async function checkAndApplyGithubUpdate({ force = false, checkOnly = false } = {}) {
   if (isCheckingUpdate) {
     return { status: "busy", message: "Update check already in progress" };
   }
@@ -356,9 +404,21 @@ async function checkAndApplyGithubUpdate({ force = false } = {}) {
       log(`[AutoUpdater] Local version v${localVersion} is up to date (GitHub: v${latestRemoteVersion}, cmp=${cmp}).`);
       return {
         status: "up_to_date",
+        autoUpdate: getSettings().autoUpdate !== false,
         localVersion,
         remoteVersion: latestRemoteVersion,
         changelog: cmp >= 0 ? (remoteMeta.changelog || "") : (localInfo.changelog || "")
+      };
+    }
+
+    if (checkOnly && !force) {
+      log(`[AutoUpdater] Update v${remoteMeta.version} available on GitHub, but autoUpdate is disabled (checkOnly mode).`);
+      return {
+        status: "update_available",
+        autoUpdate: false,
+        localVersion,
+        remoteVersion: latestRemoteVersion,
+        changelog: remoteMeta.changelog || ""
       };
     }
 
@@ -507,11 +567,33 @@ server.tool(
               injectedTargetsCount: injectedTargets.size,
               backupFilesCount,
               githubRepo: `https://github.com/${GITHUB_REPO}`,
+              autoUpdate: getSettings().autoUpdate !== false,
               autoUpdaterCompatible: true
             },
             null,
             2
           )
+        }
+      ]
+    };
+  }
+);
+
+// MCP Tool: Toggle Auto-Update
+server.tool(
+  "set_auto_update",
+  "Enables or disables automatic background downloading and installation of localization updates from GitHub",
+  {
+    enabled: z.boolean().describe("Set true to enable automatic updates from GitHub, false to install updates only manually")
+  },
+  async ({ enabled }) => {
+    const updated = saveSettings({ autoUpdate: !!enabled });
+    log(`[Settings] Auto-update toggled via MCP tool: ${updated.autoUpdate}`);
+    return {
+      content: [
+        {
+          type: "text",
+          text: JSON.stringify({ success: true, autoUpdate: updated.autoUpdate }, null, 2)
         }
       ]
     };
@@ -597,11 +679,17 @@ if (isPrimaryUiInstance && !IS_HEADLESS_SUBAGENT_CALL) {
 
   // Schedule automatic GitHub update checks (10s after boot, then every 30 minutes)
   setTimeout(() => {
-    if (isPrimaryUiInstance) checkAndApplyGithubUpdate().catch(() => {});
+    if (isPrimaryUiInstance) {
+      const autoUpd = getSettings().autoUpdate !== false;
+      checkAndApplyGithubUpdate({ checkOnly: !autoUpd }).catch(() => {});
+    }
   }, 10000);
 
   setInterval(() => {
-    if (isPrimaryUiInstance) checkAndApplyGithubUpdate().catch(() => {});
+    if (isPrimaryUiInstance) {
+      const autoUpd = getSettings().autoUpdate !== false;
+      checkAndApplyGithubUpdate({ checkOnly: !autoUpd }).catch(() => {});
+    }
   }, 30 * 60 * 1000);
 }
 

@@ -19386,8 +19386,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.41';
-    const DEFAULT_CHANGELOG_V2141 = 'Обновление v2.1.41: умный композиционный перевод описаний шагов терминала и фоновых задач (Ran / Running / Killed task + toolSummary), полный перевод расписаний автоматизаций (Custom schedule, cron-интервалы и дни недели), обновлённой полки Google Workspace (+ Gmail), предупреждений терминала и страницы запущенных процессов.';
+    const FALLBACK_VERSION = '2.1.42';
+    const DEFAULT_CHANGELOG_V2142 = 'Обновление v2.1.42: добавлен переключатель автообновления с GitHub (Вкл / Выкл) и безопасное двухшаговое удаление русификатора (Uninstall) прямо в меню версии, а также скрипты uninstall.ps1 и uninstall.sh.';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -19395,15 +19395,22 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2141;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2142;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2141;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2142;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
     let isBusyUpdating = false;
     let lastCheckedTimeStr = '';
+    let autoUpdateEnabled = true;
+    try {
+        const savedAutoUpd = localStorage.getItem('antigravity_auto_update');
+        if (savedAutoUpd === 'false' || savedAutoUpd === '0') {
+            autoUpdateEnabled = false;
+        }
+    } catch (e) {}
 
     const wrapper = document.createElement('div');
     wrapper.id = 'antigravity-topbar-controls';
@@ -19433,6 +19440,25 @@ function initLanguageSwitcher() {
                 <button class="update-action-btn secondary" id="update-restart-action-btn">⚡ Перезапустить AntiGravity</button>
                 <button class="update-action-btn star-btn" id="update-star-action-btn" title="Открыть репозиторий на GitHub и поддержать проект звездой">⭐ Поддержать звездой на GitHub</button>
                 <button class="update-action-btn secondary" id="update-feedback-action-btn" title="Сообщить о непереведённой строке, предложить идею или заказать доработку на GitHub">💬 Предложить идею / Заказать доработку</button>
+            </div>
+            <div class="update-popup-footer">
+                <div class="update-toggle-row" id="update-autoupdate-row" title="Автоматически проверять и устанавливать свежие переводы с GitHub в фоне">
+                    <span class="update-toggle-label">🔄 Автообновление с GitHub</span>
+                    <div class="update-toggle-control">
+                        <span class="update-toggle-state" id="update-autoupdate-state">${autoUpdateEnabled ? 'Вкл' : 'Выкл'}</span>
+                        <div class="update-toggle-switch ${autoUpdateEnabled ? 'active' : ''}" id="update-autoupdate-switch" role="switch" aria-checked="${autoUpdateEnabled}">
+                            <div class="update-toggle-knob"></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="update-uninstall-link" id="update-uninstall-trigger-btn" title="Полностью удалить русификатор, патч app.asar и MCP-сервер">🗑️ Удалить русификатор…</button>
+                <div class="update-uninstall-confirm" id="update-uninstall-confirm-box" style="display: none;">
+                    <div class="update-uninstall-warn" id="update-uninstall-warn-text">Для временного возврата оригинала нажмите <b>EN</b> сверху. Полное удаление уберёт перевод, патч <code>app.asar</code> и MCP-сервер и перезапустит чистую IDE.</div>
+                    <div class="update-uninstall-btn-row">
+                        <button class="update-action-btn danger-btn" id="update-uninstall-confirm-btn">Да, удалить</button>
+                        <button class="update-action-btn secondary" id="update-uninstall-cancel-btn">Отмена</button>
+                    </div>
+                </div>
             </div>
         </div>
     `;
@@ -19764,6 +19790,134 @@ function initLanguageSwitcher() {
             cursor: wait;
             transform: none !important;
         }
+        .update-popup-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 2px;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.09);
+        }
+        [data-theme="light"] .update-popup-footer {
+            border-top-color: #e5e7eb;
+        }
+        .update-toggle-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 4px 6px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+        .update-toggle-row:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+        [data-theme="light"] .update-toggle-row:hover {
+            background: rgba(0, 0, 0, 0.04);
+        }
+        .update-toggle-label {
+            font-size: 10px;
+            color: #bdc1c6;
+            font-weight: 500;
+        }
+        [data-theme="light"] .update-toggle-label {
+            color: #3c4043;
+        }
+        .update-toggle-control {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .update-toggle-state {
+            font-size: 9px;
+            font-weight: 600;
+            color: #9aa0a6;
+            min-width: 24px;
+            text-align: right;
+        }
+        .update-toggle-switch {
+            position: relative;
+            width: 26px;
+            height: 14px;
+            background: #4b5563;
+            border-radius: 999px;
+            transition: background-color 0.18s ease;
+            flex-shrink: 0;
+        }
+        .update-toggle-switch.active {
+            background: #10b981;
+        }
+        .update-toggle-knob {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 10px;
+            height: 10px;
+            background: #ffffff;
+            border-radius: 50%;
+            transition: transform 0.18s ease;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+        }
+        .update-toggle-switch.active .update-toggle-knob {
+            transform: translateX(12px);
+        }
+        .update-uninstall-link {
+            background: transparent;
+            border: none;
+            color: #80868b;
+            font-size: 9.5px;
+            padding: 3px 6px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.15s ease;
+        }
+        .update-uninstall-link:hover {
+            color: #fca5a5;
+            background: rgba(239, 68, 68, 0.10);
+        }
+        [data-theme="light"] .update-uninstall-link:hover {
+            color: #dc2626;
+            background: #fef2f2;
+        }
+        .update-uninstall-confirm {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.28);
+            border-radius: 6px;
+            padding: 7px 8px;
+        }
+        [data-theme="light"] .update-uninstall-confirm {
+            background: #fef2f2;
+            border-color: #fecaca;
+        }
+        .update-uninstall-warn {
+            font-size: 9.5px;
+            line-height: 1.4;
+            color: #e8eaed;
+        }
+        [data-theme="light"] .update-uninstall-warn {
+            color: #7f1d1d;
+        }
+        .update-uninstall-btn-row {
+            display: flex;
+            gap: 5px;
+        }
+        .update-uninstall-btn-row .update-action-btn {
+            flex: 1;
+            padding: 5px 8px;
+        }
+        .update-action-btn.danger-btn {
+            background: #ef4444;
+            color: #ffffff;
+        }
+        .update-action-btn.danger-btn:hover {
+            background: #dc2626;
+        }
     `;
     document.head.appendChild(style);
     document.body.appendChild(wrapper);
@@ -19778,6 +19932,41 @@ function initLanguageSwitcher() {
     const popupDesc = document.getElementById('update-popup-desc');
     const checkInstallBtn = document.getElementById('update-check-install-btn');
     const restartBtn = document.getElementById('update-restart-action-btn');
+    const autoUpdateRow = document.getElementById('update-autoupdate-row');
+    const autoUpdateSwitch = document.getElementById('update-autoupdate-switch');
+    const autoUpdateStateLabel = document.getElementById('update-autoupdate-state');
+    const uninstallTriggerBtn = document.getElementById('update-uninstall-trigger-btn');
+    const uninstallConfirmBox = document.getElementById('update-uninstall-confirm-box');
+    const uninstallWarnText = document.getElementById('update-uninstall-warn-text');
+    const uninstallConfirmBtn = document.getElementById('update-uninstall-confirm-btn');
+    const uninstallCancelBtn = document.getElementById('update-uninstall-cancel-btn');
+
+    function renderAutoUpdateToggle() {
+        if (!autoUpdateSwitch || !autoUpdateStateLabel) return;
+        if (autoUpdateEnabled) {
+            autoUpdateSwitch.classList.add('active');
+            autoUpdateSwitch.setAttribute('aria-checked', 'true');
+            autoUpdateStateLabel.innerText = 'Вкл';
+        } else {
+            autoUpdateSwitch.classList.remove('active');
+            autoUpdateSwitch.setAttribute('aria-checked', 'false');
+            autoUpdateStateLabel.innerText = 'Выкл';
+        }
+    }
+
+    function resetUninstallConfirmUI() {
+        if (!uninstallTriggerBtn || !uninstallConfirmBox) return;
+        uninstallConfirmBox.style.display = 'none';
+        uninstallTriggerBtn.style.display = '';
+        if (uninstallConfirmBtn) {
+            uninstallConfirmBtn.disabled = false;
+            uninstallConfirmBtn.innerText = 'Да, удалить';
+            delete uninstallConfirmBtn.dataset.cliFallback;
+        }
+        if (uninstallWarnText) {
+            uninstallWarnText.innerHTML = 'Для временного возврата оригинала нажмите <b>EN</b> сверху. Полное удаление уберёт перевод, патч <code>app.asar</code> и MCP-сервер и перезапустит чистую IDE.';
+        }
+    }
 
     function broadcastLanguageToSubframes(lang) {
         try {
@@ -19833,6 +20022,14 @@ function initLanguageSwitcher() {
         popupClose.addEventListener('click', (e) => {
             e.stopPropagation();
             wrapper.classList.remove('show-popup');
+            resetUninstallConfirmUI();
+        });
+    }
+    if (popupCard) {
+        popupCard.addEventListener('mouseleave', () => {
+            if (!wrapper.classList.contains('show-popup')) {
+                resetUninstallConfirmUI();
+            }
         });
     }
 
@@ -19846,11 +20043,15 @@ function initLanguageSwitcher() {
         if (hasRemoteUpdate) {
             versionBtn.classList.add('state-attention');
             popupCard.classList.add('warn-mode');
-            versionBtn.title = '🟠 Доступно обновление v' + latestGithubVersion + '! Нажмите для скачивания и установки.';
+            versionBtn.title = autoUpdateEnabled
+                ? ('🟠 Доступно обновление v' + latestGithubVersion + '! Нажмите для скачивания и установки.')
+                : ('🟠 Доступно обновление v' + latestGithubVersion + ' (автообновление выкл.). Нажмите для просмотра.');
 
             popupTitle.innerText = '🟠 Доступно обновление на GitHub!';
             popupVersionBadge.innerText = 'Обновление: v' + currentLocalVersion + ' → v' + latestGithubVersion;
-            popupDesc.innerText = (latestGithubChangelog ? latestGithubChangelog + '\n' : '') + 'Нажмите на иконку «i» или кнопку ниже, чтобы скачать и установить обновление.';
+            popupDesc.innerText = (latestGithubChangelog ? latestGithubChangelog + '\n' : '') + (autoUpdateEnabled
+                ? 'Нажмите на иконку «i» или кнопку ниже, чтобы скачать и установить обновление.'
+                : 'Автообновление выключено — нажмите кнопку ниже, чтобы скачать и установить обновление вручную.');
             checkInstallBtn.innerText = '⬇️ Скачать и установить v' + latestGithubVersion;
             restartBtn.innerText = '⚡ Перезапустить AntiGravity';
         } else if (isUpdatePending) {
@@ -19895,6 +20096,25 @@ function initLanguageSwitcher() {
                 if (data.latestRemoteVersion && compareSemverClient(data.latestRemoteVersion, latestGithubVersion) > 0) {
                     latestGithubVersion = data.latestRemoteVersion;
                     window.__antigravity_remote_version = latestGithubVersion;
+                }
+                if (typeof data.autoUpdate === 'boolean') {
+                    let hasPendingLocalSync = false;
+                    try {
+                        hasPendingLocalSync = localStorage.getItem('antigravity_auto_update_pending_sync') === '1';
+                    } catch (e) {}
+                    if (hasPendingLocalSync) {
+                        fetch('http://127.0.0.1:39228/set-auto-update?enabled=' + (autoUpdateEnabled ? '1' : '0'))
+                            .then((r) => {
+                                if (r.ok) {
+                                    try { localStorage.removeItem('antigravity_auto_update_pending_sync'); } catch (e) {}
+                                }
+                            })
+                            .catch(() => {});
+                    } else if (autoUpdateEnabled !== data.autoUpdate) {
+                        autoUpdateEnabled = data.autoUpdate;
+                        try { localStorage.setItem('antigravity_auto_update', autoUpdateEnabled ? 'true' : 'false'); } catch (e) {}
+                        renderAutoUpdateToggle();
+                    }
                 }
                 isUpdatePending = !!data.asarUnpatched;
                 if (data.hotUpdateNotice && data.hotUpdateNotice.to && compareSemverClient(data.hotUpdateNotice.to, currentLocalVersion) >= 0) {
@@ -20001,16 +20221,108 @@ function initLanguageSwitcher() {
         }
     }
 
-    // Clicking the compact "A•" icon stimulates checking/downloading/installing updates
+    // Clicking the compact "i" icon checks/installs updates when auto-update is ON, or simply opens the popup & checks metadata when OFF
     versionBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        triggerUpdateCheckAndInstall(false);
+        if (autoUpdateEnabled) {
+            triggerUpdateCheckAndInstall(false);
+        } else {
+            wrapper.classList.toggle('show-popup');
+            if (wrapper.classList.contains('show-popup')) {
+                checkGithubRemoteVersion();
+            } else {
+                resetUninstallConfirmUI();
+            }
+        }
     });
 
     checkInstallBtn.addEventListener('click', async (e) => {
         e.stopPropagation();
         await triggerUpdateCheckAndInstall(true);
     });
+
+    if (autoUpdateRow) {
+        autoUpdateRow.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            autoUpdateEnabled = !autoUpdateEnabled;
+            try {
+                localStorage.setItem('antigravity_auto_update', autoUpdateEnabled ? 'true' : 'false');
+                localStorage.setItem('antigravity_auto_update_pending_sync', '1');
+            } catch (err) {}
+            renderAutoUpdateToggle();
+            renderVersionState();
+            try {
+                const r = await fetch('http://127.0.0.1:39228/set-auto-update?enabled=' + (autoUpdateEnabled ? '1' : '0'));
+                if (r.ok) {
+                    try { localStorage.removeItem('antigravity_auto_update_pending_sync'); } catch (err) {}
+                }
+            } catch (err) {}
+        });
+    }
+
+    if (uninstallTriggerBtn && uninstallConfirmBox) {
+        uninstallTriggerBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            wrapper.classList.add('show-popup');
+            uninstallTriggerBtn.style.display = 'none';
+            uninstallConfirmBox.style.display = 'flex';
+        });
+    }
+
+    if (uninstallCancelBtn) {
+        uninstallCancelBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            resetUninstallConfirmUI();
+        });
+    }
+
+    if (uninstallConfirmBtn) {
+        uninstallConfirmBtn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const isMacClient = /Mac|iPhone|iPad/i.test((navigator && navigator.platform) || '');
+            const cliCmd = isMacClient
+                ? 'curl -fsSL https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/uninstall.sh | bash'
+                : 'irm https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/uninstall.ps1 | iex';
+
+            if (uninstallConfirmBtn.dataset.cliFallback === '1') {
+                try {
+                    await navigator.clipboard.writeText(cliCmd);
+                    uninstallConfirmBtn.innerText = '✅ Команда скопирована!';
+                } catch (copyErr) {}
+                return;
+            }
+
+            uninstallConfirmBtn.disabled = true;
+            uninstallConfirmBtn.innerText = '⏳ Удаление...';
+            try {
+                const resp = await fetch('http://127.0.0.1:39228/uninstall');
+                if (resp.ok) {
+                    const data = await resp.json();
+                    if (data && data.success) {
+                        try {
+                            localStorage.removeItem('antigravity_ui_lang');
+                            localStorage.removeItem('antigravity_lang');
+                            localStorage.removeItem('antigravity_auto_update');
+                            localStorage.removeItem('antigravity_auto_update_pending_sync');
+                        } catch (lsErr) {}
+                        if (uninstallWarnText) {
+                            uninstallWarnText.innerText = '✅ Русификатор удаляется — сейчас откроется чистая AntiGravity...';
+                        }
+                        uninstallConfirmBtn.innerText = '⏳ Перезапуск...';
+                        return;
+                    }
+                }
+            } catch (err) {}
+
+            // Graceful fallback if local MCP server hasn't been restarted into v2.1.42 yet or is offline
+            uninstallConfirmBtn.disabled = false;
+            uninstallConfirmBtn.dataset.cliFallback = '1';
+            uninstallConfirmBtn.innerText = '📋 Скопировать команду';
+            if (uninstallWarnText) {
+                uninstallWarnText.innerHTML = 'Фоновый сервер ещё не обновлён в текущей сессии. Нажмите <b>«Перезапустить AntiGravity»</b> выше (и повторите удаление) либо выполните однострочную команду удаления в терминале.';
+            }
+        });
+    }
 
     if (restartBtn) {
         restartBtn.addEventListener('click', async (e) => {

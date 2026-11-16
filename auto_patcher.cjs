@@ -22,13 +22,295 @@ const resourcesDir = isMac
     ? path.join(appBundlePath, 'Contents', 'Resources')
     : path.join('C:', 'Users', username, 'AppData', 'Local', 'Programs', 'Antigravity', 'resources');
 const asarPath = path.join(resourcesDir, 'app.asar');
+const bakPath = path.join(resourcesDir, 'app.asar.bak');
 const tempDir = path.join(__dirname, 'temp_patcher_asar');
 const localizationFile = path.join(__dirname, 'localization_injected.js');
 const isBuildOnly = process.argv.includes('--build-only') || process.argv.includes('--no-apply');
+const unpatchToIdx = process.argv.indexOf('--unpatch-to');
+const unpatchOutputPath = unpatchToIdx !== -1 ? process.argv[unpatchToIdx + 1] : null;
+const forceSurgicalUnpatch = process.argv.includes('--force-surgical-unpatch');
+
+function readAsarPkgVersion(archivePath) {
+    try {
+        const raw = asar.extractFile(archivePath, 'package.json').toString('utf8');
+        return JSON.parse(raw).version || null;
+    } catch (e) {
+        return null;
+    }
+}
+
+function isAsarBufferPatched(buf) {
+    return (
+        buf.includes('// BEGIN ANTIGRAVITY TRANSLATION INJECTION') ||
+        buf.includes('ANTIGRAVITY TRAY CLICK PATCH') ||
+        buf.includes('ANTIGRAVITY WINDOW GEOMETRY PATCH')
+    );
+}
+
+async function runUnpatchTo(targetOutPath) {
+    if (!fs.existsSync(asarPath)) {
+        throw new Error(`app.asar not found at ${asarPath}`);
+    }
+    const curVer = readAsarPkgVersion(asarPath);
+    if (!forceSurgicalUnpatch && fs.existsSync(bakPath)) {
+        try {
+            const bakBuf = fs.readFileSync(bakPath);
+            const bakVer = readAsarPkgVersion(bakPath);
+            if (!isAsarBufferPatched(bakBuf) && bakVer && curVer && bakVer === curVer) {
+                fs.copyFileSync(bakPath, targetOutPath);
+                console.log(`[AutoPatcher-v2] Prepared factory-clean app.asar from verified backup (IDE v${bakVer}) -> ${targetOutPath}`);
+                return;
+            }
+        } catch (e) {}
+    }
+
+    console.log('[AutoPatcher-v2] Performing surgical unpatch of app.asar...');
+    const unpatchTempDir = path.join(os.tmpdir(), 'antigravity_unpatch_' + process.pid + '_' + Date.now());
+    try {
+        asar.extractAll(asarPath, unpatchTempDir);
+        const distDir = path.join(unpatchTempDir, 'dist');
+
+        // 1. Unpatch preload.js
+        const pFile = path.join(distDir, 'preload.js');
+        if (fs.existsSync(pFile)) {
+            let c = fs.readFileSync(pFile, 'utf8');
+            const marker = '// BEGIN ANTIGRAVITY TRANSLATION INJECTION';
+            if (c.includes(marker)) {
+                c = c.substring(0, c.indexOf(marker)).trimEnd() + '\n';
+            }
+            c = c.replace(
+                /showContextMenu:\s*\(items\)\s*=>\s*\{\s*\/\/ ANTIGRAVITY PRELOAD CONTEXT MENU TRANSLATE[\s\S]*?return electron_1\.ipcRenderer\.invoke\('window:show-context-menu',\s*mapItems\(items\)\);\s*\},/,
+                "showContextMenu: (items) => electron_1.ipcRenderer.invoke('window:show-context-menu', items),"
+            );
+            fs.writeFileSync(pFile, c, 'utf8');
+        }
+
+        // 2. Unpatch tray.js
+        const tFile = path.join(distDir, 'tray.js');
+        if (fs.existsSync(tFile)) {
+            let c = fs.readFileSync(tFile, 'utf8');
+            c = c.replace(/\s*\/\/ ANTIGRAVITY TRAY CLICK PATCH(?: V2)?[\s\S]*?tray\.on\('double-click',\s*handleTrayClick\);/, '');
+            c = c.replace(
+                /\(count > 0 \? \(count \+[\s\S]*?'Нет запущенных агентов'\)/,
+                "(count > 0 ? `${count}` : 'No') + ' agent' + (count === 1 ? '' : 's') + ' running'"
+            );
+            fs.writeFileSync(tFile, c, 'utf8');
+        }
+
+        // 3. Unpatch main.js
+        const mFile = path.join(distDir, 'main.js');
+        if (fs.existsSync(mFile)) {
+            let c = fs.readFileSync(mFile, 'utf8');
+            c = c.replace(/appendSwitch\(['"]remote-debugging-port['"],\s*['"]9222['"]\)/g, "appendSwitch('remote-debugging-port', '0')");
+            c = c.replace(
+                /for\s*\(\s*const\s+win\s+of\s+windows\s*\)\s*\{\s*try\s*\{\s*if\s*\(typeof\s+win\.__saveWindowStateNow[\s\S]*?win\.destroy\(\);\s*\}/,
+                "for (const win of windows) {\n            win.destroy();\n        }"
+            );
+            c = c.replace(/label:\s*'Нет запущенных агентов',/g, "label: 'No agents running',");
+            c = c.replace(/label:\s*`Открыть \$\{electron_1\.app\.getName\(\)\}`,/g, "label: `Open ${electron_1.app.getName()}`,");
+            c = c.replace(/label:\s*'Выход',/g, "label: 'Quit',");
+            c = c.replace(/label:\s*'Новое окно',/g, "label: 'New Window',");
+            c = c.replace(/buttons:\s*\['Отмена',\s*'Выход'\],/g, "buttons: ['Cancel', 'Quit'],");
+            c = c.replace(/title:\s*'Подтверждение выхода',/g, "title: 'Confirm Quit',");
+            c = c.replace(/message:\s*'Вы уверены, что хотите выйти\?',/g, "message: 'Are you sure you want to quit?',");
+            c = c.replace(/detail:\s*'В фоновом режиме могут выполняться агенты или задачи\.',/g, "detail: 'There may be agents or background tasks running.',");
+            c = c.replace(/title:\s*'Дистрибутив WSL не найден',/g, "title: 'WSL distro not found',");
+            c = c.replace(/message:\s*`Дистрибутив WSL «\$\{WSL_DISTRO\}» больше не установлен\.`,/g, 'message: `The WSL distro "${WSL_DISTRO}" is no longer installed.`,');
+            c = c.replace(/detail:\s*'Приложение Antigravity открыто локально в Windows\.',/g, "detail: 'Antigravity opened on Windows instead.',");
+            c = c.replace(/showErrorBox\('Бинарный файл не найден',/g, "showErrorBox('Binary not found',");
+            c = c.replace(/showErrorBox\('Сбой настройки WSL',/g, "showErrorBox('WSL setup failed',");
+            c = c.replace(/showErrorBox\('Сбой запуска',/g, "showErrorBox('Startup failed',");
+            fs.writeFileSync(mFile, c, 'utf8');
+        }
+
+        // 4. Unpatch utils.js
+        const uFile = path.join(distDir, 'utils.js');
+        if (fs.existsSync(uFile)) {
+            let c = fs.readFileSync(uFile, 'utf8');
+            c = c.replace(/\s*\/\/ BEGIN ANTIGRAVITY PLUGIN SUBFRAME PATCH[\s\S]*?\/\/ END ANTIGRAVITY PLUGIN SUBFRAME PATCH\s*/, '\n    ');
+            c = c.replace(/\s*\/\/ ANTIGRAVITY WINDOW GEOMETRY PATCH V3[\s\S]*?(?=\s*ensureAppIsInDock\(\);)/, '');
+            c = c.replace(/width:\s*initWidth,\s*height:\s*initHeight,\s*x:\s*initX,\s*y:\s*initY,/, 'width: 1400, height: 900,');
+            c = c.replace(/let isRestoringWindowState = true;[\s\S]*?win\.on\('close',\s*\(\)\s*=>\s*saveWindowState\(true\)\);\s*void win\.loadURL\(url\);/, 'void win.loadURL(url);');
+            fs.writeFileSync(uFile, c, 'utf8');
+        }
+
+        // 5. Unpatch updater.js, menu.js, ipcHandlers.js & dialog files
+        const updFile = path.join(distDir, 'updater.js');
+        if (fs.existsSync(updFile)) {
+            let c = fs.readFileSync(updFile, 'utf8');
+            c = c.replace(/title:\s*'Проверка обновлений',/g, "title: 'Check for Updates',");
+            c = c.replace(/message:\s*'Нет доступных обновлений',/g, "message: 'No updates available',");
+            c = c.replace(/buttons:\s*\['ОК'\],/g, "buttons: ['OK'],");
+            c = c.replace(/MenuUpdateStep\["CheckForUpdates"\] = "Проверить обновления";/g, 'MenuUpdateStep["CheckForUpdates"] = "Check for Updates";');
+            c = c.replace(/MenuUpdateStep\["CheckingForUpdates"\] = "Проверка обновлений\.\.\.";/g, 'MenuUpdateStep["CheckingForUpdates"] = "Checking for Updates...";');
+            c = c.replace(/MenuUpdateStep\["DownloadingUpdate"\] = "Загрузка обновления\.\.\.";/g, 'MenuUpdateStep["DownloadingUpdate"] = "Downloading Update...";');
+            c = c.replace(/MenuUpdateStep\["RestartToUpdate"\] = "Перезапустить для обновления";/g, 'MenuUpdateStep["RestartToUpdate"] = "Restart to Update";');
+            fs.writeFileSync(updFile, c, 'utf8');
+        }
+
+        const menuFile = path.join(distDir, 'menu.js');
+        if (fs.existsSync(menuFile)) {
+            let c = fs.readFileSync(menuFile, 'utf8');
+            c = c.replace(/label:\s*'Новое окно',/g, "label: 'New Window',");
+            c = c.replace(/label:\s*'Документация',/g, "label: 'Docs',");
+            c = c.replace(/label:\s*'Фактический размер',/g, "label: item.label || 'Actual Size',");
+            c = c.replace(/label:\s*'Увеличить масштаб',/g, "label: item.label || 'Zoom In',");
+            c = c.replace(/label:\s*'Уменьшить масштаб',/g, "label: item.label || 'Zoom Out',");
+            c = c.replace(/label:\s*'Подключиться к WSL'/g, "label: 'Connect to WSL'");
+            c = c.replace(/label:\s*'Открыть заново локально'/g, "label: 'Reopen Locally'");
+            fs.writeFileSync(menuFile, c, 'utf8');
+        }
+
+        const ipcFile = path.join(distDir, 'ipcHandlers.js');
+        if (fs.existsSync(ipcFile)) {
+            let c = fs.readFileSync(ipcFile, 'utf8');
+            c = c.replace(/\/\/ ANTIGRAVITY CONTEXT MENU LOCALIZATION PATCH[\s\S]*?function buildContextMenuTemplate\(items,\s*onSelect\)\s*\{/, 'function buildContextMenuTemplate(items, onSelect) {');
+            c = c.replace(/label:\s*translateContextMenuLabel\(item\.label\)\s*\?\?\s*'',/g, "label: item.label ?? '',");
+            c = c.replace(/showErrorBox\('Не удалось открыть папку',/g, "showErrorBox('Cannot open folder',");
+            c = c.replace(/message:\s*'Папка находится в файловой системе Windows',/g, "message: 'Folder is on the Windows filesystem',");
+            c = c.replace(/title:\s*'Открыть рабочую область',/g, "title: 'Open workspace',");
+            c = c.replace(/title:\s*'Открыть рабочие области',/g, "title: 'Open workspaces',");
+            c = c.replace(/title:\s*'Выберите папку для загрузок',/g, "title: 'Select Download Folder',");
+            c = c.replace(
+                /\/\/ ANTIGRAVITY TITLEBAR OVERLAY MAXIMIZE GUARD\s*const wasMax = win\.isMaximized\(\);\s*win\.setTitleBarOverlay\(\{\s*color:\s*options\.color,\s*symbolColor:\s*options\.symbolColor,\s*height:\s*30,?\s*\}\);\s*if\s*\(wasMax && !win\.isMaximized\(\)\)\s*\{\s*win\.maximize\(\);\s*\}/,
+                "win.setTitleBarOverlay({\n                color: options.color,\n                symbolColor: options.symbolColor,\n                height: 30,\n            });"
+            );
+            fs.writeFileSync(ipcFile, c, 'utf8');
+        }
+
+        const splashFile = path.join(distDir, 'provisionSplash.js');
+        if (fs.existsSync(splashFile)) {
+            let c = fs.readFileSync(splashFile, 'utf8');
+            c = c.replace(/<div>Настройка WSL: \$\{escapeHtml\(distro\)\}<\/div>/g, '<div>Setting up WSL: ${escapeHtml(distro)}</div>');
+            fs.writeFileSync(splashFile, c, 'utf8');
+        }
+        const wslFile = path.join(distDir, 'wsl.js');
+        if (fs.existsSync(wslFile)) {
+            let c = fs.readFileSync(wslFile, 'utf8');
+            c = c.replace(/'Загрузка бинарного файла Antigravity…'/g, "'Downloading the Antigravity binary…'");
+            c = c.replace(/`Установка в \$\{distro\}…`/g, '`Installing into ${distro}…`');
+            fs.writeFileSync(wslFile, c, 'utf8');
+        }
+        const wizFile = path.join(distDir, 'ideInstall', 'wizardHtml.js');
+        if (fs.existsSync(wizFile)) {
+            let c = fs.readFileSync(wizFile, 'utf8');
+            c = c.replace(/<title>Добро пожаловать в Antigravity<\/title>/g, '<title>Welcome to Antigravity</title>');
+            c = c.replace(/>Настройка…<\/div>/g, '>Setting up…</div>');
+            c = c.replace(/<h1>Добро пожаловать в новый Antigravity!<\/h1>/g, '<h1>Welcome to the new Antigravity!</h1>');
+            c = c.replace(/<p>Интерфейс Antigravity был переработан для работы с ИИ-агентами и новыми возможностями\. Если вам по-прежнему нужен классический редактор кода, вы можете скачать его как отдельное приложение <b>Antigravity IDE<\/b>\.<\/p>/g, "<p>Antigravity has been redesigned to put agents first with new capabilities. If you'd still like a code editor, you can download it as a separate app named <b>Antigravity IDE</b>.</p>");
+            c = c.replace(/<span>Скачать Antigravity IDE<\/span>/g, '<span>Download the Antigravity IDE</span>');
+            c = c.replace(/>Открыть новый Antigravity<\/button>/g, '>Explore the new Antigravity</button>');
+            fs.writeFileSync(wizFile, c, 'utf8');
+        }
+        const cableFile = path.join(distDir, 'cablev2.js');
+        if (fs.existsSync(cableFile)) {
+            let c = fs.readFileSync(cableFile, 'utf8');
+            c = c.replace(/<h1 class="sheet-title">Ключи доступа \(Passkeys\)<\/h1>/g, '<h1 class="sheet-title">Passkeys</h1>');
+            c = c.replace(/<p class="mechanism-header">Используйте телефон или планшет<\/p>/g, '<p class="mechanism-header">Use your phone or tablet</p>');
+            c = c.replace(/Отсканируйте этот QR-код камерой устройства с ключом доступа для \$\{safeRpId\}/g, 'Scan this QR code with the camera on the device that has your passkey for ${safeRpId}');
+            c = c.replace(/>Отмена<\/button>/g, '>Cancel</button>');
+            c = c.replace(/title:\s*'Ключи доступа \(Passkeys\)',/g, "title: 'Passkeys',");
+            c = c.replace(/updateStatus\('Подключение к вашему устройству…'\)/g, "updateStatus('Connecting to your device…')");
+            c = c.replace(/updateStatus\('Подтвердите вход на устройстве для продолжения…'\)/g, "updateStatus('Verify on your device to continue…')");
+            fs.writeFileSync(cableFile, c, 'utf8');
+        }
+        const devFile = path.join(distDir, 'deviceChooser.js');
+        if (fs.existsSync(devFile)) {
+            let c = fs.readFileSync(devFile, 'utf8');
+            c = c.replace(/hid:\s*'HID-устройству',/g, "hid: 'HID device',");
+            c = c.replace(/usb:\s*'USB-устройству',/g, "usb: 'USB device',");
+            c = c.replace(/serial:\s*'последовательному порту',/g, "serial: 'serial port',");
+            c = c.replace(/'Неизвестное устройство'/g, "'Unknown device'");
+            c = c.replace(/title:\s*'Подключение устройства',/g, "title: 'Connect a device',");
+            c = c.replace(/message:\s*`\$\{origin\} запрашивает подключение к \$\{KIND_NOUNS\[kind\]\}`,/g, 'message: `${origin} wants to connect to a ${KIND_NOUNS[kind]}`,');
+            c = c.replace(/\?\s*'Выберите устройство:'/g, "? 'Select a device:'");
+            c = c.replace(/:\s*'Совместимые устройства не найдены\.',/g, ": 'No compatible devices found.',");
+            c = c.replace(/buttons:\s*\[\.\.\.snapshot\.map\(\(\{\s*label\s*\}\)\s*=>\s*label\),\s*'Отмена'\],/g, "buttons: [...snapshot.map(({ label }) => label), 'Cancel'],");
+            fs.writeFileSync(devFile, c, 'utf8');
+        }
+        const waFile = path.join(distDir, 'webauthn.js');
+        if (fs.existsSync(waFile)) {
+            let c = fs.readFileSync(waFile, 'utf8');
+            c = c.replace(/return `Аккаунт \$\{index \+ 1\}`;/g, 'return `Account ${index + 1}`;');
+            c = c.replace(/details\.relyingPartyId \|\| 'этот сайт'/g, "details.relyingPartyId || 'this site'");
+            c = c.replace(/title:\s*'Выберите ключ доступа \(Passkey\)',/g, "title: 'Choose a Passkey',");
+            c = c.replace(/message:\s*`Вход на \$\{rpLabel\}`,/g, 'message: `Sign in to ${rpLabel}`,');
+            c = c.replace(/detail:\s*'Выберите аккаунт с ключом доступа для продолжения:',/g, "detail: 'Select a passkey account to continue:',");
+            c = c.replace(/buttons:\s*\[\.\.\.accountLabels,\s*'Отмена'\],/g, "buttons: [...accountLabels, 'Cancel'],");
+            fs.writeFileSync(waFile, c, 'utf8');
+        }
+        const wpsFile = path.join(distDir, 'webviewPopupSecurity.js');
+        if (fs.existsSync(wpsFile)) {
+            let c = fs.readFileSync(wpsFile, 'utf8');
+            c = c.replace(/insecure:\s*'Не защищено',/g, "insecure: 'Not secure',");
+            c = c.replace(/dangerous:\s*'⚠ Не защищено',/g, "dangerous: '⚠ Not secure',");
+            c = c.replace(/'Подключение к этому сайту не защищено',/g, "'Your connection to this site is not secure',");
+            c = c.replace(/'Не вводите на этом сайте конфиденциальные данные \(например, пароли или номера банковских карт\), так как их могут похитить злоумышленники\.',/g, "'You should not enter any sensitive information on this site (for ' + 'example, passwords or credit cards), because it could be stolen by ' + 'attackers.',");
+            c = c.replace(/'Подключение защищено',/g, "'Connection is secure',");
+            c = c.replace(/'Ваши данные \(например, пароли или номера банковских карт\) защищены при передаче на этот сайт\.',/g, "'Your information (for example, passwords or credit card numbers) is ' + 'private when it is sent to this site.',");
+            c = c.replace(/'Сведения о безопасности подключения для этой страницы недоступны'/g, "'Connection security information is not available for this page'");
+            c = c.replace(/\?\s*'Сертификат действителен'\s*:\s*'Сведения о сертификате'/g, "? 'Certificate is valid' : 'Certificate details'");
+            c = c.replace(/`Ошибка: \$\{state\.certificateError\}`/g, '`Error: ${state.certificateError}`');
+            c = c.replace(/`Кому выдан: \$\{certificate\.subjectName\}`,\s*`Кем выдан: \$\{certificate\.issuer\}`,\s*`Действителен с: \$\{formatDate\(certificate\.validFromMs\)\}`,\s*`Действителен до: \$\{formatDate\(certificate\.validToMs\)\}`/g, '`Issued to: ${certificate.subjectName}`, `Issued by: ${certificate.issuer}`, `Valid from: ${formatDate(certificate.validFromMs)}`, `Valid until: ${formatDate(certificate.validToMs)}`');
+            c = c.replace(/`Протокол: \$\{certificate\.protocol\}`/g, '`Protocol: ${certificate.protocol}`');
+            c = c.replace(/label:\s*'Сведения о подключении…',/g, "label: 'Connection info…',");
+            c = c.replace(/title:\s*'Сведения о подключении',/g, "title: 'Connection info',");
+            c = c.replace(/buttons:\s*\['ОК'\],/g, "buttons: ['OK'],");
+            fs.writeFileSync(wpsFile, c, 'utf8');
+        }
+
+        const checkJsFiles = [
+            pFile, tFile, mFile, uFile, updFile, menuFile, ipcFile,
+            path.join(distDir, 'provisionSplash.js'),
+            path.join(distDir, 'ideInstall', 'wizardHtml.js'),
+            path.join(distDir, 'cablev2.js'),
+            path.join(distDir, 'deviceChooser.js'),
+            path.join(distDir, 'webauthn.js'),
+            path.join(distDir, 'webviewPopupSecurity.js')
+        ];
+        for (const jf of checkJsFiles) {
+            if (fs.existsSync(jf)) {
+                new vm.Script(fs.readFileSync(jf, 'utf8'), { filename: path.basename(jf) });
+            }
+        }
+
+        await asar.createPackage(unpatchTempDir, targetOutPath);
+        console.log(`[AutoPatcher-v2] Surgical unpatch validated and packed -> ${targetOutPath}`);
+    } finally {
+        if (fs.existsSync(unpatchTempDir)) {
+            fs.rmSync(unpatchTempDir, { recursive: true, force: true });
+        }
+    }
+}
 
 async function runPatch() {
     try {
+        if (unpatchOutputPath) {
+            await runUnpatchTo(unpatchOutputPath);
+            return;
+        }
         console.log('[AutoPatcher-v2] Inspecting app.asar via native JS...');
+        // Preserve factory-clean backup whenever current app.asar is unpatched (including after IDE upgrades)
+        if (fs.existsSync(asarPath)) {
+            try {
+                const curAsarBuf = fs.readFileSync(asarPath);
+                if (!isAsarBufferPatched(curAsarBuf)) {
+                    const curIdeVer = readAsarPkgVersion(asarPath);
+                    let needRefreshBak = !fs.existsSync(bakPath);
+                    if (!needRefreshBak) {
+                        const bakBuf = fs.readFileSync(bakPath);
+                        const bakIdeVer = readAsarPkgVersion(bakPath);
+                        if (isAsarBufferPatched(bakBuf) || (curIdeVer && bakIdeVer !== curIdeVer)) {
+                            needRefreshBak = true;
+                        }
+                    }
+                    if (needRefreshBak) {
+                        fs.copyFileSync(asarPath, bakPath);
+                        console.log(`[AutoPatcher-v2] Saved clean factory backup to app.asar.bak (IDE v${curIdeVer || 'unknown'})`);
+                    }
+                }
+            } catch (e) {}
+        }
         if (fs.existsSync(tempDir)) {
             fs.rmSync(tempDir, { recursive: true, force: true });
         }
@@ -686,10 +968,6 @@ function buildContextMenuTemplate(items, onSelect) {`
         if (isBuildOnly) {
             console.log('[AutoPatcher-v2] Build-only mode: skipped applying app.asar.patched to disk.');
         } else {
-            const bakPath = path.join(resourcesDir, 'app.asar.bak');
-            if (!fs.existsSync(bakPath) && fs.existsSync(asarPath)) {
-                try { fs.copyFileSync(asarPath, bakPath); } catch (e) {}
-            }
             let applied = false;
             try {
                 fs.copyFileSync(patchedAsar, asarPath);

@@ -1,14 +1,16 @@
 {
-  "version": "2.1.41",
-  "releasedAt": "2026-11-15T23:24:00.000Z",
-  "changelog": "Обновление v2.1.41: умный композиционный перевод описаний шагов терминала и фоновых задач (Ran / Running / Killed task + toolSummary), полный перевод расписаний автоматизаций (Custom schedule, cron-интервалы и дни недели), обновлённой полки Google Workspace (+ Gmail), предупреждений терминала и страницы запущенных процессов.",
+  "version": "2.1.42",
+  "releasedAt": "2026-11-16T00:25:00.000Z",
+  "changelog": "Обновление v2.1.42: добавлен переключатель автообновления с GitHub (Вкл / Выкл) и безопасное двухшаговое удаление русификатора (Uninstall) прямо в меню версии, а также скрипты uninstall.ps1 и uninstall.sh.",
+  "requiresRestart": true,
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",
     "index.js",
     "backup_manager.js",
     "exit_patcher.cjs",
-    "launcher.js"
+    "launcher.js",
+    "uninstaller.cjs"
   ],
   "downloadUrl": "https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/localization_injected.js"
 }

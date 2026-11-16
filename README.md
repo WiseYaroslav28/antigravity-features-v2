@@ -2,7 +2,7 @@
 
 ![Google AntiGravity 2.0 — 100% RU + Live MCP Auto-Update](assets/hero-banner.jpg)
 
-[![Version](https://img.shields.io/badge/version-v2.1.41-blue.svg)](version.json)
+[![Version](https://img.shields.io/badge/version-v2.1.42-blue.svg)](version.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11%20%7C%20macOS-0078D6.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
 [![Target](https://img.shields.io/badge/Google%20AntiGravity-2.0%2B-orange.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
@@ -83,6 +83,23 @@
 
 ---
 
+### 🔄 Управление автообновлением и чистое удаление (Uninstall)
+
+* **Временное переключение на английский:** нажмите кнопку **`EN`** в верхнем виджете `EN | RU` — оригинальный интерфейс вернётся мгновенно без перезапуска и удаления.
+* **Отключение автообновлений с GitHub:** нажмите на иконку **`i`** рядом с `EN | RU` и переключите тумблер **«🔄 Автообновление с GitHub»** в положение `Выкл`. Локальный перевод сохранится, а новые версии с GitHub будут устанавливаться только вручную по кнопке.
+* **Полное удаление в 1 клик из интерфейса:** откройте меню иконки **`i`** → нажмите **«🗑️ Удалить русификатор…»** → **«Да, удалить»**. Скрипт автоматически уберёт запись из `mcp_config.json`, вернёт заводской `app.asar` (с переподписью `codesign` на macOS), удалит папку `~/.antigravity-features-v2` и перезапустит чистую AntiGravity.
+* **Удаление одной командой в терминале:**
+  * **Windows (PowerShell):**
+    ```powershell
+    irm https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/uninstall.ps1 | iex
+    ```
+  * **macOS (Terminal / Bash):**
+    ```bash
+    curl -fsSL https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/uninstall.sh | bash
+    ```
+
+---
+
 ### 🗂️ Архитектура проекта
 
 | Файл | Назначение |
@@ -95,6 +112,7 @@
 | [`backup_manager.js`](backup_manager.js) | Служба резервного копирования состояния и координат окна каждые 30 секунд. |
 | [`install_on_new_pc.bat`](install_on_new_pc.bat) | Автоматический установщик для Windows. |
 | [`install.sh`](install.sh) | Однострочный bash-установщик для macOS / Unix с автоматической переподписью `codesign`. |
+| [`uninstaller.cjs`](uninstaller.cjs), [`uninstall.ps1`](uninstall.ps1), [`uninstall.sh`](uninstall.sh) | Модуль и скрипты полного удаления русификатора, отката заводского `app.asar` и очистки `mcp_config.json`. |
 | [`apply_patch_and_restart.bat`](apply_patch_and_restart.bat) | Скрипт быстрой подмены `app.asar` и перезапуска AntiGravity в 1 клик (Windows). |
 
 ---
@@ -129,6 +147,13 @@ irm https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/mai
 ```bash
 curl -fsSL https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/install.sh | bash
 ```
+
+### 🗑️ Clean Uninstall (UI or 1-Line Terminal)
+
+You can toggle auto-updates ON/OFF or uninstall cleanly directly from the top-bar **`i`** menu (**`🗑️ Удалить русификатор…`**), or via a single terminal command (restores factory `app.asar`, unregisters MCP from `mcp_config.json`, and removes `~/.antigravity-features-v2`):
+
+* **Windows (PowerShell):** `irm https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/uninstall.ps1 | iex`
+* **macOS (Bash):** `curl -fsSL https://raw.githubusercontent.com/WiseYaroslav28/antigravity-features-v2/main/uninstall.sh | bash`
 
 ---
 

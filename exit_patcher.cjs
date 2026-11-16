@@ -29,7 +29,12 @@ const BAK_PATH = isMac
 const PATCHED_PATH = path.join(__dirname, 'app.asar.patched');
 const LOG_FILE = path.join(__dirname, 'features_v2.log');
 const PID_FILE = path.join(__dirname, 'backups', 'exit-patcher.pid');
+const UNINSTALL_LOCK_FILE = path.join(__dirname, 'backups', 'uninstalling.lock');
 const isRestartMode = process.argv.includes('--restart');
+
+if (fs.existsSync(UNINSTALL_LOCK_FILE)) {
+  process.exit(0);
+}
 
 if (!isRestartMode && fs.existsSync(PID_FILE)) {
   try {
@@ -87,11 +92,16 @@ function relaunchAntigravity() {
 }
 
 function applyAsarWithRetry() {
+  if (fs.existsSync(UNINSTALL_LOCK_FILE)) {
+    log("Uninstall lock detected; aborting exit-patcher.");
+    return false;
+  }
+  let currentIsAlreadyPatched = false;
   try {
     if (fs.existsSync(ASAR_PATH)) {
       const currentBuf = fs.readFileSync(ASAR_PATH);
-      const isAlreadyPatched = currentBuf.includes('// BEGIN ANTIGRAVITY TRANSLATION INJECTION');
-      if (!isAlreadyPatched) {
+      currentIsAlreadyPatched = currentBuf.includes('// BEGIN ANTIGRAVITY TRANSLATION INJECTION');
+      if (!currentIsAlreadyPatched) {
         log("Detected fresh unpatched app.asar on exit; rebuilding app.asar.patched from new version first...");
         execSync(`"${process.execPath}" "${path.join(__dirname, 'auto_patcher.cjs')}" --build-only`, { stdio: 'ignore', windowsHide: true });
       }
@@ -102,7 +112,7 @@ function applyAsarWithRetry() {
     log("No app.asar.patched found; skipping copy.");
     return false;
   }
-  if (!fs.existsSync(BAK_PATH) && fs.existsSync(ASAR_PATH)) {
+  if (!currentIsAlreadyPatched && fs.existsSync(ASAR_PATH)) {
     try { fs.copyFileSync(ASAR_PATH, BAK_PATH); } catch (e) {}
   }
   for (let i = 0; i < 12; i++) {
