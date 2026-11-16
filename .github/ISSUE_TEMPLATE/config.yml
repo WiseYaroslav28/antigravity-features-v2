@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: "💖 Поддержать проект донатом (Карты РФ и Мира / Telegram / USDT & ETH)"
+    url: "https://web.tribute.tg/d/SGR"
+    about: "Поблагодарить автора и поддержать развитие локализации и новых функций для Google AntiGravity 2.0"
+  - name: "🎥 Видеодемонстрация (YouTube) и подробный разбор архитектуры на Хабре"
+    url: "https://habr.com/ru/articles/1104106/"
+    about: "Узнать, как устроен русификатор под капотом (MCP + CDP + app.asar), и посмотреть ответы на частые вопросы"

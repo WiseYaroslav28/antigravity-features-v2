@@ -6546,7 +6546,23 @@ const translationDictionary = {
     "could not load": "Не удалось загрузить",
     "please verify your account to continue using": "Подтвердите аккаунт, чтобы продолжить использование",
     "please verify your account, then sign in again to continue. learn more by visiting our": "Подтвердите аккаунт и войдите снова, чтобы продолжить. Подробнее — в разделе",
-    "sorry, this account is ineligible to use": "К сожалению, этот аккаунт не подходит для использования"
+    "sorry, this account is ineligible to use": "К сожалению, этот аккаунт не подходит для использования",
+    "browser steps": "Шаги в браузере",
+    "1 browser step": "1 шаг в браузере",
+    "hide earlier steps": "Скрыть предыдущие шаги",
+    "show 1 earlier step": "Показать 1 предыдущий шаг",
+    "browser use": "Работа в браузере",
+    "starting browser use": "Запуск работы в браузере",
+    "started browser use": "Запущена работа в браузере",
+    "error while reading notebook": "Ошибка при чтении блокнота",
+    "error reading notebook": "Ошибка чтения блокнота",
+    "error while searching": "Ошибка при поиске",
+    "error while searching filesystem": "Ошибка при поиске в файловой системе",
+    "error while running command": "Ошибка при выполнении команды",
+    "error while semantic searching": "Ошибка при семантическом поиске",
+    "error while analyzing directory": "Ошибка при анализе директории",
+    "error while searching the web": "Ошибка при поиске в интернете",
+    "error while running mcp tool": "Ошибка при выполнении MCP-инструмента"
 };
 
 function lowercaseFirstCyrillic(str) {
@@ -6760,7 +6776,129 @@ const SUMMARY_HEAD_NOUNS_GEN = [
     [/^dictionary$/i, 'словаря', 'm'],
     [/^screenshots$/i, 'скриншотов', 'pl'],
     [/^screenshot$/i, 'скриншота', 'm'],
-    [/^patch(?:es)?$/i, 'патча', 'm']
+    [/^patch(?:es)?$/i, 'патча', 'm'],
+    [/^runtime\s+error\s+logs$/i, 'рантайм-логов ошибок', 'pl'],
+    [/^runtime\s+error\s+log$/i, 'рантайм-лога ошибок', 'm'],
+    [/^error\s+logs$/i, 'логов ошибок', 'pl'],
+    [/^error\s+log$/i, 'лога ошибок', 'm'],
+    [/^crate\s+sources?$/i, 'исходников крейта', 'pl'],
+    [/^raw\s+endpoints?$/i, 'прямого эндпоинта', 'm'],
+    [/^capabilities$/i, 'возможностей', 'pl'],
+    [/^capability$/i, 'возможности', 'f'],
+    [/^permissions$/i, 'разрешений', 'pl'],
+    [/^permission$/i, 'разрешения', 'n'],
+    [/^plugins$/i, 'плагинов', 'pl'],
+    [/^plugin$/i, 'плагина', 'm'],
+    [/^crates$/i, 'крейтов', 'pl'],
+    [/^crate$/i, 'крейта', 'm'],
+    [/^sources$/i, 'исходников', 'pl'],
+    [/^source$/i, 'исходного кода', 'm'],
+    [/^modules$/i, 'модулей', 'pl'],
+    [/^module$/i, 'модуля', 'm'],
+    [/^functions$/i, 'функций', 'pl'],
+    [/^function$/i, 'функции', 'f'],
+    [/^methods$/i, 'методов', 'pl'],
+    [/^method$/i, 'метода', 'm'],
+    [/^hooks$/i, 'хуков', 'pl'],
+    [/^hook$/i, 'хука', 'm'],
+    [/^handlers$/i, 'обработчиков', 'pl'],
+    [/^handler$/i, 'обработчика', 'm'],
+    [/^manifests?$/i, 'манифеста', 'm'],
+    [/^artifacts$/i, 'артефактов', 'pl'],
+    [/^artifact$/i, 'артефакта', 'm'],
+    [/^verifications?$/i, 'проверки', 'f'],
+    [/^checks$/i, 'проверок', 'pl'],
+    [/^check$/i, 'проверки', 'f'],
+    [/^stage\s+phases?$/i, 'фазы сцены', 'f'],
+    [/^phases$/i, 'фаз', 'pl'],
+    [/^phase$/i, 'фазы', 'f'],
+    [/^table\s+progress$/i, 'прогресса таблицы', 'm'],
+    [/^progress$/i, 'прогресса', 'm'],
+    [/^speech\s+bubbles$/i, 'речевых облачков', 'pl'],
+    [/^speech\s+bubble$/i, 'облачка речи', 'n'],
+    [/^mobile\s+bubbles$/i, 'мобильных облачков', 'pl'],
+    [/^mobile\s+bubble$/i, 'мобильного облачка', 'n'],
+    [/^bubbles$/i, 'облачков', 'pl'],
+    [/^bubble$/i, 'облачка', 'n'],
+    [/^heights?$/i, 'высоты', 'f'],
+    [/^widths?$/i, 'ширины', 'f'],
+    [/^sizes$/i, 'размеров', 'pl'],
+    [/^size$/i, 'размера', 'm'],
+    [/^bounds$/i, 'границ', 'pl'],
+    [/^positions?$/i, 'позиции', 'f'],
+    [/^offsets?$/i, 'смещения', 'n'],
+    [/^alignments?$/i, 'выравнивания', 'n'],
+    [/^margins?$/i, 'отступов', 'pl'],
+    [/^paddings?$/i, 'внутренних отступов', 'pl'],
+    [/^gaps?$/i, 'отступов', 'pl'],
+    [/^icons$/i, 'иконок', 'pl'],
+    [/^icon$/i, 'иконки', 'f'],
+    [/^buttons$/i, 'кнопок', 'pl'],
+    [/^button$/i, 'кнопки', 'f'],
+    [/^badges$/i, 'бейджей', 'pl'],
+    [/^badge$/i, 'бейджа', 'm'],
+    [/^pills$/i, 'плашек', 'pl'],
+    [/^pill$/i, 'плашки', 'f'],
+    [/^cards$/i, 'карточек', 'pl'],
+    [/^card$/i, 'карточки', 'f'],
+    [/^modals?$/i, 'модального окна', 'n'],
+    [/^dialogs?$/i, 'диалога', 'm'],
+    [/^(?:popups?|popovers?)$/i, 'всплывающего окна', 'n'],
+    [/^tooltips?$/i, 'подсказки', 'f'],
+    [/^headers?$/i, 'шапки', 'f'],
+    [/^footers?$/i, 'подвала', 'm'],
+    [/^sidebars?$/i, 'боковой панели', 'f'],
+    [/^navbars?$/i, 'навигации', 'f'],
+    [/^menus?$/i, 'меню', 'n'],
+    [/^tabs$/i, 'вкладок', 'pl'],
+    [/^tab$/i, 'вкладки', 'f'],
+    [/^tables$/i, 'таблиц', 'pl'],
+    [/^table$/i, 'таблицы', 'f'],
+    [/^rows$/i, 'строк', 'pl'],
+    [/^row$/i, 'строки', 'f'],
+    [/^columns$/i, 'столбцов', 'pl'],
+    [/^column$/i, 'столбца', 'm'],
+    [/^cells$/i, 'ячеек', 'pl'],
+    [/^cell$/i, 'ячейки', 'f'],
+    [/^sections$/i, 'секций', 'pl'],
+    [/^section$/i, 'секции', 'f'],
+    [/^blocks$/i, 'блоков', 'pl'],
+    [/^block$/i, 'блока', 'm'],
+    [/^containers$/i, 'контейнеров', 'pl'],
+    [/^container$/i, 'контейнера', 'm'],
+    [/^wrappers$/i, 'обёрток', 'pl'],
+    [/^wrapper$/i, 'обёртки', 'f'],
+    [/^panels$/i, 'панелей', 'pl'],
+    [/^panel$/i, 'панели', 'f'],
+    [/^frames$/i, 'фреймов', 'pl'],
+    [/^frame$/i, 'фрейма', 'm'],
+    [/^viewports?$/i, 'области просмотра', 'f'],
+    [/^screens$/i, 'экранов', 'pl'],
+    [/^screen$/i, 'экрана', 'm'],
+    [/^layouts?$/i, 'вёрстки', 'f'],
+    [/^animations?$/i, 'анимации', 'f'],
+    [/^transitions$/i, 'переходов', 'pl'],
+    [/^transition$/i, 'перехода', 'm'],
+    [/^scroll(?:ing)?$/i, 'прокрутки', 'f'],
+    [/^elements$/i, 'элементов', 'pl'],
+    [/^element$/i, 'элемента', 'm'],
+    [/^nodes$/i, 'узлов', 'pl'],
+    [/^node$/i, 'узла', 'm'],
+    [/^selectors$/i, 'селекторов', 'pl'],
+    [/^selector$/i, 'селектора', 'm'],
+    [/^labels$/i, 'меток', 'pl'],
+    [/^label$/i, 'метки', 'f'],
+    [/^titles$/i, 'заголовков', 'pl'],
+    [/^title$/i, 'заголовка', 'm'],
+    [/^texts?$/i, 'текста', 'm'],
+    [/^inputs?$/i, 'поля ввода', 'n'],
+    [/^forms?$/i, 'формы', 'f'],
+    [/^links$/i, 'ссылок', 'pl'],
+    [/^link$/i, 'ссылки', 'f'],
+    [/^images$/i, 'изображений', 'pl'],
+    [/^image$/i, 'изображения', 'n'],
+    [/^loads?$/i, 'загрузки', 'f'],
+    [/^freezes?$/i, 'зависания', 'n']
 ];
 
 const SUMMARY_ADJ_GEN = {
@@ -6770,7 +6908,22 @@ const SUMMARY_ADJ_GEN = {
     local: { m: 'локального', f: 'локальной', n: 'локального', pl: 'локальных' },
     remote: { m: 'удалённого', f: 'удалённой', n: 'удалённого', pl: 'удалённых' },
     background: { m: 'фонового', f: 'фоновой', n: 'фонового', pl: 'фоновых' },
-    live: { m: 'живого', f: 'живой', n: 'живого', pl: 'живых' },
+    live: { m: 'актуального', f: 'актуальной', n: 'актуального', pl: 'актуальных' },
+    temp: { m: 'временного', f: 'временной', n: 'временного', pl: 'временных' },
+    temporary: { m: 'временного', f: 'временной', n: 'временного', pl: 'временных' },
+    raw: { m: 'прямого', f: 'прямой', n: 'прямого', pl: 'прямых' },
+    mobile: { m: 'мобильного', f: 'мобильной', n: 'мобильного', pl: 'мобильных' },
+    desktop: { m: 'десктопного', f: 'десктопной', n: 'десктопного', pl: 'десктопных' },
+    responsive: { m: 'адаптивного', f: 'адаптивной', n: 'адаптивного', pl: 'адаптивных' },
+    sticky: { m: 'закреплённого', f: 'закреплённой', n: 'закреплённого', pl: 'закреплённых' },
+    fixed: { m: 'фиксированного', f: 'фиксированной', n: 'фиксированного', pl: 'фиксированных' },
+    hidden: { m: 'скрытого', f: 'скрытой', n: 'скрытого', pl: 'скрытых' },
+    visible: { m: 'видимого', f: 'видимой', n: 'видимого', pl: 'видимых' },
+    inline: { m: 'встроенного', f: 'встроенной', n: 'встроенного', pl: 'встроенных' },
+    parallel: { m: 'параллельного', f: 'параллельной', n: 'параллельного', pl: 'параллельных' },
+    final: { m: 'финального', f: 'финальной', n: 'финального', pl: 'финальных' },
+    initial: { m: 'начального', f: 'начальной', n: 'начального', pl: 'начальных' },
+    speech: { m: 'речевого', f: 'речевой', n: 'речевого', pl: 'речевых' },
     current: { m: 'текущего', f: 'текущей', n: 'текущего', pl: 'текущих' },
     latest: { m: 'последнего', f: 'последней', n: 'последнего', pl: 'последних' },
     existing: { m: 'существующего', f: 'существующей', n: 'существующего', pl: 'существующих' },
@@ -6807,7 +6960,17 @@ const SUMMARY_MODIFIER_NOUN_GEN = {
     backend: 'бэкенда',
     ui: 'интерфейса',
     db: 'БД',
-    database: 'БД'
+    database: 'БД',
+    runtime: 'рантайма',
+    error: 'ошибок',
+    updater: 'апдейтера',
+    stage: 'сцены',
+    table: 'таблицы',
+    frame: 'фрейма',
+    page: 'страницы',
+    browser: 'браузера',
+    crate: 'крейта',
+    plugin: 'плагина'
 };
 
 const SUMMARY_KNOWN_TECH_LOWER = new Set([
@@ -6830,8 +6993,10 @@ function translateSummaryAtomicObjectGenitive(phrase, isStepContext) {
 
     const tails = [];
     let changedTail = true;
-    while (changedTail) {
+    let guardIter = 0;
+    while (changedTail && guardIter < 5) {
         changedTail = false;
+        guardIter++;
         let m;
         if ((m = p.match(/^(.+?)\s+on\s+port\s+(\d+)$/i))) {
             tails.unshift(`на порту ${m[2]}`);
@@ -6877,9 +7042,40 @@ function translateSummaryAtomicObjectGenitive(phrase, isStepContext) {
                 p = m[1].trim();
                 changedTail = true;
             }
-        } else if ((m = p.match(/^(.+?)\s+via\s+([A-Za-z0-9_.\-\/]+)$/i))) {
-            if (/[A-Z0-9._\-\/]/.test(m[2]) || SUMMARY_KNOWN_TECH_LOWER.has(m[2].toLowerCase())) {
+        } else if ((m = p.match(/^(.+?)\s+via\s+([A-Za-z0-9_.\-\/()]+)$/i))) {
+            if (/[A-Z0-9._\-\/()]/.test(m[2]) || SUMMARY_KNOWN_TECH_LOWER.has(m[2].toLowerCase())) {
                 tails.unshift(`через ${m[2]}`);
+                p = m[1].trim();
+                changedTail = true;
+            }
+        } else if (isStepContext && (m = p.match(/^(.+?)\s+from\s+(.+)$/i)) && !/\s+from\s+/i.test(m[2])) {
+            const rawFrom = m[2].trim();
+            const subFrom = translateSummaryAtomicObjectGenitive(rawFrom, true);
+            if (subFrom) {
+                const prep = /\b(?:endpoint|server|site|page|branch|эндпоинт|сервер|сайт|страниц|ветк)/i.test(rawFrom) ? 'с' : 'из';
+                tails.unshift(`${prep} ${subFrom}`);
+                p = m[1].trim();
+                changedTail = true;
+            }
+        } else if (isStepContext && (m = p.match(/^(.+?)\s+with\s+(.+)$/i)) && !/\s+with\s+/i.test(m[2])) {
+            const rawWith = m[2].trim();
+            if (/^[A-Za-z0-9_.#\-()]+$/.test(rawWith)) {
+                const prep = /[A-Z()]/.test(rawWith) ? 'с помощью' : 'с';
+                tails.unshift(`${prep} ${rawWith}`);
+                p = m[1].trim();
+                changedTail = true;
+            } else {
+                const subWith = translateSummaryAtomicObjectGenitive(rawWith, true);
+                if (subWith) {
+                    tails.unshift(`с ${subWith}`);
+                    p = m[1].trim();
+                    changedTail = true;
+                }
+            }
+        } else if (isStepContext && (m = p.match(/^(.+?)\s+(after|before)\s+(.+)$/i)) && !/\s+(?:after|before)\s+/i.test(m[3])) {
+            const subTime = translateSummaryAtomicObjectGenitive(m[3].trim(), true);
+            if (subTime) {
+                tails.unshift(`${m[2].toLowerCase() === 'after' ? 'после' : 'до'} ${subTime}`);
                 p = m[1].trim();
                 changedTail = true;
             }
@@ -6908,7 +7104,7 @@ function translateSummaryAtomicObjectGenitive(phrase, isStepContext) {
                         }
                     } else if (SUMMARY_MODIFIER_NOUN_GEN[lowTok]) {
                         postMods.push(SUMMARY_MODIFIER_NOUN_GEN[lowTok]);
-                    } else if (/[A-Z0-9._\-\/@:+]/.test(tok) || SUMMARY_KNOWN_TECH_LOWER.has(lowTok)) {
+                    } else if (/[A-Z0-9._\-\/@:+#()]/.test(tok) || SUMMARY_KNOWN_TECH_LOWER.has(lowTok)) {
                         postMods.push(tok);
                     } else {
                         return null;
@@ -6921,8 +7117,26 @@ function translateSummaryAtomicObjectGenitive(phrase, isStepContext) {
         }
     }
 
-    if (words.length === 1 && (/[A-Z0-9._\-\/@:+]/.test(p) || SUMMARY_KNOWN_TECH_LOWER.has(p.toLowerCase()))) {
-        return `${p}${tailStr}`;
+    const lastWord = words[words.length - 1];
+    if (/[A-Z0-9._\-\/@:+#()]/.test(lastWord) || SUMMARY_KNOWN_TECH_LOWER.has(lastWord.toLowerCase())) {
+        if (words.length === 1) {
+            return `${lastWord}${tailStr}`;
+        }
+        const leadAdjs = [];
+        let allLeadAdj = true;
+        for (let i = 0; i < words.length - 1; i++) {
+            const lw = words[i].toLowerCase();
+            if (isStepContext && (lw === 'the' || lw === 'a' || lw === 'an')) continue;
+            if (SUMMARY_ADJ_GEN[lw]) {
+                leadAdjs.push(SUMMARY_ADJ_GEN[lw].m);
+            } else {
+                allLeadAdj = false;
+                break;
+            }
+        }
+        if (allLeadAdj && leadAdjs.length > 0 && /[._\/@:+#()]/.test(lastWord)) {
+            return `${leadAdjs.join(' ')} ${lastWord}${tailStr}`;
+        }
     }
 
     return null;
@@ -6931,22 +7145,77 @@ function translateSummaryAtomicObjectGenitive(phrase, isStepContext) {
 function translateSummaryObjectGenitive(rest, isStepContext) {
     if (!rest) return null;
     const trimmed = rest.trim();
-    if (/\s+and\s+/i.test(trimmed)) {
-        const parts = trimmed.split(/\s+and\s+/i);
-        if (parts.length >= 2 && parts.length <= 3) {
+    if (/(?:,\s+and\s+|\s+and\s+|,\s+)/i.test(trimmed)) {
+        const parts = trimmed.split(/\s*(?:,\s+and\s+|\s+and\s+|,\s+)\s*/i).filter(Boolean);
+        if (parts.length >= 2 && parts.length <= 8) {
             const out = [];
-            for (const part of parts) {
+            let ok = true;
+            for (let i = 0; i < parts.length; i++) {
+                const part = parts[i];
                 const tr = translateSummaryAtomicObjectGenitive(part, isStepContext);
-                if (!tr) return null;
-                out.push(tr);
+                if (tr) {
+                    out.push(tr);
+                } else if (isStepContext && i === parts.length - 1 && out.length >= 1 && /^[A-Za-z0-9_.#\-()]{1,16}$/.test(part)) {
+                    // Truncated final token before ellipsis (e.g. "..., CTA icon, and pi...")
+                    out.push(part);
+                } else {
+                    ok = false;
+                    break;
+                }
             }
-            return out.join(' и ');
+            if (ok && out.length >= 2) {
+                if (out.length === 2) return `${out[0]} и ${out[1]}`;
+                return out.slice(0, -1).join(', ') + ' и ' + out[out.length - 1];
+            }
         }
     }
     return translateSummaryAtomicObjectGenitive(trimmed, isStepContext);
 }
 
-function translateSingleEnglishClause(clause, isFirstClause, isStepContext = false) {
+function translateStepLooseRemainder(rawRest) {
+    if (!rawRest) return rawRest;
+    let r = rawRest.trim().replace(/^(?:the|a|an)\s+/i, '');
+    const chunks = r.split(/(\s*,\s+and\s+|\s+and\s+|\s*,\s+)/i);
+    const out = chunks.map((chunk) => {
+        if (/^\s*,\s+and\s+$/i.test(chunk) || /^\s+and\s+$/i.test(chunk)) return ' и ';
+        if (/^\s*,\s*$/.test(chunk)) return ', ';
+        const strictChunk = translateSummaryAtomicObjectGenitive(chunk, true);
+        if (strictChunk) return strictChunk;
+        return chunk
+            .replace(/\bafter\s+frame\s+load\b/gi, 'после загрузки фрейма')
+            .replace(/\bafter\s+page\s+load\b/gi, 'после загрузки страницы')
+            .replace(/\bafter\s+fr([a-z]*)$/i, 'после фр$1')
+            .replace(/\btable\s+pr([a-z]*)$/i, 'прогресса таблицы')
+            .replace(/\bspeec([a-z]*)$/i, 'речевого облачка')
+            .replace(/\bverifi([a-z]*)$/i, 'проверки')
+            .replace(/\bmob([a-z]*)$/i, 'мобильного элемента')
+            .replace(/\bstage\s+phase\b/gi, 'фазы сцены')
+            .replace(/\btable\s+progress\b/gi, 'прогресса таблицы')
+            .replace(/\bmobile\s+bubble\b/gi, 'мобильного облачка')
+            .replace(/\bspeech\s+bubble\b/gi, 'облачка речи')
+            .replace(/\bruntime\s+error\s+logs?\b/gi, 'рантайм-логов ошибок')
+            .replace(/\berror\s+logs?\b/gi, 'логов ошибок')
+            .replace(/\braw\s+endpoints?\b/gi, 'прямого эндпоинта')
+            .replace(/\bcrate\s+sources?\b/gi, 'исходников крейта')
+            .replace(/\bcapabilities\b/gi, 'возможностей')
+            .replace(/\bphase\b/gi, 'фазы')
+            .replace(/\bprogress\b/gi, 'прогресса')
+            .replace(/\bheight\b/gi, 'высоты')
+            .replace(/\bwidth\b/gi, 'ширины')
+            .replace(/\bicon\b/gi, 'иконки')
+            .replace(/\bbutton\b/gi, 'кнопки')
+            .replace(/\bpill\b/gi, 'плашки')
+            .replace(/\bafter\s+/gi, 'после ')
+            .replace(/\bbefore\s+/gi, 'до ')
+            .replace(/\bwith\s+/gi, 'с ')
+            .replace(/\bfrom\s+/gi, 'из ')
+            .replace(/\bin\s+(?=[A-Za-z0-9_.#\/])/gi, 'в ')
+            .replace(/\bon\s+(?=[A-Za-z0-9_.#\/])/gi, 'на ');
+    });
+    return out.join('').replace(/\s+/g, ' ').trim();
+}
+
+function translateSingleEnglishClause(clause, isFirstClause, isStepContext = false, strictOnly = false) {
     if (!clause) return clause;
     const c = clause.trim();
     const lower = c.toLowerCase();
@@ -6986,6 +7255,20 @@ function translateSingleEnglishClause(clause, isFirstClause, isStepContext = fal
         return isFirstClause ? standaloneVerbNouns[lower][0] : standaloneVerbNouns[lower][1];
     }
 
+    // "search lib.rs for updater plugin and write_js_log" -> "Поиск плагина апдейтера и write_js_log в lib.rs"
+    const mSearchInFor = c.match(/^(search|grep|scan)\s+([A-Za-z0-9_.\-\/\\]+)\s+for\s+(.+)$/i);
+    if (mSearchInFor) {
+        const vWord = mSearchInFor[1].toLowerCase() === 'scan'
+            ? (isFirstClause ? 'Сканирование' : 'сканирование')
+            : (isFirstClause ? 'Поиск' : 'поиск');
+        const whereTarget = mSearchInFor[2];
+        const queryObj = translateSummaryObjectGenitive(mSearchInFor[3].trim(), isStepContext)
+            || (isStepContext && !strictOnly ? translateStepLooseRemainder(mSearchInFor[3].trim()) : null);
+        if (queryObj) {
+            return `${vWord} ${queryObj} в ${whereTarget}`;
+        }
+    }
+
     if (/^publish\s+(all\s+)?(\d+)\s+approved\s+doc(?:ument)?\s+revisions?\s+to\s+(\S+)$/i.test(c)) {
         const m = c.match(/^publish\s+(all\s+)?(\d+)\s+approved\s+doc(?:ument)?\s+revisions?\s+to\s+(\S+)$/i);
         const hasAll = Boolean(m[1]);
@@ -7006,6 +7289,25 @@ function translateSingleEnglishClause(clause, isFirstClause, isStepContext = fal
     }
 
     const verbMap = [
+        [/^wait\s+(?:for|until)\s+(.+)$/i, 'Ожидание', 'ожидание'],
+        [/^align\s+(.+)$/i, 'Выравнивание', 'выравнивание'],
+        [/^scroll\s+(?:to|into\s+view)\s+(.+)$/i, 'Прокрутка к', 'прокрутка к'],
+        [/^scroll\s+(.+)$/i, 'Прокрутка', 'прокрутка'],
+        [/^(?:navigate|go)\s+to\s+(.+)$/i, 'Переход к', 'переход к'],
+        [/^switch\s+to\s+(.+)$/i, 'Переключение на', 'переключение на'],
+        [/^click(?:\s+on)?\s+(.+)$/i, 'Нажатие на', 'нажатие на'],
+        [/^hover(?:\s+over)?\s+(.+)$/i, 'Наведение на', 'наведение на'],
+        [/^(?:fill(?:\s+in)?|type\s+into)\s+(.+)$/i, 'Заполнение', 'заполнение'],
+        [/^(?:capture|take)\s+(.+)$/i, 'Снятие', 'снятие'],
+        [/^measure\s+(.+)$/i, 'Измерение', 'измерение'],
+        [/^assert\s+(.+)$/i, 'Проверка', 'проверка'],
+        [/^ensure\s+(.+)$/i, 'Проверка', 'проверка'],
+        [/^confirm\s+(.+)$/i, 'Подтверждение', 'подтверждение'],
+        [/^observe\s+(.+)$/i, 'Наблюдение', 'наблюдение'],
+        [/^resize\s+(.+)$/i, 'Изменение размера', 'изменение размера'],
+        [/^toggle\s+(.+)$/i, 'Переключение', 'переключение'],
+        [/^select\s+(.+)$/i, 'Выбор', 'выбор'],
+        [/^submit\s+(.+)$/i, 'Отправка', 'отправка'],
         [/^re-?run\s+(.+)$/i, 'Повторный запуск', 'повторный запуск'],
         [/^re-?(?:check|verify)\s+(.+)$/i, 'Повторная проверка', 'повторная проверка'],
         [/^re-?test\s+(.+)$/i, 'Повторное тестирование', 'повторное тестирование'],
@@ -7091,7 +7393,7 @@ function translateSingleEnglishClause(clause, isFirstClause, isStepContext = fal
             let rest = m[1].trim();
             const origRest = rest;
             const hasEnglishProseTokens = isStepContext
-                ? /\b(?:my|your|our|their|its|this|that|these|those|it|by|or|if|so|we|you|me|us|they|them|when|where|while|whether|before|after|without|against|should|would|could|can|will)\b/i.test(origRest)
+                ? /\b(?:my|your|our|their|its|this|that|these|those|it|by|or|if|so|we|you|me|us|they|them|when|where|while|whether|without|against|should|would|could|can|will)\b/i.test(origRest)
                 : /\b(?:a|an|the|my|your|our|their|its|this|that|these|those|it|on|by|as|or|if|so|we|you|me|us|they|them|when|where|while|whether|before|after|without|against|should|would|could|can|will)\b/i.test(origRest);
 
             if (!hasEnglishProseTokens) {
@@ -7099,6 +7401,10 @@ function translateSingleEnglishClause(clause, isFirstClause, isStepContext = fal
                 if (compObj) {
                     return `${isFirstClause ? capNoun : lowNoun} ${compObj}`;
                 }
+            }
+
+            if (strictOnly) {
+                return null;
             }
 
             rest = rest
@@ -7128,8 +7434,14 @@ function translateSingleEnglishClause(clause, isFirstClause, isStepContext = fal
             if (!hasEnglishProseTokens) {
                 rest = rest.replace(/\bin\s+(\S+)\b/gi, 'в $1');
             }
-            if (rest === origRest && (rest.split(/\s+/).length > 3 || hasEnglishProseTokens || /\b(?:with|from|into|for|to)\b/i.test(rest))) {
-                return null;
+            if (rest === origRest) {
+                if (isStepContext && !hasEnglishProseTokens) {
+                    const loose = translateStepLooseRemainder(origRest);
+                    return `${isFirstClause ? capNoun : lowNoun} ${loose}`;
+                }
+                if (rest.split(/\s+/).length > 3 || hasEnglishProseTokens || /\b(?:with|from|into|for|to)\b/i.test(rest)) {
+                    return null;
+                }
             }
             return `${isFirstClause ? capNoun : lowNoun} ${rest}`;
         }
@@ -7182,18 +7494,38 @@ function translateSingleEnglishClause(clause, isFirstClause, isStepContext = fal
 }
 
 function translateEnglishCommandSummary(text, isStepContext = false) {
-    if (!text || /[а-яА-ЯёЁ]/.test(text)) return null;
-    const t = text.trim();
+    if (!text) return null;
+    let rawInput = text.trim();
+    // Allow re-translating half-translated "Тест: <English>" from older regex
+    if (/^Тест:\s+[A-Za-z#.]/.test(rawInput)) {
+        rawInput = 'Test ' + rawInput.replace(/^Тест:\s+/, '');
+    }
+    if (/[а-яА-ЯёЁ]/.test(rawInput)) return null;
+
+    let trailingEllipsis = '';
+    const mEll = rawInput.match(/^(.*?)(\.{3}|…)$/);
+    if (mEll && mEll[1].trim()) {
+        rawInput = mEll[1].trim();
+        trailingEllipsis = mEll[2];
+    }
+
+    const t = rawInput;
     const lower = t.toLowerCase();
 
     if (lower === 'restore clean core, publish 21 doc revisions to db, and create atomic snapshot') {
-        return 'Восстановление чистого ядра, публикация 21 ревизии документов в БД и создание атомарного снимка';
+        return 'Восстановление чистого ядра, публикация 21 ревизии документов в БД и создание атомарного снимка' + trailingEllipsis;
     }
     if (lower === 'publish 21 approved doc revisions to project.db and create atomic snapshot') {
-        return 'Публикация 21 утверждённой ревизии документов в project.db и создание атомарного снимка';
+        return 'Публикация 21 утверждённой ревизии документов в project.db и создание атомарного снимка' + trailingEllipsis;
     }
 
-    const verbLookahead = '(?:re-?run|re-?check|re-?verify|re-?test|re-?build|start|spin\\s+up|boot|stop|shut\\s*down|kill|terminate|restart|relaunch|reload|refresh|lint|type[\\s-]?check|format|compile|bundle|pack|audit|analyze|analyse|debug|diagnose|restore|publish|create|add|verify|validate|check|inspect|read|write|save|edit|modify|patch|apply|fetch|retrieve|get|load|query|list|scan|sync|synchronize|seed|populate|migrate|upsert|update|upgrade|bump|extract|compare|diff|find|locate|grep|search|seal|print|count|launch|execute|run|test|clean|clear|purge|prune|reset|revert|stage|commit|push|pull|merge|clone|upload|download|copy|move|rename|delete|remove|uninstall|build|deploy|fix|repair|resolve|generate|init|initialize|install|configure|set\\s+up|setup|open|close|serve|watch|monitor|disable|enable)(?:\\s|,|$)';
+    // First try strict single-clause parse so comma-separated object lists ("Inspect stage phase, table progress, ...") stay grouped under one verb
+    const singleStrict = translateSingleEnglishClause(t, true, isStepContext, true);
+    if (singleStrict) {
+        return singleStrict + trailingEllipsis;
+    }
+
+    const verbLookahead = '(?:wait\\s+for|wait\\s+until|align|scroll|navigate\\s+to|go\\s+to|click|hover|fill|capture|measure|assert|ensure|confirm|observe|resize|re-?run|re-?check|re-?verify|re-?test|re-?build|start|spin\\s+up|boot|stop|shut\\s*down|kill|terminate|restart|relaunch|reload|refresh|lint|type[\\s-]?check|format|compile|bundle|pack|audit|analyze|analyse|debug|diagnose|restore|publish|create|add|verify|validate|check|inspect|read|write|save|edit|modify|patch|apply|fetch|retrieve|get|load|query|list|scan|sync|synchronize|seed|populate|migrate|upsert|update|upgrade|bump|extract|compare|diff|find|locate|grep|search|seal|print|count|launch|execute|run|test|clean|clear|purge|prune|reset|revert|stage|commit|push|pull|merge|clone|upload|download|copy|move|rename|delete|remove|uninstall|build|deploy|fix|repair|resolve|generate|init|initialize|install|configure|set\\s+up|setup|open|close|serve|watch|monitor|disable|enable)(?:\\s|,|$)';
     const splitRe = new RegExp(`\\s*(?:,\\s+and\\s+|\\s+and\\s+(?=${verbLookahead})|,\\s+(?=${verbLookahead}))`, 'i');
 
     if (splitRe.test(t)) {
@@ -7201,7 +7533,7 @@ function translateEnglishCommandSummary(text, isStepContext = false) {
         const translatedParts = [];
         let allTranslated = rawParts.length > 0;
         for (let i = 0; i < rawParts.length; i++) {
-            const tr = translateSingleEnglishClause(rawParts[i], i === 0, isStepContext);
+            const tr = translateSingleEnglishClause(rawParts[i], i === 0, isStepContext, false);
             if (tr) {
                 translatedParts.push(tr);
             } else {
@@ -7211,16 +7543,48 @@ function translateEnglishCommandSummary(text, isStepContext = false) {
         }
         if (allTranslated) {
             if (translatedParts.length === 2) {
-                return `${translatedParts[0]} и ${translatedParts[1]}`;
+                return `${translatedParts[0]} и ${translatedParts[1]}${trailingEllipsis}`;
             }
             if (translatedParts.length > 2) {
-                return translatedParts.slice(0, -1).join(', ') + ' и ' + translatedParts[translatedParts.length - 1];
+                return translatedParts.slice(0, -1).join(', ') + ' и ' + translatedParts[translatedParts.length - 1] + trailingEllipsis;
             }
-            return translatedParts[0];
+            return translatedParts[0] + trailingEllipsis;
         }
     }
 
-    return translateSingleEnglishClause(t, true, isStepContext);
+    const fallbackSingle = translateSingleEnglishClause(t, true, isStepContext, false);
+    return fallbackSingle ? (fallbackSingle + trailingEllipsis) : null;
+}
+
+function translateBrowserStepIntent(raw) {
+    if (!raw) return raw;
+    let s = raw.trim();
+    if (!s) return raw;
+    const mThink = s.match(/^Thinking(?:\s*\((\d+(?:\.\d+)?)s\))?([\u2026.]*)$/i);
+    if (mThink) {
+        return `Размышляет${mThink[1] ? ` (${mThink[1]} сек)` : ''}${mThink[2] || ''}`;
+    }
+    let repeatSuffix = '';
+    const mRep = s.match(/^(.*?)\s*(×\d+)$/);
+    if (mRep && mRep[1].trim()) {
+        s = mRep[1].trim();
+        repeatSuffix = ' ' + mRep[2];
+    }
+    if (s.includes('↔')) {
+        const segs = s.split(/\s*↔\s*/);
+        const trSegs = segs.map(seg => {
+            const dict = translationDictionary[seg.toLowerCase()];
+            if (dict) return dict;
+            const cmd = translateEnglishCommandSummary(seg, true);
+            return cmd ? uppercaseFirstCyrillic(cmd) : seg;
+        });
+        return trSegs.join(' ↔ ') + repeatSuffix;
+    }
+    const dictHit = translationDictionary[s.toLowerCase()];
+    if (dictHit) return dictHit + repeatSuffix;
+    const cmdHit = translateEnglishCommandSummary(s, true);
+    if (cmdHit) return uppercaseFirstCyrillic(cmdHit) + repeatSuffix;
+    return raw;
 }
 
 function localizeActionTarget(target, isStepContext = false) {
@@ -7367,6 +7731,13 @@ function localizeActionTarget(target, isStepContext = false) {
     if (/^openwrt\s+hosts$/i.test(t)) return 'openwrt hosts';
     if (translationDictionary[lower]) {
         return translationDictionary[lower];
+    }
+
+    if (!isStepContext) {
+        const objFirst = translateSummaryObjectGenitive(t, true);
+        if (objFirst && objFirst !== t) {
+            return objFirst;
+        }
     }
 
     const cmdSummaryTranslated = translateEnglishCommandSummary(t, isStepContext);
@@ -12228,9 +12599,10 @@ const regexTranslations = [
     },
     {
         // "Test Thinking for 10s >" / "Test <target> >"
-        pattern: /^Test\s+(.+?)(\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]))?$/i,
+        pattern: /^(?:Test|Тест:)\s+(.+?)(\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]))?$/i,
         replace: (match) => {
             const arrow = match[2] ? (' ' + match[2].trim()) : '';
+            const hasChevron = /[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]/.test(arrow);
             let target = match[1].trim();
             if (/^Thinking\s+for\s+(\d+)\s*([smhd])$/i.test(target)) {
                 target = target.replace(/^Thinking\s+for\s+(\d+)\s*([smhd])$/i, (m, c, u) => {
@@ -12239,6 +12611,9 @@ const regexTranslations = [
                 });
                 return `Тест ${target}${arrow}`;
             }
+            const cmdSum = translateEnglishCommandSummary('Test ' + target, hasChevron || /^Тест:/i.test(match[0]));
+            if (cmdSum) return `${cmdSum}${arrow}`;
+            if (isLikelyEnglishProseTarget(target) && !hasChevron) return match[0];
             return `Тест: ${target}${arrow}`;
         }
     },
@@ -15180,8 +15555,12 @@ const regexTranslations = [
         }
     },
     {
-        pattern: /^Thinking\s*\((\d+(?:\.\d+)?)s\)[\u2026.]*$/i,
-        replace: (m) => `Размышляет (${m[1]} сек)…`
+        pattern: /^([·•]\s*)?Thinking\s*\((\d+(?:\.\d+)?)s\)([\u2026.]*)$/i,
+        replace: (m) => `${m[1] ? m[1].trim() + ' ' : ''}Размышляет (${m[2]} сек)${m[3] || '…'}`
+    },
+    {
+        pattern: /^([·•]\s*)?Thinking([\u2026.]+)$/i,
+        replace: (m) => `${m[1] ? m[1].trim() + ' ' : ''}Размышляет${m[2]}`
     },
     {
         pattern: /^Working\s*[·•]\s*(\d+(?:\.\d+)?)s$/i,
@@ -15192,12 +15571,44 @@ const regexTranslations = [
         replace: (m) => `Работа в браузере (${m[1]} сек)`
     },
     {
-        pattern: /^Using\s+browser\s*[·•]\s*(.+?)\s*\((\d+(?:\.\d+)?)s\)$/i,
-        replace: (m) => `Работа в браузере · ${m[1]} (${m[2]} сек)`
+        pattern: /^(?:Using\s+browser|Работа\s+в\s+браузере)\s*[·•]\s*Thinking(?:\s*\((\d+(?:\.\d+)?)s\))?([\u2026.]*)$/i,
+        replace: (m) => `Работа в браузере · Размышляет${m[1] ? ` (${m[1]} сек)` : ''}${m[2] || ''}`
     },
     {
-        pattern: /^Using\s+browser\s*[·•]\s*(.+)$/i,
-        replace: (m) => `Работа в браузере · ${m[1]}`
+        pattern: /^(?:Using\s+browser|Работа\s+в\s+браузере)\s*[·•]\s*(.+?)\s*\((\d+(?:\.\d+)?)s\)([\u2026.]*)$/i,
+        replace: (m) => `Работа в браузере · ${translateBrowserStepIntent(m[1])} (${m[2]} сек)${m[3] || ''}`
+    },
+    {
+        pattern: /^(?:Using\s+browser|Работа\s+в\s+браузере)\s*[·•]\s*(.+)$/i,
+        replace: (m) => `Работа в браузере · ${translateBrowserStepIntent(m[1])}`
+    },
+    {
+        pattern: /^([·•])\s+([A-Za-z#].+?)(?:\s*\((\d+(?:\.\d+)?)s\))?([\u2026.]*)$/,
+        replace: (m) => {
+            const rawBody = m[2].trim();
+            const tr = translateBrowserStepIntent(rawBody + (m[4] || ''));
+            if (tr === rawBody + (m[4] || '')) return m[0];
+            if (m[3]) {
+                const trNoEll = translateBrowserStepIntent(rawBody);
+                return `${m[1]} ${trNoEll} (${m[3]} сек)${m[4] || ''}`;
+            }
+            return `${m[1]} ${tr}`;
+        }
+    },
+    {
+        pattern: /^Show\s+(\d+)\s+earlier\s+steps?$/i,
+        replace: (m) => {
+            const c = parseInt(m[1], 10);
+            return `Показать ${c} ${pluralizeRuCount(c, 'предыдущий шаг', 'предыдущих шага', 'предыдущих шагов')}`;
+        }
+    },
+    {
+        pattern: /^Error\s+while\s+running:\s*(.+)$/i,
+        replace: (m) => `Ошибка при выполнении: ${lowercaseFirstCyrillic(translateBrowserStepIntent(m[1]))}`
+    },
+    {
+        pattern: /^(Messaging|Messaged)\s+(.+)$/i,
+        replace: (m) => `${m[1].toLowerCase() === 'messaging' ? 'Отправка сообщения:' : 'Отправлено сообщение:'} ${m[2].trim()}`
     },
     {
         pattern: /^Typed\s+['"](.*)['"]\s+in\s+Browser$/i,
@@ -17371,11 +17782,20 @@ function shouldIgnore(node) {
 
 function isFileName(text, parent) {
     if (!text) return false;
-    if (parent && parent.previousElementSibling) {
-        const prevOrig = (parent.previousElementSibling.getAttribute && parent.previousElementSibling.getAttribute('data-original-text') || '').trim();
-        const prevTxt = (parent.previousElementSibling.textContent || '').trim();
-        if (/^(?:Ran|Running|Запущено|Выполняется:?)$/i.test(prevOrig) || /^(?:Ran|Running|Запущено|Выполняется:?)$/i.test(prevTxt)) {
-            return false;
+    if (parent && typeof parent.closest === 'function' && parent.closest('[data-testid="browser-subagent-step"]')) {
+        return false;
+    }
+    if (parent) {
+        let pWalk = parent;
+        for (let d = 0; pWalk && d < 4; d++, pWalk = pWalk.parentElement) {
+            const prevSib = pWalk.previousElementSibling;
+            if (!prevSib) continue;
+            const prevOrig = (prevSib.getAttribute && prevSib.getAttribute('data-original-text') || '').trim();
+            const prevTxt = (prevSib.textContent || '').trim();
+            if (/^(?:Ran|Running|Killed\s+task|Killing\s+task|Stopped\s+task|Checked\s+task|Checking\s+task|Запущено:?|Выполнено:?|Выполняется:?|Задача\s+остановлена:?)$/i.test(prevOrig) ||
+                /^(?:Ran|Running|Killed\s+task|Killing\s+task|Stopped\s+task|Checked\s+task|Checking\s+task|Запущено:?|Выполнено:?|Выполняется:?|Задача\s+остановлена:?)$/i.test(prevTxt)) {
+                return false;
+            }
         }
     }
     if (parent && typeof parent.className === 'string' && text.trim().includes(' ')) {
@@ -18444,16 +18864,21 @@ function hasFollowingStepTarget(node, normalizedPrefix) {
     const escaped = normalizedPrefix.replace(/[.*+?^$()|[\]\\]/g, '\\$&');
     const rowStartRe = new RegExp('^' + escaped + '\\s+(.+)$', 'i');
 
-    const candidates = [pEl, pEl.parentElement, pEl.parentElement && pEl.parentElement.parentElement];
-    for (const container of candidates) {
-        if (!container) continue;
+    const candidates = [];
+    let cur = pEl;
+    for (let d = 0; cur && d < 6; d++, cur = cur.parentElement) {
+        candidates.push(cur);
+    }
+    for (let i = 0; i < candidates.length; i++) {
+        const container = candidates[i];
         const cTxt = (container.textContent || '').replace(/[\s\u00a0\r\n\t]+/g, ' ').trim();
-        if (!cTxt || cTxt.length > 220) continue;
+        if (!cTxt || cTxt.length > 260) continue;
         const m = cTxt.match(rowStartRe);
         if (m) {
             const rem = m[1].replace(/[>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»↺↻⟳⟲·•]/g, '').trim();
             if (rem.length >= 2) {
-                const nextEl = pEl.nextElementSibling;
+                const directChild = i > 0 ? candidates[i - 1] : pEl;
+                const nextEl = directChild && directChild.nextElementSibling;
                 if (nextEl && nextEl.tagName === 'BUTTON') return false;
                 return true;
             }
@@ -18465,11 +18890,13 @@ function hasFollowingStepTarget(node, normalizedPrefix) {
 function getPrecedingStepPrefix(node, normalizedTarget) {
     if (!node || !normalizedTarget) return null;
     const pEl = node.parentElement;
-    const prevCandidates = [
-        node.previousSibling,
-        pEl && pEl.previousElementSibling,
-        pEl && pEl.parentElement && pEl.parentElement.previousElementSibling
-    ];
+    const prevCandidates = [node.previousSibling];
+    let walkEl = pEl;
+    for (let d = 0; walkEl && d < 5; d++, walkEl = walkEl.parentElement) {
+        if (walkEl.previousElementSibling) {
+            prevCandidates.push(walkEl.previousElementSibling);
+        }
+    }
     for (const prev of prevCandidates) {
         if (!prev) continue;
         const orig = (prev.getAttribute && prev.getAttribute('data-original-text') || '').trim();
@@ -18479,11 +18906,14 @@ function getPrecedingStepPrefix(node, normalizedTarget) {
         }
     }
     // Also check if compact row container starts with "<stepPrefix> <normalizedTarget>"
-    const containers = [pEl, pEl && pEl.parentElement, pEl && pEl.parentElement && pEl.parentElement.parentElement];
+    const containers = [];
+    let cWalk = pEl;
+    for (let d = 0; cWalk && d < 6; d++, cWalk = cWalk.parentElement) {
+        containers.push(cWalk);
+    }
     for (const c of containers) {
-        if (!c) continue;
         const cTxt = (c.textContent || '').replace(/[\s\u00a0\r\n\t]+/g, ' ').trim();
-        if (!cTxt || cTxt.length > 220) continue;
+        if (!cTxt || cTxt.length > 260) continue;
         const m = cTxt.match(/^(Ran|Running|Killed\s+task|Killing\s+task|Stopped\s+task|Checked\s+task|Checking\s+task|Sent\s+input\s+to\s+task|Sending\s+input\s+to\s+task|Запущено:?|Выполнено:?|Выполняется:?|Задача\s+остановлена:?|Завершена\s+задача:?|Остановка\s+задачи:?|Задача\s+проверена:?|Проверена\s+задача:?|Проверка\s+задачи:?)\s+(.+)$/i);
         if (m) {
             const afterPrefix = m[2].trim();
@@ -18546,6 +18976,19 @@ function translateTextNode(node) {
             }
         }
         
+        const isBrowserSubagentStepRow = !!(pEl && typeof pEl.closest === 'function' && pEl.closest('[data-testid="browser-subagent-step"]'));
+        if (!translated && isBrowserSubagentStepRow) {
+            const brStep = translateBrowserStepIntent(normalized);
+            if (brStep && brStep !== normalized) {
+                translated = brStep;
+            }
+        }
+        if (!translated && (lowerText === 'выполнено' || lowerText === 'выполняется' || lowerText === 'запущено' || lowerText === 'задача остановлена')) {
+            if (hasFollowingStepTarget(node, normalized)) {
+                translated = normalized + ':';
+            }
+        }
+
         if (!translated) {
             if (translationDictionary[lowerText]) {
                 translated = translationDictionary[lowerText];
@@ -18953,14 +19396,16 @@ function translateTextNode(node) {
                     return;
                 }
                 
-                if (!parent.hasAttribute('data-original-nodes')) {
+                if (!parent.hasAttribute('data-original-nodes') || !/[а-яА-ЯёЁ]/.test(text)) {
                     try {
                         const origNodes = Array.from(parent.childNodes).filter(n => n.nodeType === Node.TEXT_NODE).map(n => n.nodeValue);
                         parent.setAttribute('data-original-nodes', JSON.stringify(origNodes));
                     } catch (e) {}
                 }
                 parent.setAttribute('data-translated', 'true');
-                parent.setAttribute('data-original-text', text);
+                if (!parent.hasAttribute('data-original-text') || !/[а-яА-ЯёЁ]/.test(text)) {
+                    parent.setAttribute('data-original-text', text);
+                }
             }
 
             
@@ -19033,9 +19478,15 @@ function translateTitle(element) {
             const lowerTitle = normalized.toLowerCase();
             
             let translated = null;
-            if (translationDictionary[lowerTitle]) {
+            if (typeof element.closest === 'function' && element.closest('[data-testid="browser-subagent-step"]')) {
+                const brStep = translateBrowserStepIntent(normalized);
+                if (brStep && brStep !== normalized) {
+                    translated = brStep;
+                }
+            }
+            if (!translated && translationDictionary[lowerTitle]) {
                 translated = translationDictionary[lowerTitle];
-            } else {
+            } else if (!translated) {
                 for (const rule of regexTranslations) {
                     const match = normalized.match(rule.pattern);
                     if (match) {
@@ -19386,8 +19837,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.42';
-    const DEFAULT_CHANGELOG_V2142 = 'Обновление v2.1.42: добавлен переключатель автообновления с GitHub (Вкл / Выкл) и безопасное двухшаговое удаление русификатора (Uninstall) прямо в меню версии, а также скрипты uninstall.ps1 и uninstall.sh.';
+    const FALLBACK_VERSION = '2.1.43';
+    const DEFAULT_CHANGELOG_V2143 = 'Обновление v2.1.43: перевод строки статуса браузера («Работа в браузере · Размышляет (14 сек)…» и текущих намерений), списка шагов браузерного субагента в панели «Субагенты» и расширенный перевод описаний шагов терминала (Ran + toolSummary с вложенной slot-анимацией).';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -19395,10 +19846,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2142;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2143;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2142;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2143;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;

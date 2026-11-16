@@ -2,17 +2,20 @@
 
 ![Google AntiGravity 2.0 — 100% RU + Live MCP Auto-Update](assets/hero-banner.jpg)
 
-[![Version](https://img.shields.io/badge/version-v2.1.42-blue.svg)](version.json)
+[![Version](https://img.shields.io/badge/version-v2.1.43-blue.svg)](version.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11%20%7C%20macOS-0078D6.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
 [![Target](https://img.shields.io/badge/Google%20AntiGravity-2.0%2B-orange.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
 [![MCP Server](https://img.shields.io/badge/MCP-Auto--Updater%20Ready-10b981.svg)](index.js)
+[![YouTube Demo](https://img.shields.io/badge/▶️_YouTube-Видеообзор-FF0000.svg)](https://www.youtube.com/shorts/sucYFc3UqpM)
+[![Habr Article](https://img.shields.io/badge/📖_Хабр-Статья-65A3BE.svg)](https://habr.com/ru/articles/1104106/)
+[![VC.ru Article](https://img.shields.io/badge/📰_VC.ru-Разбор-E84393.svg)](https://vc.ru/id6168328/3229744-rusifikator-google-antigravity-2-0-avtoobnovleniem-cherez-mcp)
 [![Donate Tribute](https://img.shields.io/badge/❤️_Donate_/_Поддержать-Tribute-ff4b4b.svg)](https://web.tribute.tg/d/SGR)
 
 > **🇷🇺 Полный русификатор Google AntiGravity 2.0 (100% перевод интерфейса, настроек, плагинов, навыков и меню `/`)**, авто-патчер `app.asar`, сохранение позиции окна на 2-м мониторе, исправление клика по иконке в системном трее и **MCP-сервер с автоматическим обновлением через GitHub**.  
 > **🇬🇧 Complete Russian Localization & Quality-of-Life Enhancement Suite for Google AntiGravity 2.0 IDE** — featuring non-invasive CDP live injection, native `app.asar` auto-patching, multi-monitor window state persistence, system tray fixes, and a self-updating MCP server.
 
-🌐 **Язык документации / Documentation Language:** [**🇷🇺 Русский**](#-русская-документация-ru) | [**🇬🇧 English**](#-english-documentation-en) | [**💖 Поддержать / Donate**](#-поддержать-проект--support--donate)
+🌐 **Навигация / Links:** [**🇷🇺 Русский**](#-русская-документация-ru) | [**🇬🇧 English**](#-english-documentation-en) | [**▶️ Видео (YouTube)**](https://www.youtube.com/shorts/sucYFc3UqpM) | [**📖 Хабр**](https://habr.com/ru/articles/1104106/) | [**📰 VC.ru**](https://vc.ru/id6168328/3229744-rusifikator-google-antigravity-2-0-avtoobnovleniem-cherez-mcp) | [**💬 Заказать доработку**](https://github.com/WiseYaroslav28/antigravity-features-v2/issues/new/choose) | [**💖 Поддержать / Donate**](#-поддержать-проект--support--donate)
 
 ---
 
