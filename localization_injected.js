@@ -19867,17 +19867,17 @@ function initLanguageSwitcher() {
     wrapper.id = 'antigravity-topbar-controls';
     wrapper.className = 'topbar-controls-wrapper';
     wrapper.innerHTML = `
-        <div id="antigravity-lang-switcher" class="lang-switcher">
-            <div class="lang-btn" id="lang-btn-en" title="Switch interface to English">EN</div>
-            <div class="lang-btn" id="lang-btn-ru" title="Переключить интерфейс на русский язык">
-                <span class="ru-text" id="ru-btn-label">RU</span>
-            </div>
-        </div>
         <div id="antigravity-version-btn" class="version-status-btn state-ok" title="Локализация актуальна (v${currentLocalVersion}). Нажмите для проверки обновлений">
             <span class="agy-info-glyph" aria-hidden="true">
                 <span class="agy-info-dot" id="version-btn-dot"></span>
                 <span class="agy-info-stem"></span>
             </span>
+        </div>
+        <div id="antigravity-lang-switcher" class="lang-switcher">
+            <div class="lang-btn" id="lang-btn-en" title="Switch interface to English"><span>EN</span></div>
+            <div class="lang-btn" id="lang-btn-ru" title="Переключить интерфейс на русский язык">
+                <span class="ru-text" id="ru-btn-label">RU</span>
+            </div>
         </div>
         <div class="update-popup" id="update-popup-card">
             <div class="update-popup-header">
@@ -19919,87 +19919,94 @@ function initLanguageSwitcher() {
     style.innerHTML = `
         .topbar-controls-wrapper {
             position: fixed;
-            top: 5px;
-            right: 180px;
+            top: 6px;
+            right: 210px;
+            height: 28px;
             z-index: 999999;
             display: flex;
             align-items: center;
-            gap: 3px;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            gap: 4px;
+            font-family: inherit;
             -webkit-app-region: no-drag;
             user-select: none;
+            transition: none !important;
         }
         .lang-switcher {
             display: flex;
-            background: #202124;
-            border: 1px solid #3c4043;
-            border-radius: 4px;
+            align-items: center;
+            height: 28px;
+            box-sizing: border-box;
+            background: transparent;
+            border: 1px solid var(--border, rgba(128, 128, 128, 0.22));
+            border-radius: 9999px;
             padding: 2px;
-            font-size: 10px;
-            color: #bdc1c6;
-            transition: all 0.2s ease;
+            gap: 2px;
+            font-size: 11px;
+            line-height: 1;
+            color: var(--muted-foreground, #80868b);
+            transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
         }
-        [data-theme="light"] .lang-switcher {
-            background: #f1f3f4;
-            border: 1px solid #dadce0;
-            color: #5f6368;
+        .lang-switcher:hover {
+            border-color: var(--glass-border, var(--border, rgba(128, 128, 128, 0.35)));
         }
         .lang-btn {
-            display: flex;
+            display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 3px;
-            padding: 1px 6px;
-            border-radius: 2px;
+            height: 100%;
+            min-width: 32px;
+            box-sizing: border-box;
+            padding: 0 8px;
+            border-radius: 9999px;
             cursor: pointer;
-            transition: all 0.15s ease;
+            font-weight: 500;
+            line-height: 1;
+            letter-spacing: 0.01em;
+            transition: background-color 0.15s ease, color 0.15s ease;
+        }
+        .lang-btn > span {
+            display: inline-block;
+            line-height: 1;
+            transform: translateY(0.5px);
         }
         .lang-btn.active {
-            background: #3c4043;
-            color: #ffffff;
-            font-weight: bold;
-        }
-        [data-theme="light"] .lang-btn.active {
-            background: #ffffff;
-            color: #202124;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            background: var(--secondary, rgba(128, 128, 128, 0.18));
+            color: var(--foreground, #e8eaed);
+            font-weight: 600;
         }
         .lang-btn:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.08);
-        }
-        [data-theme="light"] .lang-btn:hover:not(.active) {
-            background: rgba(0, 0, 0, 0.06);
+            background: var(--muted, rgba(128, 128, 128, 0.08));
+            color: var(--secondary-foreground, var(--foreground));
         }
 
-        /* Frameless Minimalist "i" Status Icon next to EN | RU */
+        /* Minimalist "i" Status Icon matching native h-7 w-7 rounded-lg header icon buttons */
         .version-status-btn {
             position: relative;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 15px;
-            height: 20px;
+            width: 28px;
+            height: 28px;
             background: transparent;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.18s ease;
+            transition: background-color 0.15s ease, opacity 0.15s ease;
             padding: 0;
             box-sizing: border-box;
-            opacity: 0.72;
+            opacity: 0.85;
         }
         .version-status-btn:hover {
             opacity: 1;
-            background: rgba(255, 255, 255, 0.06);
-        }
-        [data-theme="light"] .version-status-btn:hover {
-            background: rgba(0, 0, 0, 0.05);
+            background: var(--secondary, rgba(128, 128, 128, 0.14));
         }
         .agy-info-glyph {
             display: inline-flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 2px;
+            gap: 2.5px;
             pointer-events: none;
         }
         .agy-info-dot {
@@ -20010,20 +20017,16 @@ function initLanguageSwitcher() {
         }
         .agy-info-stem {
             width: 2px;
-            height: 6px;
+            height: 7px;
             border-radius: 1px;
             transition: background-color 0.2s ease, box-shadow 0.2s ease;
         }
 
-        /* STATE 1: Calm Gray by default (Zero visual noise when everything is OK) */
+        /* STATE 1: Native theme foreground/muted by default */
         .version-status-btn.state-ok .agy-info-dot,
         .version-status-btn.state-ok .agy-info-stem {
-            background-color: #80868b;
+            background-color: var(--secondary-foreground, var(--muted-foreground, #80868b));
             box-shadow: none;
-        }
-        [data-theme="light"] .version-status-btn.state-ok .agy-info-dot,
-        [data-theme="light"] .version-status-btn.state-ok .agy-info-stem {
-            background-color: #5f6368;
         }
         /* Subtle green dot feedback only when hovering over the "i" icon */
         .version-status-btn.state-ok:hover .agy-info-dot {
@@ -20031,10 +20034,7 @@ function initLanguageSwitcher() {
             box-shadow: 0 0 4px rgba(52, 211, 153, 0.7);
         }
         .version-status-btn.state-ok:hover .agy-info-stem {
-            background-color: #e8eaed;
-        }
-        [data-theme="light"] .version-status-btn.state-ok:hover .agy-info-stem {
-            background-color: #202124;
+            background-color: var(--foreground, #e8eaed);
         }
 
         /* STATE 2: Yellow/Orange (Attracts attention ONLY when an update is available or restart is needed) */
@@ -20075,21 +20075,22 @@ function initLanguageSwitcher() {
         /* Dropdown Popup */
         .update-popup {
             position: absolute;
-            top: 25px;
+            top: 34px;
             right: 0;
             width: 300px;
-            background: #1e1f22;
-            border: 1px solid #3c4043;
-            border-radius: 8px;
+            background: var(--card, var(--background, #1e1f22));
+            border: 1px solid var(--card-border, var(--border, #3c4043));
+            border-radius: 10px;
             padding: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.32);
+            color: var(--foreground, #e8eaed);
             display: none;
             flex-direction: column;
             gap: 8px;
             z-index: 1000000;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
         }
-        /* Invisible hover bridge so moving mouse from A• icon to popup never loses hover */
+        /* Invisible hover bridge so moving mouse from i icon to popup never loses hover */
         .update-popup::before {
             content: "";
             position: absolute;
@@ -20101,11 +20102,6 @@ function initLanguageSwitcher() {
         }
         .update-popup.warn-mode {
             border-color: #f59e0b;
-        }
-        [data-theme="light"] .update-popup {
-            background: #ffffff;
-            border: 1px solid #dadce0;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
         }
         .topbar-controls-wrapper.show-popup .update-popup,
         .version-status-btn:hover ~ .update-popup,
@@ -20121,56 +20117,42 @@ function initLanguageSwitcher() {
         .update-popup-title {
             font-size: 11px;
             font-weight: 700;
-            color: #34d399;
+            color: var(--success, #34d399);
             line-height: 1.3;
         }
-        [data-theme="light"] .update-popup-title {
-            color: #059669;
-        }
         .update-popup.warn-mode .update-popup-title {
-            color: #fbbf24;
-        }
-        [data-theme="light"] .update-popup.warn-mode .update-popup-title {
-            color: #d97706;
+            color: var(--warning, #fbbf24);
         }
         .update-popup-close {
             font-size: 11px;
-            color: #9aa0a6;
+            color: var(--muted-foreground, #9aa0a6);
             cursor: pointer;
             padding: 0 4px;
-            border-radius: 3px;
+            border-radius: 4px;
         }
         .update-popup-close:hover {
-            color: #ffffff;
-            background: rgba(255,255,255,0.1);
+            color: var(--foreground, #ffffff);
+            background: var(--secondary, rgba(128,128,128,0.14));
         }
         .update-version-badge {
             display: inline-block;
             align-self: flex-start;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            border-radius: 4px;
+            background: var(--secondary, rgba(128, 128, 128, 0.12));
+            border: 1px solid var(--border, rgba(128, 128, 128, 0.2));
+            border-radius: 6px;
             padding: 2px 6px;
             font-size: 10px;
             font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-            color: #e8eaed;
+            color: var(--foreground, #e8eaed);
             font-weight: 600;
-        }
-        [data-theme="light"] .update-version-badge {
-            background: #f1f3f4;
-            border-color: #dadce0;
-            color: #202124;
         }
         .update-popup-desc {
             font-size: 10px;
             line-height: 1.45;
-            color: #9aa0a6;
+            color: var(--muted-foreground, #9aa0a6);
             max-height: 110px;
             overflow-y: auto;
             white-space: pre-line;
-        }
-        [data-theme="light"] .update-popup-desc {
-            color: #5f6368;
         }
         .update-popup-actions {
             display: flex;
@@ -20182,7 +20164,7 @@ function initLanguageSwitcher() {
             background: #10b981;
             color: #ffffff;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             padding: 6px 10px;
             font-size: 10px;
             font-weight: 600;
@@ -20196,14 +20178,9 @@ function initLanguageSwitcher() {
             font-weight: 700;
         }
         .update-action-btn.secondary {
-            background: rgba(255, 255, 255, 0.08);
-            color: #bdc1c6;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-        }
-        [data-theme="light"] .update-action-btn.secondary {
-            background: #f1f3f4;
-            color: #5f6368;
-            border-color: #dadce0;
+            background: var(--secondary, rgba(128, 128, 128, 0.12));
+            color: var(--secondary-foreground, var(--foreground, #bdc1c6));
+            border: 1px solid var(--border, rgba(128, 128, 128, 0.18));
         }
         .update-action-btn.primary:hover {
             background: #059669;
@@ -20213,28 +20190,17 @@ function initLanguageSwitcher() {
             background: #fbbf24;
         }
         .update-action-btn.secondary:hover {
-            background: rgba(255, 255, 255, 0.14);
-            color: #ffffff;
+            background: var(--onyx-selected, var(--secondary, rgba(128, 128, 128, 0.2)));
+            color: var(--foreground, #ffffff);
         }
         .update-action-btn.star-btn {
-            background: rgba(251, 191, 36, 0.10);
-            color: #fde68a;
-            border: 1px solid rgba(251, 191, 36, 0.28);
+            background: rgba(251, 191, 36, 0.12);
+            color: var(--warning, #fbbf24);
+            border: 1px solid rgba(251, 191, 36, 0.30);
         }
         .update-action-btn.star-btn:hover {
-            background: rgba(251, 191, 36, 0.18);
-            color: #ffffff;
-            border-color: rgba(251, 191, 36, 0.50);
-        }
-        [data-theme="light"] .update-action-btn.star-btn {
-            background: #fffbeb;
-            color: #b45309;
-            border: 1px solid #fcd34d;
-        }
-        [data-theme="light"] .update-action-btn.star-btn:hover {
-            background: #fef3c7;
-            color: #92400e;
-            border-color: #f59e0b;
+            background: rgba(251, 191, 36, 0.20);
+            border-color: rgba(251, 191, 36, 0.55);
         }
         .update-action-btn:disabled {
             opacity: 0.6;
@@ -20247,10 +20213,7 @@ function initLanguageSwitcher() {
             gap: 6px;
             margin-top: 2px;
             padding-top: 8px;
-            border-top: 1px solid rgba(255, 255, 255, 0.09);
-        }
-        [data-theme="light"] .update-popup-footer {
-            border-top-color: #e5e7eb;
+            border-top: 1px solid var(--border, rgba(128, 128, 128, 0.15));
         }
         .update-toggle-row {
             display: flex;
@@ -20258,23 +20221,17 @@ function initLanguageSwitcher() {
             justify-content: space-between;
             gap: 8px;
             padding: 4px 6px;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             transition: background 0.15s ease;
         }
         .update-toggle-row:hover {
-            background: rgba(255, 255, 255, 0.06);
-        }
-        [data-theme="light"] .update-toggle-row:hover {
-            background: rgba(0, 0, 0, 0.04);
+            background: var(--muted, rgba(128, 128, 128, 0.08));
         }
         .update-toggle-label {
             font-size: 10px;
-            color: #bdc1c6;
+            color: var(--secondary-foreground, var(--foreground, #bdc1c6));
             font-weight: 500;
-        }
-        [data-theme="light"] .update-toggle-label {
-            color: #3c4043;
         }
         .update-toggle-control {
             display: flex;
@@ -20284,7 +20241,7 @@ function initLanguageSwitcher() {
         .update-toggle-state {
             font-size: 9px;
             font-weight: 600;
-            color: #9aa0a6;
+            color: var(--muted-foreground, #9aa0a6);
             min-width: 24px;
             text-align: right;
         }
@@ -20443,6 +20400,196 @@ function initLanguageSwitcher() {
         });
     }
 
+    let topbarSyncRaf = 0;
+    let topbarBurstUntil = 0;
+    let topbarBurstRaf = 0;
+
+    function runTopbarBurstFrame() {
+        topbarBurstRaf = 0;
+        syncTopbarPosition();
+        if (performance.now() < topbarBurstUntil && document.body.contains(wrapper)) {
+            topbarBurstRaf = requestAnimationFrame(runTopbarBurstFrame);
+        }
+    }
+
+    function startTopbarTrackingBurst(durationMs = 650) {
+        const until = performance.now() + durationMs;
+        if (until > topbarBurstUntil) topbarBurstUntil = until;
+        if (!topbarBurstRaf) {
+            topbarBurstRaf = requestAnimationFrame(runTopbarBurstFrame);
+        }
+    }
+
+    function scheduleTopbarSync() {
+        startTopbarTrackingBurst(650);
+        if (topbarSyncRaf) return;
+        topbarSyncRaf = requestAnimationFrame(() => {
+            topbarSyncRaf = 0;
+            syncTopbarPosition();
+        });
+    }
+
+    let observedTitlebar = null;
+    let observedCorner = null;
+    let observedChatRight = null;
+    let observedAuxParent = null;
+
+    function attachTopbarObservers() {
+        try {
+            const corner = document.querySelector('div.absolute.right-0.z-50');
+            const toolbar = document.querySelector('[data-testid="pane-titlebar-toolbar"]');
+            const titlebar = toolbar ? toolbar.closest('[class*="titlebar"]') : document.querySelector('[class*="titlebar"]');
+            const auxParent = document.querySelector('.agy-aux-tab')?.closest('.agy-layout-vars') || null;
+
+            if (window.__antigravity_topbar_ro) {
+                if (titlebar && titlebar !== observedTitlebar) {
+                    if (observedTitlebar) window.__antigravity_topbar_ro.unobserve(observedTitlebar);
+                    window.__antigravity_topbar_ro.observe(titlebar);
+                    observedTitlebar = titlebar;
+                }
+                if (corner && corner !== observedCorner) {
+                    if (observedCorner) window.__antigravity_topbar_ro.unobserve(observedCorner);
+                    window.__antigravity_topbar_ro.observe(corner);
+                    observedCorner = corner;
+                }
+                if (toolbar && toolbar !== observedChatRight) {
+                    if (observedChatRight) window.__antigravity_topbar_ro.unobserve(observedChatRight);
+                    window.__antigravity_topbar_ro.observe(toolbar);
+                    observedChatRight = toolbar;
+                }
+                if (auxParent && auxParent !== observedAuxParent) {
+                    if (observedAuxParent) window.__antigravity_topbar_ro.unobserve(observedAuxParent);
+                    window.__antigravity_topbar_ro.observe(auxParent);
+                    observedAuxParent = auxParent;
+                }
+            }
+            if (window.__antigravity_corner_mo) {
+                if (corner && corner !== window.__antigravity_observed_corner_mo) {
+                    window.__antigravity_corner_mo.observe(corner, { childList: true, subtree: true });
+                    window.__antigravity_observed_corner_mo = corner;
+                }
+                if (titlebar && titlebar !== window.__antigravity_observed_titlebar_mo) {
+                    window.__antigravity_corner_mo.observe(titlebar, { childList: true, subtree: true });
+                    window.__antigravity_observed_titlebar_mo = titlebar;
+                }
+                if (auxParent && auxParent !== window.__antigravity_observed_aux_mo) {
+                    window.__antigravity_corner_mo.observe(auxParent, { childList: true, subtree: true });
+                    window.__antigravity_observed_aux_mo = auxParent;
+                }
+            }
+        } catch (e) {}
+    }
+
+    function syncTopbarPosition() {
+        try {
+            if (!document.body.contains(wrapper)) return;
+            attachTopbarObservers();
+            const w = window.innerWidth;
+            if (!w) return;
+
+            const corner = document.querySelector('div.absolute.right-0.z-50');
+            const toolbar = document.querySelector('[data-testid="pane-titlebar-toolbar"]');
+            const toolbarInner = toolbar ? (toolbar.firstElementChild || toolbar) : null;
+            const auxParent = document.querySelector('.agy-aux-tab')?.closest('.agy-layout-vars') || null;
+            const wrapWidth = wrapper.getBoundingClientRect().width || 88;
+
+            const cornerBtns = corner
+                ? Array.from(corner.querySelectorAll('button')).filter(b => b.getBoundingClientRect().width > 0)
+                : [];
+            const cornerRect = corner ? corner.getBoundingClientRect() : null;
+
+            const tbBtns = toolbarInner
+                ? Array.from(toolbarInner.querySelectorAll('button')).filter(b => b.getBoundingClientRect().width > 0)
+                : [];
+            const firstTbRect = tbBtns.length ? tbBtns[0].getBoundingClientRect() : null;
+            const lastTbRect = tbBtns.length ? tbBtns[tbBtns.length - 1].getBoundingClientRect() : null;
+
+            let auxContentRightX = 0;
+            if (auxParent) {
+                const auxItems = Array.from(auxParent.querySelectorAll('.agy-aux-tab, button'));
+                for (const item of auxItems) {
+                    const r = item.getBoundingClientRect();
+                    if (r.width > 0 && r.left < w && r.right > 0 && r.right > auxContentRightX) {
+                        auxContentRightX = r.right;
+                    }
+                }
+            }
+
+            let targetRight = null;
+            let refRect = null;
+
+            const cornerSlotRight = cornerRect && cornerRect.width > 0 && cornerRect.left > w * 0.5
+                ? Math.max(40, Math.round(w - cornerRect.left + 4))
+                : null;
+            const cornerSlotLeftX = cornerSlotRight !== null ? (w - cornerSlotRight - wrapWidth) : 0;
+
+            const canUseCornerSlot =
+                cornerSlotRight !== null &&
+                cornerBtns.length > 1 &&
+                (!lastTbRect || lastTbRect.right <= cornerSlotLeftX - 8) &&
+                (auxContentRightX <= cornerSlotLeftX - 8);
+
+            if (canUseCornerSlot) {
+                targetRight = cornerSlotRight;
+                refRect = cornerBtns[0].getBoundingClientRect();
+            } else if (firstTbRect && firstTbRect.left > 120) {
+                targetRight = Math.max(44, Math.round(w - firstTbRect.left + 4));
+                refRect = firstTbRect;
+            } else if (cornerSlotRight !== null) {
+                targetRight = cornerSlotRight;
+                refRect = cornerBtns[0] ? cornerBtns[0].getBoundingClientRect() : cornerRect;
+            }
+
+            if (targetRight !== null) {
+                wrapper.style.right = targetRight + 'px';
+            }
+            if (refRect && refRect.height > 0) {
+                const btnCenterY = refRect.top + refRect.height / 2;
+                const wrapRect = wrapper.getBoundingClientRect();
+                if (wrapRect.height > 0) {
+                    wrapper.style.top = Math.round(btnCenterY - wrapRect.height / 2) + 'px';
+                }
+            }
+        } catch (e) {}
+    }
+
+    if (window.__antigravity_sync_topbar_resize) {
+        window.removeEventListener('resize', window.__antigravity_sync_topbar_resize);
+    }
+    if (window.__antigravity_sync_topbar_pointer) {
+        window.removeEventListener('pointerdown', window.__antigravity_sync_topbar_pointer, true);
+    }
+    if (window.__antigravity_sync_topbar_interval) {
+        clearInterval(window.__antigravity_sync_topbar_interval);
+        window.__antigravity_sync_topbar_interval = null;
+    }
+    if (window.__antigravity_topbar_ro) {
+        try { window.__antigravity_topbar_ro.disconnect(); } catch (e) {}
+    }
+    if (window.__antigravity_corner_mo) {
+        try { window.__antigravity_corner_mo.disconnect(); } catch (e) {}
+    }
+    window.__antigravity_observed_corner_mo = null;
+    window.__antigravity_observed_titlebar_mo = null;
+    window.__antigravity_observed_aux_mo = null;
+
+    if (typeof ResizeObserver !== 'undefined') {
+        window.__antigravity_topbar_ro = new ResizeObserver(scheduleTopbarSync);
+    }
+    if (typeof MutationObserver !== 'undefined') {
+        window.__antigravity_corner_mo = new MutationObserver(scheduleTopbarSync);
+    }
+    window.__antigravity_sync_topbar_resize = scheduleTopbarSync;
+    window.addEventListener('resize', window.__antigravity_sync_topbar_resize);
+    window.__antigravity_sync_topbar_pointer = (e) => {
+        if (e && typeof e.clientY === 'number' && e.clientY <= 56) {
+            startTopbarTrackingBurst(650);
+        }
+    };
+    window.addEventListener('pointerdown', window.__antigravity_sync_topbar_pointer, true);
+    window.__antigravity_sync_topbar_interval = setInterval(syncTopbarPosition, 2000);
+    startTopbarTrackingBurst(400);
+
     function updateUI() {
         const lang = getSavedLanguage();
         if (lang === 'ru') {
@@ -20457,6 +20604,7 @@ function initLanguageSwitcher() {
             restoreOriginalTree();
         }
         broadcastLanguageToSubframes(lang);
+        startTopbarTrackingBurst(400);
     }
 
     btnEn.addEventListener('click', () => {
