@@ -258,6 +258,59 @@ async function runUnpatchTo(targetOutPath) {
             c = c.replace(/buttons:\s*\['ОК'\],/g, "buttons: ['OK'],");
             fs.writeFileSync(wpsFile, c, 'utf8');
         }
+        const discPageFile = path.join(distDir, 'remote', 'disconnectedPage.js');
+        if (fs.existsSync(discPageFile)) {
+            let c = fs.readFileSync(discPageFile, 'utf8');
+            c = c.replace(/\?\s*'Переподключение…'\s*:\s*'Отключено'/g, "? 'Reconnecting…' : 'Disconnected'");
+            c = c.replace(/`Переподключение к \$\{host\}…`/g, '`Reconnecting to ${host}…`');
+            c = c.replace(/`Отключено от \$\{host\}`/g, '`Disconnected from ${host}`');
+            c = c.replace(/`Агенты продолжают работать на \$\{host\}\.`/g, '`Agents keep running on ${host}.`');
+            c = c.replace(/`Агенты продолжают работать на \$\{host\}, если сервер не был остановлен\.`/g, '`Agents keep running on ${host} unless its server stopped.`');
+            c = c.replace(/>Переподключиться<\/a>/g, '>Reconnect</a>');
+            c = c.replace(/>Закрыть<\/a>/g, '>Close</a>');
+            fs.writeFileSync(discPageFile, c, 'utf8');
+        }
+        const sshPromptsFile = path.join(distDir, 'remote', 'sshPrompts.js');
+        if (fs.existsSync(sshPromptsFile)) {
+            let c = fs.readFileSync(sshPromptsFile, 'utf8');
+            c = c.replace(/>Повторный запрос: предыдущий ответ не подошёл\.<\/div>/g, '>Asked again: your last answer may not have worked.</div>');
+            c = c.replace(/>Слишком длинное значение\.<\/div>/g, ">That's too long.</div>");
+            c = c.replace(/<button id="cancel">Отмена<\/button><button id="continue">Продолжить<\/button>/g, '<button id="cancel">Cancel</button><button id="continue">Continue</button>');
+            c = c.replace(/\?\s*`\$\{label\} запрашивает:`\s*:\s*'Коснитесь электронного ключа безопасности'/g, "? `${label} asks:` : 'Touch your security key'");
+            c = c.replace(/buttons:\s*confirm\s*\?\s*\['Да',\s*'Нет'\]\s*:\s*\['Отмена'\],/g, "buttons: confirm ? ['Yes', 'No'] : ['Cancel'],");
+            fs.writeFileSync(sshPromptsFile, c, 'utf8');
+        }
+        const sshPromptPreloadFile = path.join(distDir, 'remote', 'sshPromptPreload.js');
+        if (fs.existsSync(sshPromptPreloadFile)) {
+            let c = fs.readFileSync(sshPromptPreloadFile, 'utf8');
+            c = c.replace(/asks\.textContent = `\$\{label\} запрашивает:`;/g, 'asks.textContent = `${label} asks:`;');
+            fs.writeFileSync(sshPromptPreloadFile, c, 'utf8');
+        }
+        const remoteMgrFile = path.join(distDir, 'remote', 'remoteManager.js');
+        if (fs.existsSync(remoteMgrFile)) {
+            let c = fs.readFileSync(remoteMgrFile, 'utf8');
+            c = c.replace(/title:\s*'Выберите файл конфигурации SSH',/g, "title: 'Choose an SSH config file',");
+            c = c.replace(/title:\s*'Ошибка подключения по SSH',/g, "title: 'SSH connection failed',");
+            c = c.replace(/buttons:\s*\['Остановить сервер',\s*'Отмена'\],/g, "buttons: ['Stop Server', 'Cancel'],");
+            c = c.replace(/title:\s*'Остановка SSH-сервера',/g, "title: 'Stop SSH server',");
+            c = c.replace(/message:\s*`Остановить сервер Antigravity на \$\{entry\.label\}\?`,/g, 'message: `Stop the Antigravity server on ${entry.label}?`,');
+            c = c.replace(/detail:\s*'Запущенные на этом хосте агенты будут остановлены, а окно закроется\. Сервер снова запустится при следующем подключении\.',/g, "detail: 'Agents running on this host will stop and its window will close. ' +\n                    'The server starts again the next time you connect.',");
+            c = c.replace(/'Не удалось остановить SSH-сервер'/g, "'Could not stop the SSH server'");
+            c = c.replace(/message:\s*`Нет подключения к \$\{label\}`,/g, 'message: `Not connected to ${label}`,');
+            c = c.replace(/detail:\s*'Сначала переподключитесь, а затем остановите сервер\.',/g, "detail: 'Reconnect first, then stop its server.',");
+            c = c.replace(/buttons:\s*\['Войти',\s*'Отмена'\],/g, "buttons: ['Sign In', 'Cancel'],");
+            c = c.replace(/title:\s*'Вход в организацию',/g, "title: 'Sign in',");
+            c = c.replace(/message:\s*`Войти в организацию для \$\{entry\.label\}\?`,/g, 'message: `Sign in to your organization for ${entry.label}?`,');
+            fs.writeFileSync(remoteMgrFile, c, 'utf8');
+        }
+        const sshErrFile = path.join(distDir, 'remote', 'sshErrorText.js');
+        if (fs.existsSync(sshErrFile)) {
+            let c = fs.readFileSync(sshErrFile, 'utf8');
+            c = c.replace(/return `Код ошибки: \$\{err\.code\}\\nЖурнал: \$\{logPath\(\)\}`;/g, 'return `Error code: ${err.code}\\nLogs: ${logPath()}`;');
+            c = c.replace(/`\$\{label\} сообщил: \$\{text\}`/g, '`${label} reported: ${text}`');
+            c = c.replace(/'Соединение было закрыто до завершения подключения\.'/g, "'The connection was closed before it finished.'");
+            fs.writeFileSync(sshErrFile, c, 'utf8');
+        }
 
         const checkJsFiles = [
             pFile, tFile, mFile, uFile, updFile, menuFile, ipcFile,
@@ -266,7 +319,12 @@ async function runUnpatchTo(targetOutPath) {
             path.join(distDir, 'cablev2.js'),
             path.join(distDir, 'deviceChooser.js'),
             path.join(distDir, 'webauthn.js'),
-            path.join(distDir, 'webviewPopupSecurity.js')
+            path.join(distDir, 'webviewPopupSecurity.js'),
+            discPageFile,
+            sshPromptsFile,
+            sshPromptPreloadFile,
+            remoteMgrFile,
+            sshErrFile
         ];
         for (const jf of checkJsFiles) {
             if (fs.existsSync(jf)) {
@@ -947,8 +1005,63 @@ function buildContextMenuTemplate(items, onSelect) {`
             fs.writeFileSync(webviewPopupSecurityExtracted, wpsContent, 'utf8');
         }
 
+        // 7.7 PATCH REMOTE SSH PAGES & DIALOGS (Antigravity 2.32.2+ dist/remote/*.js)
+        const disconnectedPageExtracted = path.join(tempDir, 'dist', 'remote', 'disconnectedPage.js');
+        if (fs.existsSync(disconnectedPageExtracted)) {
+            let dpContent = fs.readFileSync(disconnectedPageExtracted, 'utf8');
+            dpContent = dpContent.replace(/\?\s*'Reconnecting…'\s*:\s*'Disconnected'/g, "? 'Переподключение…' : 'Отключено'");
+            dpContent = dpContent.replace(/`Reconnecting to \$\{host\}…`/g, '`Переподключение к ${host}…`');
+            dpContent = dpContent.replace(/`Disconnected from \$\{host\}`/g, '`Отключено от ${host}`');
+            dpContent = dpContent.replace(/`Agents keep running on \$\{host\}\.`/g, '`Агенты продолжают работать на ${host}.`');
+            dpContent = dpContent.replace(/`Agents keep running on \$\{host\} unless its server stopped\.`/g, '`Агенты продолжают работать на ${host}, если сервер не был остановлен.`');
+            dpContent = dpContent.replace(/>Reconnect<\/a>/g, '>Переподключиться</a>');
+            dpContent = dpContent.replace(/>Close<\/a>/g, '>Закрыть</a>');
+            fs.writeFileSync(disconnectedPageExtracted, dpContent, 'utf8');
+        }
+        const sshPromptsExtracted = path.join(tempDir, 'dist', 'remote', 'sshPrompts.js');
+        if (fs.existsSync(sshPromptsExtracted)) {
+            let spContent = fs.readFileSync(sshPromptsExtracted, 'utf8');
+            spContent = spContent.replace(/>Asked again: your last answer may not have worked\.<\/div>/g, '>Повторный запрос: предыдущий ответ не подошёл.</div>');
+            spContent = spContent.replace(/>That's too long\.<\/div>/g, '>Слишком длинное значение.</div>');
+            spContent = spContent.replace(/<button id="cancel">Cancel<\/button><button id="continue">Continue<\/button>/g, '<button id="cancel">Отмена</button><button id="continue">Продолжить</button>');
+            spContent = spContent.replace(/\?\s*`\$\{label\} asks:`\s*:\s*'Touch your security key'/g, "? `${label} запрашивает:` : 'Коснитесь электронного ключа безопасности'");
+            spContent = spContent.replace(/buttons:\s*confirm\s*\?\s*\['Yes',\s*'No'\]\s*:\s*\['Cancel'\],/g, "buttons: confirm ? ['Да', 'Нет'] : ['Отмена'],");
+            fs.writeFileSync(sshPromptsExtracted, spContent, 'utf8');
+        }
+        const sshPromptPreloadExtracted = path.join(tempDir, 'dist', 'remote', 'sshPromptPreload.js');
+        if (fs.existsSync(sshPromptPreloadExtracted)) {
+            let sppContent = fs.readFileSync(sshPromptPreloadExtracted, 'utf8');
+            sppContent = sppContent.replace(/asks\.textContent = `\$\{label\} asks:`;/g, 'asks.textContent = `${label} запрашивает:`;');
+            fs.writeFileSync(sshPromptPreloadExtracted, sppContent, 'utf8');
+        }
+        const remoteManagerExtracted = path.join(tempDir, 'dist', 'remote', 'remoteManager.js');
+        if (fs.existsSync(remoteManagerExtracted)) {
+            let rmContent = fs.readFileSync(remoteManagerExtracted, 'utf8');
+            rmContent = rmContent.replace(/title:\s*'Choose an SSH config file',/g, "title: 'Выберите файл конфигурации SSH',");
+            rmContent = rmContent.replace(/title:\s*'SSH connection failed',/g, "title: 'Ошибка подключения по SSH',");
+            rmContent = rmContent.replace(/buttons:\s*\['Stop Server',\s*'Cancel'\],/g, "buttons: ['Остановить сервер', 'Отмена'],");
+            rmContent = rmContent.replace(/title:\s*'Stop SSH server',/g, "title: 'Остановка SSH-сервера',");
+            rmContent = rmContent.replace(/message:\s*`Stop the Antigravity server on \$\{entry\.label\}\?`,/g, 'message: `Остановить сервер Antigravity на ${entry.label}?`,');
+            rmContent = rmContent.replace(/detail:\s*'Agents running on this host will stop and its window will close\. '\s*\+\s*'The server starts again the next time you connect\.',/g, "detail: 'Запущенные на этом хосте агенты будут остановлены, а окно закроется. Сервер снова запустится при следующем подключении.',");
+            rmContent = rmContent.replace(/'Could not stop the SSH server'/g, "'Не удалось остановить SSH-сервер'");
+            rmContent = rmContent.replace(/message:\s*`Not connected to \$\{label\}`,/g, 'message: `Нет подключения к ${label}`,');
+            rmContent = rmContent.replace(/detail:\s*'Reconnect first, then stop its server\.',/g, "detail: 'Сначала переподключитесь, а затем остановите сервер.',");
+            rmContent = rmContent.replace(/buttons:\s*\['Sign In',\s*'Cancel'\],/g, "buttons: ['Войти', 'Отмена'],");
+            rmContent = rmContent.replace(/title:\s*'Sign in',/g, "title: 'Вход в организацию',");
+            rmContent = rmContent.replace(/message:\s*`Sign in to your organization for \$\{entry\.label\}\?`,/g, 'message: `Войти в организацию для ${entry.label}?`,');
+            fs.writeFileSync(remoteManagerExtracted, rmContent, 'utf8');
+        }
+        const sshErrorTextExtracted = path.join(tempDir, 'dist', 'remote', 'sshErrorText.js');
+        if (fs.existsSync(sshErrorTextExtracted)) {
+            let seContent = fs.readFileSync(sshErrorTextExtracted, 'utf8');
+            seContent = seContent.replace(/return `Error code: \$\{err\.code\}\\nLogs: \$\{logPath\(\)\}`;/g, 'return `Код ошибки: ${err.code}\\nЖурнал: ${logPath()}`;');
+            seContent = seContent.replace(/`\$\{label\} reported: \$\{text\}`/g, '`${label} сообщил: ${text}`');
+            seContent = seContent.replace(/'The connection was closed before it finished\.'/g, "'Соединение было закрыто до завершения подключения.'");
+            fs.writeFileSync(sshErrorTextExtracted, seContent, 'utf8');
+        }
+
         // 8. VALIDATE ALL PATCHED JS FILES WITH NATIVE V8 IN-MEMORY COMPILER (ZERO CHILD PROCESSES)
-        const filesToValidate = [preloadExtracted, trayExtracted, mainExtracted, utilsExtracted, updaterExtracted, menuExtracted, ipcHandlersExtracted, provisionSplashExtracted, wizardHtmlExtracted, cablev2Extracted, deviceChooserExtracted, webauthnExtracted, webviewPopupSecurityExtracted];
+        const filesToValidate = [preloadExtracted, trayExtracted, mainExtracted, utilsExtracted, updaterExtracted, menuExtracted, ipcHandlersExtracted, provisionSplashExtracted, wizardHtmlExtracted, cablev2Extracted, deviceChooserExtracted, webauthnExtracted, webviewPopupSecurityExtracted, disconnectedPageExtracted, sshPromptsExtracted, sshPromptPreloadExtracted, remoteManagerExtracted, sshErrorTextExtracted];
         for (const file of filesToValidate) {
             if (fs.existsSync(file)) {
                 const code = fs.readFileSync(file, 'utf8');

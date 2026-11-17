@@ -6562,7 +6562,137 @@ const translationDictionary = {
     "error while semantic searching": "Ошибка при семантическом поиске",
     "error while analyzing directory": "Ошибка при анализе директории",
     "error while searching the web": "Ошибка при поиске в интернете",
-    "error while running mcp tool": "Ошибка при выполнении MCP-инструмента"
+    "error while running mcp tool": "Ошибка при выполнении MCP-инструмента",
+
+    // === AntiGravity 2.32.2: Robotics Plugin, Built-in Skills, Split JSX & Remote SSH ===
+    "robotics skills for any robot: 3d perception, collision-free motion planning, visual servoing, robot bring-up, sim2real, agent iteration, mujoco simulation, simready 3d asset authoring and physics auditing, and a live mujoco studio 3d web sidecar.": "Навыки робототехники для любого робота: 3D-восприятие, планирование движений без столкновений, визуальное сервоуправление, ввод робота в эксплуатацию (bring-up), перенос из симуляции на реального робота (sim2real), итеративная отладка агентом, симуляция в MuJoCo, создание и физический аудит 3D-моделей SimReady, а также интерактивная 3D веб-панель MuJoCo Studio.",
+    "localize the target object in 3d from rgb-only cameras": "Определи 3D-координаты целевого объекта только по RGB-камерам",
+    "plan a collision-free joint trajectory in mujoco": "Спланируй траекторию суставов без столкновений в MuJoCo",
+    "run closed-loop eye-in-hand visual servoing": "Запусти замкнутое визуальное сервоуправление с камерой на захвате (eye-in-hand)",
+    "запуск closed-loop eye-in-hand visual servoing": "Запусти замкнутое визуальное сервоуправление с камерой на захвате (eye-in-hand)",
+    "run the sim-to-real gauntlet and compare paired crn controller candidates": "Запусти проверку Sim-to-Real Gauntlet и сравни кандидатов контроллера на парных случайных числах (CRN)",
+    "запуск sim-to-real gauntlet and compare paired crn controller candidates": "Запусти проверку Sim-to-Real Gauntlet и сравни кандидатов контроллера на парных случайных числах (CRN)",
+    "use mujoco-playground with motion-planning, rgb-object-localization, and visual-servoing to pick a block on yam or so-101 in sim and zero-shot to real": "Используй mujoco-playground вместе с планированием движений, 3D-локализацией по RGB и визуальным сервоуправлением, чтобы захватить кубик манипулятором YAM или SO-101 в симуляции и перенести без дообучения (zero-shot) на реального робота",
+    "use mujoco-playground-rl to create and train a quadruped joystick locomotion rl task on a new mujoco menagerie robot": "Используй mujoco-playground-rl, чтобы создать и обучить RL-задачу управления ходьбой четвероногого робота с джойстика для новой модели из MuJoCo Menagerie",
+    "launch a live mujoco studio simulation in this workspace": "Запусти интерактивную симуляцию MuJoCo Studio в этой рабочей области",
+    "create a simready mujoco asset in blender from a product url or reference photo": "Создай физически готовую 3D-модель SimReady для MuJoCo в Blender по ссылке на товар или эталонному фото",
+    "audit an existing mujoco model.xml with the 10-scenario physics suite and fix any defects": "Проведи аудит существующего файла model.xml для MuJoCo по набору из 10 физических сценариев и исправь найденные дефекты",
+
+    // Robotics README (Обзор)
+    "advancing accessible robotics": "Развитие доступной робототехники",
+    "the robotics plugin brings frontier spatial reasoning, multimodal perception, and code generation directly into the real-time robot loop. your agent writes the controller, tests it in mujoco simulation, and runs the same code on a real robot arm. you can also work in simulation only, with no robot hardware. this makes closed-loop control, rapid hardware bring-up, and continuous robotics applications fast and affordable enough for everyday use.": "Плагин Robotics привносит передовое пространственное мышление, мультимодальное восприятие и генерацию кода прямо в контур управления роботом в реальном времени. Ваш агент пишет контроллер, тестирует его в симуляции MuJoCo и запускает тот же код на реальном манипуляторе. Вы также можете работать только в симуляции — без физического оборудования. Это делает управление с обратной связью, быстрый запуск оборудования и непрерывные робототехнические сценарии быстрыми и доступными для повседневного использования.",
+    "the robotics plugin brings frontier spatial reasoning, multimodal perception, and code generation directly into the real-time robot loop. your agent writes the controller, tests it in": "Плагин Robotics привносит передовое пространственное мышление, мультимодальное восприятие и генерацию кода прямо в контур управления роботом в реальном времени. Ваш агент пишет контроллер, тестирует его в симуляции",
+    "simulation, and runs the same code on a real robot arm. you can also work in simulation only, with no robot hardware. this makes closed-loop control, rapid hardware bring-up, and continuous robotics applications fast and affordable enough for everyday use.": "и запускает тот же код на реальном манипуляторе. Вы также можете работать только в симуляции — без физического оборудования. Это делает управление с обратной связью, быстрый запуск оборудования и непрерывные робототехнические сценарии быстрыми и доступными для повседневного использования.",
+    "cookie factory": "Фабрика печенья",
+    "an i2rt yam pro arm sorts cookies from a moving conveyor belt into two boxes.": "Манипулятор I2RT YAM Pro сортирует печенье с движущейся конвейерной ленты по двум коробкам.",
+    "simulation (mujoco)": "Симуляция (MuJoCo)",
+    "real robot": "Реальный робот",
+    "simulation only (no robot needed)": "Только симуляция (робот не требуется)",
+    "\"generate a pelican riding a bicycle simulation in mujoco.\"": "«Создай симуляцию пеликана, едущего на велосипеде, в MuJoCo.»",
+    "generate a pelican riding a bicycle simulation in mujoco.": "Создай симуляцию пеликана, едущего на велосипеде, в MuJoCo.",
+    "\"create a mujoco grocery sorting task using a lerobot so-101 arm. scatter groceries of different shapes and sizes across a countertop, and have the robot sort them into designated bins without crushing fragile items or knocking anything over. include randomized layouts. show me some example successful trajectories.\"": "«Создай в MuJoCo задачу сортировки продуктов с манипулятором LeRobot SO-101. Разложи продукты разной формы и размера на столешнице и запрограммируй робота раскладывать их по нужным контейнерам, не сжимая хрупкие предметы и ничего не опрокидывая. Добавь случайную генерацию раскладок и покажи примеры успешных траекторий.»",
+    "create a mujoco grocery sorting task using a lerobot so-101 arm. scatter groceries of different shapes and sizes across a countertop, and have the robot sort them into designated bins without crushing fragile items or knocking anything over. include randomized layouts. show me some example successful trajectories.": "Создай в MuJoCo задачу сортировки продуктов с манипулятором LeRobot SO-101. Разложи продукты разной формы и размера на столешнице и запрограммируй робота раскладывать их по нужным контейнерам, не сжимая хрупкие предметы и ничего не опрокидывая. Добавь случайную генерацию раскладок и покажи примеры успешных траекторий.",
+    "\"build a realistic coffee shop scene in mujoco with bimanual franka research 3 robot arms, espresso machine, cups, and serving counter. program the robot to pick up an empty cup, place it beneath the coffee dispenser, and deliver the finished drink onto a tray. all object movements must be driven by contact from the robot.\"": "«Собери реалистичную сцену кофейни в MuJoCo с двуруким роботом Franka Research 3, кофемашиной, чашками и стойкой выдачи. Запрограммируй робота брать пустую чашку, ставить её под диспенсер кофе и подавать готовый напиток на поднос. Все перемещения предметов должны происходить за счёт физического контакта с роботом.»",
+    "build a realistic coffee shop scene in mujoco with bimanual franka research 3 robot arms, espresso machine, cups, and serving counter. program the robot to pick up an empty cup, place it beneath the coffee dispenser, and deliver the finished drink onto a tray. all object movements must be driven by contact from the robot.": "Собери реалистичную сцену кофейни в MuJoCo с двуруким роботом Franka Research 3, кофемашиной, чашками и стойкой выдачи. Запрограммируй робота брать пустую чашку, ставить её под диспенсер кофе и подавать готовый напиток на поднос. Все перемещения предметов должны происходить за счёт физического контакта с роботом.",
+    "\"in simulation, build my setup from these photos: one yam pro arm, a moving conveyor belt, two types of cookies, and two boxes. use the yam pro arm to pick each cookie off the moving belt and place it in the matching box. test it across several runs and show me a video.\"": "«Воссоздай в симуляции мою установку по этим фотографиям: один манипулятор YAM Pro, движущаяся конвейерная лента, два вида печенья и две коробки. Используй манипулятор YAM Pro, чтобы снимать каждое печенье с движущейся ленты и класть в соответствующую коробку. Протестируй на нескольких запусках и покажи видео.»",
+    "in simulation, build my setup from these photos: one yam pro arm, a moving conveyor belt, two types of cookies, and two boxes. use the yam pro arm to pick each cookie off the moving belt and place it in the matching box. test it across several runs and show me a video.": "Воссоздай в симуляции мою установку по этим фотографиям: один манипулятор YAM Pro, движущаяся конвейерная лента, два вида печенья и две коробки. Используй манипулятор YAM Pro, чтобы снимать каждое печенье с движущейся ленты и класть в соответствующую коробку. Протестируй на нескольких запусках и покажи видео.",
+    "\"bring up my real so-101 arm and use it to pick up the blue marker from the table. record a video.\"": "«Подключи и запусти мой реальный манипулятор SO-101 и подними им синий маркер со стола. Запиши видео.»",
+    "bring up my real so-101 arm and use it to pick up the blue marker from the table. record a video.": "Подключи и запусти мой реальный манипулятор SO-101 и подними им синий маркер со стола. Запиши видео.",
+    "\"bring up my real yam arm and use it to wave hi. record a video.\"": "«Подключи и запусти мой реальный манипулятор YAM и помаши им в знак приветствия. Запиши видео.»",
+    "bring up my real yam arm and use it to wave hi. record a video.": "Подключи и запусти мой реальный манипулятор YAM и помаши им в знак приветствия. Запиши видео.",
+    "\"bring up my real yam arm and use it to place the pen several inches deep inside the tall box without touching the walls. record a video.\"": "«Подключи и запусти мой реальный манипулятор YAM и опусти ручку на несколько сантиметров вглубь высокой коробки, не касаясь стенок. Запиши видео.»",
+    "bring up my real yam arm and use it to place the pen several inches deep inside the tall box without touching the walls. record a video.": "Подключи и запусти мой реальный манипулятор YAM и опусти ручку на несколько сантиметров вглубь высокой коробки, не касаясь стенок. Запиши видео.",
+    "safety on real robots": "Безопасность при работе с реальными роботами",
+    "warning": "Внимание",
+    "a moving robot can injure people and damage equipment. stay next to the robot, keep the workspace clear, and keep a way to cut power within reach. you are responsible for the safe operation of your robot.": "Движущийся робот может травмировать людей и повредить оборудование. Находитесь рядом с роботом, держите рабочую зону свободной и обеспечивайте быстрый доступ к аварийному отключению питания. Вы несёте ответственность за безопасную эксплуатацию своего робота.",
+    "you can find more about gemini robotics, including demos, at deepmind.google/models/gemini-robotics. share your examples and connect with other builders in github discussions.": "Узнать больше о Gemini Robotics и посмотреть демо можно на deepmind.google/models/gemini-robotics. Делитесь своими примерами и общайтесь с другими разработчиками в GitHub Discussions.",
+    "you can find more about gemini robotics, including demos, at": "Узнать больше о Gemini Robotics и посмотреть демо можно на",
+    ". share your examples and connect with other builders in": ". Делитесь своими примерами и общайтесь с другими разработчиками в",
+    "copyright 2026 google llc. licensed under the apache license 2.0. some skills download third-party software and robot models, or call third-party services such as the gemini api, at run time. these are licensed by their owners under their own terms.": "© 2026 Google LLC. Распространяется по лицензии Apache License 2.0. Некоторые навыки во время работы загружают стороннее ПО и модели роботов или обращаются к сторонним сервисам (например, Gemini API), которые лицензируются их правообладателями на собственных условиях.",
+    "copyright 2026 google llc. licensed under the": "© 2026 Google LLC. Распространяется по лицензии",
+    ". some skills download third-party software and robot models, or call third-party services such as the gemini api, at run time. these are licensed by their owners under their own terms.": ". Некоторые навыки во время работы загружают стороннее ПО и модели роботов или обращаются к сторонним сервисам (например, Gemini API), которые лицензируются их правообладателями на собственных условиях.",
+
+    // Robotics Sidecar / UI Extensions (MuJoCo Studio)
+    "live 3d mujoco studio web viewer and simulation context bridge.": "Интерактивный 3D веб-просмотрщик MuJoCo Studio и мост контекста симуляции.",
+    "mujoco studio — standby": "MuJoCo Studio — Ожидание",
+    "mujoco studio web": "Веб-панель MuJoCo Studio",
+    "waiting for simulation daemon": "Ожидание демона симуляции",
+    "this pane automatically connects to the live mujoco studio simulation daemon as soon as your agent starts or updates a simulation in your workspace.": "Эта панель автоматически подключится к активному демону симуляции MuJoCo Studio, как только ваш агент запустит или обновит симуляцию в рабочей области.",
+    "# ask the agent in chat to launch a mujoco studio simulation, or run:": "# Попросите агента в чате запустить симуляцию MuJoCo Studio или выполните:",
+    "listening for session...": "Ожидание сессии...",
+    "check now": "Проверить сейчас",
+    "connected — loading 3d viewer...": "Подключено — загрузка 3D-просмотрщика...",
+
+    // Robotics Rules (Правила)
+    "authoritative standards and best practices for constructing, normalizing, and validating mujoco 3d assets (mjcf xml and mjspec). use only when the user explicitly names mujoco, mjcf, .mjz, or mjspec/mjspec while building, importing, editing, or reviewing rigid and articulated objects, containers, tools, furniture, mechanisms, collision geometry, materials, affordance sites, or physical parameters in mujoco. don't use for non-mujoco 3d assets or step/sdf/urdf/openusd/usdz/glb/cad-to-xml converters, furniture/ergonomics linters, or generic blender scripts where mujoco is not explicitly named.": "Эталонные стандарты и лучшие практики создания, нормализации и проверки 3D-моделей для MuJoCo (MJCF XML и MjSpec): жёсткие и сочленённые объекты, контейнеры, инструменты, механизмы, геометрия столкновений, материалы, точки захвата и физические параметры.",
+    "workflow rules for interactive mujoco simulations, scenes, and studio ui panels. use only when authoring, modifying, controlling, debugging, or visualizing an interactive mujoco simulation or mujoco studio panel. don't use for non-mujoco simulations or generic web/desktop viewers that do not use mujoco.": "Правила рабочего процесса для интерактивных симуляций, сцен и UI-панелей MuJoCo Studio: создание, изменение, управление, отладка и визуализация сцен MuJoCo.",
+
+    // Robotics Skills (Навыки — все 25 навыков)
+    "mujoco gpu and tpu batch simulation with mjx (mujoco.mjx in jax) and mjwarp (mujoco_warp in cuda): parallel rollouts (jax.vmap), trajectory scan (jax.lax.scan), differentiability, device memory (put_model, put_data), static contact sizing (max_contact_points, max_geom_pairs, nconmax, njmax), float32 precision, xla compilation caching. use only for mujoco mjx or mjwarp gpu/tpu batch rollouts, rl environments, and differentiable mujoco physics. don't use for custom non-mujoco jax or cuda warp simulations (e.g. custom 2d games, molecular dynamics, orbital mechanics, dem granular solvers, or shallow-water pdes that do not import `mujoco.mjx` or `mujoco_warp`), cpu simulation (mujoco-python), cross-engine parity debugging (mujoco-parity), rendering (mujoco-rendering), or gui (mujoco-gui).": "Пакетная симуляция MuJoCo на GPU и TPU с помощью MJX (mujoco.mjx в JAX) и MJWarp (mujoco_warp в CUDA): параллельные прогоны (jax.vmap), дифференцируемая физика, работа с памятью устройства, лимиты контактов и кэширование компиляции XLA для RL-сред.",
+    "mujoco gpu and tpu batch simulation with mjx (mujoco.mjx in jax) and mjwarp (mujoco_warp in cuda): parallel rollouts (jax.vmap), trajectory scan (jax.lax.scan), differentiability, device memory (put_model, put_data), static contact sizing (max_contact_points, max_geom_pairs, nconmax, njmax), float32 precision, xla compilation caching. use only for mujoco mjx or mjwarp gpu/tpu batch rollouts, rl environments, and differentiable mujoco physics. don't use for custom non-mujoco jax or cuda warp simulations (e.g. custom 2d games, molecular dynamics, orbital mechanics, dem granular solvers, or shallow-water pdes that do not import mujoco.mjx or mujoco_warp), cpu simulation (mujoco-python), cross-engine parity debugging (mujoco-parity), rendering (mujoco-rendering), or gui (mujoco-gui).": "Пакетная симуляция MuJoCo на GPU и TPU с помощью MJX (mujoco.mjx в JAX) и MJWarp (mujoco_warp в CUDA): параллельные прогоны (jax.vmap), дифференцируемая физика, работа с памятью устройства, лимиты контактов и кэширование компиляции XLA для RL-сред.",
+    "creates physically calibrated, articulated, pbr-textured 3d mujoco assets (mjcf model.xml, .mjz, mjspec) from scratch using headless blender (bpy, bmesh, blender_mesh_utils, asset_build_utils), convex collision synthesis, 10-scenario auditing, and studio preview. use only when asked to create, model, or build a 3d mujoco object from a url, image, or text description, or when blender-creation is named. don't use for non-mujoco blender/cycles/cad modeling.": "Создание физически откалиброванных сочленённых 3D-моделей MuJoCo с PBR-текстурами (MJCF model.xml, .mjz, mjSpec) с нуля в фоновом Blender: синтез выпуклых коллизий, аудит по 10 сценариям и предпросмотр в MuJoCo Studio по URL, фото или текстовому описанию.",
+    "franka duo robot only (franka research 3 / fr3 duo dual-arm cell with robotiq 2f-85 grippers, zed mini and realsense d405 cameras). brings up, homes, and controls it via pylibfranka on hardware or in mujoco sim. use only when the user names franka duo, fr3 duo, or fr3_duo.": "Управление двуруким комплексом Franka Duo (Franka Research 3 / FR3 Duo с захватами Robotiq 2F-85 и камерами ZED Mini / RealSense D405): запуск, возврат в исходное положение и управление через pylibfranka на реальном оборудовании или в симуляции MuJoCo.",
+    "dear imgui and implot user interface design for mujoco studio and mujoco viewer plugins (c++ ux/ components and python viewerplugin build_gui panels): immediate-mode widget layout, multi-row widget/column alignment (tables api), tooltip length and aspect ratio, build_gui vs render separation, id stack rules (## label disambiguation vs ### seed reset override), list virtualization (imguilistclipper), theming, and input capture (wantcapturekeyboard). use only when building, aligning, styling, or debugging dear imgui widgets and implot charts inside mujoco studio, mujoco viewer plugins, or mujoco/robotics simulation and control tools. don't use for general-purpose c++ or python dear imgui / implot / imgui_bundle desktop applications unrelated to mujoco or robotics, or for studio plugin lifecycle/messaging (use mujoco-studio) or core physics stepping (use mujoco-python).": "Проектирование интерфейсов Dear ImGui и графиков ImPlot для MuJoCo Studio и плагинов просмотра MuJoCo (C++ и Python ViewerPlugin): компоновка виджетов, табличное выравнивание, виртуализация списков, темизация и обработка ввода.",
+    "checks and installs the i2rt yam sdk (i2rt), configures linux socketcan or macos gs_usb can bringup for i2rt yam robot arms, and provides a wave smoke test (wave.py). use only before bringing up or programming a physical or simulated i2rt yam robot arm, or when asked to run a wave gesture on an i2rt yam robot. don't use for non-yam can bus debugging (e.g. automotive obd-ii or industrial plc can networks) or non-robotics tasks.": "Проверка и установка I2RT YAM SDK (i2rt), настройка шины CAN (Linux socketcan / macOS gs_usb) для манипуляторов I2RT YAM и проверочный тест приветствия (wave.py) перед запуском реального или симулируемого манипулятора.",
+    "solves 6-dof inverse kinematics for the i2rt yam and yam pro robot arm using mink + daqp on combined yam + gripper mjcf. use only when computing joint targets or local cartesian moves on an i2rt yam or yam pro robot arm. don't use for non-yam inverse kinematics, general quadratic programming (qp) solvers, or non-robotics tasks.": "Решение обратной кинематики (6-DOF IK) для манипуляторов I2RT YAM и YAM Pro с помощью Mink + DAQP на объединённой модели MJCF с захватом для вычисления целевых углов суставов и декартовых перемещений.",
+    "staged execution and video-based debugging workflow for physical or mujoco simulated robots: splitting a robot manipulation task into stages, testing each stage with one script, reviewing rollout videos, and verifying physical completion after release and settle. use only when writing code that makes a physical or simulated robot act and move. don't use for non-robotics software engineering, ui/webgl testing, or general scripting.": "Поэтапное выполнение и видеоотладка для физических роботов и симуляций MuJoCo: разбиение задачи манипуляции на этапы, проверка каждого этапа отдельным скриптом, анализ видеозаписей прогонов и контроль устойчивого завершения после отпускания объекта.",
+    "plans collision-free 6-dof grasped-object paths, coupled robot arm+object joint trajectories, and cartesian contact strokes for manipulation arms (so-101, i2rt yam, aloha, or mujoco robots) with stereo triangulation, clearance diagnostics, and camera overlay checks. use when planning robot arm trajectories near tabletop obstacles, containers, doors, or apertures. don't use for eye-in-hand servoing (use visual-servoing) or non-robot pathfinding.": "Планирование 6-DoF траекторий без столкновений для захваченных объектов и суставов манипулятора (SO-101, I2RT YAM, ALOHA и модели MuJoCo) со стереотриангуляцией, контролем зазоров и проверкой наложений по камерам вблизи препятствий и контейнеров.",
+    "audits, validates, and remediates mujoco 3d assets (mjcf model.xml, .mjz archives, or mjspec models) using the 7-point static/pbr/mesh hygiene checker (--static_only), the 10-scenario physical test suite (audit_scenarios.py with --scenarios and --thresholds_json), and before-vs-after comparison sheets. use only when the user explicitly names mujoco, mjcf, .mjz, or mjspec to audit, validate, or fix a mujoco asset. don't use for non-mujoco 3d mesh/cad/usd linters.": "Аудит, валидация и исправление 3D-моделей MuJoCo (MJCF model.xml, архивы .mjz и модели mjSpec): статическая проверка геометрии и PBR по 7 критериям, набор из 10 физических сценариев (audit_scenarios.py) и наглядные листы сравнения «до и после».",
+    "runs and zero-shot transfers robot controllers across mujoco playground sim and physical so-101 or i2rt yam devicelayers (plus sim g1 and trossen wxai) via playgroundsim2real and setup_scene(spec), composing studio, perception, ik, motion-planning, and visual-servoing skills. use by default for so-101, yam, g1, or wxai sim or sim-to-real controllers. don't use for custom raw drivers, gpu rl training (use mujoco-playground-rl), or non-robotics tasks.": "Запуск и прямой перенос (zero-shot) контроллеров роботов между симуляцией MuJoCo Playground и реальными манипуляторами SO-101 / I2RT YAM (а также G1 и Trossen WXAI в симуляции) через PlaygroundSim2Real с объединением восприятия, IK, планирования и сервоуправления.",
+    "authors, inspects in mujoco studio, audits, trains, and deploys gpu-accelerated rl tasks on mujoco playground and mujoco menagerie 3d robots using pytorch/warp reaf-sim flat_scene (devicelayer / tasklayer) and rsl-rl. use by default when creating a mujoco playground rl environment, training or evaluating locomotion/manipulation rl policies, or deploying rsl-rl checkpoints. don't use for non-rl controllers (use mujoco-playground) or non-mujoco rl.": "Создание, проверка в MuJoCo Studio, аудит, обучение и развёртывание GPU-ускоренных задач обучения с подкреплением (RL) для роботов MuJoCo Playground и MuJoCo Menagerie на базе PyTorch/Warp и RSL-RL.",
+    "renders a studio-lit 360-degree turntable showcase video (.mp4) and keyframe sheet for a mujoco asset (mjcf model.xml, .mjz, or mjspec/mjmodel) using mujoco's filament pbr renderer (mjrf), sweeping articulated joints, pulsing collision geoms, and drawing a hud overlay. use only when rendering a showcase turntable video for a mujoco mjcf, .mjz, mjspec, or mjmodel asset. don't use for non-mujoco turntable, filament, opengl, or cad renders.": "Рендеринг студийного 360-градусного демонстрационного видео (.mp4) и листа ключевых кадров для модели MuJoCo через PBR-рендерер Filament с проверкой хода суставов, подсветкой геометрии столкновений и информационным HUD-слоем.",
+    "runs the mujoco studio web sidecar (studiod daemon) to stream a live, hot-reloading mujoco simulation into the antigravity aux pane. use only when mujoco or mujoco_studio is used to launch studiod, scaffold a studio workspace (messages.py, sim_plugin.py, viewer_plugin.py, scene.xml), check /_studio/status, or read captured simhistory frames; load with mujoco-studio. don't use for non-mujoco simulations or web viewers.": "Запуск веб-панели MuJoCo Studio (демон studiod) для потоковой трансляции живой симуляции MuJoCo с горячей перезагрузкой во вспомогательную панель Antigravity, инициализации рабочей области Studio и чтения кадров SimHistory.",
+    "cross-engine physics parity comparison between mujoco (cpu, float64) and accelerated backends (mjwarp cuda, mjx jax, float32): stage-by-stage mj_forward vs mjw.forward isolation, normalized tolerances, stiff affine actuator and ill-conditioned mass matrix (qm) float32 bounds, actuation-conditioned forward passes, order-insensitive contact matching per geom pair, includemargin contact filtering, batched single-step evaluation, and float32-perturbed cpu rollouts. use only when comparing mujoco cpu physics against mujoco mjwarp or mjx backends, or debugging mujoco sim-to-sim trajectory divergence, missing contacts, or force/qacc discrepancies. don't use for float64-vs-float32 parity testing of non-mujoco c/c++/cuda/jax physics or pde solvers, general gpu batch setup (mujoco-accelerated), or cpu-only simulation (mujoco-python).": "Сравнение физической идентичности (parity) между CPU-движком MuJoCo (float64) и ускоренными бэкендами (MJWarp CUDA, MJX JAX, float32): пошаговая изоляция mj_forward, сопоставление контактов и отладка расхождений траекторий и сил между симуляторами.",
+    "mujoco python (`import mujoco`) simulation lifecycle (mjspec, mjmodel, mjdata), stepping (mj_step, mj_step1, mj_step2, mj_forward), named access (data.body, model.geom), bind(), multi-threaded cpu batch simulation (mujoco.batch.batch, mujoco.rollout), optimization and system id (mujoco.minimize, mujoco.sysid, mjd_transitionfd), contact/touch sensors, sensordata, keyframe resets, integrators, mju_ spatial math (quaternions, poses), and energy diagnostics. use only for mujoco python physics simulation, mjmodel/mjdata state access, mujoco cpu batching, stepping loops, and mujoco sensors/sysid. don't use for custom non-mujoco python/numpy/c++ ode or rigid-body simulators, custom finite-difference sysid, or general spatial math without `mujoco`, nor for spec editing (mujoco-spec-editing), deformable flex/cloth/cable modeling (mujoco-deformables), rendering (mujoco-rendering), gpu/tpu (mujoco-accelerated), parity (mujoco-parity), or gui/viewers (mujoco-gui, mujoco-studio).": "Жизненный цикл физической симуляции MuJoCo на Python (MjSpec, MjModel, MjData): пошаговый расчёт, именованный доступ к объектам, многопоточные пакетные прогоны на CPU, оптимизация и идентификация систем (sysid), датчики контакта, кватернионы и диагностика энергии.",
+    "mujoco python (import mujoco) simulation lifecycle (mjspec, mjmodel, mjdata), stepping (mj_step, mj_step1, mj_step2, mj_forward), named access (data.body, model.geom), bind(), multi-threaded cpu batch simulation (mujoco.batch.batch, mujoco.rollout), optimization and system id (mujoco.minimize, mujoco.sysid, mjd_transitionfd), contact/touch sensors, sensordata, keyframe resets, integrators, mju_ spatial math (quaternions, poses), and energy diagnostics. use only for mujoco python physics simulation, mjmodel/mjdata state access, mujoco cpu batching, stepping loops, and mujoco sensors/sysid. don't use for custom non-mujoco python/numpy/c++ ode or rigid-body simulators, custom finite-difference sysid, or general spatial math without mujoco, nor for spec editing (mujoco-spec-editing), deformable flex/cloth/cable modeling (mujoco-deformables), rendering (mujoco-rendering), gpu/tpu (mujoco-accelerated), parity (mujoco-parity), or gui/viewers (mujoco-gui, mujoco-studio).": "Жизненный цикл физической симуляции MuJoCo на Python (MjSpec, MjModel, MjData): пошаговый расчёт, именованный доступ к объектам, многопоточные пакетные прогоны на CPU, оптимизация и идентификация систем (sysid), датчики контакта, кватернионы и диагностика энергии.",
+    "mujoco offscreen image rendering using mujoco.renderer in python and the mujoco c/c++ rendering pipeline (mjrcontext, mjvscene, mjr_render, mjr_readpixels): rgb, metric depth maps, segmentation masks (mjtobj), mjcf offwidth/offheight framebuffer sizing, mujoco_gl (osmesa, egl), mujoco cameras (fixed, tracking, free, mjvcamera), and mjvoption flags/geomgroup. use only for headless camera rendering, dataset recording, and visual observations in mujoco simulations. don't use for generic opengl/egl/osmesa offscreen rendering, glreadpixels depth/segmentation post-processing, or synthetic dataset pipelines that do not use the `mujoco` library, or for interactive viewers/studio (mujoco-studio) or imgui controls (mujoco-gui).": "Внеэкранный (headless) рендеринг изображений в MuJoCo через mujoco.Renderer (Python и C/C++): кадры RGB, метрические карты глубины, маски сегментации, настройка буфера кадра, выбор бэкенда MUJOCO_GL и запись визуальных наблюдений и датасетов.",
+    "mujoco offscreen image rendering using mujoco.renderer in python and the mujoco c/c++ rendering pipeline (mjrcontext, mjvscene, mjr_render, mjr_readpixels): rgb, metric depth maps, segmentation masks (mjtobj), mjcf offwidth/offheight framebuffer sizing, mujoco_gl (osmesa, egl), mujoco cameras (fixed, tracking, free, mjvcamera), and mjvoption flags/geomgroup. use only for headless camera rendering, dataset recording, and visual observations in mujoco simulations. don't use for generic opengl/egl/osmesa offscreen rendering, glreadpixels depth/segmentation post-processing, or synthetic dataset pipelines that do not use the mujoco library, or for interactive viewers/studio (mujoco-studio) or imgui controls (mujoco-gui).": "Внеэкранный (headless) рендеринг изображений в MuJoCo через mujoco.Renderer (Python и C/C++): кадры RGB, метрические карты глубины, маски сегментации, настройка буфера кадра, выбор бэкенда MUJOCO_GL и запись визуальных наблюдений и датасетов.",
+    "localizes metric 3d object coordinates and principal orientation axes of manipulation targets for robot arms (so-101, i2rt yam, aloha, or mujoco tabletop scenes) from rgb-only workspace cameras using gemini-4-hydrogen (or vlm + segmentation fallback), plane projection, or two-view stereo. use when localizing graspable objects for a robot arm without a depth sensor. don't use for non-robotics computer vision, cctv, or ar apps.": "Определение метрических 3D-координат и главных осей ориентации объектов для захвата манипулятором (SO-101, I2RT YAM, ALOHA и сцены MuJoCo) только по обычным RGB-камерам без датчика глубины с помощью мультимодальной модели, проекции на плоскость или стереопары.",
+    "packages a real-robot or simulation demo (compact transcript.jsonl, final files, videos under 10 mb) into a scrubbed bundle with a pre-filled show and tell github discussions url. use only when sharing a robotics example to github discussions. don't use for creating repos, prs, or issues.": "Упаковка демонстрации работы реального робота или симуляции (очищенный лог, итоговые файлы и видео до 10 МБ) в готовый архив с предзаполненной ссылкой для публикации в разделе Show and tell на GitHub Discussions.",
+    "verifies a robot manipulation controller in mujoco simulation (robosim_gauntlet) across perturbation tiers t0-t4 with .mcap logging, physical safety grading, and paired common random numbers before real-robot deployment. use only when verifying, hill-climbing, or debugging a mujoco robot manipulation controller, auditing a task scene/goal predicate, or forking a failed episode. don't use for rl training (use mujoco-playground-rl) or non-robotics tasks.": "Комплексная проверка контроллера манипуляции в симуляции MuJoCo (robosim_gauntlet) на уровнях возмущений T0–T4 с записью логов .mcap, оценкой физической безопасности и парными случайными числами (CRN) перед запуском на реальном роботе.",
+    "guides disciplined mujoco robotics sim-to-real controller iteration using robosim_gauntlet verification, preflight scene/goal audits, deterministic episode forking, paired common random numbers, and adversarial robotics critic reviews. use only when iterating on mujoco robot manipulation controllers, triaging contact/safety failures, or comparing controller candidates. don't use for rl training (use mujoco-playground-rl) or non-robotics tuning.": "Системная итеративная доработка sim-to-real контроллеров роботов в MuJoCo: предполётный аудит сцен и целей, проверка через robosim_gauntlet, детерминированное ответвление проблемных эпизодов и сравнение версий контроллера.",
+    "guides physical so-101 6-dof robot arm bring-up from plug-in to stage 3 hello world motion and video: uv install, port/camera discovery (stages 0-1), feetech sts3215 joint calibration and abort-retreat checks (stage 2), hello world (stage 3), and workspace usb bandwidth/frame checks (stage 4). use only when setting up, calibrating, checking, or operating an so-101 robot arm and cameras. don't use for non-so-101 webcam, cnc, or 3d printer tasks.": "Пошаговый ввод в эксплуатацию физического 6-осевого манипулятора SO-101 от подключения до первого безопасного движения и записи видео: поиск портов и камер, калибровка приводов Feetech STS3215, тест аварийного отвода и проверка пропускной способности USB.",
+    "stage 5 3d hand-eye projection and tabletop surface height (z_table) calibration for the physical so-101 6-dof robot arm with a fixed/overhead workspace camera: fixed-camera check, two-cue gripper marker verification, guarded 3 mm vertical touch-down probing, and 3x4 projective hand-eye least squares. use only after so-101 stage 3 bring-up when calibrating a physical so-101 arm to a fixed camera. don't use for non-robot camera or bed-leveling calibration.": "Калибровка 3D-проекции «рука-глаз» (hand-eye) и высоты поверхности стола (z_table) для манипулятора SO-101 со стационарной верхней камерой: проверка маркеров захвата, безопасное вертикальное касание с шагом 3 мм и расчёт проективной матрицы.",
+    "mujoco procedural model authoring, editing, and tuning with mjspec (`mujoco.mjspec` in python and `mjspec` in c++): bodies, geoms, joints, sites, cameras, sub-model attachment with prefix namespaces, actuators (position servos, motors, velocity drives, trntype), baseline option/default overrides (implicitfast, elliptic cones, solref, solimp, armature, damping), collision bitmasks (contype, conaffinity), friction (condim), default classes (mjsdefault), procedural meshes, deletion, spec recompilation (spec.recompile). use only for authoring or tuning mujoco mjcf/mjspec models, adding bodies/geoms/actuators, and attaching sub-models. don't use for designing custom non-mujoco xml/scene-graph apis when mujoco `mjspec` is not used, deformable flex/cloth/cable modeling (mujoco-deformables), stepping simulations (mujoco-python), or rendering (mujoco-rendering).": "Процедурное создание, редактирование и настройка моделей MuJoCo с помощью MjSpec (Python и C++): тела, геометрия, суставы, камеры, подключение подмоделей с префиксами, приводы, маски столкновений, параметры трения и перекомпиляция спецификации.",
+    "mujoco procedural model authoring, editing, and tuning with mjspec (mujoco.mjspec in python and mjspec in c++): bodies, geoms, joints, sites, cameras, sub-model attachment with prefix namespaces, actuators (position servos, motors, velocity drives, trntype), baseline option/default overrides (implicitfast, elliptic cones, solref, solimp, armature, damping), collision bitmasks (contype, conaffinity), friction (condim), default classes (mjsdefault), procedural meshes, deletion, spec recompilation (spec.recompile). use only for authoring or tuning mujoco mjcf/mjspec models, adding bodies/geoms/actuators, and attaching sub-models. don't use for designing custom non-mujoco xml/scene-graph apis when mujoco mjspec is not used, deformable flex/cloth/cable modeling (mujoco-deformables), stepping simulations (mujoco-python), or rendering (mujoco-rendering).": "Процедурное создание, редактирование и настройка моделей MuJoCo с помощью MjSpec (Python и C++): тела, геометрия, суставы, камеры, подключение подмоделей с префиксами, приводы, маски столкновений, параметры трения и перекомпиляция спецификации.",
+    "builds and launches interactive mujoco studio viewers and plugins in python and c++, covering decoupled sim/viewer threads, snapshot and event messaging, lifecycle events, webviewer browser streaming, and python hot reload. use only when launching mujoco studio viewers (mujoco_studio.launch_web, launch_native, launch_passive, launchstudio) for a mujoco mjmodel/mjdata/mjspec simulation, authoring mujoco studio python viewerplugin/simplugin or c++ registerplugin (mjplugin_lib_init) extensions, synchronizing mujoco sim/viewer state (viewerhandle.sync, @messages.handler), hot-reloading plugins/models (hotreloadevent), configuring webviewer wasm streaming, or debugging studio logs. don't use for non-mujoco simulations or generic web viewers/sidecars not using mujoco, dear imgui/implot layout (mujoco-gui), core stepping (mujoco-python), or headless rendering (mujoco-rendering).": "Сборка и запуск интерактивных просмотрщиков и плагинов MuJoCo Studio на Python и C++: раздельные потоки симуляции и рендера, обмен снимками состояния и событиями, потоковая передача WebViewer в браузер и горячая перезагрузка плагинов.",
+    "aligns an eye-in-hand physical or simulated robot arm end-effector (so-101, i2rt yam, or mujoco robot grippers) and grasp orientation to sub-millimeter precision using robot ibvs (analytical hover-plane ray alignment or cpu opencv feature-matching ibvs). use only for closed-loop eye-in-hand robot gripper visual servoing before grasping or manipulation. don't use for non-robot microscope, telescope/ptz, ar glasses, or homography tasks.": "Точное наведение рабочего органа и ориентации захвата манипулятора с камерой на захвате (eye-in-hand для SO-101, I2RT YAM и роботов в MuJoCo) с субмиллиметровой точностью методом визуального сервоуправления по изображению (IBVS) перед захватом.",
+
+    // Built-in skill added in 2.32.2 (mcp-app-development)
+    "build, package, and debug mcp apps for antigravity: mcp server tools whose results render as interactive ui in the conversation, in the side pane, or full-page from the sidebar. use when adding a ui to an mcp tool, building or theming the app itself, packaging it as a plugin, or debugging an app that doesn't render or behave as expected.": "Создание, упаковка и отладка MCP-приложений (MCP Apps) для Antigravity — инструментов MCP-серверов, результаты которых отображаются как интерактивный интерфейс прямо в диалоге, боковой панели или в полноэкранном режиме.",
+
+    // Split JSX & UI strings in 2.32.2
+    "for corp passwords (such as": "Для корпоративных паролей (например,",
+    "), use an external ssh session": ") используйте внешнюю SSH-сессию",
+    ". for non-corp passwords or ssh passphrases, allow the next prompt and re-run your command.": ". Для некорпоративных паролей или парольных фраз SSH разрешите следующий запрос и запустите команду повторно.",
+    "include at least one positive": "Добавьте хотя бы одно положительное условие",
+    "anchor clause on": "с привязкой к",
+    "equality and list membership (e.g.": "Равенство и вхождение в список (напр.,",
+    "substring or list check (e.g.": "Проверка подстроки или списка (напр.,",
+    "start best-of-": "Запустить Best-of-",
+
+    // Remote SSH status & error strings (2.32.2)
+    "choose an ssh config file": "Выберите файл конфигурации SSH",
+    "ssh connection failed": "Ошибка подключения по SSH",
+    "stop ssh server": "Остановить SSH-сервер",
+    "stop server": "Остановить сервер",
+    "could not stop the ssh server": "Не удалось остановить SSH-сервер",
+    "reconnect first, then stop its server.": "Сначала переподключитесь, а затем остановите сервер.",
+    "the connection was closed before it finished.": "Соединение было закрыто до завершения подключения.",
+    "the connection was cancelled.": "Подключение отменено.",
+    "that ssh host isn't valid. enter an alias from your ssh config or a host like user@host or user@host:2222.": "Некорректный адрес SSH-хоста. Введите псевдоним из конфигурации SSH или адрес вида user@host либо user@host:2222.",
+    "ssh authentication failed. check your password, code or keys, then try again.": "Ошибка аутентификации SSH. Проверьте пароль, одноразовый код или ключи и повторите попытку.",
+    "ssh authentication failed. click reconnect to sign in again.": "Ошибка аутентификации SSH. Нажмите «Переподключиться», чтобы войти снова.",
+    "ssh authentication failed. antigravity can't answer password or code prompts on windows yet: set up key-based login with ssh-agent, then try again.": "Ошибка аутентификации SSH. В Windows Antigravity пока не может отвечать на запросы пароля или кода: настройте вход по ключу через ssh-agent и повторите попытку.",
+    "the host's ssh key is unknown or has changed. save it with ssh in a terminal. if it changed, ask the host's owner first: the connection may be intercepted.": "SSH-ключ хоста неизвестен или изменился. Сохраните его через команду ssh в терминале. Если ключ изменился, сначала уточните у владельца хоста: соединение может перехватываться.",
+    "the host's ssh key has changed or isn't trusted. if it changed, ask the host's owner first: the connection may be intercepted.": "SSH-ключ хоста изменился или не является доверенным. Если ключ изменился, сначала уточните у владельца хоста: соединение может перехватываться.",
+    "ssh port forwarding failed. make sure the server allows tcp forwarding (allowtcpforwarding) for your account, then try again.": "Не удалось настроить перенаправление портов SSH. Убедитесь, что на сервере разрешён проброс TCP (AllowTcpForwarding) для вашей учётной записи, и повторите попытку.",
+    "the ssh host isn't supported. antigravity needs linux on x64 or arm64 with glibc 2.26 or newer.": "Этот SSH-хост не поддерживается. Для работы Antigravity требуется Linux (x64 или arm64) с glibc 2.26 или новее.",
+    "another host that shares your home directory runs the antigravity server. connect to that host instead.": "Сервер Antigravity уже запущен на другом хосте с общим домашним каталогом. Подключитесь к тому хосту.",
+    "couldn't install the antigravity server on the ssh host. make sure it has free disk space, and that it or this computer can download from the internet.": "Не удалось установить сервер Antigravity на SSH-хосте. Убедитесь, что на диске достаточно свободного места и есть доступ к интернету.",
+    "the antigravity server on the ssh host stopped. reconnect to start it again.": "Сервер Antigravity на SSH-хосте остановлен. Переподключитесь, чтобы запустить его снова.",
+    "the ssh connection closed. check your network connection, then reconnect.": "SSH-соединение разорвано. Проверьте подключение к сети и переподключитесь.",
+    "couldn't connect to the ssh host. try ssh to it in a terminal, and see the antigravity log for details.": "Не удалось подключиться к SSH-хосту. Попробуйте подключиться через ssh в терминале и проверьте журнал Antigravity."
 };
 
 function lowercaseFirstCyrillic(str) {
@@ -6895,6 +7025,12 @@ const SUMMARY_HEAD_NOUNS_GEN = [
     [/^forms?$/i, 'формы', 'f'],
     [/^links$/i, 'ссылок', 'pl'],
     [/^link$/i, 'ссылки', 'f'],
+    [/^readmes$/i, 'файлов README', 'pl'],
+    [/^readme$/i, 'файла README', 'm'],
+    [/^profiles$/i, 'профилей', 'pl'],
+    [/^profile$/i, 'профиля', 'm'],
+    [/^channels$/i, 'каналов', 'pl'],
+    [/^channel$/i, 'канала', 'm'],
     [/^images$/i, 'изображений', 'pl'],
     [/^image$/i, 'изображения', 'n'],
     [/^loads?$/i, 'загрузки', 'f'],
@@ -6970,7 +7106,10 @@ const SUMMARY_MODIFIER_NOUN_GEN = {
     page: 'страницы',
     browser: 'браузера',
     crate: 'крейта',
-    plugin: 'плагина'
+    plugin: 'плагина',
+    author: 'автора',
+    channel: 'каналов',
+    profile: 'профиля'
 };
 
 const SUMMARY_KNOWN_TECH_LOWER = new Set([
@@ -12233,7 +12372,7 @@ const regexTranslations = [
     },
     {
         // "Running <target>" / "Выполняется: <target>" / "Run <target>"
-        pattern: /^(?:Running|Выполняется:?|Run)\s+(.+?)(\s*([—–-]|finished|завершено).*|\s*([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]))?$/i,
+        pattern: /^(?:Running|Выполняется:?|Run)\s+(.+?)(\s+(?:[—–-]\s+.*|(?:finished|завершено).*)|\s+([>˅^v\u02c5\u2304\u25bc\u25be\u2228\ufe40›»]))?$/i,
         replace: (match) => {
             const isProgressive = /^(?:Running|Выполняется)/i.test(match[0]);
             const isAlreadyRuPrefix = /^Выполняется/i.test(match[0]);
@@ -12279,11 +12418,31 @@ const regexTranslations = [
                 }
                 return `Запуск ${lowercaseFirstCyrillic(locCmd)}${trailing}`;
             }
-            if (locCmd === cmd && (cmd.split(/\s+/).length > 3 || /\b(?:a|an|the|my|your|our|their|its|this|that)\b/i.test(cmd)) && !trailing) {
+            if (locCmd === cmd && (isLikelyEnglishProseTarget(cmd) || cmd.split(/\s+/).length >= 3 || /\b(?:a|an|the|my|your|our|their|its|this|that)\b/i.test(cmd)) && !trailing) {
                 return match[0];
             }
             return `Запуск ${locCmd}${trailing}`;
         }
+    },
+    {
+        pattern: /^Start\s+Best-of-(\d+)$/i,
+        replace: (match) => `Запустить Best-of-${match[1]}`
+    },
+    {
+        pattern: /^Workspace:\s+(.+)$/i,
+        replace: (match) => `Рабочая область: ${match[1].trim()}`
+    },
+    {
+        pattern: /^Couldn't\s+connect\s+to\s+the\s+SSH\s+host\.\s*Check\s+its\s+name,\s*your\s+network\s+and\s+ssh\s+config\s*\(e\.g\.\s*a\s+ProxyCommand\),\s*and\s+that\s+ssh\s+to\s+it\s+works\s+in\s+a\s+terminal(\s+without\s+a\s+prompt)?\.?$/i,
+        replace: (match) => `Не удалось подключиться к SSH-хосту. Проверьте его адрес, подключение к сети и конфигурацию ssh (например, ProxyCommand), а также убедитесь, что подключение через ssh работает в терминале${match[1] ? ' без интерактивного ввода' : ''}.`
+    },
+    {
+        pattern: /^The\s+Antigravity\s+server\s+failed\s+to\s+start\s+on\s+the\s+SSH\s+host\.\s*See\s+its\s+log\s+in\s+(.+?)\s+on\s+that\s+host\.?$/i,
+        replace: (match) => `Не удалось запустить сервер Antigravity на SSH-хосте. Проверьте журнал в каталоге ${match[1].trim()} на удалённом хосте.`
+    },
+    {
+        pattern: /^Couldn't\s+connect\s+to\s+the\s+SSH\s+host\s+\((.+?)\)\.?$/i,
+        replace: (match) => `Не удалось подключиться к SSH-хосту (${match[1].trim()}).`
     },
     {
         // "Compacting · 59s" / "Compacting · 1m" / "Compacting"
@@ -16603,9 +16762,11 @@ function shouldIgnore(node) {
     const isInsideSwarmPostOrCode = !!(node.parentElement && typeof node.parentElement.closest === 'function' && node.parentElement.closest('.msg-body, pre, code, kbd'));
     const isInsideCodeOrPre = !!(node.parentElement && typeof node.parentElement.closest === 'function' && node.parentElement.closest('code, pre'));
 
+    const isPluginMarketplaceOverlay = !!(typeof window !== 'undefined' && window.location && window.location.search && window.location.search.includes('marketplace=') && !(node.parentElement && typeof node.parentElement.closest === 'function' && node.parentElement.closest('.message-content, .message-text, .chat-output')));
+
     const isMatchSpecial = (val) => {
         if (!val) return false;
-        if (!isInsideCodeOrPre && (val.includes(' ') || (isPluginFrame && !isInsideSwarmPostOrCode) || (typeof window !== 'undefined' && window.location && window.location.pathname && window.location.pathname.startsWith('/customizations'))) && translationDictionary[val]) return true;
+        if (!isInsideCodeOrPre && (val.includes(' ') || (isPluginFrame && !isInsideSwarmPostOrCode) || isPluginMarketplaceOverlay || (typeof window !== 'undefined' && window.location && window.location.pathname && window.location.pathname.startsWith('/customizations'))) && translationDictionary[val]) return true;
         return (
             /^\d+\s*(?:s|sec|m|min|h|hr|d|w|wk|mo|mos|yr|y)$/.test(val) ||
             /^\d+\s*(?:h|hr)\s+\d+\s*(?:m|min)$/.test(val) ||
@@ -17806,7 +17967,8 @@ function isFileName(text, parent) {
     const trimmed = text.trim();
     const lowerTrimmed = trimmed.toLowerCase();
     const inCode = !!(parent && typeof parent.closest === 'function' && parent.closest('code, pre'));
-    if (!inCode && (lowerTrimmed.includes(' ') || (typeof window !== 'undefined' && window.location && window.location.pathname && window.location.pathname.startsWith('/customizations'))) && translationDictionary[lowerTrimmed]) return false;
+    const inChatMsg = !!(parent && typeof parent.closest === 'function' && parent.closest('.message-content, .message-text, .chat-output'));
+    if (!inCode && (lowerTrimmed.includes(' ') || (typeof window !== 'undefined' && window.location && ((window.location.pathname && window.location.pathname.startsWith('/customizations')) || (!inChatMsg && window.location.search && window.location.search.includes('marketplace='))))) && translationDictionary[lowerTrimmed]) return false;
     
     if (
         lowerTrimmed === 'troubleshooting_guide' || 
@@ -19837,8 +19999,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.43';
-    const DEFAULT_CHANGELOG_V2143 = 'Обновление v2.1.43: перевод строки статуса браузера («Работа в браузере · Размышляет (14 сек)…» и текущих намерений), списка шагов браузерного субагента в панели «Субагенты» и расширенный перевод описаний шагов терминала (Ran + toolSummary с вложенной slot-анимацией).';
+    const FALLBACK_VERSION = '2.1.44';
+    const DEFAULT_CHANGELOG_V2144 = 'Обновление v2.1.44: адаптивная плашка EN | RU под нативную тему IDE и 60fps-позиционирование (PR #2 от @MrRay57 + полировка под Windows), а также полный перевод новинок AntiGravity 2.32.2 (плагин Robotics с 25 навыками и MuJoCo Studio, mcp-app-development, диалоги Remote SSH и исправление полуперевода Run с дефисами).';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -19846,10 +20008,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2143;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2144;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2143;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2144;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -20540,15 +20702,27 @@ function initLanguageSwitcher() {
                 refRect = cornerBtns[0] ? cornerBtns[0].getBoundingClientRect() : cornerRect;
             }
 
-            if (targetRight !== null) {
-                wrapper.style.right = targetRight + 'px';
-            }
+            let computedTop = null;
             if (refRect && refRect.height > 0) {
                 const btnCenterY = refRect.top + refRect.height / 2;
                 const wrapRect = wrapper.getBoundingClientRect();
                 if (wrapRect.height > 0) {
-                    wrapper.style.top = Math.round(btnCenterY - wrapRect.height / 2) + 'px';
+                    computedTop = Math.round(btnCenterY - wrapRect.height / 2);
                 }
+            }
+            const isWinPlatform = typeof navigator !== 'undefined' && /Win/i.test(navigator.platform || navigator.userAgent || '');
+            if (targetRight !== null) {
+                const effectiveTop = computedTop !== null ? computedTop : (wrapper.getBoundingClientRect().top || 6);
+                if (isWinPlatform && effectiveTop < 32 && targetRight < 148) {
+                    targetRight = 148;
+                }
+                wrapper.style.right = targetRight + 'px';
+            }
+            if (computedTop !== null) {
+                wrapper.style.top = computedTop + 'px';
+            } else if (targetRight === null) {
+                wrapper.style.top = isWinPlatform ? '4px' : '';
+                wrapper.style.right = isWinPlatform ? '148px' : '';
             }
         } catch (e) {}
     }
@@ -20582,7 +20756,7 @@ function initLanguageSwitcher() {
     window.__antigravity_sync_topbar_resize = scheduleTopbarSync;
     window.addEventListener('resize', window.__antigravity_sync_topbar_resize);
     window.__antigravity_sync_topbar_pointer = (e) => {
-        if (e && typeof e.clientY === 'number' && e.clientY <= 56) {
+        if (e && typeof e.clientY === 'number' && e.clientY <= 84) {
             startTopbarTrackingBurst(650);
         }
     };
