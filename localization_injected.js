@@ -6792,7 +6792,34 @@ const translationDictionary = {
     "no hosts in ~/.ssh/config yet": "В ~/.ssh/config пока нет хостов",
     "none (clear inherited style)": "Нет (сбросить унаследованный стиль)",
     "terminal window": "Окно терминала",
-    "command prompt": "Командная строка"
+    "command prompt": "Командная строка",
+
+    // Updated 2.33.0 Model Picker Tooltips, Promo Card & Automations Scope
+    "for most deep reasoning and complex problems": "Для большинства задач глубокого анализа и сложных проблем",
+    "the original gemini 4 model for advanced workflows": "Оригинальная модель Gemini 4 для продвинутых рабочих сценариев",
+    "for speed and efficiency in execution tasks": "Для скорости и эффективности при выполнении задач",
+    "introducing gemini 4 neon": "Знакомьтесь: Gemini 4 Neon",
+    "our best balance of intelligence, cost, and latency. get building today with neon.": "Наш лучший баланс интеллекта, стоимости и скорости отклика. Начните создавать с Neon уже сегодня.",
+    "uses your local files and tools. schedules only.": "Использует ваши локальные файлы и инструменты. Только по расписанию.",
+    "runs even when your computer is off. schedules and events.": "Работает даже при выключенном компьютере. По расписанию и по событиям.",
+    "runs even when your computer is off. schedules only.": "Работает даже при выключенном компьютере. Только по расписанию.",
+    "add anyway": "Всё равно добавить",
+    "add schedule": "Добавить расписание",
+    "add trigger": "Добавить триггер",
+    "add filter": "Добавить фильтр",
+    "add account": "Добавить аккаунт",
+    "open in settings": "Открыть в настройках",
+    "cleared built-in browser data": "Данные встроенного браузера очищены",
+    "cleared built-in browser history": "История встроенного браузера очищена",
+    "this sidecar failed to start.": "Не удалось запустить этот фоновый процесс.",
+    "enter target...": "Введите цель...",
+    "unknown server": "Неизвестный сервер",
+    "unknown error.": "Неизвестная ошибка.",
+    "configuration parameters are required before this server can be started": "Перед запуском этого сервера необходимо указать параметры конфигурации",
+    "failed to remove agent:": "Не удалось удалить агента:",
+    "allow google to collect and use your interactions data, subject to the": "Разрешить Google собирать и использовать данные о ваших взаимодействиях в соответствии с",
+    "long pages like this one will be broken down into outlines and read as needed. read more at our": "Длинные страницы, подобные этой, будут разбиваться на структуру и читаться по мере необходимости. Подробнее см. в нашем",
+    "the hub sent an unexpected response.": "Центр управления вернул неожиданный ответ."
 };
 
 function lowercaseFirstCyrillic(str) {
@@ -12545,6 +12572,10 @@ const regexTranslations = [
         replace: (match) => `Не удалось подключиться к SSH-хосту (${match[1].trim()}).`
     },
     {
+        pattern: /^Introducing\s+(Gemini\s+[A-Za-z0-9.\s-]+)$/i,
+        replace: (match) => `Знакомьтесь: ${match[1].trim()}`
+    },
+    {
         pattern: /^([A-Za-z0-9.+-]+)\s+that\s+may\s+offload\s+routine\s+steps\s+to\s+([A-Za-z0-9.+-]+)\.\s*Same\s+([A-Za-z0-9.+-]+)-level\s+quality,\s*fewer\s+tokens\s+used\.?$/i,
         replace: (match) => `${match[1]} с автоматической передачей рутинных шагов модели ${match[2]}. Качество уровня ${match[3]} при меньшем расходе токенов.`
     },
@@ -16850,6 +16881,7 @@ window.__antigravity_translate_string = function(str) {
 
 let translationObserver = null;
 let isTranslating = false;
+const regexTranslationCache = new Map();
 
 function shouldIgnore(node) {
     if (!node) return true;
@@ -19361,10 +19393,8 @@ function translateTextNode(node) {
                 }
             } else {
                 const stepPrefixBefore = getPrecedingStepPrefix(node, normalized);
-                if (!window.__ag_regex_cache) window.__ag_regex_cache = new Map();
-                const regexCache = window.__ag_regex_cache;
-                if (regexCache.has(normalized)) {
-                    const cachedVal = regexCache.get(normalized);
+                if (regexTranslationCache.has(normalized)) {
+                    const cachedVal = regexTranslationCache.get(normalized);
                     if (cachedVal) translated = cachedVal;
                 } else {
                     for (const rule of regexTranslations) {
@@ -19377,8 +19407,8 @@ function translateTextNode(node) {
                             }
                         }
                     }
-                    if (regexCache.size > 3000) regexCache.clear();
-                    regexCache.set(normalized, translated || '');
+                    if (regexTranslationCache.size > 3000) regexTranslationCache.clear();
+                    regexTranslationCache.set(normalized, translated || '');
                 }
                 if (!translated && stepPrefixBefore) {
                     const loc = localizeActionTarget(normalized, true);
@@ -20006,16 +20036,18 @@ function restoreOriginalTree() {
 
 function startObserving() {
     if (translationObserver) return;
+    // Clean up any legacy <=v2.1.46 global observer handle and leave it null so old superseded listeners cannot disconnect our private observer
     if (window.__antigravity_active_observer) {
         try { window.__antigravity_active_observer.disconnect(); } catch (e) {}
         window.__antigravity_active_observer = null;
     }
-    
+
     try {
+        let isHandlingMutations = false;
         translationObserver = new MutationObserver((mutations) => {
-            // Временно отключаем наблюдение, чтобы избежать бесконечного цикла из собственных изменений
-            stopObserving();
-            
+            if (isHandlingMutations || isEnglishMode()) return;
+            isHandlingMutations = true;
+
             try {
                 mutations.forEach((mutation) => {
                     if (mutation.type === 'attributes') {
@@ -20045,10 +20077,12 @@ function startObserving() {
             } catch (e) {
                 console.error('Error in MutationObserver loop:', e);
             } finally {
-                startObserving();
+                // Drain records produced by our own DOM writes without ever disconnecting the observer
+                try { if (translationObserver) translationObserver.takeRecords(); } catch (e) {}
+                isHandlingMutations = false;
             }
         });
-        
+
         translationObserver.observe(document.body, {
             childList: true,
             subtree: true,
@@ -20056,7 +20090,6 @@ function startObserving() {
             attributes: true,
             attributeFilter: ['title', 'data-tooltip', 'placeholder', 'aria-label']
         });
-        window.__antigravity_active_observer = translationObserver;
     } catch (e) {
         console.error('Error in startObserving:', e);
     }
@@ -20066,10 +20099,6 @@ function stopObserving() {
     if (translationObserver) {
         translationObserver.disconnect();
         translationObserver = null;
-    }
-    if (window.__antigravity_active_observer) {
-        try { window.__antigravity_active_observer.disconnect(); } catch (e) {}
-        window.__antigravity_active_observer = null;
     }
 }
 
@@ -20124,8 +20153,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.46';
-    const DEFAULT_CHANGELOG_V2146 = 'Обновление v2.1.46: исправлен перескок плашки EN | RU на верхнюю строку на страницах без тулбара и гонка таймеров при hot-reload, ускорен движок перевода (кэш регулярных выражений), добавлены переводы терминала/SSH/горячих клавиш 2.33.0, ротация лога и очистка фонового CDP-поллинга в MCP.';
+    const FALLBACK_VERSION = '2.1.47';
+    const DEFAULT_CHANGELOG_V2147 = 'Обновление v2.1.47: исправлено отключение MutationObserver после горячего обновления (теперь динамические меню, подсказки и карточки плагинов переводятся всегда и мгновенно через takeRecords без разрыва наблюдения), плюс переведены обновлённые подсказки Gemini 4 Neon/Argon/Hydrogen, карточка «Знакомьтесь: Gemini 4 Neon» и описания автоматизаций.';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -20133,10 +20162,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2146;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2147;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2146;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2147;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -21515,7 +21544,7 @@ const initInterval = setInterval(() => {
             try {
                 if (document.documentElement) {
                     document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
-                    document.documentElement.setAttribute('data-ag-loc-ver', '2.1.46');
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.1.47');
                 }
                 // Notify isolated/other worlds (e.g. preload.js <-> CDP main world) to step down cleanly
                 window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
@@ -21554,29 +21583,51 @@ const initInterval = setInterval(() => {
                 translateTree(document.body);
             }
         } else if (isAntigravitySubframe) {
-            const isHotReload = !!window.__antigravity_localizer_loaded;
+            const myEpoch = String(Date.now()) + '-' + Math.random().toString(36).slice(2, 8);
+            const isHotReload = !!window.__antigravity_localizer_loaded || !!(document.documentElement && document.documentElement.getAttribute('data-ag-loc-epoch'));
+            if (typeof window.__antigravity_dispose_current === 'function') {
+                try { window.__antigravity_dispose_current(); } catch (e) {}
+            }
+            window.__antigravity_active_epoch = myEpoch;
             window.__antigravity_localizer_loaded = true;
+            try {
+                if (document.documentElement) {
+                    document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.1.47');
+                }
+                window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
+            } catch (e) {}
+            let disposedSelf = false;
+            const onSubframeLangSync = (ev) => {
+                try {
+                    if (ev && ev.data && ev.data.type === 'ANTIGRAVITY_LOC_SUPERSEDED' && ev.data.epoch && ev.data.epoch !== myEpoch) {
+                        disposeSelf();
+                        return;
+                    }
+                    if (ev && ev.data && ev.data.type === 'ANTIGRAVITY_LANG_SYNC') {
+                        const nextLang = ev.data.lang === 'en' ? 'en' : 'ru';
+                        window.__antigravity_subframe_lang = nextLang;
+                        if (nextLang === 'en') {
+                            stopObserving();
+                            restoreOriginalTree();
+                        } else {
+                            startObserving();
+                            translateTree(document.body);
+                        }
+                    }
+                } catch (e) {}
+            };
+            const disposeSelf = () => {
+                if (disposedSelf) return;
+                disposedSelf = true;
+                try { window.removeEventListener('message', onSubframeLangSync); } catch (e) {}
+                stopObserving();
+            };
+            window.__antigravity_dispose_current = disposeSelf;
             if (!window.__antigravity_subframe_lang) {
                 window.__antigravity_subframe_lang = 'ru';
             }
-            if (!window.__antigravity_subframe_sync_bound) {
-                window.__antigravity_subframe_sync_bound = true;
-                window.addEventListener('message', (ev) => {
-                    try {
-                        if (ev && ev.data && ev.data.type === 'ANTIGRAVITY_LANG_SYNC') {
-                            const nextLang = ev.data.lang === 'en' ? 'en' : 'ru';
-                            window.__antigravity_subframe_lang = nextLang;
-                            if (nextLang === 'en') {
-                                stopObserving();
-                                restoreOriginalTree();
-                            } else {
-                                startObserving();
-                                translateTree(document.body);
-                            }
-                        }
-                    } catch (e) {}
-                });
-            }
+            window.addEventListener('message', onSubframeLangSync);
             try {
                 if (window.parent && window.parent !== window) {
                     window.parent.postMessage({ type: 'ANTIGRAVITY_LANG_QUERY' }, '*');
