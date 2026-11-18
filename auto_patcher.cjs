@@ -101,6 +101,7 @@ async function runUnpatchTo(targetOutPath) {
         const mFile = path.join(distDir, 'main.js');
         if (fs.existsSync(mFile)) {
             let c = fs.readFileSync(mFile, 'utf8');
+            c = c.replace(/\/\/ ANTIGRAVITY CDP PORT PATCH\s*if\s*\(!electron_1\.app\.commandLine\.hasSwitch\('remote-debugging-port'\)\)\s*\{\s*electron_1\.app\.commandLine\.appendSwitch\('remote-debugging-port',\s*'9222'\);\s*\}\s*/g, '');
             c = c.replace(/appendSwitch\(['"]remote-debugging-port['"],\s*['"]9222['"]\)/g, "appendSwitch('remote-debugging-port', '0')");
             c = c.replace(
                 /for\s*\(\s*const\s+win\s+of\s+windows\s*\)\s*\{\s*try\s*\{\s*if\s*\(typeof\s+win\.__saveWindowStateNow[\s\S]*?win\.destroy\(\);\s*\}/,
@@ -128,7 +129,11 @@ async function runUnpatchTo(targetOutPath) {
         if (fs.existsSync(uFile)) {
             let c = fs.readFileSync(uFile, 'utf8');
             c = c.replace(/\s*\/\/ BEGIN ANTIGRAVITY PLUGIN SUBFRAME PATCH[\s\S]*?\/\/ END ANTIGRAVITY PLUGIN SUBFRAME PATCH\s*/, '\n    ');
-            c = c.replace(/\s*\/\/ ANTIGRAVITY WINDOW GEOMETRY PATCH V3[\s\S]*?(?=\s*ensureAppIsInDock\(\);)/, '');
+            if (c.includes('// END ANTIGRAVITY WINDOW GEOMETRY PATCH V3')) {
+                c = c.replace(/\s*\/\/ ANTIGRAVITY WINDOW GEOMETRY PATCH V3[\s\S]*?\/\/ END ANTIGRAVITY WINDOW GEOMETRY PATCH V3/, '');
+            } else {
+                c = c.replace(/\s*\/\/ ANTIGRAVITY WINDOW GEOMETRY PATCH V3[\s\S]*?initY = Math\.max\(wa\.y,\s*Math\.min\(initY,\s*wa\.y \+ wa\.height - initHeight\)\);\s*\}/, '');
+            }
             c = c.replace(/width:\s*initWidth,\s*height:\s*initHeight,\s*x:\s*initX,\s*y:\s*initY,/, 'width: 1400, height: 900,');
             c = c.replace(/let isRestoringWindowState = true;[\s\S]*?win\.on\('close',\s*\(\)\s*=>\s*saveWindowState\(true\)\);\s*void win\.loadURL\(url\);/, 'void win.loadURL(url);');
             fs.writeFileSync(uFile, c, 'utf8');
@@ -420,6 +425,11 @@ async function runPatch() {
 if (!window.__antigravity_translation_initialized) {
     window.__antigravity_translation_initialized = true;
     try {
+        const __agProto = (typeof window !== 'undefined' && window.location) ? window.location.protocol : '';
+        if (__agProto === 'https:' || __agProto === 'http:' || __agProto === 'vscode-file:' || __agProto === 'antigravity-ide:') {
+            window.__antigravity_force_shell = true;
+        }
+        window.__antigravity_open_external = (url) => electron_1.ipcRenderer.invoke('shell:open-external', url);
         ${localizationCode}
         window.__antigravity_translation_success = true;
     } catch(e) {
@@ -512,7 +522,29 @@ if (!window.__antigravity_translation_initialized) {
             mainContent = mainContent.replace(/showErrorBox\(['"]Binary not found['"],/g, "showErrorBox('Бинарный файл не найден',");
             mainContent = mainContent.replace(/showErrorBox\(['"]WSL setup failed['"],/g, "showErrorBox('Сбой настройки WSL',");
             mainContent = mainContent.replace(/showErrorBox\(['"]Startup failed['"],/g, "showErrorBox('Сбой запуска',");
-            mainContent = mainContent.replace(/appendSwitch\(['"]remote-debugging-port['"],\s*['"]0['"]\)/g, "appendSwitch('remote-debugging-port', '9222')");
+            if (/appendSwitch\(['"]remote-debugging-port['"],\s*['"]0['"]\)/.test(mainContent)) {
+                mainContent = mainContent.replace(/appendSwitch\(['"]remote-debugging-port['"],\s*['"]0['"]\)/g, "appendSwitch('remote-debugging-port', '9222')");
+            } else if (!mainContent.includes('ANTIGRAVITY CDP PORT PATCH') && !mainContent.includes("'remote-debugging-port', '9222'")) {
+                if (mainContent.includes("appendSwitch('disable-blink-features', 'AutomationControlled')")) {
+                    mainContent = mainContent.replace(
+                        /electron_1\.app\.commandLine\.appendSwitch\('disable-blink-features',\s*'AutomationControlled'\);/,
+                        `// ANTIGRAVITY CDP PORT PATCH
+if (!electron_1.app.commandLine.hasSwitch('remote-debugging-port')) {
+    electron_1.app.commandLine.appendSwitch('remote-debugging-port', '9222');
+}
+electron_1.app.commandLine.appendSwitch('disable-blink-features', 'AutomationControlled');`
+                    );
+                } else {
+                    mainContent = mainContent.replace(
+                        /electron_1\.app\.whenReady\(\)/,
+                        `// ANTIGRAVITY CDP PORT PATCH
+if (!electron_1.app.commandLine.hasSwitch('remote-debugging-port')) {
+    electron_1.app.commandLine.appendSwitch('remote-debugging-port', '9222');
+}
+electron_1.app.whenReady()`
+                    );
+                }
+            }
             if (!mainContent.includes('__saveWindowStateNow')) {
                 mainContent = mainContent.replace(
                     /for\s*\(\s*const\s+win\s+of\s+windows\s*\)\s*\{\s*win\.destroy\(\);\s*\}/,
@@ -621,7 +653,8 @@ if (!window.__antigravity_translation_initialized) {
     } else {
         initX = Math.max(wa.x, Math.min(initX, wa.x + wa.width - initWidth));
         initY = Math.max(wa.y, Math.min(initY, wa.y + wa.height - initHeight));
-    }`
+    }
+    // END ANTIGRAVITY WINDOW GEOMETRY PATCH V3`
                 );
 
                 utilsContent = utilsContent.replace(

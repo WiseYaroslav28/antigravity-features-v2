@@ -6692,7 +6692,86 @@ const translationDictionary = {
     "couldn't install the antigravity server on the ssh host. make sure it has free disk space, and that it or this computer can download from the internet.": "Не удалось установить сервер Antigravity на SSH-хосте. Убедитесь, что на диске достаточно свободного места и есть доступ к интернету.",
     "the antigravity server on the ssh host stopped. reconnect to start it again.": "Сервер Antigravity на SSH-хосте остановлен. Переподключитесь, чтобы запустить его снова.",
     "the ssh connection closed. check your network connection, then reconnect.": "SSH-соединение разорвано. Проверьте подключение к сети и переподключитесь.",
-    "couldn't connect to the ssh host. try ssh to it in a terminal, and see the antigravity log for details.": "Не удалось подключиться к SSH-хосту. Попробуйте подключиться через ssh в терминале и проверьте журнал Antigravity."
+    "couldn't connect to the ssh host. try ssh to it in a terminal, and see the antigravity log for details.": "Не удалось подключиться к SSH-хосту. Попробуйте подключиться через ssh в терминале и проверьте журнал Antigravity.",
+
+    // Model Picker Tooltips (Gemini 4 Neon / Carbon / Argon / Hydrogen, Orchestrator, GPT-OSS)
+    "for deep reasoning and complex problems": "Для глубокого анализа и сложных задач",
+    "for your hardest, long-horizon tasks": "Для самых сложных и масштабных многошаговых задач",
+    "for advanced workflows": "Для продвинутых рабочих сценариев",
+    "for speed and efficiency in everyday tasks": "Для скорости и эффективности в повседневных задачах",
+    "neon that may offload routine steps to hydrogen. same neon-level quality, fewer tokens used.": "Neon с автоматической передачей рутинных шагов модели Hydrogen. Качество уровня Neon при меньшем расходе токенов.",
+    "carbon that may offload routine steps to hydrogen. same carbon-level quality, fewer tokens used.": "Carbon с автоматической передачей рутинных шагов модели Hydrogen. Качество уровня Carbon при меньшем расходе токенов.",
+    "argon that may offload routine steps to hydrogen. same argon-level quality, fewer tokens used.": "Argon с автоматической передачей рутинных шагов модели Hydrogen. Качество уровня Argon при меньшем расходе токенов.",
+    "gpt-oss will be removed from antigravity on november 30, 2026.": "Модель GPT-OSS будет удалена из Antigravity 30 ноября 2026 года.",
+
+    // New Partner Plugins in Marketplace (Clerk, Docusign, Scandit SDK, TestMu AI)
+    "add authentication and user management with clerk. skills for setup, frameworks, organizations, billing, webhooks, and testing, plus the clerk mcp server.": "Добавляйте аутентификацию и управление пользователями с помощью Clerk. Навыки для настройки, фреймворков, организаций, биллинга, вебхуков и тестирования, а также MCP-сервер Clerk.",
+    "add clerk auth to my next.js app": "Добавь аутентификацию Clerk в моё приложение на Next.js",
+    "set up organizations for my b2b app": "Настрой организации для моего B2B-приложения",
+    "sync users to postgres via clerk webhooks": "Синхронизируй пользователей в Postgres через вебхуки Clerk",
+    "build, test, and debug docusign integrations with developer skills for authentication, template-based signing, envelope status, and troubleshooting.": "Создавайте, тестируйте и отлаживайте интеграции с Docusign: навыки для аутентификации, подписания по шаблонам, отслеживания статусов конвертов и устранения неполадок.",
+    "help me build an nda signing feature in this project.": "Помоги мне реализовать функцию подписания NDA в этом проекте.",
+    "test my docusign integration in a developer account.": "Протестируй мою интеграцию Docusign в аккаунте разработчика.",
+    "help me diagnose this docusign integration error.": "Помоги мне продиагностировать эту ошибку интеграции с Docusign.",
+    "skills for integrating the scandit data capture sdk: product selection, docs and implementation guides for barcode scanning, id capture and smart label capture.": "Навыки для интеграции Scandit Data Capture SDK: подбор продукта, документация и руководства по сканированию штрихкодов, распознаванию документов (ID) и умных этикеток.",
+    "help me choose the right scandit product for my scanning use case.": "Помоги мне выбрать подходящий продукт Scandit для моей задачи сканирования.",
+    "add sparkscan barcode scanning to my app.": "Добавь сканирование штрихкодов SparkScan в моё приложение.",
+    "migrate my app from the scandit sdk v6 api to v8.": "Переведи моё приложение с Scandit SDK API v6 на v8.",
+    "run, debug and triage tests on the testmu ai cloud, plus kane cli for browser and mobile test automation and rook cli for testing ai agents.": "Запускайте, отлаживайте и разбирайте тесты в облаке TestMu AI, а также используйте Kane CLI для автоматизации браузерных и мобильных тестов и Rook CLI для тестирования ИИ-агентов.",
+    "my last automation build failed. pull the console and network logs and tell me why.": "Моя последняя автосборка тестов упала. Выгрузи логи консоли и сети и объясни причину.",
+    "run an accessibility audit on https://staging.example.com and list wcag violations by severity.": "Проведи аудит доступности сайта https://staging.example.com и перечисли нарушения WCAG по степени критичности.",
+    "use kane cli to open my app's login page, sign in and confirm the dashboard loads.": "Используй Kane CLI, чтобы открыть страницу входа моего приложения, авторизоваться и убедиться, что панель управления загружается.",
+
+    // AntiGravity 2.33.0: Browsing Data & Cookies, Plugin Bundles, Keybinding Scheme, Voice/Side Question, swarm_pane
+    "browsing data": "Данные браузера",
+    "clear history, cookies and site data from the built-in browser, or manage cookies for each site.": "Очистите историю, файлы cookie и данные сайтов встроенного браузера или управляйте cookie для каждого сайта.",
+    "choose what to clear from the built-in browser. it can't be undone.": "Выберите, что очистить во встроенном браузере. Это действие нельзя отменить.",
+    "visited urls and autocomplete suggestions.": "Посещённые URL-адреса и подсказки автозаполнения.",
+    "cookies and other site data": "Файлы cookie и другие данные сайтов",
+    "cookies, site storage and cache. signs you out of all sites in the built-in browser and reloads its open tabs.": "Файлы cookie, хранилище сайтов и кэш. Выполняет выход на всех сайтах встроенного браузера и перезагружает открытые вкладки.",
+    "an agent is using the built-in browser. clearing its data signs the agent out of sites and may interrupt its task.": "Встроенный браузер сейчас используется агентом. Очистка данных выполнит выход на сайтах и может прервать его задачу.",
+    "couldn't clear browsing data. try again.": "Не удалось очистить данные браузера. Попробуйте ещё раз.",
+    "couldn't load cookies.": "Не удалось загрузить файлы cookie.",
+    "no sites have cookies in the built-in browser.": "Во встроенном браузере нет сайтов с сохранёнными файлами cookie.",
+    "couldn't delete cookies for": "Не удалось удалить файлы cookie для",
+    "cookies by site": "Файлы cookie по сайтам",
+    "sites with cookies": "Сайты с файлами cookie",
+    "enable browser agent": "Включить агента браузера",
+    "no bundles available.": "Доступных наборов нет.",
+    "loading bundles...": "Загрузка наборов...",
+    "review contents": "Просмотр содержимого",
+    "review bundle before adding": "Проверьте набор перед добавлением",
+    "no longer available": "Больше недоступно",
+    "removed from the marketplace. stays installed until you uninstall it.": "Удалено из маркетплейса. Остаётся установленным, пока вы не удалите его вручную.",
+    "installed separately": "Установлено отдельно",
+    "disabling or removing this bundle doesn't affect it.": "Отключение или удаление этого набора не затрагивает этот элемент.",
+    "access restricted": "Доступ ограничен",
+    "vs code keyboard shortcuts": "Сочетания клавиш VS Code",
+    "inspect live bindings or record custom key chords filtered to": "Просматривайте активные привязки или записывайте свои комбинации с фильтром",
+    "vs code default": "По умолчанию VS Code",
+    "antigravity (agy) style": "Стиль Antigravity (AGY)",
+    "manage your keybinding scheme and customize shortcuts in vs code.": "Управляйте схемой сочетаний клавиш и настраивайте горячие клавиши в VS Code.",
+    "keybinding scheme": "Схема сочетаний клавиш",
+    "choose between non-colliding vs code defaults or standalone antigravity chords.": "Выберите стандартные сочетания VS Code без конфликтов или автономные комбинации Antigravity.",
+    "customize shortcuts": "Настроить сочетания клавиш",
+    "all active antigravity shortcuts and user keybinding overrides are managed directly by vs code.": "Все активные сочетания клавиш Antigravity и пользовательские переопределения управляются напрямую в VS Code.",
+    "terminal: select all": "Терминал: Выделить всё",
+    "side question selection": "Выделение для быстрого вопроса",
+    "the main conversation's input isn't available right now.": "Поле ввода основного диалога сейчас недоступно.",
+    "insert into main conversation": "Вставить в основной диалог",
+    "response actions": "Действия с ответом",
+    "voice dictation unavailable": "Голосовой ввод недоступен",
+    "stop transcription": "Остановить распознавание речи",
+    "interrupt agent": "Прервать агента",
+    "toggle virtual machine": "Переключить виртуальную машину",
+    "system default app": "Системное приложение по умолчанию",
+    "always open": "Всегда открывать",
+    "text selection": "Выделение текста",
+    "web (desktop, remote agents)": "Веб (ПК, удалённые агенты)",
+    "web (desktop, remote agents, pwa)": "Веб (ПК, удалённые агенты, PWA)",
+    "web (mobile, remote agents)": "Веб (мобильный, удалённые агенты)",
+    "web (mobile, remote agents, pwa)": "Веб (мобильный, удалённые агенты, PWA)",
+    "what the coordinator writes so the swarm ui's overview can show the swarm's goal, its groups of work and a screenshot timeline. load it before you brief and add the first workers to a swarm.": "Описывает данные, которые записывает координатор, чтобы во вкладке «Обзор» интерфейса роя отображались цель роя, группы задач и лента скриншотов. Загружайте перед постановкой задач первым участникам роя."
 };
 
 function lowercaseFirstCyrillic(str) {
@@ -12443,6 +12522,22 @@ const regexTranslations = [
     {
         pattern: /^Couldn't\s+connect\s+to\s+the\s+SSH\s+host\s+\((.+?)\)\.?$/i,
         replace: (match) => `Не удалось подключиться к SSH-хосту (${match[1].trim()}).`
+    },
+    {
+        pattern: /^([A-Za-z0-9.+-]+)\s+that\s+may\s+offload\s+routine\s+steps\s+to\s+([A-Za-z0-9.+-]+)\.\s*Same\s+([A-Za-z0-9.+-]+)-level\s+quality,\s*fewer\s+tokens\s+used\.?$/i,
+        replace: (match) => `${match[1]} с автоматической передачей рутинных шагов модели ${match[2]}. Качество уровня ${match[3]} при меньшем расходе токенов.`
+    },
+    {
+        pattern: /^([A-Za-z0-9._\-\s]+?)\s+will\s+be\s+removed\s+from\s+Antigravity\s+on\s+([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})\.?$/i,
+        replace: (match) => {
+            const months = {
+                january: 'января', february: 'февраля', march: 'марта', april: 'апреля',
+                may: 'мая', june: 'июня', july: 'июля', august: 'августа',
+                september: 'сентября', october: 'октября', november: 'ноября', december: 'декабря'
+            };
+            const mRu = months[match[2].toLowerCase()] || match[2];
+            return `Модель ${match[1].trim()} будет удалена из Antigravity ${match[3]} ${mRu} ${match[4]} года.`;
+        }
     },
     {
         // "Compacting · 59s" / "Compacting · 1m" / "Compacting"
@@ -19999,8 +20094,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.44';
-    const DEFAULT_CHANGELOG_V2144 = 'Обновление v2.1.44: адаптивная плашка EN | RU под нативную тему IDE и 60fps-позиционирование (PR #2 от @MrRay57 + полировка под Windows), а также полный перевод новинок AntiGravity 2.32.2 (плагин Robotics с 25 навыками и MuJoCo Studio, mcp-app-development, диалоги Remote SSH и исправление полуперевода Run с дефисами).';
+    const FALLBACK_VERSION = '2.1.45';
+    const DEFAULT_CHANGELOG_V2145 = 'Обновление v2.1.45 (AntiGravity 2.33.0): критическое исправление запуска локализации в 2.33.0 (нативная работа из preload.js без зависимости от CDP + возврат порта 9222 для hot-reload), фикс наложения плашки EN | RU на кнопку обновления IDE, перевод описаний моделей (Gemini 4 / Orchestrator / GPT-OSS), 4 новых плагинов маркетплейса и всех новинок 2.33.0 (Данные браузера и cookies, Наборы плагинов, Схемы горячих клавиш, swarm_pane).';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -20008,10 +20103,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2144;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2145;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2144;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2145;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -20634,6 +20729,10 @@ function initLanguageSwitcher() {
                     window.__antigravity_corner_mo.observe(titlebar, { childList: true, subtree: true });
                     window.__antigravity_observed_titlebar_mo = titlebar;
                 }
+                if (toolbar && toolbar !== window.__antigravity_observed_toolbar_mo) {
+                    window.__antigravity_corner_mo.observe(toolbar, { childList: true, subtree: true });
+                    window.__antigravity_observed_toolbar_mo = toolbar;
+                }
                 if (auxParent && auxParent !== window.__antigravity_observed_aux_mo) {
                     window.__antigravity_corner_mo.observe(auxParent, { childList: true, subtree: true });
                     window.__antigravity_observed_aux_mo = auxParent;
@@ -20653,22 +20752,40 @@ function initLanguageSwitcher() {
             const toolbar = document.querySelector('[data-testid="pane-titlebar-toolbar"]');
             const toolbarInner = toolbar ? (toolbar.firstElementChild || toolbar) : null;
             const auxParent = document.querySelector('.agy-aux-tab')?.closest('.agy-layout-vars') || null;
-            const wrapWidth = wrapper.getBoundingClientRect().width || 88;
+            const wrapWidth = wrapper.getBoundingClientRect().width || 96;
 
-            const cornerBtns = corner
+            const cornerItems = corner
+                ? Array.from(corner.querySelectorAll('button, [role="button"], [data-testid="app-update-button"]')).filter(b => b.getBoundingClientRect().width > 0)
+                : [];
+            const cornerIconBtns = corner
                 ? Array.from(corner.querySelectorAll('button')).filter(b => b.getBoundingClientRect().width > 0)
                 : [];
             const cornerRect = corner ? corner.getBoundingClientRect() : null;
 
-            const tbBtns = toolbarInner
+            const tbChildren = toolbarInner
+                ? Array.from(toolbarInner.children).filter(el => {
+                    if (el.tagName === 'STYLE' || el.tagName === 'SCRIPT') return false;
+                    const r = el.getBoundingClientRect();
+                    return r.width > 0 && r.height > 0;
+                })
+                : [];
+            const tbRects = tbChildren.map(el => el.getBoundingClientRect());
+            const tbIconBtns = toolbarInner
                 ? Array.from(toolbarInner.querySelectorAll('button')).filter(b => b.getBoundingClientRect().width > 0)
                 : [];
-            const firstTbRect = tbBtns.length ? tbBtns[0].getBoundingClientRect() : null;
-            const lastTbRect = tbBtns.length ? tbBtns[tbBtns.length - 1].getBoundingClientRect() : null;
+            let firstTbLeft = null;
+            let lastTbRight = null;
+            for (const r of tbRects) {
+                if (firstTbLeft === null || r.left < firstTbLeft) firstTbLeft = r.left;
+                if (lastTbRight === null || r.right > lastTbRight) lastTbRight = r.right;
+            }
+            const steadyTbVertRect = tbIconBtns.length
+                ? tbIconBtns[0].getBoundingClientRect()
+                : (tbRects.length ? tbRects[0] : null);
 
             let auxContentRightX = 0;
             if (auxParent) {
-                const auxItems = Array.from(auxParent.querySelectorAll('.agy-aux-tab, button'));
+                const auxItems = Array.from(auxParent.querySelectorAll('.agy-aux-tab, button, [role="button"]'));
                 for (const item of auxItems) {
                     const r = item.getBoundingClientRect();
                     if (r.width > 0 && r.left < w && r.right > 0 && r.right > auxContentRightX) {
@@ -20679,27 +20796,44 @@ function initLanguageSwitcher() {
 
             let targetRight = null;
             let refRect = null;
+            let usedToolbarSlot = false;
 
             const cornerSlotRight = cornerRect && cornerRect.width > 0 && cornerRect.left > w * 0.5
-                ? Math.max(40, Math.round(w - cornerRect.left + 4))
+                ? Math.max(40, Math.round(w - cornerRect.left + 6))
                 : null;
             const cornerSlotLeftX = cornerSlotRight !== null ? (w - cornerSlotRight - wrapWidth) : 0;
 
             const canUseCornerSlot =
                 cornerSlotRight !== null &&
-                cornerBtns.length > 1 &&
-                (!lastTbRect || lastTbRect.right <= cornerSlotLeftX - 8) &&
+                cornerItems.length > 1 &&
+                (lastTbRight === null || lastTbRight <= cornerSlotLeftX - 8) &&
                 (auxContentRightX <= cornerSlotLeftX - 8);
 
             if (canUseCornerSlot) {
                 targetRight = cornerSlotRight;
-                refRect = cornerBtns[0].getBoundingClientRect();
-            } else if (firstTbRect && firstTbRect.left > 120) {
-                targetRight = Math.max(44, Math.round(w - firstTbRect.left + 4));
-                refRect = firstTbRect;
+                refRect = cornerIconBtns.length ? cornerIconBtns[0].getBoundingClientRect() : cornerItems[0].getBoundingClientRect();
+            } else if (firstTbLeft !== null && firstTbLeft > 120) {
+                targetRight = Math.max(44, Math.round(w - firstTbLeft + 6));
+                refRect = steadyTbVertRect;
+                usedToolbarSlot = true;
             } else if (cornerSlotRight !== null) {
                 targetRight = cornerSlotRight;
-                refRect = cornerBtns[0] ? cornerBtns[0].getBoundingClientRect() : cornerRect;
+                refRect = cornerIconBtns.length
+                    ? cornerIconBtns[0].getBoundingClientRect()
+                    : (cornerItems.length ? cornerItems[0].getBoundingClientRect() : cornerRect);
+            }
+
+            // Reserve flexbox width inside [data-testid="pane-titlebar-toolbar"] so breadcrumbs/title truncate cleanly instead of colliding
+            if (window.__antigravity_padded_toolbar && window.__antigravity_padded_toolbar !== toolbar) {
+                try { window.__antigravity_padded_toolbar.style.paddingLeft = ''; } catch (e) {}
+                window.__antigravity_padded_toolbar = null;
+            }
+            if (toolbar) {
+                const desiredPad = usedToolbarSlot ? (Math.ceil(wrapWidth) + 10) + 'px' : '';
+                if (toolbar.style.paddingLeft !== desiredPad) {
+                    toolbar.style.paddingLeft = desiredPad;
+                }
+                window.__antigravity_padded_toolbar = usedToolbarSlot ? toolbar : null;
             }
 
             let computedTop = null;
@@ -20710,6 +20844,21 @@ function initLanguageSwitcher() {
                     computedTop = Math.round(btnCenterY - wrapRect.height / 2);
                 }
             }
+
+            // Extra collision guard for [data-testid="app-update-button"] anywhere in the header
+            const appUpdateBtn = document.querySelector('[data-testid="app-update-button"]');
+            if (appUpdateBtn && targetRight !== null) {
+                const uRect = appUpdateBtn.getBoundingClientRect();
+                const effTopCheck = computedTop !== null ? computedTop : (wrapper.getBoundingClientRect().top || 6);
+                if (uRect.width > 0 && uRect.height > 0 && Math.abs((uRect.top + uRect.height / 2) - (effTopCheck + 14)) < 20) {
+                    const candRightX = w - targetRight;
+                    const candLeftX = candRightX - wrapWidth;
+                    if (candLeftX < uRect.right + 6 && candRightX > uRect.left - 6) {
+                        targetRight = Math.max(targetRight, Math.round(w - uRect.left + 6));
+                    }
+                }
+            }
+
             const isWinPlatform = typeof navigator !== 'undefined' && /Win/i.test(navigator.platform || navigator.userAgent || '');
             if (targetRight !== null) {
                 const effectiveTop = computedTop !== null ? computedTop : (wrapper.getBoundingClientRect().top || 6);
@@ -20745,6 +20894,7 @@ function initLanguageSwitcher() {
     }
     window.__antigravity_observed_corner_mo = null;
     window.__antigravity_observed_titlebar_mo = null;
+    window.__antigravity_observed_toolbar_mo = null;
     window.__antigravity_observed_aux_mo = null;
 
     if (typeof ResizeObserver !== 'undefined') {
@@ -21115,6 +21265,8 @@ function initLanguageSwitcher() {
             const repoUrl = 'https://github.com/WiseYaroslav28/antigravity-features-v2';
             if (window.electronNative && typeof window.electronNative.openExternal === 'function') {
                 window.electronNative.openExternal(repoUrl);
+            } else if (typeof window.__antigravity_open_external === 'function') {
+                window.__antigravity_open_external(repoUrl);
             } else {
                 window.open(repoUrl, '_blank', 'noopener,noreferrer');
             }
@@ -21128,6 +21280,8 @@ function initLanguageSwitcher() {
             const issueUrl = 'https://github.com/WiseYaroslav28/antigravity-features-v2/issues/new/choose';
             if (window.electronNative && typeof window.electronNative.openExternal === 'function') {
                 window.electronNative.openExternal(issueUrl);
+            } else if (typeof window.__antigravity_open_external === 'function') {
+                window.__antigravity_open_external(issueUrl);
             } else {
                 window.open(issueUrl, '_blank', 'noopener,noreferrer');
             }
@@ -21288,8 +21442,31 @@ const initInterval = setInterval(() => {
             (!isTopFrame && (protocol === 'vscode-file:' || protocol === 'antigravity-ide:'))
         );
         if (isAntigravityShell) {
-            const isHotReload = !!window.__antigravity_localizer_loaded;
+            const myEpoch = String(Date.now()) + '-' + Math.random().toString(36).slice(2, 8);
+            const isHotReload = !!window.__antigravity_localizer_loaded || !!(document.documentElement && document.documentElement.getAttribute('data-ag-loc-epoch'));
             window.__antigravity_localizer_loaded = true;
+            try {
+                if (document.documentElement) {
+                    document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
+                }
+                window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
+            } catch (e) {}
+            const onSuperseded = (ev) => {
+                try {
+                    if (ev && ev.data && ev.data.type === 'ANTIGRAVITY_LOC_SUPERSEDED' && ev.data.epoch && ev.data.epoch !== myEpoch) {
+                        window.removeEventListener('message', onSuperseded);
+                        stopObserving();
+                        if (window.__antigravity_status_interval) { clearInterval(window.__antigravity_status_interval); window.__antigravity_status_interval = null; }
+                        if (window.__antigravity_remote_check_interval) { clearInterval(window.__antigravity_remote_check_interval); window.__antigravity_remote_check_interval = null; }
+                        if (window.__antigravity_sync_topbar_interval) { clearInterval(window.__antigravity_sync_topbar_interval); window.__antigravity_sync_topbar_interval = null; }
+                        if (window.__antigravity_sync_topbar_resize) { window.removeEventListener('resize', window.__antigravity_sync_topbar_resize); }
+                        if (window.__antigravity_sync_topbar_pointer) { window.removeEventListener('pointerdown', window.__antigravity_sync_topbar_pointer, true); }
+                        if (window.__antigravity_topbar_ro) { try { window.__antigravity_topbar_ro.disconnect(); } catch (e) {} }
+                        if (window.__antigravity_corner_mo) { try { window.__antigravity_corner_mo.disconnect(); } catch (e) {} }
+                    }
+                } catch (e) {}
+            };
+            window.addEventListener('message', onSuperseded);
             initLanguageSwitcher();
             initTerminalInjection();
             if (!isEnglishMode()) {

@@ -1,8 +1,8 @@
 {
-  "version": "2.1.44",
-  "releasedAt": "2026-11-17T20:50:00.000Z",
-  "changelog": "Обновление v2.1.44: адаптивная плашка EN | RU под нативную тему IDE и 60fps-позиционирование (PR #2 от @MrRay57 + полировка под Windows), а также полный перевод новинок AntiGravity 2.32.2 (плагин Robotics с 25 навыками и MuJoCo Studio, mcp-app-development, диалоги Remote SSH и исправление полуперевода Run с дефисами).",
-  "requiresRestart": false,
+  "version": "2.1.45",
+  "releasedAt": "2026-11-18T22:20:00.000Z",
+  "changelog": "Обновление v2.1.45 (AntiGravity 2.33.0): критическое исправление запуска локализации в 2.33.0 (нативная работа из preload.js без зависимости от CDP + возврат порта 9222 для hot-reload), фикс наложения плашки EN | RU на кнопку обновления IDE, перевод описаний моделей (Gemini 4 / Orchestrator / GPT-OSS), 4 новых плагинов маркетплейса и всех новинок 2.33.0 (Данные браузера и cookies, Наборы плагинов, Схемы горячих клавиш, swarm_pane).",
+  "requiresRestart": true,
   "files": [
     "localization_injected.js",
     "auto_patcher.cjs",

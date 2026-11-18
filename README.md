@@ -2,7 +2,7 @@
 
 ![Google AntiGravity 2.0 — 100% RU + Live MCP Auto-Update](assets/hero-banner.jpg)
 
-[![Version](https://img.shields.io/badge/version-v2.1.44-blue.svg)](version.json)
+[![Version](https://img.shields.io/badge/version-v2.1.45-blue.svg)](version.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11%20%7C%20macOS-0078D6.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
 [![Target](https://img.shields.io/badge/Google%20AntiGravity-2.0%2B-orange.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
@@ -16,6 +16,10 @@
 > **🇬🇧 Complete Russian Localization & Quality-of-Life Enhancement Suite for Google AntiGravity 2.0 IDE** — featuring non-invasive CDP live injection, native `app.asar` auto-patching, multi-monitor window state persistence, system tray fixes, and a self-updating MCP server.
 
 🌐 **Навигация / Links:** [**🇷🇺 Русский**](#-русская-документация-ru) | [**🇬🇧 English**](#-english-documentation-en) | [**▶️ Видео (YouTube)**](https://www.youtube.com/shorts/sucYFc3UqpM) | [**📖 Хабр**](https://habr.com/ru/articles/1104106/) | [**📰 VC.ru**](https://vc.ru/id6168328/3229744-rusifikator-google-antigravity-2-0-avtoobnovleniem-cherez-mcp) | [**💬 Заказать доработку**](https://github.com/WiseYaroslav28/antigravity-features-v2/issues/new/choose) | [**💖 Поддержать / Donate**](#-поддержать-проект--support--donate)
+
+> [!IMPORTANT]
+> **Обновились до Google AntiGravity `2.33.0` и пропал перевод / плашка `EN | RU`?**  
+> Переустанавливать ничего не нужно! В `2.33.0` Google убрала дефолтный ключ `remote-debugging-port`, но ваш фоновый MCP-сервер продолжает работать: просто **подождите 15–20 секунд** (он сам скачает фикс `v2.1.45` с GitHub и перепатчит `app.asar`), затем **один раз полностью перезапустите AntiGravity** (включая выход из системного трея) — русский интерфейс и плашка вернутся автоматически.
 
 ---
 
