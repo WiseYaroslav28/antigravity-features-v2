@@ -558,11 +558,20 @@ electron_1.app.whenReady()`
             console.log('[AutoPatcher-v2] Patched dist/main.js for second-instance shortcut re-launch, before-quit state save, menu & dialogs!');
         }
 
-        // 4. PATCH UTILS.JS (Fix Geometry V3, WebContentsView bounds sync & Native 0ms plugin:// Subframe Localization)
+        // 4. PATCH UTILS.JS (Fix Geometry V3 on <=2.32.2, respect native windowState.js on >=2.33.0, & Native 0ms plugin:// Subframe Localization)
         const utilsExtracted = path.join(tempDir, 'dist', 'utils.js');
         if (fs.existsSync(utilsExtracted)) {
             let utilsContent = fs.readFileSync(utilsExtracted, 'utf8');
-            if (!utilsContent.includes('ANTIGRAVITY WINDOW GEOMETRY PATCH V3')) {
+            const hasNativeWindowState = utilsContent.includes('resolveInitialWindowState');
+            if (hasNativeWindowState && utilsContent.includes('ANTIGRAVITY WINDOW GEOMETRY PATCH V3')) {
+                if (utilsContent.includes('// END ANTIGRAVITY WINDOW GEOMETRY PATCH V3')) {
+                    utilsContent = utilsContent.replace(/\s*\/\/ ANTIGRAVITY WINDOW GEOMETRY PATCH V3[\s\S]*?\/\/ END ANTIGRAVITY WINDOW GEOMETRY PATCH V3/, '');
+                } else {
+                    utilsContent = utilsContent.replace(/\s*\/\/ ANTIGRAVITY WINDOW GEOMETRY PATCH V3[\s\S]*?initY = Math\.max\(wa\.y,\s*Math\.min\(initY,\s*wa\.y \+ wa\.height - initHeight\)\);\s*\}/, '');
+                }
+                utilsContent = utilsContent.replace(/let isRestoringWindowState = true;[\s\S]*?win\.on\('close',\s*\(\)\s*=>\s*saveWindowState\(true\)\);\s*void win\.loadURL\(url\);/, 'void win.loadURL(url);');
+            }
+            if (!hasNativeWindowState && !utilsContent.includes('ANTIGRAVITY WINDOW GEOMETRY PATCH V3')) {
                 // Clean up any legacy V1 or V2 geometry patch first
                 utilsContent = utilsContent.replace(
                     /\/\/ ANTIGRAVITY WINDOW GEOMETRY PATCH V2[\s\S]*?(?=\s*ensureAppIsInDock\(\);)/,

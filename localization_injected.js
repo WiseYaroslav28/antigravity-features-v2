@@ -6771,7 +6771,28 @@ const translationDictionary = {
     "web (desktop, remote agents, pwa)": "Веб (ПК, удалённые агенты, PWA)",
     "web (mobile, remote agents)": "Веб (мобильный, удалённые агенты)",
     "web (mobile, remote agents, pwa)": "Веб (мобильный, удалённые агенты, PWA)",
-    "what the coordinator writes so the swarm ui's overview can show the swarm's goal, its groups of work and a screenshot timeline. load it before you brief and add the first workers to a swarm.": "Описывает данные, которые записывает координатор, чтобы во вкладке «Обзор» интерфейса роя отображались цель роя, группы задач и лента скриншотов. Загружайте перед постановкой задач первым участникам роя."
+    "what the coordinator writes so the swarm ui's overview can show the swarm's goal, its groups of work and a screenshot timeline. load it before you brief and add the first workers to a swarm.": "Описывает данные, которые записывает координатор, чтобы во вкладке «Обзор» интерфейса роя отображались цель роя, группы задач и лента скриншотов. Загружайте перед постановкой задач первым участникам роя.",
+
+    // Additional 2.33.0 Terminal, Shortcuts, Best-of-N, SSH & Computer Use strings
+    "terminal command automatically proceeds if the command runs inside the sandbox. otherwise, it requests review.": "Команда терминала выполняется автоматически, если запускается внутри песочницы. В противном случае запрашивается подтверждение.",
+    "this shortcut is reserved by browser tabs and may not trigger in web mode. it works in the desktop hub or installed pwa.": "Это сочетание клавиш зарезервировано вкладками браузера и может не работать в веб-режиме. Оно работает в настольном приложении или установленном PWA.",
+    "the remote workspace is not running": "Удалённая рабочая область не запущена",
+    "command is required": "Необходимо указать команду",
+    "paste key": "Вставить ключ",
+    "cannot revert a message sent while the agent was running": "Нельзя откатить сообщение, отправленное во время работы агента",
+    "cannot start best-of-n mode while the agent is running": "Нельзя запустить режим Best-of-N во время работы агента",
+    "cannot start best-of-n mode: some subagents are still running.": "Нельзя запустить режим Best-of-N: некоторые субагенты ещё выполняются.",
+    "cannot start best-of-n mode: background tasks are still running.": "Нельзя запустить режим Best-of-N: фоновые задачи ещё выполняются.",
+    "authorization code was rejected. paste a fresh code and try again.": "Код авторизации отклонён. Вставьте свежий код и повторите попытку.",
+    "copied sign-in link to clipboard": "Ссылка для входа скопирована в буфер обмена",
+    "cannot promote while side question is running": "Нельзя перенести в основной диалог, пока выполняется быстрый вопрос",
+    "runs a command": "Выполняет команду",
+    "relaunch the app once to activate screen recording.": "Перезапустите приложение один раз, чтобы активировать запись экрана.",
+    "create a project on a machine you reach over ssh. it opens in that host's own window.": "Создайте проект на удалённой машине по SSH — он откроется в отдельном окне этого хоста.",
+    "no hosts in ~/.ssh/config yet": "В ~/.ssh/config пока нет хостов",
+    "none (clear inherited style)": "Нет (сбросить унаследованный стиль)",
+    "terminal window": "Окно терминала",
+    "command prompt": "Командная строка"
 };
 
 function lowercaseFirstCyrillic(str) {
@@ -19340,15 +19361,24 @@ function translateTextNode(node) {
                 }
             } else {
                 const stepPrefixBefore = getPrecedingStepPrefix(node, normalized);
-                for (const rule of regexTranslations) {
-                    const match = normalized.match(rule.pattern);
-                    if (match) {
-                        const res = rule.replace(match);
-                        if (res && res !== normalized) {
-                            translated = res;
-                            break;
+                if (!window.__ag_regex_cache) window.__ag_regex_cache = new Map();
+                const regexCache = window.__ag_regex_cache;
+                if (regexCache.has(normalized)) {
+                    const cachedVal = regexCache.get(normalized);
+                    if (cachedVal) translated = cachedVal;
+                } else {
+                    for (const rule of regexTranslations) {
+                        const match = normalized.match(rule.pattern);
+                        if (match) {
+                            const res = rule.replace(match);
+                            if (res && res !== normalized) {
+                                translated = res;
+                                break;
+                            }
                         }
                     }
+                    if (regexCache.size > 3000) regexCache.clear();
+                    regexCache.set(normalized, translated || '');
                 }
                 if (!translated && stepPrefixBefore) {
                     const loc = localizeActionTarget(normalized, true);
@@ -20094,8 +20124,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.1.45';
-    const DEFAULT_CHANGELOG_V2145 = 'Обновление v2.1.45 (AntiGravity 2.33.0): критическое исправление запуска локализации в 2.33.0 (нативная работа из preload.js без зависимости от CDP + возврат порта 9222 для hot-reload), фикс наложения плашки EN | RU на кнопку обновления IDE, перевод описаний моделей (Gemini 4 / Orchestrator / GPT-OSS), 4 новых плагинов маркетплейса и всех новинок 2.33.0 (Данные браузера и cookies, Наборы плагинов, Схемы горячих клавиш, swarm_pane).';
+    const FALLBACK_VERSION = '2.1.46';
+    const DEFAULT_CHANGELOG_V2146 = 'Обновление v2.1.46: исправлен перескок плашки EN | RU на верхнюю строку на страницах без тулбара и гонка таймеров при hot-reload, ускорен движок перевода (кэш регулярных выражений), добавлены переводы терминала/SSH/горячих клавиш 2.33.0, ротация лога и очистка фонового CDP-поллинга в MCP.';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -20103,10 +20133,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2145;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2146;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2145;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2146;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -20690,6 +20720,43 @@ function initLanguageSwitcher() {
     let observedCorner = null;
     let observedChatRight = null;
     let observedAuxParent = null;
+    let observedCornerMo = null;
+    let observedTitlebarMo = null;
+    let observedToolbarMo = null;
+    let observedAuxMo = null;
+
+    // Clean up any legacy <=v2.1.45 global handles and null them so an old v2.1.45 listener cannot touch our local instances
+    if (window.__antigravity_sync_topbar_resize) {
+        try { window.removeEventListener('resize', window.__antigravity_sync_topbar_resize); } catch (e) {}
+        window.__antigravity_sync_topbar_resize = null;
+    }
+    if (window.__antigravity_sync_topbar_pointer) {
+        try { window.removeEventListener('pointerdown', window.__antigravity_sync_topbar_pointer, true); } catch (e) {}
+        window.__antigravity_sync_topbar_pointer = null;
+    }
+    if (window.__antigravity_sync_topbar_interval) {
+        clearInterval(window.__antigravity_sync_topbar_interval);
+        window.__antigravity_sync_topbar_interval = null;
+    }
+    if (window.__antigravity_topbar_ro) {
+        try { window.__antigravity_topbar_ro.disconnect(); } catch (e) {}
+        window.__antigravity_topbar_ro = null;
+    }
+    if (window.__antigravity_corner_mo) {
+        try { window.__antigravity_corner_mo.disconnect(); } catch (e) {}
+        window.__antigravity_corner_mo = null;
+    }
+    if (window.__antigravity_status_interval) {
+        clearInterval(window.__antigravity_status_interval);
+        window.__antigravity_status_interval = null;
+    }
+    if (window.__antigravity_remote_check_interval) {
+        clearInterval(window.__antigravity_remote_check_interval);
+        window.__antigravity_remote_check_interval = null;
+    }
+
+    const localTopbarRo = (typeof ResizeObserver !== 'undefined') ? new ResizeObserver(scheduleTopbarSync) : null;
+    const localCornerMo = (typeof MutationObserver !== 'undefined') ? new MutationObserver(scheduleTopbarSync) : null;
 
     function attachTopbarObservers() {
         try {
@@ -20698,44 +20765,44 @@ function initLanguageSwitcher() {
             const titlebar = toolbar ? toolbar.closest('[class*="titlebar"]') : document.querySelector('[class*="titlebar"]');
             const auxParent = document.querySelector('.agy-aux-tab')?.closest('.agy-layout-vars') || null;
 
-            if (window.__antigravity_topbar_ro) {
+            if (localTopbarRo) {
                 if (titlebar && titlebar !== observedTitlebar) {
-                    if (observedTitlebar) window.__antigravity_topbar_ro.unobserve(observedTitlebar);
-                    window.__antigravity_topbar_ro.observe(titlebar);
+                    if (observedTitlebar) localTopbarRo.unobserve(observedTitlebar);
+                    localTopbarRo.observe(titlebar);
                     observedTitlebar = titlebar;
                 }
                 if (corner && corner !== observedCorner) {
-                    if (observedCorner) window.__antigravity_topbar_ro.unobserve(observedCorner);
-                    window.__antigravity_topbar_ro.observe(corner);
+                    if (observedCorner) localTopbarRo.unobserve(observedCorner);
+                    localTopbarRo.observe(corner);
                     observedCorner = corner;
                 }
                 if (toolbar && toolbar !== observedChatRight) {
-                    if (observedChatRight) window.__antigravity_topbar_ro.unobserve(observedChatRight);
-                    window.__antigravity_topbar_ro.observe(toolbar);
+                    if (observedChatRight) localTopbarRo.unobserve(observedChatRight);
+                    localTopbarRo.observe(toolbar);
                     observedChatRight = toolbar;
                 }
                 if (auxParent && auxParent !== observedAuxParent) {
-                    if (observedAuxParent) window.__antigravity_topbar_ro.unobserve(observedAuxParent);
-                    window.__antigravity_topbar_ro.observe(auxParent);
+                    if (observedAuxParent) localTopbarRo.unobserve(observedAuxParent);
+                    localTopbarRo.observe(auxParent);
                     observedAuxParent = auxParent;
                 }
             }
-            if (window.__antigravity_corner_mo) {
-                if (corner && corner !== window.__antigravity_observed_corner_mo) {
-                    window.__antigravity_corner_mo.observe(corner, { childList: true, subtree: true });
-                    window.__antigravity_observed_corner_mo = corner;
+            if (localCornerMo) {
+                if (corner && corner !== observedCornerMo) {
+                    localCornerMo.observe(corner, { childList: true, subtree: true });
+                    observedCornerMo = corner;
                 }
-                if (titlebar && titlebar !== window.__antigravity_observed_titlebar_mo) {
-                    window.__antigravity_corner_mo.observe(titlebar, { childList: true, subtree: true });
-                    window.__antigravity_observed_titlebar_mo = titlebar;
+                if (titlebar && titlebar !== observedTitlebarMo) {
+                    localCornerMo.observe(titlebar, { childList: true, subtree: true });
+                    observedTitlebarMo = titlebar;
                 }
-                if (toolbar && toolbar !== window.__antigravity_observed_toolbar_mo) {
-                    window.__antigravity_corner_mo.observe(toolbar, { childList: true, subtree: true });
-                    window.__antigravity_observed_toolbar_mo = toolbar;
+                if (toolbar && toolbar !== observedToolbarMo) {
+                    localCornerMo.observe(toolbar, { childList: true, subtree: true });
+                    observedToolbarMo = toolbar;
                 }
-                if (auxParent && auxParent !== window.__antigravity_observed_aux_mo) {
-                    window.__antigravity_corner_mo.observe(auxParent, { childList: true, subtree: true });
-                    window.__antigravity_observed_aux_mo = auxParent;
+                if (auxParent && auxParent !== observedAuxMo) {
+                    localCornerMo.observe(auxParent, { childList: true, subtree: true });
+                    observedAuxMo = auxParent;
                 }
             }
         } catch (e) {}
@@ -20870,48 +20937,37 @@ function initLanguageSwitcher() {
             if (computedTop !== null) {
                 wrapper.style.top = computedTop + 'px';
             } else if (targetRight === null) {
-                wrapper.style.top = isWinPlatform ? '4px' : '';
-                wrapper.style.right = isWinPlatform ? '148px' : '';
+                // Keep pill aligned on Row 2 (same vertical line as chat toolbar) on empty-toolbar pages (/sidecars, /settings, /customizations, /automations)
+                const titleMenu = document.querySelector('[data-testid="title-menu-bar"]');
+                const tmBottom = titleMenu ? titleMenu.getBoundingClientRect().bottom : 0;
+                const tbTop = toolbar ? toolbar.getBoundingClientRect().top : 0;
+                const row2Top = tmBottom > 0
+                    ? Math.round(tmBottom + 6)
+                    : (tbTop >= 32 ? Math.round(tbTop - 14) : (isWinPlatform ? 41 : 6));
+                wrapper.style.top = row2Top + 'px';
+                wrapper.style.right = '16px';
             }
         } catch (e) {}
     }
 
-    if (window.__antigravity_sync_topbar_resize) {
-        window.removeEventListener('resize', window.__antigravity_sync_topbar_resize);
-    }
-    if (window.__antigravity_sync_topbar_pointer) {
-        window.removeEventListener('pointerdown', window.__antigravity_sync_topbar_pointer, true);
-    }
-    if (window.__antigravity_sync_topbar_interval) {
-        clearInterval(window.__antigravity_sync_topbar_interval);
-        window.__antigravity_sync_topbar_interval = null;
-    }
-    if (window.__antigravity_topbar_ro) {
-        try { window.__antigravity_topbar_ro.disconnect(); } catch (e) {}
-    }
-    if (window.__antigravity_corner_mo) {
-        try { window.__antigravity_corner_mo.disconnect(); } catch (e) {}
-    }
-    window.__antigravity_observed_corner_mo = null;
-    window.__antigravity_observed_titlebar_mo = null;
-    window.__antigravity_observed_toolbar_mo = null;
-    window.__antigravity_observed_aux_mo = null;
-
-    if (typeof ResizeObserver !== 'undefined') {
-        window.__antigravity_topbar_ro = new ResizeObserver(scheduleTopbarSync);
-    }
-    if (typeof MutationObserver !== 'undefined') {
-        window.__antigravity_corner_mo = new MutationObserver(scheduleTopbarSync);
-    }
-    window.__antigravity_sync_topbar_resize = scheduleTopbarSync;
-    window.addEventListener('resize', window.__antigravity_sync_topbar_resize);
-    window.__antigravity_sync_topbar_pointer = (e) => {
+    const localResizeHandler = scheduleTopbarSync;
+    const localPointerHandler = (e) => {
         if (e && typeof e.clientY === 'number' && e.clientY <= 84) {
             startTopbarTrackingBurst(650);
         }
     };
-    window.addEventListener('pointerdown', window.__antigravity_sync_topbar_pointer, true);
-    window.__antigravity_sync_topbar_interval = setInterval(syncTopbarPosition, 2000);
+    window.addEventListener('resize', localResizeHandler);
+    window.addEventListener('pointerdown', localPointerHandler, true);
+    const localTopbarInterval = setInterval(syncTopbarPosition, 1500);
+    if (typeof window.__ag_register_disposer === 'function') {
+        window.__ag_register_disposer(() => {
+            clearInterval(localTopbarInterval);
+            try { window.removeEventListener('resize', localResizeHandler); } catch (e) {}
+            try { window.removeEventListener('pointerdown', localPointerHandler, true); } catch (e) {}
+            if (localTopbarRo) { try { localTopbarRo.disconnect(); } catch (e) {} }
+            if (localCornerMo) { try { localCornerMo.disconnect(); } catch (e) {} }
+        });
+    }
     startTopbarTrackingBurst(400);
 
     function updateUI() {
@@ -21288,8 +21344,14 @@ function initLanguageSwitcher() {
         });
     }
 
-    window.__antigravity_status_interval = setInterval(checkUpdateStatus, 4000);
-    window.__antigravity_remote_check_interval = setInterval(checkGithubRemoteVersion, 45000);
+    const localStatusInterval = setInterval(checkUpdateStatus, 4000);
+    const localRemoteCheckInterval = setInterval(checkGithubRemoteVersion, 45000);
+    if (typeof window.__ag_register_disposer === 'function') {
+        window.__ag_register_disposer(() => {
+            clearInterval(localStatusInterval);
+            clearInterval(localRemoteCheckInterval);
+        });
+    }
     checkUpdateStatus();
     checkGithubRemoteVersion();
     updateUI();
@@ -21444,28 +21506,43 @@ const initInterval = setInterval(() => {
         if (isAntigravityShell) {
             const myEpoch = String(Date.now()) + '-' + Math.random().toString(36).slice(2, 8);
             const isHotReload = !!window.__antigravity_localizer_loaded || !!(document.documentElement && document.documentElement.getAttribute('data-ag-loc-epoch'));
+            // Dispose any previous instance in THIS SAME JS world synchronously BEFORE starting new timers/observers
+            if (typeof window.__antigravity_dispose_current === 'function') {
+                try { window.__antigravity_dispose_current(); } catch (e) {}
+            }
+            window.__antigravity_active_epoch = myEpoch;
             window.__antigravity_localizer_loaded = true;
             try {
                 if (document.documentElement) {
                     document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.1.46');
                 }
+                // Notify isolated/other worlds (e.g. preload.js <-> CDP main world) to step down cleanly
                 window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
             } catch (e) {}
+            let disposedSelf = false;
+            const myDisposers = [];
+            window.__ag_register_disposer = (fn) => {
+                if (typeof fn === 'function') myDisposers.push(fn);
+            };
+            const disposeSelf = () => {
+                if (disposedSelf) return;
+                disposedSelf = true;
+                try { window.removeEventListener('message', onSuperseded); } catch (e) {}
+                stopObserving();
+                for (const fn of myDisposers) {
+                    try { fn(); } catch (e) {}
+                }
+                myDisposers.length = 0;
+            };
             const onSuperseded = (ev) => {
                 try {
                     if (ev && ev.data && ev.data.type === 'ANTIGRAVITY_LOC_SUPERSEDED' && ev.data.epoch && ev.data.epoch !== myEpoch) {
-                        window.removeEventListener('message', onSuperseded);
-                        stopObserving();
-                        if (window.__antigravity_status_interval) { clearInterval(window.__antigravity_status_interval); window.__antigravity_status_interval = null; }
-                        if (window.__antigravity_remote_check_interval) { clearInterval(window.__antigravity_remote_check_interval); window.__antigravity_remote_check_interval = null; }
-                        if (window.__antigravity_sync_topbar_interval) { clearInterval(window.__antigravity_sync_topbar_interval); window.__antigravity_sync_topbar_interval = null; }
-                        if (window.__antigravity_sync_topbar_resize) { window.removeEventListener('resize', window.__antigravity_sync_topbar_resize); }
-                        if (window.__antigravity_sync_topbar_pointer) { window.removeEventListener('pointerdown', window.__antigravity_sync_topbar_pointer, true); }
-                        if (window.__antigravity_topbar_ro) { try { window.__antigravity_topbar_ro.disconnect(); } catch (e) {} }
-                        if (window.__antigravity_corner_mo) { try { window.__antigravity_corner_mo.disconnect(); } catch (e) {} }
+                        disposeSelf();
                     }
                 } catch (e) {}
             };
+            window.__antigravity_dispose_current = disposeSelf;
             window.addEventListener('message', onSuperseded);
             initLanguageSwitcher();
             initTerminalInjection();

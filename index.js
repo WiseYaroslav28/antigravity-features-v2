@@ -70,7 +70,14 @@ let isCheckingUpdate = false;
 let versionTransition = null;
 let hotUpdateNotice = null;
 
-// Silent file-only logger (CRITICAL: Never use console.log/error as stdout/stderr corrupts MCP Stdio JSON-RPC)
+// Silent file-only logger with automatic 512 KB cap (CRITICAL: Never use console.log/error as stdout/stderr corrupts MCP Stdio JSON-RPC)
+const MAX_LOG_BYTES = 512 * 1024;
+try {
+  if (fs.existsSync(LOG_FILE) && fs.statSync(LOG_FILE).size > MAX_LOG_BYTES) {
+    const raw = fs.readFileSync(LOG_FILE);
+    fs.writeFileSync(LOG_FILE, raw.subarray(Math.max(0, raw.length - 128 * 1024)));
+  }
+} catch (e) {}
 function log(msg) {
   try {
     const timestamp = new Date().toISOString();
@@ -709,7 +716,7 @@ function isAntigravityHubTarget(target) {
   if (u.startsWith('vscode-file://') || u.startsWith('antigravity-ide://')) return true;
   if (/^https:\/\/(?:127\.0\.0\.1|localhost):\d+\//.test(u)) {
     if (target.title && target.title.includes('Antigravity')) return true;
-    if (/^https:\/\/(?:127\.0\.0\.1|localhost):\d+\/(?:c\/|settings|customizations|plugins|projects|automations|onboarding)/.test(u)) return true;
+    if (/^https:\/\/(?:127\.0\.0\.1|localhost):\d+\/(?:c\/|settings|customizations|plugins|projects|automations|sidecars|onboarding)/.test(u)) return true;
   }
   return false;
 }
@@ -719,29 +726,6 @@ function isAntigravityUiTarget(target) {
   if (isAntigravityHubTarget(target)) return true;
   const u = target.url;
   return u.startsWith('plugin://') || u.startsWith('vscode-webview://');
-}
-
-async function trackAndSaveWindowGeometry() {
-  try {
-    const targets = await CDP.List({ port: 9222 });
-    const pageTarget = targets.find(t => isAntigravityHubTarget(t));
-    if (!pageTarget) return;
-
-    const client = await CDP({ target: pageTarget.id, port: 9222 });
-    const { Runtime } = client;
-    const res = await Runtime.evaluate({
-      expression: 'JSON.stringify({ x: window.screenX, y: window.screenY, width: window.outerWidth, height: window.outerHeight, isMaximized: (window.outerWidth >= window.screen.availWidth && window.outerHeight >= window.screen.availHeight) })'
-    });
-    if (res && res.result && res.result.value) {
-      const bounds = JSON.parse(res.result.value);
-      if (bounds.width > 300 && bounds.height > 300) {
-        const backupDir = path.join(__dirname, "backups");
-        if (!fs.existsSync(backupDir)) fs.mkdirSync(backupDir, { recursive: true });
-        fs.writeFileSync(GEOMETRY_FILE, JSON.stringify(bounds, null, 2), 'utf8');
-      }
-    }
-    await client.close();
-  } catch(e) {}
 }
 
 async function forceHotReloadLocalization() {
@@ -756,8 +740,9 @@ async function forceHotReloadLocalization() {
 
     for (const target of targets) {
       if (!isAntigravityUiTarget(target)) continue;
+      let client = null;
       try {
-        const client = await CDP({ target: target.id, port: 9222 });
+        client = await CDP({ target: target.id, port: 9222 });
         const { Page, Runtime } = client;
         await Page.enable();
         await Runtime.enable();
@@ -766,8 +751,12 @@ async function forceHotReloadLocalization() {
         injectedTargets.add(target.id);
         cdpConnected = true;
         log(`[HotReload] Live-updated localization in target: ${target.title} (${target.id})`);
-        await client.close();
-      } catch (e) {}
+      } catch (e) {
+      } finally {
+        if (client) {
+          try { await client.close(); } catch (e) {}
+        }
+      }
     }
   } catch (e) {}
 }
@@ -777,36 +766,52 @@ async function attemptCdpInjection() {
     const targets = await CDP.List({ port: 9222 });
     if (!targets || targets.length === 0) return;
 
+    const activeIds = new Set(targets.map(t => t.id));
+    for (const id of Array.from(injectedTargets)) {
+      if (!activeIds.has(id)) injectedTargets.delete(id);
+    }
+
+    const localVer = getLocalVersionInfo().version;
+
     for (const target of targets) {
       if (!isAntigravityUiTarget(target)) continue;
       if (injectedTargets.has(target.id)) continue;
 
+      let client = null;
       try {
-        const client = await CDP({ target: target.id, port: 9222 });
+        client = await CDP({ target: target.id, port: 9222 });
         const { Page, Runtime } = client;
-        await Page.enable();
         await Runtime.enable();
 
+        // Skip redundant injection if native preload.js already booted the exact same local version
+        const verCheck = await Runtime.evaluate({
+          expression: "document.documentElement ? document.documentElement.getAttribute('data-ag-loc-ver') : null",
+          returnByValue: true
+        });
+        if (verCheck && verCheck.result && verCheck.result.value === localVer) {
+          injectedTargets.add(target.id);
+          cdpConnected = true;
+          continue;
+        }
+
         if (fs.existsSync(LOCALIZATION_FILE)) {
+          await Page.enable();
           const locCode = fs.readFileSync(LOCALIZATION_FILE, 'utf8');
           const wrappedCode = `{\n${locCode}\n}`;
-          
-          // 1. Inject for future navigation/loads
-          await Page.addScriptToEvaluateOnNewDocument({ source: wrappedCode });
 
-          // 2. Evaluate immediately on currently open document
+          await Page.addScriptToEvaluateOnNewDocument({ source: wrappedCode });
           await Runtime.evaluate({ expression: wrappedCode });
 
           injectedTargets.add(target.id);
           cdpConnected = true;
           log(`Successfully injected localization into target: ${target.title} (${target.id})`);
         }
-
-        client.on('disconnect', () => {
-          injectedTargets.delete(target.id);
-        });
       } catch (errTarget) {
         // Target might be transient, ignore quietly
+      } finally {
+        if (client) {
+          try { await client.close(); } catch (e) {}
+        }
       }
     }
   } catch (err) {
@@ -815,11 +820,10 @@ async function attemptCdpInjection() {
   }
 }
 
-// Background periodic loop: check CDP and save geometry (primary UI instance only)
+// Background periodic loop: check CDP for newly opened targets (primary UI instance only)
 if (!IS_HEADLESS_SUBAGENT_CALL) {
   setInterval(() => {
     if (!isPrimaryUiInstance) return;
     attemptCdpInjection();
-    trackAndSaveWindowGeometry();
   }, 5000);
 }
