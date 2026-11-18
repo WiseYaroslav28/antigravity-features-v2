@@ -1,5 +1,4 @@
 import { spawn } from 'child_process';
-import CDP from 'chrome-remote-interface';
 import path from 'path';
 import os from 'os';
 import fs from 'fs';
@@ -30,20 +29,6 @@ function spawnApp(args = []) {
   }
 }
 
-async function launchOrFocus() {
-  try {
-    const targets = await CDP.List({ port: 9222 });
-    if (targets && targets.length > 0) {
-      spawnApp([]);
-      process.exit(0);
-    }
-  } catch (e) {
-    // AntiGravity is not running yet on port 9222
-  }
-
-  // Initial launch with remote debugging port enabled
-  spawnApp(['--remote-debugging-port=9222']);
-  process.exit(0);
-}
-
-launchOrFocus();
+// Launch or focus AntiGravity cleanly (v2.2.0+ uses local HTTP hot-reload, no --remote-debugging-port needed)
+spawnApp([]);
+process.exit(0);

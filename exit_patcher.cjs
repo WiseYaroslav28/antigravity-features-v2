@@ -74,15 +74,15 @@ function isAntigravityRunning() {
 }
 
 function relaunchAntigravity() {
-  log("Relaunching AntiGravity with --remote-debugging-port=9222...");
+  log("Relaunching AntiGravity cleanly (HTTP hot-reload mode, no CDP port needed)...");
   if (isMac) {
-    const child = spawn('open', ['-a', APP_DIR, '--args', '--remote-debugging-port=9222'], {
+    const child = spawn('open', ['-a', APP_DIR], {
       detached: true,
       stdio: 'ignore'
     });
     child.unref();
   } else if (fs.existsSync(EXE_PATH)) {
-    const child = spawn(EXE_PATH, ['--remote-debugging-port=9222'], {
+    const child = spawn(EXE_PATH, [], {
       detached: true,
       stdio: 'ignore',
       windowsHide: false

@@ -69,6 +69,31 @@ let lastUpdateCheckAt = null;
 let isCheckingUpdate = false;
 let versionTransition = null;
 let hotUpdateNotice = null;
+let lastUiHeartbeatAt = 0;
+let lastUiVersion = null;
+let cachedLocMeta = { mtimeMs: 0, size: 0, hash: null, content: null };
+
+function getLocalizationFileMeta(includeContent = false) {
+  try {
+    if (!fs.existsSync(LOCALIZATION_FILE)) return null;
+    const st = fs.statSync(LOCALIZATION_FILE);
+    if (
+      cachedLocMeta.mtimeMs !== st.mtimeMs ||
+      cachedLocMeta.size !== st.size ||
+      !cachedLocMeta.hash ||
+      (includeContent && cachedLocMeta.content === null)
+    ) {
+      const content = fs.readFileSync(LOCALIZATION_FILE, 'utf8');
+      const hash = crypto.createHash('sha256').update(content).digest('hex').slice(0, 16);
+      cachedLocMeta = { mtimeMs: st.mtimeMs, size: st.size, hash, content };
+    }
+    return includeContent
+      ? cachedLocMeta
+      : { mtimeMs: cachedLocMeta.mtimeMs, size: cachedLocMeta.size, hash: cachedLocMeta.hash };
+  } catch (e) {
+    return null;
+  }
+}
 
 // Silent file-only logger with automatic 512 KB cap (CRITICAL: Never use console.log/error as stdout/stderr corrupts MCP Stdio JSON-RPC)
 const MAX_LOG_BYTES = 512 * 1024;
@@ -151,6 +176,7 @@ const controlServer = http.createServer(async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Expose-Headers', 'X-AG-Loc-Version, X-AG-Loc-Hash');
 
   if (req.method === 'OPTIONS') {
     res.writeHead(204);
@@ -158,13 +184,44 @@ const controlServer = http.createServer(async (req, res) => {
     return;
   }
 
-  if (req.url === '/status') {
+  const reqPath = (req.url || '/').split('?')[0];
+
+  if (reqPath === '/localization.js') {
+    const localInfo = getLocalVersionInfo();
+    const meta = getLocalizationFileMeta(true);
+    if (!meta || !meta.content) {
+      res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+      res.end('localization_injected.js not found');
+      return;
+    }
+    lastUiHeartbeatAt = Date.now();
+    res.writeHead(200, {
+      'Content-Type': 'application/javascript; charset=utf-8',
+      'Cache-Control': 'no-store, no-cache, must-revalidate',
+      'X-AG-Loc-Version': localInfo.version || '2.2.0',
+      'X-AG-Loc-Hash': meta.hash || ''
+    });
+    res.end(meta.content);
+    return;
+  }
+
+  if (reqPath === '/status') {
+    lastUiHeartbeatAt = Date.now();
+    try {
+      const parsedUrl = new URL(req.url, 'http://127.0.0.1:39228');
+      const verParam = parsedUrl.searchParams.get('ver');
+      if (verParam) lastUiVersion = verParam;
+    } catch (e) {}
     const localInfo = getLocalVersionInfo();
     const settings = getSettings();
+    const locMeta = getLocalizationFileMeta(false);
     const effectiveRemoteVersion = (latestRemoteVersion && compareSemver(latestRemoteVersion, localInfo.version) >= 0)
       ? latestRemoteVersion
       : localInfo.version;
-    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.writeHead(200, {
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-store, no-cache, must-revalidate'
+    });
     res.end(JSON.stringify({
       updatePending: pendingPatchToApply,
       asarUnpatched: pendingPatchToApply,
@@ -173,7 +230,10 @@ const controlServer = http.createServer(async (req, res) => {
       lastUpdateCheckAt,
       versionTransition,
       hotUpdateNotice,
-      autoUpdate: settings.autoUpdate !== false
+      autoUpdate: settings.autoUpdate !== false,
+      localizationHash: locMeta ? locMeta.hash : null,
+      hotReloadTransport: 'http',
+      httpHotReloadUrl: 'http://127.0.0.1:39228/localization.js'
     }));
     return;
   }
@@ -340,18 +400,20 @@ function rebuildPatchedAsarInBackground(markPendingRestart = false, autoRestartI
         }
       } catch (e) {}
 
-      const cdpOpen = await checkCdpPortOpen();
-      if (directlyPatched && cdpOpen) {
+      const uiHeartbeatConnected = (Date.now() - lastUiHeartbeatAt) < 15000;
+      const cdpOpen = uiHeartbeatConnected ? false : await checkCdpPortOpen();
+      const uiConnected = uiHeartbeatConnected || cdpOpen;
+      if (directlyPatched && uiConnected) {
         pendingPatchToApply = false;
       } else if (markPendingRestart) {
         pendingPatchToApply = true;
       }
 
-      log(`Auto-patcher built app.asar.patched successfully (directlyPatched=${directlyPatched}, cdpOpen=${cdpOpen})! Arming silent exit-patcher...`);
+      log(`Auto-patcher built app.asar.patched successfully (directlyPatched=${directlyPatched}, uiConnected=${uiConnected})! Arming silent exit-patcher...`);
 
       const exitPatcherPath = path.join(__dirname, 'exit_patcher.cjs');
-      if (autoRestartIfCdpClosed && !cdpOpen) {
-        // Fresh official AntiGravity update launched without CDP port 9222 or preload patch:
+      if (autoRestartIfCdpClosed && !uiConnected) {
+        // Fresh official AntiGravity update launched without preload localization patch:
         // auto-restart once (with 5-minute cooldown guard) so localization loads immediately
         const cooldownFile = path.join(__dirname, 'backups', 'last-auto-restart.json');
         let canAutoRestart = true;
@@ -523,13 +585,15 @@ async function checkAndApplyGithubUpdate({ force = false, checkOnly = false } = 
       hotUpdateNotice = transition;
     }
 
-    log(`[AutoUpdater] Successfully updated v${localVersion} -> v${remoteMeta.version} (needsRestart=${needsRestart}).`);
+    const freshMeta = getLocalizationFileMeta(false);
+    log(`[AutoUpdater] Successfully updated v${localVersion} -> v${remoteMeta.version} (needsRestart=${needsRestart}, hash=${freshMeta?.hash || 'none'}).`);
     return {
       status: "updated",
       from: localVersion,
       to: remoteMeta.version,
       changelog: transition.changelog,
-      requiresRestart: needsRestart
+      requiresRestart: needsRestart,
+      localizationHash: freshMeta ? freshMeta.hash : null
     };
   } catch (err) {
     log(`[AutoUpdater] Check/update error: ${err.message}`);
@@ -564,6 +628,7 @@ server.tool(
       } catch (e) {}
     }
     const localInfo = getLocalVersionInfo();
+    const locMeta = getLocalizationFileMeta(false);
     return {
       content: [
         {
@@ -576,6 +641,11 @@ server.tool(
               lastUpdateCheckAt,
               versionTransition,
               updatePending: pendingPatchToApply,
+              hotReloadTransport: "http",
+              httpHotReloadUrl: "http://127.0.0.1:39228/localization.js",
+              localizationHash: locMeta ? locMeta.hash : null,
+              uiHeartbeatConnected: (Date.now() - lastUiHeartbeatAt) < 15000,
+              lastUiVersion,
               cdpConnected,
               injectedTargetsCount: injectedTargets.size,
               backupFilesCount,
@@ -820,10 +890,11 @@ async function attemptCdpInjection() {
   }
 }
 
-// Background periodic loop: check CDP for newly opened targets (primary UI instance only)
+// Optional legacy CDP fallback check once after startup (only when UI HTTP heartbeat isn't active yet, e.g. pre-v2.2.0 transition)
 if (!IS_HEADLESS_SUBAGENT_CALL) {
-  setInterval(() => {
+  setTimeout(() => {
     if (!isPrimaryUiInstance) return;
+    if ((Date.now() - lastUiHeartbeatAt) < 15000) return;
     attemptCdpInjection();
-  }, 5000);
+  }, 4000);
 }

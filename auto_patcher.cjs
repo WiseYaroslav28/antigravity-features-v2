@@ -101,6 +101,7 @@ async function runUnpatchTo(targetOutPath) {
         const mFile = path.join(distDir, 'main.js');
         if (fs.existsSync(mFile)) {
             let c = fs.readFileSync(mFile, 'utf8');
+            c = c.replace(/\s*\/\/ BEGIN ANTIGRAVITY HTTP HOT-RELOAD IPC PATCH[\s\S]*?\/\/ END ANTIGRAVITY HTTP HOT-RELOAD IPC PATCH\s*/g, '\n');
             c = c.replace(/\/\/ ANTIGRAVITY CDP PORT PATCH\s*if\s*\(!electron_1\.app\.commandLine\.hasSwitch\('remote-debugging-port'\)\)\s*\{\s*electron_1\.app\.commandLine\.appendSwitch\('remote-debugging-port',\s*'9222'\);\s*\}\s*/g, '');
             c = c.replace(/appendSwitch\(['"]remote-debugging-port['"],\s*['"]9222['"]\)/g, "appendSwitch('remote-debugging-port', '0')");
             c = c.replace(
@@ -430,6 +431,8 @@ if (!window.__antigravity_translation_initialized) {
             window.__antigravity_force_shell = true;
         }
         window.__antigravity_open_external = (url) => electron_1.ipcRenderer.invoke('shell:open-external', url);
+        window.__antigravity_reload_subframes = (code) => electron_1.ipcRenderer.invoke('ag-loc:hot-reload-subframes', code);
+        window.__antigravity_reload_main = (code) => electron_1.ipcRenderer.invoke('ag-loc:hot-reload-main', code);
         ${localizationCode}
         window.__antigravity_translation_success = true;
     } catch(e) {
@@ -522,29 +525,63 @@ if (!window.__antigravity_translation_initialized) {
             mainContent = mainContent.replace(/showErrorBox\(['"]Binary not found['"],/g, "showErrorBox('Бинарный файл не найден',");
             mainContent = mainContent.replace(/showErrorBox\(['"]WSL setup failed['"],/g, "showErrorBox('Сбой настройки WSL',");
             mainContent = mainContent.replace(/showErrorBox\(['"]Startup failed['"],/g, "showErrorBox('Сбой запуска',");
-            if (/appendSwitch\(['"]remote-debugging-port['"],\s*['"]0['"]\)/.test(mainContent)) {
-                mainContent = mainContent.replace(/appendSwitch\(['"]remote-debugging-port['"],\s*['"]0['"]\)/g, "appendSwitch('remote-debugging-port', '9222')");
-            } else if (!mainContent.includes('ANTIGRAVITY CDP PORT PATCH') && !mainContent.includes("'remote-debugging-port', '9222'")) {
-                if (mainContent.includes("appendSwitch('disable-blink-features', 'AutomationControlled')")) {
-                    mainContent = mainContent.replace(
-                        /electron_1\.app\.commandLine\.appendSwitch\('disable-blink-features',\s*'AutomationControlled'\);/,
-                        `// ANTIGRAVITY CDP PORT PATCH
-if (!electron_1.app.commandLine.hasSwitch('remote-debugging-port')) {
-    electron_1.app.commandLine.appendSwitch('remote-debugging-port', '9222');
-}
-electron_1.app.commandLine.appendSwitch('disable-blink-features', 'AutomationControlled');`
-                    );
-                } else {
-                    mainContent = mainContent.replace(
-                        /electron_1\.app\.whenReady\(\)/,
-                        `// ANTIGRAVITY CDP PORT PATCH
-if (!electron_1.app.commandLine.hasSwitch('remote-debugging-port')) {
-    electron_1.app.commandLine.appendSwitch('remote-debugging-port', '9222');
-}
-electron_1.app.whenReady()`
-                    );
+            // Strip any legacy <=v2.1.47 CDP port 9222 patch (v2.2.0+ uses local HTTP hot-reload on 127.0.0.1:39228 with zero debugging ports)
+            mainContent = mainContent.replace(/\/\/ ANTIGRAVITY CDP PORT PATCH\s*if\s*\(!electron_1\.app\.commandLine\.hasSwitch\('remote-debugging-port'\)\)\s*\{\s*electron_1\.app\.commandLine\.appendSwitch\('remote-debugging-port',\s*'9222'\);\s*\}\s*/g, '');
+            mainContent = mainContent.replace(/appendSwitch\(['"]remote-debugging-port['"],\s*['"]9222['"]\)/g, "appendSwitch('remote-debugging-port', '0')");
+            mainContent = mainContent.replace(/\s*\/\/ BEGIN ANTIGRAVITY HTTP HOT-RELOAD IPC PATCH[\s\S]*?\/\/ END ANTIGRAVITY HTTP HOT-RELOAD IPC PATCH\s*/g, '\n');
+            mainContent = mainContent.trimEnd() + `
+
+// BEGIN ANTIGRAVITY HTTP HOT-RELOAD IPC PATCH
+try {
+    const isTrustedAgHubUrl = (u) => typeof u === 'string' && (
+        /^https?:\\/\\/(?:127\\.0\\.0\\.1|localhost):\\d+\\//.test(u) ||
+        u.startsWith('vscode-file://') ||
+        u.startsWith('antigravity-ide://')
+    );
+    const isValidLocBundle = (code) => typeof code === 'string' && code.length > 50000 && code.includes('ANTIGRAVITY_LOC_SUPERSEDED');
+    electron_1.ipcMain.removeHandler('ag-loc:hot-reload-subframes');
+    electron_1.ipcMain.handle('ag-loc:hot-reload-subframes', async (event, code) => {
+        if (!isTrustedAgHubUrl(event?.senderFrame?.url || event?.sender?.getURL?.() || '') || !isValidLocBundle(code)) {
+            return { ok: false, reason: 'rejected' };
+        }
+        global.__antigravity_cached_subframe_loc = code;
+        let reloaded = 0;
+        try {
+            const rootFrame = event?.sender?.mainFrame;
+            if (rootFrame && Array.isArray(rootFrame.framesInSubtree)) {
+                for (const frame of rootFrame.framesInSubtree) {
+                    if (!frame || frame === rootFrame || frame.isDestroyed?.()) continue;
+                    const fUrl = frame.url || '';
+                    if (fUrl.startsWith('plugin://') || fUrl.startsWith('vscode-webview://')) {
+                        try {
+                            await frame.executeJavaScript(code);
+                            reloaded++;
+                        } catch (e) {}
+                    }
                 }
             }
+        } catch (e) {}
+        return { ok: true, reloaded };
+    });
+    electron_1.ipcMain.removeHandler('ag-loc:hot-reload-main');
+    electron_1.ipcMain.handle('ag-loc:hot-reload-main', async (event, code) => {
+        if (!isTrustedAgHubUrl(event?.senderFrame?.url || event?.sender?.getURL?.() || '') || !isValidLocBundle(code)) {
+            return { ok: false, reason: 'rejected' };
+        }
+        global.__antigravity_cached_subframe_loc = code;
+        try {
+            if (event?.sender && !event.sender.isDestroyed?.()) {
+                await event.sender.executeJavaScript(code);
+                return { ok: true };
+            }
+        } catch (e) {
+            return { ok: false, reason: String(e) };
+        }
+        return { ok: false, reason: 'no_sender' };
+    });
+} catch (e) {}
+// END ANTIGRAVITY HTTP HOT-RELOAD IPC PATCH
+`;
             if (!mainContent.includes('__saveWindowStateNow')) {
                 mainContent = mainContent.replace(
                     /for\s*\(\s*const\s+win\s+of\s+windows\s*\)\s*\{\s*win\.destroy\(\);\s*\}/,
@@ -555,7 +592,7 @@ electron_1.app.whenReady()`
                 );
             }
             fs.writeFileSync(mainExtracted, mainContent, 'utf8');
-            console.log('[AutoPatcher-v2] Patched dist/main.js for second-instance shortcut re-launch, before-quit state save, menu & dialogs!');
+            console.log('[AutoPatcher-v2] Patched dist/main.js for HTTP hot-reload IPC (zero CDP port 9222), second-instance tray, before-quit state save, menu & dialogs!');
         }
 
         // 4. PATCH UTILS.JS (Fix Geometry V3 on <=2.32.2, respect native windowState.js on >=2.33.0, & Native 0ms plugin:// Subframe Localization)

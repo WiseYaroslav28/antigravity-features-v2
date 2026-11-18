@@ -34,6 +34,6 @@ if exist "%PATCHED_PATH%" (
 :copy_success
 timeout /t 1 /nobreak >nul
 
-:: 4. Start AntiGravity with remote debugging port
-start "" "%EXE_PATH%" --remote-debugging-port=9222
+:: 4. Start AntiGravity cleanly (v2.2.0+ uses local HTTP hot-reload, no remote-debugging-port needed)
+start "" "%EXE_PATH%"
 exit /b 0

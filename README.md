@@ -2,7 +2,7 @@
 
 ![Google AntiGravity 2.0 — 100% RU + Live MCP Auto-Update](assets/hero-banner.jpg)
 
-[![Version](https://img.shields.io/badge/version-v2.1.47-blue.svg)](version.json)
+[![Version](https://img.shields.io/badge/version-v2.2.0-blue.svg)](version.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11%20%7C%20macOS-0078D6.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
 [![Target](https://img.shields.io/badge/Google%20AntiGravity-2.0%2B-orange.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
@@ -112,8 +112,9 @@
 | Файл | Назначение |
 | :--- | :--- |
 | [`version.json`](version.json) | Паспорт релиза: номер версии SemVer (`2.1.26`), дата, описание изменений (`changelog`) и список обновляемых файлов. |
-| [`index.js`](index.js) | Фоновый MCP-сервер, движок автообновления с GitHub, HTTP-сервер статуса (`127.0.0.1:39228`) и CDP-инжектор. |
-| [`localization_injected.js`](localization_injected.js) | Единый модуль словаря переводов, регулярных выражений и верхнего виджета `EN \| RU` с индикацией версий. |
+| [`index.js`](index.js) | Фоновый MCP-сервер, движок автообновления с GitHub и локальный HTTP-сервер статуса и hot-reload (`http://127.0.0.1:39228/localization.js`) без зависимости от `remote-debugging-port: 9222`. |
+| [`src/`](src/) + [`build.cjs`](build.cjs) | Модульные исходники русификатора (`helpers.js`, `dict-ui.js`, `dict-plugins.js`, `step-engine.js`, `regex-rules.js`, `dom-engine.js`, `topbar-ui.js`, `terminal-boot.js`) и zero-dependency сборщик (`npm run build`). |
+| [`localization_injected.js`](localization_injected.js) | Автособираемый бандл словаря переводов, регулярных выражений, движка `MutationObserver` и виджета `EN \| RU` (полная обратная совместимость с автообновлением). |
 | [`auto_patcher.cjs`](auto_patcher.cjs) | Автоматический сборщик `app.asar.patched` с проверкой каждого файла компилятором V8 (`vm.Script`). |
 | [`exit_patcher.cjs`](exit_patcher.cjs) | Фоновый модуль тихой подмены `app.asar` после штатного закрытия AntiGravity пользователем. |
 | [`backup_manager.js`](backup_manager.js) | Служба резервного копирования состояния и координат окна каждые 30 секунд. |
@@ -135,7 +136,8 @@
 2. **🔄 Zero-Touch GitHub Auto-Updater via MCP**:
    * The bundled Model Context Protocol (MCP) server ([`index.js`](index.js)) periodically checks [`version.json`](version.json) on GitHub over HTTPS (works even on machines without Git installed).
    * Validates every downloaded `.js`/`.cjs` file using Node's V8 syntax checker (`node --check`) before replacing local files.
-   * **Live CDP Hot-Reload**: dictionary updates are injected immediately into open windows via Chrome DevTools Protocol with zero downtime, displaying a version transition badge (`v2.0.0 → v2.1.26`) and release notes right in the top-bar widget.
+   * **Live HTTP Hot-Reload (Zero CDP Required)**: dictionary updates are served locally from `http://127.0.0.1:39228/localization.js` and hot-loaded directly by the UI & `plugin://` subframes with zero downtime and no `--remote-debugging-port=9222` flag required.
+   * **Modular Source Architecture**: edit clean modules in [`src/`](src/) (`dict-ui.js`, `dict-plugins.js`, `step-engine.js`, `regex-rules.js`, `dom-engine.js`, `topbar-ui.js`, `terminal-boot.js`) and run `npm run build` ([`build.cjs`](build.cjs)) to assemble the backwards-compatible `localization_injected.js`.
 
 3. **🖥️ Multi-Monitor Window Geometry & Maximized State Persistence**:
    * Fixes the default `1400x900` primary-monitor reset by persisting `x`, `y`, `width`, `height`, and `isMaximized` state across sessions.

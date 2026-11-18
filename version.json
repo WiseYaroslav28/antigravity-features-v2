@@ -1,7 +1,7 @@
 {
-  "version": "2.1.47",
-  "releasedAt": "2026-11-18T22:45:00.000Z",
-  "changelog": "Обновление v2.1.47: исправлено отключение MutationObserver после горячего обновления (теперь динамические меню, подсказки и карточки плагинов переводятся всегда и мгновенно через takeRecords без разрыва наблюдения, изолирован кэш regex и фреймы plugin://), плюс переведены обновлённые подсказки Gemini 4 Neon/Argon/Hydrogen, карточка «Знакомьтесь: Gemini 4 Neon», описания автоматизаций и дополнительные строки интерфейса 2.33.0.",
+  "version": "2.2.0",
+  "releasedAt": "2026-11-18T23:00:00.000Z",
+  "changelog": "Крупное обновление v2.2.0: 1) Модульная архитектура исходников localization_injected.js — файл разбит на 8 чистых модулей в src/ (dict-ui, dict-plugins, step-engine, regex-rules, dom-engine, topbar-ui, terminal-boot, helpers) со сборщиком build.cjs без зависимостей и 100% обратной совместимостью. 2) Полный перевод live hot-reload на локальный HTTP-сервер http://127.0.0.1:39228/localization.js + безопасный Electron IPC для plugin:// фреймов — русификатор больше не зависит от отладочного ключа Chromium --remote-debugging-port=9222.",
   "requiresRestart": false,
   "files": [
     "localization_injected.js",
