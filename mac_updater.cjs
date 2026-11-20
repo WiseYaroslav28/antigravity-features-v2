@@ -250,10 +250,23 @@ function sleepMs(ms) {
 }
 
 function waitForAppExit(targetPid, exePath, timeoutMs = 30000) {
-  const deadline = Date.now() + timeoutMs;
+  const start = Date.now();
+  const deadline = start + timeoutMs;
+  const sigtermThreshold = start + Math.min(15000, Math.floor(timeoutMs / 2));
+  let sigtermSent = false;
+
   while (Date.now() < deadline) {
     if (!isAppRunning(targetPid, exePath)) {
+      // Короткая пауза, чтобы дочерние процессы (Antigravity Helper, language_server) освободили дескрипторы
+      sleepMs(400);
       return true;
+    }
+    if (!sigtermSent && Date.now() >= sigtermThreshold && targetPid && isPidAlive(targetPid)) {
+      sigtermSent = true;
+      log(`Штатное закрытие заняло >15 с; отправляем мягкий SIGTERM процессу PID ${targetPid}...`);
+      try {
+        process.kill(targetPid, 'SIGTERM');
+      } catch (e) {}
     }
     sleepMs(300);
   }
@@ -410,6 +423,17 @@ function main() {
           if (fs.existsSync(updateInfoPath)) fs.unlinkSync(updateInfoPath);
         } catch (e) {}
         log('Кэш pending-обновления очищен.');
+      }
+      // Очистка осиротевших временных папок update.* в кэше Squirrel.Mac (ShipIt)
+      const shipItDir = path.join(os.homedir(), 'Library', 'Caches', 'com.google.antigravity.ShipIt');
+      if (fs.existsSync(shipItDir)) {
+        try {
+          for (const entry of fs.readdirSync(shipItDir)) {
+            if (entry.startsWith('update.')) {
+              fs.rmSync(path.join(shipItDir, entry), { recursive: true, force: true });
+            }
+          }
+        } catch (e) {}
       }
     }
 

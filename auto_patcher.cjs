@@ -154,7 +154,8 @@ async function runUnpatchTo(targetOutPath) {
             c = c.replace(/MenuUpdateStep\["CheckingForUpdates"\] = "Проверка обновлений\.\.\.";/g, 'MenuUpdateStep["CheckingForUpdates"] = "Checking for Updates...";');
             c = c.replace(/MenuUpdateStep\["DownloadingUpdate"\] = "Загрузка обновления\.\.\.";/g, 'MenuUpdateStep["DownloadingUpdate"] = "Downloading Update...";');
             c = c.replace(/MenuUpdateStep\["RestartToUpdate"\] = "Перезапустить для обновления";/g, 'MenuUpdateStep["RestartToUpdate"] = "Restart to Update";');
-            c = c.replace(/\s*if \(process\.platform === 'darwin'\) __agMacSetPending\(info\);/g, '');
+            c = c.replace(/\s*if \(process\.platform === 'darwin'\) __agMacInitHook\(\);/g, '');
+            c = c.replace(/\s*if \(process\.platform === 'darwin'\) __agMacSetPending\(info(?:,\s*true)?\);/g, '');
             c = c.replace(/\s*if \(process\.platform === 'darwin' && __agMacHandleSigError\(err\)\) return;/g, '');
             c = c.replace(/\s*if \(process\.platform === 'darwin' && __agMacLaunchUpdater\(\)\) return;/g, '');
             c = c.replace(/\s*\/\/ BEGIN ANTIGRAVITY MACOS UPDATER PATCH[\s\S]*?\/\/ END ANTIGRAVITY MACOS UPDATER PATCH\s*/g, '\n');
@@ -893,7 +894,8 @@ try {
 
             // 5.1. Короткий macOS-хук автообновления (обход ошибки подписи Squirrel.Mac через внешний mac_updater.cjs)
             // Сначала снимаем предыдущую версию хука для идемпотентного обновления при будущих релизах
-            updaterContent = updaterContent.replace(/\s*if \(process\.platform === 'darwin'\) __agMacSetPending\(info\);/g, '');
+            updaterContent = updaterContent.replace(/\s*if \(process\.platform === 'darwin'\) __agMacInitHook\(\);/g, '');
+            updaterContent = updaterContent.replace(/\s*if \(process\.platform === 'darwin'\) __agMacSetPending\(info(?:,\s*true)?\);/g, '');
             updaterContent = updaterContent.replace(/\s*if \(process\.platform === 'darwin' && __agMacHandleSigError\(err\)\) return;/g, '');
             updaterContent = updaterContent.replace(/\s*if \(process\.platform === 'darwin' && __agMacLaunchUpdater\(\)\) return;/g, '');
             updaterContent = updaterContent.replace(/\s*\/\/ BEGIN ANTIGRAVITY MACOS UPDATER PATCH[\s\S]*?\/\/ END ANTIGRAVITY MACOS UPDATER PATCH\s*/g, '\n');
@@ -904,7 +906,7 @@ try {
 // BEGIN ANTIGRAVITY MACOS UPDATER PATCH
 const __agMacFs = require('fs');
 const __agMacOs = require('os');
-const __agMacPending = { version: null, downloadedFile: null, ready: false };
+const __agMacPending = { version: null, downloadedFile: null, ready: false, launching: false };
 const __AG_MAC_UPDATER_SCRIPT = ${JSON.stringify(macUpdaterScriptPath)};
 const __AG_MAC_NODE_BIN = ${JSON.stringify(process.execPath)};
 function __agMacResolveScript() {
@@ -912,10 +914,28 @@ function __agMacResolveScript() {
     const fallback = path.join(__agMacOs.homedir(), '.antigravity-features-v2', 'mac_updater.cjs');
     return __agMacFs.existsSync(fallback) ? fallback : null;
 }
-function __agMacSetPending(info) {
-    if (!info) return;
-    if (info.version) __agMacPending.version = info.version;
-    if (info.downloadedFile) __agMacPending.downloadedFile = info.downloadedFile;
+function __agMacCloseProxyServer() {
+    try {
+        if (typeof electron_updater_1.autoUpdater.closeServerIfExists === 'function') {
+            electron_updater_1.autoUpdater.closeServerIfExists();
+        }
+    } catch (e) {}
+}
+function __agMacInitHook() {
+    if (process.platform !== 'darwin') return;
+    try {
+        if (__agMacResolveScript()) {
+            electron_updater_1.autoUpdater.autoInstallOnAppQuit = false;
+        }
+        if (electron_updater_1.autoUpdater && !electron_updater_1.autoUpdater.__agMacQuitWrapped) {
+            const origQuit = electron_updater_1.autoUpdater.quitAndInstall.bind(electron_updater_1.autoUpdater);
+            electron_updater_1.autoUpdater.quitAndInstall = (...args) => {
+                if (process.platform === 'darwin' && __agMacLaunchUpdater()) return;
+                return origQuit(...args);
+            };
+            electron_updater_1.autoUpdater.__agMacQuitWrapped = true;
+        }
+    } catch (e) {}
 }
 function __agMacResolveZip() {
     if (__agMacPending.downloadedFile && __agMacFs.existsSync(__agMacPending.downloadedFile)) {
@@ -935,15 +955,35 @@ function __agMacResolveZip() {
     const defZip = path.join(pendingDir, 'Antigravity.zip');
     return __agMacFs.existsSync(defZip) ? defZip : null;
 }
+function __agMacSetPending(info, isDownloaded = false) {
+    __agMacInitHook();
+    if (info) {
+        if (info.version) __agMacPending.version = info.version;
+        if (info.downloadedFile) __agMacPending.downloadedFile = info.downloadedFile;
+    }
+    if (isDownloaded) {
+        const zipPath = __agMacResolveZip();
+        const scriptPath = __agMacResolveScript();
+        if (zipPath && scriptPath) {
+            __agMacPending.downloadedFile = zipPath;
+            __agMacPending.ready = true;
+            try { electron_updater_1.autoUpdater.autoInstallOnAppQuit = false; } catch (e) {}
+            __agMacCloseProxyServer();
+            console.log('[AutoUpdater] macOS update ready via mac_updater.cjs:', zipPath);
+        }
+    }
+}
 function __agMacHandleSigError(err) {
+    __agMacInitHook();
     const msg = String(err && err.message ? err.message : err || '');
-    if (!/Code signature|did not pass validation|code requirement|ShipIt/i.test(msg)) return false;
+    if (!/Code signature|did not pass validation|code requirement|ShipIt|The command is disabled and cannot be executed/i.test(msg)) return false;
     const zipPath = __agMacResolveZip();
     const scriptPath = __agMacResolveScript();
     if (!zipPath || !scriptPath) return false;
     __agMacPending.downloadedFile = zipPath;
     __agMacPending.ready = true;
     try { electron_updater_1.autoUpdater.autoInstallOnAppQuit = false; } catch (e) {}
+    __agMacCloseProxyServer();
     console.log('[AutoUpdater] macOS signature fallback armed via mac_updater.cjs for:', zipPath);
     broadcastState({
         type: types_1.UpdateState.Ready,
@@ -953,10 +993,13 @@ function __agMacHandleSigError(err) {
     return true;
 }
 function __agMacLaunchUpdater() {
-    if (!__agMacPending.ready) return false;
+    if (__agMacPending.launching) return true;
     const scriptPath = __agMacResolveScript();
     const zipPath = __agMacResolveZip();
     if (!scriptPath || !zipPath) return false;
+    __agMacPending.launching = true;
+    __agMacPending.ready = true;
+    __agMacCloseProxyServer();
     const nodeCandidates = [__AG_MAC_NODE_BIN, '/opt/homebrew/bin/node', '/usr/local/bin/node', 'node'];
     const nodeBin = nodeCandidates.find((p) => p === 'node' || (p && __agMacFs.existsSync(p))) || 'node';
     const appIdx = process.execPath.indexOf('.app/');
@@ -967,17 +1010,26 @@ function __agMacLaunchUpdater() {
         const child = (0, child_process_1.spawn)(nodeBin, args, { detached: true, stdio: 'ignore' });
         child.unref();
         console.log('[AutoUpdater] Spawned external mac_updater.cjs, quitting app to apply verified Google update...');
+        try { electron_1.autoUpdater.emit('before-quit-for-update'); } catch (e) {}
         try { if (typeof utils_1.setShowQuitConfirmation === 'function') (0, utils_1.setShowQuitConfirmation)(false); } catch (e) {}
         electron_1.app.quit();
         return true;
     } catch (spawnErr) {
+        __agMacPending.launching = false;
         console.error('[AutoUpdater] Failed to launch mac_updater.cjs:', spawnErr.message);
         return false;
     }
 }
+__agMacInitHook();
 // END ANTIGRAVITY MACOS UPDATER PATCH
 `;
                 let macHookApplied = false;
+                if (/electron_updater_1\.autoUpdater\.autoInstallOnAppQuit\s*=\s*electron_1\.app\.isPackaged;/.test(updaterContent)) {
+                    updaterContent = updaterContent.replace(
+                        /(electron_updater_1\.autoUpdater\.autoInstallOnAppQuit\s*=\s*electron_1\.app\.isPackaged;)/,
+                        "$1\n    if (process.platform === 'darwin') __agMacInitHook();"
+                    );
+                }
                 if (/electron_updater_1\.autoUpdater\.on\('update-available',\s*\(info\)\s*=>\s*\{/.test(updaterContent)) {
                     updaterContent = updaterContent.replace(
                         /(electron_updater_1\.autoUpdater\.on\('update-available',\s*\(info\)\s*=>\s*\{)/,
@@ -987,7 +1039,7 @@ function __agMacLaunchUpdater() {
                 if (/electron_updater_1\.autoUpdater\.on\('update-downloaded',\s*\(info\)\s*=>\s*\{/.test(updaterContent)) {
                     updaterContent = updaterContent.replace(
                         /(electron_updater_1\.autoUpdater\.on\('update-downloaded',\s*\(info\)\s*=>\s*\{)/,
-                        "$1\n        if (process.platform === 'darwin') __agMacSetPending(info);"
+                        "$1\n        if (process.platform === 'darwin') __agMacSetPending(info, true);"
                     );
                 }
                 if (/electron_updater_1\.autoUpdater\.on\('error',\s*\(err\)\s*=>\s*\{\s*console\.error\('\[AutoUpdater\] Error:',\s*err\.message\);/.test(updaterContent)) {
