@@ -1,7 +1,7 @@
 {
-  "version": "2.2.0",
-  "releasedAt": "2026-11-18T23:00:00.000Z",
-  "changelog": "Крупное обновление v2.2.0: 1) Модульная архитектура исходников localization_injected.js — файл разбит на 8 чистых модулей в src/ (dict-ui, dict-plugins, step-engine, regex-rules, dom-engine, topbar-ui, terminal-boot, helpers) со сборщиком build.cjs без зависимостей и 100% обратной совместимостью. 2) Полный перевод live hot-reload на локальный HTTP-сервер http://127.0.0.1:39228/localization.js + безопасный Electron IPC для plugin:// фреймов — русификатор больше не зависит от отладочного ключа Chromium --remote-debugging-port=9222.",
+  "version": "2.2.1",
+  "releasedAt": "2026-11-20T21:10:00.000Z",
+  "changelog": "Обновление v2.2.1: добавлено безопасное автообновление AntiGravity на macOS (mac_updater.cjs от @MrRay57, PR #3) — обход ошибки подписи Squirrel.Mac с проверкой SHA-512 и официального сертификата Google LLC (Team ID EQHXZ8M8AV), атомарной заменой .app с откатом, автоматическим перепатчиванием, сбросом диалога выхода и защитой от гонки с exit_patcher.cjs.",
   "requiresRestart": false,
   "files": [
     "localization_injected.js",

@@ -2,7 +2,7 @@
 
 ![Google AntiGravity 2.0 — 100% RU + Live MCP Auto-Update](assets/hero-banner.jpg)
 
-[![Version](https://img.shields.io/badge/version-v2.2.0-blue.svg)](version.json)
+[![Version](https://img.shields.io/badge/version-v2.2.1-blue.svg)](version.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11%20%7C%20macOS-0078D6.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
 [![Target](https://img.shields.io/badge/Google%20AntiGravity-2.0%2B-orange.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
@@ -117,6 +117,7 @@
 | [`localization_injected.js`](localization_injected.js) | Автособираемый бандл словаря переводов, регулярных выражений, движка `MutationObserver` и виджета `EN \| RU` (полная обратная совместимость с автообновлением). |
 | [`auto_patcher.cjs`](auto_patcher.cjs) | Автоматический сборщик `app.asar.patched` с проверкой каждого файла компилятором V8 (`vm.Script`). |
 | [`exit_patcher.cjs`](exit_patcher.cjs) | Фоновый модуль тихой подмены `app.asar` после штатного закрытия AntiGravity пользователем. |
+| [`mac_updater.cjs`](mac_updater.cjs) | Безопасный установщик обновлений AntiGravity на macOS (проверка SHA-512 и официальной подписи Google LLC `EQHXZ8M8AV`, атомарная замена `.app` с откатом и автоперепатчиванием). |
 | [`backup_manager.js`](backup_manager.js) | Служба резервного копирования состояния и координат окна каждые 30 секунд. |
 | [`install_on_new_pc.bat`](install_on_new_pc.bat) | Автоматический установщик для Windows. |
 | [`install.sh`](install.sh) | Однострочный bash-установщик для macOS / Unix с автоматической переподписью `codesign`. |
@@ -196,7 +197,7 @@ If you find this project helpful, you can support its continued development:
 ## 🤝 Благодарности и участники / Contributors
 
 Спасибо участникам сообщества за вклад в развитие проекта:
-* **[@MrRay57](https://github.com/MrRay57)** — кроссплатформенная адаптация под **macOS**, автоматическая переподпись бандла `codesign` для Apple Gatekeeper и bash-установщик [`install.sh`](install.sh) ([PR #1](https://github.com/WiseYaroslav28/antigravity-features-v2/pull/1)).
+* **[@MrRay57](https://github.com/MrRay57)** — кроссплатформенная адаптация под **macOS**, автоматическая переподпись бандла `codesign` и [`install.sh`](install.sh) ([PR #1](https://github.com/WiseYaroslav28/antigravity-features-v2/pull/1)), адаптивный дизайн плашки `EN | RU` ([PR #2](https://github.com/WiseYaroslav28/antigravity-features-v2/pull/2)), безопасное автообновление на macOS через [`mac_updater.cjs`](mac_updater.cjs) с проверкой подписи Google LLC ([PR #3](https://github.com/WiseYaroslav28/antigravity-features-v2/pull/3)).
 
 ---
 

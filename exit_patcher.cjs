@@ -29,10 +29,23 @@ const BAK_PATH = isMac
 const PATCHED_PATH = path.join(__dirname, 'app.asar.patched');
 const LOG_FILE = path.join(__dirname, 'features_v2.log');
 const PID_FILE = path.join(__dirname, 'backups', 'exit-patcher.pid');
+const MAC_UPDATER_PID_FILE = path.join(__dirname, 'backups', 'mac-updater.pid');
 const UNINSTALL_LOCK_FILE = path.join(__dirname, 'backups', 'uninstalling.lock');
 const isRestartMode = process.argv.includes('--restart');
 
-if (fs.existsSync(UNINSTALL_LOCK_FILE)) {
+function isMacUpdaterActive() {
+  if (!isMac || !fs.existsSync(MAC_UPDATER_PID_FILE)) return false;
+  try {
+    const macPid = parseInt(fs.readFileSync(MAC_UPDATER_PID_FILE, 'utf8').trim(), 10);
+    if (macPid > 0 && macPid !== process.pid) {
+      process.kill(macPid, 0);
+      return true;
+    }
+  } catch (e) {}
+  return false;
+}
+
+if (fs.existsSync(UNINSTALL_LOCK_FILE) || isMacUpdaterActive()) {
   process.exit(0);
 }
 
@@ -94,6 +107,10 @@ function relaunchAntigravity() {
 function applyAsarWithRetry() {
   if (fs.existsSync(UNINSTALL_LOCK_FILE)) {
     log("Uninstall lock detected; aborting exit-patcher.");
+    return false;
+  }
+  if (isMacUpdaterActive()) {
+    log("mac_updater.cjs is actively updating AntiGravity.app; deferring patching to mac_updater.");
     return false;
   }
   let currentIsAlreadyPatched = false;

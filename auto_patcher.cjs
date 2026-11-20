@@ -892,7 +892,13 @@ try {
             );
 
             // 5.1. Короткий macOS-хук автообновления (обход ошибки подписи Squirrel.Mac через внешний mac_updater.cjs)
-            if (!updaterContent.includes('BEGIN ANTIGRAVITY MACOS UPDATER PATCH')) {
+            // Сначала снимаем предыдущую версию хука для идемпотентного обновления при будущих релизах
+            updaterContent = updaterContent.replace(/\s*if \(process\.platform === 'darwin'\) __agMacSetPending\(info\);/g, '');
+            updaterContent = updaterContent.replace(/\s*if \(process\.platform === 'darwin' && __agMacHandleSigError\(err\)\) return;/g, '');
+            updaterContent = updaterContent.replace(/\s*if \(process\.platform === 'darwin' && __agMacLaunchUpdater\(\)\) return;/g, '');
+            updaterContent = updaterContent.replace(/\s*\/\/ BEGIN ANTIGRAVITY MACOS UPDATER PATCH[\s\S]*?\/\/ END ANTIGRAVITY MACOS UPDATER PATCH\s*/g, '\n');
+
+            if (isMac) {
                 const macUpdaterScriptPath = path.join(__dirname, 'mac_updater.cjs');
                 const macUpdaterHelper = `
 // BEGIN ANTIGRAVITY MACOS UPDATER PATCH
@@ -961,6 +967,7 @@ function __agMacLaunchUpdater() {
         const child = (0, child_process_1.spawn)(nodeBin, args, { detached: true, stdio: 'ignore' });
         child.unref();
         console.log('[AutoUpdater] Spawned external mac_updater.cjs, quitting app to apply verified Google update...');
+        try { if (typeof utils_1.setShowQuitConfirmation === 'function') (0, utils_1.setShowQuitConfirmation)(false); } catch (e) {}
         electron_1.app.quit();
         return true;
     } catch (spawnErr) {
@@ -997,7 +1004,7 @@ function __agMacLaunchUpdater() {
                     );
                 }
                 if (macHookApplied) {
-                    updaterContent = updaterContent + '\n' + macUpdaterHelper;
+                    updaterContent = updaterContent.trimEnd() + '\n' + macUpdaterHelper;
                     console.log('[AutoPatcher-v2] Patched dist/updater.js with macOS Squirrel fallback hook (mac_updater.cjs)!');
                 }
             }

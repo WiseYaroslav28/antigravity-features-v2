@@ -20,8 +20,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.2.0';
-    const DEFAULT_CHANGELOG_V220 = 'Крупное обновление v2.2.0: модульная сборка localization_injected.js из 8 файлов в src/ через build.cjs (без зависимостей) и полный перевод live hot-reload на локальный HTTP-сервер http://127.0.0.1:39228/localization.js с отказом от ключа --remote-debugging-port=9222.';
+    const FALLBACK_VERSION = '2.2.1';
+    const DEFAULT_CHANGELOG_V221 = 'Обновление v2.2.1: добавлено безопасное автообновление AntiGravity на macOS (mac_updater.cjs от @MrRay57 с проверкой SHA-512 и официальной подписи Google LLC / Team ID EQHXZ8M8AV, атомарной заменой .app, автоперепатчиванием и защитой от гонки с exit_patcher.cjs).';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -29,10 +29,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V220;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V221;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V220;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V221;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
