@@ -9,6 +9,9 @@ const os = require('os');
 const username = process.env.USERNAME || process.env.USER || os.userInfo().username;
 const isMac = process.platform === 'darwin';
 function resolveMacAppBundle() {
+    if (process.env.AG_APP_BUNDLE && fs.existsSync(process.env.AG_APP_BUNDLE)) {
+        return path.resolve(process.env.AG_APP_BUNDLE);
+    }
     const candidates = [
         '/Applications/Antigravity.app',
         '/Applications/Antigravity IDE.app',
@@ -151,6 +154,10 @@ async function runUnpatchTo(targetOutPath) {
             c = c.replace(/MenuUpdateStep\["CheckingForUpdates"\] = "Проверка обновлений\.\.\.";/g, 'MenuUpdateStep["CheckingForUpdates"] = "Checking for Updates...";');
             c = c.replace(/MenuUpdateStep\["DownloadingUpdate"\] = "Загрузка обновления\.\.\.";/g, 'MenuUpdateStep["DownloadingUpdate"] = "Downloading Update...";');
             c = c.replace(/MenuUpdateStep\["RestartToUpdate"\] = "Перезапустить для обновления";/g, 'MenuUpdateStep["RestartToUpdate"] = "Restart to Update";');
+            c = c.replace(/\s*if \(process\.platform === 'darwin'\) __agMacSetPending\(info\);/g, '');
+            c = c.replace(/\s*if \(process\.platform === 'darwin' && __agMacHandleSigError\(err\)\) return;/g, '');
+            c = c.replace(/\s*if \(process\.platform === 'darwin' && __agMacLaunchUpdater\(\)\) return;/g, '');
+            c = c.replace(/\s*\/\/ BEGIN ANTIGRAVITY MACOS UPDATER PATCH[\s\S]*?\/\/ END ANTIGRAVITY MACOS UPDATER PATCH\s*/g, '\n');
             fs.writeFileSync(updFile, c, 'utf8');
         }
 
@@ -883,6 +890,118 @@ try {
                 /MenuUpdateStep\[['"]RestartToUpdate['"]\]\s*=\s*['"]Restart to Update['"];/g,
                 'MenuUpdateStep["RestartToUpdate"] = "Перезапустить для обновления";'
             );
+
+            // 5.1. Короткий macOS-хук автообновления (обход ошибки подписи Squirrel.Mac через внешний mac_updater.cjs)
+            if (!updaterContent.includes('BEGIN ANTIGRAVITY MACOS UPDATER PATCH')) {
+                const macUpdaterScriptPath = path.join(__dirname, 'mac_updater.cjs');
+                const macUpdaterHelper = `
+// BEGIN ANTIGRAVITY MACOS UPDATER PATCH
+const __agMacFs = require('fs');
+const __agMacOs = require('os');
+const __agMacPending = { version: null, downloadedFile: null, ready: false };
+const __AG_MAC_UPDATER_SCRIPT = ${JSON.stringify(macUpdaterScriptPath)};
+const __AG_MAC_NODE_BIN = ${JSON.stringify(process.execPath)};
+function __agMacResolveScript() {
+    if (__agMacFs.existsSync(__AG_MAC_UPDATER_SCRIPT)) return __AG_MAC_UPDATER_SCRIPT;
+    const fallback = path.join(__agMacOs.homedir(), '.antigravity-features-v2', 'mac_updater.cjs');
+    return __agMacFs.existsSync(fallback) ? fallback : null;
+}
+function __agMacSetPending(info) {
+    if (!info) return;
+    if (info.version) __agMacPending.version = info.version;
+    if (info.downloadedFile) __agMacPending.downloadedFile = info.downloadedFile;
+}
+function __agMacResolveZip() {
+    if (__agMacPending.downloadedFile && __agMacFs.existsSync(__agMacPending.downloadedFile)) {
+        return __agMacPending.downloadedFile;
+    }
+    const pendingDir = path.join(__agMacOs.homedir(), 'Library', 'Caches', 'com.google.antigravity', 'pending');
+    try {
+        const infoPath = path.join(pendingDir, 'update-info.json');
+        if (__agMacFs.existsSync(infoPath)) {
+            const meta = JSON.parse(__agMacFs.readFileSync(infoPath, 'utf8'));
+            if (meta && meta.fileName) {
+                const candidate = path.join(pendingDir, path.basename(meta.fileName));
+                if (__agMacFs.existsSync(candidate)) return candidate;
+            }
+        }
+    } catch (e) {}
+    const defZip = path.join(pendingDir, 'Antigravity.zip');
+    return __agMacFs.existsSync(defZip) ? defZip : null;
+}
+function __agMacHandleSigError(err) {
+    const msg = String(err && err.message ? err.message : err || '');
+    if (!/Code signature|did not pass validation|code requirement|ShipIt/i.test(msg)) return false;
+    const zipPath = __agMacResolveZip();
+    const scriptPath = __agMacResolveScript();
+    if (!zipPath || !scriptPath) return false;
+    __agMacPending.downloadedFile = zipPath;
+    __agMacPending.ready = true;
+    try { electron_updater_1.autoUpdater.autoInstallOnAppQuit = false; } catch (e) {}
+    console.log('[AutoUpdater] macOS signature fallback armed via mac_updater.cjs for:', zipPath);
+    broadcastState({
+        type: types_1.UpdateState.Ready,
+        update: { version: __agMacPending.version || 'latest' },
+    });
+    updateMenuState(MenuUpdateStep.RestartToUpdate);
+    return true;
+}
+function __agMacLaunchUpdater() {
+    if (!__agMacPending.ready) return false;
+    const scriptPath = __agMacResolveScript();
+    const zipPath = __agMacResolveZip();
+    if (!scriptPath || !zipPath) return false;
+    const nodeCandidates = [__AG_MAC_NODE_BIN, '/opt/homebrew/bin/node', '/usr/local/bin/node', 'node'];
+    const nodeBin = nodeCandidates.find((p) => p === 'node' || (p && __agMacFs.existsSync(p))) || 'node';
+    const appIdx = process.execPath.indexOf('.app/');
+    const appBundle = appIdx !== -1 ? process.execPath.slice(0, appIdx + 4) : '/Applications/Antigravity.app';
+    const args = [scriptPath, '--pid', String(process.pid), '--app-bundle', appBundle, '--zip', zipPath];
+    if (__agMacPending.version) args.push('--version', String(__agMacPending.version));
+    try {
+        const child = (0, child_process_1.spawn)(nodeBin, args, { detached: true, stdio: 'ignore' });
+        child.unref();
+        console.log('[AutoUpdater] Spawned external mac_updater.cjs, quitting app to apply verified Google update...');
+        electron_1.app.quit();
+        return true;
+    } catch (spawnErr) {
+        console.error('[AutoUpdater] Failed to launch mac_updater.cjs:', spawnErr.message);
+        return false;
+    }
+}
+// END ANTIGRAVITY MACOS UPDATER PATCH
+`;
+                let macHookApplied = false;
+                if (/electron_updater_1\.autoUpdater\.on\('update-available',\s*\(info\)\s*=>\s*\{/.test(updaterContent)) {
+                    updaterContent = updaterContent.replace(
+                        /(electron_updater_1\.autoUpdater\.on\('update-available',\s*\(info\)\s*=>\s*\{)/,
+                        "$1\n        if (process.platform === 'darwin') __agMacSetPending(info);"
+                    );
+                }
+                if (/electron_updater_1\.autoUpdater\.on\('update-downloaded',\s*\(info\)\s*=>\s*\{/.test(updaterContent)) {
+                    updaterContent = updaterContent.replace(
+                        /(electron_updater_1\.autoUpdater\.on\('update-downloaded',\s*\(info\)\s*=>\s*\{)/,
+                        "$1\n        if (process.platform === 'darwin') __agMacSetPending(info);"
+                    );
+                }
+                if (/electron_updater_1\.autoUpdater\.on\('error',\s*\(err\)\s*=>\s*\{\s*console\.error\('\[AutoUpdater\] Error:',\s*err\.message\);/.test(updaterContent)) {
+                    updaterContent = updaterContent.replace(
+                        /(electron_updater_1\.autoUpdater\.on\('error',\s*\(err\)\s*=>\s*\{\s*console\.error\('\[AutoUpdater\] Error:',\s*err\.message\);)/,
+                        "$1\n        if (process.platform === 'darwin' && __agMacHandleSigError(err)) return;"
+                    );
+                    macHookApplied = true;
+                }
+                if (/function quitAndInstall\(\)\s*\{\s*electron_updater_1\.autoUpdater\.quitAndInstall\(\);/.test(updaterContent)) {
+                    updaterContent = updaterContent.replace(
+                        /(function quitAndInstall\(\)\s*\{)/,
+                        "$1\n    if (process.platform === 'darwin' && __agMacLaunchUpdater()) return;"
+                    );
+                }
+                if (macHookApplied) {
+                    updaterContent = updaterContent + '\n' + macUpdaterHelper;
+                    console.log('[AutoPatcher-v2] Patched dist/updater.js with macOS Squirrel fallback hook (mac_updater.cjs)!');
+                }
+            }
+
             fs.writeFileSync(updaterExtracted, updaterContent, 'utf8');
             console.log('[AutoPatcher-v2] Patched dist/updater.js for native dialogs & update menu localization!');
         }

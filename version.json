@@ -9,6 +9,7 @@
     "index.js",
     "backup_manager.js",
     "exit_patcher.cjs",
+    "mac_updater.cjs",
     "launcher.js",
     "uninstaller.cjs"
   ],
