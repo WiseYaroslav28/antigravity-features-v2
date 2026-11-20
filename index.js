@@ -494,7 +494,7 @@ async function checkAndApplyGithubUpdate({ force = false, checkOnly = false } = 
     log(`[AutoUpdater] New GitHub release detected: v${localVersion} -> v${remoteMeta.version}! Downloading files...`);
     const filesToUpdate = Array.isArray(remoteMeta.files) && remoteMeta.files.length > 0
       ? remoteMeta.files
-      : ["localization_injected.js", "auto_patcher.cjs", "index.js", "backup_manager.js", "exit_patcher.cjs", "launcher.js"];
+      : ["localization_injected.js", "auto_patcher.cjs", "index.js", "backup_manager.js", "exit_patcher.cjs", "mac_updater.cjs", "launcher.js"];
 
     let autoPatcherChanged = false;
     const oldPatcherPath = path.join(__dirname, "auto_patcher.cjs");
@@ -517,7 +517,7 @@ async function checkAndApplyGithubUpdate({ force = false, checkOnly = false } = 
 
       // Safeguard for macOS: if downloading system patcher/runner scripts and the remote file does NOT support darwin/macOS,
       // skip overwriting the local macOS-adapted script so we don't regress to Windows-only paths.
-      if (isMac && ["auto_patcher.cjs", "index.js", "exit_patcher.cjs", "launcher.js", "backup_manager.js"].includes(safeRel)) {
+      if (isMac && ["auto_patcher.cjs", "index.js", "exit_patcher.cjs", "mac_updater.cjs", "launcher.js", "backup_manager.js"].includes(safeRel)) {
         const hasMacSupport = /process\.platform\s*===\s*['"]darwin['"]/.test(downloadedContent) || downloadedContent.includes("/Applications/Antigravity");
         if (!hasMacSupport) {
           log(`[AutoUpdater] Safeguard: Remote ${safeRel} is Windows-only (lacks macOS support). Keeping local macOS-adapted version.`);
