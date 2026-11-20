@@ -2,7 +2,7 @@
 
 ![Google AntiGravity 2.0 — 100% RU + Live MCP Auto-Update](assets/hero-banner.jpg)
 
-[![Version](https://img.shields.io/badge/version-v2.2.2-blue.svg)](version.json)
+[![Version](https://img.shields.io/badge/version-v2.2.3-blue.svg)](version.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11%20%7C%20macOS-0078D6.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
 [![Target](https://img.shields.io/badge/Google%20AntiGravity-2.0%2B-orange.svg)](https://github.com/WiseYaroslav28/antigravity-features-v2)
@@ -197,7 +197,7 @@ If you find this project helpful, you can support its continued development:
 ## 🤝 Благодарности и участники / Contributors
 
 Спасибо участникам сообщества за вклад в развитие проекта:
-* **[@MrRay57](https://github.com/MrRay57)** — кроссплатформенная адаптация под **macOS**, автоматическая переподпись бандла `codesign` и [`install.sh`](install.sh) ([PR #1](https://github.com/WiseYaroslav28/antigravity-features-v2/pull/1)), адаптивный дизайн плашки `EN | RU` ([PR #2](https://github.com/WiseYaroslav28/antigravity-features-v2/pull/2)), безопасное автообновление на macOS через [`mac_updater.cjs`](mac_updater.cjs) с проверкой подписи Google LLC ([PR #3](https://github.com/WiseYaroslav28/antigravity-features-v2/pull/3)).
+* **[@MrRay57](https://github.com/MrRay57)** — кроссплатформенная адаптация под **macOS**, автоматическая переподпись бандла `codesign` и [`install.sh`](install.sh) ([PR #1](https://github.com/WiseYaroslav28/antigravity-features-v2/pull/1)), адаптивный дизайн плашки `EN | RU` ([PR #2](https://github.com/WiseYaroslav28/antigravity-features-v2/pull/2)), безопасное автообновление на macOS через [`mac_updater.cjs`](mac_updater.cjs) с проверкой подписи Google LLC, защитой от `SIGTERM` и staged-патчингом ([PR #3](https://github.com/WiseYaroslav28/antigravity-features-v2/pull/3), [PR #4](https://github.com/WiseYaroslav28/antigravity-features-v2/pull/4)).
 
 ---
 

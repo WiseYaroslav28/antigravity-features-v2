@@ -6,9 +6,11 @@ const { execSync } = require('child_process');
 const asar = require('@electron/asar');
 
 // Защита от SIGTERM со стороны macOS loginwindow (_LSForceQuitApplication -> killPID hard=NO) при работе в фоне после закрытия IDE
-process.on('SIGTERM', () => {});
-process.on('SIGHUP', () => {});
-process.on('SIGINT', () => {});
+if (process.platform === 'darwin') {
+    process.on('SIGTERM', () => {});
+    process.on('SIGHUP', () => {});
+    process.on('SIGINT', () => {});
+}
 
 const os = require('os');
 const username = process.env.USERNAME || process.env.USER || os.userInfo().username;
@@ -1016,6 +1018,7 @@ function __agMacLaunchUpdater() {
         child.unref();
         console.log('[AutoUpdater] Spawned external mac_updater.cjs (SIG_IGN protected), quitting app to apply verified Google update...');
         try { electron_1.autoUpdater.emit('before-quit-for-update'); } catch (e) {}
+        try { electron_updater_1.autoUpdater.emit('before-quit-for-update'); } catch (e) {}
         try { if (typeof utils_1.setShowQuitConfirmation === 'function') (0, utils_1.setShowQuitConfirmation)(false); } catch (e) {}
         electron_1.app.quit();
         return true;

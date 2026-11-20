@@ -155,7 +155,7 @@ const initInterval = setInterval(() => {
             try {
                 if (document.documentElement) {
                     document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
-                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.2');
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.3');
                 }
                 // Notify isolated/other worlds (e.g. preload.js <-> CDP main world) to step down cleanly
                 window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
@@ -204,7 +204,7 @@ const initInterval = setInterval(() => {
             try {
                 if (document.documentElement) {
                     document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
-                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.2');
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.3');
                 }
                 window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
             } catch (e) {}

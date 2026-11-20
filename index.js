@@ -171,6 +171,21 @@ function fetchHttpsText(url) {
 
 log(`Starting AntiGravity Features v2 Service (v${getLocalVersionInfo().version})...`);
 
+function spawnExitPatcher(extraArgs = []) {
+  const exitPatcherPath = path.join(__dirname, 'exit_patcher.cjs');
+  const child = isMac
+    ? spawn('/bin/sh', ['-c', 'trap "" TERM HUP INT; exec "$0" "$@"', process.execPath, exitPatcherPath, ...extraArgs], {
+        detached: true,
+        stdio: 'ignore',
+      })
+    : spawn(process.execPath, [exitPatcherPath, ...extraArgs], {
+        detached: true,
+        stdio: 'ignore',
+        windowsHide: true,
+      });
+  child.unref();
+}
+
 // Tiny Local HTTP Control Server for 1-Click UI Restarts & Live Status
 const controlServer = http.createServer(async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -277,21 +292,6 @@ const controlServer = http.createServer(async (req, res) => {
     res.end(JSON.stringify(result));
     return;
   }
-
-function spawnExitPatcher(extraArgs = []) {
-  const exitPatcherPath = path.join(__dirname, 'exit_patcher.cjs');
-  const child = isMac
-    ? spawn('/bin/sh', ['-c', 'trap "" TERM HUP INT; exec "$0" "$@"', process.execPath, exitPatcherPath, ...extraArgs], {
-        detached: true,
-        stdio: 'ignore',
-      })
-    : spawn(process.execPath, [exitPatcherPath, ...extraArgs], {
-        detached: true,
-        stdio: 'ignore',
-        windowsHide: true,
-      });
-  child.unref();
-}
 
   if (req.url === '/restart') {
     log("1-Click Restart requested from UI widget! Launching exit_patcher.cjs --restart...");
@@ -414,7 +414,6 @@ function rebuildPatchedAsarInBackground(markPendingRestart = false, autoRestartI
 
       log(`Auto-patcher built app.asar.patched successfully (directlyPatched=${directlyPatched}, uiConnected=${uiConnected})! Arming silent exit-patcher...`);
 
-      const exitPatcherPath = path.join(__dirname, 'exit_patcher.cjs');
       if (autoRestartIfCdpClosed && !uiConnected) {
         // Fresh official AntiGravity update launched without preload localization patch:
         // auto-restart once (with 5-minute cooldown guard) so localization loads immediately

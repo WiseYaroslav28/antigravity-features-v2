@@ -4,9 +4,11 @@ const os = require('os');
 const { execSync, spawn } = require('child_process');
 
 // Защита от SIGTERM со стороны macOS loginwindow (_LSForceQuitApplication -> killPID hard=NO) после закрытия Antigravity.app
-process.on('SIGTERM', () => {});
-process.on('SIGHUP', () => {});
-process.on('SIGINT', () => {});
+if (process.platform === 'darwin') {
+  process.on('SIGTERM', () => {});
+  process.on('SIGHUP', () => {});
+  process.on('SIGINT', () => {});
+}
 
 const username = process.env.USERNAME || process.env.USER || path.basename(os.homedir());
 const isMac = process.platform === 'darwin';

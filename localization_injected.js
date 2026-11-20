@@ -19904,8 +19904,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.2.2';
-    const DEFAULT_CHANGELOG_V222 = 'Обновление v2.2.2: исправлено наложение плашки EN | RU при открытии меню «три точки» (⋮) — syncTopbarPosition больше не учитывает скрытые бэкдропы и меню Base UI, а z-index панели не перекрывает выпадающие меню; добавлен полный перевод новинок AntiGravity 2.34.0 (Настройки оркестратора, Уровень размышления, полка «Наука» с 5 научными плагинами, Настройка боковой панели, Фильтры и сортировка, клавиша отправки сообщений, область одобрения разрешений и UI-плагины).';
+    const FALLBACK_VERSION = '2.2.3';
+    const DEFAULT_CHANGELOG_V223 = 'Обновление v2.2.3: исправлено обновление в 1 клик на macOS (PR #4 от @MrRay57) — перехват кнопки обновления в топбаре UI (autoUpdater.quitAndInstall), защита фоновых mac_updater/exit_patcher/codesign от SIGTERM macOS loginwindow, staged-патчинг и codesign --verify до замены .app, очистка кэша ShipIt и перенос spawnExitPatcher на верхний уровень в index.js.';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -19913,10 +19913,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V222;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V223;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V222;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V223;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -21394,7 +21394,7 @@ const initInterval = setInterval(() => {
             try {
                 if (document.documentElement) {
                     document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
-                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.2');
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.3');
                 }
                 // Notify isolated/other worlds (e.g. preload.js <-> CDP main world) to step down cleanly
                 window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
@@ -21443,7 +21443,7 @@ const initInterval = setInterval(() => {
             try {
                 if (document.documentElement) {
                     document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
-                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.2');
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.3');
                 }
                 window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
             } catch (e) {}
