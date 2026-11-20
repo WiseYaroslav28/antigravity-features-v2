@@ -3,6 +3,11 @@ const path = require('path');
 const os = require('os');
 const { execSync, spawn } = require('child_process');
 
+// Защита от SIGTERM со стороны macOS loginwindow (_LSForceQuitApplication -> killPID hard=NO) после закрытия Antigravity.app
+process.on('SIGTERM', () => {});
+process.on('SIGHUP', () => {});
+process.on('SIGINT', () => {});
+
 const username = process.env.USERNAME || process.env.USER || path.basename(os.homedir());
 const isMac = process.platform === 'darwin';
 function resolveMacAppBundle() {
@@ -140,12 +145,12 @@ function applyAsarWithRetry() {
         try {
           const fwDir = path.join(APP_DIR, 'Contents', 'Frameworks');
           const elFwDir = path.join(fwDir, 'Electron Framework.framework', 'Versions', 'A');
-          try { execSync(`codesign --force --sign - "${path.join(elFwDir, 'Libraries')}"/*.dylib 2>/dev/null || true`, { stdio: 'ignore' }); } catch(e) {}
-          try { execSync(`codesign --force --sign - "${path.join(elFwDir, 'Helpers')}"/* 2>/dev/null || true`, { stdio: 'ignore' }); } catch(e) {}
-          try { execSync(`find "${fwDir}" -name "*.framework" -exec codesign --force --sign - {} \\; 2>/dev/null || true`, { stdio: 'ignore' }); } catch(e) {}
-          try { execSync(`find "${fwDir}" -name "*.app" -exec codesign --force --sign - {} \\; 2>/dev/null || true`, { stdio: 'ignore' }); } catch(e) {}
-          execSync(`codesign --force --sign - "${APP_DIR}"`, { stdio: 'ignore' });
-          try { execSync(`xattr -cr "${APP_DIR}"`, { stdio: 'ignore' }); } catch(e) {}
+          try { execSync(`trap '' TERM HUP INT; codesign --force --sign - "${path.join(elFwDir, 'Libraries')}"/*.dylib 2>/dev/null || true`, { stdio: 'ignore' }); } catch(e) {}
+          try { execSync(`trap '' TERM HUP INT; codesign --force --sign - "${path.join(elFwDir, 'Helpers')}"/* 2>/dev/null || true`, { stdio: 'ignore' }); } catch(e) {}
+          try { execSync(`trap '' TERM HUP INT; find "${fwDir}" -name "*.framework" -exec codesign --force --sign - {} \\; 2>/dev/null || true`, { stdio: 'ignore' }); } catch(e) {}
+          try { execSync(`trap '' TERM HUP INT; find "${fwDir}" -name "*.app" -exec codesign --force --sign - {} \\; 2>/dev/null || true`, { stdio: 'ignore' }); } catch(e) {}
+          execSync(`trap '' TERM HUP INT; codesign --force --sign - "${APP_DIR}"`, { stdio: 'ignore' });
+          try { execSync(`trap '' TERM HUP INT; xattr -cr "${APP_DIR}"`, { stdio: 'ignore' }); } catch(e) {}
           log("Successfully re-signed app bundle via inside-out codesign!");
         } catch (csErr) {
           log(`codesign warning: ${csErr.message}`);
