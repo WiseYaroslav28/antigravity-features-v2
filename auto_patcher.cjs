@@ -5,6 +5,11 @@ const vm = require('vm');
 const { execSync } = require('child_process');
 const asar = require('@electron/asar');
 
+// Защита от SIGTERM со стороны macOS loginwindow (_LSForceQuitApplication -> killPID hard=NO) при работе в фоне после закрытия IDE
+process.on('SIGTERM', () => {});
+process.on('SIGHUP', () => {});
+process.on('SIGINT', () => {});
+
 const os = require('os');
 const username = process.env.USERNAME || process.env.USER || os.userInfo().username;
 const isMac = process.platform === 'darwin';
@@ -1007,9 +1012,9 @@ function __agMacLaunchUpdater() {
     const args = [scriptPath, '--pid', String(process.pid), '--app-bundle', appBundle, '--zip', zipPath];
     if (__agMacPending.version) args.push('--version', String(__agMacPending.version));
     try {
-        const child = (0, child_process_1.spawn)(nodeBin, args, { detached: true, stdio: 'ignore' });
+        const child = (0, child_process_1.spawn)('/bin/sh', ['-c', 'trap "" TERM HUP INT; exec "$0" "$@"', nodeBin, ...args], { detached: true, stdio: 'ignore' });
         child.unref();
-        console.log('[AutoUpdater] Spawned external mac_updater.cjs, quitting app to apply verified Google update...');
+        console.log('[AutoUpdater] Spawned external mac_updater.cjs (SIG_IGN protected), quitting app to apply verified Google update...');
         try { electron_1.autoUpdater.emit('before-quit-for-update'); } catch (e) {}
         try { if (typeof utils_1.setShowQuitConfirmation === 'function') (0, utils_1.setShowQuitConfirmation)(false); } catch (e) {}
         electron_1.app.quit();
@@ -1364,12 +1369,12 @@ function buildContextMenuTemplate(items, onSelect) {`
                     console.log('[AutoPatcher-v2] Updating macOS code signature...');
                     const fwDir = path.join(appBundlePath, 'Contents', 'Frameworks');
                     const elFwDir = path.join(fwDir, 'Electron Framework.framework', 'Versions', 'A');
-                    try { execSync(`codesign --force --sign - "${path.join(elFwDir, 'Libraries')}"/*.dylib 2>/dev/null || true`, { stdio: 'ignore' }); } catch(e) {}
-                    try { execSync(`codesign --force --sign - "${path.join(elFwDir, 'Helpers')}"/* 2>/dev/null || true`, { stdio: 'ignore' }); } catch(e) {}
-                    try { execSync(`find "${fwDir}" -name "*.framework" -exec codesign --force --sign - {} \\; 2>/dev/null || true`, { stdio: 'ignore' }); } catch(e) {}
-                    try { execSync(`find "${fwDir}" -name "*.app" -exec codesign --force --sign - {} \\; 2>/dev/null || true`, { stdio: 'ignore' }); } catch(e) {}
-                    execSync(`codesign --force --sign - "${appBundlePath}"`, { stdio: 'ignore' });
-                    try { execSync(`xattr -cr "${appBundlePath}"`, { stdio: 'ignore' }); } catch(e) {}
+                    try { execSync(`trap '' TERM HUP INT; codesign --force --sign - "${path.join(elFwDir, 'Libraries')}"/*.dylib 2>/dev/null || true`, { stdio: 'ignore' }); } catch(e) {}
+                    try { execSync(`trap '' TERM HUP INT; codesign --force --sign - "${path.join(elFwDir, 'Helpers')}"/* 2>/dev/null || true`, { stdio: 'ignore' }); } catch(e) {}
+                    try { execSync(`trap '' TERM HUP INT; find "${fwDir}" -name "*.framework" -exec codesign --force --sign - {} \\; 2>/dev/null || true`, { stdio: 'ignore' }); } catch(e) {}
+                    try { execSync(`trap '' TERM HUP INT; find "${fwDir}" -name "*.app" -exec codesign --force --sign - {} \\; 2>/dev/null || true`, { stdio: 'ignore' }); } catch(e) {}
+                    execSync(`trap '' TERM HUP INT; codesign --force --sign - "${appBundlePath}"`, { stdio: 'ignore' });
+                    try { execSync(`trap '' TERM HUP INT; xattr -cr "${appBundlePath}"`, { stdio: 'ignore' }); } catch(e) {}
                     console.log('[AutoPatcher-v2] macOS code signature updated and verified successfully!');
                 } catch (csErr) {
                     console.warn('[AutoPatcher-v2] Code signing notice:', csErr.message);

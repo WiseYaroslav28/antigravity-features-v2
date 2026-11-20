@@ -278,18 +278,27 @@ const controlServer = http.createServer(async (req, res) => {
     return;
   }
 
+function spawnExitPatcher(extraArgs = []) {
+  const exitPatcherPath = path.join(__dirname, 'exit_patcher.cjs');
+  const child = isMac
+    ? spawn('/bin/sh', ['-c', 'trap "" TERM HUP INT; exec "$0" "$@"', process.execPath, exitPatcherPath, ...extraArgs], {
+        detached: true,
+        stdio: 'ignore',
+      })
+    : spawn(process.execPath, [exitPatcherPath, ...extraArgs], {
+        detached: true,
+        stdio: 'ignore',
+        windowsHide: true,
+      });
+  child.unref();
+}
+
   if (req.url === '/restart') {
     log("1-Click Restart requested from UI widget! Launching exit_patcher.cjs --restart...");
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ success: true, message: "Restarting AntiGravity..." }));
 
-    const exitPatcherPath = path.join(__dirname, 'exit_patcher.cjs');
-    const child = spawn(process.execPath, [exitPatcherPath, '--restart'], {
-      detached: true,
-      stdio: 'ignore',
-      windowsHide: true
-    });
-    child.unref();
+    spawnExitPatcher(['--restart']);
     return;
   }
 
@@ -350,13 +359,7 @@ function checkAsarHashAndAutoBuildPatch() {
       const patchedPath = path.join(__dirname, 'app.asar.patched');
       if (fs.existsSync(patchedPath)) {
         log(`app.asar already contains localization patch; arming silent exit-patcher to sync latest app.asar.patched on close...`);
-        const exitPatcherPath = path.join(__dirname, 'exit_patcher.cjs');
-        const child = spawn(process.execPath, [exitPatcherPath], {
-          detached: true,
-          stdio: 'ignore',
-          windowsHide: true
-        });
-        child.unref();
+        spawnExitPatcher();
       } else {
         rebuildPatchedAsarInBackground(false);
       }
@@ -432,22 +435,12 @@ function rebuildPatchedAsarInBackground(markPendingRestart = false, autoRestartI
             fs.writeFileSync(cooldownFile, JSON.stringify({ timestamp: Date.now() }), 'utf8');
           } catch (e) {}
           log("Fresh IDE update detected with CDP port 9222 closed. Triggering 1-time automatic restart to activate patched app.asar...");
-          const restartChild = spawn(process.execPath, [exitPatcherPath, '--restart'], {
-            detached: true,
-            stdio: 'ignore',
-            windowsHide: true
-          });
-          restartChild.unref();
+          spawnExitPatcher(['--restart']);
           return;
         }
       }
 
-      const child = spawn(process.execPath, [exitPatcherPath], {
-        detached: true,
-        stdio: 'ignore',
-        windowsHide: true
-      });
-      child.unref();
+      spawnExitPatcher();
     }
   });
 }

@@ -4,6 +4,12 @@ const os = require('os');
 const crypto = require('crypto');
 const { execFileSync, spawnSync, spawn } = require('child_process');
 
+// Защита от завершения процесса со стороны macOS loginwindow (_LSForceQuitApplication -> killPID hard=NO / SIGTERM)
+// после выхода родительского приложения Antigravity.app
+process.on('SIGTERM', () => {});
+process.on('SIGHUP', () => {});
+process.on('SIGINT', () => {});
+
 // Константы официальной подписи Google LLC для Google AntiGravity на macOS
 const EXPECTED_BUNDLE_ID = 'com.google.antigravity';
 const EXPECTED_TEAM_ID = 'EQHXZ8M8AV';
@@ -371,39 +377,61 @@ function main() {
       return;
     }
 
-    // 4. Ожидание завершения AntiGravity
+    // 4. Снимаем карантинные атрибуты (com.apple.quarantine) и превентивно патчим/подписываем staged-бандл
+    // ДО замены /Applications/Antigravity.app, чтобы целевой .app ни на миллисекунду не оставался с битой подписью
+    try {
+      execFileSync('xattr', ['-cr', extractedApp], { stdio: 'ignore' });
+    } catch (e) {}
+
+    if (!opts.skipPatch) {
+      const autoPatcherPath = path.join(__dirname, 'auto_patcher.cjs');
+      if (fs.existsSync(autoPatcherPath)) {
+        log('Превентивно патчим и подписываем новый бандл во временной директории (staged)...');
+        try {
+          execFileSync(process.execPath, [autoPatcherPath], {
+            env: { ...process.env, AG_APP_BUNDLE: extractedApp },
+            encoding: 'utf8',
+            stdio: 'pipe',
+          });
+          try {
+            execFileSync('xattr', ['-cr', extractedApp], { stdio: 'ignore' });
+          } catch (e) {}
+          const postVerify = spawnSync('codesign', ['--verify', '--deep', '--strict', extractedApp], {
+            encoding: 'utf8',
+          });
+          if (postVerify.status !== 0) {
+            throw new Error(`codesign --verify после патчинга вернул код ${postVerify.status}: ${(postVerify.stderr || postVerify.stdout || '').trim()}`);
+          }
+          log('Staged-бандл успешно пропатчен, подписан и прошёл строгую проверку codesign --verify --deep --strict!');
+        } catch (patchErr) {
+          const stderr = patchErr.stderr ? String(patchErr.stderr).trim() : '';
+          log(`Предупреждение: ошибка staged-патчинга (${patchErr.message}). ${stderr}`);
+          log('Восстанавливаем чистый подписанный Google LLC бандл из архива для гарантированного запуска IDE...');
+          fs.rmSync(extractedApp, { recursive: true, force: true });
+          extractZipBundle(zipPath, extractDir);
+          try {
+            execFileSync('xattr', ['-cr', extractedApp], { stdio: 'ignore' });
+          } catch (e) {}
+        }
+      } else {
+        log(`Предупреждение: ${autoPatcherPath} не найден, пропускаем перепатчивание.`);
+      }
+    }
+
+    // 5. Ожидание завершения AntiGravity
     log(`Ожидаем завершения AntiGravity${opts.pid ? ` (PID ${opts.pid})` : ''}...`);
     const exited = waitForAppExit(opts.pid, exePath, 30000);
     if (!exited) {
       throw new Error('AntiGravity не завершился в течение 30 секунд; отменяем замену, чтобы не повредить запущенное приложение.');
     }
 
-    // 5. Атомарная замена бандла с откатом при ошибке
-    log(`Выполняем замену ${targetAppDir}...`);
+    // 6. Мгновенная атомарная замена бандла (rename inode на том же томе APFS) с откатом при ошибке
+    log(`Выполняем атомарную замену ${targetAppDir}...`);
     const backupDir = replaceAppBundleAtomically(extractedApp, targetAppDir);
+    try {
+      execFileSync('xattr', ['-cr', targetAppDir], { stdio: 'ignore' });
+    } catch (e) {}
     log(`Бандл ${targetAppDir} успешно обновлён до v${sigInfo.bundleVersion || opts.version || 'latest'}.`);
-
-    // 6. Повторное применение русификации и переподпись бандла через auto_patcher.cjs
-    if (!opts.skipPatch) {
-      const autoPatcherPath = path.join(__dirname, 'auto_patcher.cjs');
-      if (fs.existsSync(autoPatcherPath)) {
-        log('Запускаем auto_patcher.cjs для автоматического перепатчивания новой версии...');
-        try {
-          execFileSync(process.execPath, [autoPatcherPath], {
-            env: { ...process.env, AG_APP_BUNDLE: targetAppDir },
-            encoding: 'utf8',
-            stdio: 'pipe',
-          });
-          log('auto_patcher.cjs успешно перепатчил и подписал обновлённый AntiGravity!');
-        } catch (patchErr) {
-          const stderr = patchErr.stderr ? String(patchErr.stderr).trim() : '';
-          log(`Предупреждение: auto_patcher.cjs завершился с ошибкой (${patchErr.message}). ${stderr}`);
-          log('Новая официальная версия AntiGravity сохранена без русификации, чтобы IDE гарантированно запустилась.');
-        }
-      } else {
-        log(`Предупреждение: ${autoPatcherPath} не найден, пропускаем перепатчивание.`);
-      }
-    }
 
     // 7. Удаляем временный бэкап предыдущей версии и очищаем pending-кэш
     if (backupDir && fs.existsSync(backupDir)) {
