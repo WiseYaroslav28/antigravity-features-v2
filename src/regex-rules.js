@@ -8790,5 +8790,33 @@ const regexTranslations = [
                     : 'Нажмите, чтобы открыть диалог';
             return `${body.replace(/\.+$/, '')}. ${actRu}`;
         }
+    },
+    {
+        pattern: /^Reconnect\s+(.+)$/i,
+        replace: (m) => `Переподключить ${m[1].trim()}`
+    },
+    {
+        pattern: /^Disconnect\s+(.+)$/i,
+        replace: (m) => `Отключить ${m[1].trim()}`
+    },
+    {
+        pattern: /^Answered:\s*(.+)$/i,
+        replace: (m) => `Ответ: ${m[1].trim()}`
+    },
+    {
+        pattern: /^Delete\s+cookies\s+for\s+(.+)$/i,
+        replace: (m) => `Удалить файлы cookie для ${m[1].trim()}`
+    },
+    {
+        pattern: /^Deleted\s+cookies\s+for\s+(.+)$/i,
+        replace: (m) => `Удалены файлы cookie для ${m[1].trim()}`
+    },
+    {
+        pattern: /^Error\s+restarting\s+(.+?):\s*(.+)$/i,
+        replace: (m) => `Ошибка при перезапуске ${m[1].trim()}: ${m[2].trim()}`
+    },
+    {
+        pattern: /^Exceeded\s+the\s+customization\s+token\s+budget\s+\((.+?)\s+tokens\)\s+and\s+was\s+excluded\s+from\s+context\.?$/i,
+        replace: (m) => `Превышен лимит токенов персонализации (${m[1].trim()} токенов) — исключено из контекста.`
     }
 ];

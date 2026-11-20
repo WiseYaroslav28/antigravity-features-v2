@@ -4766,7 +4766,109 @@ const dictUi = {
     "failed to remove agent:": "Не удалось удалить агента:",
     "allow google to collect and use your interactions data, subject to the": "Разрешить Google собирать и использовать данные о ваших взаимодействиях в соответствии с",
     "long pages like this one will be broken down into outlines and read as needed. read more at our": "Длинные страницы, подобные этой, будут разбиваться на структуру и читаться по мере необходимости. Подробнее см. в нашем",
-    "the hub sent an unexpected response.": "Центр управления вернул неожиданный ответ."
+    "the hub sent an unexpected response.": "Центр управления вернул неожиданный ответ.",
+
+    // === AntiGravity 2.34.0: Orchestrator Settings, Thinking Effort, Sidebar Customize, Filter/Sort, Input Box, Permissions & UI Plugins ===
+    "orchestrator settings": "Настройки оркестратора",
+    "choose the models orchestrator uses. a larger, smarter orchestrator model with a faster, cheaper executor gives high quality for fewer tokens.": "Выберите модели, которые использует Оркестратор. Более крупная и умная модель-оркестратор в паре с более быстрым и дешёвым исполнителем обеспечивает высокое качество при меньшем расходе токенов.",
+    "orchestrator model": "Модель оркестратора",
+    "plans the work, makes design decisions, and reviews the result. pick a top-tier model. you can also pick one per conversation from the orchestrator row in the model menu.": "Планирует работу, принимает архитектурные решения и проверяет результат. Выберите флагманскую модель. Вы также можете выбрать модель для отдельного диалога в строке Оркестратора в меню выбора моделей.",
+    "executor model": "Модель исполнителя",
+    "carries out the plan: searches, edits, builds, and tests. pick a faster, cheaper model.": "Выполняет план: ищет, редактирует, собирает и тестирует. Выберите более быструю и экономичную модель.",
+    "the orchestrator's own planner": "Собственный планировщик оркестратора",
+    "offloads routine steps to a faster executor. same quality, fewer tokens used.": "Передаёт рутинные шаги более быстрому исполнителю. То же качество при меньшем расходе токенов.",
+    "thinking effort": "Уровень размышления",
+    "controls how much time and quota the model spends reasoning before responding. higher effort improves accuracy on hard problems, at the cost of slower responses and higher quota use.": "Определяет, сколько времени и квоты модель тратит на рассуждение перед ответом. Более высокий уровень повышает точность в сложных задачах за счёт более медленных ответов и большего расхода квоты.",
+    "customize sidebar": "Настройка боковой панели",
+    "filter and sort": "Фильтры и сортировка",
+    "last activity": "Последняя активность",
+    "any time": "За всё время",
+    "7 days": "7 дней",
+    "14 days": "14 дней",
+    "21 days": "21 день",
+    "manual order": "Ручной порядок",
+    "idle conversations": "Неактивные диалоги",
+    "only applies when grouped by status": "Применяется только при группировке по статусу",
+    "show 5": "Показать 5",
+    "show 10": "Показать 10",
+    "show automation conversations": "Показывать диалоги автоматизаций",
+    "show plugin conversations": "Показывать диалоги плагинов",
+    "show or hide plugins": "Показать или скрыть плагины",
+    "filter plugins": "Фильтровать плагины",
+    "plugins options": "Параметры плагинов",
+    "needs input": "Требуется ввод",
+    "unsent draft": "Неотправленный черновик",
+    "select sidebar item 1": "Выбрать элемент боковой панели 1",
+    "select sidebar item 2": "Выбрать элемент боковой панели 2",
+    "select sidebar item 3": "Выбрать элемент боковой панели 3",
+    "select sidebar item 4": "Выбрать элемент боковой панели 4",
+    "select sidebar item 5": "Выбрать элемент боковой панели 5",
+    "select sidebar item 6": "Выбрать элемент боковой панели 6",
+    "select sidebar item 7": "Выбрать элемент боковой панели 7",
+    "select sidebar item 8": "Выбрать элемент боковой панели 8",
+    "select sidebar item 9": "Выбрать элемент боковой панели 9",
+    "view archived in the sidebar (customize sidebar).": "Архивные диалоги доступны в боковой панели («Настройка боковой панели»).",
+    "view archived in the sidebar (display options menu).": "Архивные диалоги доступны в боковой панели (меню параметров отображения).",
+    "input box": "Поле ввода",
+    "choose which key sends a message in the chat composer.": "Выберите клавишу для отправки сообщения в поле ввода чата.",
+    "press enter to send, shift+enter for a new line.": "Нажмите Enter для отправки, Shift+Enter — для новой строки.",
+    "press ctrl+enter to send, enter for a new line.": "Нажмите Ctrl+Enter для отправки, Enter — для новой строки.",
+    "press cmd+enter to send, enter for a new line.": "Нажмите Cmd+Enter для отправки, Enter — для новой строки.",
+    "messages now send immediately. configure in": "Сообщения теперь отправляются сразу. Настроить в",
+    "instead of queueing, try asking the agent to do something after the current task.": "Вместо постановки в очередь попробуйте попросить агента сделать это после текущей задачи.",
+    "tell the agent what to do instead...": "Укажите агенту, что сделать вместо этого...",
+    "couldn't load older messages, retry": "Не удалось загрузить старые сообщения, повторите попытку",
+    "couldn't load older messages. try again.": "Не удалось загрузить старые сообщения. Попробуйте ещё раз.",
+    "loaded older messages": "Загружены более старые сообщения",
+    "edits the conversation title": "Редактирует название диалога",
+    "cmd+click to open": "Cmd+клик, чтобы открыть",
+    "ctrl+click to open": "Ctrl+клик, чтобы открыть",
+    "in chat": "В чате",
+    "resolved in chat": "Решено в чате",
+    "select one or more options": "Выберите один или несколько вариантов",
+    "other answer": "Другой ответ",
+    "answered:": "Ответ:",
+    "ask to retry": "Попросить повторить",
+    "retry requested": "Запрошен повтор",
+    "permission approval scope": "Область одобрения разрешения",
+    "runtime permission": "Разрешение во время выполнения",
+    "allow for conversation": "Разрешить в этом диалоге",
+    "allow in project": "Разрешить в этом проекте",
+    "allow in workspace": "Разрешить в этой рабочей области",
+    "yes, allow for this conversation": "Да, разрешить в этом диалоге",
+    "deny with note": "Отклонить с комментарием",
+    "add note": "Добавить заметку",
+    "add a note or condition...": "Добавьте заметку или условие...",
+    "replaced by newer request": "Заменено более новым запросом",
+    "ui plugin (sidepanel)": "UI-плагин (боковая панель)",
+    "ui plugins": "UI-плагины",
+    "start plugin": "Запустить плагин",
+    "this plugin is currently stopped. events and stdout streams will appear here once started.": "Этот плагин сейчас остановлен. События и поток вывода stdout появятся здесь после запуска.",
+    "most popular first": "Сначала самые популярные",
+    "most popular matches first": "Сначала самые популярные совпадения",
+    "connected account": "Подключённый аккаунт",
+    "reconnect account": "Переподключить аккаунт",
+    "disconnect account": "Отключить аккаунт",
+    "needs reconnect": "Требуется переподключение",
+    "reconnect": "Переподключить",
+    "disconnect": "Отключить",
+    "no sign-in required. this app is ready to use.": "Вход не требуется. Приложение готово к работе.",
+    "not installed": "Не установлен",
+    "create automation": "Создать автоматизацию",
+    "set up my environment": "Настроить моё окружение",
+    "setup script": "Скрипт настройки",
+    "describe your changes": "Опишите ваши изменения",
+    "live preview unavailable": "Предпросмотр в реальном времени недоступен",
+    "telemetry is turned off for your account.": "Телеметрия отключена для вашего аккаунта.",
+    "this setting is turned off for your account.": "Этот параметр отключён для вашего аккаунта.",
+    "screen locked: agents can't use this mac until you unlock it": "Экран заблокирован: агенты не могут использовать этот Mac, пока вы его не разблокируете",
+    "in system settings, click": "В «Системных настройках» нажмите",
+    "in system settings, turn on": "В «Системных настройках» включите",
+    "already on? select": "Уже включено? Выберите",
+    "drag it back in from the small window.": "перетащите его обратно из небольшого окна.",
+    "and add it again.": "и добавьте его снова.",
+    "retrying the coordinator start failed.": "Не удалось повторно запустить координатор.",
+    "writing the coordinator row failed.": "Не удалось записать строку координатора."
 };
 
 // ===== [MODULE: src/dict-plugins.js] =====
@@ -6421,7 +6523,20 @@ const dictPlugins = {
     "web (desktop, remote agents, pwa)": "Веб (ПК, удалённые агенты, PWA)",
     "web (mobile, remote agents)": "Веб (мобильный, удалённые агенты)",
     "web (mobile, remote agents, pwa)": "Веб (мобильный, удалённые агенты, PWA)",
-    "what the coordinator writes so the swarm ui's overview can show the swarm's goal, its groups of work and a screenshot timeline. load it before you brief and add the first workers to a swarm.": "Описывает данные, которые записывает координатор, чтобы во вкладке «Обзор» интерфейса роя отображались цель роя, группы задач и лента скриншотов. Загружайте перед постановкой задач первым участникам роя."
+    "what the coordinator writes so the swarm ui's overview can show the swarm's goal, its groups of work and a screenshot timeline. load it before you brief and add the first workers to a swarm.": "Описывает данные, которые записывает координатор, чтобы во вкладке «Обзор» интерфейса роя отображались цель роя, группы задач и лента скриншотов. Загружайте перед постановкой задач первым участникам роя.",
+
+    // === AntiGravity 2.34.0: Science Marketplace Shelf & Official Science Plugins ===
+    "agent skills, databases, and interactive viewers for scientific research.": "Навыки агента, базы данных и интерактивные просмотрщики для научных исследований.",
+    "science overview": "Обзор науки (Science Overview)",
+    "antigravity for science highlights, and an overview of the main science plugins.": "Ключевые возможности Antigravity для науки и обзор основных научных плагинов.",
+    "genomics": "Геномика (Genomics)",
+    "alphagenome and major genetics databases to analyze dna variants, gene regulation, and links between genes and disease.": "AlphaGenome и крупнейшие генетические базы данных для анализа вариантов ДНК, регуляции генов и связей между генами и заболеваниями.",
+    "structural biology": "Структурная биология (Structural Biology)",
+    "alphafold, 3d visualization tools, and protein databases to explore protein structures, sequences, pathways, and drug interactions.": "AlphaFold, инструменты 3D-визуализации и базы данных белков для изучения их структур, последовательностей, путей и лекарственных взаимодействий.",
+    "scientific literature": "Научная литература (Scientific Literature)",
+    "search scientific papers, clinical trials, fda records, and historical texts.": "Поиск научных статей, клинических исследований, записей FDA и исторических текстов.",
+    "chemistry": "Химия (Chemistry)",
+    "rdkit cheminformatics, reaction and property tools, plus chembl and pubchem, to work with molecules, their properties, and bioactivity data.": "Хемоинформатика RDKit, инструменты для реакций и свойств, а также ChEMBL и PubChem для работы с молекулами, их характеристиками и данными биоактивности."
 };
 
 const translationDictionary = Object.assign({}, dictUi, dictPlugins);
@@ -16449,6 +16564,34 @@ const regexTranslations = [
                     : 'Нажмите, чтобы открыть диалог';
             return `${body.replace(/\.+$/, '')}. ${actRu}`;
         }
+    },
+    {
+        pattern: /^Reconnect\s+(.+)$/i,
+        replace: (m) => `Переподключить ${m[1].trim()}`
+    },
+    {
+        pattern: /^Disconnect\s+(.+)$/i,
+        replace: (m) => `Отключить ${m[1].trim()}`
+    },
+    {
+        pattern: /^Answered:\s*(.+)$/i,
+        replace: (m) => `Ответ: ${m[1].trim()}`
+    },
+    {
+        pattern: /^Delete\s+cookies\s+for\s+(.+)$/i,
+        replace: (m) => `Удалить файлы cookie для ${m[1].trim()}`
+    },
+    {
+        pattern: /^Deleted\s+cookies\s+for\s+(.+)$/i,
+        replace: (m) => `Удалены файлы cookie для ${m[1].trim()}`
+    },
+    {
+        pattern: /^Error\s+restarting\s+(.+?):\s*(.+)$/i,
+        replace: (m) => `Ошибка при перезапуске ${m[1].trim()}: ${m[2].trim()}`
+    },
+    {
+        pattern: /^Exceeded\s+the\s+customization\s+token\s+budget\s+\((.+?)\s+tokens\)\s+and\s+was\s+excluded\s+from\s+context\.?$/i,
+        replace: (m) => `Превышен лимит токенов персонализации (${m[1].trim()} токенов) — исключено из контекста.`
     }
 ];
 
@@ -19761,8 +19904,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.2.1';
-    const DEFAULT_CHANGELOG_V221 = 'Обновление v2.2.1: добавлено безопасное автообновление AntiGravity на macOS (mac_updater.cjs от @MrRay57 с проверкой SHA-512 и официальной подписи Google LLC / Team ID EQHXZ8M8AV, атомарной заменой .app, автоперепатчиванием и защитой от гонки с exit_patcher.cjs).';
+    const FALLBACK_VERSION = '2.2.2';
+    const DEFAULT_CHANGELOG_V222 = 'Обновление v2.2.2: исправлено наложение плашки EN | RU при открытии меню «три точки» (⋮) — syncTopbarPosition больше не учитывает скрытые бэкдропы и меню Base UI, а z-index панели не перекрывает выпадающие меню; добавлен полный перевод новинок AntiGravity 2.34.0 (Настройки оркестратора, Уровень размышления, полка «Наука» с 5 научными плагинами, Настройка боковой панели, Фильтры и сортировка, клавиша отправки сообщений, область одобрения разрешений и UI-плагины).';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -19770,10 +19913,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V221;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V222;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V221;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V222;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -19846,7 +19989,7 @@ function initLanguageSwitcher() {
             top: 6px;
             right: 210px;
             height: 28px;
-            z-index: 999999;
+            z-index: 55;
             display: flex;
             align-items: center;
             gap: 4px;
@@ -19854,6 +19997,9 @@ function initLanguageSwitcher() {
             -webkit-app-region: no-drag;
             user-select: none;
             transition: none !important;
+        }
+        .topbar-controls-wrapper.show-popup {
+            z-index: 6500;
         }
         .lang-switcher {
             display: flex;
@@ -20454,28 +20600,59 @@ function initLanguageSwitcher() {
 
             const corner = document.querySelector('div.absolute.right-0.z-50');
             const toolbar = document.querySelector('[data-testid="pane-titlebar-toolbar"]');
-            const toolbarInner = toolbar ? (toolbar.firstElementChild || toolbar) : null;
+            const toolbarInner = toolbar
+                ? (Array.from(toolbar.children).find(el =>
+                    el.tagName !== 'STYLE' &&
+                    el.tagName !== 'SCRIPT' &&
+                    el.getAttribute('aria-hidden') !== 'true'
+                ) || toolbar)
+                : null;
             const auxParent = document.querySelector('.agy-aux-tab')?.closest('.agy-layout-vars') || null;
             const wrapWidth = wrapper.getBoundingClientRect().width || 96;
 
+            const isOverlayOrPopup = (el) => {
+                if (!el || el.nodeType !== 1) return true;
+                if (el.tagName === 'STYLE' || el.tagName === 'SCRIPT') return true;
+                if (el.getAttribute('aria-hidden') === 'true') return true;
+                if (el.hasAttribute('data-base-ui-portal') || el.hasAttribute('data-base-ui-backdrop') || el.hasAttribute('data-floating-ui-portal')) return true;
+                const role = el.getAttribute('role') || '';
+                if (role === 'menu' || role === 'dialog' || role === 'listbox' || role === 'tooltip' || role === 'presentation') return true;
+                if (typeof el.closest === 'function' && el.closest('[role="menu"], [role="dialog"], [role="listbox"], [role="tooltip"], [data-base-ui-portal], [data-base-ui-backdrop]')) return true;
+                const cs = window.getComputedStyle(el);
+                if (cs.position === 'fixed' || cs.position === 'absolute') return true;
+                return false;
+            };
+
             const cornerItems = corner
-                ? Array.from(corner.querySelectorAll('button, [role="button"], [data-testid="app-update-button"]')).filter(b => b.getBoundingClientRect().width > 0)
+                ? Array.from(corner.querySelectorAll('button, [role="button"], [data-testid="app-update-button"]')).filter(b => {
+                    if (isOverlayOrPopup(b)) return false;
+                    const r = b.getBoundingClientRect();
+                    return r.width > 0 && r.height > 0 && r.height < 64;
+                })
                 : [];
             const cornerIconBtns = corner
-                ? Array.from(corner.querySelectorAll('button')).filter(b => b.getBoundingClientRect().width > 0)
+                ? Array.from(corner.querySelectorAll('button')).filter(b => {
+                    if (isOverlayOrPopup(b)) return false;
+                    const r = b.getBoundingClientRect();
+                    return r.width > 0 && r.height > 0 && r.height < 64;
+                })
                 : [];
             const cornerRect = corner ? corner.getBoundingClientRect() : null;
 
             const tbChildren = toolbarInner
                 ? Array.from(toolbarInner.children).filter(el => {
-                    if (el.tagName === 'STYLE' || el.tagName === 'SCRIPT') return false;
+                    if (isOverlayOrPopup(el)) return false;
                     const r = el.getBoundingClientRect();
-                    return r.width > 0 && r.height > 0;
+                    return r.width > 0 && r.height > 0 && r.height < 64 && r.width < 360;
                 })
                 : [];
             const tbRects = tbChildren.map(el => el.getBoundingClientRect());
             const tbIconBtns = toolbarInner
-                ? Array.from(toolbarInner.querySelectorAll('button')).filter(b => b.getBoundingClientRect().width > 0)
+                ? Array.from(toolbarInner.querySelectorAll('button')).filter(b => {
+                    if (isOverlayOrPopup(b)) return false;
+                    const r = b.getBoundingClientRect();
+                    return r.width > 0 && r.height > 0 && r.height < 64;
+                })
                 : [];
             let firstTbLeft = null;
             let lastTbRight = null;
@@ -21217,7 +21394,7 @@ const initInterval = setInterval(() => {
             try {
                 if (document.documentElement) {
                     document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
-                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.1');
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.2');
                 }
                 // Notify isolated/other worlds (e.g. preload.js <-> CDP main world) to step down cleanly
                 window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
@@ -21266,7 +21443,7 @@ const initInterval = setInterval(() => {
             try {
                 if (document.documentElement) {
                     document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
-                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.1');
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.2');
                 }
                 window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
             } catch (e) {}

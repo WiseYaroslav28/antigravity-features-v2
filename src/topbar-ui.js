@@ -20,8 +20,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.2.1';
-    const DEFAULT_CHANGELOG_V221 = 'Обновление v2.2.1: добавлено безопасное автообновление AntiGravity на macOS (mac_updater.cjs от @MrRay57 с проверкой SHA-512 и официальной подписи Google LLC / Team ID EQHXZ8M8AV, атомарной заменой .app, автоперепатчиванием и защитой от гонки с exit_patcher.cjs).';
+    const FALLBACK_VERSION = '2.2.2';
+    const DEFAULT_CHANGELOG_V222 = 'Обновление v2.2.2: исправлено наложение плашки EN | RU при открытии меню «три точки» (⋮) — syncTopbarPosition больше не учитывает скрытые бэкдропы и меню Base UI, а z-index панели не перекрывает выпадающие меню; добавлен полный перевод новинок AntiGravity 2.34.0 (Настройки оркестратора, Уровень размышления, полка «Наука» с 5 научными плагинами, Настройка боковой панели, Фильтры и сортировка, клавиша отправки сообщений, область одобрения разрешений и UI-плагины).';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -29,10 +29,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V221;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V222;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V221;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V222;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -105,7 +105,7 @@ function initLanguageSwitcher() {
             top: 6px;
             right: 210px;
             height: 28px;
-            z-index: 999999;
+            z-index: 55;
             display: flex;
             align-items: center;
             gap: 4px;
@@ -113,6 +113,9 @@ function initLanguageSwitcher() {
             -webkit-app-region: no-drag;
             user-select: none;
             transition: none !important;
+        }
+        .topbar-controls-wrapper.show-popup {
+            z-index: 6500;
         }
         .lang-switcher {
             display: flex;
@@ -713,28 +716,59 @@ function initLanguageSwitcher() {
 
             const corner = document.querySelector('div.absolute.right-0.z-50');
             const toolbar = document.querySelector('[data-testid="pane-titlebar-toolbar"]');
-            const toolbarInner = toolbar ? (toolbar.firstElementChild || toolbar) : null;
+            const toolbarInner = toolbar
+                ? (Array.from(toolbar.children).find(el =>
+                    el.tagName !== 'STYLE' &&
+                    el.tagName !== 'SCRIPT' &&
+                    el.getAttribute('aria-hidden') !== 'true'
+                ) || toolbar)
+                : null;
             const auxParent = document.querySelector('.agy-aux-tab')?.closest('.agy-layout-vars') || null;
             const wrapWidth = wrapper.getBoundingClientRect().width || 96;
 
+            const isOverlayOrPopup = (el) => {
+                if (!el || el.nodeType !== 1) return true;
+                if (el.tagName === 'STYLE' || el.tagName === 'SCRIPT') return true;
+                if (el.getAttribute('aria-hidden') === 'true') return true;
+                if (el.hasAttribute('data-base-ui-portal') || el.hasAttribute('data-base-ui-backdrop') || el.hasAttribute('data-floating-ui-portal')) return true;
+                const role = el.getAttribute('role') || '';
+                if (role === 'menu' || role === 'dialog' || role === 'listbox' || role === 'tooltip' || role === 'presentation') return true;
+                if (typeof el.closest === 'function' && el.closest('[role="menu"], [role="dialog"], [role="listbox"], [role="tooltip"], [data-base-ui-portal], [data-base-ui-backdrop]')) return true;
+                const cs = window.getComputedStyle(el);
+                if (cs.position === 'fixed' || cs.position === 'absolute') return true;
+                return false;
+            };
+
             const cornerItems = corner
-                ? Array.from(corner.querySelectorAll('button, [role="button"], [data-testid="app-update-button"]')).filter(b => b.getBoundingClientRect().width > 0)
+                ? Array.from(corner.querySelectorAll('button, [role="button"], [data-testid="app-update-button"]')).filter(b => {
+                    if (isOverlayOrPopup(b)) return false;
+                    const r = b.getBoundingClientRect();
+                    return r.width > 0 && r.height > 0 && r.height < 64;
+                })
                 : [];
             const cornerIconBtns = corner
-                ? Array.from(corner.querySelectorAll('button')).filter(b => b.getBoundingClientRect().width > 0)
+                ? Array.from(corner.querySelectorAll('button')).filter(b => {
+                    if (isOverlayOrPopup(b)) return false;
+                    const r = b.getBoundingClientRect();
+                    return r.width > 0 && r.height > 0 && r.height < 64;
+                })
                 : [];
             const cornerRect = corner ? corner.getBoundingClientRect() : null;
 
             const tbChildren = toolbarInner
                 ? Array.from(toolbarInner.children).filter(el => {
-                    if (el.tagName === 'STYLE' || el.tagName === 'SCRIPT') return false;
+                    if (isOverlayOrPopup(el)) return false;
                     const r = el.getBoundingClientRect();
-                    return r.width > 0 && r.height > 0;
+                    return r.width > 0 && r.height > 0 && r.height < 64 && r.width < 360;
                 })
                 : [];
             const tbRects = tbChildren.map(el => el.getBoundingClientRect());
             const tbIconBtns = toolbarInner
-                ? Array.from(toolbarInner.querySelectorAll('button')).filter(b => b.getBoundingClientRect().width > 0)
+                ? Array.from(toolbarInner.querySelectorAll('button')).filter(b => {
+                    if (isOverlayOrPopup(b)) return false;
+                    const r = b.getBoundingClientRect();
+                    return r.width > 0 && r.height > 0 && r.height < 64;
+                })
                 : [];
             let firstTbLeft = null;
             let lastTbRight = null;

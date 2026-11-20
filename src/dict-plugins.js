@@ -1649,5 +1649,18 @@ const dictPlugins = {
     "web (desktop, remote agents, pwa)": "Веб (ПК, удалённые агенты, PWA)",
     "web (mobile, remote agents)": "Веб (мобильный, удалённые агенты)",
     "web (mobile, remote agents, pwa)": "Веб (мобильный, удалённые агенты, PWA)",
-    "what the coordinator writes so the swarm ui's overview can show the swarm's goal, its groups of work and a screenshot timeline. load it before you brief and add the first workers to a swarm.": "Описывает данные, которые записывает координатор, чтобы во вкладке «Обзор» интерфейса роя отображались цель роя, группы задач и лента скриншотов. Загружайте перед постановкой задач первым участникам роя."
+    "what the coordinator writes so the swarm ui's overview can show the swarm's goal, its groups of work and a screenshot timeline. load it before you brief and add the first workers to a swarm.": "Описывает данные, которые записывает координатор, чтобы во вкладке «Обзор» интерфейса роя отображались цель роя, группы задач и лента скриншотов. Загружайте перед постановкой задач первым участникам роя.",
+
+    // === AntiGravity 2.34.0: Science Marketplace Shelf & Official Science Plugins ===
+    "agent skills, databases, and interactive viewers for scientific research.": "Навыки агента, базы данных и интерактивные просмотрщики для научных исследований.",
+    "science overview": "Обзор науки (Science Overview)",
+    "antigravity for science highlights, and an overview of the main science plugins.": "Ключевые возможности Antigravity для науки и обзор основных научных плагинов.",
+    "genomics": "Геномика (Genomics)",
+    "alphagenome and major genetics databases to analyze dna variants, gene regulation, and links between genes and disease.": "AlphaGenome и крупнейшие генетические базы данных для анализа вариантов ДНК, регуляции генов и связей между генами и заболеваниями.",
+    "structural biology": "Структурная биология (Structural Biology)",
+    "alphafold, 3d visualization tools, and protein databases to explore protein structures, sequences, pathways, and drug interactions.": "AlphaFold, инструменты 3D-визуализации и базы данных белков для изучения их структур, последовательностей, путей и лекарственных взаимодействий.",
+    "scientific literature": "Научная литература (Scientific Literature)",
+    "search scientific papers, clinical trials, fda records, and historical texts.": "Поиск научных статей, клинических исследований, записей FDA и исторических текстов.",
+    "chemistry": "Химия (Chemistry)",
+    "rdkit cheminformatics, reaction and property tools, plus chembl and pubchem, to work with molecules, their properties, and bioactivity data.": "Хемоинформатика RDKit, инструменты для реакций и свойств, а также ChEMBL и PubChem для работы с молекулами, их характеристиками и данными биоактивности."
 };
