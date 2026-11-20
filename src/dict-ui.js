@@ -4705,5 +4705,6 @@ const dictUi = {
     "drag it back in from the small window.": "перетащите его обратно из небольшого окна.",
     "and add it again.": "и добавьте его снова.",
     "retrying the coordinator start failed.": "Не удалось повторно запустить координатор.",
-    "writing the coordinator row failed.": "Не удалось записать строку координатора."
+    "writing the coordinator row failed.": "Не удалось записать строку координатора.",
+    "unavailable": "Недоступно"
 };

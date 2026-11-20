@@ -4868,7 +4868,8 @@ const dictUi = {
     "drag it back in from the small window.": "перетащите его обратно из небольшого окна.",
     "and add it again.": "и добавьте его снова.",
     "retrying the coordinator start failed.": "Не удалось повторно запустить координатор.",
-    "writing the coordinator row failed.": "Не удалось записать строку координатора."
+    "writing the coordinator row failed.": "Не удалось записать строку координатора.",
+    "unavailable": "Недоступно"
 };
 
 // ===== [MODULE: src/dict-plugins.js] =====
@@ -16592,6 +16593,30 @@ const regexTranslations = [
     {
         pattern: /^Exceeded\s+the\s+customization\s+token\s+budget\s+\((.+?)\s+tokens\)\s+and\s+was\s+excluded\s+from\s+context\.?$/i,
         replace: (m) => `Превышен лимит токенов персонализации (${m[1].trim()} токенов) — исключено из контекста.`
+    },
+    {
+        pattern: /^(.+?)\s+is\s+currently\s+available\s+(?:only\s+)?to\s+(.+?)\s+plan\s+subscribers\.?$/i,
+        replace: (m) => `${m[1].trim()} сейчас доступна только подписчикам тарифа ${m[2].trim()}.`
+    },
+    {
+        pattern: /^(.+?)\s+is\s+(?:currently\s+)?(?:only\s+)?available\s+(?:for|to)\s+(.+?)\s+(?:subscribers|users|plans?)\.?$/i,
+        replace: (m) => `${m[1].trim()} сейчас доступна только пользователям ${m[2].trim()}.`
+    },
+    {
+        pattern: /^(.+?)\s+is\s+currently\s+unavailable(?:\s+on\s+your\s+plan)?\.?$/i,
+        replace: (m) => `${m[1].trim()} сейчас недоступна${/on\s+your\s+plan/i.test(m[0]) ? ' на вашем тарифе' : ''}.`
+    },
+    {
+        pattern: /^Available\s+(?:only\s+)?(?:on|with|to)\s+(.+?)\s+(?:plan(?:\s+subscribers)?|subscribers?)\.?$/i,
+        replace: (m) => `Доступно только на тарифе ${m[1].trim()}.`
+    },
+    {
+        pattern: /^Requires\s+(?:an?\s+)?(.+?)\s+(?:plan|subscription)\.?$/i,
+        replace: (m) => `Требуется подписка ${m[1].trim()}.`
+    },
+    {
+        pattern: /^Upgrade\s+to\s+(.+?)\s+to\s+(?:use|access|unlock)\s+(.+?)\.?$/i,
+        replace: (m) => `Перейдите на ${m[1].trim()}, чтобы использовать ${m[2].trim()}.`
     }
 ];
 
@@ -19904,8 +19929,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.2.3';
-    const DEFAULT_CHANGELOG_V223 = 'Обновление v2.2.3: исправлено обновление в 1 клик на macOS (PR #4 от @MrRay57) — перехват кнопки обновления в топбаре UI (autoUpdater.quitAndInstall), защита фоновых mac_updater/exit_patcher/codesign от SIGTERM macOS loginwindow, staged-патчинг и codesign --verify до замены .app, очистка кэша ShipIt и перенос spawnExitPatcher на верхний уровень в index.js.';
+    const FALLBACK_VERSION = '2.2.4';
+    const DEFAULT_CHANGELOG_V224 = 'Обновление v2.2.4: добавлен перевод бейджа «Недоступно» (Unavailable) и универсальные правила для серверных подсказок о доступности моделей по тарифу (например, «Gemini 4 Carbon сейчас доступна только подписчикам тарифа Ultra.» и аналогичные для Pro/Enterprise).';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -19913,10 +19938,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V223;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V224;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V223;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V224;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -21394,7 +21419,7 @@ const initInterval = setInterval(() => {
             try {
                 if (document.documentElement) {
                     document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
-                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.3');
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.4');
                 }
                 // Notify isolated/other worlds (e.g. preload.js <-> CDP main world) to step down cleanly
                 window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
@@ -21443,7 +21468,7 @@ const initInterval = setInterval(() => {
             try {
                 if (document.documentElement) {
                     document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
-                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.3');
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.4');
                 }
                 window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
             } catch (e) {}

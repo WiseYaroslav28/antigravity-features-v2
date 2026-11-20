@@ -1,7 +1,7 @@
 {
-  "version": "2.2.3",
-  "releasedAt": "2026-11-20T22:52:00.000Z",
-  "changelog": "Обновление v2.2.3: исправлено обновление AntiGravity в 1 клик на macOS (PR #4 от @MrRay57) — перехват кнопки обновления в топбаре UI через синглтон autoUpdater.quitAndInstall, иммунитет фоновых mac_updater/exit_patcher/codesign к SIGTERM от macOS loginwindow, staged-патчинг и строгая проверка codesign --verify до атомарной замены .app, очистка осиротевших папок ShipIt, плюс перенос spawnExitPatcher на верхний уровень в index.js и изоляция SIGINT только под darwin.",
+  "version": "2.2.4",
+  "releasedAt": "2026-11-20T23:03:00.000Z",
+  "changelog": "Обновление v2.2.4: добавлен перевод бейджа «Недоступно» (Unavailable) и универсальные правила для серверных подсказок о доступности моделей по подписке (например, «Gemini 4 Carbon сейчас доступна только подписчикам тарифа Ultra.» и аналогичные для Pro/Team/Enterprise).",
   "requiresRestart": false,
   "files": [
     "localization_injected.js",

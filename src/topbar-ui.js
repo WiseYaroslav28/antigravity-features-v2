@@ -20,8 +20,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.2.3';
-    const DEFAULT_CHANGELOG_V223 = 'Обновление v2.2.3: исправлено обновление в 1 клик на macOS (PR #4 от @MrRay57) — перехват кнопки обновления в топбаре UI (autoUpdater.quitAndInstall), защита фоновых mac_updater/exit_patcher/codesign от SIGTERM macOS loginwindow, staged-патчинг и codesign --verify до замены .app, очистка кэша ShipIt и перенос spawnExitPatcher на верхний уровень в index.js.';
+    const FALLBACK_VERSION = '2.2.4';
+    const DEFAULT_CHANGELOG_V224 = 'Обновление v2.2.4: добавлен перевод бейджа «Недоступно» (Unavailable) и универсальные правила для серверных подсказок о доступности моделей по тарифу (например, «Gemini 4 Carbon сейчас доступна только подписчикам тарифа Ultra.» и аналогичные для Pro/Enterprise).';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -29,10 +29,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V223;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V224;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V223;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V224;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;

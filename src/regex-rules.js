@@ -8818,5 +8818,29 @@ const regexTranslations = [
     {
         pattern: /^Exceeded\s+the\s+customization\s+token\s+budget\s+\((.+?)\s+tokens\)\s+and\s+was\s+excluded\s+from\s+context\.?$/i,
         replace: (m) => `Превышен лимит токенов персонализации (${m[1].trim()} токенов) — исключено из контекста.`
+    },
+    {
+        pattern: /^(.+?)\s+is\s+currently\s+available\s+(?:only\s+)?to\s+(.+?)\s+plan\s+subscribers\.?$/i,
+        replace: (m) => `${m[1].trim()} сейчас доступна только подписчикам тарифа ${m[2].trim()}.`
+    },
+    {
+        pattern: /^(.+?)\s+is\s+(?:currently\s+)?(?:only\s+)?available\s+(?:for|to)\s+(.+?)\s+(?:subscribers|users|plans?)\.?$/i,
+        replace: (m) => `${m[1].trim()} сейчас доступна только пользователям ${m[2].trim()}.`
+    },
+    {
+        pattern: /^(.+?)\s+is\s+currently\s+unavailable(?:\s+on\s+your\s+plan)?\.?$/i,
+        replace: (m) => `${m[1].trim()} сейчас недоступна${/on\s+your\s+plan/i.test(m[0]) ? ' на вашем тарифе' : ''}.`
+    },
+    {
+        pattern: /^Available\s+(?:only\s+)?(?:on|with|to)\s+(.+?)\s+(?:plan(?:\s+subscribers)?|subscribers?)\.?$/i,
+        replace: (m) => `Доступно только на тарифе ${m[1].trim()}.`
+    },
+    {
+        pattern: /^Requires\s+(?:an?\s+)?(.+?)\s+(?:plan|subscription)\.?$/i,
+        replace: (m) => `Требуется подписка ${m[1].trim()}.`
+    },
+    {
+        pattern: /^Upgrade\s+to\s+(.+?)\s+to\s+(?:use|access|unlock)\s+(.+?)\.?$/i,
+        replace: (m) => `Перейдите на ${m[1].trim()}, чтобы использовать ${m[2].trim()}.`
     }
 ];
