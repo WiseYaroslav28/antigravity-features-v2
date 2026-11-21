@@ -19929,8 +19929,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.2.4';
-    const DEFAULT_CHANGELOG_V224 = 'Обновление v2.2.4: добавлен перевод бейджа «Недоступно» (Unavailable) и универсальные правила для серверных подсказок о доступности моделей по тарифу (например, «Gemini 4 Carbon сейчас доступна только подписчикам тарифа Ultra.» и аналогичные для Pro/Enterprise).';
+    const FALLBACK_VERSION = '2.2.5';
+    const DEFAULT_CHANGELOG_V225 = 'Обновление v2.2.5: исправлено закрытие окна статуса русификатора [i] — крестик ✕ теперь закрывает окно мгновенно (даже если курсор остаётся внутри карточки или на иконке), добавлено закрытие по клику в любую свободную область, по повторному клику на «i» и по клавише Escape.';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -19938,10 +19938,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V224;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V225;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V224;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V225;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -20023,7 +20023,8 @@ function initLanguageSwitcher() {
             user-select: none;
             transition: none !important;
         }
-        .topbar-controls-wrapper.show-popup {
+        .topbar-controls-wrapper.show-popup,
+        .topbar-controls-wrapper:not(.popup-dismissed):has(.version-status-btn:hover, .update-popup:hover) {
             z-index: 6500;
         }
         .lang-switcher {
@@ -20199,8 +20200,8 @@ function initLanguageSwitcher() {
             border-color: #f59e0b;
         }
         .topbar-controls-wrapper.show-popup .update-popup,
-        .version-status-btn:hover ~ .update-popup,
-        .update-popup:hover {
+        .topbar-controls-wrapper:not(.popup-dismissed) .version-status-btn:hover ~ .update-popup,
+        .topbar-controls-wrapper:not(.popup-dismissed) .update-popup:hover {
             display: flex !important;
         }
         .update-popup-header {
@@ -20836,18 +20837,49 @@ function initLanguageSwitcher() {
         updateUI();
     });
 
+    const closePopup = (markDismissed = false) => {
+        wrapper.classList.remove('show-popup');
+        if (markDismissed) {
+            wrapper.classList.add('popup-dismissed');
+        }
+        resetUninstallConfirmUI();
+    };
+    const onOutsidePointerDown = (e) => {
+        if (!wrapper.classList.contains('show-popup')) return;
+        if (e && e.target && wrapper.contains(e.target)) return;
+        closePopup(true);
+    };
+    const onPopupKeyDown = (e) => {
+        if (e && e.key === 'Escape' && (wrapper.classList.contains('show-popup') || (popupCard && popupCard.matches(':hover')))) {
+            closePopup(true);
+        }
+    };
+    const onWindowBlurClosePopup = () => {
+        if (wrapper.classList.contains('show-popup')) {
+            closePopup(false);
+        }
+    };
+    document.addEventListener('pointerdown', onOutsidePointerDown, true);
+    document.addEventListener('keydown', onPopupKeyDown, true);
+    window.addEventListener('blur', onWindowBlurClosePopup);
+    wrapper.addEventListener('mouseleave', () => {
+        wrapper.classList.remove('popup-dismissed');
+        if (!wrapper.classList.contains('show-popup')) {
+            resetUninstallConfirmUI();
+        }
+    });
+    if (typeof window.__ag_register_disposer === 'function') {
+        window.__ag_register_disposer(() => {
+            try { document.removeEventListener('pointerdown', onOutsidePointerDown, true); } catch (e) {}
+            try { document.removeEventListener('keydown', onPopupKeyDown, true); } catch (e) {}
+            try { window.removeEventListener('blur', onWindowBlurClosePopup); } catch (e) {}
+        });
+    }
+
     if (popupClose) {
         popupClose.addEventListener('click', (e) => {
             e.stopPropagation();
-            wrapper.classList.remove('show-popup');
-            resetUninstallConfirmUI();
-        });
-    }
-    if (popupCard) {
-        popupCard.addEventListener('mouseleave', () => {
-            if (!wrapper.classList.contains('show-popup')) {
-                resetUninstallConfirmUI();
-            }
+            closePopup(true);
         });
     }
 
@@ -21046,6 +21078,7 @@ function initLanguageSwitcher() {
     async function triggerUpdateCheckAndInstall(forceInstall = false) {
         if (isBusyUpdating) return;
         isBusyUpdating = true;
+        wrapper.classList.remove('popup-dismissed');
         wrapper.classList.add('show-popup');
         versionBtn.classList.remove('state-ok', 'state-attention');
         versionBtn.classList.add('state-checking');
@@ -21104,18 +21137,19 @@ function initLanguageSwitcher() {
         }
     }
 
-    // Clicking the compact "i" icon checks/installs updates when auto-update is ON, or simply opens the popup & checks metadata when OFF
+    // Clicking the compact "i" icon toggles popup cleanly; when opening with auto-update ON, also runs update check
     versionBtn.addEventListener('click', (e) => {
         e.stopPropagation();
+        if (wrapper.classList.contains('show-popup')) {
+            closePopup(true);
+            return;
+        }
+        wrapper.classList.remove('popup-dismissed');
         if (autoUpdateEnabled) {
             triggerUpdateCheckAndInstall(false);
         } else {
-            wrapper.classList.toggle('show-popup');
-            if (wrapper.classList.contains('show-popup')) {
-                checkGithubRemoteVersion();
-            } else {
-                resetUninstallConfirmUI();
-            }
+            wrapper.classList.add('show-popup');
+            checkGithubRemoteVersion();
         }
     });
 
@@ -21419,7 +21453,7 @@ const initInterval = setInterval(() => {
             try {
                 if (document.documentElement) {
                     document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
-                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.4');
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.5');
                 }
                 // Notify isolated/other worlds (e.g. preload.js <-> CDP main world) to step down cleanly
                 window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
@@ -21468,7 +21502,7 @@ const initInterval = setInterval(() => {
             try {
                 if (document.documentElement) {
                     document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
-                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.4');
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.5');
                 }
                 window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
             } catch (e) {}
