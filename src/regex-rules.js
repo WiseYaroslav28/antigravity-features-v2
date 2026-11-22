@@ -3727,9 +3727,46 @@ const regexTranslations = [
         replace: (match) => (match[1] ? "+ " : "") + "Создать"
     },
     {
-        // "5h limit" / "5-hour limit" / "24h limit"
-        pattern: /^(\d+)\s*(?:h|hr|hrs|hour|hours)[\s-]*limit$/i,
-        replace: (match) => `${match[1]}-часовой лимит`
+        // "Weekly limit, resets in 6d 4h" / "Daily limit, resets in 12h 30m" / "5h limit, resets in 4h 48m" / "Weekly limit, resets in <1m"
+        pattern: /^(Weekly|Daily|Monthly|Hourly|(\d+)\s*(s|sec|secs|second|seconds|m|min|mins|minute|minutes|h|hr|hrs|hour|hours|d|day|days))[\s-]*limit,\s*resets\s+in\s+(.+)$/i,
+        replace: (match) => {
+            const rawWindow = match[1].toLowerCase();
+            let windowRu;
+            if (rawWindow === 'weekly') windowRu = 'Недельный лимит';
+            else if (rawWindow === 'daily') windowRu = 'Дневной лимит';
+            else if (rawWindow === 'monthly') windowRu = 'Месячный лимит';
+            else if (rawWindow === 'hourly') windowRu = 'Часовой лимит';
+            else {
+                const n = match[2];
+                const u = (match[3] || '').toLowerCase();
+                if (u.startsWith('h')) windowRu = `${n}-часовой лимит`;
+                else if (u.startsWith('d')) windowRu = `${n}-дневный лимит`;
+                else if (u.startsWith('m')) windowRu = `${n}-минутный лимит`;
+                else windowRu = `${n}-секундный лимит`;
+            }
+            return `${windowRu}, сброс через ${translateDuration(match[4].trim())}`;
+        }
+    },
+    {
+        // Fallback for any single-bucket quota label joined with ", resets in <duration>"
+        pattern: /^(.+?),\s*resets\s+in\s+((?:<\s*)?\d+\s*[smhd](?:\s+\d+\s*[smhd])?)$/i,
+        replace: (match) => {
+            const prefix = match[1].trim();
+            const translatedPrefix = translationDictionary[prefix.toLowerCase()] || prefix;
+            return `${translatedPrefix}, сброс через ${translateDuration(match[2].trim())}`;
+        }
+    },
+    {
+        // "5h limit" / "5-hour limit" / "24h limit" / "7d limit" / "30m limit"
+        pattern: /^(\d+)\s*(s|sec|secs|second|seconds|m|min|mins|minute|minutes|h|hr|hrs|hour|hours|d|day|days)[\s-]*limit$/i,
+        replace: (match) => {
+            const n = match[1];
+            const u = match[2].toLowerCase();
+            if (u.startsWith('h')) return `${n}-часовой лимит`;
+            if (u.startsWith('d')) return `${n}-дневный лимит`;
+            if (u.startsWith('m')) return `${n}-минутный лимит`;
+            return `${n}-секундный лимит`;
+        }
     },
     {
         // "100% left" / "85% left" / "100% remaining"

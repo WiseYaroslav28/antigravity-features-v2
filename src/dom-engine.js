@@ -58,9 +58,10 @@ function shouldIgnore(node) {
         fullContext.includes('подробнее см. в')
     );
 
+    const checkEl = (node.nodeType === 1 ? node : node.parentElement);
     const isPluginFrame = (typeof window !== 'undefined' && window.location && window.location.protocol === 'plugin:');
-    const isInsideSwarmPostOrCode = !!(node.parentElement && typeof node.parentElement.closest === 'function' && node.parentElement.closest('.msg-body, pre, code, kbd'));
-    const isInsideCodeOrPre = !!(node.parentElement && typeof node.parentElement.closest === 'function' && node.parentElement.closest('code, pre'));
+    const isInsideSwarmPostOrCode = !!(checkEl && typeof checkEl.closest === 'function' && checkEl.closest('.msg-body, pre, code, kbd, .code-block, .code-line, .line-content'));
+    const isInsideCodeOrPre = !!(checkEl && typeof checkEl.closest === 'function' && checkEl.closest('code, pre, .code-block, .code-line, .line-content, .notebook-code-input, .notebook-code-outputs, [data-testid="background-task-command"], span.token'));
 
     const isPluginMarketplaceOverlay = !!(typeof window !== 'undefined' && window.location && window.location.search && window.location.search.includes('marketplace=') && !(node.parentElement && typeof node.parentElement.closest === 'function' && node.parentElement.closest('.message-content, .message-text, .chat-output')));
 
@@ -1031,7 +1032,9 @@ function shouldIgnore(node) {
             val === 'move conversation up' ||
             val === 'move conversation down' ||
             val === '5h limit' ||
-            /^\d+\s*(?:h|hr|hour|hours)[\s-]*limit$/i.test(val) ||
+            /^\d+\s*(?:s|m|h|hr|hour|hours|d|day|days)[\s-]*limit$/i.test(val) ||
+            /\blimit,\s*resets\s+in\b/i.test(val) ||
+            /,\s*resets\s+in\s+(?:<\s*)?\d+\s*[smhd]/i.test(val) ||
             val.endsWith('% left') ||
             val.endsWith('% remaining') ||
             val === 'create' ||
@@ -1104,8 +1107,15 @@ function shouldIgnore(node) {
 
     const isSpecialUiText = isMatchSpecial(textVal) || isMatchSpecial(ariaVal) || isMatchSpecial(titleVal) || isMatchSpecial(tooltipVal) || isMatchSpecial(placeholderVal);
 
-    if (node.parentElement && typeof node.parentElement.closest === 'function') {
-        if (node.parentElement.closest('#antigravity-topbar-controls, script, style, [contenteditable="true"], .view-lines, .view-line, .margin-view-overlays, .minimap, .xterm, .terminal-container')) {
+    if (checkEl && typeof checkEl.closest === 'function') {
+        if (checkEl.closest('#antigravity-topbar-controls, #antigravity-popup-backdrop, script, style, [contenteditable="true"], code, pre, .code-block, .code-line, .line-content, .notebook-code-input, .notebook-code-outputs, [data-testid="background-task-command"], span.token, .view-lines, .view-line, .margin-view-overlays, .minimap, .xterm, .terminal-container')) {
+            return true;
+        }
+        // Защита терминальных команд внутри карточек run-command / terminal-card (не затрагивая кнопки и тултипы)
+        if (
+            !checkEl.closest('button, [role="button"], [role="tooltip"]') &&
+            checkEl.closest('[class*="group/terminal-card"] .whitespace-pre-wrap.break-all, [class*="group/run-command"] .whitespace-pre-wrap.break-all')
+        ) {
             return true;
         }
     }
@@ -2391,6 +2401,18 @@ function translateTextNode(node) {
     try {
         if (isEnglishMode()) return;
         if (node.nodeType !== Node.TEXT_NODE) return;
+        const pElFast = node.parentElement;
+        if (pElFast && typeof pElFast.closest === 'function') {
+            if (pElFast.closest('#antigravity-topbar-controls, #antigravity-popup-backdrop, script, style, [contenteditable="true"], code, pre, .code-block, .code-line, .line-content, .notebook-code-input, .notebook-code-outputs, [data-testid="background-task-command"], span.token, .view-lines, .view-line, .margin-view-overlays, .minimap, .xterm, .terminal-container')) {
+                return;
+            }
+            if (
+                !pElFast.closest('button, [role="button"], [role="tooltip"]') &&
+                pElFast.closest('[class*="group/terminal-card"] .whitespace-pre-wrap.break-all, [class*="group/run-command"] .whitespace-pre-wrap.break-all')
+            ) {
+                return;
+            }
+        }
 
         const text = node.nodeValue;
         const normalized = text.replace(/[\s\u00a0\xa0\u2007\u202f\r\n\t]+/g, ' ').trim();

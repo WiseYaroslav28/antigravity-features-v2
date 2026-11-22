@@ -3,6 +3,10 @@ function initLanguageSwitcher() {
     if (existingWrapper) {
         existingWrapper.remove();
     }
+    const existingBackdrop = document.getElementById('antigravity-popup-backdrop');
+    if (existingBackdrop) {
+        existingBackdrop.remove();
+    }
     const existingSwitcher = document.getElementById('antigravity-lang-switcher');
     if (existingSwitcher) {
         existingSwitcher.remove();
@@ -20,8 +24,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.2.5';
-    const DEFAULT_CHANGELOG_V225 = 'Обновление v2.2.5: исправлено закрытие окна статуса русификатора [i] — крестик ✕ теперь закрывает окно мгновенно (даже если курсор остаётся внутри карточки или на иконке), добавлено закрытие по клику в любую свободную область, по повторному клику на «i» и по клавише Escape.';
+    const FALLBACK_VERSION = '2.2.6';
+    const DEFAULT_CHANGELOG_V226 = 'Обновление v2.2.6: добавлен перевод комбинированных строк лимитов квот (например, «Weekly limit, resets in 6d 4h» у Gemini 4 Argon → «Недельный лимит, сброс через 6 дн 4 ч»), исправлена защита блоков кода и терминальных команд (CodeBlock/.code-block, span.token, run-command) от перевода командных слов вроде install, исправлено закрытие окна [i] при клике левее кнопки (в том числе в области drag заголовка macOS) и открытие с первого наведения после закрытия.';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -29,10 +33,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V225;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V226;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V225;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V226;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -46,11 +50,15 @@ function initLanguageSwitcher() {
         }
     } catch (e) {}
 
+    const popupBackdrop = document.createElement('div');
+    popupBackdrop.id = 'antigravity-popup-backdrop';
+    popupBackdrop.className = 'agy-popup-backdrop';
+
     const wrapper = document.createElement('div');
     wrapper.id = 'antigravity-topbar-controls';
     wrapper.className = 'topbar-controls-wrapper';
     wrapper.innerHTML = `
-        <div id="antigravity-version-btn" class="version-status-btn state-ok" title="Локализация актуальна (v${currentLocalVersion}). Нажмите для проверки обновлений">
+        <div id="antigravity-version-btn" class="version-status-btn state-ok" aria-label="Локализация актуальна (v${currentLocalVersion}). Нажмите для проверки обновлений">
             <span class="agy-info-glyph" aria-hidden="true">
                 <span class="agy-info-dot" id="version-btn-dot"></span>
                 <span class="agy-info-stem"></span>
@@ -100,6 +108,17 @@ function initLanguageSwitcher() {
     const style = document.createElement('style');
     style.id = 'antigravity-lang-switcher-style';
     style.innerHTML = `
+        .agy-popup-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 6499;
+            background: transparent;
+            -webkit-app-region: no-drag;
+            display: none;
+        }
+        .agy-popup-backdrop.active {
+            display: block;
+        }
         .topbar-controls-wrapper {
             position: fixed;
             top: 6px;
@@ -187,6 +206,19 @@ function initLanguageSwitcher() {
         .version-status-btn:hover {
             opacity: 1;
             background: var(--secondary, rgba(128, 128, 128, 0.14));
+        }
+        .version-status-btn::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: -4px;
+            right: -4px;
+            height: 10px;
+            background: transparent;
+            display: none;
+        }
+        .topbar-controls-wrapper:not(.popup-dismissed) .version-status-btn:hover::after {
+            display: block;
         }
         .agy-info-glyph {
             display: inline-flex;
@@ -277,14 +309,14 @@ function initLanguageSwitcher() {
             z-index: 1000000;
             backdrop-filter: blur(12px);
         }
-        /* Invisible hover bridge so moving mouse from i icon to popup never loses hover */
+        /* Narrow hover bridge strictly under the [i] button so the area left of [i] stays completely free */
         .update-popup::before {
             content: "";
             position: absolute;
-            top: -10px;
-            left: 0;
-            right: 0;
-            height: 10px;
+            top: -8px;
+            right: 72px;
+            width: 36px;
+            height: 8px;
             background: transparent;
         }
         .update-popup.warn-mode {
@@ -515,6 +547,7 @@ function initLanguageSwitcher() {
         }
     `;
     document.head.appendChild(style);
+    document.body.appendChild(popupBackdrop);
     document.body.appendChild(wrapper);
 
     const btnEn = document.getElementById('lang-btn-en');
@@ -928,17 +961,26 @@ function initLanguageSwitcher() {
         updateUI();
     });
 
+    const setPopupPinned = (pinned) => {
+        wrapper.classList.toggle('show-popup', !!pinned);
+        if (popupBackdrop) {
+            popupBackdrop.classList.toggle('active', !!pinned);
+        }
+    };
     const closePopup = (markDismissed = false) => {
-        wrapper.classList.remove('show-popup');
-        if (markDismissed) {
+        setPopupPinned(false);
+        const isHoveringControls = wrapper.matches(':hover') || (popupCard && popupCard.matches(':hover'));
+        if (markDismissed && isHoveringControls) {
             wrapper.classList.add('popup-dismissed');
+        } else {
+            wrapper.classList.remove('popup-dismissed');
         }
         resetUninstallConfirmUI();
     };
     const onOutsidePointerDown = (e) => {
         if (!wrapper.classList.contains('show-popup')) return;
         if (e && e.target && wrapper.contains(e.target)) return;
-        closePopup(true);
+        closePopup(false);
     };
     const onPopupKeyDown = (e) => {
         if (e && e.key === 'Escape' && (wrapper.classList.contains('show-popup') || (popupCard && popupCard.matches(':hover')))) {
@@ -950,9 +992,16 @@ function initLanguageSwitcher() {
             closePopup(false);
         }
     };
+    popupBackdrop.addEventListener('pointerdown', (e) => {
+        e.stopPropagation();
+        closePopup(false);
+    });
     document.addEventListener('pointerdown', onOutsidePointerDown, true);
     document.addEventListener('keydown', onPopupKeyDown, true);
     window.addEventListener('blur', onWindowBlurClosePopup);
+    versionBtn.addEventListener('mouseenter', () => {
+        wrapper.classList.remove('popup-dismissed');
+    });
     wrapper.addEventListener('mouseleave', () => {
         wrapper.classList.remove('popup-dismissed');
         if (!wrapper.classList.contains('show-popup')) {
@@ -964,6 +1013,7 @@ function initLanguageSwitcher() {
             try { document.removeEventListener('pointerdown', onOutsidePointerDown, true); } catch (e) {}
             try { document.removeEventListener('keydown', onPopupKeyDown, true); } catch (e) {}
             try { window.removeEventListener('blur', onWindowBlurClosePopup); } catch (e) {}
+            try { popupBackdrop.remove(); } catch (e) {}
         });
     }
 
@@ -979,14 +1029,15 @@ function initLanguageSwitcher() {
         hasRemoteUpdate = compareSemverClient(latestGithubVersion, currentLocalVersion) > 0;
 
         versionBtn.classList.remove('state-ok', 'state-attention', 'state-checking');
+        versionBtn.removeAttribute('title');
         popupCard.classList.remove('warn-mode');
 
         if (hasRemoteUpdate) {
             versionBtn.classList.add('state-attention');
             popupCard.classList.add('warn-mode');
-            versionBtn.title = autoUpdateEnabled
-                ? ('🟠 Доступно обновление v' + latestGithubVersion + '! Нажмите для скачивания и установки.')
-                : ('🟠 Доступно обновление v' + latestGithubVersion + ' (автообновление выкл.). Нажмите для просмотра.');
+            versionBtn.setAttribute('aria-label', autoUpdateEnabled
+                ? ('Доступно обновление v' + latestGithubVersion + '. Нажмите для скачивания и установки.')
+                : ('Доступно обновление v' + latestGithubVersion + ' (автообновление выкл.). Нажмите для просмотра.'));
 
             popupTitle.innerText = '🟠 Доступно обновление на GitHub!';
             popupVersionBadge.innerText = 'Обновление: v' + currentLocalVersion + ' → v' + latestGithubVersion;
@@ -998,7 +1049,7 @@ function initLanguageSwitcher() {
         } else if (isUpdatePending) {
             versionBtn.classList.add('state-attention');
             popupCard.classList.add('warn-mode');
-            versionBtn.title = '🟠 Требуется перезапуск AntiGravity для применения патча (v' + currentLocalVersion + ')';
+            versionBtn.setAttribute('aria-label', 'Требуется перезапуск AntiGravity для применения патча (v' + currentLocalVersion + ')');
 
             popupTitle.innerText = '🟠 Требуется перезапуск AntiGravity';
             popupVersionBadge.innerText = 'Версия локализации: v' + currentLocalVersion;
@@ -1007,7 +1058,7 @@ function initLanguageSwitcher() {
             restartBtn.innerText = '🔄 Применить патч и перезапустить';
         } else if (isHotUpdated) {
             versionBtn.classList.add('state-ok');
-            versionBtn.title = '🟢 Локализация успешно обновлена до v' + currentLocalVersion;
+            versionBtn.setAttribute('aria-label', 'Локализация успешно обновлена до v' + currentLocalVersion);
 
             popupTitle.innerText = '🟢 Обновление v' + currentLocalVersion + ' установлено!';
             popupVersionBadge.innerText = 'Установлена: v' + currentLocalVersion + ' • GitHub: v' + latestGithubVersion;
@@ -1016,7 +1067,7 @@ function initLanguageSwitcher() {
             restartBtn.innerText = '⚡ Перезапустить AntiGravity';
         } else {
             versionBtn.classList.add('state-ok');
-            versionBtn.title = '🟢 Установлена последняя версия v' + currentLocalVersion + ' (GitHub: v' + latestGithubVersion + '). Нажмите для проверки обновлений.';
+            versionBtn.setAttribute('aria-label', 'Установлена последняя версия v' + currentLocalVersion + ' (GitHub: v' + latestGithubVersion + '). Нажмите для проверки обновлений.');
 
             popupTitle.innerText = '🟢 Установлена последняя версия';
             popupVersionBadge.innerText = 'Версия: v' + currentLocalVersion + ' • GitHub: v' + latestGithubVersion;
@@ -1170,7 +1221,7 @@ function initLanguageSwitcher() {
         if (isBusyUpdating) return;
         isBusyUpdating = true;
         wrapper.classList.remove('popup-dismissed');
-        wrapper.classList.add('show-popup');
+        setPopupPinned(true);
         versionBtn.classList.remove('state-ok', 'state-attention');
         versionBtn.classList.add('state-checking');
         popupTitle.innerText = '⏳ Проверка и загрузка с GitHub...';
@@ -1239,7 +1290,7 @@ function initLanguageSwitcher() {
         if (autoUpdateEnabled) {
             triggerUpdateCheckAndInstall(false);
         } else {
-            wrapper.classList.add('show-popup');
+            setPopupPinned(true);
             checkGithubRemoteVersion();
         }
     });
@@ -1271,7 +1322,7 @@ function initLanguageSwitcher() {
     if (uninstallTriggerBtn && uninstallConfirmBox) {
         uninstallTriggerBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            wrapper.classList.add('show-popup');
+            setPopupPinned(true);
             uninstallTriggerBtn.style.display = 'none';
             uninstallConfirmBox.style.display = 'flex';
         });
