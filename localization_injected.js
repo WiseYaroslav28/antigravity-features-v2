@@ -19992,8 +19992,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.2.6';
-    const DEFAULT_CHANGELOG_V226 = 'Обновление v2.2.6: добавлен перевод комбинированных строк лимитов квот (например, «Weekly limit, resets in 6d 4h» у Gemini 4 Argon → «Недельный лимит, сброс через 6 дн 4 ч»), исправлена защита блоков кода и терминальных команд (CodeBlock/.code-block, span.token, run-command) от перевода командных слов вроде install, исправлено закрытие окна [i] при клике левее кнопки (в том числе в области drag заголовка macOS) и открытие с первого наведения после закрытия.';
+    const FALLBACK_VERSION = '2.2.7';
+    const DEFAULT_CHANGELOG_V227 = 'Обновление v2.2.7: автообновлятор переведён на загрузку ключевых файлов из GitHub Release Assets (с автоматическим фоллбэком на raw.githubusercontent.com) для нативного подсчёта регулярных обновлений без телеметрии, добавлена команда npm run stats для просмотра статистики обновлений и трафика.';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -20001,10 +20001,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V226;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V227;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V226;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V227;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -21563,7 +21563,7 @@ const initInterval = setInterval(() => {
             try {
                 if (document.documentElement) {
                     document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
-                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.6');
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.7');
                 }
                 // Notify isolated/other worlds (e.g. preload.js <-> CDP main world) to step down cleanly
                 window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
@@ -21612,7 +21612,7 @@ const initInterval = setInterval(() => {
             try {
                 if (document.documentElement) {
                     document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
-                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.6');
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.7');
                 }
                 window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
             } catch (e) {}

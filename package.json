@@ -1,6 +1,6 @@
 {
   "name": "antigravity-features-v2",
-  "version": "2.2.6",
+  "version": "2.2.7",
   "description": "Google AntiGravity 2.0 Russian Localization (100% RU Русификатор for Windows & macOS), Non-Invasive CDP Injector, Electron Auto-Patcher, Multi-Monitor Geometry Saver & GitHub Auto-Update MCP Server",
   "keywords": [
     "google-antigravity",
@@ -32,7 +32,8 @@
   "scripts": {
     "start": "node index.js",
     "build": "node build.cjs",
-    "patch": "node build.cjs && node auto_patcher.cjs"
+    "patch": "node build.cjs && node auto_patcher.cjs",
+    "stats": "node stats.cjs"
   },
   "dependencies": {
     "@electron/asar": "^4.3.0",

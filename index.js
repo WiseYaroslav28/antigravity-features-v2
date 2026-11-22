@@ -24,6 +24,7 @@ const GEOMETRY_FILE = path.join(__dirname, "backups", "window-geometry.json");
 const GITHUB_REPO = "WiseYaroslav28/antigravity-features-v2";
 const GITHUB_BRANCH = "main";
 const GITHUB_RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_REPO}/${GITHUB_BRANCH}`;
+const GITHUB_RELEASE_DOWNLOAD_BASE = `https://github.com/${GITHUB_REPO}/releases/download`;
 
 const username = process.env.USERNAME || process.env.USER || path.basename(os.homedir());
 const isMac = process.platform === 'darwin';
@@ -135,8 +136,12 @@ function compareSemver(vA, vB) {
   return 0;
 }
 
-function fetchHttpsText(url) {
+function fetchHttpsText(url, redirectsLeft = 5) {
   return new Promise((resolve, reject) => {
+    if (redirectsLeft < 0) {
+      reject(new Error(`Too many redirects for ${url}`));
+      return;
+    }
     const req = https.get(
       url,
       {
@@ -149,7 +154,9 @@ function fetchHttpsText(url) {
       },
       (res) => {
         if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-          fetchHttpsText(res.headers.location).then(resolve).catch(reject);
+          const nextUrl = new URL(res.headers.location, url).toString();
+          res.resume();
+          fetchHttpsText(nextUrl, redirectsLeft - 1).then(resolve).catch(reject);
           return;
         }
         if (res.statusCode !== 200) {
@@ -492,15 +499,35 @@ async function checkAndApplyGithubUpdate({ force = false, checkOnly = false } = 
     const oldPatcherPath = path.join(__dirname, "auto_patcher.cjs");
     const oldPatcherContent = fs.existsSync(oldPatcherPath) ? fs.readFileSync(oldPatcherPath, "utf8") : "";
 
+    const releaseTag = remoteMeta.version ? `v${String(remoteMeta.version).replace(/^v/i, '').trim()}` : '';
     const stagedFiles = [];
     for (const relFile of filesToUpdate) {
       // Prevent path traversal
       const safeRel = path.normalize(relFile).replace(/^(\.\.(\/|\\|$))+/, '');
+      const relPosix = safeRel.replace(/\\/g, '/');
       const targetPath = path.join(__dirname, safeRel);
       const tmpPath = targetPath.replace(/(\.[^.]+)$/, '.tmp$1');
-      const fileUrl = `${GITHUB_RAW_BASE}/${safeRel.replace(/\\/g, '/')}?cb=${Date.now()}`;
+      const rawFileUrl = `${GITHUB_RAW_BASE}/${relPosix}?cb=${Date.now()}`;
 
-      let downloadedContent = await fetchHttpsText(fileUrl);
+      // Download primary release artifacts via GitHub Release Assets (with seamless fallback to raw.githubusercontent.com)
+      // so GitHub natively tracks per-version update counts (and macOS vs Windows breakdown via mac_updater.cjs).
+      const useReleaseAsset = !!releaseTag && (
+        relPosix === "localization_injected.js" ||
+        (isMac && relPosix === "mac_updater.cjs")
+      );
+
+      let downloadedContent;
+      if (useReleaseAsset) {
+        const releaseAssetUrl = `${GITHUB_RELEASE_DOWNLOAD_BASE}/${encodeURIComponent(releaseTag)}/${relPosix}`;
+        try {
+          downloadedContent = await fetchHttpsText(releaseAssetUrl);
+        } catch (releaseErr) {
+          log(`[AutoUpdater] Release asset unavailable for ${relPosix} (${releaseTag}): ${releaseErr.message}. Falling back to raw.githubusercontent.com...`);
+          downloadedContent = await fetchHttpsText(rawFileUrl);
+        }
+      } else {
+        downloadedContent = await fetchHttpsText(rawFileUrl);
+      }
       if (safeRel.endsWith(".sh")) {
         downloadedContent = downloadedContent.replace(/\r\n/g, "\n");
       } else if (!isMac && (safeRel === "localization_injected.js" || safeRel.endsWith(".bat"))) {
