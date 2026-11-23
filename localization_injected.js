@@ -4869,7 +4869,30 @@ const dictUi = {
     "and add it again.": "и добавьте его снова.",
     "retrying the coordinator start failed.": "Не удалось повторно запустить координатор.",
     "writing the coordinator row failed.": "Не удалось записать строку координатора.",
-    "unavailable": "Недоступно"
+    "unavailable": "Недоступно",
+    // === v2.2.8: Remaining IDE UI, Model Tooltips & Plugin Page Headings ===
+    "create a project on this computer or remotely.": "Создайте проект на этом компьютере или удалённо.",
+    "settings unavailable": "Настройки недоступны",
+    "the orchestrator's own planner": "Собственный планировщик Orchestrator",
+    "research": "Исследования",
+    "the original gemini 4 model for advanced workflows.": "Оригинальная модель Gemini 4 для продвинутых рабочих сценариев.",
+    "the original gemini 4 model for advanced workflows. leaving on nov 30.": "Оригинальная модель Gemini 4 для продвинутых рабочих сценариев. Будет отключена 30 ноя.",
+    "use hydrogen for better quality with lower quota usage.": "Используйте Hydrogen для более высокого качества при меньшем расходе квоты.",
+    "use hydrogen for better quality with lower quota usage. leaving on nov 30.": "Используйте Hydrogen для более высокого качества при меньшем расходе квоты. Будет отключена 30 ноя.",
+    "authentication and setup": "Аутентификация и настройка",
+    "migration and legacy apis": "Миграция и устаревшие API",
+    "included components": "Включённые компоненты",
+    "available tools": "Доступные инструменты",
+    "usage examples": "Примеры использования",
+    "version pinning": "Фиксация версии",
+    "cli installation": "Установка CLI",
+    "cli installation:": "Установка CLI:",
+    "(optional, for shell workflows)": "(опционально, для консольных сценариев)",
+    "(optional, for shell workflows):": "(опционально, для консольных сценариев):",
+    "remote mcp server (": "Удалённый MCP-сервер (",
+    "agent rule (": "Правило агента (",
+    "equip your agent with current sdk patterns, cli workflows, model identifiers, and live documentation lookup for building with the": "Оснастите вашего агента актуальными шаблонами SDK, сценариями CLI, идентификаторами моделей и поиском по живой документации для работы с",
+    "equip your agent with current sdk patterns, cli workflows, model identifiers, and live documentation lookup for building with the gemini api.": "Оснастите вашего агента актуальными шаблонами SDK, сценариями CLI, идентификаторами моделей и поиском по живой документации для работы с Gemini API."
 };
 
 // ===== [MODULE: src/dict-plugins.js] =====
@@ -6537,7 +6560,136 @@ const dictPlugins = {
     "scientific literature": "Научная литература (Scientific Literature)",
     "search scientific papers, clinical trials, fda records, and historical texts.": "Поиск научных статей, клинических исследований, записей FDA и исторических текстов.",
     "chemistry": "Химия (Chemistry)",
-    "rdkit cheminformatics, reaction and property tools, plus chembl and pubchem, to work with molecules, their properties, and bioactivity data.": "Хемоинформатика RDKit, инструменты для реакций и свойств, а также ChEMBL и PubChem для работы с молекулами, их характеристиками и данными биоактивности."
+    "rdkit cheminformatics, reaction and property tools, plus chembl and pubchem, to work with molecules, their properties, and bioactivity data.": "Хемоинформатика RDKit, инструменты для реакций и свойств, а также ChEMBL и PubChem для работы с молекулами, их характеристиками и данными биоактивности.",
+
+    // === v2.2.8: Complete Marketplace Audit (100% of 98 Plugin Descriptions, 100% of 280 Suggested Prompts, Plugin READMEs & Skills) ===
+    // 10 previously missing Official & Partner Plugin Descriptions
+    "build applications and shell workflows with the gemini interactions api, decisions api, live api, genie 4 interactive worlds, and gemini api cli, including text, image, video, speech, and music generation, managed agents, and real-time multimodal streaming.": "Создавайте приложения и консольные сценарии с помощью Gemini Interactions API, Decisions API, Live API, интерактивных миров Genie 4 и Gemini API CLI: генерация текста, изображений, видео, речи и музыки, управляемые агенты и мультимодальный стриминг в реальном времени.",
+    "search and retrieve official google health api documentation on developers.google.com/health through the google health developer mcp server.": "Поиск и получение официальной документации Google Health API на developers.google.com/health через MCP-сервер Google Health Developer.",
+    "search official google home, matter, and openthread documentation and query cloud-to-cloud user feedback integration diagnostics through the google home developer mcp server.": "Поиск по официальной документации Google Home, Matter и OpenThread, а также запрос диагностики интеграций Cloud-to-cloud через MCP-сервер Google Home Developer.",
+    "build, test, and manage n8n workflows and agents through your instance mcp server. use official skills for node setup, credentials, and debugging.": "Создавайте, тестируйте и управляйте воркфлоу и агентами n8n через MCP-сервер вашего инстанса. Используйте официальные навыки для настройки нод, учётных данных и отладки.",
+    "connect antigravity to your clickup workspace — manage tasks, track time, and collaborate with your team without switching context.": "Подключите Antigravity к вашему рабочему пространству ClickUp: управляйте задачами, учитывайте время и работайте с командой без переключения контекста.",
+    "coderabbit is the governance and control layer for agentic software development helping developers trust ai written code.": "CodeRabbit — уровень контроля и управления для агентной разработки ПО, помогающий разработчикам доверять коду, написанному ИИ.",
+    "research u.s. case law, statutes, regulations, and court rules. find authorities, check quotations against opinions, and see how later courts cite a case.": "Исследуйте судебную практику, законы, нормативные акты и процессуальные правила США: находите прецеденты, сверяйте цитаты с решениями и отслеживайте цитирования.",
+    "salaries, jobs & career advice. levels.fyi is your career companion to ensure you get paid fairly and find jobs you'll love.": "Зарплаты, вакансии и карьерные советы. Levels.fyi — ваш карьерный помощник, чтобы получать справедливую оплату и находить любимую работу.",
+    "research us case law, statutes, and regulations, plus live dockets from federal and state courts. a midpage account is required.": "Исследуйте судебную практику, законы и нормативные акты США, а также актуальные реестры федеральных судов и судов штатов. Требуется аккаунт Midpage.",
+    "automate workflows across 10,000+ apps. run one-off actions or build automations for youtube, instagram, gmail, facebook pages, linkedin, slack, pinterest.": "Автоматизируйте рабочие процессы в более чем 10 000 приложений: запускайте разовые действия или создавайте автоматизации для YouTube, Instagram, Gmail, Facebook Pages, LinkedIn, Slack и Pinterest.",
+
+    // 18 Official Marketplace Suggested Prompts
+    "which oauth scopes does the google health api use, and which data types map to each scope?": "Какие области доступа (OAuth scopes) использует Google Health API и какие типы данных соответствуют каждой из них?",
+    "show me how to fetch daily sleep stages and heart rate metrics using the google health rest api": "Покажи, как получать ежедневные фазы сна и показатели пульса через Google Health REST API",
+    "how do i set up webhook subscriptions in the google health api to receive updates when new sleep or workout data arrives?": "Как настроить вебхук-подписки в Google Health API для получения уведомлений о новых данных сна или тренировок?",
+    "how do i commission a matter device and read its onoff trait using the google home apis on android?": "Как подключить устройство Matter и прочитать его характеристику OnOff с помощью Google Home API на Android?",
+    "show me how to implement action.devices.sync and action.devices.execute for a cloud-to-cloud light device": "Покажи, как реализовать action.devices.SYNC и action.devices.EXECUTE для облачного (Cloud-to-cloud) светильника",
+    "how do i configure an openthread border router and form a thread 1.4 network?": "Как настроить пограничный маршрутизатор OpenThread (Border Router) и создать сеть Thread 1.4?",
+    "launch an interactive viewer compare these 8 approved cox-1/cox-2 nsaids and analgesics: aspirin, ibuprofen, naproxen, celecoxib, rofecoxib, etoricoxib, diclofenac, and indomethacin.": "Запусти интерактивный просмотрщик для сравнения 8 одобренных НПВП и анальгетиков ЦОГ-1/ЦОГ-2: аспирин, ибупрофен, напроксен, целекоксиб, рофекоксиб, эторикоксиб, диклофенак и индометацин.",
+    "show me the two-step mechanism for the synthesis of aspirin from salicylic acid and acetic anhydride.": "Покажи двухстадийный механизм синтеза аспирина из салициловой кислоты и уксусного ангидрида.",
+    "can you show me the resonance structures of pyrrole?": "Можешь показать резонансные структуры пиррола?",
+    "rank rs1421085, rs9939609 and rs17817449 at the fto obesity locus by alphagenome avi score.": "Ранжируй варианты rs1421085, rs9939609 и rs17817449 в локусе ожирения FTO по оценке AlphaGenome AVI.",
+    "which tissues does rs1421085 affect gene expression in? check gtex eqtls.": "В каких тканях вариант rs1421085 влияет на экспрессию генов? Проверь GTEx eQTL.",
+    "predict how chr11:5226929:c>t affects splicing using alphagenome atlas avi.": "Спрогнозируй влияние chr11:5226929:C>T на сплайсинг с помощью AlphaGenome Atlas AVI.",
+    "write a literature review on earthquake mechanics and show me the sources of the papers which evidence the content in this review.": "Напиши обзор литературы по механике землетрясений и приведи ссылки на научные статьи, подтверждающие тезисы обзора.",
+    "query pubmed database for papers on using plants to clean heavy metals from soil.": "Выполни поиск в базе PubMed по статьям об использовании растений для очистки почвы от тяжёлых металлов.",
+    "find preprints from the past month on asteroid deflection and planetary defense.": "Найди препринты за последний месяц по отклонению астероидов и планетарной защите.",
+    "fetch the alphafold structure of tardigrade dsup (uniprot p0dow4), open it in 3d, and explain what its confidence profile reveals about protecting dna.": "Загрузи структуру AlphaFold белка Dsup тихоходки (UniProt P0DOW4), открой её в 3D и объясни, что профиль достоверности говорит о защите ДНК.",
+    "find the top 5 interaction partners of human clock in string and explain how they work together to keep 24-hour time.": "Найди топ-5 белков-партнёров человеческого CLOCK в базе STRING и объясни, как они совместно поддерживают 24-часовой циркадный ритм.",
+    "visualize the engineered plastic-eating enzyme fast-petase (pdb 7sh6) in 3d and annotate its active site and key thermostability mutations.": "Визуализируй в 3D модифицированный фермент FAST-PETase (PDB 7SH6), разлагающий пластик, и отметь его активный центр и ключевые мутации термостабильности.",
+
+    // 19 Partner Marketplace Suggested Prompts
+    "find workflows on my n8n instance.": "Найди воркфлоу на моём инстансе n8n.",
+    "help me build and test an n8n workflow.": "Помоги создать и протестировать воркфлоу в n8n.",
+    "review an n8n workflow for errors.": "Проверь воркфлоу n8n на ошибки.",
+    "run my daily standup from my open clickup tasks": "Собери мой ежедневный стендап по открытым задачам в ClickUp",
+    "break this initiative down into ordered subtasks in clickup": "Разбей эту инициативу на упорядоченные подзадачи в ClickUp",
+    "set up last quarter's project again for a new client": "Повтори настройку проекта прошлого квартала для нового клиента",
+    "check my coderabbit connection and selected organization.": "Проверь моё подключение к CodeRabbit и выбранную организацию.",
+    "review my uncommitted changes. review only; do not edit.": "Проверь мои незакоммиченные изменения. Только ревью, без правок.",
+    "which findings from my latest deep scan should i fix first?": "Какие замечания из моего последнего Deep Scan стоит исправить в первую очередь?",
+    "use descrybe to look up 347 u.s. 483. give me the case name, court, and year, with a link to the opinion.": "Найди через Descrybe дело 347 U.S. 483. Укажи название дела, суд, год и ссылку на судебное решение.",
+    "use descrybe to check whether brown v. board of education, 347 u.s. 483, contains the sentence “separate educational facilities are inherently unequal.” show the matching passage.": "Проверь через Descrybe, содержит ли дело Brown v. Board of Education (347 U.S. 483) фразу «Separate educational facilities are inherently unequal». Покажи соответствующий фрагмент.",
+    "use descrybe to find the california statute on returning a residential security deposit. cite the section and link to the source.": "Найди через Descrybe закон штата Калифорния о возврате жилого страхового депозита. Приведи номер статьи и ссылку на источник.",
+    "find recent federal cases on trade secret misappropriation.": "Найди недавние федеральные дела о незаконном присвоении коммерческой тайны.",
+    "can a california tenant recover damages under a late delivery provision in a commercial lease?": "Может ли арендатор в Калифорнии взыскать убытки по условию о просрочке передачи помещения в коммерческой аренде?",
+    "generate a hyperexecute yaml for my playwright typescript tests and run it.": "Сгенерируй HyperExecute YAML для моих тестов Playwright на TypeScript и запусти его.",
+    "use rook to test the refund agent in this repository against its refund policy.": "Используй Rook, чтобы протестировать агента возвратов в этом репозитории на соответствие политике возвратов.",
+    "upload this video to youtube with a title and description.": "Загрузи это видео на YouTube с заголовком и описанием.",
+    "post this image to our instagram business account.": "Опубликуй это изображение в нашем бизнес-аккаунте Instagram.",
+    "find unread gmail messages from clients and draft replies.": "Найди непрочитанные письма от клиентов в Gmail и подготовь черновики ответов.",
+
+    // Gemini API v2.9.0 README & Updated Skills
+    "use this skill when writing code that calls the gemini api for text generation, multi-turn chat, multimodal understanding, image generation, video generation, interactive world simulation (genie 4), speech generation (tts), voice design, voice replication, voice remixing, music generation, streaming responses, background research tasks, function calling, structured output, calibrated decisions (yes/no, choice, rubric scoring), or migrating from the old generatecontent api. covers sdk usage and best practices for gemini models and agents in python and typescript.": "Навык для написания кода с Gemini API: генерация текста, многошаговый чат, мультимодальность, генерация изображений, видео, интерактивных миров (Genie 4), речи (TTS) и музыки, дизайн/клонирование/ремикс голоса, стриминг, фоновые исследования, вызов функций, структурированный вывод, калиброванные решения и миграция со старого generateContent (Python и TypeScript).",
+    "use this skill when building real-time interactive world generation and simulation apps with genie 4 (models/genie-4) over the live interactions api (interactions.connect via webrtc or websocket), or migrating early-access raw webrtc/websocket world-model prototypes to the google-genai and @google/genai sdks. covers ephemeral auth tokens (interactions.auth_tokens / interactions.authtokens), world_setup initialization from text and/or reference images, keyboard and action controls (user_action), mid-session prompt steering, continuous 16:9 24 fps video + 48 khz stereo audio streaming, and session lifecycle (complete vs detach). don't use for clip-based video generation (use gemini-omni-flash-api) or conversational voice live api (use gemini-live-api-dev).": "Навык для создания приложений интерактивной генерации и симуляции миров реального времени на базе Genie 4 (models/genie-4) через Live Interactions API (WebRTC/WebSocket) и SDK google-genai / @google/genai: эфемерные токены, world_setup, управление user_action, корректировка промпта на лету и потоковое видео 16:9 24 fps + стереоаудио 48 кГц.",
+    "build real-time interactive 3d/video world generation and simulation apps with genie 4 (": "Создавайте интерактивные приложения генерации и симуляции 3D/видео-миров в реальном времени с помощью Genie 4 (",
+    ") over": ") через",
+    "(webrtc and websocket), including ephemeral auth tokens,": "(WebRTC и WebSocket), включая эфемерные токены авторизации,",
+    ", keyboard": ", управление с клавиатуры",
+    "controls, and mid-session prompt steering.": "и корректировку промпта в ходе сессии.",
+    "call the gemini api from the shell with the": "Вызывайте Gemini API из командной строки с помощью",
+    ". covers media generation (images, tts, music, video), local file and youtube analysis, audio and video transcription, deep research, and sandboxed agents.": ". Охватывает генерацию медиа (изображения, TTS, музыка, видео), анализ локальных файлов и YouTube, транскрибацию аудио и видео, Deep Research и агентов в песочнице.",
+    '"use the': "«Используйте",
+    "cli to transcribe": "CLI, чтобы транскрибировать",
+    'to an srt file and summarize the action items."': "в SRT-файл и кратко перечислить задачи к выполнению.»",
+    "to an srt file and summarize the action items.": "в SRT-файл и кратко перечислить задачи к выполнению.",
+
+    // Google Health Developer v1.0.0 README (100% of sections, bullets & split nodes)
+    "equip your coding agent with direct access to official": "Оснастите вашего кодинг-агента прямым доступом к официальной документации",
+    "documentation through the remote google health developer model context protocol (mcp) server (": "через удалённый MCP-сервер Google Health Developer (",
+    "for full setup and usage instructions, see the official": "Полные инструкции по настройке и использованию см. в официальном",
+    "google health developer mcp guide": "руководстве по MCP Google Health Developer",
+    "instead of relying on model training cutoffs or unverified web search results, your agent can search and read authoritative google health documentation on the following topics:": "Вместо опоры на устаревшие знания модели или непроверенные результаты веб-поиска ваш агент сможет искать и читать официальную документацию Google Health по следующим темам:",
+    "google health rest and grpc apis": "REST и gRPC API Google Health",
+    "oauth 2.0 scopes, permissions, and user consent flows": "Области доступа (scopes) OAuth 2.0, разрешения и сценарии согласия пользователя",
+    "data types, schemas, and rest / grpc endpoints": "Типы данных, схемы и конечные точки REST / gRPC",
+    "(activity, sleep, heart rate, and wellness metrics)": "(активность, сон, пульс и показатели здоровья)",
+    "fitbit web api migration documentation": "Документация по миграции с Fitbit Web API",
+    "this plugin requires no api key or google cloud credentials. installing and enabling this plugin connects your agent directly to": "Этому плагину не требуются API-ключ или учётные данные Google Cloud. После установки и включения агент подключается напрямую к",
+    "over streamable http.": "по протоколу Streamable HTTP.",
+    "this plugin provides read-only documentation lookup (": "Плагин предоставляет поиск по публичной документации Google Health в режиме только для чтения (",
+    ") over public google health docs. it does not run automated code migrations, call live google health api endpoints, or access user health data.": "). Он не выполняет автоматическую миграцию кода, не вызывает рабочие эндпоинты Google Health API и не получает доступ к медицинским данным пользователей.",
+    "fitbit web api migration": "Миграция с Fitbit Web API",
+    ": this plugin searches the fitbit web api": ": плагин выполняет поиск по",
+    "migration guide": "руководству по миграции",
+    "for oauth cutover and endpoint mappings. to interactively compare fitbit web api and google health api endpoints and responses, use the google health api": "для перехода на OAuth и сопоставления эндпоинтов. Чтобы интерактивно сравнить эндпоинты и ответы Fitbit Web API и Google Health API, используйте",
+    "parity tool": "инструмент сравнения (Parity Tool)",
+    "google fit (deprecated)": "Google Fit (устарел)",
+    ": the google fit apis are deprecated. build new and migrated integrations on the": ": API Google Fit устарели. Создавайте новые и переносимые интеграции на базе",
+    "instead.": "вместо них.",
+    "this server provides two read-only documentation tools:": "Этот сервер предоставляет два инструмента для чтения документации:",
+    ": searches official google health documentation using semantic and keyword matching, returning snippets and": ": ищет по официальной документации Google Health с помощью семантического поиска и ключевых слов, возвращая фрагменты и имена ресурсов",
+    "resource names.": ".",
+    ": fetches the complete markdown content of up to 20 documentation pages by": ": загружает полное содержимое в Markdown до 20 страниц документации по имени ресурса",
+    "resource name (": "(",
+    "this rule guides the agent to ground google health api answers in": "Это правило направляет агента опираться в ответах по Google Health API на",
+    ", link the interactive": ", приводить ссылку на интерактивный",
+    "for fitbit web api migrations, direct deprecated google fit queries to the google health api, and cite canonical": "для миграции с Fitbit Web API, перенаправлять запросы по устаревшему Google Fit на Google Health API и цитировать канонические ссылки",
+    "links.": ".",
+
+    // Google Docs, Google Drive & Context7 READMEs + 4 Vercel Plugin Skills
+    "read and write your google docs. summarize any doc from its link, draft proposals and announcements in a new doc, and reply to and resolve open comments.": "Читает и редактирует ваши Google Документы: делает сводку документа по ссылке, создаёт черновики предложений и анонсов, отвечает на комментарии и закрывает их.",
+    "find and organize your google drive. search across your files, tidy up folders, share them with the right people, and download or export them as pdf, csv, or markdown.": "Ищет и организует файлы на вашем Google Диске: поиск по файлам, наведение порядка в папках, настройка доступа, скачивание и экспорт в PDF, CSV или Markdown.",
+    "context7 plugin for antigravity": "Плагин Context7 для Antigravity",
+    "context7 solves a common problem with ai coding assistants: outdated training data and hallucinated apis. instead of relying on stale knowledge, context7 fetches current documentation directly from source repositories.": "Context7 решает частую проблему ИИ-ассистентов для кода — устаревшие данные обучения и выдуманные API. Вместо опоры на устаревшие знания Context7 загружает актуальную документацию напрямую из исходных репозиториев.",
+    "— connects antigravity to context7's documentation service": "— подключает Antigravity к сервису документации Context7",
+    "— a": "— навык",
+    "skill with instructions on resolving libraries and fetching documentation": "с инструкциями по поиску библиотек и загрузке документации",
+    "after you install the plugin, open": "После установки плагина откройте",
+    "agent settings → customizations": "Настройки агента → Персонализация",
+    "and click": "и нажмите",
+    "authenticate": "Аутентифицироваться",
+    "next to the": "рядом с сервером",
+    "server. sign in to context7 in your browser to connect.": ". Войдите в Context7 в браузере для подключения.",
+    "searches for libraries and returns context7-compatible identifiers.": "Ищет библиотеки и возвращает совместимые с Context7 идентификаторы.",
+    "fetches documentation for a specific library, ranked by relevance to your question.": "Загружает документацию для выбранной библиотеки, отсортированную по релевантности вашему вопросу.",
+    "the plugin works automatically when you ask about libraries:": "Плагин работает автоматически, когда вы спрашиваете о библиотеках:",
+    '"how do i set up authentication in next.js 16?"': "«Как настроить аутентификацию в Next.js 16?»",
+    '"show me react server components examples"': "«Покажи примеры React Server Components»",
+    '"what\'s the prisma syntax for relations?"': "«Какой синтаксис у связей в Prisma?»",
+    "to get documentation for a specific version, include the version in the library id:": "Чтобы получить документацию для конкретной версии, укажите её в идентификаторе библиотеки:",
+    "tool returns available versions, so you can pick the one that matches your project.": "возвращает доступные версии, чтобы вы могли выбрать подходящую для вашего проекта.",
+    "protect specific routes and server actions from bots in code with vercel botid (`botid` npm package). use when installing botid, calling `initbotid()` or `checkbotid()`, mounting `<botidclient />`, gating signup, login, checkout or ai inference endpoints, allowing verified bots such as chatgpt agents through, enabling deep analysis, or debugging a route that always reports a bot. for site-wide bot rules (bot protection, ai bots, custom rules on bot name or category), use the `vercel-firewall` skill.": "Защита маршрутов и Server Actions от ботов в коде с помощью Vercel BotID (npm-пакет botid): установка, вызов initBotId()/checkBotId(), <BotIdClient />, защита регистрации/входа/оплаты и ИИ-эндпоинтов, пропуск проверенных ботов и Deep Analysis.",
+    "emit and query vercel custom metrics. use proactively whenever you write or change server code that runs as a vercel function (route handlers, api routes, server actions, webhooks, scheduled jobs, queue consumers, ai or external api calls) to record outcomes and latency with metric() from @vercel/functions, even when the user did not ask for metrics. also use when choosing metric names and attributes or querying emitted values with vc metrics.": "Отправка и запрос пользовательских метрик Vercel Custom Metrics: запись результатов и задержек через metric() из @vercel/functions в Vercel Functions, выбор имён/атрибутов метрик и просмотр значений через vc metrics.",
+    "vercel agent guidance — dashboard and slack chat, code review, security review, production investigation, approved actions, and product installation. use when configuring or working with vercel's ai assistant.": "Руководство по Vercel Agent: чат в панели управления и Slack, ревью кода, аудит безопасности (Security Review), расследование инцидентов в продакшене, одобренные действия и установка продуктов.",
+    "vercel schedules guidance — run a private function, route, or vercel queues topic on a cron cadence or once at a set time. covers static schedules in vercel.json, dynamic per-user schedules with @vercel/schedules, handleschedule, the vercel schedules cli, environments, jitter, and migrating from cron jobs. use when adding scheduled or recurring work, one-time reminders, or replacing `crons`.": "Руководство по Vercel Schedules: запуск приватных функций, маршрутов или топиков Vercel Queues по расписанию cron или разово. Статические расписания в vercel.json, динамические через @vercel/schedules, handleSchedule, CLI vercel schedules и миграция с Cron Jobs."
 };
 
 const translationDictionary = Object.assign({}, dictUi, dictPlugins);
@@ -8761,6 +8913,14 @@ const regexTranslations = [
         replace: (m) => /interactions/i.test(m[0])
             ? "Создавайте приложения с помощью Interactions API."
             : "Создавайте приложения с помощью "
+    },
+    {
+        pattern: /^\.?\s*Covers\s+text\s+generation,\s*stateful\s+multi-turn\s+chat.*calibrated\s+decisions\s*\($/i,
+        replace: () => ". Охватывает генерацию текста, многошаговый чат с сохранением состояния, потоковую передачу, вызов функций, структурированный вывод, калиброванные решения ("
+    },
+    {
+        pattern: /^\),\s*image\s+generation,\s*speech\s+generation\s*\(TTS\),\s*Voice\s+Design,\s*Voice\s+Replication,\s*Voice\s+Remix(?:ing)?,\s*music\s+generation,\s*managed\s+agents,\s*Deep\s+Research,\s*and\s+migrations\s+from$/i,
+        replace: () => "), генерацию изображений, синтез речи (TTS), дизайн, клонирование и ремикс голоса, генерацию музыки, управляемых агентов, Deep Research и миграцию с"
     },
     {
         pattern: /^\.?\s*Covers\s+text\s+generation,\s*stateful\s+multi-turn\s+chat.*$/i,
@@ -16089,6 +16249,40 @@ const regexTranslations = [
         replace: (m) => `Модель ${m[1].trim()}, которая может передавать рутинные шаги модели ${m[2].trim()}. Качество уровня ${m[3].trim()} при меньшем расходе токенов.`
     },
     {
+        // Model recommendation tooltip with optional deprecation date:
+        // "Use Hydrogen for better quality with lower quota usage. Leaving on Nov 30."
+        pattern: /^Use\s+([A-Za-z0-9 .+\-]+?)\s+for\s+better\s+quality\s+with\s+lower\s+quota\s+usage\.?(?:\s+Leaving\s+on\s+(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+(\d{1,2})(?:,\s*(\d{4}))?\.?)?$/i,
+        replace: (m) => {
+            const months = { jan: 'янв', feb: 'фев', mar: 'мар', apr: 'апр', may: 'мая', jun: 'июн', jul: 'июл', aug: 'авг', sep: 'сен', oct: 'окт', nov: 'ноя', dec: 'дек' };
+            let out = `Используйте ${m[1].trim()} для более высокого качества при меньшем расходе квоты.`;
+            if (m[2] && m[3]) {
+                const mo = months[m[2].slice(0, 3).toLowerCase()] || m[2];
+                out += ` Будет отключена ${m[3]} ${mo}${m[4] ? ' ' + m[4] : ''}.`;
+            }
+            return out;
+        }
+    },
+    {
+        // Universal model deprecation suffix: "<Any model tooltip>. Leaving on Nov 30." or standalone "Leaving on Nov 30."
+        pattern: /^(.*?)\s*Leaving\s+on\s+(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+(\d{1,2})(?:,\s*(\d{4}))?\.?$/i,
+        replace: (m) => {
+            const months = { jan: 'янв', feb: 'фев', mar: 'мар', apr: 'апр', may: 'мая', jun: 'июн', jul: 'июл', aug: 'авг', sep: 'сен', oct: 'окт', nov: 'ноя', dec: 'дек' };
+            const mo = months[m[2].slice(0, 3).toLowerCase()] || m[2];
+            const suffix = `Будет отключена ${m[3]} ${mo}${m[4] ? ' ' + m[4] : ''}.`;
+            const prefix = (m[1] || '').trim();
+            if (!prefix) return suffix;
+            const cleanNoDot = prefix.replace(/\.+$/, '').trim();
+            const translatedPrefix =
+                translationDictionary[prefix.toLowerCase()] ||
+                translationDictionary[cleanNoDot.toLowerCase()] ||
+                translateText(prefix);
+            const finalPrefix = translatedPrefix && translatedPrefix !== prefix
+                ? (/[.!?]$/.test(translatedPrefix.trim()) ? translatedPrefix.trim() : translatedPrefix.trim() + '.')
+                : prefix;
+            return `${finalPrefix} ${suffix}`;
+        }
+    },
+    {
         // Deprecation notice: "GPT-OSS will be removed from Antigravity on November 18, 2026."
         pattern: /^([A-Za-z0-9.\-_() ]+?)\s+will\s+be\s+removed\s+from\s+Antigravity\s+on\s+([A-Za-z]+)\s+(\d{1,2}),\s+(\d{4})\.?$/i,
         replace: (m) => {
@@ -17723,6 +17917,9 @@ function shouldIgnore(node) {
             val.startsWith('check ') ||
             val.startsWith('select project') ||
             val.startsWith('leaving soon') ||
+            val.includes('leaving on ') ||
+            val.includes('for better quality with lower quota usage') ||
+            val.startsWith('the original gemini 4 model') ||
             val.startsWith('notice') ||
             val.startsWith('exploring files') ||
             val.startsWith('verify ') ||
@@ -19992,8 +20189,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.2.7';
-    const DEFAULT_CHANGELOG_V227 = 'Обновление v2.2.7: автообновлятор переведён на загрузку ключевых файлов из GitHub Release Assets (с автоматическим фоллбэком на raw.githubusercontent.com) для нативного подсчёта регулярных обновлений без телеметрии, добавлена команда npm run stats для просмотра статистики обновлений и трафика.';
+    const FALLBACK_VERSION = '2.2.8';
+    const DEFAULT_CHANGELOG_V228 = 'Обновление v2.2.8: полный аудит и добивка переводов до 100% — добавлены тултипы отключения моделей (Gemini 4 Argon / Gemini 3.8 Flash «Leaving on Nov 30» + универсальное правило для любых дат), 100% описаний всех 98 плагинов и всех 280 стартовых промптов Маркетплейса, обновлена страница Gemini API v2.9.0 (Genie 4, Decisions API, исправлен разрыв строки gemini-api-dev), полностью переведён Google Health Developer, Context7, Google Docs/Drive и 4 навыка Vercel.';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -20001,10 +20198,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V227;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V228;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V227;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V228;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -21563,7 +21760,7 @@ const initInterval = setInterval(() => {
             try {
                 if (document.documentElement) {
                     document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
-                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.7');
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.8');
                 }
                 // Notify isolated/other worlds (e.g. preload.js <-> CDP main world) to step down cleanly
                 window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
@@ -21612,7 +21809,7 @@ const initInterval = setInterval(() => {
             try {
                 if (document.documentElement) {
                     document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
-                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.7');
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.8');
                 }
                 window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
             } catch (e) {}

@@ -24,8 +24,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.2.7';
-    const DEFAULT_CHANGELOG_V227 = 'Обновление v2.2.7: автообновлятор переведён на загрузку ключевых файлов из GitHub Release Assets (с автоматическим фоллбэком на raw.githubusercontent.com) для нативного подсчёта регулярных обновлений без телеметрии, добавлена команда npm run stats для просмотра статистики обновлений и трафика.';
+    const FALLBACK_VERSION = '2.2.8';
+    const DEFAULT_CHANGELOG_V228 = 'Обновление v2.2.8: полный аудит и добивка переводов до 100% — добавлены тултипы отключения моделей (Gemini 4 Argon / Gemini 3.8 Flash «Leaving on Nov 30» + универсальное правило для любых дат), 100% описаний всех 98 плагинов и всех 280 стартовых промптов Маркетплейса, обновлена страница Gemini API v2.9.0 (Genie 4, Decisions API, исправлен разрыв строки gemini-api-dev), полностью переведён Google Health Developer, Context7, Google Docs/Drive и 4 навыка Vercel.';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -33,10 +33,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V227;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V228;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V227;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V228;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;

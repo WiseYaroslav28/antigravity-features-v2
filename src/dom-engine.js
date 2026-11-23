@@ -1063,6 +1063,9 @@ function shouldIgnore(node) {
             val.startsWith('check ') ||
             val.startsWith('select project') ||
             val.startsWith('leaving soon') ||
+            val.includes('leaving on ') ||
+            val.includes('for better quality with lower quota usage') ||
+            val.startsWith('the original gemini 4 model') ||
             val.startsWith('notice') ||
             val.startsWith('exploring files') ||
             val.startsWith('verify ') ||

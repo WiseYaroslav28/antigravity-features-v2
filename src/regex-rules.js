@@ -988,6 +988,14 @@ const regexTranslations = [
             : "Создавайте приложения с помощью "
     },
     {
+        pattern: /^\.?\s*Covers\s+text\s+generation,\s*stateful\s+multi-turn\s+chat.*calibrated\s+decisions\s*\($/i,
+        replace: () => ". Охватывает генерацию текста, многошаговый чат с сохранением состояния, потоковую передачу, вызов функций, структурированный вывод, калиброванные решения ("
+    },
+    {
+        pattern: /^\),\s*image\s+generation,\s*speech\s+generation\s*\(TTS\),\s*Voice\s+Design,\s*Voice\s+Replication,\s*Voice\s+Remix(?:ing)?,\s*music\s+generation,\s*managed\s+agents,\s*Deep\s+Research,\s*and\s+migrations\s+from$/i,
+        replace: () => "), генерацию изображений, синтез речи (TTS), дизайн, клонирование и ремикс голоса, генерацию музыки, управляемых агентов, Deep Research и миграцию с"
+    },
+    {
         pattern: /^\.?\s*Covers\s+text\s+generation,\s*stateful\s+multi-turn\s+chat.*$/i,
         replace: () => ". Охватывает генерацию текста, многошаговый чат с сохранением состояния, потоковую передачу, вызов функций, структурированный вывод, генерацию изображений, синтез речи (TTS), дизайн и клонирование голоса, управляемых агентов, Deep Research и миграцию с "
     },
@@ -8312,6 +8320,40 @@ const regexTranslations = [
         // Orchestrator model tooltip: "Carbon that may offload routine steps to Hydrogen. Same Carbon-level quality, fewer tokens used."
         pattern: /^(.+?)\s+that\s+may\s+offload\s+routine\s+steps\s+to\s+(.+?)\.\s*Same\s+(.+?)-level\s+quality,\s*fewer\s+tokens\s+used\.?$/i,
         replace: (m) => `Модель ${m[1].trim()}, которая может передавать рутинные шаги модели ${m[2].trim()}. Качество уровня ${m[3].trim()} при меньшем расходе токенов.`
+    },
+    {
+        // Model recommendation tooltip with optional deprecation date:
+        // "Use Hydrogen for better quality with lower quota usage. Leaving on Nov 30."
+        pattern: /^Use\s+([A-Za-z0-9 .+\-]+?)\s+for\s+better\s+quality\s+with\s+lower\s+quota\s+usage\.?(?:\s+Leaving\s+on\s+(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+(\d{1,2})(?:,\s*(\d{4}))?\.?)?$/i,
+        replace: (m) => {
+            const months = { jan: 'янв', feb: 'фев', mar: 'мар', apr: 'апр', may: 'мая', jun: 'июн', jul: 'июл', aug: 'авг', sep: 'сен', oct: 'окт', nov: 'ноя', dec: 'дек' };
+            let out = `Используйте ${m[1].trim()} для более высокого качества при меньшем расходе квоты.`;
+            if (m[2] && m[3]) {
+                const mo = months[m[2].slice(0, 3).toLowerCase()] || m[2];
+                out += ` Будет отключена ${m[3]} ${mo}${m[4] ? ' ' + m[4] : ''}.`;
+            }
+            return out;
+        }
+    },
+    {
+        // Universal model deprecation suffix: "<Any model tooltip>. Leaving on Nov 30." or standalone "Leaving on Nov 30."
+        pattern: /^(.*?)\s*Leaving\s+on\s+(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+(\d{1,2})(?:,\s*(\d{4}))?\.?$/i,
+        replace: (m) => {
+            const months = { jan: 'янв', feb: 'фев', mar: 'мар', apr: 'апр', may: 'мая', jun: 'июн', jul: 'июл', aug: 'авг', sep: 'сен', oct: 'окт', nov: 'ноя', dec: 'дек' };
+            const mo = months[m[2].slice(0, 3).toLowerCase()] || m[2];
+            const suffix = `Будет отключена ${m[3]} ${mo}${m[4] ? ' ' + m[4] : ''}.`;
+            const prefix = (m[1] || '').trim();
+            if (!prefix) return suffix;
+            const cleanNoDot = prefix.replace(/\.+$/, '').trim();
+            const translatedPrefix =
+                translationDictionary[prefix.toLowerCase()] ||
+                translationDictionary[cleanNoDot.toLowerCase()] ||
+                translateText(prefix);
+            const finalPrefix = translatedPrefix && translatedPrefix !== prefix
+                ? (/[.!?]$/.test(translatedPrefix.trim()) ? translatedPrefix.trim() : translatedPrefix.trim() + '.')
+                : prefix;
+            return `${finalPrefix} ${suffix}`;
+        }
     },
     {
         // Deprecation notice: "GPT-OSS will be removed from Antigravity on November 18, 2026."
