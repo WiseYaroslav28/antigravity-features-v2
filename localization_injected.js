@@ -4892,7 +4892,118 @@ const dictUi = {
     "remote mcp server (": "Удалённый MCP-сервер (",
     "agent rule (": "Правило агента (",
     "equip your agent with current sdk patterns, cli workflows, model identifiers, and live documentation lookup for building with the": "Оснастите вашего агента актуальными шаблонами SDK, сценариями CLI, идентификаторами моделей и поиском по живой документации для работы с",
-    "equip your agent with current sdk patterns, cli workflows, model identifiers, and live documentation lookup for building with the gemini api.": "Оснастите вашего агента актуальными шаблонами SDK, сценариями CLI, идентификаторами моделей и поиском по живой документации для работы с Gemini API."
+    "equip your agent with current sdk patterns, cli workflows, model identifiers, and live documentation lookup for building with the gemini api.": "Оснастите вашего агента актуальными шаблонами SDK, сценариями CLI, идентификаторами моделей и поиском по живой документации для работы с Gemini API.",
+
+    // === AntiGravity 2.35.0: Running Locks, Inbox Mode / Auto-Resolve, Plugin Permissions, Dictation Languages, Orchestrator Selection, Agents & Viewers ===
+    "model cannot be changed while the agent is running": "Нельзя сменить модель, пока агент работает",
+    "permissions cannot be changed while the agent is running": "Нельзя изменить разрешения, пока агент работает",
+    "agent finished. queued messages send after background work finishes.": "Агент завершил работу. Сообщения в очереди отправятся после завершения фоновых задач.",
+    "sends after background work finishes.": "Отправится после завершения фоновых задач.",
+    "inbox": "Входящие",
+    "inbox mode": "Режим «Входящие»",
+    "working section": "Раздел «В работе»",
+    "keep running conversations in a separate working section instead of in the inbox.": "Показывать активные диалоги в отдельном разделе «В работе», а не во «Входящих».",
+    "auto-resolve": "Автозавершение",
+    "move idle inbox conversations to resolved automatically after the selected time.": "Автоматически перемещать неактивные диалоги из «Входящих» в «Решённые» по истечении выбранного времени.",
+    "resolve conversation": "Отметить диалог как решённый",
+    "resolved": "Решённые",
+    "conversation resolved": "Диалог решён",
+    "moved to resolved.": "Перемещено в «Решённые».",
+    "return to inbox": "Вернуть во «Входящие»",
+    "returned conversation to inbox": "Диалог возвращён во «Входящие»",
+    "all caught up": "Всё разобрано",
+    "locked while grouped by status": "Заблокировано при группировке по статусу",
+    "automatically pin conversations when you send a message. unpin as needed to keep your pinned list focused.": "Автоматически закреплять диалоги при отправке сообщения. Открепляйте ненужные, чтобы список «Закреплённые» оставался компактным.",
+    "move conversation": "Переместить диалог",
+    "continue as a new conversation": "Продолжить как новый диалог",
+    "continue in current workspace": "Продолжить в текущей рабочей области",
+    "continue in new workspace": "Продолжить в новой рабочей области",
+    "continue in shared workspace": "Продолжить в общей рабочей области",
+    "cannot continue a subagent's side question as a new conversation": "Нельзя продолжить быстрый вопрос субагента как новый диалог",
+    "cannot continue as a new conversation while side question is running": "Нельзя продолжить как новый диалог, пока выполняется быстрый вопрос",
+    "plugin permissions": "Разрешения плагина",
+    "changes plugins can make without asking.": "Изменения, которые плагины могут вносить без запроса подтверждения.",
+    "nothing is always allowed. you'll be asked before this plugin makes changes.": "Постоянных разрешений нет. Перед внесением изменений плагин будет запрашивать подтверждение.",
+    "included with plugin": "Входит в состав плагина",
+    "these come with the plugin and can't be revoked.": "Эти разрешения встроены в плагин и не могут быть отозваны.",
+    "from a plugin": "Из плагина",
+    "allowed by you": "Разрешено вами",
+    "always allowed": "Всегда разрешено",
+    "always allowed in this project": "Всегда разрешено в этом проекте",
+    "revoke all": "Отозвать все",
+    "yes, allow for this task": "Да, разрешить для этой задачи",
+    "yes, always allow": "Да, всегда разрешать",
+    "yes, allow downloads from": "Да, разрешить загрузки с",
+    "yes, save rule for '": "Да, сохранить правило для '",
+    "permission decision": "Решение по разрешению",
+    "waiting for approval to grant administrator access": "Ожидание подтверждения для предоставления прав администратора",
+    "plugin disabled": "Плагин отключён",
+    "sidecar disabled": "Сайдкар отключён",
+    "show plugins": "Показать плагины",
+    "show automations": "Показать автоматизации",
+    "dictation languages": "Языки диктовки",
+    "dictation language options": "Настройки языков диктовки",
+    "available dictation languages": "Доступные языки диктовки",
+    "selected dictation languages": "Выбранные языки диктовки",
+    "constrain voice dictation to selected languages in priority order. leave empty to auto-detect.": "Ограничить голосовой ввод выбранными языками в порядке приоритета. Оставьте пустым для автоопределения.",
+    "auto-detect (browser defaults)": "Автоопределение (по умолчанию браузера)",
+    "reset to auto": "Сбросить на авто",
+    "toggle language list": "Переключить список языков",
+    "switch to rtl text direction": "Переключить направление текста справа налево (RTL)",
+    "switch to default text direction": "Переключить направление текста по умолчанию",
+    "orchestrator model selection": "Выбор моделей Orchestrator",
+    "model selection": "Выбор модели",
+    "default uses server-managed routing and orchestrator quota. custom pins specific models for orchestration and execution.": "По умолчанию используется серверная маршрутизация и квота Orchestrator. Пользовательский режим фиксирует конкретные модели для оркестрации и выполнения.",
+    "default (gemini pro)": "По умолчанию (Gemini Pro)",
+    "create agent": "Создать агента",
+    "new agent": "Новый агент",
+    "no agents": "Нет агентов",
+    "agent name": "Имя агента",
+    "agent goal": "Цель агента",
+    "what should this agent accomplish?": "Какую задачу должен выполнять этот агент?",
+    "for me": "Для меня",
+    "for my team": "Для моей команды",
+    "personal agent running as you": "Личный агент, работающий от вашего имени",
+    "shared agent for your team": "Общий агент для вашей команды",
+    "couldn't create the agent. try again.": "Не удалось создать агента. Попробуйте снова.",
+    "failed to list custom agents": "Не удалось загрузить список пользовательских агентов",
+    "clone from remote": "Клонировать с удалённого сервера",
+    "clone from this computer": "Клонировать с этого компьютера",
+    "clone locally": "Клонировать локально",
+    "cloud conversation": "Облачный диалог",
+    "open in remote": "Открыть удалённо",
+    "open with": "Открыть с помощью",
+    "html viewer": "Просмотрщик HTML",
+    "image viewer": "Просмотрщик изображений",
+    "pdf viewer": "Просмотрщик PDF",
+    "text viewer": "Просмотрщик текста",
+    "notebook viewer": "Просмотрщик ноутбуков",
+    "audio player": "Аудиоплеер",
+    "video player": "Видеоплеер",
+    "loading messages": "Загрузка сообщений",
+    "loading newer messages": "Загрузка новых сообщений",
+    "type your own answer": "Введите свой ответ",
+    "answered in chat": "Ответ дан в чате",
+    "chosen": "Выбрано",
+    "applied": "Применено",
+    "not running": "Не запущено",
+    "no longer active": "Больше не активно",
+    "stalled": "Приостановлено",
+    "provisioning": "Подготовка",
+    "any resource": "Любой ресурс",
+    "no mcp servers available.": "Нет доступных MCP-серверов.",
+    "name unavailable": "Имя недоступно",
+    "no matching identities": "Совпадающих профилей не найдено",
+    "search by name or username": "Поиск по имени или логину",
+    "missing required field": "Не заполнено обязательное поле",
+    "incompatible event type": "Несовместимый тип события",
+    "combined filter clauses share no compatible event type": "Выбранные условия фильтра не имеют общего совместимого типа событий",
+    "matches this automation's active identity.": "Совпадает с активным профилем этой автоматизации.",
+    "self-watch target presets": "Пресеты целей самонаблюдения",
+    "application menu": "Меню приложения",
+    "direct network access is blocked in sandbox preview": "Прямой сетевой доступ заблокирован в предпросмотре песочницы",
+    "synchronous xmlhttprequest is blocked in sandbox preview": "Синхронный XMLHttpRequest заблокирован в предпросмотре песочницы",
+    "never": "Никогда"
 };
 
 // ===== [MODULE: src/dict-plugins.js] =====
@@ -6689,7 +6800,45 @@ const dictPlugins = {
     "protect specific routes and server actions from bots in code with vercel botid (`botid` npm package). use when installing botid, calling `initbotid()` or `checkbotid()`, mounting `<botidclient />`, gating signup, login, checkout or ai inference endpoints, allowing verified bots such as chatgpt agents through, enabling deep analysis, or debugging a route that always reports a bot. for site-wide bot rules (bot protection, ai bots, custom rules on bot name or category), use the `vercel-firewall` skill.": "Защита маршрутов и Server Actions от ботов в коде с помощью Vercel BotID (npm-пакет botid): установка, вызов initBotId()/checkBotId(), <BotIdClient />, защита регистрации/входа/оплаты и ИИ-эндпоинтов, пропуск проверенных ботов и Deep Analysis.",
     "emit and query vercel custom metrics. use proactively whenever you write or change server code that runs as a vercel function (route handlers, api routes, server actions, webhooks, scheduled jobs, queue consumers, ai or external api calls) to record outcomes and latency with metric() from @vercel/functions, even when the user did not ask for metrics. also use when choosing metric names and attributes or querying emitted values with vc metrics.": "Отправка и запрос пользовательских метрик Vercel Custom Metrics: запись результатов и задержек через metric() из @vercel/functions в Vercel Functions, выбор имён/атрибутов метрик и просмотр значений через vc metrics.",
     "vercel agent guidance — dashboard and slack chat, code review, security review, production investigation, approved actions, and product installation. use when configuring or working with vercel's ai assistant.": "Руководство по Vercel Agent: чат в панели управления и Slack, ревью кода, аудит безопасности (Security Review), расследование инцидентов в продакшене, одобренные действия и установка продуктов.",
-    "vercel schedules guidance — run a private function, route, or vercel queues topic on a cron cadence or once at a set time. covers static schedules in vercel.json, dynamic per-user schedules with @vercel/schedules, handleschedule, the vercel schedules cli, environments, jitter, and migrating from cron jobs. use when adding scheduled or recurring work, one-time reminders, or replacing `crons`.": "Руководство по Vercel Schedules: запуск приватных функций, маршрутов или топиков Vercel Queues по расписанию cron или разово. Статические расписания в vercel.json, динамические через @vercel/schedules, handleSchedule, CLI vercel schedules и миграция с Cron Jobs."
+    "vercel schedules guidance — run a private function, route, or vercel queues topic on a cron cadence or once at a set time. covers static schedules in vercel.json, dynamic per-user schedules with @vercel/schedules, handleschedule, the vercel schedules cli, environments, jitter, and migrating from cron jobs. use when adding scheduled or recurring work, one-time reminders, or replacing `crons`.": "Руководство по Vercel Schedules: запуск приватных функций, маршрутов или топиков Vercel Queues по расписанию cron или разово. Статические расписания в vercel.json, динамические через @vercel/schedules, handleSchedule, CLI vercel schedules и миграция с Cron Jobs.",
+
+    // === AntiGravity 2.35.0: 9 New Partner Marketplace Plugins (80/80 = 100%), 21 Suggested Prompts & 2 Updated Builtin Skills ===
+    "read-only marketing analytics: report spend, conversions, cpa and roas across ad platforms, ga4 and search console. it never changes your accounts.": "Маркетинговая аналитика в режиме только чтения: отчёты по расходам, конверсиям, CPA и ROAS по рекламным платформам, GA4 и Search Console без изменения ваших аккаунтов.",
+    "search european procurement data and manage your tender pipeline.": "Поиск по европейским государственным закупкам и управление вашей воронкой тендеров.",
+    "generate images and v4 videos with kling ai. supports multimodal references, reusable subjects, motion control, and task tracking through secure oauth.": "Генерируйте изображения и видео V4 с помощью Kling AI: мультимодальные референсы, переиспользуемые персонажи, управление движением и отслеживание задач через защищённый OAuth.",
+    "generate 3d models from text or images with meshy, then texture them and download game-ready glb, fbx, obj and usdz files, using your meshy credits.": "Генерируйте 3D-модели по тексту или изображениям с помощью Meshy, текстурируйте их и скачивайте готовые для игр файлы GLB, FBX, OBJ и USDZ за кредиты Meshy.",
+    "multi-model deliberation panel. diverse ai voices + claim-level reactions on contested decisions.": "Мультимодельная экспертная панель: разные ИИ-модели обсуждают спорные решения и дают оценки на уровне отдельных тезисов.",
+    "investigate cloud risk from your ide: query orca alerts, assets, attack paths, cves and compliance posture, and triage findings with orca's mcp server.": "Анализируйте облачные риски прямо из IDE: запрашивайте алерты Orca, активы, пути атак, CVE и статус соответствия стандартам через MCP-сервер Orca.",
+    "u.s. immigration law research: published and unpublished bia/aao and federal cases, ina/cfr, uscis policy, citator validity checks, and visa bulletins.": "Исследование иммиграционного права США: опубликованные и неопубликованные дела BIA/AAO и федеральных судов, INA/CFR, политика USCIS, проверка актуальности прецедентов и визовые бюллетени.",
+    "transcribe meetings, interviews, podcasts and videos in 119 languages, then write minutes, show notes and subtitles from the transcripts.": "Транскрибируйте встречи, интервью, подкасты и видео на 119 языках, а затем создавайте протоколы, описания выпусков и субтитры по расшифровкам.",
+    "see what gptbot, claudebot, perplexitybot and other ai crawlers get from a website. skills and a remote mcp server for robots.txt checks, ai visibility scans and agent directory listings.": "Проверьте, что видят на вашем сайте GPTBot, ClaudeBot, PerplexityBot и другие ИИ-краулеры: навыки и удалённый MCP-сервер для проверки robots.txt, аудита ИИ-видимости и каталогов агентов.",
+
+    // 21 New Partner Suggested Prompts
+    "show spend, conversions, cpa and roas by channel for the last 30 days, with a blended total": "Покажи расходы, конверсии, CPA и ROAS по каналам за последние 30 дней с общим итогом",
+    "audit my conversion tracking across my ad platforms, ga4 and tag manager": "Проведи аудит отслеживания конверсий на моих рекламных платформах, в GA4 и Tag Manager",
+    "find ad spend that is not converting and suggest what to cut": "Найди рекламные расходы без конверсий и предложи, что можно отключить",
+    "turn this reference image into a textured 3d model and download it as glb.": "Преврати это референсное изображение в текстурированную 3D-модель и скачай её в формате GLB.",
+    "generate a low-poly treasure chest for my game and export it as fbx.": "Сгенерируй низкополигональный сундук с сокровищами для моей игры и экспортируй его в FBX.",
+    "make a concept image of a sci-fi helmet, then turn it into a 3d model.": "Создай концепт-арт научно-фантастического шлема, а затем преврати его в 3D-модель.",
+    "ask mumo to list available models": "Попроси mumo показать список доступных моделей",
+    "ask mumo to review this design and tell me where the models disagree": "Попроси mumo проверить этот дизайн и показать, в чём модели расходятся во мнениях",
+    "ask mumo for a second opinion from another lab on this tradeoff": "Запроси в mumo второе мнение от моделей другой лаборатории по этому компромиссу",
+    "show my top critical alerts in orca": "Покажи мои самые критичные оповещения в Orca",
+    "which attack paths lead to my most sensitive assets?": "Какие пути атак ведут к моим наиболее чувствительным активам?",
+    "what is my compliance status for cis aws foundations?": "Каков мой статус соответствия стандарту CIS AWS Foundations?",
+    "check whether matter of a-r-c-g- is still good law and summarize its treatment history": "Проверь, остаётся ли дело Matter of A-R-C-G- действующим прецедентом, и кратко изложи историю его применения",
+    "search unpublished bia and aao decisions on extreme hardship waivers": "Найди неопубликованные решения BIA и AAO по освобождениям из-за чрезвычайных трудностей (extreme hardship waivers)",
+    "look up the current ina, cfr, and uscis policy manual rules for unlawful presence waivers": "Найди актуальные правила INA, CFR и руководства USCIS по освобождениям за незаконное пребывание",
+    "transcribe this recording and write meeting minutes with action items": "Транскрибируй эту запись и составь протокол встречи со списком задач",
+    "turn my latest podcast episode into show notes with chapters": "Преврати мой последний выпуск подкаста в описание выпуска с главами",
+    "create srt subtitles from my most recent transcript": "Создай субтитры SRT из моей последней расшифровки",
+    "which ai crawlers can read example.com?": "Какие ИИ-краулеры могут читать example.com?",
+    "run a why won't ai scan of my site and list the top issues": "Запусти сканирование моего сайта через Why Won't AI и перечисли главные проблемы",
+    "can my product be listed in ai agent directories?": "Можно ли добавить мой продукт в каталоги ИИ-агентов?",
+
+    // Updated 2.35.0 Builtin Skill Descriptions
+    "manage local antigravity conversations programmatically over http+json: create a new conversation (with an optional initial prompt), list conversations, read conversation metadata and run state, rename, archive, pin, star, tag, or group conversations, and delete conversations. use when the user asks to list, rename, pin, star, archive, delete, or start conversations, including the current one, or when a script, plugin, or automation needs to manage conversations outside of subagent tool calls.": "Программное управление локальными диалогами Antigravity по HTTP+JSON: создание нового диалога, список, чтение метаданных и статуса, переименование, архивирование, закрепление, добавление в избранное, теги, группировка и удаление.",
+    "only for the coordinator of an active /swarm session. what the coordinator writes so the swarm ui's overview can show the swarm's goal, its groups of work and a screenshot timeline; load it before you brief and add the first workers. outside /swarm, do not load this.": "Только для координатора активной сессии /swarm: описывает формат данных для вкладки «Обзор» (цель роя, группы задач и лента скриншотов). Загружайте до постановки задач первым участникам."
 };
 
 const translationDictionary = Object.assign({}, dictUi, dictPlugins);
@@ -16333,6 +16482,123 @@ const regexTranslations = [
         pattern: /^(\d+)\s+demoted$/i,
         replace: (m) => `${m[1]} понижено`
     },
+    // === AntiGravity 2.35.0 Dynamic UI Templates ===
+    {
+        // "Worked for 12s" / "Worked for 2m 15s · 4 tools"
+        pattern: /^Worked\s+for\s+((?:<\s*)?\d+(?:\.\d+)?\s*(?:s|sec|secs|m|min|mins|h|hr|hrs|d|ms)(?:\s+\d+\s*(?:s|sec|m|min|h|hr))?)(?:\s*[·•]\s*(.+))?$/i,
+        replace: (m) => {
+            const dur = translateDuration(m[1].trim());
+            return m[2] ? `Работал ${dur} · ${translateText(m[2].trim())}` : `Работал ${dur}`;
+        }
+    },
+    {
+        pattern: /^Playback\s+speed\s+([\d.]+)x$/i,
+        replace: (m) => `Скорость воспроизведения ${m[1]}x`
+    },
+    {
+        pattern: /^See\s+all\s+\((\d+)\)$/i,
+        replace: (m) => `Показать все (${m[1]})`
+    },
+    {
+        pattern: /^Show\s+(\d+)\s+More$/i,
+        replace: (m) => `Показать ещё ${m[1]}`
+    },
+    {
+        pattern: /^Add\s+\((\d+)\)$/i,
+        replace: (m) => `Добавить (${m[1]})`
+    },
+    {
+        pattern: /^Your\s+plan:\s*(.+)$/i,
+        replace: (m) => `Ваш тариф: ${m[1].trim()}`
+    },
+    {
+        pattern: /^Sign\s+in\s+to\s+use\s+(.+?)!$/i,
+        replace: (m) => `Войдите, чтобы использовать ${m[1].trim()}!`
+    },
+    {
+        pattern: /^Sign\s+in\s+from\s+the\s+(.+?)\s+panel\.$/i,
+        replace: (m) => `Войдите через панель «${m[1].trim()}».`
+    },
+    {
+        pattern: /^Open\s+the\s+(.+?)\s+plugin$/i,
+        replace: (m) => `Открыть плагин ${m[1].trim()}`
+    },
+    {
+        pattern: /^Revoke\s+all:\s*(.+)$/i,
+        replace: (m) => `Отозвать все: ${m[1].trim()}`
+    },
+    {
+        pattern: /^All\s+(\d+)\s+will\s+be\s+revoked\.\s*The\s+plugin\s+will\s+ask\s+before\s+doing\s+this\s+again\.$/i,
+        replace: (m) => `Все (${m[1]}) будут отозваны. Плагин снова будет спрашивать подтверждение перед такими действиями.`
+    },
+    {
+        pattern: /^Resolved\s+"(.+)"$/i,
+        replace: (m) => `Отмечено решённым: «${m[1]}»`
+    },
+    {
+        pattern: /^Moved\s+conversation\s+(.+)$/i,
+        replace: (m) => `Диалог перемещён: ${m[1].trim()}`
+    },
+    {
+        pattern: /^Move\s+this\s+conversation\s+to\s+"(.+)"\?$/i,
+        replace: (m) => `Переместить этот диалог в «${m[1]}»?`
+    },
+    {
+        pattern: /^Remove\s+this\s+conversation\s+from\s+its\s+(workspace|project)\?$/i,
+        replace: (m) => m[1].toLowerCase() === 'workspace' ? 'Удалить этот диалог из рабочей области?' : 'Удалить этот диалог из проекта?'
+    },
+    {
+        pattern: /^Remove\s+from\s+(Workspace|Project)$/i,
+        replace: (m) => m[1].toLowerCase() === 'workspace' ? 'Удалить из рабочей области' : 'Удалить из проекта'
+    },
+    {
+        pattern: /^Exceeded\s+the\s+rules\s+token\s+budget\.\s*Full\s+rule\s+content\s+\(([\d,\s]+)\s+tokens\)\s+was\s+replaced\s+with\s+a\s+lightweight\s+file-path\s+pointer\s+in\s+context\.$/i,
+        replace: (m) => `Превышен лимит токенов правил. Полный текст правила (${m[1].trim()} токенов) заменён в контексте на лёгкую ссылку на файл.`
+    },
+    {
+        pattern: /^All\s+tools\s+in\s+this\s+MCP\s+server\s+\(([\d,\s]+)\s+tokens\)\s+exceeded\s+the\s+customization\s+budget\s+and\s+were\s+excluded\s+from\s+context\.$/i,
+        replace: (m) => `Все инструменты этого MCP-сервера (${m[1].trim()} токенов) превысили бюджет персонализации и были исключены из контекста.`
+    },
+    {
+        pattern: /^Exceeded\s+the\s+customization\s+token\s+budget\s+\(([\d,\s]+)\s+tokens\)\s+and\s+was\s+excluded\s+from\s+context\.$/i,
+        replace: (m) => `Превышен бюджет токенов персонализации (${m[1].trim()} токенов) — элемент исключён из контекста.`
+    },
+    {
+        pattern: /^Skip\s+\(([^)]+)\),\s*Skip\s+All\s+\(([^)]+)\)$/i,
+        replace: (m) => `Пропустить (${m[1]}), пропустить все (${m[2]})`
+    },
+    {
+        pattern: /^Cancel\s+Questionnaire\s+and\s+Stop\s+the\s+Agent\s+\(([^)]+)\)$/i,
+        replace: (m) => `Отменить опрос и остановить агента (${m[1]})`
+    },
+    {
+        pattern: /^Created\s+automation\s+"(.+)"\.?$/i,
+        replace: (m) => `Автоматизация «${m[1]}» создана.`
+    },
+    {
+        pattern: /^Restarted\s+"(.+)"\.?$/i,
+        replace: (m) => `Перезапущено: «${m[1]}».`
+    },
+    {
+        pattern: /^Deleted\s+"(.+)"\.?$/i,
+        replace: (m) => `Удалено: «${m[1]}».`
+    },
+    {
+        pattern: /^No\s+(?:visible\s+)?messages\s+in\s+last\s+(\d+)\s+steps\s*(?:[—–·,]\s*(?:load\s+older|Load\s+more)|\.\s*Activate\s+Load\s+older\s+messages\s+to\s+continue\.)$/i,
+        replace: (m) => `Нет сообщений за последние ${m[1]} шагов — загрузить старые`
+    },
+    {
+        pattern: /^The\s+folder\s+[“"](.+?)[”"]\s+does\s+not\s+exist\.\s*Would\s+you\s+like\s+to\s+create\s+it\?$/i,
+        replace: (m) => `Папка «${m[1]}» не существует. Создать её?`
+    },
+    {
+        pattern: /^Can[’']t\s+create\s+this\s+path\s*[—–-]\s*[“"](.+?)[”"]\s+is\s+a\s+file,\s*not\s+a\s+folder\.$/i,
+        replace: (m) => `Нельзя создать этот путь — «${m[1]}» является файлом, а не папкой.`
+    },
+    {
+        pattern: /^Sign-ins\s+to\s+(.+?)\s+are\s+kept\s+in\s+the\s+cloud\s+with\s+your\s+account\.$/i,
+        replace: (m) => `Авторизации в ${m[1].trim()} хранятся в облаке вместе с вашим аккаунтом.`
+    },
     {
         pattern: /^(\d+)\s+excluded$/i,
         replace: (m) => `${m[1]} исключено`
@@ -17952,6 +18218,9 @@ function shouldIgnore(node) {
             val.includes('leaving on ') ||
             val.includes('for better quality with lower quota usage') ||
             val.startsWith('the original gemini 4 model') ||
+            val === 'model cannot be changed while the agent is running' ||
+            val === 'permissions cannot be changed while the agent is running' ||
+            val.startsWith('worked for ') ||
             val.startsWith('notice') ||
             val.startsWith('exploring files') ||
             val.startsWith('verify ') ||
@@ -20235,8 +20504,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.2.9';
-    const DEFAULT_CHANGELOG_V229 = 'Обновление v2.2.9: добавлена защита текста сообщений чата (пословных <span>-анимаций потокового вывода агента, ответов агента [data-testid="agent-response"], сообщений пользователя [data-testid="user-message-content"] и открытых markdown-артефактов) от случайного перевода английских слов внутри переписки (например, «Simulation Description Format» больше не превращается в «Simulation Описание Format»), при сохранении 100% перевода кнопок, шагов агента и страниц плагинов.';
+    const FALLBACK_VERSION = '2.2.10';
+    const DEFAULT_CHANGELOG_V2210 = 'Обновление v2.2.10: полная поддержка AntiGravity 2.35.0 — переведены блокировки при работе агента («Нельзя сменить модель, пока агент работает»), новый режим «Входящие» и «Автозавершение», раздел «Разрешения плагина», выбор языков диктовки, режим выбора моделей Orchestrator, создание агентов, продолжение быстрого вопроса как нового диалога, а также все 9 новых партнёрских плагинов Маркетплейса (80/80 = 100%) и 21 их стартовый промпт.';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -20244,10 +20513,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V229;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2210;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V229;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2210;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -21806,7 +22075,7 @@ const initInterval = setInterval(() => {
             try {
                 if (document.documentElement) {
                     document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
-                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.9');
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.10');
                 }
                 // Notify isolated/other worlds (e.g. preload.js <-> CDP main world) to step down cleanly
                 window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
@@ -21855,7 +22124,7 @@ const initInterval = setInterval(() => {
             try {
                 if (document.documentElement) {
                     document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
-                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.9');
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.10');
                 }
                 window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
             } catch (e) {}

@@ -24,8 +24,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.2.9';
-    const DEFAULT_CHANGELOG_V229 = 'Обновление v2.2.9: добавлена защита текста сообщений чата (пословных <span>-анимаций потокового вывода агента, ответов агента [data-testid="agent-response"], сообщений пользователя [data-testid="user-message-content"] и открытых markdown-артефактов) от случайного перевода английских слов внутри переписки (например, «Simulation Description Format» больше не превращается в «Simulation Описание Format»), при сохранении 100% перевода кнопок, шагов агента и страниц плагинов.';
+    const FALLBACK_VERSION = '2.2.10';
+    const DEFAULT_CHANGELOG_V2210 = 'Обновление v2.2.10: полная поддержка AntiGravity 2.35.0 — переведены блокировки при работе агента («Нельзя сменить модель, пока агент работает»), новый режим «Входящие» и «Автозавершение», раздел «Разрешения плагина», выбор языков диктовки, режим выбора моделей Orchestrator, создание агентов, продолжение быстрого вопроса как нового диалога, а также все 9 новых партнёрских плагинов Маркетплейса (80/80 = 100%) и 21 их стартовый промпт.';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -33,10 +33,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V229;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2210;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V229;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2210;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;

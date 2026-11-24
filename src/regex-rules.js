@@ -8406,6 +8406,123 @@ const regexTranslations = [
         pattern: /^(\d+)\s+demoted$/i,
         replace: (m) => `${m[1]} понижено`
     },
+    // === AntiGravity 2.35.0 Dynamic UI Templates ===
+    {
+        // "Worked for 12s" / "Worked for 2m 15s · 4 tools"
+        pattern: /^Worked\s+for\s+((?:<\s*)?\d+(?:\.\d+)?\s*(?:s|sec|secs|m|min|mins|h|hr|hrs|d|ms)(?:\s+\d+\s*(?:s|sec|m|min|h|hr))?)(?:\s*[·•]\s*(.+))?$/i,
+        replace: (m) => {
+            const dur = translateDuration(m[1].trim());
+            return m[2] ? `Работал ${dur} · ${translateText(m[2].trim())}` : `Работал ${dur}`;
+        }
+    },
+    {
+        pattern: /^Playback\s+speed\s+([\d.]+)x$/i,
+        replace: (m) => `Скорость воспроизведения ${m[1]}x`
+    },
+    {
+        pattern: /^See\s+all\s+\((\d+)\)$/i,
+        replace: (m) => `Показать все (${m[1]})`
+    },
+    {
+        pattern: /^Show\s+(\d+)\s+More$/i,
+        replace: (m) => `Показать ещё ${m[1]}`
+    },
+    {
+        pattern: /^Add\s+\((\d+)\)$/i,
+        replace: (m) => `Добавить (${m[1]})`
+    },
+    {
+        pattern: /^Your\s+plan:\s*(.+)$/i,
+        replace: (m) => `Ваш тариф: ${m[1].trim()}`
+    },
+    {
+        pattern: /^Sign\s+in\s+to\s+use\s+(.+?)!$/i,
+        replace: (m) => `Войдите, чтобы использовать ${m[1].trim()}!`
+    },
+    {
+        pattern: /^Sign\s+in\s+from\s+the\s+(.+?)\s+panel\.$/i,
+        replace: (m) => `Войдите через панель «${m[1].trim()}».`
+    },
+    {
+        pattern: /^Open\s+the\s+(.+?)\s+plugin$/i,
+        replace: (m) => `Открыть плагин ${m[1].trim()}`
+    },
+    {
+        pattern: /^Revoke\s+all:\s*(.+)$/i,
+        replace: (m) => `Отозвать все: ${m[1].trim()}`
+    },
+    {
+        pattern: /^All\s+(\d+)\s+will\s+be\s+revoked\.\s*The\s+plugin\s+will\s+ask\s+before\s+doing\s+this\s+again\.$/i,
+        replace: (m) => `Все (${m[1]}) будут отозваны. Плагин снова будет спрашивать подтверждение перед такими действиями.`
+    },
+    {
+        pattern: /^Resolved\s+"(.+)"$/i,
+        replace: (m) => `Отмечено решённым: «${m[1]}»`
+    },
+    {
+        pattern: /^Moved\s+conversation\s+(.+)$/i,
+        replace: (m) => `Диалог перемещён: ${m[1].trim()}`
+    },
+    {
+        pattern: /^Move\s+this\s+conversation\s+to\s+"(.+)"\?$/i,
+        replace: (m) => `Переместить этот диалог в «${m[1]}»?`
+    },
+    {
+        pattern: /^Remove\s+this\s+conversation\s+from\s+its\s+(workspace|project)\?$/i,
+        replace: (m) => m[1].toLowerCase() === 'workspace' ? 'Удалить этот диалог из рабочей области?' : 'Удалить этот диалог из проекта?'
+    },
+    {
+        pattern: /^Remove\s+from\s+(Workspace|Project)$/i,
+        replace: (m) => m[1].toLowerCase() === 'workspace' ? 'Удалить из рабочей области' : 'Удалить из проекта'
+    },
+    {
+        pattern: /^Exceeded\s+the\s+rules\s+token\s+budget\.\s*Full\s+rule\s+content\s+\(([\d,\s]+)\s+tokens\)\s+was\s+replaced\s+with\s+a\s+lightweight\s+file-path\s+pointer\s+in\s+context\.$/i,
+        replace: (m) => `Превышен лимит токенов правил. Полный текст правила (${m[1].trim()} токенов) заменён в контексте на лёгкую ссылку на файл.`
+    },
+    {
+        pattern: /^All\s+tools\s+in\s+this\s+MCP\s+server\s+\(([\d,\s]+)\s+tokens\)\s+exceeded\s+the\s+customization\s+budget\s+and\s+were\s+excluded\s+from\s+context\.$/i,
+        replace: (m) => `Все инструменты этого MCP-сервера (${m[1].trim()} токенов) превысили бюджет персонализации и были исключены из контекста.`
+    },
+    {
+        pattern: /^Exceeded\s+the\s+customization\s+token\s+budget\s+\(([\d,\s]+)\s+tokens\)\s+and\s+was\s+excluded\s+from\s+context\.$/i,
+        replace: (m) => `Превышен бюджет токенов персонализации (${m[1].trim()} токенов) — элемент исключён из контекста.`
+    },
+    {
+        pattern: /^Skip\s+\(([^)]+)\),\s*Skip\s+All\s+\(([^)]+)\)$/i,
+        replace: (m) => `Пропустить (${m[1]}), пропустить все (${m[2]})`
+    },
+    {
+        pattern: /^Cancel\s+Questionnaire\s+and\s+Stop\s+the\s+Agent\s+\(([^)]+)\)$/i,
+        replace: (m) => `Отменить опрос и остановить агента (${m[1]})`
+    },
+    {
+        pattern: /^Created\s+automation\s+"(.+)"\.?$/i,
+        replace: (m) => `Автоматизация «${m[1]}» создана.`
+    },
+    {
+        pattern: /^Restarted\s+"(.+)"\.?$/i,
+        replace: (m) => `Перезапущено: «${m[1]}».`
+    },
+    {
+        pattern: /^Deleted\s+"(.+)"\.?$/i,
+        replace: (m) => `Удалено: «${m[1]}».`
+    },
+    {
+        pattern: /^No\s+(?:visible\s+)?messages\s+in\s+last\s+(\d+)\s+steps\s*(?:[—–·,]\s*(?:load\s+older|Load\s+more)|\.\s*Activate\s+Load\s+older\s+messages\s+to\s+continue\.)$/i,
+        replace: (m) => `Нет сообщений за последние ${m[1]} шагов — загрузить старые`
+    },
+    {
+        pattern: /^The\s+folder\s+[“"](.+?)[”"]\s+does\s+not\s+exist\.\s*Would\s+you\s+like\s+to\s+create\s+it\?$/i,
+        replace: (m) => `Папка «${m[1]}» не существует. Создать её?`
+    },
+    {
+        pattern: /^Can[’']t\s+create\s+this\s+path\s*[—–-]\s*[“"](.+?)[”"]\s+is\s+a\s+file,\s*not\s+a\s+folder\.$/i,
+        replace: (m) => `Нельзя создать этот путь — «${m[1]}» является файлом, а не папкой.`
+    },
+    {
+        pattern: /^Sign-ins\s+to\s+(.+?)\s+are\s+kept\s+in\s+the\s+cloud\s+with\s+your\s+account\.$/i,
+        replace: (m) => `Авторизации в ${m[1].trim()} хранятся в облаке вместе с вашим аккаунтом.`
+    },
     {
         pattern: /^(\d+)\s+excluded$/i,
         replace: (m) => `${m[1]} исключено`

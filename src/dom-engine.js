@@ -1098,6 +1098,9 @@ function shouldIgnore(node) {
             val.includes('leaving on ') ||
             val.includes('for better quality with lower quota usage') ||
             val.startsWith('the original gemini 4 model') ||
+            val === 'model cannot be changed while the agent is running' ||
+            val === 'permissions cannot be changed while the agent is running' ||
+            val.startsWith('worked for ') ||
             val.startsWith('notice') ||
             val.startsWith('exploring files') ||
             val.startsWith('verify ') ||
