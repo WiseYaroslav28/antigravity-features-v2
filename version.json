@@ -1,7 +1,7 @@
 {
-  "version": "2.2.8",
-  "releasedAt": "2026-11-23T23:50:00.000Z",
-  "changelog": "Обновление v2.2.8: полный аудит и добивка переводов до 100% — тултипы отключения моделей (Gemini 4 Argon / Gemini 3.8 Flash «Leaving on Nov 30» + универсальное правило для любых дат), 100% описаний всех 98 плагинов и всех 280 промптов Маркетплейса, обновлена страница Gemini API v2.9.0 (Genie 4, Decisions API, исправлен разрыв gemini-api-dev), полностью переведён Google Health Developer, Context7, Google Docs/Drive и 4 навыка Vercel.",
+  "version": "2.2.9",
+  "releasedAt": "2026-11-24T14:45:00.000Z",
+  "changelog": "Обновление v2.2.9: защищён текст переписки в чате (пословные <span>-анимации потокового вывода агента, ответы агента [data-testid=\"agent-response\"], сообщения пользователя и открытые markdown-артефакты) от случайного перевода отдельных английских слов внутри предложений (например, «Simulation Description Format»), без влияния на перевод кнопок, шагов агента и страниц плагинов.",
   "requiresRestart": false,
   "files": [
     "localization_injected.js",

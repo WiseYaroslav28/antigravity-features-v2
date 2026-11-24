@@ -35,6 +35,38 @@ let translationObserver = null;
 let isTranslating = false;
 const regexTranslationCache = new Map();
 
+function isProtectedChatOrDocProse(node) {
+    if (!node || node.nodeType !== Node.TEXT_NODE) return false;
+    const pEl = node.parentElement;
+    if (!pEl || typeof pEl.closest !== 'function') return false;
+    // Никогда не блокируем UI-контролы, тултипы, алерты, шаги браузерного субагента и карточки плагинов
+    if (pEl.closest('button, [role="button"], [role="tooltip"], [role="alert"], [role="status"], [data-testid="browser-subagent-step"], [data-testid="plugin-card-fallback"]')) {
+        return false;
+    }
+    // 1. Текст сообщений самого пользователя в чате
+    if (pEl.closest('[data-testid="user-message-content"]')) {
+        return true;
+    }
+    // 2. Пословные анимированные <span> потокового вывода агента (Gkc: animation: fade-in 0.2s ease-out ...ms both)
+    if (pEl.tagName === 'SPAN') {
+        const animStyle = (pEl.style && pEl.style.animation) || (pEl.getAttribute && pEl.getAttribute('style')) || '';
+        if (animStyle.includes('fade-in')) {
+            return true;
+        }
+    }
+    // 3. Markdown-текст ответов агента, расшифровки голосового чата, открытые артефакты и markdown-ячейки ноутбуков
+    const inChatOrDocMarkdown = pEl.closest('[data-testid="agent-response"], [data-bubble-side="agent"], [data-testid="voice-user-message"], [data-testid="voice-agent-message"], [data-print-root], .notebook-markdown-cell');
+    if (inChatOrDocMarkdown) {
+        if (pEl.closest('p, li, blockquote, th, td, h1[dir="auto"], h2[dir="auto"], h3[dir="auto"], h4[dir="auto"], h5[dir="auto"], h6[dir="auto"]')) {
+            const ctxText = ((pEl.parentElement && pEl.parentElement.textContent) || pEl.textContent || '').toLowerCase();
+            if (!ctxText.includes('troubleshooting_guide') && !ctxText.includes('troubleshooting guide')) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 function shouldIgnore(node) {
     if (!node) return true;
     if (node.tagName === 'INPUT' || node.tagName === 'TEXTAREA') {
@@ -1121,6 +1153,9 @@ function shouldIgnore(node) {
         ) {
             return true;
         }
+    }
+    if (isProtectedChatOrDocProse(node)) {
+        return true;
     }
     
     let parent = node.parentElement;
@@ -2416,6 +2451,7 @@ function translateTextNode(node) {
                 return;
             }
         }
+        if (isProtectedChatOrDocProse(node)) return;
 
         const text = node.nodeValue;
         const normalized = text.replace(/[\s\u00a0\xa0\u2007\u202f\r\n\t]+/g, ' ').trim();
@@ -2437,7 +2473,17 @@ function translateTextNode(node) {
             if (proseContainer && proseContainer !== pEl) {
                 const encText = (proseContainer.textContent || '').trim();
                 const isProse = proseContainer.tagName === 'P' || /[a-z][.!?]$/.test(encText);
-                if (isProse && !/[а-яА-ЯёЁ]/.test(encText) && normalized.split(/\s+/).length <= 2 && encText.split(/\s+/).length >= 5) {
+                const wordCount = normalized.split(/\s+/).length;
+                const encWordCount = encText.split(/\s+/).length;
+                if (isProse && !/[а-яА-ЯёЁ]/.test(encText) && wordCount <= 2 && encWordCount >= 5) {
+                    return;
+                }
+                // Защита одиночного <span>-слова (например, пословного рендера Gkc) внутри смешанного русско-английского предложения вне страниц плагинов
+                const isPluginPageCtx = !!(typeof window !== 'undefined' && window.location && (
+                    (window.location.pathname && window.location.pathname.startsWith('/customizations')) ||
+                    (window.location.search && window.location.search.includes('marketplace='))
+                ));
+                if (!isPluginPageCtx && pTag === 'SPAN' && !(pEl.className && String(pEl.className).trim()) && wordCount === 1 && encWordCount >= 4) {
                     return;
                 }
             }

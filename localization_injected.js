@@ -16889,6 +16889,38 @@ let translationObserver = null;
 let isTranslating = false;
 const regexTranslationCache = new Map();
 
+function isProtectedChatOrDocProse(node) {
+    if (!node || node.nodeType !== Node.TEXT_NODE) return false;
+    const pEl = node.parentElement;
+    if (!pEl || typeof pEl.closest !== 'function') return false;
+    // Никогда не блокируем UI-контролы, тултипы, алерты, шаги браузерного субагента и карточки плагинов
+    if (pEl.closest('button, [role="button"], [role="tooltip"], [role="alert"], [role="status"], [data-testid="browser-subagent-step"], [data-testid="plugin-card-fallback"]')) {
+        return false;
+    }
+    // 1. Текст сообщений самого пользователя в чате
+    if (pEl.closest('[data-testid="user-message-content"]')) {
+        return true;
+    }
+    // 2. Пословные анимированные <span> потокового вывода агента (Gkc: animation: fade-in 0.2s ease-out ...ms both)
+    if (pEl.tagName === 'SPAN') {
+        const animStyle = (pEl.style && pEl.style.animation) || (pEl.getAttribute && pEl.getAttribute('style')) || '';
+        if (animStyle.includes('fade-in')) {
+            return true;
+        }
+    }
+    // 3. Markdown-текст ответов агента, расшифровки голосового чата, открытые артефакты и markdown-ячейки ноутбуков
+    const inChatOrDocMarkdown = pEl.closest('[data-testid="agent-response"], [data-bubble-side="agent"], [data-testid="voice-user-message"], [data-testid="voice-agent-message"], [data-print-root], .notebook-markdown-cell');
+    if (inChatOrDocMarkdown) {
+        if (pEl.closest('p, li, blockquote, th, td, h1[dir="auto"], h2[dir="auto"], h3[dir="auto"], h4[dir="auto"], h5[dir="auto"], h6[dir="auto"]')) {
+            const ctxText = ((pEl.parentElement && pEl.parentElement.textContent) || pEl.textContent || '').toLowerCase();
+            if (!ctxText.includes('troubleshooting_guide') && !ctxText.includes('troubleshooting guide')) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 function shouldIgnore(node) {
     if (!node) return true;
     if (node.tagName === 'INPUT' || node.tagName === 'TEXTAREA') {
@@ -17975,6 +18007,9 @@ function shouldIgnore(node) {
         ) {
             return true;
         }
+    }
+    if (isProtectedChatOrDocProse(node)) {
+        return true;
     }
     
     let parent = node.parentElement;
@@ -19270,6 +19305,7 @@ function translateTextNode(node) {
                 return;
             }
         }
+        if (isProtectedChatOrDocProse(node)) return;
 
         const text = node.nodeValue;
         const normalized = text.replace(/[\s\u00a0\xa0\u2007\u202f\r\n\t]+/g, ' ').trim();
@@ -19291,7 +19327,17 @@ function translateTextNode(node) {
             if (proseContainer && proseContainer !== pEl) {
                 const encText = (proseContainer.textContent || '').trim();
                 const isProse = proseContainer.tagName === 'P' || /[a-z][.!?]$/.test(encText);
-                if (isProse && !/[а-яА-ЯёЁ]/.test(encText) && normalized.split(/\s+/).length <= 2 && encText.split(/\s+/).length >= 5) {
+                const wordCount = normalized.split(/\s+/).length;
+                const encWordCount = encText.split(/\s+/).length;
+                if (isProse && !/[а-яА-ЯёЁ]/.test(encText) && wordCount <= 2 && encWordCount >= 5) {
+                    return;
+                }
+                // Защита одиночного <span>-слова (например, пословного рендера Gkc) внутри смешанного русско-английского предложения вне страниц плагинов
+                const isPluginPageCtx = !!(typeof window !== 'undefined' && window.location && (
+                    (window.location.pathname && window.location.pathname.startsWith('/customizations')) ||
+                    (window.location.search && window.location.search.includes('marketplace='))
+                ));
+                if (!isPluginPageCtx && pTag === 'SPAN' && !(pEl.className && String(pEl.className).trim()) && wordCount === 1 && encWordCount >= 4) {
                     return;
                 }
             }
@@ -20189,8 +20235,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.2.8';
-    const DEFAULT_CHANGELOG_V228 = 'Обновление v2.2.8: полный аудит и добивка переводов до 100% — добавлены тултипы отключения моделей (Gemini 4 Argon / Gemini 3.8 Flash «Leaving on Nov 30» + универсальное правило для любых дат), 100% описаний всех 98 плагинов и всех 280 стартовых промптов Маркетплейса, обновлена страница Gemini API v2.9.0 (Genie 4, Decisions API, исправлен разрыв строки gemini-api-dev), полностью переведён Google Health Developer, Context7, Google Docs/Drive и 4 навыка Vercel.';
+    const FALLBACK_VERSION = '2.2.9';
+    const DEFAULT_CHANGELOG_V229 = 'Обновление v2.2.9: добавлена защита текста сообщений чата (пословных <span>-анимаций потокового вывода агента, ответов агента [data-testid="agent-response"], сообщений пользователя [data-testid="user-message-content"] и открытых markdown-артефактов) от случайного перевода английских слов внутри переписки (например, «Simulation Description Format» больше не превращается в «Simulation Описание Format»), при сохранении 100% перевода кнопок, шагов агента и страниц плагинов.';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -20198,10 +20244,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V228;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V229;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V228;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V229;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -21760,7 +21806,7 @@ const initInterval = setInterval(() => {
             try {
                 if (document.documentElement) {
                     document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
-                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.8');
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.9');
                 }
                 // Notify isolated/other worlds (e.g. preload.js <-> CDP main world) to step down cleanly
                 window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
@@ -21809,7 +21855,7 @@ const initInterval = setInterval(() => {
             try {
                 if (document.documentElement) {
                     document.documentElement.setAttribute('data-ag-loc-epoch', myEpoch);
-                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.8');
+                    document.documentElement.setAttribute('data-ag-loc-ver', '2.2.9');
                 }
                 window.postMessage({ type: 'ANTIGRAVITY_LOC_SUPERSEDED', epoch: myEpoch }, '*');
             } catch (e) {}
