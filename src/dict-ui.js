@@ -4840,5 +4840,19 @@ const dictUi = {
     "application menu": "Меню приложения",
     "direct network access is blocked in sandbox preview": "Прямой сетевой доступ заблокирован в предпросмотре песочницы",
     "synchronous xmlhttprequest is blocked in sandbox preview": "Синхронный XMLHttpRequest заблокирован в предпросмотре песочницы",
-    "never": "Никогда"
+    "never": "Никогда",
+    // === AntiGravity 2.35.2 + Plugin README Headings ===
+    "applies to /btw and messages sent after this turn": "Применяется к /btw и сообщениям, отправленным после этого хода",
+    "applies to messages sent after this turn": "Применяется к сообщениям, отправленным после этого хода",
+    "sign-in": "Вход в аккаунт",
+    "your data": "Ваши данные",
+    "in the antigravity desktop app": "В настольном приложении Antigravity",
+    "with the antigravity cli": "Через CLI Antigravity",
+    "disconnecting": "Отключение",
+    "verify with a free call": "Проверка бесплатным запросом",
+    "updating and removing": "Обновление и удаление",
+    "using the panel": "Использование панели",
+    "when mumo is worth the latency tax": "Когда стоит использовать mumo",
+    "what's in the box": "Что внутри",
+    "mass spectrometry": "Масс-спектрометрия (Mass Spectrometry)"
 };
