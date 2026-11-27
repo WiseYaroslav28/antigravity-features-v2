@@ -4978,7 +4978,7 @@ const regexTranslations = [
     {
         // "Leaving Soon ⓘ" / "Leaving Soon"
         pattern: /^Leaving\s+Soon(?:\s*([ⓘi]|[^a-zA-Z0-9\s]+))?$/i,
-        replace: (match) => "Скоро будет недоступна" + (match[1] ? (" " + match[1].trim()) : "")
+        replace: (match) => "Скоро уберут" + (match[1] ? (" " + match[1].trim()) : "")
     },
     {
         // "Notice ⓘ" / "Notice"

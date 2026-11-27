@@ -1622,8 +1622,8 @@ const dictUi = {
     // Model picker & project selection & execution steps
     "select project": "Выбрать проект",
     "select project...": "Выбрать проект...",
-    "leaving soon": "Скоро будет недоступна",
-    "leaving soon ⓘ": "Скоро будет недоступна ⓘ",
+    "leaving soon": "Скоро уберут",
+    "leaving soon ⓘ": "Скоро уберут ⓘ",
     "notice": "Уведомление",
     "notice ⓘ": "Уведомление ⓘ",
     "notice:": "Уведомление:",

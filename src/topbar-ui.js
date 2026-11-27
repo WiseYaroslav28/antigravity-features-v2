@@ -24,8 +24,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.2.11';
-    const DEFAULT_CHANGELOG_V2211 = 'Обновление v2.2.11: поддержка AntiGravity 2.35.2 («Применяется к /btw и сообщениям, отправленным после этого хода»), 100% обновлённого Маркетплейса (109/109 плагинов и 310/310 промптов), включая новые Mass Spectrometry (с 13 навыками и README), Any.do (весь README), Kling AI 4.0 и обновлённый mumo v0.9.1.';
+    const FALLBACK_VERSION = '2.2.12';
+    const DEFAULT_CHANGELOG_V2212 = 'Обновление v2.2.12: расширено выпадающее меню выбора модели (снято жёсткое ограничение ширины 320px → адаптивно до 460px), добавлены аккуратные отступы между элементами, а бейдж «Leaving soon» сокращён с «Скоро будет недоступна» до компактного «Скоро уберут» — все названия моделей (Gemini 4 Argon, Gemini 3.8 Flash, Orchestrator Gemini 4 Neon Экстра) теперь полностью читаемы без обрезки «Gemi...».';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -33,10 +33,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2211;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2212;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2211;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2212;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;
@@ -544,6 +544,17 @@ function initLanguageSwitcher() {
         }
         .update-action-btn.danger-btn:hover {
             background: #dc2626;
+        }
+        /* Widen Model Selector dropdown beyond native max-w-80 (320px) so model names & Russian badges never truncate to "Gemi..." */
+        .agy-overlay:has([data-testid="model-selector-panel"]) {
+            width: max-content !important;
+            min-width: min(370px, calc(100vw - 24px)) !important;
+            max-width: min(460px, calc(100vw - 24px)) !important;
+        }
+        [data-testid="model-selector-panel"] [role="menuitem"] {
+            gap: 8px;
+            padding-left: 10px;
+            padding-right: 10px;
         }
     `;
     document.head.appendChild(style);
