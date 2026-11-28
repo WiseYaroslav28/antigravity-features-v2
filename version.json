@@ -1,7 +1,7 @@
 {
-  "version": "2.2.12",
-  "releasedAt": "2026-11-27T12:48:00.000Z",
-  "changelog": "Обновление v2.2.12: расширено выпадающее меню выбора модели (снято жёсткое ограничение 320px → адаптивная ширина до 460px с аккуратными отступами), а бейдж «Leaving soon» сокращён до компактного «Скоро уберут» — названия моделей (Gemini 4 Argon, Gemini 3.8 Flash, Orchestrator Gemini 4 Neon Экстра) больше не обрезаются до «Gemi...».",
+  "version": "2.2.13",
+  "releasedAt": "2026-11-28T13:48:00.000Z",
+  "changelog": "Обновление v2.2.13: допереведён и отполирован экран первого входа с нового аккаунта («Последний штрих перед началом работы...») — переведены блок «Оптимизировано для вас», «Help us improve Antigravity.», «You can control this from your settings at any point.», GCP-пометка «(excluding product analytics data)», а также исправлен склеенный пробел в «Антигравити предоставляет...» и предлог «об Антигравити».",
   "requiresRestart": false,
   "files": [
     "localization_injected.js",

@@ -4045,7 +4045,7 @@ const dictUi = {
     "chunks were collapsed into one. chunks included in this read:": "фрагментов были объединены в один. Фрагменты, включённые в это чтение:",
     "plugins are packaged collections of skills and mcps to help the agent in": "Плагины — это готовые наборы навыков и MCP-серверов, помогающие агенту в",
     "work with google developer products. you can always change your choices in settings.": "работать с продуктами Google для разработчиков. Вы всегда можете изменить свой выбор в Настройках.",
-    "sign up for newsletters, tips and tricks, and other notifications about": "Подпишитесь на рассылки, советы и другие уведомления о",
+    "sign up for newsletters, tips and tricks, and other notifications about": "Подпишитесь на рассылки, советы и другие уведомления об",
     "signed in as": "Вы вошли как",
     ". to use another account, add it in the": ". Чтобы использовать другой аккаунт, добавьте его в",
     "and make it the default.": "и сделайте его аккаунтом по умолчанию.",
@@ -4064,7 +4064,8 @@ const dictUi = {
     "normally uses encryption to protect your information. when the browser tried to connect to": "обычно использует шифрование для защиты ваших данных. Когда браузер попытался подключиться к",
     "this time, the website sent back unusual and incorrect credentials.": "в этот раз, сайт вернул необычные и некорректные учётные данные.",
     "on for this conversation": "включено для этого диалога",
-    "’s agents are powerful and will help you get a lot done better and faster than before, but still make sure to verify the actions taken by the agent.": "предоставляет мощных агентов, которые помогут выполнять задачи лучше и быстрее, однако обязательно проверяйте действия, предпринимаемые агентом.",
+    "’s agents are powerful and will help you get a lot done better and faster than before, but still make sure to verify the actions taken by the agent.": " предоставляет мощных агентов, которые помогут выполнять задачи лучше и быстрее, однако обязательно проверяйте действия, предпринимаемые агентом.",
+    "'s agents are powerful and will help you get a lot done better and faster than before, but still make sure to verify the actions taken by the agent.": " предоставляет мощных агентов, которые помогут выполнять задачи лучше и быстрее, однако обязательно проверяйте действия, предпринимаемые агентом.",
     "automation and can only be deleted by deleting that automation.": "и может быть удалён только вместе с удалением этой автоматизации.",
     "pick a model to change it.": "Выберите модель, чтобы изменить её.",
     "from ai studio": "из AI Studio",
@@ -4854,5 +4855,14 @@ const dictUi = {
     "using the panel": "Использование панели",
     "when mumo is worth the latency tax": "Когда стоит использовать mumo",
     "what's in the box": "Что внутри",
-    "mass spectrometry": "Масс-спектрометрия (Mass Spectrometry)"
+    "mass spectrometry": "Масс-спектрометрия (Mass Spectrometry)",
+    // === v2.2.13: First-Sign-In / Onboarding Terms Modal Complete Polish ===
+    "customize your experience across the agent, plugins, and product from the settings and marketplace. we won’t show you ads or let advertisers influence what": "Настраивайте работу агента, плагинов и продукта в настройках и маркетплейсе. Мы не показываем рекламу и не позволяем рекламодателям влиять на то, что говорит",
+    "customize your experience across the agent, plugins, and product from the settings and marketplace. we won't show you ads or let advertisers influence what": "Настраивайте работу агента, плагинов и продукта в настройках и маркетплейсе. Мы не показываем рекламу и не позволяем рекламодателям влиять на то, что говорит",
+    "says.": ".",
+    "help us improve antigravity.": "Помогите нам улучшить Антигравити.",
+    "help us improve antigravity": "Помогите нам улучшить Антигравити",
+    ". you can control this from your settings at any point.": ". Вы можете изменить это в настройках в любой момент.",
+    "you can control this from your settings at any point.": "Вы можете изменить это в настройках в любой момент.",
+    "(excluding product analytics data)": "(за исключением данных продуктовой аналитики)"
 };

@@ -24,8 +24,8 @@ function initLanguageSwitcher() {
         window.__antigravity_remote_check_interval = null;
     }
 
-    const FALLBACK_VERSION = '2.2.12';
-    const DEFAULT_CHANGELOG_V2212 = 'Обновление v2.2.12: расширено выпадающее меню выбора модели (снято жёсткое ограничение ширины 320px → адаптивно до 460px), добавлены аккуратные отступы между элементами, а бейдж «Leaving soon» сокращён с «Скоро будет недоступна» до компактного «Скоро уберут» — все названия моделей (Gemini 4 Argon, Gemini 3.8 Flash, Orchestrator Gemini 4 Neon Экстра) теперь полностью читаемы без обрезки «Gemi...».';
+    const FALLBACK_VERSION = '2.2.13';
+    const DEFAULT_CHANGELOG_V2213 = 'Обновление v2.2.13: допереведён и отполирован экран первого входа с нового аккаунта («Последний штрих перед началом работы...») — переведены абзац «Оптимизировано для вас», «Help us improve Antigravity.», «. You can control this from your settings at any point.», GCP-пометка «(excluding product analytics data)», а также исправлены пробел в «Антигравити предоставляет...» и предлог «об Антигравити».';
     const isFreshFallbackBump = !window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) >= 0;
     if (!window.__antigravity_local_version || compareSemverClient(FALLBACK_VERSION, window.__antigravity_local_version) > 0) {
         window.__antigravity_local_version = FALLBACK_VERSION;
@@ -33,10 +33,10 @@ function initLanguageSwitcher() {
     let currentLocalVersion = window.__antigravity_local_version;
     if (!window.__antigravity_remote_version || compareSemverClient(currentLocalVersion, window.__antigravity_remote_version) > 0 || (isFreshFallbackBump && !String(window.__antigravity_remote_changelog || '').includes('v' + FALLBACK_VERSION))) {
         window.__antigravity_remote_version = currentLocalVersion;
-        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2212;
+        window.__antigravity_remote_changelog = DEFAULT_CHANGELOG_V2213;
     }
     let latestGithubVersion = window.__antigravity_remote_version;
-    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2212;
+    let latestGithubChangelog = window.__antigravity_remote_changelog || DEFAULT_CHANGELOG_V2213;
     let isUpdatePending = false;
     let isHotUpdated = false;
     let hasRemoteUpdate = false;

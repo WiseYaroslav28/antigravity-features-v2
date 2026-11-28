@@ -8524,6 +8524,10 @@ const regexTranslations = [
         replace: (m) => `Авторизации в ${m[1].trim()} хранятся в облаке вместе с вашим аккаунтом.`
     },
     {
+        pattern: /^Help\s+us\s+improve\s+(.+?)(\.?)$/i,
+        replace: (m) => `Помогите нам улучшить ${m[1].trim()}${m[2] || ''}`
+    },
+    {
         pattern: /^(\d+)\s+excluded$/i,
         replace: (m) => `${m[1]} исключено`
     },
